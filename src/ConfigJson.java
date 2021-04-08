@@ -1,22 +1,22 @@
 
 
 public class ConfigJson {
-    private String port;
+    private Integer port;
     private String ipAddress;
     private String name;
     private String username;
     private String password;
-    private String scrappingTime;
+    private Integer scrappingTime;
 
 
     public ConfigJson() {
     }
 
-    public String getPort() {
+    public int getPort() {
         return port;
     }
 
-    public void setPort(String port) {
+    public void setPort(int port) {
         this.port = port;
     }
 
@@ -52,11 +52,11 @@ public class ConfigJson {
         this.password = password;
     }
 
-    public String getScrappingTime() {
+    public int getScrappingTime() {
         return scrappingTime;
     }
 
-    public void setScrappingTime(String scrappingTime) {
+    public void setScrappingTime(int scrappingTime) {
         this.scrappingTime = scrappingTime;
     }
 }

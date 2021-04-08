@@ -1,0 +1,8 @@
+{
+  "port":3306,
+  "ipAddress":"localhost",
+  "name":"piano_OOPD",
+  "username":"root",
+  "password":"admin",
+  "scrappingTime":5
+}

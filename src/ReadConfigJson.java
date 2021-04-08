@@ -17,12 +17,11 @@ public class ReadConfigJson {
             configJson = gson.fromJson(reader, ConfigJson.class);
             //Saving the values of the Json file in the attributes of each of the corresponding classes.
         } catch (FileNotFoundException e) {
-            System.out.println("\nError opening the file");
+            System.out.println("\nError opening the config.json file");
             System.exit(1);
         }
 
-        System.out.println("\nThe file batalles.json was read correctly");
-        System.out.println("The file competicio.json was read correctly\n");
+        System.out.println("\nThe file config.json was read correctly");
 
         try {
             reader.close(); //Closing the reader.
@@ -33,7 +32,7 @@ public class ReadConfigJson {
 
     }
 
-    public ConfigJson getConfigJson() {
+    public static ConfigJson getConfigJson() {
         return configJson;
     }
 }
