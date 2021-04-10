@@ -1,12 +1,12 @@
 
 
 public class ConfigJson {
-    private Integer port;
+    private int port;
     private String ipAddress;
     private String name;
     private String username;
     private String password;
-    private Integer scrappingTime;
+    private int scrappingTime;
 
 
     public ConfigJson() {
