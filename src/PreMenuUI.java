@@ -81,7 +81,7 @@ public class PreMenuUI extends JFrame{
         add(background);
         pack();
 
-        setSize(400, 400);
+        setSize(600, 400);
         setVisible(true);
     }
 }
