@@ -8,5 +8,6 @@ public class Main {
         //TODO put this ReadConfigJson to the controller.
         //Obtains the information from the readConfigJson().
         ReadConfigJson.readConfigJson();
+        new LoginUserCsvDAO();
     }
 }
