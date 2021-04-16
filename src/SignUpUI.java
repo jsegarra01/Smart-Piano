@@ -2,18 +2,20 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 
-public class LogInUI extends JFrame{
+public class SignUpUI extends JFrame{
 
     private JLabel pianoText = new JLabel("SMART PIANO");
-    private JLabel logInText = new JLabel("LOG IN");
+    private JLabel logInText = new JLabel("SIGN UP");
 
     private JTextField usernameTextField = new JTextField();
+    private JTextField mailTextField = new JTextField();
     private JPasswordField password = new JPasswordField();
+    private JPasswordField passwordConfirmation = new JPasswordField();
     private JButton back = new JButton("Back");
     private JButton done = new JButton("Done");
 
 
-    public LogInUI() {
+    public SignUpUI() {
 
 
         setTitle("SMART PIANO");
@@ -60,6 +62,23 @@ public class LogInUI extends JFrame{
 
         userButtons.add(Box.createRigidArea(new Dimension(10, 20)));
 
+        mailTextField.setAlignmentX(0.5f);
+        mailTextField.setPreferredSize(new Dimension(300,40));
+        mailTextField.setMaximumSize(usernameTextField.getPreferredSize());
+        mailTextField.setBackground(Color.WHITE);
+
+        TextPrompt mailPrompt = new TextPrompt("Mail: ", new JTextField(), TextPrompt.Show.ALWAYS);
+
+        mailPrompt.setAlignmentX(0.5f);
+        mailPrompt.setPreferredSize(new Dimension(300,20));
+        mailPrompt.setMaximumSize(usernamePrompt.getPreferredSize());
+        mailPrompt.setForeground(Color.WHITE);
+
+        userButtons.add(mailPrompt);
+        userButtons.add(mailTextField);
+
+        userButtons.add(Box.createRigidArea(new Dimension(10, 20)));
+
         password.setAlignmentX(0.5f);
         password.setPreferredSize(new Dimension(300,40));
         password.setMaximumSize(usernameTextField.getPreferredSize());
@@ -74,7 +93,23 @@ public class LogInUI extends JFrame{
         userButtons.add(passwordPrompt);
         userButtons.add(password);
 
-        userButtons.add(Box.createRigidArea(new Dimension(10, 60)));
+        userButtons.add(Box.createRigidArea(new Dimension(10, 20)));
+
+        passwordConfirmation.setAlignmentX(0.5f);
+        passwordConfirmation.setPreferredSize(new Dimension(300,40));
+        passwordConfirmation.setMaximumSize(passwordConfirmation.getPreferredSize());
+
+        TextPrompt confirmationPrompt = new TextPrompt("Confirm password: ", new JTextField(), TextPrompt.Show.ALWAYS);
+
+        confirmationPrompt.setAlignmentX(0.5f);
+        confirmationPrompt.setPreferredSize(new Dimension(300,20));
+        confirmationPrompt.setMaximumSize(usernamePrompt.getPreferredSize());
+        confirmationPrompt.setForeground(Color.WHITE);
+
+        userButtons.add(confirmationPrompt);
+        userButtons.add(passwordConfirmation);
+
+        userButtons.add(Box.createRigidArea(new Dimension(10, 100)));
 
         JPanel buttons = new JPanel();
         buttons.setLayout(new BoxLayout(buttons, BoxLayout.X_AXIS));
@@ -111,7 +146,7 @@ public class LogInUI extends JFrame{
         JPanel backBoxLayoutPanel = new JPanel();
         backBoxLayoutPanel.setLayout(new BoxLayout(backBoxLayoutPanel, BoxLayout.Y_AXIS));
 
-        backBoxLayoutPanel.add(Box.createRigidArea(new Dimension(30, 300)));
+        backBoxLayoutPanel.add(Box.createRigidArea(new Dimension(30, 500)));
         backBoxLayoutPanel.add(back);
         backBoxLayoutPanel.setBackground(Color.getHSBColor(0, 0, 0.1f));
 
@@ -142,11 +177,10 @@ public class LogInUI extends JFrame{
         pW.setBackground(Color.getHSBColor(0, 0, 0.2f));
         add(pW, BorderLayout.WEST);
 
-        //add(background);
         add(auxBL);
         pack();
 
-        setSize(600, 400);
+        setSize(600, 600);
         setVisible(true);
     }
 }
