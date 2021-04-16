@@ -36,20 +36,47 @@ public class LoginUserCsvDAO implements LoginUserDAO{
 
     }
 
+    private void userToCsv(User myUser){
+        try {
+            makeConnection();
+            ResultSet myRs = connection.createStatement().executeQuery("insert into User values ('" + myUser.getUserName() + "', '" +
+                    myUser.getMail() + "', '" + myUser.getPassword() + "')");
+            myRs.close();
 
-    @Override
-    public void save(User myUser) {
-
+        } catch (SQLException throwable) {
+            throwable.printStackTrace();
+        }
     }
 
+
+    @Override
+    public boolean save(User myUser) {
+        if(getByUsername(myUser.getUserName()) == null && getByMail(myUser.getMail())==null){
+            userToCsv(myUser);
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+/*
     @Override
     public void update(User myUser) {
 
-    }
+    }*/
 
     @Override
     public void delete(User myUser) {
+        try {
+            makeConnection();
+            PreparedStatement st = connection.prepareStatement("delete from User where username = '" + myUser.getUserName() + "'");
+            st.execute();
+            //ResultSet myRs = connection.createStatement().executeQuery("delete from User where username = '" + myUser.getUserName() + "'");
+            //myRs.close();
 
+        } catch (SQLException throwable) {
+            throwable.printStackTrace();
+        }
     }
 
     @Override

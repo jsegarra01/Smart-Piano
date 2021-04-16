@@ -12,5 +12,7 @@ public class Main {
         ReadConfigJson.readConfigJson();
         LoginUserCsvDAO log = new LoginUserCsvDAO();
         System.out.println(log.getByMail("laura.nuez@students.salle.url.edu").getPassword());
+        log.delete(log.getByUsername("styopartist"));
+        System.out.println(log.getByMail("stepan.batllori@students.salle.url.edu").getPassword());
     }
 }
