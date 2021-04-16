@@ -17,6 +17,7 @@ public class LoginUserCsvDAO implements LoginUserDAO{
                         myRs.getString("email") +
                         myRs.getString("password"));
             }
+            myConn.close();
 
         } catch (SQLException throwable) {
             throwable.printStackTrace();
