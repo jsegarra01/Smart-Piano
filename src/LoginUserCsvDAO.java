@@ -2,7 +2,6 @@ import java.sql.*;
 public class LoginUserCsvDAO {
 
 
-
     public LoginUserCsvDAO(){
         try {
             Connection myConn = DriverManager.getConnection("jdbc:mysql://"+
@@ -16,8 +15,8 @@ public class LoginUserCsvDAO {
             ResultSet myRs = myStmt.executeQuery("select * from User");
 
             while (myRs.next()){
-                System.out.println(myRs.getString("username") +
-                        myRs.getString("email") +
+                System.out.println(myRs.getString("username") + " " +
+                        myRs.getString("email") + " " +
                         myRs.getString("password"));
             }
 
