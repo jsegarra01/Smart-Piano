@@ -1,27 +1,39 @@
 import java.sql.*;
 public class LoginUserCsvDAO implements LoginUserDAO{
 
-    public LoginUserCsvDAO(){
-        try {
-            Connection myConn = DriverManager.getConnection("jdbc:mysql://"+
-                    ReadConfigJson.getConfigJson().getIpAddress() + ":" +
-                    ReadConfigJson.getConfigJson().getPort()+"/"+ReadConfigJson.getConfigJson().getName(),
+    private Connection connection;
+
+    private void makeConnection() throws SQLException {
+            connection =  DriverManager.getConnection("jdbc:mysql://"+
+                            ReadConfigJson.getConfigJson().getIpAddress() + ":" +
+                            ReadConfigJson.getConfigJson().getPort()+"/"+ReadConfigJson.getConfigJson().getName(),
                     ReadConfigJson.getConfigJson().getUsername(), ReadConfigJson.getConfigJson().getPassword());
 
-            Statement statement = myConn.createStatement();
-
-            ResultSet myRs = statement.executeQuery("select * from User");
-
-            while (myRs.next()){
-                System.out.println(myRs.getString("username") +
-                        myRs.getString("email") +
-                        myRs.getString("password"));
-            }
-            myConn.close();
+    }
+    private User userFromCsv(String myUserString, String state){
+        try {
+            makeConnection();
+            ResultSet myRs = connection.createStatement().executeQuery("select * from User as u where u." + state + "= '" + myUserString + "'");
+            //myRs.close();
+            return myRsToUser(myRs);
 
         } catch (SQLException throwable) {
             throwable.printStackTrace();
+            return null;
         }
+    }
+
+    private User myRsToUser(ResultSet myRs) throws SQLException {
+
+        if(myRs.next()){
+            return new User(
+                    myRs.getString("username"),
+                    myRs.getString("email"),
+                    myRs.getString("password"));
+        }else{
+            return null;
+        }
+
     }
 
 
@@ -42,11 +54,24 @@ public class LoginUserCsvDAO implements LoginUserDAO{
 
     @Override
     public User getByUsername(String myUserName) {
-        return null;
+        User user = userFromCsv(myUserName, "username");
+        try {
+            connection.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return user;
     }
 
     @Override
     public User getByMail(String myMail) {
-        return null;
+        User user = userFromCsv(myMail, "email");
+        try {
+            connection.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return user;
+
     }
 }

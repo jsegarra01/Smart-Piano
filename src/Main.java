@@ -1,6 +1,8 @@
 /*
  * The "Main" class will run the program
  */
+import com.mysql.cj.log.Log;
+
 import java.sql.*;
 public class Main {
 
@@ -8,6 +10,7 @@ public class Main {
         //TODO put this ReadConfigJson to the controller.
         //Obtains the information from the readConfigJson().
         ReadConfigJson.readConfigJson();
-        new LoginUserCsvDAO();
+        LoginUserCsvDAO log = new LoginUserCsvDAO();
+        System.out.println(log.getByMail("laura.nuez@students.salle.url.edu").getPassword());
     }
 }
