@@ -71,9 +71,6 @@ public class LoginUserCsvDAO implements LoginUserDAO{
             makeConnection();
             PreparedStatement st = connection.prepareStatement("delete from User where username = '" + myUser.getUserName() + "'");
             st.execute();
-            //ResultSet myRs = connection.createStatement().executeQuery("delete from User where username = '" + myUser.getUserName() + "'");
-            //myRs.close();
-
         } catch (SQLException throwable) {
             throwable.printStackTrace();
         }
