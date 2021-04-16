@@ -1,5 +1,5 @@
 import java.sql.*;
-public class LoginUserCsvDAO {
+public class LoginUserCsvDAO implements LoginUserDAO{
 
     public LoginUserCsvDAO(){
         try {
@@ -21,5 +21,31 @@ public class LoginUserCsvDAO {
         } catch (SQLException throwable) {
             throwable.printStackTrace();
         }
+    }
+
+
+    @Override
+    public void save(User myUser) {
+
+    }
+
+    @Override
+    public void update(User myUser) {
+
+    }
+
+    @Override
+    public void delete(User myUser) {
+
+    }
+
+    @Override
+    public User getByUsername(String myUserName) {
+        return null;
+    }
+
+    @Override
+    public User getByMail(String myMail) {
+        return null;
     }
 }
