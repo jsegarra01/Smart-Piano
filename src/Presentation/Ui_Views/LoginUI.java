@@ -1,4 +1,6 @@
-package Presentation;
+package Presentation.Ui_Views;
+
+import Presentation.TextPrompt;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -24,7 +26,7 @@ public class LoginUI extends JFrame{
     public LoginUI(JFrame frame) {
         frame.getContentPane().removeAll();
 
-        frame.setTitle("SMART PIANO");
+        frame.setTitle(SMART_PIANO_TEXT);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null);
 
@@ -65,7 +67,6 @@ public class LoginUI extends JFrame{
 
         userButtons.add(usernamePrompt);
         userButtons.add(usernameTextField);
-
         userButtons.add(Box.createRigidArea(new Dimension(10, 20)));
 
         password.setAlignmentX(0.5f);
@@ -81,18 +82,18 @@ public class LoginUI extends JFrame{
 
         userButtons.add(passwordPrompt);
         userButtons.add(password);
-
         userButtons.add(Box.createRigidArea(new Dimension(10, 60)));
 
         JPanel buttons = new JPanel();
         buttons.setLayout(new BoxLayout(buttons, BoxLayout.X_AXIS));
 
         back.setAlignmentX(0.5f);
+        back.setActionCommand(BACK_BUTTON);
         buttons.add(back);
-
         buttons.add(Box.createRigidArea(new Dimension(310, 15)));
 
         done.setAlignmentX(0.5f);
+        done.setActionCommand(DONE_BUTTON);
         buttons.add(done);
 
         buttons.setBackground(Color.getHSBColor(0, 0, 0.1f));

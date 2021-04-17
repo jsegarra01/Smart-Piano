@@ -1,4 +1,4 @@
-package Presentation;
+package Presentation.Ui_Views;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -17,7 +17,7 @@ public class PreMenuUI extends JFrame{
     public PreMenuUI(JFrame frame) {
         frame.getContentPane().removeAll();
 
-        setTitle("SMART PIANO");
+        setTitle(SMART_PIANO_TEXT);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
@@ -49,19 +49,19 @@ public class PreMenuUI extends JFrame{
 
         JPanel pN = new JPanel();
         pN.setBackground(Color.getHSBColor(0, 0, 0.2f));
-        add(pN, BorderLayout.NORTH);
+        frame.add(pN, BorderLayout.NORTH);
 
         JPanel pS = new JPanel();
         pS.setBackground(Color.getHSBColor(0, 0, 0.2f));
-        add(pS, BorderLayout.SOUTH);
+        frame.add(pS, BorderLayout.SOUTH);
 
         JPanel pE = new JPanel();
         pE.setBackground(Color.getHSBColor(0, 0, 0.2f));
-        add(pE, BorderLayout.EAST);
+        frame.add(pE, BorderLayout.EAST);
 
         JPanel pW = new JPanel();
         pW.setBackground(Color.getHSBColor(0, 0, 0.2f));
-        add(pW, BorderLayout.WEST);
+        frame.add(pW, BorderLayout.WEST);
 
         frame.add(background);
         frame.pack();
@@ -72,7 +72,7 @@ public class PreMenuUI extends JFrame{
         frame.setVisible(true);
     }
 
-    private JPanel createButtons(JPanel userButtons) {
+    private void createButtons(JPanel userButtons) {
         userButtons.add(Box.createRigidArea(new Dimension(10, 25)));
         logIn.setActionCommand(LOG_IN_BUTTON);
         logIn.setAlignmentX(0.5f);
@@ -92,7 +92,6 @@ public class PreMenuUI extends JFrame{
         userButtons.add(signUp);
         userButtons.add(guest);
 
-        return userButtons;
     }
 
     public void registerController(ActionListener listener) {

@@ -1,18 +1,18 @@
-package Presentation;
+package Presentation.Manager;
 
-import javax.swing.*;
+import Presentation.Dictionary_login;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import static Presentation.Manager.MainFrame.setPreMenuUi;
 
 public class LoginUIManager implements ActionListener {
     // Attribute storing the view, for managing purposes. We will modify
     //  it after we get notified that a button has been pressed.
-    private JFrame view;
 
     // Parametrized constructor, receiving the view.
-    public LoginUIManager(JFrame view) {
-        this.view = view;
-
+    public LoginUIManager() {
     }
 
     // Method that will be called every time a button is pressed, overriden
@@ -22,9 +22,10 @@ public class LoginUIManager implements ActionListener {
         // We distinguish between our buttons.
         switch (e.getActionCommand()) {
             case Dictionary_login.BACK_BUTTON:
-                //new PreMenuUI(view);
+                setPreMenuUi();
                 break;
             case Dictionary_login.DONE_BUTTON:
+                //TODO: CHECK CORRECT INFORMATION, ENTER AS THE SAVED USER, GO TO FREE PIANO
                 break;
         }
     }

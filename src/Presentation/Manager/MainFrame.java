@@ -1,7 +1,10 @@
-package Presentation;
+package Presentation.Manager;
+
+import Presentation.Ui_Views.PreMenuUI;
+import Presentation.Ui_Views.LoginUI;
+import Presentation.Ui_Views.SignUpUI;
 
 import javax.swing.*;
-import java.awt.*;
 
 public class MainFrame extends JFrame {
     public static JFrame mainFrame;
@@ -11,24 +14,34 @@ public class MainFrame extends JFrame {
         mainFrame.setVisible(true);
     }
 
-    public void configureMainView() {
+    public static void setPreMenuUi() {
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
                 PreMenuUI preMenuUI = new PreMenuUI(mainFrame);
-                PreMenuUIManager menuUIManager = new PreMenuUIManager(preMenuUI);
+                PreMenuUIManager menuUIManager = new PreMenuUIManager();
                 preMenuUI.registerController(menuUIManager);
             }
         });
     }
+
     public static void setLoginUi() {
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
                 LoginUI loginUI = new LoginUI(mainFrame);
-                LoginUIManager loginUIManager = new LoginUIManager(loginUI);
+                LoginUIManager loginUIManager = new LoginUIManager();
                 loginUI.registerController(loginUIManager);
             }
         });
-        System.out.println("s");
+    }
+
+    public static void setSignUpUi() {
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                SignUpUI signUpUI = new SignUpUI(mainFrame);
+                LoginUIManager loginUIManager = new LoginUIManager();
+                signUpUI.registerController(loginUIManager);
+            }
+        });
     }
 
 }

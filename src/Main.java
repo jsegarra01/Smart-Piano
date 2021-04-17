@@ -1,6 +1,6 @@
-import Presentation.*;
+import Presentation.Manager.MainFrame;
 
-import javax.swing.*;
+import static Presentation.Manager.MainFrame.setPreMenuUi;
 
 /**
  * The "Main" class will run the program
@@ -8,7 +8,8 @@ import javax.swing.*;
 public class Main {
 
     public static void main(String[] args) {
-        new MainFrame().configureMainView();
+        new MainFrame();
+        setPreMenuUi();
 
         //TODO put this ReadConfigJson to the controller.
         //Obtains the information from the readConfigJson().
