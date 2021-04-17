@@ -19,23 +19,18 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1c5e6f96-c95e-486d-b6a4-eb88a30eae04" name="Default Changelist" comment="LogInUI done">
-      <change afterPath="$PROJECT_DIR$/src/Presentation/Dictionary_login.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Presentation/PreMenuUIManager.java" afterDir="false" />
+    <list default="true" id="1c5e6f96-c95e-486d-b6a4-eb88a30eae04" name="Default Changelist" comment="Connection between PreMenuUI and LogInUI done, with a correct over writing on the JFrame.">
+      <change afterPath="$PROJECT_DIR$/src/Presentation/LoginUIManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Presentation/MainFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/LogInUI.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/PreMenuUI.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/ProfileUI.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/SignUpUI.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/TextPrompt$Show.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/TextPrompt.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LogInUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/LogInUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/LogInUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/LogInUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/PreMenuUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/PreMenuUI.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PreMenuUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/PreMenuUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ProfileUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/ProfileUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SignUpUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/SignUpUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TextPrompt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/TextPrompt.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presentation/Dictionary_login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Dictionary_login.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presentation/LogInUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/LoginUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presentation/PreMenuUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/PreMenuUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presentation/PreMenuUIManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/PreMenuUIManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -129,7 +124,7 @@
       <workItem from="1618389816558" duration="14032000" />
       <workItem from="1618430420323" duration="22794000" />
       <workItem from="1618668230695" duration="152000" />
-      <workItem from="1618668410356" duration="4508000" />
+      <workItem from="1618668410356" duration="20279000" />
     </task>
     <task id="LOCAL-00001" summary="PreMenuUI done">
       <created>1618414536423</created>
@@ -166,11 +161,28 @@
       <option name="project" value="LOCAL" />
       <updated>1618487251584</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Connection between PreMenuUI and LogInUI done, with a correct over writing on the JFrame.">
+      <created>1618673195404</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1618673195404</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ID_ORDER">
+      <list>
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -188,6 +200,18 @@
     <MESSAGE value="PreMenuUI done" />
     <MESSAGE value="ProfileUI done" />
     <MESSAGE value="LogInUI done" />
-    <option name="LAST_COMMIT_MESSAGE" value="LogInUI done" />
+    <MESSAGE value="Connection between PreMenuUI and LogInUI done, with a correct over writing on the JFrame." />
+    <option name="LAST_COMMIT_MESSAGE" value="Connection between PreMenuUI and LogInUI done, with a correct over writing on the JFrame." />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Presentation/LoginUI.java</url>
+          <line>159</line>
+          <option name="timeStamp" value="68" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

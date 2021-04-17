@@ -8,14 +8,15 @@ import java.awt.event.ActionListener;
 import static Presentation.Dictionary_login.*;
 
 public class PreMenuUI extends JFrame{
-
     private JLabel pianoText = new JLabel(SMART_PIANO_TEXT);
-
     private JButton logIn = new JButton(LOG_IN_BUTTON);
     private JButton signUp = new JButton(SIGN_UP_BUTTON);
-    private JButton guest = new JButton(ENTER_AS_GUEST);
+    private JButton guest = new JButton(ENTER_AS_GUEST_BUTTON);
 
-    public PreMenuUI() {
+
+    public PreMenuUI(JFrame frame) {
+        frame.getContentPane().removeAll();
+
         setTitle("SMART PIANO");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
@@ -62,11 +63,13 @@ public class PreMenuUI extends JFrame{
         pW.setBackground(Color.getHSBColor(0, 0, 0.2f));
         add(pW, BorderLayout.WEST);
 
-        add(background);
-        pack();
+        frame.add(background);
+        frame.pack();
+        frame.setSize(600, 400);
 
-        setSize(600, 400);
-        setVisible(true);
+        frame.revalidate();
+        frame.repaint();
+        frame.setVisible(true);
     }
 
     private JPanel createButtons(JPanel userButtons) {
@@ -81,7 +84,7 @@ public class PreMenuUI extends JFrame{
         signUp.setBorder(new EmptyBorder(10,96,10,96));
 
         userButtons.add(Box.createRigidArea(new Dimension(10, 20)));
-        guest.setActionCommand(ENTER_AS_GUEST);
+        guest.setActionCommand(ENTER_AS_GUEST_BUTTON);
         guest.setAlignmentX(0.5f);
         guest.setBorder(new EmptyBorder(10,68,10,68));
 
@@ -97,4 +100,5 @@ public class PreMenuUI extends JFrame{
         signUp.addActionListener(listener);
         guest.addActionListener(listener);
     }
+
 }
