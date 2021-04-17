@@ -1,15 +1,13 @@
-import com.google.gson.JsonElement;
-import com.google.gson.stream.JsonReader;
-import netscape.javascript.JSObject;
+import com.google.gson.JsonObject;
 
-import java.io.File;
 import java.io.FileReader;
-import java.io.Reader;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.io.FileWriter;
+import java.io.InputStream;
+import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class SongCsvDAO implements SongDAO {
     /**
@@ -37,10 +35,10 @@ public class SongCsvDAO implements SongDAO {
      * @param state Defines either the attribute email or username, in order to get the desired user.
      * @return Class that stores the User
      */
-    private Song songFromCsv(String myUserString, String state){
+    public ArrayList<Song> songFromCsv(String myUserString, String state){
         try {
             makeConnection();
-            ResultSet myRs = connection.createStatement().executeQuery("select * from Song as s where s." + state + "= '" + myUserString + "'");
+            ResultSet myRs = connection.createStatement().executeQuery("select * from Song as s where s." + state + " like '" + myUserString + "'");
             //myRs.close();
             return myRsToSongs(myRs);
 
@@ -59,11 +57,36 @@ public class SongCsvDAO implements SongDAO {
                 myRs.getFloat("duration"),
                 myRs.getDate("recordingDate"),
                 myRs.getBoolean("publicBoolean"),
-                new FileReader(myRs.getjSON("songFile", Reader)),
+                getLargerString(myRs),
                 myRs.getString("username")));
         }
         return songs;
     }
+
+    public static String getLargerString(ResultSet rs) throws SQLException {
+
+        InputStream in = null;
+        int BUFFER_SIZE = 1024;
+        try {
+            in = rs.getAsciiStream("songFile");
+            if (in == null) {
+                return "";
+            }
+
+            byte[] arr = new byte[BUFFER_SIZE];
+            StringBuffer buffer = new StringBuffer();
+            int numRead = in.read(arr);
+            while (numRead != -1) {
+                buffer.append(new String(arr, 0, numRead));
+                numRead = in.read(arr);
+            }
+            return buffer.toString();
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new SQLException(e.getMessage());
+        }
+    }
+
     @Override
     public void saveSong(Song mySaveSong) {
 
