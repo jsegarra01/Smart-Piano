@@ -1,27 +1,37 @@
+package Presentation.Ui_Views;
+
+import Presentation.TextPrompt;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowListener;
 
-public class LogInUI extends JFrame{
+import static Presentation.Dictionary_login.*;
 
-    private JLabel pianoText = new JLabel("SMART PIANO");
-    private JLabel logInText = new JLabel("LOG IN");
+public class LoginUI extends JFrame{
+
+    private JLabel pianoText = new JLabel(SMART_PIANO_TEXT);
+    private JLabel logInText = new JLabel(LOG_IN_TEXT);
 
     private JTextField usernameTextField = new JTextField();
     private JPasswordField password = new JPasswordField();
-    private JButton back = new JButton("Back");
-    private JButton done = new JButton("Done");
+    private JButton back = new JButton(BACK_BUTTON);
+    private JButton done = new JButton(DONE_BUTTON);
+
+    public LoginUI() {
+    }
+
+    public LoginUI(JFrame frame) {
+        frame.getContentPane().removeAll();
+
+        frame.setTitle(SMART_PIANO_TEXT);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLocationRelativeTo(null);
 
 
-    public LogInUI() {
-
-
-        setTitle("SMART PIANO");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLocationRelativeTo(null);
-
-
-        setLayout(new BorderLayout());
+        //setLayout(frame.getLayout());
 
         JPanel userButtons = new JPanel();
         userButtons.setLayout(new BoxLayout(userButtons, BoxLayout.Y_AXIS));
@@ -57,7 +67,6 @@ public class LogInUI extends JFrame{
 
         userButtons.add(usernamePrompt);
         userButtons.add(usernameTextField);
-
         userButtons.add(Box.createRigidArea(new Dimension(10, 20)));
 
         password.setAlignmentX(0.5f);
@@ -73,18 +82,18 @@ public class LogInUI extends JFrame{
 
         userButtons.add(passwordPrompt);
         userButtons.add(password);
-
         userButtons.add(Box.createRigidArea(new Dimension(10, 60)));
 
         JPanel buttons = new JPanel();
         buttons.setLayout(new BoxLayout(buttons, BoxLayout.X_AXIS));
 
         back.setAlignmentX(0.5f);
+        back.setActionCommand(BACK_BUTTON);
         buttons.add(back);
-
-        buttons.add(Box.createRigidArea(new Dimension(410, 15)));
+        buttons.add(Box.createRigidArea(new Dimension(310, 15)));
 
         done.setAlignmentX(0.5f);
+        done.setActionCommand(DONE_BUTTON);
         buttons.add(done);
 
         buttons.setBackground(Color.getHSBColor(0, 0, 0.1f));
@@ -96,57 +105,37 @@ public class LogInUI extends JFrame{
         auxBL.setLayout(new BorderLayout());
 
         auxBL.add(userButtons, BorderLayout.CENTER);
-        //auxBL.add(buttons, BorderLayout.SOUTH);
         auxBL.setBackground(Color.getHSBColor(0, 0, 0.1f));
-
-        /*JPanel background = new JPanel();
-        background.setLayout(new BorderLayout());
-
-        JPanel auxiliarEastPanel = new JPanel();
-        auxiliarEastPanel.setLayout(new BoxLayout(auxiliarEastPanel, BoxLayout.Y_AXIS));
-
-        JPanel backBorderLayoutPanel = new JPanel();
-        backBorderLayoutPanel.setLayout(new BorderLayout());
-
-        JPanel backBoxLayoutPanel = new JPanel();
-        backBoxLayoutPanel.setLayout(new BoxLayout(backBoxLayoutPanel, BoxLayout.Y_AXIS));
-
-        backBoxLayoutPanel.add(Box.createRigidArea(new Dimension(30, 300)));
-        backBoxLayoutPanel.add(back);
-        backBoxLayoutPanel.setBackground(Color.getHSBColor(0, 0, 0.1f));
-
-        auxiliarEastPanel.add(Box.createRigidArea(new Dimension(80, 35)));
-        auxiliarEastPanel.setBackground(Color.getHSBColor(0, 0, 0.1f));
-
-        backBorderLayoutPanel.add(backBoxLayoutPanel, BorderLayout.WEST);
-        backBorderLayoutPanel.add(auxiliarEastPanel, BorderLayout.EAST);
-        backBorderLayoutPanel.add(userButtons, BorderLayout.CENTER);
-        backBorderLayoutPanel.setBackground(Color.getHSBColor(0, 0, 0.1f));
-
-        background.add(backBorderLayoutPanel, BorderLayout.CENTER);
-        setBackground(Color.getHSBColor(0, 0, 0.1f));*/
 
         JPanel pN = new JPanel();
         pN.setBackground(Color.getHSBColor(0, 0, 0.2f));
-        add(pN, BorderLayout.NORTH);
+        frame.add(pN, BorderLayout.NORTH);
 
         JPanel pS = new JPanel();
         pS.setBackground(Color.getHSBColor(0, 0, 0.2f));
-        add(pS, BorderLayout.SOUTH);
+        frame.add(pS, BorderLayout.SOUTH);
 
         JPanel pE = new JPanel();
         pE.setBackground(Color.getHSBColor(0, 0, 0.2f));
-        add(pE, BorderLayout.EAST);
+        frame.add(pE, BorderLayout.EAST);
 
         JPanel pW = new JPanel();
         pW.setBackground(Color.getHSBColor(0, 0, 0.2f));
-        add(pW, BorderLayout.WEST);
+        frame.add(pW, BorderLayout.WEST);
 
         //add(background);
-        add(auxBL);
-        pack();
+        frame.add(auxBL);
+        frame.pack();
 
-        setSize(600, 400);
-        setVisible(true);
+        frame.setSize(600, 400);
+        frame.revalidate();
+        frame.repaint();
     }
+
+
+    public void registerController(ActionListener listener) {
+        back.addActionListener(listener);
+        done.addActionListener(listener);
+    }
+
 }
