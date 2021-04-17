@@ -12,6 +12,17 @@ public class Song {
     private float minPlayed;
     private int timesPlayed;
 
+    public Song(String songId, String songName, String authorName, float duration, Date recordingDate, boolean publicBoolean, File songFile, float minPlayed, int timesPlayed){
+        this.songId = songId;
+        this.songName = songName;
+        this.authorName = authorName;
+        this.duration = duration;
+        this.recordingDate = recordingDate;
+        this.publicBoolean = publicBoolean;
+        this.songFile = songFile;
+        this.minPlayed = minPlayed;
+        this.timesPlayed = timesPlayed;
+    }
     public String getSongId() {
         return songId;
     }
