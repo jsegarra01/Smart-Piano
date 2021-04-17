@@ -1,3 +1,10 @@
+import com.google.gson.JsonElement;
+import com.google.gson.stream.JsonReader;
+import netscape.javascript.JSObject;
+
+import java.io.File;
+import java.io.FileReader;
+import java.io.Reader;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -45,8 +52,15 @@ public class SongCsvDAO implements SongDAO {
     private ArrayList<Song> myRsToSongs(ResultSet myRs) throws SQLException {
         ArrayList<Song> songs = new ArrayList<>();
         while(myRs.next()){
-            myRs.getString("songId");
-
+            songs.add(new Song(
+                myRs.getString("songId"),
+                myRs.getString("songName"),
+                myRs.getString("authorsName"),
+                myRs.getFloat("duration"),
+                myRs.getDate("recordingDate"),
+                myRs.getBoolean("publicBoolean"),
+                new FileReader(myRs.getjSON("songFile", Reader)),
+                myRs.getString("username")));
         }
         return songs;
     }

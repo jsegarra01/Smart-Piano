@@ -1,4 +1,5 @@
 import java.io.File;
+import java.sql.Blob;
 import java.util.Date;
 
 public class Song {
@@ -9,10 +10,11 @@ public class Song {
     private Date recordingDate;
     private boolean publicBoolean;
     private File songFile;
+    private String creator;
     private float minPlayed;
     private int timesPlayed;
 
-    public Song(String songId, String songName, String authorName, float duration, Date recordingDate, boolean publicBoolean, File songFile, float minPlayed, int timesPlayed){
+    public Song(String songId, String songName, String authorName, float duration, Date recordingDate, boolean publicBoolean, File songFile, String creator){
         this.songId = songId;
         this.songName = songName;
         this.authorName = authorName;
@@ -20,9 +22,9 @@ public class Song {
         this.recordingDate = recordingDate;
         this.publicBoolean = publicBoolean;
         this.songFile = songFile;
-        this.minPlayed = minPlayed;
-        this.timesPlayed = timesPlayed;
+        this.creator = creator;
     }
+
     public String getSongId() {
         return songId;
     }
