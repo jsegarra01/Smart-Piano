@@ -125,7 +125,7 @@ public class SignUpUI extends JFrame{
         done.setActionCommand(BACK_BUTTON);
         buttons.add(back);
 
-        buttons.add(Box.createRigidArea(new Dimension(310, 15)));
+        buttons.add(Box.createRigidArea(new Dimension(400, 15)));
 
         done.setAlignmentX(0.5f);
         done.setActionCommand(DONE_BUTTON);

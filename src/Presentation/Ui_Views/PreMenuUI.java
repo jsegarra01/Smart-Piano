@@ -27,7 +27,7 @@ public class PreMenuUI extends JFrame{
         JPanel userButtons = new JPanel();
         userButtons.setLayout(new BoxLayout(userButtons, BoxLayout.Y_AXIS));
 
-        userButtons.add(Box.createRigidArea(new Dimension(10, 10)));
+        userButtons.add(Box.createRigidArea(new Dimension(10, 15)));
 
         Font currentFont = pianoText.getFont();
         Font newFont = currentFont.deriveFont(currentFont.getSize() * 2.0F);
@@ -73,23 +73,23 @@ public class PreMenuUI extends JFrame{
     }
 
     private void createButtons(JPanel userButtons) {
-        userButtons.add(Box.createRigidArea(new Dimension(10, 25)));
+        userButtons.add(Box.createRigidArea(new Dimension(10, 45)));
         logIn.setActionCommand(LOG_IN_BUTTON);
         logIn.setAlignmentX(0.5f);
-        logIn.setBorder(new EmptyBorder(10,100,10,100));
+        logIn.setBorder(new EmptyBorder(12,120,12,120));
 
-        userButtons.add(Box.createRigidArea(new Dimension(10, 20)));
         signUp.setActionCommand(SIGN_UP_BUTTON);
         signUp.setAlignmentX(0.5f);
-        signUp.setBorder(new EmptyBorder(10,96,10,96));
+        signUp.setBorder(new EmptyBorder(12,116,12,116));
 
-        userButtons.add(Box.createRigidArea(new Dimension(10, 20)));
         guest.setActionCommand(ENTER_AS_GUEST_BUTTON);
         guest.setAlignmentX(0.5f);
-        guest.setBorder(new EmptyBorder(10,68,10,68));
+        guest.setBorder(new EmptyBorder(12,88,12,88));
 
         userButtons.add(logIn);
+        userButtons.add(Box.createRigidArea(new Dimension(10, 25)));
         userButtons.add(signUp);
+        userButtons.add(Box.createRigidArea(new Dimension(10, 25)));
         userButtons.add(guest);
 
     }
