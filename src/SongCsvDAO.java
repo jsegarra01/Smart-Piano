@@ -208,4 +208,20 @@ public class SongCsvDAO implements SongDAO {
     public ArrayList<Song> getAllSongs() {
         return songFromCsv("%");
     }
+
+    @Override
+    public ArrayList<Song> getPopularSongs() {
+        try {
+            makeConnection();
+            ResultSet myRs = connection.createStatement().executeQuery(
+                    "SELECT s.* " +
+                            "FROM Song as s inner join SongStatisticsGeneral as ssg on ssg.songId = s.songId " +
+                            "ORDER BY MAX(ssg.timesPlayed) DESC LIMIT 5");
+            ArrayList<Song> songs = myRsToSongs(myRs);
+            closeConnection(myRs);
+            return songs;
+        } catch (SQLException throwables) {
+            return null;
+        }
+    }
 }

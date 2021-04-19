@@ -7,4 +7,5 @@ public interface SongDAO {
     Song getSongByID(int id);
     ArrayList<Song> getAllSongs(User myUser);
     ArrayList<Song> getAllSongs();
+    ArrayList<Song> getPopularSongs();
 }
