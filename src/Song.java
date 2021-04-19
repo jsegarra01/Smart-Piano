@@ -1,3 +1,5 @@
+import com.google.gson.JsonObject;
+
 import java.io.File;
 import java.sql.Blob;
 import java.util.Date;
@@ -9,12 +11,12 @@ public class Song {
     private float duration;
     private Date recordingDate;
     private boolean publicBoolean;
-    private String  songFile;
+    private JsonObject songFile;
     private String creator;
     private float minPlayed;
     private int timesPlayed;
 
-    public Song(String songId, String songName, String authorName, float duration, Date recordingDate, boolean publicBoolean, String songFile, String creator){
+    public Song(String songId, String songName, String authorName, float duration, Date recordingDate, boolean publicBoolean, JsonObject songFile, String creator){
         this.songId = songId;
         this.songName = songName;
         this.authorName = authorName;

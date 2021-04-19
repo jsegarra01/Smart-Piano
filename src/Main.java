@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /**
  * The "Main" class will run the program
  */
@@ -13,8 +15,8 @@ public class Main {
         SignUpUI signUpUI = new SignUpUI();
 
         */
-        new LoginUserCsvDAO().getByUsername("blayaiai");
-        //new SongCsvDAO().songFromCsv("Star Wars Theme","songName");
+        //new LoginUserCsvDAO().getByUsername("blayaiai");
+        //ArrayList<Song> songs = new SongCsvDAO().songFromCsv("blayaiai","username");
 
         //TODO put this ReadConfigJson to the controller.
         //Obtains the information from the readConfigJson().

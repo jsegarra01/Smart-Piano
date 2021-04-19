@@ -1,4 +1,5 @@
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -35,7 +36,7 @@ public class SongCsvDAO implements SongDAO {
      * @param state Defines either the attribute email or username, in order to get the desired user.
      * @return Class that stores the User
      */
-    public ArrayList<Song> songFromCsv(String myUserString, String state){
+    private ArrayList<Song> songFromCsv(String myUserString, String state){
         try {
             makeConnection();
             ResultSet myRs = connection.createStatement().executeQuery("select * from Song as s where s." + state + " like '" + myUserString + "'");
@@ -50,22 +51,23 @@ public class SongCsvDAO implements SongDAO {
     private ArrayList<Song> myRsToSongs(ResultSet myRs) throws SQLException {
         ArrayList<Song> songs = new ArrayList<>();
         while(myRs.next()){
+            JsonParser parser = new JsonParser();
             songs.add(new Song(
-                myRs.getString("songId"),
-                myRs.getString("songName"),
-                myRs.getString("authorsName"),
-                myRs.getFloat("duration"),
-                myRs.getDate("recordingDate"),
-                myRs.getBoolean("publicBoolean"),
-                getLargerString(myRs),
-                myRs.getString("username")));
+                    myRs.getString("songId"),
+                    myRs.getString("songName"),
+                    myRs.getString("authorsName"),
+                    myRs.getFloat("duration"),
+                    myRs.getDate("recordingDate"),
+                    myRs.getBoolean("publicBoolean"),
+                    (JsonObject) parser.parse(getLargerString(myRs)),
+                    myRs.getString("username")));
         }
         return songs;
     }
 
-    public static String getLargerString(ResultSet rs) throws SQLException {
+    private static String getLargerString(ResultSet rs) throws SQLException {
 
-        InputStream in = null;
+        InputStream in;
         int BUFFER_SIZE = 1024;
         try {
             in = rs.getAsciiStream("songFile");
@@ -74,7 +76,7 @@ public class SongCsvDAO implements SongDAO {
             }
 
             byte[] arr = new byte[BUFFER_SIZE];
-            StringBuffer buffer = new StringBuffer();
+            StringBuilder buffer = new StringBuilder();
             int numRead = in.read(arr);
             while (numRead != -1) {
                 buffer.append(new String(arr, 0, numRead));
