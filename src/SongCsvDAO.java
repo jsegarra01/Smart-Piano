@@ -22,13 +22,12 @@ public class SongCsvDAO implements SongDAO {
                         ReadConfigJson.getConfigJson().getIpAddress() + ":" +
                         ReadConfigJson.getConfigJson().getPort()+"/"+ReadConfigJson.getConfigJson().getName(),
                 ReadConfigJson.getConfigJson().getUsername(), ReadConfigJson.getConfigJson().getPassword());
-
     }
 
     /**
-     * Method that gets the user from the database
-     * @param myUserString Defines either the email or the username of the user who we want to get
-     * @return Class that stores the User
+     * Method that gets all the songs from the database created by a user
+     * @param myUserString Defines the username of the user who we want to get their songs
+     * @return List of the class Song that stores the songs created by that User
      */
     private ArrayList<Song> songFromCsv(String myUserString){
         try {
@@ -39,10 +38,17 @@ public class SongCsvDAO implements SongDAO {
             return songs;
 
         } catch (SQLException throwable) {
-            throwable.printStackTrace();
             return null;
         }
     }
+
+    /**
+     * Method that parses the result got from the query and stores it in the list
+     * @param myRs Defines the result set in which the information from the query is stored
+     * @return List of the class Song that stores the songs created by that User
+     * @throws SQLException Throw that makes an exception if there has been any error with the connection to the
+     *                      database. It will be handled with the try catch from where it is called.
+     */
     private ArrayList<Song> myRsToSongs(ResultSet myRs) throws SQLException {
         ArrayList<Song> songs = new ArrayList<>();
         while(myRs.next()){
@@ -60,6 +66,12 @@ public class SongCsvDAO implements SongDAO {
         return songs;
     }
 
+    /**
+     *
+     * @param rs
+     * @return
+     * @throws SQLException
+     */
     private static String getLargerString(ResultSet rs) throws SQLException {
 
         InputStream in;
@@ -84,13 +96,23 @@ public class SongCsvDAO implements SongDAO {
         }
     }
 
+    /**
+     * Method that closes the result set and the connection made with the database
+     * @param myRs Defines the result set in which the information from the query is stored
+     * @throws SQLException Throw that makes an exception if there has been any error with the connection to the
+     *                      database. It will be handled with the try catch from where it is called.
+     */
     private void closeConnection (ResultSet myRs) throws SQLException {
         myRs.close();
         connection.close();
     }
 
+    /**
+     * Method that stores the song in the database
+     * @param mySaveSong Defines the song to be stored
+     */
     @Override
-    public void saveSong(Song mySaveSong) {
+    public boolean saveSong(Song mySaveSong) {
         try {
             makeConnection();
             mySaveSong.setSongId(3);
@@ -105,30 +127,43 @@ public class SongCsvDAO implements SongDAO {
                     mySaveSong.getCreator() + "')");
             st.execute();
             connection.close();
+            return true;
 
         } catch (SQLException throwable) {
-            throwable.printStackTrace();
+            return false;
         }
     }
 
+    /**
+     *
+     * @param mySong
+     */
     @Override
     public void updateSong(Song mySong) {
 
     }
 
+    /**
+     * Method that deletes the song depending on the id from the database
+     * @param mySong Defines the song to be deleted from the database
+     */
     @Override
     public void deleteSong(Song mySong) {
         try {
             makeConnection();
             PreparedStatement st = connection.prepareStatement("delete from Song where songId = '" + mySong.getSongId() + "'");
             st.execute();
-        } catch (SQLException throwable) {
-            throwable.printStackTrace();
+        } catch (SQLException ignored) {
         }
     }
 
+    /**
+     * Method that gets the song by its id
+     * @param id Defines the id of the song
+     * @return Class that stores the song that has been got from the database
+     */
     @Override
-    public Song getSongByID(String id) {
+    public Song getSongByID(int id) {
         try {
             makeConnection();
             ResultSet myRs = connection.createStatement().executeQuery("select * from Song as s where s.songId = " + id);
@@ -149,19 +184,26 @@ public class SongCsvDAO implements SongDAO {
                 return null;
             }
         } catch (SQLException throwables) {
-            throwables.printStackTrace();
             return null;
         }
 
     }
 
-
+    /**
+     * Method that gets all the songs belonging to the user
+     * @param myUser Defines the user from which the songs will be got
+     * @return List of songs that have been created by the user
+     */
     @Override
     public ArrayList<Song> getAllSongs(User myUser) {
 
         return songFromCsv(myUser.getUserName());
     }
 
+    /**
+     * Method that gets all the songs in the database
+     * @return List of songs from the database
+     */
     @Override
     public ArrayList<Song> getAllSongs() {
         return songFromCsv("%");

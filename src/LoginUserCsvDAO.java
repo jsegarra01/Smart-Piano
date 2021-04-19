@@ -17,7 +17,6 @@ public class LoginUserCsvDAO implements LoginUserDAO{
                             ReadConfigJson.getConfigJson().getIpAddress() + ":" +
                             ReadConfigJson.getConfigJson().getPort()+"/"+ReadConfigJson.getConfigJson().getName(),
                     ReadConfigJson.getConfigJson().getUsername(), ReadConfigJson.getConfigJson().getPassword());
-
     }
 
     /**
@@ -26,17 +25,12 @@ public class LoginUserCsvDAO implements LoginUserDAO{
      * @param state Defines either the attribute email or username, in order to get the desired user.
      * @return Class that stores the User
      */
-    private User userFromCsv(String myUserString, String state){
-        try {
-            makeConnection();
-            ResultSet myRs = connection.createStatement().executeQuery("select * from User as u where u." + state + "= '" + myUserString + "'");
-            //myRs.close();
-            return myRsToUser(myRs);
+    private User userFromCsv(String myUserString, String state) throws SQLException {
+        makeConnection();
+        ResultSet myRs = connection.createStatement().executeQuery("select * from User as u where u." + state +
+                "= '" + myUserString + "'");
+        return myRsToUser(myRs);
 
-        } catch (SQLException throwable) {
-            throwable.printStackTrace();
-            return null;
-        }
     }
 
     /**
@@ -49,10 +43,12 @@ public class LoginUserCsvDAO implements LoginUserDAO{
     private User myRsToUser(ResultSet myRs) throws SQLException {
 
         if(myRs.next()){
-            return new User(
+            User user = new User(
                     myRs.getString("username"),
                     myRs.getString("email"),
                     myRs.getString("password"));
+            myRs.close();
+            return user;
         }else{
             return null;
         }
@@ -66,23 +62,15 @@ public class LoginUserCsvDAO implements LoginUserDAO{
     private void userToCsv(User myUser){
         try {
             makeConnection();
-            //ResultSet myRs = connection.createStatement().executeQuery("insert into User values ('" + "alex" + "', '" +
-                    //myUser.getMail() + "', '" + myUser.getPassword() + "')");
-            //myRs.close();
-            PreparedStatement st = connection.prepareStatement("insert into User values ('" + myUser.getUserName() + "', '" +
-                    myUser.getMail() + "', '" + myUser.getPassword() + "')");
+            PreparedStatement st = connection.prepareStatement("insert into User values ('" + myUser.getUserName() +
+                    "', '" + myUser.getMail() + "', '" + myUser.getPassword() + "')");
             st.execute();
             connection.close();
 
-        } catch (SQLException throwable) {
-            throwable.printStackTrace();
+        } catch (SQLException ignored) {
         }
     }
 
-    private void closeConnection (ResultSet myRs) throws SQLException {
-        myRs.close();
-        connection.close();
-    }
 
     /**
      * Method that checks if the user passed as a parameter exists or not and saves in the db in case it does not
@@ -115,8 +103,8 @@ public class LoginUserCsvDAO implements LoginUserDAO{
             makeConnection();
             PreparedStatement st = connection.prepareStatement("delete from User where username = '" + myUser.getUserName() + "'");
             st.execute();
-        } catch (SQLException throwable) {
-            throwable.printStackTrace();
+            connection.close();
+        } catch (SQLException ignored) {
         }
     }
 
@@ -127,13 +115,13 @@ public class LoginUserCsvDAO implements LoginUserDAO{
      */
     @Override
     public User getByUsername(String myUserName) {
-        User user = userFromCsv(myUserName, "username");
         try {
+            User user = userFromCsv(myUserName, "username");
             connection.close();
+            return user;
         } catch (SQLException throwables) {
-            throwables.printStackTrace();
+            return null;
         }
-        return user;
     }
 
     /**
@@ -143,13 +131,13 @@ public class LoginUserCsvDAO implements LoginUserDAO{
      */
     @Override
     public User getByMail(String myMail) {
-        User user = userFromCsv(myMail, "email");
         try {
+            User user = userFromCsv(myMail, "email");
             connection.close();
+            return user;
         } catch (SQLException throwables) {
-            throwables.printStackTrace();
+            return null;
         }
-        return user;
 
     }
 }

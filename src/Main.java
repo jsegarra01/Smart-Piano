@@ -19,10 +19,9 @@ public class Main {
         */
         new LoginUserCsvDAO().save(new LoginUserCsvDAO().getByUsername("blayaiai"));
         ArrayList<Song> songs = new SongCsvDAO().getAllSongs();
-        System.out.println(songs.get(1).getSongFile());
         //TODO put this ReadConfigJson to the controller.
         //Obtains the information from the readConfigJson().
-        //new SongCsvDAO().saveSong(songs.get(0));
+        new SongCsvDAO().saveSong(songs.get(0));
 
 
         System.out.println("hola");
