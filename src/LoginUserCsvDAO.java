@@ -66,13 +66,22 @@ public class LoginUserCsvDAO implements LoginUserDAO{
     private void userToCsv(User myUser){
         try {
             makeConnection();
-            ResultSet myRs = connection.createStatement().executeQuery("insert into User values ('" + myUser.getUserName() + "', '" +
+            //ResultSet myRs = connection.createStatement().executeQuery("insert into User values ('" + "alex" + "', '" +
+                    //myUser.getMail() + "', '" + myUser.getPassword() + "')");
+            //myRs.close();
+            PreparedStatement st = connection.prepareStatement("insert into User values ('" + myUser.getUserName() + "', '" +
                     myUser.getMail() + "', '" + myUser.getPassword() + "')");
-            myRs.close();
+            st.execute();
+            connection.close();
 
         } catch (SQLException throwable) {
             throwable.printStackTrace();
         }
+    }
+
+    private void closeConnection (ResultSet myRs) throws SQLException {
+        myRs.close();
+        connection.close();
     }
 
     /**

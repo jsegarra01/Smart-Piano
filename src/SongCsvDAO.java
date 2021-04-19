@@ -1,14 +1,9 @@
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.InputStream;
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class SongCsvDAO implements SongDAO {
     /**
@@ -33,15 +28,15 @@ public class SongCsvDAO implements SongDAO {
     /**
      * Method that gets the user from the database
      * @param myUserString Defines either the email or the username of the user who we want to get
-     * @param state Defines either the attribute email or username, in order to get the desired user.
      * @return Class that stores the User
      */
-    private ArrayList<Song> songFromCsv(String myUserString, String state){
+    private ArrayList<Song> songFromCsv(String myUserString){
         try {
             makeConnection();
-            ResultSet myRs = connection.createStatement().executeQuery("select * from Song as s where s." + state + " like '" + myUserString + "'");
-            //myRs.close();
-            return myRsToSongs(myRs);
+            ResultSet myRs = connection.createStatement().executeQuery("select * from Song as s where s.username like '" + myUserString + "'");
+            ArrayList<Song> songs = myRsToSongs(myRs);
+            closeConnection(myRs);
+            return songs;
 
         } catch (SQLException throwable) {
             throwable.printStackTrace();
@@ -53,7 +48,7 @@ public class SongCsvDAO implements SongDAO {
         while(myRs.next()){
             JsonParser parser = new JsonParser();
             songs.add(new Song(
-                    myRs.getString("songId"),
+                    myRs.getInt("songId"),
                     myRs.getString("songName"),
                     myRs.getString("authorsName"),
                     myRs.getFloat("duration"),
@@ -89,9 +84,31 @@ public class SongCsvDAO implements SongDAO {
         }
     }
 
+    private void closeConnection (ResultSet myRs) throws SQLException {
+        myRs.close();
+        connection.close();
+    }
+
     @Override
     public void saveSong(Song mySaveSong) {
+        try {
+            makeConnection();
+            mySaveSong.setSongId(3);
+            PreparedStatement st = connection.prepareStatement("insert into Song values (" +
+                    mySaveSong.getSongId() + ", '" +
+                    mySaveSong.getSongName() + "', '" +
+                    mySaveSong.getAuthorName() + "', '" +
+                    mySaveSong.getDuration() + "', '" +
+                    mySaveSong.getRecordingDate() + "', " +
+                    mySaveSong.isPublicBoolean() + ", '" +
+                    mySaveSong.getSongFile() + "', '" +
+                    mySaveSong.getCreator() + "')");
+            st.execute();
+            connection.close();
 
+        } catch (SQLException throwable) {
+            throwable.printStackTrace();
+        }
     }
 
     @Override
@@ -101,21 +118,52 @@ public class SongCsvDAO implements SongDAO {
 
     @Override
     public void deleteSong(Song mySong) {
-
+        try {
+            makeConnection();
+            PreparedStatement st = connection.prepareStatement("delete from Song where songId = '" + mySong.getSongId() + "'");
+            st.execute();
+        } catch (SQLException throwable) {
+            throwable.printStackTrace();
+        }
     }
 
     @Override
-    public Song getSongByID(int id) {
-        return null;
+    public Song getSongByID(String id) {
+        try {
+            makeConnection();
+            ResultSet myRs = connection.createStatement().executeQuery("select * from Song as s where s.songId = " + id);
+            if(myRs.next()){
+                JsonParser parser = new JsonParser();
+                Song song = new Song(
+                        myRs.getInt("songId"),
+                        myRs.getString("songName"),
+                        myRs.getString("authorsName"),
+                        myRs.getFloat("duration"),
+                        myRs.getDate("recordingDate"),
+                        myRs.getBoolean("publicBoolean"),
+                        (JsonObject) parser.parse(getLargerString(myRs)),
+                        myRs.getString("username"));
+                closeConnection(myRs);
+                return song;
+            }else{
+                return null;
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+            return null;
+        }
+
     }
+
 
     @Override
     public ArrayList<Song> getAllSongs(User myUser) {
-        return null;
+
+        return songFromCsv(myUser.getUserName());
     }
 
     @Override
     public ArrayList<Song> getAllSongs() {
-        return null;
+        return songFromCsv("%");
     }
 }

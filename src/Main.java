@@ -1,3 +1,5 @@
+import com.mysql.cj.log.Log;
+
 import java.util.ArrayList;
 
 /**
@@ -15,12 +17,15 @@ public class Main {
         SignUpUI signUpUI = new SignUpUI();
 
         */
-        //new LoginUserCsvDAO().getByUsername("blayaiai");
-        //ArrayList<Song> songs = new SongCsvDAO().songFromCsv("blayaiai","username");
-
+        new LoginUserCsvDAO().save(new LoginUserCsvDAO().getByUsername("blayaiai"));
+        ArrayList<Song> songs = new SongCsvDAO().getAllSongs();
+        System.out.println(songs.get(1).getSongFile());
         //TODO put this ReadConfigJson to the controller.
         //Obtains the information from the readConfigJson().
+        //new SongCsvDAO().saveSong(songs.get(0));
 
+
+        System.out.println("hola");
         //ReadConfigJson.readConfigJson();
     }
 }

@@ -5,7 +5,7 @@ import java.sql.Blob;
 import java.util.Date;
 
 public class Song {
-    private String songId;
+    private int songId;
     private String songName;
     private String authorName;
     private float duration;
@@ -16,7 +16,7 @@ public class Song {
     private float minPlayed;
     private int timesPlayed;
 
-    public Song(String songId, String songName, String authorName, float duration, Date recordingDate, boolean publicBoolean, JsonObject songFile, String creator){
+    public Song(int songId, String songName, String authorName, float duration, Date recordingDate, boolean publicBoolean, JsonObject songFile, String creator){
         this.songId = songId;
         this.songName = songName;
         this.authorName = authorName;
@@ -27,11 +27,11 @@ public class Song {
         this.creator = creator;
     }
 
-    public String getSongId() {
+    public int getSongId() {
         return songId;
     }
 
-    public void setSongId(String songId) {
+    public void setSongId(int songId) {
         this.songId = songId;
     }
 
@@ -41,5 +41,29 @@ public class Song {
 
     public void setSongName(String songName) {
         this.songName = songName;
+    }
+
+    public String getAuthorName() {
+        return authorName;
+    }
+
+    public float getDuration() {
+        return duration;
+    }
+
+    public Date getRecordingDate() {
+        return recordingDate;
+    }
+
+    public boolean isPublicBoolean() {
+        return publicBoolean;
+    }
+
+    public JsonObject getSongFile() {
+        return songFile;
+    }
+
+    public String getCreator() {
+        return creator;
     }
 }
