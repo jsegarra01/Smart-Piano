@@ -9,20 +9,8 @@ public class SongCsvDAO implements SongDAO {
     /**
      * Stores the information that is being used to connect to the database
      */
-    private Connection connection;
+    private ConnectSQL connection;
 
-    /**
-     * Method that is in charge of creating the connection with the database which configuration is in the config.json
-     * file
-     * @throws SQLException Throw that makes an exception if there has been any error while making the connection.
-     *                      It will be handled with the try catch from where it is called.
-     */
-    private void makeConnection() throws SQLException {
-        connection =  DriverManager.getConnection("jdbc:mysql://"+
-                        ReadConfigJson.getConfigJson().getIpAddress() + ":" +
-                        ReadConfigJson.getConfigJson().getPort()+"/"+ReadConfigJson.getConfigJson().getName(),
-                ReadConfigJson.getConfigJson().getUsername(), ReadConfigJson.getConfigJson().getPassword());
-    }
 
     /**
      * Method that gets all the songs from the database created by a user
@@ -31,8 +19,8 @@ public class SongCsvDAO implements SongDAO {
      */
     private ArrayList<Song> songFromCsv(String myUserString){
         try {
-            makeConnection();
-            ResultSet myRs = connection.createStatement().executeQuery("select * from Song as s where s.username like '" + myUserString + "'");
+            connection.makeConnection();
+            ResultSet myRs = connection.getConnection().createStatement().executeQuery("select * from Song as s where s.username like '" + myUserString + "'");
             ArrayList<Song> songs = myRsToSongs(myRs);
             closeConnection(myRs);
             return songs;
@@ -103,8 +91,7 @@ public class SongCsvDAO implements SongDAO {
      *                      database. It will be handled with the try catch from where it is called.
      */
     private void closeConnection (ResultSet myRs) throws SQLException {
-        myRs.close();
-        connection.close();
+        connection.closeConnection(myRs);
     }
 
     /**
@@ -114,8 +101,8 @@ public class SongCsvDAO implements SongDAO {
     @Override
     public boolean saveSong(Song mySaveSong) {
         try {
-            makeConnection();
-            PreparedStatement st = connection.prepareStatement("insert into Song values (" +
+            connection.makeConnection();
+            PreparedStatement st = connection.getConnection().prepareStatement("insert into Song values (" +
                     mySaveSong.getSongId() + ", '" +
                     mySaveSong.getSongName() + "', '" +
                     mySaveSong.getAuthorName() + "', '" +
@@ -125,7 +112,7 @@ public class SongCsvDAO implements SongDAO {
                     mySaveSong.getSongFile() + "', '" +
                     mySaveSong.getCreator() + "')");
             st.execute();
-            connection.close();
+            connection.getConnection().close();
             return true;
 
         } catch (SQLException throwable) {
@@ -149,8 +136,8 @@ public class SongCsvDAO implements SongDAO {
     @Override
     public void deleteSong(Song mySong) {
         try {
-            makeConnection();
-            PreparedStatement st = connection.prepareStatement("delete from Song where songId = '" + mySong.getSongId() + "'");
+            connection.makeConnection();
+            PreparedStatement st = connection.getConnection().prepareStatement("delete from Song where songId = '" + mySong.getSongId() + "'");
             st.execute();
         } catch (SQLException ignored) {
         }
@@ -164,8 +151,8 @@ public class SongCsvDAO implements SongDAO {
     @Override
     public Song getSongByID(int id) {
         try {
-            makeConnection();
-            ResultSet myRs = connection.createStatement().executeQuery("select * from Song as s where s.songId = " + id);
+            connection.makeConnection();
+            ResultSet myRs = connection.getConnection().createStatement().executeQuery("select * from Song as s where s.songId = " + id);
             if(myRs.next()){
                 JsonParser parser = new JsonParser();
                 Song song = new Song(
@@ -211,8 +198,8 @@ public class SongCsvDAO implements SongDAO {
     @Override
     public ArrayList<Song> getPopularSongs() {
         try {
-            makeConnection();
-            ResultSet myRs = connection.createStatement().executeQuery(
+            connection.makeConnection();
+            ResultSet myRs = connection.getConnection().createStatement().executeQuery(
                     "SELECT s.* " +
                             "FROM Song as s inner join SongStatisticsGeneral as ssg on ssg.songId = s.songId " +
                             "ORDER BY MAX(ssg.timesPlayed) DESC LIMIT 5");

@@ -4,20 +4,8 @@ public class LoginUserCsvDAO implements LoginUserDAO{
     /**
      * Stores the information that is being used to connect to the database
      */
-    private Connection connection;
+    private ConnectSQL connection;
 
-    /**
-     * Method that is in charge of creating the connection with the database which configuration is in the config.json
-     * file
-     * @throws SQLException Throw that makes an exception if there has been any error while making the connection.
-     *                      It will be handled with the try catch from where it is called.
-     */
-    private void makeConnection() throws SQLException {
-            connection =  DriverManager.getConnection("jdbc:mysql://"+
-                            ReadConfigJson.getConfigJson().getIpAddress() + ":" +
-                            ReadConfigJson.getConfigJson().getPort()+"/"+ReadConfigJson.getConfigJson().getName(),
-                    ReadConfigJson.getConfigJson().getUsername(), ReadConfigJson.getConfigJson().getPassword());
-    }
 
     /**
      * Method that gets the user from the database
@@ -26,8 +14,8 @@ public class LoginUserCsvDAO implements LoginUserDAO{
      * @return Class that stores the User
      */
     private User userFromCsv(String myUserString, String state) throws SQLException {
-        makeConnection();
-        ResultSet myRs = connection.createStatement().executeQuery("select * from User as u where u." + state +
+        connection.makeConnection();
+        ResultSet myRs = connection.getConnection().createStatement().executeQuery("select * from User as u where u." + state +
                 "= '" + myUserString + "'");
         return myRsToUser(myRs);
 
@@ -61,11 +49,11 @@ public class LoginUserCsvDAO implements LoginUserDAO{
      */
     private void userToCsv(User myUser){
         try {
-            makeConnection();
-            PreparedStatement st = connection.prepareStatement("insert into User values ('" + myUser.getUserName() +
+            connection.makeConnection();
+            PreparedStatement st = connection.getConnection().prepareStatement("insert into User values ('" + myUser.getUserName() +
                     "', '" + myUser.getMail() + "', '" + myUser.getPassword() + "')");
             st.execute();
-            connection.close();
+            connection.getConnection().close();
 
         } catch (SQLException ignored) {
         }
@@ -100,10 +88,10 @@ public class LoginUserCsvDAO implements LoginUserDAO{
     @Override
     public void delete(User myUser) {
         try {
-            makeConnection();
-            PreparedStatement st = connection.prepareStatement("delete from User where username = '" + myUser.getUserName() + "'");
+            connection.makeConnection();
+            PreparedStatement st = connection.getConnection().prepareStatement("delete from User where username = '" + myUser.getUserName() + "'");
             st.execute();
-            connection.close();
+            connection.getConnection().close();
         } catch (SQLException ignored) {
         }
     }
@@ -117,7 +105,7 @@ public class LoginUserCsvDAO implements LoginUserDAO{
     public User getByUsername(String myUserName) {
         try {
             User user = userFromCsv(myUserName, "username");
-            connection.close();
+            connection.getConnection().close();
             return user;
         } catch (SQLException throwables) {
             return null;
@@ -133,7 +121,7 @@ public class LoginUserCsvDAO implements LoginUserDAO{
     public User getByMail(String myMail) {
         try {
             User user = userFromCsv(myMail, "email");
-            connection.close();
+            connection.getConnection().close();
             return user;
         } catch (SQLException throwables) {
             return null;

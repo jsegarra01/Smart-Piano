@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class PlaylistCsvDAO implements PlaylistDAO {
 
-    private Connection connection;
+    private ConnectSQL connection;
 
 
     /**
@@ -19,12 +19,7 @@ public class PlaylistCsvDAO implements PlaylistDAO {
      * @throws SQLException Throw that makes an exception if there has been any error while making the connection.
      *                      It will be handled with the try catch from where it is called.
      */
-    private void makeConnection() throws SQLException {
-        connection =  DriverManager.getConnection("jdbc:mysql://"+
-                        ReadConfigJson.getConfigJson().getIpAddress() + ":" +
-                        ReadConfigJson.getConfigJson().getPort()+"/"+ReadConfigJson.getConfigJson().getName(),
-                ReadConfigJson.getConfigJson().getUsername(), ReadConfigJson.getConfigJson().getPassword());
-    }
+
 
     private static String getLargerString(ResultSet rs) throws SQLException {
 
@@ -63,10 +58,10 @@ public class PlaylistCsvDAO implements PlaylistDAO {
     @Override
     public Playlist getPlaylistByUser(String username) {
         try {
-            makeConnection();
-            ResultSet myRs = connection.createStatement().executeQuery("select * from Playlist as p " +
+            connection.makeConnection();
+            ResultSet myRs = connection.getConnection().createStatement().executeQuery("select * from Playlist as p " +
                     "where p.username like '" + username + "'");
-            ResultSet myRs2 = connection.createStatement().executeQuery(
+            ResultSet myRs2 = connection.getConnection().createStatement().executeQuery(
                     "select so.* from Song as so inner join SongPlaylists as sp on sp.songId = so.songId inner" +
                             "join Playlist as p on sp.playlistId = p.playlistId "+ "where p.username like '" +
                             username + "'" + "group by p.playlistId");
@@ -88,9 +83,9 @@ public class PlaylistCsvDAO implements PlaylistDAO {
                 playlist = new Playlist(myRs.getInt("playlistId"),
                         myRs.getString("playlistName"),songs, myRs.getString("username"));
             }
-            myRs.close();
+
             myRs2.close();
-            connection.close();
+            connection.closeConnection(myRs);
             return playlist;
 
         } catch (SQLException throwables) {
