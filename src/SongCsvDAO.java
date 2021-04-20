@@ -115,7 +115,6 @@ public class SongCsvDAO implements SongDAO {
     public boolean saveSong(Song mySaveSong) {
         try {
             makeConnection();
-            mySaveSong.setSongId(3);
             PreparedStatement st = connection.prepareStatement("insert into Song values (" +
                     mySaveSong.getSongId() + ", '" +
                     mySaveSong.getSongName() + "', '" +
