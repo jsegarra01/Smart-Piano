@@ -8,12 +8,12 @@ import java.awt.event.ActionListener;
 import static Presentation.Manager.MainFrame.setPianoTilesSelector;
 import static Presentation.Manager.MainFrame.setPreMenuUi;
 
-public class LoginUIManager implements ActionListener {
+public class ProfileUIManager implements ActionListener {
     // Attribute storing the view, for managing purposes. We will modify
     //  it after we get notified that a button has been pressed.
 
     // Parametrized constructor, receiving the view.
-    public LoginUIManager() {
+    public ProfileUIManager() {
     }
 
     // Method that will be called every time a button is pressed, overriden
@@ -22,10 +22,14 @@ public class LoginUIManager implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         // We distinguish between our buttons.
         switch (e.getActionCommand()) {
-            case Dictionary_login.BACK_BUTTON:
+            case Dictionary_login.LOGOUT_BUTTON:
                 setPreMenuUi();
                 break;
-            case Dictionary_login.DONE_BUTTON:
+            case Dictionary_login.DELETE_BUTTON:
+                //TODO: DELETE EVERYTHING FROM THE USER IN OUR SYSTEM
+                setPreMenuUi();
+                break;
+            case Dictionary_login.BACK_BUTTON:
                 //TODO: CHECK CORRECT INFORMATION, ENTER AS THE SAVED USER
                 setPianoTilesSelector();
                 break;

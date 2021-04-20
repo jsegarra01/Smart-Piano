@@ -29,7 +29,8 @@ public class PreMenuUIManager implements ActionListener {
                 setSignUpUi();
                 break;
             case Dictionary_login.ENTER_AS_GUEST_BUTTON:
-                //TODO: ENTER AS A GUEST USER, GO TO FREE PIANO
+                //TODO: ENTER AS A GUEST USER
+                setPianoTilesSelector();
                 break;
         }
     }
