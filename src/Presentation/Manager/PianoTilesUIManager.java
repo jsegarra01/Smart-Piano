@@ -5,15 +5,15 @@ import Presentation.Dictionary_login;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import static Presentation.Manager.MainFrame.setPianoTilesSelector;
-import static Presentation.Manager.MainFrame.setPreMenuUi;
+import static Presentation.Manager.MainFrame.*;
 
-public class LoginUIManager implements ActionListener {
+
+public class PianoTilesUIManager implements ActionListener {
     // Attribute storing the view, for managing purposes. We will modify
     //  it after we get notified that a button has been pressed.
 
     // Parametrized constructor, receiving the view.
-    public LoginUIManager() {
+    public PianoTilesUIManager() {
     }
 
     // Method that will be called every time a button is pressed, overriden
@@ -22,12 +22,8 @@ public class LoginUIManager implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         // We distinguish between our buttons.
         switch (e.getActionCommand()) {
-            case Dictionary_login.BACK_BUTTON:
-                setPreMenuUi();
-                break;
-            case Dictionary_login.DONE_BUTTON:
-                //TODO: CHECK CORRECT INFORMATION, ENTER AS THE SAVED USER
-                setPianoTilesSelector();
+            case Dictionary_login.PROFILE_BUTTON:
+                setProfileUI();
                 break;
         }
     }

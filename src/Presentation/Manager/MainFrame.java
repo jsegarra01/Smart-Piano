@@ -1,8 +1,6 @@
 package Presentation.Manager;
 
-import Presentation.Ui_Views.PreMenuUI;
-import Presentation.Ui_Views.LoginUI;
-import Presentation.Ui_Views.SignUpUI;
+import Presentation.Ui_Views.*;
 
 import javax.swing.*;
 
@@ -40,6 +38,26 @@ public class MainFrame extends JFrame {
                 SignUpUI signUpUI = new SignUpUI(mainFrame);
                 LoginUIManager loginUIManager = new LoginUIManager();
                 signUpUI.registerController(loginUIManager);
+            }
+        });
+    }
+
+    public static void setPianoTilesSelector() {
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                PianoTilesUISelector pianoTilesUISelector = new PianoTilesUISelector(mainFrame);
+                PianoTilesUIManager pianoTilesUIManager = new PianoTilesUIManager();
+                pianoTilesUISelector.registerController(pianoTilesUIManager);
+            }
+        });
+    }
+
+    public static void setProfileUI() {
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                ProfileUI profileUI = new ProfileUI(mainFrame);
+                ProfileUIManager profileUIManager = new ProfileUIManager();
+                profileUI.registerController(profileUIManager);
             }
         });
     }

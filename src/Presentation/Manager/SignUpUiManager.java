@@ -25,7 +25,8 @@ public class SignUpUiManager  implements ActionListener {
                 setPreMenuUi();
                 break;
             case Dictionary_login.DONE_BUTTON:
-                //TODO: CHECK CORRECT INFORMATION, SAVE NEW USER, ENTER AS THE NEW USER, GO TO FREE PIANO
+                //TODO: CHECK CORRECT INFORMATION, SAVE NEW USER, ENTER AS THE NEW USER
+                setPianoTilesSelector();
                 break;
             }
         }

@@ -7,21 +7,23 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
 
+import static Presentation.Dictionary_login.*;
+
 public class ProfileUI extends JFrame{
 
     private JLabel pianoText = new JLabel("SMART PIANO");
     private JLabel profileText = new JLabel("PROFILE");
 
-    private JButton logOut = new JButton("LOG OUT");
-    private JButton deleteAccount = new JButton("DELETE ACCOUNT");
-    private JButton back = new JButton("Back");
+    private JButton logOut = new JButton(LOGOUT_BUTTON);
+    private JButton deleteAccount = new JButton(DELETE_BUTTON);
+    private JButton back = new JButton(BACK_BUTTON);
 
-    public ProfileUI() {
+    public ProfileUI(JFrame frame) {
+        frame.getContentPane().removeAll();
 
-
-        setTitle("SMART PIANO");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLocationRelativeTo(null);
+        frame.setTitle("SMART PIANO");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLocationRelativeTo(null);
 
 
         setLayout(new BorderLayout());
@@ -87,24 +89,31 @@ public class ProfileUI extends JFrame{
 
         JPanel pN = new JPanel();
         pN.setBackground(Color.getHSBColor(0, 0, 0.2f));
-        add(pN, BorderLayout.NORTH);
+        frame.add(pN, BorderLayout.NORTH);
 
         JPanel pS = new JPanel();
         pS.setBackground(Color.getHSBColor(0, 0, 0.2f));
-        add(pS, BorderLayout.SOUTH);
+        frame.add(pS, BorderLayout.SOUTH);
 
         JPanel pE = new JPanel();
         pE.setBackground(Color.getHSBColor(0, 0, 0.2f));
-        add(pE, BorderLayout.EAST);
+        frame.add(pE, BorderLayout.EAST);
 
         JPanel pW = new JPanel();
         pW.setBackground(Color.getHSBColor(0, 0, 0.2f));
-        add(pW, BorderLayout.WEST);
+        frame.add(pW, BorderLayout.WEST);
 
-        add(background);
-        pack();
+        frame.add(background);
+        frame.pack();
 
-        setSize(600, 400);
-        setVisible(true);
+        frame.setSize(600, 400);
+        frame.setVisible(true);
     }
+
+    public void registerController(ActionListener listener) {
+        logOut.addActionListener(listener);
+        deleteAccount.addActionListener(listener);
+        back.addActionListener(listener);
+    }
+
 }
