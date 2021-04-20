@@ -18,6 +18,10 @@ public class ProfileUI extends JFrame{
     private JButton deleteAccount = new JButton(DELETE_BUTTON);
     private JButton back = new JButton(BACK_BUTTON);
 
+    /**
+     * Removes everything that was on the frame and modifies it in order to have the sign up user interface
+     * @param frame The frame to modify, this will be the user interface
+     */
     public ProfileUI(JFrame frame) {
         frame.getContentPane().removeAll();
 
@@ -110,6 +114,10 @@ public class ProfileUI extends JFrame{
         frame.setVisible(true);
     }
 
+    /**
+     * Method to add the action listeners to the buttons
+     * @param listener The action listener
+     */
     public void registerController(ActionListener listener) {
         logOut.addActionListener(listener);
         deleteAccount.addActionListener(listener);

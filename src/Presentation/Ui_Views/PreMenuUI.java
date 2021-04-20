@@ -13,7 +13,10 @@ public class PreMenuUI extends JFrame{
     private JButton signUp = new JButton(SIGN_UP_BUTTON);
     private JButton guest = new JButton(ENTER_AS_GUEST_BUTTON);
 
-
+    /**
+     * Removes everything that was on the frame and modifies it in order to have the sign up user interface
+     * @param frame The frame to modify, this will be the user interface
+     */
     public PreMenuUI(JFrame frame) {
         frame.getContentPane().removeAll();
 
@@ -72,6 +75,10 @@ public class PreMenuUI extends JFrame{
         frame.setVisible(true);
     }
 
+    /**
+     * Method through which we add the buttons to the panel that will be added afterwards to the frame for the user interface
+     * @param userButtons JPanel that will have the buttons in it
+     */
     private void createButtons(JPanel userButtons) {
         userButtons.add(Box.createRigidArea(new Dimension(10, 45)));
         logIn.setActionCommand(LOG_IN_BUTTON);
@@ -94,6 +101,10 @@ public class PreMenuUI extends JFrame{
 
     }
 
+    /**
+     * Method to add the action listeners to the buttons
+     * @param listener The action listener
+     */
     public void registerController(ActionListener listener) {
         logIn.addActionListener(listener);
         signUp.addActionListener(listener);

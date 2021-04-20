@@ -23,6 +23,10 @@ public class LoginUI extends JFrame{
     public LoginUI() {
     }
 
+    /**
+     * Removes everything that was on the frame and modifies it in order to have the sign up user interface
+     * @param frame The frame to modify, this will be the user interface
+     */
     public LoginUI(JFrame frame) {
         frame.getContentPane().removeAll();
 
@@ -132,7 +136,10 @@ public class LoginUI extends JFrame{
         frame.repaint();
     }
 
-
+    /**
+     * Method to add the action listeners to the buttons
+     * @param listener The action listener
+     */
     public void registerController(ActionListener listener) {
         back.addActionListener(listener);
         done.addActionListener(listener);
