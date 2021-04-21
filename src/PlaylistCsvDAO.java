@@ -1,9 +1,4 @@
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-
 import java.io.InputStream;
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -75,7 +70,6 @@ public class PlaylistCsvDAO implements PlaylistDAO {
                             username + "'" + "group by p.playlistId");
             ArrayList<Song> songs = new ArrayList<>();
             while(myRs2.next()){
-                JsonParser parser = new JsonParser();
                 songs.add(new Song(
                         myRs.getInt("songId"),
                         myRs.getString("songName"),
