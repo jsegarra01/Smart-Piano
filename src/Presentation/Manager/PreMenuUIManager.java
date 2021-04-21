@@ -21,15 +21,16 @@ import static Presentation.Manager.MainFrame.*;
  * The "PreMenuUIManager" class will contain the different methods that are needed to control the view class "PreMenuUI"
  */
 public class PreMenuUIManager implements ActionListener {
-    // Attribute storing the view, for managing purposes. We will modify
-    //  it after we get notified that a button has been pressed.
-
-    // Parametrized constructor, receiving the view.
+    /**
+     * Parametrized constructor
+     */
     public PreMenuUIManager() {
     }
 
-    // Method that will be called every time a button is pressed, overriden
-    //  from the interface to provide an implementation.
+    /**
+     * Method that will be called every time a button is pressed, overriden from the interface to provide an implementation.
+     * @param e ActionEvent from the UI
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
        // We distinguish between our buttons.
