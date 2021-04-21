@@ -24,7 +24,7 @@ public class PlaylistCsvDAO implements PlaylistDAO {
 
     private ArrayList<Song> getSongsForPlaylist(int id) throws SQLException {
         ResultSet myRs2 = connection.createStatement().executeQuery(
-                "select so.*, p.* from Song as so inner join SongPlaylists as sp on sp.songId = so.songId and " +
+                "select so.* from Song as so inner join SongPlaylists as sp on sp.songId = so.songId and " +
                         "sp.playlistId = " + id);
         ArrayList<Song> songs = new ArrayList<>();
         while(myRs2.next()) {

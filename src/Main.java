@@ -1,5 +1,6 @@
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  * The "Main" class will run the program
@@ -18,6 +19,7 @@ public class Main {
         Connection connection = ConnectSQL.getInstance();
         User user = new LoginUserCsvDAO().getByUsername("blayaiai");
         Song song = new SongCsvDAO().getSongByID(1);
+        ArrayList<Playlist> playlists = new PlaylistCsvDAO().getPlaylistByUser("blayaiai");
         try {
             connection.close();
         } catch (SQLException throwables) {
