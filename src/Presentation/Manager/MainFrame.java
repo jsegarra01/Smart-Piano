@@ -1,9 +1,22 @@
 package Presentation.Manager;
+/*
+ * MainFrame
+ *
+ * The "MainFrame" class will contain the different methods that are needed for the views of the login
+ *
+ * Stepan Batllori, Alex Blay, Laura Nuez, Josep Segarra and Sergi Vives
+ *
+ * Version 21/04/2021
+ */
 
+//Imports needed from the dictionary, events and mainframe
 import Presentation.Ui_Views.*;
 
 import javax.swing.*;
 
+/**
+ * The "MainFrame" class will contain the different methods that are needed for the views of the login
+ */
 public class MainFrame extends JFrame {
     public static JFrame mainFrame;
 

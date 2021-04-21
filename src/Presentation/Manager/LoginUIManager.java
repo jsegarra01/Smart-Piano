@@ -1,5 +1,15 @@
 package Presentation.Manager;
+/*
+ * LoginUIManager
+ *
+ * The "LoginUIManager" class will contain the different methods that are needed to control the view class "LoginUI"
+ *
+ * Stepan Batllori, Alex Blay, Laura Nuez, Josep Segarra and Sergi Vives
+ *
+ * Version 21/04/2021
+ */
 
+//Imports needed from the dictionary, events and mainframe
 import Presentation.Dictionary_login;
 
 import java.awt.event.ActionEvent;
@@ -8,6 +18,9 @@ import java.awt.event.ActionListener;
 import static Presentation.Manager.MainFrame.setFreePianoUI;
 import static Presentation.Manager.MainFrame.setPreMenuUi;
 
+/**
+ * The "LoginUIManager" class will contain the different methods that are needed to control the view class "LoginUI"
+ */
 public class LoginUIManager implements ActionListener {
     // Attribute storing the view, for managing purposes. We will modify
     //  it after we get notified that a button has been pressed.
