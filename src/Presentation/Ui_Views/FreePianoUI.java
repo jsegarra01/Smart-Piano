@@ -8,10 +8,10 @@ import java.awt.event.ActionListener;
 
 import static Presentation.Dictionary_login.*;
 
-public class PianoTilesUISelector extends JFrame {
+public class FreePianoUI extends JFrame {
     private JButton profile = new JButton(PROFILE_BUTTON);
 
-    public PianoTilesUISelector(JFrame frame) {
+    public FreePianoUI(JFrame frame) {
         frame.getContentPane().removeAll();
 
         setTitle(SMART_PIANO_TEXT);

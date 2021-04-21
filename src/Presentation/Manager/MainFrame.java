@@ -36,18 +36,18 @@ public class MainFrame extends JFrame {
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
                 SignUpUI signUpUI = new SignUpUI(mainFrame);
-                LoginUIManager loginUIManager = new LoginUIManager();
-                signUpUI.registerController(loginUIManager);
+                SignUpUiManager signUpUiManager = new SignUpUiManager();
+                signUpUI.registerController(signUpUiManager);
             }
         });
     }
 
-    public static void setPianoTilesSelector() {
+    public static void setFreePianoUI() {
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                PianoTilesUISelector pianoTilesUISelector = new PianoTilesUISelector(mainFrame);
-                PianoTilesUIManager pianoTilesUIManager = new PianoTilesUIManager();
-                pianoTilesUISelector.registerController(pianoTilesUIManager);
+                FreePianoUI freePianoUI = new FreePianoUI(mainFrame);
+                FreePianoUIManager freePianoUIManager = new FreePianoUIManager();
+                freePianoUI.registerController(freePianoUIManager);
             }
         });
     }

@@ -5,7 +5,7 @@ import Presentation.Dictionary_login;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import static Presentation.Manager.MainFrame.setPianoTilesSelector;
+import static Presentation.Manager.MainFrame.setFreePianoUI;
 import static Presentation.Manager.MainFrame.setPreMenuUi;
 
 public class LoginUIManager implements ActionListener {
@@ -27,7 +27,7 @@ public class LoginUIManager implements ActionListener {
                 break;
             case Dictionary_login.DONE_BUTTON:
                 //TODO: CHECK CORRECT INFORMATION, ENTER AS THE SAVED USER
-                setPianoTilesSelector();
+                setFreePianoUI();
                 break;
         }
     }

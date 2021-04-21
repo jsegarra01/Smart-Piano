@@ -8,12 +8,12 @@ import java.awt.event.ActionListener;
 import static Presentation.Manager.MainFrame.*;
 
 
-public class PianoTilesUIManager implements ActionListener {
+public class FreePianoUIManager implements ActionListener {
     // Attribute storing the view, for managing purposes. We will modify
     //  it after we get notified that a button has been pressed.
 
     // Parametrized constructor, receiving the view.
-    public PianoTilesUIManager() {
+    public FreePianoUIManager() {
     }
 
     // Method that will be called every time a button is pressed, overriden
