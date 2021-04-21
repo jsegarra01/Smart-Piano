@@ -19,19 +19,13 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="ProfileUi connections done, v3">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/LoginUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/LoginUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/PreMenuUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/PreMenuUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/ProfileUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/ProfileUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/SignUpUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/SignUpUI.class" afterDir="false" />
+    <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="Initial comments for each class, with their objective, version and class comments">
+      <change beforePath="$PROJECT_DIR$/src/Presentation/Manager/FreePianoUIManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Manager/FreePianoUIManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Presentation/Manager/LoginUIManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Manager/LoginUIManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Presentation/Manager/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Manager/MainFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presentation/Manager/PianoTilesUIManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Manager/FreePianoManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Presentation/Manager/PreMenuUIManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Manager/PreMenuUIManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Presentation/Manager/ProfileUIManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Manager/ProfileUIManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Presentation/Manager/SignUpUiManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Manager/SignUpUiManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presentation/Ui_Views/PianoTilesUISelector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Ui_Views/FreePianoUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,7 +57,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Libraries/mysql-connector-java-8.0.23.jar" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Projecte 1/fase4_Josep.Segarra_Sergi.Vives" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -107,7 +101,7 @@
       <workItem from="1618696253695" duration="2665000" />
       <workItem from="1618905771129" duration="321000" />
       <workItem from="1618914156721" duration="2358000" />
-      <workItem from="1618993866318" duration="335000" />
+      <workItem from="1618993866318" duration="1766000" />
     </task>
     <task id="LOCAL-00001" summary="ProfileUi connections done">
       <created>1618916466488</created>
@@ -130,7 +124,21 @@
       <option name="project" value="LOCAL" />
       <updated>1618916501460</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Name changed accordingly to our class diagram">
+      <created>1618994288052</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1618994288052</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Initial comments for each class, with their objective, version and class comments">
+      <created>1618995274389</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1618995274389</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -162,6 +170,8 @@
     <MESSAGE value="ProfileUi connections done" />
     <MESSAGE value="ProfileUi connections done, v2" />
     <MESSAGE value="ProfileUi connections done, v3" />
-    <option name="LAST_COMMIT_MESSAGE" value="ProfileUi connections done, v3" />
+    <MESSAGE value="Name changed accordingly to our class diagram" />
+    <MESSAGE value="Initial comments for each class, with their objective, version and class comments" />
+    <option name="LAST_COMMIT_MESSAGE" value="Initial comments for each class, with their objective, version and class comments" />
   </component>
 </project>
