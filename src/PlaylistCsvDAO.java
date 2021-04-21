@@ -10,7 +10,16 @@ import java.util.ArrayList;
 
 public class PlaylistCsvDAO implements PlaylistDAO {
 
-    private ConnectSQL connection;
+    private final ConnectSQL connection;
+
+    public PlaylistCsvDAO(){
+        connection = new ConnectSQL();
+        try {
+            connection.makeConnection();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
 
 
     /**
@@ -58,7 +67,6 @@ public class PlaylistCsvDAO implements PlaylistDAO {
     @Override
     public Playlist getPlaylistByUser(String username) {
         try {
-            connection.makeConnection();
             ResultSet myRs = connection.getConnection().createStatement().executeQuery("select * from Playlist as p " +
                     "where p.username like '" + username + "'");
             ResultSet myRs2 = connection.getConnection().createStatement().executeQuery(

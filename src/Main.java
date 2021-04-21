@@ -9,6 +9,7 @@ public class Main {
         LogInUI logInUI = new LogInUI();
         SignUpUI signUpUI = new SignUpUI();
 
+        new SongCsvDAO();
         //TODO put this ReadConfigJson to the controller.
         //Obtains the information from the readConfigJson().
 

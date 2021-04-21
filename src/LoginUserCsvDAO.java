@@ -4,8 +4,16 @@ public class LoginUserCsvDAO implements LoginUserDAO{
     /**
      * Stores the information that is being used to connect to the database
      */
-    private ConnectSQL connection;
+    private final ConnectSQL connection;
 
+    public LoginUserCsvDAO(){
+        connection = new ConnectSQL();
+        try {
+            connection.makeConnection();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
 
     /**
      * Method that gets the user from the database
@@ -14,7 +22,6 @@ public class LoginUserCsvDAO implements LoginUserDAO{
      * @return Class that stores the User
      */
     private User userFromCsv(String myUserString, String state) throws SQLException {
-        connection.makeConnection();
         ResultSet myRs = connection.getConnection().createStatement().executeQuery("select * from User as u where u." + state +
                 "= '" + myUserString + "'");
         return myRsToUser(myRs);
@@ -49,7 +56,6 @@ public class LoginUserCsvDAO implements LoginUserDAO{
      */
     private void userToCsv(User myUser){
         try {
-            connection.makeConnection();
             PreparedStatement st = connection.getConnection().prepareStatement("insert into User values ('" + myUser.getUserName() +
                     "', '" + myUser.getMail() + "', '" + myUser.getPassword() + "')");
             st.execute();
@@ -88,7 +94,6 @@ public class LoginUserCsvDAO implements LoginUserDAO{
     @Override
     public void delete(User myUser) {
         try {
-            connection.makeConnection();
             PreparedStatement st = connection.getConnection().prepareStatement("delete from User where username = '" + myUser.getUserName() + "'");
             st.execute();
             connection.getConnection().close();
