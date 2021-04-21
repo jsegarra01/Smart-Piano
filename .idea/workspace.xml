@@ -8,12 +8,22 @@
       </path>
       <path>
         <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:feature" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
         <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
       </path>
       <path>
         <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
         <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
         <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:feature" type="e8cecc67:BranchNodeDescriptor" />
       </path>
     </expand>
     <select />
@@ -43,6 +53,15 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="ProjectId" id="1rJFk1kxk8Xv4CyvEYmgAeEg0Bi" />
   <component name="ProjectViewState">
@@ -76,6 +95,20 @@
       <option name="TEST_OBJECT" value="CLASS" />
       <properties />
       <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="dpoo-2021-smartpiano-ice5" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="dpoo-2021-smartpiano-ice5" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -171,12 +204,95 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="ProfileUi connections done" />
-    <MESSAGE value="ProfileUi connections done, v2" />
-    <MESSAGE value="ProfileUi connections done, v3" />
-    <MESSAGE value="Name changed accordingly to our class diagram" />
-    <MESSAGE value="Initial comments for each class, with their objective, version and class comments" />
-    <MESSAGE value="Final comments for the connectors and managers of the UI" />
-    <option name="LAST_COMMIT_MESSAGE" value="Final comments for the connectors and managers of the UI" />
+    <MESSAGE value="PreMenuUI done" />
+    <MESSAGE value="ProfileUI done" />
+    <MESSAGE value="LogInUI done" />
+    <MESSAGE value="LoginUserCsvDAO class" />
+    <MESSAGE value="SongCsvDAO and its interface" />
+    <MESSAGE value="Singleton connection" />
+    <MESSAGE value="Daos Config" />
+    <MESSAGE value="End Feature last commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="End Feature last commit" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="234" y="257" key="#com.intellij.ide.util.MemberChooser" timestamp="1618680238965">
+      <screen x="0" y="23" width="1792" height="1041" />
+    </state>
+    <state x="234" y="257" key="#com.intellij.ide.util.MemberChooser/0.23.1792.1041@0.23.1792.1041" timestamp="1618680238965" />
+    <state x="634" y="297" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1618915196586">
+      <screen x="0" y="23" width="1792" height="1041" />
+    </state>
+    <state x="634" y="297" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1792.1041@0.23.1792.1041" timestamp="1618915196586" />
+    <state width="1237" height="218" key="GridCell.Tab.0.bottom" timestamp="1619005752950">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="218" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1619005752950" />
+    <state width="1750" height="314" key="GridCell.Tab.0.bottom/0.23.1792.1041@0.23.1792.1041" timestamp="1618595008176" />
+    <state width="1237" height="218" key="GridCell.Tab.0.center" timestamp="1619005752950">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="218" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1619005752950" />
+    <state width="1750" height="314" key="GridCell.Tab.0.center/0.23.1792.1041@0.23.1792.1041" timestamp="1618595008175" />
+    <state width="1237" height="218" key="GridCell.Tab.0.left" timestamp="1619005752950">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="218" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1619005752950" />
+    <state width="1750" height="314" key="GridCell.Tab.0.left/0.23.1792.1041@0.23.1792.1041" timestamp="1618595008174" />
+    <state width="1237" height="218" key="GridCell.Tab.0.right" timestamp="1619005752950">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="218" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1619005752950" />
+    <state width="1750" height="314" key="GridCell.Tab.0.right/0.23.1792.1041@0.23.1792.1041" timestamp="1618595008175" />
+    <state width="1237" height="254" key="GridCell.Tab.1.bottom" timestamp="1619005464523">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="254" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1619005464523" />
+    <state width="1237" height="254" key="GridCell.Tab.1.center" timestamp="1619005464523">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="254" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1619005464523" />
+    <state width="1237" height="254" key="GridCell.Tab.1.left" timestamp="1619005464523">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="254" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1619005464523" />
+    <state width="1237" height="254" key="GridCell.Tab.1.right" timestamp="1619005464523">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="254" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1619005464523" />
+    <state x="121" y="51" key="MergeDialog" timestamp="1618588235591">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="121" y="51" key="MergeDialog/0.0.1280.680@0.0.1280.680" timestamp="1618588235591" />
+    <state x="354" y="147" key="Vcs.Push.Dialog.v2" timestamp="1619005761448">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="354" y="147" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1619005761448" />
+    <state x="496" y="280" key="Vcs.Push.Dialog.v2/0.0.1792.1120@0.0.1792.1120" timestamp="1618681250646" />
+    <state x="496" y="283" key="Vcs.Push.Dialog.v2/0.23.1792.1041@0.23.1792.1041" timestamp="1618594976220" />
+    <state x="458" y="255" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1619005731484">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="458" y="255" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.680@0.0.1280.680" timestamp="1619005731484" />
+    <state x="641" y="413" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1792.1041@0.23.1792.1041" timestamp="1618679929468" />
+    <state x="347" y="73" width="587" height="534" key="find.popup" timestamp="1618995962149">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="347" y="73" width="587" height="534" key="find.popup/0.0.1280.680@0.0.1280.680" timestamp="1618995962149" />
+    <state x="561" y="256" width="670" height="629" key="search.everywhere.popup" timestamp="1618994055265">
+      <screen x="0" y="23" width="1792" height="1041" />
+    </state>
+    <state x="561" y="251" width="670" height="676" key="search.everywhere.popup/0.0.1792.1120@0.0.1792.1120" timestamp="1618681620283" />
+    <state x="561" y="256" width="670" height="629" key="search.everywhere.popup/0.23.1792.1041@0.23.1792.1041" timestamp="1618994055265" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Main.java</url>
+          <line>29</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

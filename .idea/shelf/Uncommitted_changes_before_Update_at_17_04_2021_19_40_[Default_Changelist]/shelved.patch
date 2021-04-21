@@ -1,0 +1,70 @@
+Index: src/Song.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import java.io.File;\r\nimport java.util.Date;\r\n\r\npublic class Song {\r\n    private String songId;\r\n    private String songName;\r\n    private String authorName;\r\n    private float duration;\r\n    private Date recordingDate;\r\n    private boolean publicBoolean;\r\n    private File songFile;\r\n    private float minPlayed;\r\n    private int timesPlayed;\r\n\r\n    public String getSongId() {\r\n        return songId;\r\n    }\r\n\r\n    public void setSongId(String songId) {\r\n        this.songId = songId;\r\n    }\r\n\r\n    public String getSongName() {\r\n        return songName;\r\n    }\r\n\r\n    public void setSongName(String songName) {\r\n        this.songName = songName;\r\n    }\r\n\r\n    public String getAuthorName() {\r\n        return authorName;\r\n    }\r\n\r\n    public void setAuthorName(String authorName) {\r\n        this.authorName = authorName;\r\n    }\r\n\r\n    public float getDuration() {\r\n        return duration;\r\n    }\r\n\r\n    public void setDuration(float duration) {\r\n        this.duration = duration;\r\n    }\r\n\r\n    public Date getRecordingDate() {\r\n        return recordingDate;\r\n    }\r\n\r\n    public void setRecordingDate(Date recordingDate) {\r\n        this.recordingDate = recordingDate;\r\n    }\r\n\r\n    public boolean isPublicBoolean() {\r\n        return publicBoolean;\r\n    }\r\n\r\n    public void setPublicBoolean(boolean publicBoolean) {\r\n        this.publicBoolean = publicBoolean;\r\n    }\r\n\r\n    public File getSongFile() {\r\n        return songFile;\r\n    }\r\n\r\n    public void setSongFile(File songFile) {\r\n        this.songFile = songFile;\r\n    }\r\n\r\n    public float getMinPlayed() {\r\n        return minPlayed;\r\n    }\r\n\r\n    public void setMinPlayed(float minPlayed) {\r\n        this.minPlayed = minPlayed;\r\n    }\r\n\r\n    public int getTimesPlayed() {\r\n        return timesPlayed;\r\n    }\r\n\r\n    public void setTimesPlayed(int timesPlayed) {\r\n        this.timesPlayed = timesPlayed;\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/Song.java	(revision 346ce82cb3dd0d867abd8a84c90f6e74dfb22348)
++++ src/Song.java	(date 1618681011470)
+@@ -27,60 +27,4 @@
+     public void setSongName(String songName) {
+         this.songName = songName;
+     }
+-
+-    public String getAuthorName() {
+-        return authorName;
+-    }
+-
+-    public void setAuthorName(String authorName) {
+-        this.authorName = authorName;
+-    }
+-
+-    public float getDuration() {
+-        return duration;
+-    }
+-
+-    public void setDuration(float duration) {
+-        this.duration = duration;
+-    }
+-
+-    public Date getRecordingDate() {
+-        return recordingDate;
+-    }
+-
+-    public void setRecordingDate(Date recordingDate) {
+-        this.recordingDate = recordingDate;
+-    }
+-
+-    public boolean isPublicBoolean() {
+-        return publicBoolean;
+-    }
+-
+-    public void setPublicBoolean(boolean publicBoolean) {
+-        this.publicBoolean = publicBoolean;
+-    }
+-
+-    public File getSongFile() {
+-        return songFile;
+-    }
+-
+-    public void setSongFile(File songFile) {
+-        this.songFile = songFile;
+-    }
+-
+-    public float getMinPlayed() {
+-        return minPlayed;
+-    }
+-
+-    public void setMinPlayed(float minPlayed) {
+-        this.minPlayed = minPlayed;
+-    }
+-
+-    public int getTimesPlayed() {
+-        return timesPlayed;
+-    }
+-
+-    public void setTimesPlayed(int timesPlayed) {
+-        this.timesPlayed = timesPlayed;
+-    }
+ }

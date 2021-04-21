@@ -8,31 +8,28 @@ import java.io.IOException;
 public class ReadConfigJson {
     private static ConfigJson configJson;
 
-    public static void readConfigJson () {
+    private static void readConfigJson () {
         Gson gson = new Gson();
-        JsonReader reader = null;
 
         try {
-            reader = new JsonReader(new FileReader("Files/config.json"));
+            JsonReader reader = new JsonReader(new FileReader("Files/config.json"));
             configJson = gson.fromJson(reader, ConfigJson.class);
+            reader.close();
             //Saving the values of the Json file in the attributes of each of the corresponding classes.
-        } catch (FileNotFoundException e) {
-            System.out.println("\nError opening the config.json file");
+        } catch (IOException e) {
+            System.out.println("\nError opening the config.json file or closing the file");
             System.exit(1);
         }
 
         System.out.println("\nThe file config.json was read correctly");
 
-        try {
-            reader.close(); //Closing the reader.
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
     }
 
     public static ConfigJson getConfigJson() {
+        if(configJson==null){
+            readConfigJson();
+        }
         return configJson;
     }
 }
