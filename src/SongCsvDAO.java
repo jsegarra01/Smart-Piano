@@ -1,7 +1,3 @@
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-
-import java.io.InputStream;
 import java.sql.*;
 import java.util.*;
 
@@ -47,7 +43,6 @@ public class SongCsvDAO implements SongDAO {
     private ArrayList<Song> myRsToSongs(ResultSet myRs) throws SQLException {
         ArrayList<Song> songs = new ArrayList<>();
         while(myRs.next()){
-            JsonParser parser = new JsonParser();
             songs.add(new Song(
                     myRs.getInt("songId"),
                     myRs.getString("songName"),
@@ -55,42 +50,11 @@ public class SongCsvDAO implements SongDAO {
                     myRs.getFloat("duration"),
                     myRs.getDate("recordingDate"),
                     myRs.getBoolean("publicBoolean"),
-                    (JsonObject) parser.parse(getLargerString(myRs)),
+                    myRs.getString("songFile"),
                     myRs.getString("username")));
         }
         return songs;
     }
-
-    /**
-     *
-     * @param rs
-     * @return
-     * @throws SQLException
-     */
-    private static String getLargerString(ResultSet rs) throws SQLException {
-
-        InputStream in;
-        int BUFFER_SIZE = 1024;
-        try {
-            in = rs.getAsciiStream("songFile");
-            if (in == null) {
-                return "";
-            }
-
-            byte[] arr = new byte[BUFFER_SIZE];
-            StringBuilder buffer = new StringBuilder();
-            int numRead = in.read(arr);
-            while (numRead != -1) {
-                buffer.append(new String(arr, 0, numRead));
-                numRead = in.read(arr);
-            }
-            return buffer.toString();
-        } catch (Exception e) {
-            e.printStackTrace();
-            throw new SQLException(e.getMessage());
-        }
-    }
-
 
     /**
      * Method that stores the song in the database
@@ -149,7 +113,6 @@ public class SongCsvDAO implements SongDAO {
         try {
             ResultSet myRs = connection.getConnection().createStatement().executeQuery("select * from Song as s where s.songId = " + id);
             if(myRs.next()){
-                JsonParser parser = new JsonParser();
                 Song song = new Song(
                         myRs.getInt("songId"),
                         myRs.getString("songName"),
@@ -157,7 +120,7 @@ public class SongCsvDAO implements SongDAO {
                         myRs.getFloat("duration"),
                         myRs.getDate("recordingDate"),
                         myRs.getBoolean("publicBoolean"),
-                        (JsonObject) parser.parse(getLargerString(myRs)),
+                        myRs.getString("songFile"),
                         myRs.getString("username"));
                 connection.closeConnection(myRs);
                 return song;

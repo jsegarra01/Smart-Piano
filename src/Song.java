@@ -11,12 +11,12 @@ public class Song {
     private float duration;
     private Date recordingDate;
     private boolean publicBoolean;
-    private JsonObject songFile;
+    private String songFile;
     private String creator;
     private float minPlayed;
     private int timesPlayed;
 
-    public Song(int songId, String songName, String authorName, float duration, Date recordingDate, boolean publicBoolean, JsonObject songFile, String creator){
+    public Song(int songId, String songName, String authorName, float duration, Date recordingDate, boolean publicBoolean, String songFile, String creator){
         this.songId = songId;
         this.songName = songName;
         this.authorName = authorName;
@@ -59,7 +59,7 @@ public class Song {
         return publicBoolean;
     }
 
-    public JsonObject getSongFile() {
+    public String getSongFile() {
         return songFile;
     }
 

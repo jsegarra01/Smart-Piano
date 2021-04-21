@@ -83,7 +83,7 @@ public class PlaylistCsvDAO implements PlaylistDAO {
                         myRs.getFloat("duration"),
                         myRs.getDate("recordingDate"),
                         myRs.getBoolean("publicBoolean"),
-                        (JsonObject) parser.parse(getLargerString(myRs)),
+                        myRs.getString("songFile"),
                         myRs.getString("username")));
             }
             Playlist playlist = null;
