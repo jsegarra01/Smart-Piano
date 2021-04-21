@@ -1,19 +1,15 @@
 import java.io.InputStream;
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class PlaylistCsvDAO implements PlaylistDAO {
 
-    private final ConnectSQL connection;
+    private final Connection connection;
 
     public PlaylistCsvDAO(){
-        connection = new ConnectSQL();
-        try {
-            connection.makeConnection();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
+        connection = ConnectSQL.getInstance();
     }
 
     @Override
@@ -26,36 +22,39 @@ public class PlaylistCsvDAO implements PlaylistDAO {
 
     }
 
+    private ArrayList<Song> getSongsForPlaylist(int id) throws SQLException {
+        ResultSet myRs2 = connection.createStatement().executeQuery(
+                "select so.*, p.* from Song as so inner join SongPlaylists as sp on sp.songId = so.songId and " +
+                        "sp.playlistId = " + id);
+        ArrayList<Song> songs = new ArrayList<>();
+        while(myRs2.next()) {
+            songs.add(new Song(
+                    myRs2.getInt("songId"),
+                    myRs2.getString("songName"),
+                    myRs2.getString("authorsName"),
+                    myRs2.getFloat("duration"),
+                    myRs2.getDate("recordingDate"),
+                    myRs2.getBoolean("publicBoolean"),
+                    myRs2.getString("songFile"),
+                    myRs2.getString("username")));
+        }
+        myRs2.close();
+        return songs;
+    }
     @Override
     public ArrayList<Playlist> getPlaylistByUser(String username) {
         try {
-            ResultSet myRsinit = connection.getConnection().createStatement().executeQuery();
-            ResultSet myRs = connection.getConnection().createStatement().executeQuery("select * from Playlist as p " +
+            ResultSet myRs = connection.createStatement().executeQuery("select * from Playlist as p " +
                     "where p.username like '" + username + "'");
-            ResultSet myRs2 = connection.getConnection().createStatement().executeQuery(
-                    "select so.*, p.* from Song as so inner join SongPlaylists as sp on sp.songId = so.songId inner" +
-                            "join Playlist as p on sp.playlistId = p.playlistId "+ "where p.username like '" +
-                            username + "'" + "group by p.playlistId");
-            ArrayList<Song> songs = new ArrayList<>();
-            while(myRs2.next()){
-                songs.add(new Song(
-                        myRs2.getInt("songId"),
-                        myRs2.getString("songName"),
-                        myRs2.getString("authorsName"),
-                        myRs2.getFloat("duration"),
-                        myRs2.getDate("recordingDate"),
-                        myRs2.getBoolean("publicBoolean"),
-                        myRs2.getString("songFile"),
-                        myRs2.getString("username")));
+            ArrayList<Playlist> playlists = new ArrayList<>();
+            while(myRs.next()){
+                playlists.add(new Playlist(myRs.getInt("playlistId"),
+                        myRs.getString("playlistName"),
+                        getSongsForPlaylist(myRs.getInt("playlistId")),
+                        myRs.getString("username")));
             }
-            ArrayList<Playlist> playlists = null;
-            if(myRs.next()){
-                playlists = new Playlist(myRs.getInt("playlistId"),
-                        myRs.getString("playlistName"),songs, myRs.getString("username"));
-            }
-            myRs2.close();
-            connection.closeConnection(myRs);
-            return ArrayList<Playlist>;
+            myRs.close();
+            return playlists;
         } catch (SQLException throwables) {
             return null;
         }

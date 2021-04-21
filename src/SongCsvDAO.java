@@ -5,16 +5,12 @@ public class SongCsvDAO implements SongDAO {
     /**
      * Stores the information that is being used to connect to the database
      */
-    private final ConnectSQL connection;
+    private final Connection connection;
 
 
     public SongCsvDAO(){
-        connection = new ConnectSQL();
-        try {
-            this.connection.makeConnection();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
+
+        connection = ConnectSQL.getInstance();
     }
     /**
      * Method that gets all the songs from the database created by a user
@@ -23,9 +19,9 @@ public class SongCsvDAO implements SongDAO {
      */
     private ArrayList<Song> songFromCsv(String myUserString){
         try {
-            ResultSet myRs = connection.getConnection().createStatement().executeQuery("select * from Song as s where s.username like '" + myUserString + "'");
+            ResultSet myRs = connection.createStatement().executeQuery("select * from Song as s where s.username like '" + myUserString + "'");
             ArrayList<Song> songs = myRsToSongs(myRs);
-            connection.closeConnection(myRs);
+            myRs.close();
             return songs;
 
         } catch (SQLException throwable) {
@@ -63,7 +59,7 @@ public class SongCsvDAO implements SongDAO {
     @Override
     public boolean saveSong(Song mySaveSong) {
         try {
-            PreparedStatement st = connection.getConnection().prepareStatement("insert into Song values (" +
+            PreparedStatement st = connection.prepareStatement("insert into Song values (" +
                     mySaveSong.getSongId() + ", '" +
                     mySaveSong.getSongName() + "', '" +
                     mySaveSong.getAuthorName() + "', '" +
@@ -73,7 +69,6 @@ public class SongCsvDAO implements SongDAO {
                     mySaveSong.getSongFile() + "', '" +
                     mySaveSong.getCreator() + "')");
             st.execute();
-            connection.getConnection().close();
             return true;
 
         } catch (SQLException throwable) {
@@ -81,10 +76,6 @@ public class SongCsvDAO implements SongDAO {
         }
     }
 
-    /**
-     *
-     * @param mySong
-     */
     @Override
     public void updateSong(Song mySong) {
 
@@ -97,7 +88,7 @@ public class SongCsvDAO implements SongDAO {
     @Override
     public void deleteSong(Song mySong) {
         try {
-            PreparedStatement st = connection.getConnection().prepareStatement("delete from Song where songId = '" + mySong.getSongId() + "'");
+            PreparedStatement st = connection.prepareStatement("delete from Song where songId = '" + mySong.getSongId() + "'");
             st.execute();
         } catch (SQLException ignored) {
         }
@@ -111,7 +102,7 @@ public class SongCsvDAO implements SongDAO {
     @Override
     public Song getSongByID(int id) {
         try {
-            ResultSet myRs = connection.getConnection().createStatement().executeQuery("select * from Song as s where s.songId = " + id);
+            ResultSet myRs = connection.createStatement().executeQuery("select * from Song as s where s.songId = " + id);
             if(myRs.next()){
                 Song song = new Song(
                         myRs.getInt("songId"),
@@ -122,7 +113,7 @@ public class SongCsvDAO implements SongDAO {
                         myRs.getBoolean("publicBoolean"),
                         myRs.getString("songFile"),
                         myRs.getString("username"));
-                connection.closeConnection(myRs);
+                myRs.close();
                 return song;
             }else{
                 return null;
@@ -156,12 +147,12 @@ public class SongCsvDAO implements SongDAO {
     @Override
     public ArrayList<Song> getPopularSongs() {
         try {
-            ResultSet myRs = connection.getConnection().createStatement().executeQuery(
+            ResultSet myRs = connection.createStatement().executeQuery(
                     "SELECT s.* " +
                             "FROM Song as s inner join SongStatisticsGeneral as ssg on ssg.songId = s.songId " +
                             "ORDER BY MAX(ssg.timesPlayed) DESC LIMIT 5");
             ArrayList<Song> songs = myRsToSongs(myRs);
-            connection.closeConnection(myRs);
+            myRs.close();
             return songs;
         } catch (SQLException throwables) {
             return null;

@@ -4,16 +4,11 @@ public class LoginUserCsvDAO implements LoginUserDAO{
     /**
      * Stores the information that is being used to connect to the database
      */
-    private final ConnectSQL connection;
+    private final Connection connection;
 
 
     public LoginUserCsvDAO(){
-        connection = new ConnectSQL();
-        try {
-            connection.makeConnection();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
+        connection = ConnectSQL.getInstance();
     }
 
     /**
@@ -23,7 +18,7 @@ public class LoginUserCsvDAO implements LoginUserDAO{
      * @return Class that stores the User
      */
     private User userFromCsv(String myUserString, String state) throws SQLException {
-        ResultSet myRs = connection.getConnection().createStatement().executeQuery("select * from User as u where u." + state +
+        ResultSet myRs = connection.createStatement().executeQuery("select * from User as u where u." + state +
                 "= '" + myUserString + "'");
         return myRsToUser(myRs);
 
@@ -57,10 +52,9 @@ public class LoginUserCsvDAO implements LoginUserDAO{
      */
     private void userToCsv(User myUser){
         try {
-            PreparedStatement st = connection.getConnection().prepareStatement("insert into User values ('" + myUser.getUserName() +
+            PreparedStatement st = connection.prepareStatement("insert into User values ('" + myUser.getUserName() +
                     "', '" + myUser.getMail() + "', '" + myUser.getPassword() + "')");
             st.execute();
-            connection.getConnection().close();
 
         } catch (SQLException ignored) {
         }
@@ -95,9 +89,8 @@ public class LoginUserCsvDAO implements LoginUserDAO{
     @Override
     public void delete(User myUser) {
         try {
-            PreparedStatement st = connection.getConnection().prepareStatement("delete from User where username = '" + myUser.getUserName() + "'");
+            PreparedStatement st = connection.prepareStatement("delete from User where username = '" + myUser.getUserName() + "'");
             st.execute();
-            connection.getConnection().close();
         } catch (SQLException ignored) {
         }
     }
@@ -110,9 +103,7 @@ public class LoginUserCsvDAO implements LoginUserDAO{
     @Override
     public User getByUsername(String myUserName) {
         try {
-            User user = userFromCsv(myUserName, "username");
-            connection.getConnection().close();
-            return user;
+            return userFromCsv(myUserName, "username");
         } catch (SQLException throwables) {
             return null;
         }
@@ -126,9 +117,7 @@ public class LoginUserCsvDAO implements LoginUserDAO{
     @Override
     public User getByMail(String myMail) {
         try {
-            User user = userFromCsv(myMail, "email");
-            connection.getConnection().close();
-            return user;
+            return userFromCsv(myMail, "email");
         } catch (SQLException throwables) {
             return null;
         }

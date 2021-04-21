@@ -1,18 +1,30 @@
+import java.sql.Connection;
+import java.sql.SQLException;
+
 /**
  * The "Main" class will run the program
  */
 public class Main {
 
     public static void main(String[] args) {
-        PreMenuUI preMenuUI = new PreMenuUI();
-        ProfileUI profileUI = new ProfileUI();
-        LogInUI logInUI = new LogInUI();
-        SignUpUI signUpUI = new SignUpUI();
+        //PreMenuUI preMenuUI = new PreMenuUI();
+        //ProfileUI profileUI = new ProfileUI();
+        //LogInUI logInUI = new LogInUI();
+        //SignUpUI signUpUI = new SignUpUI();
 
-        new SongCsvDAO();
         //TODO put this ReadConfigJson to the controller.
         //Obtains the information from the readConfigJson().
 
+        Connection connection = ConnectSQL.getInstance();
+        User user = new LoginUserCsvDAO().getByUsername("blayaiai");
+        Song song = new SongCsvDAO().getSongByID(1);
+        try {
+            connection.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        System.out.println("hola");
         //ReadConfigJson.readConfigJson();
     }
 }

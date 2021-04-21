@@ -4,7 +4,29 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class ConnectSQL {
-    private Connection connection;
+    //private static ConnectSQL connectSQL;
+    private static Connection connection = null;
+
+
+    public static Connection getInstance(){
+        if(connection == null){
+            try {
+                makeConnection();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        }
+
+        return connection;
+    }
+
+    private ConnectSQL(){
+        try {
+            makeConnection();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
 
     /**
      * Method that is in charge of creating the connection with the database which configuration is in the config.json
@@ -12,7 +34,7 @@ public class ConnectSQL {
      * @throws SQLException Throw that makes an exception if there has been any error while making the connection.
      *                      It will be handled with the try catch from where it is called.
      */
-    public void makeConnection() throws SQLException {
+    private static void makeConnection() throws SQLException {
         connection =  DriverManager.getConnection("jdbc:mysql://"+
                         ReadConfigJson.getConfigJson().getIpAddress() + ":" +
                         ReadConfigJson.getConfigJson().getPort()+"/"+ReadConfigJson.getConfigJson().getName(),

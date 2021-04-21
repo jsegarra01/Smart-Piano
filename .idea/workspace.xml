@@ -33,10 +33,14 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="82736ac3-0eee-404a-88fc-a40d4b2a84ee" name="Default Changelist" comment="Attribute for DAO">
+    <list default="true" id="82736ac3-0eee-404a-88fc-a40d4b2a84ee" name="Default Changelist" comment="Songs">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ConnectSQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ConnectSQL.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/LoginUserCsvDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LoginUserCsvDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PlaylistCsvDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PlaylistCsvDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ReadConfigJson.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ReadConfigJson.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SongCsvDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SongCsvDAO.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -262,10 +266,10 @@
     </state>
     <state x="496" y="280" key="Vcs.Push.Dialog.v2/0.0.1792.1120@0.0.1792.1120" timestamp="1618681250646" />
     <state x="496" y="283" key="Vcs.Push.Dialog.v2/0.23.1792.1041@0.23.1792.1041" timestamp="1618594976220" />
-    <state x="641" y="413" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1618679929468">
-      <screen x="0" y="23" width="1792" height="1041" />
+    <state x="458" y="255" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1619000192864">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="458" y="255" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.680@0.0.1280.680" timestamp="1618588259685" />
+    <state x="458" y="255" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.680@0.0.1280.680" timestamp="1619000192864" />
     <state x="641" y="413" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1792.1041@0.23.1792.1041" timestamp="1618679929468" />
     <state x="347" y="73" width="587" height="534" key="find.popup" timestamp="1618995962149">
       <screen x="0" y="0" width="1280" height="680" />
@@ -276,5 +280,16 @@
     </state>
     <state x="561" y="251" width="670" height="676" key="search.everywhere.popup/0.0.1792.1120@0.0.1792.1120" timestamp="1618681620283" />
     <state x="561" y="256" width="670" height="629" key="search.everywhere.popup/0.23.1792.1041@0.23.1792.1041" timestamp="1618994055265" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Main.java</url>
+          <line>25</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
