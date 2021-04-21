@@ -33,14 +33,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="82736ac3-0eee-404a-88fc-a40d4b2a84ee" name="Default Changelist" comment="Singleton connection">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Songs/Star-Wars-Theme-(From-'Star-Wars').mid" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/ReadConfigJson.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/ReadConfigJson.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Song.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Song.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/SongCsvDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/SongCsvDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/SongDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/SongDAO.class" afterDir="false" />
+    <list default="true" id="82736ac3-0eee-404a-88fc-a40d4b2a84ee" name="Default Changelist" comment="Daos Config">
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PlaylistCsvDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PlaylistCsvDAO.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -210,7 +204,14 @@
       <option name="project" value="LOCAL" />
       <updated>1619003854046</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Daos Config">
+      <created>1619004878546</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1619004878546</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -235,7 +236,8 @@
     <MESSAGE value="LoginUserCsvDAO class" />
     <MESSAGE value="SongCsvDAO and its interface" />
     <MESSAGE value="Singleton connection" />
-    <option name="LAST_COMMIT_MESSAGE" value="Singleton connection" />
+    <MESSAGE value="Daos Config" />
+    <option name="LAST_COMMIT_MESSAGE" value="Daos Config" />
   </component>
   <component name="WindowStateProjectService">
     <state x="234" y="257" key="#com.intellij.ide.util.MemberChooser" timestamp="1618680238965">
@@ -246,50 +248,50 @@
       <screen x="0" y="23" width="1792" height="1041" />
     </state>
     <state x="634" y="297" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1792.1041@0.23.1792.1041" timestamp="1618915196586" />
-    <state width="1237" height="254" key="GridCell.Tab.0.bottom" timestamp="1619003841830">
+    <state width="1237" height="254" key="GridCell.Tab.0.bottom" timestamp="1619004845702">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="254" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1619003841830" />
+    <state width="1237" height="254" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1619004845702" />
     <state width="1750" height="314" key="GridCell.Tab.0.bottom/0.23.1792.1041@0.23.1792.1041" timestamp="1618595008176" />
-    <state width="1237" height="254" key="GridCell.Tab.0.center" timestamp="1619003841830">
+    <state width="1237" height="254" key="GridCell.Tab.0.center" timestamp="1619004845702">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="254" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1619003841830" />
+    <state width="1237" height="254" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1619004845702" />
     <state width="1750" height="314" key="GridCell.Tab.0.center/0.23.1792.1041@0.23.1792.1041" timestamp="1618595008175" />
-    <state width="1237" height="254" key="GridCell.Tab.0.left" timestamp="1619003841830">
+    <state width="1237" height="254" key="GridCell.Tab.0.left" timestamp="1619004845702">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="254" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1619003841830" />
+    <state width="1237" height="254" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1619004845702" />
     <state width="1750" height="314" key="GridCell.Tab.0.left/0.23.1792.1041@0.23.1792.1041" timestamp="1618595008174" />
-    <state width="1237" height="254" key="GridCell.Tab.0.right" timestamp="1619003841830">
+    <state width="1237" height="254" key="GridCell.Tab.0.right" timestamp="1619004845702">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="254" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1619003841830" />
+    <state width="1237" height="254" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1619004845702" />
     <state width="1750" height="314" key="GridCell.Tab.0.right/0.23.1792.1041@0.23.1792.1041" timestamp="1618595008175" />
-    <state width="1237" height="254" key="GridCell.Tab.1.bottom" timestamp="1619003841830">
+    <state width="1237" height="254" key="GridCell.Tab.1.bottom" timestamp="1619004845703">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="254" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1619003841830" />
-    <state width="1237" height="254" key="GridCell.Tab.1.center" timestamp="1619003841830">
+    <state width="1237" height="254" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1619004845703" />
+    <state width="1237" height="254" key="GridCell.Tab.1.center" timestamp="1619004845702">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="254" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1619003841830" />
-    <state width="1237" height="254" key="GridCell.Tab.1.left" timestamp="1619003841830">
+    <state width="1237" height="254" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1619004845702" />
+    <state width="1237" height="254" key="GridCell.Tab.1.left" timestamp="1619004845702">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="254" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1619003841830" />
-    <state width="1237" height="254" key="GridCell.Tab.1.right" timestamp="1619003841830">
+    <state width="1237" height="254" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1619004845702" />
+    <state width="1237" height="254" key="GridCell.Tab.1.right" timestamp="1619004845703">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="254" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1619003841830" />
+    <state width="1237" height="254" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1619004845703" />
     <state x="121" y="51" key="MergeDialog" timestamp="1618588235591">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="121" y="51" key="MergeDialog/0.0.1280.680@0.0.1280.680" timestamp="1618588235591" />
-    <state x="354" y="147" key="Vcs.Push.Dialog.v2" timestamp="1619003861418">
+    <state x="354" y="147" key="Vcs.Push.Dialog.v2" timestamp="1619004884880">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="354" y="147" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1619003861418" />
+    <state x="354" y="147" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1619004884880" />
     <state x="496" y="280" key="Vcs.Push.Dialog.v2/0.0.1792.1120@0.0.1792.1120" timestamp="1618681250646" />
     <state x="496" y="283" key="Vcs.Push.Dialog.v2/0.23.1792.1041@0.23.1792.1041" timestamp="1618594976220" />
     <state x="458" y="255" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1619000192864">
@@ -312,7 +314,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Main.java</url>
-          <line>26</line>
+          <line>29</line>
           <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>

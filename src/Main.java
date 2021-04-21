@@ -20,6 +20,7 @@ public class Main {
         User user = new LoginUserCsvDAO().getByUsername("blayaiai");
         Song song = new SongCsvDAO().getSongByID(1);
         ArrayList<Playlist> playlists = new PlaylistCsvDAO().getPlaylistByUser("blayaiai");
+        new PlaylistCsvDAO().deletePlaylist(playlists.get(0));
         try {
             connection.close();
         } catch (SQLException throwables) {

@@ -1,5 +1,5 @@
-import java.io.InputStream;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -19,7 +19,14 @@ public class PlaylistCsvDAO implements PlaylistDAO {
 
     @Override
     public void deletePlaylist(Playlist playlist) {
-
+        try {
+            PreparedStatement st = connection.prepareStatement("delete from SongPlaylists where playlistId = '" + playlist.getPlaylistId() + "'");
+            st.execute();
+            PreparedStatement st2 = connection.prepareStatement("delete from Playlist where playlistId = '" + playlist.getPlaylistId() + "'");
+            st2.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     private ArrayList<Song> getSongsForPlaylist(int id) throws SQLException {
