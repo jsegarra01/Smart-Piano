@@ -20,11 +20,11 @@ import static Presentation.Manager.MainFrame.setProfileUI;
 /**
  * The "FreePianoUIManager" class will contain the different methods that are needed to control the view class "FreePianoUI"
  */
-public class FreePianoUIManager implements ActionListener {
+public class TempFreePianoUIManager implements ActionListener {
     /**
      * Parametrized constructor
      */
-    public FreePianoUIManager() {
+    public TempFreePianoUIManager() {
     }
 
     /**

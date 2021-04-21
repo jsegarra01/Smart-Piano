@@ -86,8 +86,8 @@ public class MainFrame extends JFrame {
     public static void setFreePianoUI() {
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                FreePianoUI freePianoUI = new FreePianoUI(mainFrame);
-                FreePianoUIManager freePianoUIManager = new FreePianoUIManager();
+                TempFreePianoUI freePianoUI = new TempFreePianoUI(mainFrame);
+                TempFreePianoUIManager freePianoUIManager = new TempFreePianoUIManager();
                 freePianoUI.registerController(freePianoUIManager);
             }
         });
