@@ -1,5 +1,7 @@
 package Presentation.Ui_Views;
 
+import Presentation.Manager.MainFrame;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
@@ -8,17 +10,17 @@ import java.awt.event.ActionListener;
 
 import static Presentation.Dictionary_login.*;
 
-public class TempFreePianoUI extends JFrame {
+public class TempFreePianoUI extends JPanel {
     private JButton profile = new JButton(PROFILE_BUTTON);
+    private MainFrame mainFrame;
 
-    public TempFreePianoUI(JFrame frame) {
-        frame.getContentPane().removeAll();
+    public TempFreePianoUI(final MainFrame mainFrame) {
+        super();
+        this.mainFrame=mainFrame;
+        initialize();
+    }
 
-        setTitle(SMART_PIANO_TEXT);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLocationRelativeTo(null);
-
-
+    private void initialize() {
         setLayout(new BorderLayout());
 
         JPanel userButtons = new JPanel();
@@ -32,13 +34,12 @@ public class TempFreePianoUI extends JFrame {
         profile.setBorder(new EmptyBorder(12,120,12,120));
 
         userButtons.add(profile);
-        frame.add(userButtons);
-        frame.pack();
-        frame.setSize(600, 400);
+        this.add(userButtons);
+        this.setSize(600, 400);
 
-        frame.revalidate();
-        frame.repaint();
-        frame.setVisible(true);
+        this.revalidate();
+        this.repaint();
+        this.setVisible(true);
 
     }
 

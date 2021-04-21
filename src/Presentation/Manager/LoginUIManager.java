@@ -15,8 +15,6 @@ import Presentation.Dictionary_login;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import static Presentation.Manager.MainFrame.setFreePianoUI;
-import static Presentation.Manager.MainFrame.setPreMenuUi;
 
 /**
  * The "LoginUIManager" class will contain the different methods that are needed to control the view class "LoginUI"
@@ -37,11 +35,11 @@ public class LoginUIManager implements ActionListener {
         // We distinguish between our buttons.
         switch (e.getActionCommand()) {
             case Dictionary_login.BACK_BUTTON:
-                setPreMenuUi();
+                //setPreMenuUi();
                 break;
             case Dictionary_login.DONE_BUTTON:
                 //TODO: CHECK CORRECT INFORMATION, ENTER AS THE SAVED USER
-                setFreePianoUI();
+               // setFreePianoUI();
                 break;
         }
     }

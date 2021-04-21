@@ -1,5 +1,7 @@
 package Presentation.Ui_Views;
 
+import Presentation.Manager.MainFrame;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
@@ -7,24 +9,24 @@ import java.awt.event.ActionListener;
 
 import static Presentation.Dictionary_login.*;
 
-public class PreMenuUI extends JFrame{
+public class PreMenuUI extends JPanel{
     private JLabel pianoText = new JLabel(SMART_PIANO_TEXT);
     private JButton logIn = new JButton(LOG_IN_BUTTON);
     private JButton signUp = new JButton(SIGN_UP_BUTTON);
     private JButton guest = new JButton(ENTER_AS_GUEST_BUTTON);
+    private MainFrame mainFrame;
 
     /**
      * Removes everything that was on the frame and modifies it in order to have the sign up user interface
-     * @param frame The frame to modify, this will be the user interface
+     //* @param  The frame to modify, this will be the user interface
      */
-    public PreMenuUI(JFrame frame) {
-        frame.getContentPane().removeAll();
+    public PreMenuUI(final MainFrame mainFrame) {
+        super();
+        this.mainFrame=mainFrame;
+        initialize();
+    }
 
-        setTitle(SMART_PIANO_TEXT);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLocationRelativeTo(null);
-
-
+    private void initialize() {
         setLayout(new BorderLayout());
 
         JPanel userButtons = new JPanel();
@@ -52,27 +54,26 @@ public class PreMenuUI extends JFrame{
 
         JPanel pN = new JPanel();
         pN.setBackground(Color.getHSBColor(0, 0, 0.2f));
-        frame.add(pN, BorderLayout.NORTH);
+        this.add(pN, BorderLayout.NORTH);
 
         JPanel pS = new JPanel();
         pS.setBackground(Color.getHSBColor(0, 0, 0.2f));
-        frame.add(pS, BorderLayout.SOUTH);
+        this.add(pS, BorderLayout.SOUTH);
 
         JPanel pE = new JPanel();
         pE.setBackground(Color.getHSBColor(0, 0, 0.2f));
-        frame.add(pE, BorderLayout.EAST);
+        this.add(pE, BorderLayout.EAST);
 
         JPanel pW = new JPanel();
         pW.setBackground(Color.getHSBColor(0, 0, 0.2f));
-        frame.add(pW, BorderLayout.WEST);
+        this.add(pW, BorderLayout.WEST);
 
-        frame.add(background);
-        frame.pack();
-        frame.setSize(600, 400);
+        this.add(background);
+        this.setSize(600, 400);
 
-        frame.revalidate();
-        frame.repaint();
-        frame.setVisible(true);
+        this.revalidate();
+        this.repaint();
+        this.setVisible(true);
     }
 
     /**

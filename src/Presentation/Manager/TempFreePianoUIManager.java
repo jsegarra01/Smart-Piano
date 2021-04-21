@@ -15,7 +15,6 @@ import Presentation.Dictionary_login;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import static Presentation.Manager.MainFrame.setProfileUI;
 
 /**
  * The "FreePianoUIManager" class will contain the different methods that are needed to control the view class "FreePianoUI"
@@ -36,7 +35,7 @@ public class TempFreePianoUIManager implements ActionListener {
         // We distinguish between our buttons.
         switch (e.getActionCommand()) {
             case Dictionary_login.PROFILE_BUTTON:
-                setProfileUI();
+               // setProfileUI();
                 break;
         }
     }

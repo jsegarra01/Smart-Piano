@@ -1,5 +1,7 @@
 package Presentation.Ui_Views;
 
+import Presentation.Manager.MainFrame;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
@@ -9,27 +11,25 @@ import java.util.ArrayList;
 
 import static Presentation.Dictionary_login.*;
 
-public class ProfileUI extends JFrame{
-
+public class ProfileUI extends JPanel{
     private JLabel pianoText = new JLabel("SMART PIANO");
     private JLabel profileText = new JLabel("PROFILE");
-
     private JButton logOut = new JButton(LOGOUT_BUTTON);
     private JButton deleteAccount = new JButton(DELETE_BUTTON);
     private JButton back = new JButton(BACK_BUTTON);
+    private MainFrame mainFrame;
 
     /**
      * Removes everything that was on the frame and modifies it in order to have the sign up user interface
-     * @param frame The frame to modify, this will be the user interface
+     //* @param  The frame to modify, this will be the user interface
      */
-    public ProfileUI(JFrame frame) {
-        frame.getContentPane().removeAll();
+    public ProfileUI(final MainFrame mainFrame) {
+        super();
+        this.mainFrame=mainFrame;
+        initialize();
+    }
 
-        frame.setTitle("SMART PIANO");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setLocationRelativeTo(null);
-
-
+    private void initialize() {
         setLayout(new BorderLayout());
 
         JPanel userButtons = new JPanel();
@@ -93,25 +93,24 @@ public class ProfileUI extends JFrame{
 
         JPanel pN = new JPanel();
         pN.setBackground(Color.getHSBColor(0, 0, 0.2f));
-        frame.add(pN, BorderLayout.NORTH);
+        this.add(pN, BorderLayout.NORTH);
 
         JPanel pS = new JPanel();
         pS.setBackground(Color.getHSBColor(0, 0, 0.2f));
-        frame.add(pS, BorderLayout.SOUTH);
+        this.add(pS, BorderLayout.SOUTH);
 
         JPanel pE = new JPanel();
         pE.setBackground(Color.getHSBColor(0, 0, 0.2f));
-        frame.add(pE, BorderLayout.EAST);
+        this.add(pE, BorderLayout.EAST);
 
         JPanel pW = new JPanel();
         pW.setBackground(Color.getHSBColor(0, 0, 0.2f));
-        frame.add(pW, BorderLayout.WEST);
+        this.add(pW, BorderLayout.WEST);
 
-        frame.add(background);
-        frame.pack();
+        this.add(background);
 
-        frame.setSize(600, 400);
-        frame.setVisible(true);
+        this.setSize(600, 400);
+        this.setVisible(true);
     }
 
     /**

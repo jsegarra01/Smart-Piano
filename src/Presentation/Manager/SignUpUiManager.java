@@ -36,11 +36,11 @@ public class SignUpUiManager  implements ActionListener {
         // We distinguish between our buttons.
         switch (e.getActionCommand()) {
             case Dictionary_login.BACK_BUTTON:
-                setPreMenuUi();
+                //setPreMenuUi();
                 break;
             case Dictionary_login.DONE_BUTTON:
                 //TODO: CHECK CORRECT INFORMATION, SAVE NEW USER, ENTER AS THE NEW USER
-                setFreePianoUI();
+                //setFreePianoUI();
                 break;
             }
         }
