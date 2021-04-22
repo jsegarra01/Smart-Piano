@@ -1,6 +1,7 @@
 package Presentation.Ui_Views;
 
 import Presentation.Manager.MainFrame;
+import Presentation.Manager.TempFreePianoUIManager;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -33,6 +34,7 @@ public class TempFreePianoUI extends JPanel {
         profile.setAlignmentX(0.5f);
         profile.setBorder(new EmptyBorder(12,120,12,120));
 
+        registerController(new TempFreePianoUIManager());
         userButtons.add(profile);
         this.add(userButtons);
         this.setSize(600, 400);
@@ -43,7 +45,7 @@ public class TempFreePianoUI extends JPanel {
 
     }
 
-    public void registerController(ActionListener listener) {
+    private void registerController(ActionListener listener) {
         profile.addActionListener(listener);
     }
 }

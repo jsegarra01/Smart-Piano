@@ -1,5 +1,6 @@
 package Presentation.Ui_Views;
 
+import Presentation.Manager.LoginUIManager;
 import Presentation.Manager.MainFrame;
 import Presentation.TextPrompt;
 
@@ -86,13 +87,15 @@ public class LoginUI extends JPanel{
 
         back.setAlignmentX(0.5f);
         back.setActionCommand(BACK_BUTTON);
-        buttons.add(back);
-        buttons.add(Box.createRigidArea(new Dimension(400, 15)));
+
+        registerController(new LoginUIManager());
 
         done.setAlignmentX(0.5f);
         done.setActionCommand(DONE_BUTTON);
-        buttons.add(done);
 
+        buttons.add(back);
+        buttons.add(Box.createRigidArea(new Dimension(400, 15)));
+        buttons.add(done);
         buttons.setBackground(Color.getHSBColor(0, 0, 0.1f));
         userButtons.add(buttons);
 
@@ -132,7 +135,7 @@ public class LoginUI extends JPanel{
      * Method to add the action listeners to the buttons
      * @param listener The action listener
      */
-    public void registerController(ActionListener listener) {
+    private void registerController(ActionListener listener) {
         back.addActionListener(listener);
         done.addActionListener(listener);
     }

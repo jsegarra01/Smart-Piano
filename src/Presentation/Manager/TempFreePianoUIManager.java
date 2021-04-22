@@ -15,6 +15,11 @@ import Presentation.Dictionary_login;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import static Presentation.Dictionary_login.PRE_MENU_UI;
+import static Presentation.Dictionary_login.PROFILE_UI;
+import static Presentation.Manager.MainFrame.card;
+import static Presentation.Manager.MainFrame.contenedor;
+
 
 /**
  * The "FreePianoUIManager" class will contain the different methods that are needed to control the view class "FreePianoUI"
@@ -35,7 +40,7 @@ public class TempFreePianoUIManager implements ActionListener {
         // We distinguish between our buttons.
         switch (e.getActionCommand()) {
             case Dictionary_login.PROFILE_BUTTON:
-               // setProfileUI();
+                card.show(contenedor, PROFILE_UI);
                 break;
         }
     }

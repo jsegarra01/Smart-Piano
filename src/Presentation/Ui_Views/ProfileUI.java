@@ -1,6 +1,7 @@
 package Presentation.Ui_Views;
 
 import Presentation.Manager.MainFrame;
+import Presentation.Manager.ProfileUIManager;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -43,24 +44,20 @@ public class ProfileUI extends JPanel{
         pianoText.setAlignmentX(0.5f);
         pianoText.setForeground(Color.WHITE);
         userButtons.add(pianoText);
-
         userButtons.add(Box.createRigidArea(new Dimension(10, 10)));
 
         profileText.setAlignmentX(0.5f);
         profileText.setForeground(Color.WHITE);
         userButtons.add(profileText);
-
         userButtons.add(Box.createRigidArea(new Dimension(10, 35)));
 
         logOut.setAlignmentX(0.5f);
         logOut.setBorder(new EmptyBorder(10,123,10,125));
-        userButtons.add(logOut);
-
-        userButtons.add(Box.createRigidArea(new Dimension(10, 20)));
 
         deleteAccount.setAlignmentX(0.5f);
         deleteAccount.setBorder(new EmptyBorder(10,96,10,96));
-        userButtons.add(deleteAccount);
+
+
 
         userButtons.setBackground(Color.getHSBColor(0, 0, 0.1f));
 
@@ -75,6 +72,12 @@ public class ProfileUI extends JPanel{
 
         JPanel backBoxLayoutPanel = new JPanel();
         backBoxLayoutPanel.setLayout(new BoxLayout(backBoxLayoutPanel, BoxLayout.Y_AXIS));
+
+        registerController(new ProfileUIManager());
+
+        userButtons.add(logOut);
+        userButtons.add(Box.createRigidArea(new Dimension(10, 20)));
+        userButtons.add(deleteAccount);
 
         backBoxLayoutPanel.add(Box.createRigidArea(new Dimension(30, 300)));
         backBoxLayoutPanel.add(back);
@@ -117,7 +120,7 @@ public class ProfileUI extends JPanel{
      * Method to add the action listeners to the buttons
      * @param listener The action listener
      */
-    public void registerController(ActionListener listener) {
+    private void registerController(ActionListener listener) {
         logOut.addActionListener(listener);
         deleteAccount.addActionListener(listener);
         back.addActionListener(listener);

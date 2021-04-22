@@ -12,6 +12,7 @@ public class Main {
         mainframe.setSize(400,400);
         mainframe.setVisible(true);
         mainframe.setDefaultCloseOperation(EXIT_ON_CLOSE);
+
         //TODO put this ReadConfigJson to the controller.
         //Obtains the information from the readConfigJson().
         //ReadConfigJson.readConfigJson();

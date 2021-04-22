@@ -1,6 +1,7 @@
 package Presentation.Ui_Views;
 
 import Presentation.Manager.MainFrame;
+import Presentation.Manager.PreMenuUIManager;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -94,6 +95,8 @@ public class PreMenuUI extends JPanel{
         guest.setAlignmentX(0.5f);
         guest.setBorder(new EmptyBorder(12,88,12,88));
 
+        registerController(new PreMenuUIManager());
+
         userButtons.add(logIn);
         userButtons.add(Box.createRigidArea(new Dimension(10, 25)));
         userButtons.add(signUp);
@@ -106,7 +109,7 @@ public class PreMenuUI extends JPanel{
      * Method to add the action listeners to the buttons
      * @param listener The action listener
      */
-    public void registerController(ActionListener listener) {
+    private void registerController(ActionListener listener) {
         logIn.addActionListener(listener);
         signUp.addActionListener(listener);
         guest.addActionListener(listener);
