@@ -19,16 +19,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="main changes">
+    <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="Pretty positioning">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ConnectSQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Persistence/ConnectSQL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LoginUserCsvDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Persistence/LoginUserCsvDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LoginUserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Persistence/LoginUserDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PlaylistCsvDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Persistence/PlaylistCsvDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PlaylistDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Persistence/PlaylistDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SongCsvDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Persistence/SongCsvDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SongDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Persistence/SongDAO.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,7 +61,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Projecte 1/fase4_Josep.Segarra_Sergi.Vives" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../ClassEx/GroupManager/LayeredArchitecture" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -178,7 +170,14 @@
       <option name="project" value="LOCAL" />
       <updated>1619007559834</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Pretty positioning">
+      <created>1619072825806</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1619072825806</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -217,7 +216,8 @@
     <MESSAGE value="End Feature last commit" />
     <MESSAGE value="End Feature last commit v3" />
     <MESSAGE value="main changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="main changes" />
+    <MESSAGE value="Pretty positioning" />
+    <option name="LAST_COMMIT_MESSAGE" value="Pretty positioning" />
   </component>
   <component name="WindowStateProjectService">
     <state x="393" y="165" key="#Notifications" timestamp="1619007015145">
@@ -228,10 +228,18 @@
       <screen x="0" y="23" width="1792" height="1041" />
     </state>
     <state x="234" y="257" key="#com.intellij.ide.util.MemberChooser/0.23.1792.1041@0.23.1792.1041" timestamp="1618680238965" />
+    <state x="424" y="235" width="432" height="216" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1619072683132">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="424" y="235" width="432" height="216" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1280.680@0.0.1280.680" timestamp="1619072683132" />
     <state x="634" y="297" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1618915196586">
       <screen x="0" y="23" width="1792" height="1041" />
     </state>
     <state x="634" y="297" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1792.1041@0.23.1792.1041" timestamp="1618915196586" />
+    <state x="421" y="96" key="FileChooserDialogImpl" timestamp="1619072553730">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="421" y="96" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1619072553730" />
     <state width="1237" height="204" key="GridCell.Tab.0.bottom" timestamp="1619013616604">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -280,10 +288,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="280" y="102" key="MultipleFileMergeDialog/0.0.1280.680@0.0.1280.680" timestamp="1619006596705" />
-    <state x="354" y="147" key="Vcs.Push.Dialog.v2" timestamp="1619007574020">
+    <state x="354" y="147" key="Vcs.Push.Dialog.v2" timestamp="1619072874577">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="354" y="147" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1619007574020" />
+    <state x="354" y="147" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1619072874577" />
     <state x="496" y="280" key="Vcs.Push.Dialog.v2/0.0.1792.1120@0.0.1792.1120" timestamp="1618681250646" />
     <state x="496" y="283" key="Vcs.Push.Dialog.v2/0.23.1792.1041@0.23.1792.1041" timestamp="1618594976220" />
     <state x="458" y="255" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1619072068284">
