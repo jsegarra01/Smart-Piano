@@ -1,3 +1,8 @@
+package Persistence;
+
+import Business.Playlist;
+import Business.Song;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -22,7 +27,7 @@ public class PlaylistCsvDAO implements PlaylistDAO {
         try {
             PreparedStatement st = connection.prepareStatement("delete from SongPlaylists where playlistId = '" + playlist.getPlaylistId() + "'");
             st.execute();
-            PreparedStatement st2 = connection.prepareStatement("delete from Playlist where playlistId = '" + playlist.getPlaylistId() + "'");
+            PreparedStatement st2 = connection.prepareStatement("delete from Business.Playlist where playlistId = '" + playlist.getPlaylistId() + "'");
             st2.execute();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -31,7 +36,7 @@ public class PlaylistCsvDAO implements PlaylistDAO {
 
     private ArrayList<Song> getSongsForPlaylist(int id) throws SQLException {
         ResultSet myRs2 = connection.createStatement().executeQuery(
-                "select so.* from Song as so inner join SongPlaylists as sp on sp.songId = so.songId and " +
+                "select so.* from Business.Song as so inner join SongPlaylists as sp on sp.songId = so.songId and " +
                         "sp.playlistId = " + id);
         ArrayList<Song> songs = new ArrayList<>();
         while(myRs2.next()) {
@@ -51,7 +56,7 @@ public class PlaylistCsvDAO implements PlaylistDAO {
     @Override
     public ArrayList<Playlist> getPlaylistByUser(String username) {
         try {
-            ResultSet myRs = connection.createStatement().executeQuery("select * from Playlist as p " +
+            ResultSet myRs = connection.createStatement().executeQuery("select * from Business.Playlist as p " +
                     "where p.username like '" + username + "'");
             ArrayList<Playlist> playlists = new ArrayList<>();
             while(myRs.next()){

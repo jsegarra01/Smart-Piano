@@ -57,7 +57,7 @@
 											"top": 178,
 											"width": 110.92626953125,
 											"height": 13,
-											"text": "User"
+											"text": "Business.User"
 										},
 										{
 											"_type": "ERDColumnCompartmentView",
@@ -155,7 +155,7 @@
 											"top": 140,
 											"width": 145,
 											"height": 13,
-											"text": "Song"
+											"text": "Business.Song"
 										},
 										{
 											"_type": "ERDColumnCompartmentView",
@@ -344,7 +344,7 @@
 											"top": 493,
 											"width": 133.32080078125,
 											"height": 13,
-											"text": "Playlist"
+											"text": "Business.Playlist"
 										},
 										{
 											"_type": "ERDColumnCompartmentView",
@@ -1224,7 +1224,7 @@
 							"_parent": {
 								"$ref": "AAAAAAF4p8akZSNF7oM="
 							},
-							"name": "User",
+							"name": "Business.User",
 							"ownedElements": [
 								{
 									"_type": "ERDRelationship",
@@ -1346,7 +1346,7 @@
 							"_parent": {
 								"$ref": "AAAAAAF4p8akZSNF7oM="
 							},
-							"name": "Song",
+							"name": "Business.Song",
 							"ownedElements": [
 								{
 									"_type": "ERDRelationship",
@@ -1697,7 +1697,7 @@
 							"_parent": {
 								"$ref": "AAAAAAF4p8akZSNF7oM="
 							},
-							"name": "Playlist",
+							"name": "Business.Playlist",
 							"ownedElements": [
 								{
 									"_type": "ERDRelationship",

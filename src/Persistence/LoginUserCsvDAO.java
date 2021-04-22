@@ -1,3 +1,7 @@
+package Persistence;
+
+import Business.User;
+
 import java.sql.*;
 public class LoginUserCsvDAO implements LoginUserDAO{
 
@@ -15,19 +19,19 @@ public class LoginUserCsvDAO implements LoginUserDAO{
      * Method that gets the user from the database
      * @param myUserString Defines either the email or the username of the user who we want to get
      * @param state Defines either the attribute email or username, in order to get the desired user.
-     * @return Class that stores the User
+     * @return Class that stores the Business.User
      */
     private User userFromCsv(String myUserString, String state) throws SQLException {
-        ResultSet myRs = connection.createStatement().executeQuery("select * from User as u where u." + state +
+        ResultSet myRs = connection.createStatement().executeQuery("select * from Business.User as u where u." + state +
                 "= '" + myUserString + "'");
         return myRsToUser(myRs);
 
     }
 
     /**
-     * Method that converts the query saved in a ResultSet interface and saves it in a variable User
+     * Method that converts the query saved in a ResultSet interface and saves it in a variable Business.User
      * @param myRs Defines the query saved to be transformed
-     * @return Class that stores the User
+     * @return Class that stores the Business.User
      * @throws SQLException Throw that makes an exception if there has been any error while making the connection.
      *                      It will be handled with the try catch from where it is called.
      */
@@ -52,7 +56,7 @@ public class LoginUserCsvDAO implements LoginUserDAO{
      */
     private void userToCsv(User myUser){
         try {
-            PreparedStatement st = connection.prepareStatement("insert into User values ('" + myUser.getUserName() +
+            PreparedStatement st = connection.prepareStatement("insert into Business.User values ('" + myUser.getUserName() +
                     "', '" + myUser.getMail() + "', '" + myUser.getPassword() + "')");
             st.execute();
 
@@ -78,7 +82,7 @@ public class LoginUserCsvDAO implements LoginUserDAO{
     }
 /*
     @Override
-    public void update(User myUser) {
+    public void update(Business.User myUser) {
 
     }*/
 
@@ -89,7 +93,7 @@ public class LoginUserCsvDAO implements LoginUserDAO{
     @Override
     public void delete(User myUser) {
         try {
-            PreparedStatement st = connection.prepareStatement("delete from User where username = '" + myUser.getUserName() + "'");
+            PreparedStatement st = connection.prepareStatement("delete from Business.User where username = '" + myUser.getUserName() + "'");
             st.execute();
         } catch (SQLException ignored) {
         }
@@ -97,8 +101,8 @@ public class LoginUserCsvDAO implements LoginUserDAO{
 
     /**
      * Method that gets the user according to the userName passed in the parameter and closes the connection.
-     * @param myUserName Defines the username of the User
-     * @return Class that stores the User
+     * @param myUserName Defines the username of the Business.User
+     * @return Class that stores the Business.User
      */
     @Override
     public User getByUsername(String myUserName) {
@@ -111,8 +115,8 @@ public class LoginUserCsvDAO implements LoginUserDAO{
 
     /**
      * Method that gets the user according to the mail passed in the parameter and closes the connection.
-     * @param myMail Defines the mail of the User
-     * @return Class that stores the User
+     * @param myMail Defines the mail of the Business.User
+     * @return Class that stores the Business.User
      */
     @Override
     public User getByMail(String myMail) {

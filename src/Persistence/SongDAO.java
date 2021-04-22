@@ -1,3 +1,7 @@
+package Persistence;
+import Business.Song;
+import Business.User;
+
 import java.util.ArrayList;
 
 public interface SongDAO {

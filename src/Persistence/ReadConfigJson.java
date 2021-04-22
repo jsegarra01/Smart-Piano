@@ -1,7 +1,9 @@
+package Persistence;
+
+import Business.ConfigJson;
 import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
 
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 

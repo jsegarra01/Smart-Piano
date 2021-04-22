@@ -13,9 +13,7 @@ public class Main {
         new MainFrame();
         setPreMenuUi();
 
-        //TODO put this ReadConfigJson to the controller.
-        //Obtains the information from the readConfigJson().
-        //ReadConfigJson.readConfigJson();
+        //TODO Close the connection to the database
     }
 }
  

@@ -1,3 +1,7 @@
+package Persistence;
+
+import Business.Playlist;
+
 import java.util.ArrayList;
 
 public interface PlaylistDAO {

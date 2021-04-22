@@ -1,10 +1,12 @@
+package Persistence;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class ConnectSQL {
-    //private static ConnectSQL connectSQL;
+    //private static Persistence.ConnectSQL connectSQL;
     private static Connection connection = null;
 
 
@@ -37,7 +39,7 @@ public class ConnectSQL {
     private static void makeConnection() throws SQLException {
         connection =  DriverManager.getConnection("jdbc:mysql://"+
                         ReadConfigJson.getConfigJson().getIpAddress() + ":" +
-                        ReadConfigJson.getConfigJson().getPort()+"/"+ReadConfigJson.getConfigJson().getName(),
+                        ReadConfigJson.getConfigJson().getPort()+"/"+ ReadConfigJson.getConfigJson().getName(),
                 ReadConfigJson.getConfigJson().getUsername(), ReadConfigJson.getConfigJson().getPassword());
     }
 
