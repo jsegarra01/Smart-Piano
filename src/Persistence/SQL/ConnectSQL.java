@@ -1,15 +1,22 @@
-package Persistence;
+package Persistence.SQL;
+
+import Persistence.Json.ReadConfigJson;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/**
+ *
+ */
 public class ConnectSQL {
-    //private static Persistence.ConnectSQL connectSQL;
     private static Connection connection = null;
 
 
+    /**
+     *
+     * @return
+     */
     public static Connection getInstance(){
         if(connection == null){
             try {
@@ -22,6 +29,9 @@ public class ConnectSQL {
         return connection;
     }
 
+    /**
+     *
+     */
     private ConnectSQL(){
         try {
             makeConnection();
@@ -44,17 +54,11 @@ public class ConnectSQL {
     }
 
     /**
-     * Method that closes the result set and the connection made with the database
-     * @param myRs Defines the result set in which the information from the query is stored
+     * Method that closes the connection made with the database
      * @throws SQLException Throw that makes an exception if there has been any error with the connection to the
      *                      database. It will be handled with the try catch from where it is called.
      */
-    public void closeConnection (ResultSet myRs) throws SQLException {
-        myRs.close();
+    public void closeConnection () throws SQLException {
         connection.close();
-    }
-
-    public Connection getConnection() {
-        return connection;
     }
 }
