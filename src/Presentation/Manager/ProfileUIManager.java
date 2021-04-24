@@ -46,7 +46,6 @@ public class ProfileUIManager implements ActionListener {
                 card.show(contenedor, PRE_MENU_UI);
                 break;
             case Dictionary_login.BACK_BUTTON:
-                //TODO: CHECK CORRECT INFORMATION, ENTER AS THE SAVED USER
                 card.show(contenedor, TEMP_FREE_PIANO_UI);
                 break;
         }

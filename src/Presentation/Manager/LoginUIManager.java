@@ -45,8 +45,8 @@ public class LoginUIManager implements ActionListener {
             case Dictionary_login.DONE_BUTTON:
                 BussinesFacadeImp bussinesFacadeImp = new BussinesFacadeImp();
                 //bussinesFacadeImp.logIn(LoginUI.getUsername(), LoginUI.getPassword());
-                System.out.println(LoginUI.getUsername());
-                System.out.println(LoginUI.getPassword());
+                System.out.println(LoginUI.getUsernameLogin());
+                System.out.println(LoginUI.getPasswordLogin());
                 card.show(contenedor, TEMP_FREE_PIANO_UI);
                 break;
         }

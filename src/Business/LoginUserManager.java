@@ -15,4 +15,8 @@ public class LoginUserManager {
 
         return user.getPassword().equals(password);
     }
+
+    public Boolean signUser(String username, String mail, String password) {
+        return loginUserManager.save(new User(username,mail,password));
+    }
 }

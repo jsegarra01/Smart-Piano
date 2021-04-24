@@ -16,17 +16,17 @@ public class SignUpUI extends JPanel {
     private JLabel pianoText = new JLabel(SMART_PIANO_TEXT);
     private JLabel logInText = new JLabel(SIGN_UP_BUTTON);
 
-    private JTextField usernameTextField = new JTextField();
-    private JTextField mailTextField = new JTextField();
-    private JPasswordField password = new JPasswordField();
-    private JPasswordField passwordConfirmation = new JPasswordField();
+    private static JTextField usernameTextField = new JTextField();
+    private static JTextField mailTextField = new JTextField();
+    private static JPasswordField password = new JPasswordField();
+    private static JPasswordField passwordConfirmation = new JPasswordField();
     private JButton back = new JButton(BACK_BUTTON);
     private JButton done = new JButton(DONE_BUTTON);
     private MainFrame mainFrame;
 
     /**
      * Removes everything that was on the frame and modifies it in order to have the sign up user interface
-     //* @param  The frame to modify, this will be the user interface
+     * @param  mainFrame frame to modify, this will be the user interface
      */
     public SignUpUI(final MainFrame mainFrame) {
         super();
@@ -180,5 +180,20 @@ public class SignUpUI extends JPanel {
     private void registerController(ActionListener listener) {
         back.addActionListener(listener);
         done.addActionListener(listener);
+    }
+
+    public static String getUsernameSignUp() {
+        return usernameTextField.getText();
+    }
+
+    public static String getPasswordSignUp() {
+        return password.getText();
+    }
+    public static String getMailSignUp() {
+        return mailTextField.getText();
+    }
+
+    public static String getPasswordConfirmSignUp() {
+        return passwordConfirmation.getText();
     }
 }

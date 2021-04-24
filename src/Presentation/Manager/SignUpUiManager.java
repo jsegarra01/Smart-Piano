@@ -10,6 +10,7 @@ package Presentation.Manager;
  */
 
 //Imports needed from the dictionary, events and mainframe
+import Business.BussinesFacadeImp;
 import Presentation.Dictionary_login;
 
 import java.awt.event.ActionEvent;
@@ -18,6 +19,7 @@ import java.awt.event.ActionListener;
 import static Presentation.Dictionary_login.PRE_MENU_UI;
 import static Presentation.Dictionary_login.TEMP_FREE_PIANO_UI;
 import static Presentation.Manager.MainFrame.*;
+import static Presentation.Ui_Views.SignUpUI.*;
 
 /**
  * The "SignUpUIManager" class will contain the different methods that are needed to control the view class "SignUpUI"
@@ -41,8 +43,7 @@ public class SignUpUiManager  implements ActionListener {
                 card.show(contenedor, PRE_MENU_UI);
                 break;
             case Dictionary_login.DONE_BUTTON:
-                //TODO: CHECK CORRECT INFORMATION, SAVE NEW USER, ENTER AS THE NEW USER
-                card.show(contenedor, TEMP_FREE_PIANO_UI);
+                if (new BussinesFacadeImp().SignUp(getUsernameSignUp(), getMailSignUp(), getPasswordSignUp(), getPasswordConfirmSignUp())) {card.show(contenedor, TEMP_FREE_PIANO_UI);}
                 break;
             }
         }

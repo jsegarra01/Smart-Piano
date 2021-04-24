@@ -138,11 +138,11 @@ public class LoginUI extends JPanel{
         done.addActionListener(listener);
     }
 
-    public static String getUsername() {
+    public static String getUsernameLogin() {
         return usernameTextField.getText();
     }
 
-    public static String getPassword() {
+    public static String getPasswordLogin() {
         return password.getText();
     }
 }
