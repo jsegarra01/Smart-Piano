@@ -1,7 +1,14 @@
 package Business;
 
-import Business.LoginUserManager;
-
+/**
+ * BusinessFacade
+ *
+ * The "BusinessFacade" class will contain the implementation of the BusinessFacade interface to connect the views with the logic and the database
+ *
+ * @author OOPD 20-21 ICE5
+ * @version 1.0 24 Apr 2021
+ *
+ */
 public class BussinesFacadeImp implements Business.BussinesFacade {
     LoginUserManager loginUserManager = new LoginUserManager();
 
