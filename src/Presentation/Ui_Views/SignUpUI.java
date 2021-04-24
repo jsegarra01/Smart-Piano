@@ -189,6 +189,7 @@ public class SignUpUI extends JPanel {
     public static String getPasswordSignUp() {
         return password.getText();
     }
+
     public static String getMailSignUp() {
         return mailTextField.getText();
     }
