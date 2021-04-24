@@ -15,4 +15,11 @@ public class LoginUserManager {
 
         return user.getPassword().equals(password);
     }
+
+    public void deleteUser(String username) {
+        User user = loginUserManager.getByUsername(username);
+
+        loginUserManager.delete(user);
+        System.out.println(username);
+    }
 }

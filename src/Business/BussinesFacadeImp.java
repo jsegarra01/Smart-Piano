@@ -9,4 +9,8 @@ public class BussinesFacadeImp implements Business.BussinesFacade {
     public Boolean logIn(String username, String password) {
         return loginUserManager.checkUser(username, password);
     }
+
+    public void deleteAccount(String username) {
+        loginUserManager.deleteUser(username);
+    }
 }
