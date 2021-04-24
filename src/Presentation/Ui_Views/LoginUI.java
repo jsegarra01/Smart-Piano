@@ -16,8 +16,8 @@ public class LoginUI extends JPanel{
     private JLabel pianoText = new JLabel(SMART_PIANO_TEXT);
     private JLabel logInText = new JLabel(LOG_IN_TEXT);
 
-    private JTextField usernameTextField = new JTextField();
-    private JPasswordField password = new JPasswordField();
+    private static JTextField usernameTextField = new JTextField();
+    private static JPasswordField password = new JPasswordField();
     private JButton back = new JButton(BACK_BUTTON);
     private JButton done = new JButton(DONE_BUTTON);
     private MainFrame mainFrame;
@@ -138,4 +138,11 @@ public class LoginUI extends JPanel{
         done.addActionListener(listener);
     }
 
+    public static String getUsername() {
+        return usernameTextField.getText();
+    }
+
+    public static String getPassword() {
+        return password.getText();
+    }
 }

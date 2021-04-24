@@ -10,7 +10,9 @@ package Presentation.Manager;
  */
 
 //Imports needed from the dictionary, events and mainframe
+import Business.BussinesFacadeImp;
 import Presentation.Dictionary_login;
+import Presentation.Ui_Views.LoginUI;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -29,7 +31,6 @@ public class LoginUIManager implements ActionListener {
      */
     public LoginUIManager() {
     }
-
     /**
      * Method that will be called every time a button is pressed, overriden from the interface to provide an implementation.
      * @param e ActionEvent from the UI
@@ -42,7 +43,10 @@ public class LoginUIManager implements ActionListener {
                 card.show(contenedor, PRE_MENU_UI);
                 break;
             case Dictionary_login.DONE_BUTTON:
-                //TODO: CHECK CORRECT INFORMATION, ENTER AS THE SAVED USER
+                BussinesFacadeImp bussinesFacadeImp = new BussinesFacadeImp();
+                //bussinesFacadeImp.logIn(LoginUI.getUsername(), LoginUI.getPassword());
+                System.out.println(LoginUI.getUsername());
+                System.out.println(LoginUI.getPassword());
                 card.show(contenedor, TEMP_FREE_PIANO_UI);
                 break;
         }
