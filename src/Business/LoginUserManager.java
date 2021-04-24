@@ -52,8 +52,10 @@ public class LoginUserManager {
      * @return Boolean. If it can create a new user, returns 1. Else, returns 0
      */
     public Boolean signUser(String username, String mail, String password) {
-        if (isValid(mail)) { return loginUserManager.save(new User(username,mail,password)); }
-        return false;
+       // if (isValid(mail)) {
+        return loginUserManager.save(new User(username,mail,password));
+    //}
+       // return false;
     }
 
     private boolean isValid(String email) {
