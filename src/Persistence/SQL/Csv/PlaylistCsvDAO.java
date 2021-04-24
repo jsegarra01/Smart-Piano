@@ -2,7 +2,6 @@ package Persistence.SQL.Csv;
 
 import Business.Entities.Playlist;
 import Business.Entities.Song;
-import Persistence.LoginUserDAO;
 import Persistence.PlaylistDAO;
 import Persistence.SQL.ConnectSQL;
 
@@ -37,7 +36,16 @@ public class PlaylistCsvDAO implements PlaylistDAO {
      */
     @Override
     public boolean savePlaylist(Playlist playlist) {
-        return true;
+        try {
+            PreparedStatement st2 = connection.prepareStatement("insert into PlaylistT values (" + ")");
+            st2.execute();
+            PreparedStatement st = connection.prepareStatement("insert into SongPlaylistsT ");
+            st.execute();
+
+            return true;
+        } catch (SQLException e) {
+            return false;
+        }
     }
 
     /**
