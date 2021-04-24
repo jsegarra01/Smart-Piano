@@ -22,4 +22,8 @@ public class LoginUserManager {
         loginUserManager.delete(user);
         System.out.println(username);
     }
+
+    public Boolean signUser(String username, String mail, String password) {
+        return loginUserManager.save(new User(username,mail,password));
+    }
 }

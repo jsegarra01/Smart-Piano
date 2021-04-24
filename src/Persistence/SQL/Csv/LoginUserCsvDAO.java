@@ -78,6 +78,7 @@ public class LoginUserCsvDAO implements LoginUserDAO{
             st.execute();
 
         } catch (SQLException ignored) {
+            System.out.println("Problem database");
         }
     }
 
@@ -89,7 +90,7 @@ public class LoginUserCsvDAO implements LoginUserDAO{
      */
     @Override
     public boolean save(User myUser) {
-        if(getByUsername(myUser.getUserName()) == null && getByMail(myUser.getMail())==null){
+        if(getByUsername(myUser.getUserName()) == null && getByMail(myUser.getMail()) == null){
             userToCsv(myUser);
             return true;
         }

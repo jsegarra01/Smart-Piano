@@ -16,5 +16,4 @@ public class Dictionary_login {
     public static final String PROFILE_BUTTON = "PROFILE";
     public static final String LOGOUT_BUTTON = "LOGOUT";
     public static final String DELETE_BUTTON = "DELETE ACCOUNT";
-
 }
