@@ -21,6 +21,11 @@
   <component name="ChangeListManager">
     <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="AutoChanges in the CsvDAO class">
       <change beforePath="$PROJECT_DIR$/src/Persistence/SQL/Csv/PlaylistCsvDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Persistence/SQL/Csv/PlaylistCsvDAO.java" afterDir="false" />
+    <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="Comments for the UI views">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Business/BussinesFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/BussinesFacade.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Business/BussinesFacadeImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/BussinesFacadeImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Business/LoginUserManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/LoginUserManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,6 +116,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -198,6 +204,14 @@
       <option name="project" value="LOCAL" />
       <updated>1619278515380</updated>
     </task>
+    <task id="LOCAL-00011" summary="Comments for the UI views">
+      <created>1619286205871</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1619286205871</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <task id="LOCAL-00011" summary="AutoChanges in the CsvDAO class">
       <created>1619287484997</created>
       <option name="number" value="00011" />
@@ -247,6 +261,8 @@
     <MESSAGE value="Pretty positioning" />
     <MESSAGE value="Deleting files" />
     <MESSAGE value="init feature" />
+    <MESSAGE value="Comments for the UI views" />
+    <option name="LAST_COMMIT_MESSAGE" value="Comments for the UI views" />
     <MESSAGE value="AutoChanges in the CsvDAO class" />
     <option name="LAST_COMMIT_MESSAGE" value="AutoChanges in the CsvDAO class" />
   </component>

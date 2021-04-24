@@ -35,8 +35,8 @@ public class SignUpUI extends JPanel {
     private MainFrame mainFrame;
 
     /**
-     * Removes everything that was on the frame and modifies it in order to have the sign up user interface
-     * @param  mainFrame frame to modify, this will be the user interface
+     * Constructor for the SignUpUI, you need to send the mainframe context and will create a card layout
+     * @param mainFrame context necessary to create the card layout
      */
     public SignUpUI(final MainFrame mainFrame) {
         super();
@@ -44,6 +44,9 @@ public class SignUpUI extends JPanel {
         initialize();
     }
 
+    /**
+     * The initialize function that creates the card layout for the SignUpUI
+     */
     private void initialize() {
         setLayout(new BorderLayout());
 
@@ -192,18 +195,34 @@ public class SignUpUI extends JPanel {
         done.addActionListener(listener);
     }
 
+    /**
+     * Obtains the username in the text field
+     * @return username string
+     */
     public static String getUsernameSignUp() {
         return usernameTextField.getText();
     }
 
-    public static String getPasswordSignUp() {
-        return password.getText();
-    }
-
+    /**
+     * Obtains the mail in the text field
+     * @return mail string
+     */
     public static String getMailSignUp() {
         return mailTextField.getText();
     }
 
+    /**
+     * Obtains the password in the text field
+     * @return password string
+     */
+    public static String getPasswordSignUp() {
+        return password.getText();
+    }
+
+    /**
+     * Obtains the passwordConfirm in the text field
+     * @return passwordConfirm string
+     */
     public static String getPasswordConfirmSignUp() {
         return passwordConfirmation.getText();
     }
