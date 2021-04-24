@@ -1,15 +1,6 @@
 package Presentation.Manager;
-/*
- * MainFrame
- *
- * The "MainFrame" class will contain the different methods that are needed for the views of the login
- *
- * Stepan Batllori, Alex Blay, Laura Nuez, Josep Segarra and Sergi Vives
- *
- * Version 21/04/2021
- */
 
-//Imports needed from the dictionary, events and mainframe
+//Imports needed from the dictionary and events
 import Presentation.Ui_Views.*;
 
 import javax.swing.*;
@@ -18,7 +9,13 @@ import java.awt.*;
 import static Presentation.Dictionary_login.*;
 
 /**
- * The "MainFrame" class will contain the different methods that are needed for the views of the login
+ * MainFrame
+ *
+ * The "MainFrame" class will contain the different methods that are needed for the views of the login, including a card layout
+ *
+ * @author OOPD 20-21 ICE5
+ * @version 2.0 21 Apr 2021
+ *
  */
 public class MainFrame extends JFrame {
     public static  CardLayout card = new CardLayout();
@@ -31,7 +28,7 @@ public class MainFrame extends JFrame {
 
 
     /**
-     * Parametrized constructor
+     * Parametrized constructor, creates the content pane plus the different card layouts available for the user interface
      */
     public MainFrame() {
         contenedor = this.getContentPane();

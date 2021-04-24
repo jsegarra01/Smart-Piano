@@ -1,5 +1,6 @@
 package Presentation.Ui_Views;
 
+//Imports all the necessary libraries
 import Presentation.Manager.MainFrame;
 import Presentation.Manager.SignUpUiManager;
 import Presentation.TextPrompt;
@@ -12,6 +13,15 @@ import java.security.KeyPairGenerator;
 
 import static Presentation.Dictionary_login.*;
 
+/**
+ * SignUpUI
+ *
+ * The "SignUpUI" class will contain the different methods to create the view class card layout "SignUpUI" and SignUp interface
+ *
+ * @author OOPD 20-21 ICE5
+ * @version 2.0 24 Apr 2021
+ *
+ */
 public class SignUpUI extends JPanel {
     private JLabel pianoText = new JLabel(SMART_PIANO_TEXT);
     private JLabel logInText = new JLabel(SIGN_UP_BUTTON);

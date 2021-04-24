@@ -1,5 +1,6 @@
 package Presentation.Ui_Views;
 
+//Imports all the libraries needed to create the card layout
 import Presentation.Manager.MainFrame;
 import Presentation.Manager.PreMenuUIManager;
 
@@ -10,6 +11,15 @@ import java.awt.event.ActionListener;
 
 import static Presentation.Dictionary_login.*;
 
+/**
+ * PreMenuUI
+ *
+ * The "PreMenuUI" class will contain the different methods to create the view class card layout "PreMenuUI" and preMenu interface
+ *
+ * @author OOPD 20-21 ICE5
+ * @version 2.0 24 Apr 2021
+ *
+ */
 public class PreMenuUI extends JPanel{
     private JLabel pianoText = new JLabel(SMART_PIANO_TEXT);
     private JButton logIn = new JButton(LOG_IN_BUTTON);

@@ -1,13 +1,4 @@
 package Presentation.Manager;
-/*
- * FreePianoUIManager
- *
- * The "FreePianoUIManager" class will contain the different methods that are needed to control the view class "FreePianoUI"
- *
- * Stepan Batllori, Alex Blay, Laura Nuez, Josep Segarra and Sergi Vives
- *
- * Version 21/04/2021
- */
 
 //Imports needed from the dictionary, events and mainframe
 import Presentation.Dictionary_login;
@@ -15,14 +6,19 @@ import Presentation.Dictionary_login;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import static Presentation.Dictionary_login.PRE_MENU_UI;
 import static Presentation.Dictionary_login.PROFILE_UI;
 import static Presentation.Manager.MainFrame.card;
 import static Presentation.Manager.MainFrame.contenedor;
 
 
 /**
+ * FreePianoUIManager
+ *
  * The "FreePianoUIManager" class will contain the different methods that are needed to control the view class "FreePianoUI"
+ *
+ * @author OOPD 20-21 ICE5
+ * @version 1.0 21 Apr 2021
+ *
  */
 public class TempFreePianoUIManager implements ActionListener {
     /**
@@ -39,7 +35,7 @@ public class TempFreePianoUIManager implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         // We distinguish between our buttons.
         switch (e.getActionCommand()) {
-            case Dictionary_login.PROFILE_BUTTON:
+            case Dictionary_login.PROFILE_BUTTON:       //In the case that the Profile button is pressed
                 card.show(contenedor, PROFILE_UI);
                 break;
         }

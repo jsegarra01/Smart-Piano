@@ -1,5 +1,6 @@
 package Presentation.Ui_Views;
 
+//Imports all necesssary libraries
 import Presentation.Manager.MainFrame;
 import Presentation.Manager.ProfileUIManager;
 
@@ -7,11 +8,18 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyListener;
-import java.util.ArrayList;
 
 import static Presentation.Dictionary_login.*;
 
+/**
+ * ProfileUI
+ *
+ * The "ProfileUI" class will contain the different methods to create the view class card layout "ProfileUI" and Profile interface
+ *
+ * @author OOPD 20-21 ICE5
+ * @version 2.0 24 Apr 2021
+ *
+ */
 public class ProfileUI extends JPanel{
     private JLabel pianoText = new JLabel("SMART PIANO");
     private JLabel profileText = new JLabel("PROFILE");

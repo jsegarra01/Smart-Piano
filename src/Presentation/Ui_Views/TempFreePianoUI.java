@@ -1,5 +1,6 @@
 package Presentation.Ui_Views;
 
+//Imports all necessary libraries
 import Presentation.Manager.MainFrame;
 import Presentation.Manager.TempFreePianoUIManager;
 
@@ -11,6 +12,15 @@ import java.awt.event.ActionListener;
 
 import static Presentation.Dictionary_login.*;
 
+/**
+ * TempFreePianoUI
+ *
+ * The "TempFreePianoUI" class will contain the different methods to create the view class card layout "TempFreePianoUI" and TempFreePiano interface
+ *
+ * @author OOPD 20-21 ICE5
+ * @version 1.0 21 Apr 2021
+ *
+ */
 public class TempFreePianoUI extends JPanel {
     private JButton profile = new JButton(PROFILE_BUTTON);
     private MainFrame mainFrame;
