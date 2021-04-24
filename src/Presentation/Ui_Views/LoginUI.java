@@ -6,10 +6,8 @@ import Presentation.Manager.MainFrame;
 import Presentation.TextPrompt;
 
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowListener;
 
 import static Presentation.Dictionary_login.*;
 
@@ -43,7 +41,7 @@ public class LoginUI extends JPanel{
     }
 
     /**
-     * The initialize function creates the
+     * The initialize function that creates the card layout for the LoginUi
      */
     private void initialize() {
         setLayout(new BorderLayout());
@@ -155,10 +153,18 @@ public class LoginUI extends JPanel{
         done.addActionListener(listener);
     }
 
+    /**
+     * Obtains the username in the text field
+     * @return username string
+     */
     public static String getUsernameLogin() {
         return usernameTextField.getText();
     }
 
+    /**
+     * Obtains the password in the text field
+     * @return password string
+     */
     public static String getPasswordLogin() {
         return password.getText();
     }

@@ -28,8 +28,8 @@ public class PreMenuUI extends JPanel{
     private MainFrame mainFrame;
 
     /**
-     * Removes everything that was on the frame and modifies it in order to have the sign up user interface
-     //* @param  The frame to modify, this will be the user interface
+     * Constructor for the PreMenuUI, you need to send the mainframe context and will create a card layout
+     * @param mainFrame context necessary to create the card layout
      */
     public PreMenuUI(final MainFrame mainFrame) {
         super();
@@ -37,6 +37,9 @@ public class PreMenuUI extends JPanel{
         initialize();
     }
 
+    /**
+     * The initialize function that creates the card layout for the PreMenuUI
+     */
     private void initialize() {
         setLayout(new BorderLayout());
 

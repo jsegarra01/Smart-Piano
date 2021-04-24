@@ -25,12 +25,20 @@ public class TempFreePianoUI extends JPanel {
     private JButton profile = new JButton(PROFILE_BUTTON);
     private MainFrame mainFrame;
 
+
+    /**
+     * Constructor for the TempFreePianoUI, you need to send the mainframe context and will create a card layout
+     * @param mainFrame context necessary to create the card layout
+     */
     public TempFreePianoUI(final MainFrame mainFrame) {
         super();
         this.mainFrame=mainFrame;
         initialize();
     }
 
+    /**
+     * The initialize function that creates the card layout for the TempFreePianoUI
+     */
     private void initialize() {
         setLayout(new BorderLayout());
 
@@ -55,6 +63,10 @@ public class TempFreePianoUI extends JPanel {
 
     }
 
+    /**
+     * Method to add the action listeners to the buttons
+     * @param listener The action listener
+     */
     private void registerController(ActionListener listener) {
         profile.addActionListener(listener);
     }
