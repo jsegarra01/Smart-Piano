@@ -19,13 +19,14 @@ public interface LoginUserDAO {
      * @return
      */
     boolean save(User myUser);
-    //void update (Business.Entities.User myUser);
+    //void update (User myUser);
 
     /**
      *
      * @param myUser
+     * @return
      */
-    void delete (User myUser);
+    boolean delete (User myUser);
 
     /**
      *

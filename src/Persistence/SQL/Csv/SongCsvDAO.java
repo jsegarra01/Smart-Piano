@@ -2,7 +2,6 @@ package Persistence.SQL.Csv;
 
 import Business.Entities.Song;
 import Business.Entities.User;
-import Persistence.PlaylistDAO;
 import Persistence.SQL.ConnectSQL;
 import Persistence.SongDAO;
 
@@ -17,7 +16,7 @@ import java.util.*;
  * @version 1.0 22 Apr 2021
  */
 public class SongCsvDAO implements SongDAO {
-
+    
     // Connection to use in order to connect to the MySQL database
     private final Connection connection;
 
@@ -31,11 +30,12 @@ public class SongCsvDAO implements SongDAO {
     /**
      * Method that gets all the songs from the database created by a user
      * @param myUserString Defines the username of the user who we want to get their songs
-     * @return List of the class Business.Entities.Song that stores the songs created by that Business.Entities.User
+     * @return List of the class Song that stores the songs created by that User
      */
     private ArrayList<Song> songFromCsv(String myUserString){
         try {
-            ResultSet myRs = connection.createStatement().executeQuery("select * from Business.Entities.Song as s where s.username like '" + myUserString + "'");
+            ResultSet myRs = connection.createStatement().executeQuery("select * from SongT as s where s.username " +
+                    "like '" + myUserString + "'");
             ArrayList<Song> songs = myRsToSongs(myRs);
             myRs.close();
             return songs;
@@ -48,7 +48,7 @@ public class SongCsvDAO implements SongDAO {
     /**
      * Method that parses the result got from the query and stores it in the list
      * @param myRs Defines the result set in which the information from the query is stored
-     * @return List of the class Business.Entities.Song that stores the songs created by that Business.Entities.User
+     * @return List of the class Song that stores the songs created by that User
      * @throws SQLException Throw that makes an exception if there has been any error with the connection to the
      *                      database. It will be handled with the try catch from where it is called.
      */
@@ -75,7 +75,7 @@ public class SongCsvDAO implements SongDAO {
     @Override
     public boolean saveSong(Song mySaveSong) {
         try {
-            PreparedStatement st = connection.prepareStatement("insert into Business.Entities.Song values (" +
+            PreparedStatement st = connection.prepareStatement("insert into SongT values (" +
                     mySaveSong.getSongId() + ", '" +
                     mySaveSong.getSongName() + "', '" +
                     mySaveSong.getAuthorName() + "', '" +
@@ -92,21 +92,20 @@ public class SongCsvDAO implements SongDAO {
         }
     }
 
-    @Override
-    public void updateSong(Song mySong) {
-
-    }
 
     /**
      * Method that deletes the song depending on the id from the database
      * @param mySong Defines the song to be deleted from the database
      */
     @Override
-    public void deleteSong(Song mySong) {
+    public boolean deleteSong(Song mySong) {
         try {
-            PreparedStatement st = connection.prepareStatement("delete from Business.Entities.Song where songId = '" + mySong.getSongId() + "'");
+            PreparedStatement st = connection.prepareStatement("delete from SongT where songId = '" +
+                    mySong.getSongId() + "'");
             st.execute();
-        } catch (SQLException ignored) {
+            return true;
+        } catch (SQLException e) {
+            return false;
         }
     }
 
@@ -118,7 +117,7 @@ public class SongCsvDAO implements SongDAO {
     @Override
     public Song getSongByID(int id) {
         try {
-            ResultSet myRs = connection.createStatement().executeQuery("select * from Business.Entities.Song as s where s.songId = " + id);
+            ResultSet myRs = connection.createStatement().executeQuery("select * from SongT as s where s.songId = " + id);
             if(myRs.next()){
                 Song song = new Song(
                         myRs.getInt("songId"),
@@ -165,7 +164,7 @@ public class SongCsvDAO implements SongDAO {
         try {
             ResultSet myRs = connection.createStatement().executeQuery(
                     "SELECT s.* " +
-                            "FROM Business.Entities.Song as s inner join SongStatisticsGeneral as ssg on ssg.songId = s.songId " +
+                            "FROM SongT as s inner join SongStatisticsGeneralT as ssg on ssg.songId = s.songId " +
                             "ORDER BY MAX(ssg.timesPlayed) DESC LIMIT 5");
             ArrayList<Song> songs = myRsToSongs(myRs);
             myRs.close();

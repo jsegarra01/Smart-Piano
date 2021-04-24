@@ -1,17 +1,25 @@
 package Presentation.Ui_Views;
 
+//import data from the different libraries
 import Presentation.Manager.LoginUIManager;
 import Presentation.Manager.MainFrame;
 import Presentation.TextPrompt;
 
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowListener;
 
 import static Presentation.Dictionary_login.*;
 
+/**
+ * LoginUI
+ *
+ * The "LoginUI" class will contain the different methods to create the view class card layout "LoginUI" and login interface
+ *
+ * @author OOPD 20-21 ICE5
+ * @version 2.0 24 Apr 2021
+ *
+ */
 public class LoginUI extends JPanel{
     private JLabel pianoText = new JLabel(SMART_PIANO_TEXT);
     private JLabel logInText = new JLabel(LOG_IN_TEXT);
@@ -22,12 +30,19 @@ public class LoginUI extends JPanel{
     private JButton done = new JButton(DONE_BUTTON);
     private MainFrame mainFrame;
 
+    /**
+     * Constructor for the LoginUI, you need to send the mainframe context and will create a card layout
+     * @param mainFrame context necessary to create the card layout
+     */
     public LoginUI(final MainFrame mainFrame) {
         super();
         this.mainFrame=mainFrame;
         initialize();
     }
 
+    /**
+     * The initialize function that creates the card layout for the LoginUi
+     */
     private void initialize() {
         setLayout(new BorderLayout());
 
@@ -138,11 +153,27 @@ public class LoginUI extends JPanel{
         done.addActionListener(listener);
     }
 
-    public static String getUsername() {
+    /**
+     * Obtains the username in the text field
+     * @return username string
+     */
+    public static String getUsernameLogin() {
         return usernameTextField.getText();
     }
 
-    public static String getPassword() {
+    /**
+     * Obtains the password in the text field
+     * @return password string
+     */
+    public static String getPasswordLogin() {
         return password.getText();
+    }
+
+    /**
+     * Resets the information inside the the loginUI
+     */
+    public static void resetUILogin() {
+        usernameTextField.setText("");
+        password.setText("");
     }
 }

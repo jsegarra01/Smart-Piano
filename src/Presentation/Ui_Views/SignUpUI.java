@@ -1,5 +1,6 @@
 package Presentation.Ui_Views;
 
+//Imports all the necessary libraries
 import Presentation.Manager.MainFrame;
 import Presentation.Manager.SignUpUiManager;
 import Presentation.TextPrompt;
@@ -12,21 +13,30 @@ import java.security.KeyPairGenerator;
 
 import static Presentation.Dictionary_login.*;
 
+/**
+ * SignUpUI
+ *
+ * The "SignUpUI" class will contain the different methods to create the view class card layout "SignUpUI" and SignUp interface
+ *
+ * @author OOPD 20-21 ICE5
+ * @version 2.0 24 Apr 2021
+ *
+ */
 public class SignUpUI extends JPanel {
     private JLabel pianoText = new JLabel(SMART_PIANO_TEXT);
     private JLabel logInText = new JLabel(SIGN_UP_BUTTON);
 
-    private JTextField usernameTextField = new JTextField();
-    private JTextField mailTextField = new JTextField();
-    private JPasswordField password = new JPasswordField();
-    private JPasswordField passwordConfirmation = new JPasswordField();
+    private static JTextField usernameTextField = new JTextField();
+    private static JTextField mailTextField = new JTextField();
+    private static JPasswordField password = new JPasswordField();
+    private static JPasswordField passwordConfirmation = new JPasswordField();
     private JButton back = new JButton(BACK_BUTTON);
     private JButton done = new JButton(DONE_BUTTON);
     private MainFrame mainFrame;
 
     /**
-     * Removes everything that was on the frame and modifies it in order to have the sign up user interface
-     //* @param  The frame to modify, this will be the user interface
+     * Constructor for the SignUpUI, you need to send the mainframe context and will create a card layout
+     * @param mainFrame context necessary to create the card layout
      */
     public SignUpUI(final MainFrame mainFrame) {
         super();
@@ -34,6 +44,9 @@ public class SignUpUI extends JPanel {
         initialize();
     }
 
+    /**
+     * The initialize function that creates the card layout for the SignUpUI
+     */
     private void initialize() {
         setLayout(new BorderLayout());
 
@@ -95,7 +108,6 @@ public class SignUpUI extends JPanel {
         password.setAlignmentX(0.5f);
         password.setPreferredSize(new Dimension(300,40));
         password.setMaximumSize(usernameTextField.getPreferredSize());
-
         TextPrompt passwordPrompt = new TextPrompt("Password: ", new JTextField(), TextPrompt.Show.ALWAYS);
 
         passwordPrompt.setAlignmentX(0.5f);
@@ -180,5 +192,47 @@ public class SignUpUI extends JPanel {
     private void registerController(ActionListener listener) {
         back.addActionListener(listener);
         done.addActionListener(listener);
+    }
+
+    /**
+     * Obtains the username in the text field
+     * @return username string
+     */
+    public static String getUsernameSignUp() {
+        return usernameTextField.getText();
+    }
+
+    /**
+     * Obtains the mail in the text field
+     * @return mail string
+     */
+    public static String getMailSignUp() {
+        return mailTextField.getText();
+    }
+
+    /**
+     * Obtains the password in the text field
+     * @return password string
+     */
+    public static String getPasswordSignUp() {
+        return password.getText();
+    }
+
+    /**
+     * Obtains the passwordConfirm in the text field
+     * @return passwordConfirm string
+     */
+    public static String getPasswordConfirmSignUp() {
+        return passwordConfirmation.getText();
+    }
+
+    /**
+     * Resets the information inside the SignUpUI
+     */
+    public static void resetUISignUpUI() {
+        usernameTextField.setText("");
+        mailTextField.setText("");
+        password.setText("");
+        passwordConfirmation.setText("");
     }
 }

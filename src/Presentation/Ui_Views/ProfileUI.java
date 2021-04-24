@@ -1,5 +1,6 @@
 package Presentation.Ui_Views;
 
+//Imports all necesssary libraries
 import Presentation.Manager.MainFrame;
 import Presentation.Manager.ProfileUIManager;
 
@@ -7,11 +8,18 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyListener;
-import java.util.ArrayList;
 
 import static Presentation.Dictionary_login.*;
 
+/**
+ * ProfileUI
+ *
+ * The "ProfileUI" class will contain the different methods to create the view class card layout "ProfileUI" and Profile interface
+ *
+ * @author OOPD 20-21 ICE5
+ * @version 2.0 24 Apr 2021
+ *
+ */
 public class ProfileUI extends JPanel{
     private JLabel pianoText = new JLabel("SMART PIANO");
     private JLabel profileText = new JLabel("PROFILE");
@@ -21,8 +29,8 @@ public class ProfileUI extends JPanel{
     private MainFrame mainFrame;
 
     /**
-     * Removes everything that was on the frame and modifies it in order to have the sign up user interface
-     //* @param  The frame to modify, this will be the user interface
+     * Constructor for the ProfileUI, you need to send the mainframe context and will create a card layout
+     * @param mainFrame context necessary to create the card layout
      */
     public ProfileUI(final MainFrame mainFrame) {
         super();
@@ -30,6 +38,9 @@ public class ProfileUI extends JPanel{
         initialize();
     }
 
+    /**
+     * The initialize function that creates the card layout for the ProfileUI
+     */
     private void initialize() {
         setLayout(new BorderLayout());
 
@@ -56,8 +67,6 @@ public class ProfileUI extends JPanel{
 
         deleteAccount.setAlignmentX(0.5f);
         deleteAccount.setBorder(new EmptyBorder(10,96,10,96));
-
-
 
         userButtons.setBackground(Color.getHSBColor(0, 0, 0.1f));
 

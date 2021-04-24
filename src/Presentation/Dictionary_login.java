@@ -1,5 +1,14 @@
 package Presentation;
 
+/**
+ * Dictionary_login
+ *
+ * The "Dictionary_login" class will contain the different labels to identify which buttons have been pressed for our card layouts
+ *
+ * @author OOPD 20-21 ICE5
+ * @version 1.0 17 Apr 2021
+ *
+ */
 public class Dictionary_login {
     public static final String PRE_MENU_UI = "PreMenuUi";
     public static final String PROFILE_UI = "ProfileUi";
