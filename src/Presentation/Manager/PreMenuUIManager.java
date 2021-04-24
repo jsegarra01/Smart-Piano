@@ -15,6 +15,7 @@ import Presentation.Dictionary_login;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import static Presentation.Dictionary_login.*;
 import static Presentation.Manager.MainFrame.*;
 
 /**
@@ -36,14 +37,14 @@ public class PreMenuUIManager implements ActionListener {
        // We distinguish between our buttons.
         switch (e.getActionCommand()) {
             case Dictionary_login.LOG_IN_BUTTON:
-                setLoginUi();
+                card.show(contenedor, LOGIN_UI);
                 break;
             case Dictionary_login.SIGN_UP_BUTTON:
-                setSignUpUi();
+                card.show(contenedor, SIGN_UP_UI);
                 break;
             case Dictionary_login.ENTER_AS_GUEST_BUTTON:
                 //TODO: ENTER AS A GUEST USER
-                setFreePianoUI();
+                card.show(contenedor,TEMP_FREE_PIANO_UI);
                 break;
         }
     }

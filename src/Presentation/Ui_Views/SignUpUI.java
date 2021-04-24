@@ -1,16 +1,18 @@
 package Presentation.Ui_Views;
 
+import Presentation.Manager.MainFrame;
+import Presentation.Manager.SignUpUiManager;
 import Presentation.TextPrompt;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.security.KeyPairGenerator;
 
 import static Presentation.Dictionary_login.*;
 
-public class SignUpUI extends JFrame{
-
+public class SignUpUI extends JPanel {
     private JLabel pianoText = new JLabel(SMART_PIANO_TEXT);
     private JLabel logInText = new JLabel(SIGN_UP_BUTTON);
 
@@ -20,19 +22,19 @@ public class SignUpUI extends JFrame{
     private JPasswordField passwordConfirmation = new JPasswordField();
     private JButton back = new JButton(BACK_BUTTON);
     private JButton done = new JButton(DONE_BUTTON);
+    private MainFrame mainFrame;
 
     /**
      * Removes everything that was on the frame and modifies it in order to have the sign up user interface
-     * @param frame The frame to modify, this will be the user interface
+     //* @param  The frame to modify, this will be the user interface
      */
-    public SignUpUI(JFrame frame) {
-        frame.getContentPane().removeAll(); //removes everything from the frame
+    public SignUpUI(final MainFrame mainFrame) {
+        super();
+        this.mainFrame=mainFrame;
+        initialize();
+    }
 
-        frame.setTitle(SMART_PIANO_TEXT);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setLocationRelativeTo(null);
-
-
+    private void initialize() {
         setLayout(new BorderLayout());
 
         JPanel userButtons = new JPanel();
@@ -127,12 +129,14 @@ public class SignUpUI extends JFrame{
 
         back.setAlignmentX(0.5f);
         done.setActionCommand(BACK_BUTTON);
-        buttons.add(back);
-
-        buttons.add(Box.createRigidArea(new Dimension(400, 15)));
 
         done.setAlignmentX(0.5f);
         done.setActionCommand(DONE_BUTTON);
+
+        registerController(new SignUpUiManager());
+
+        buttons.add(back);
+        buttons.add(Box.createRigidArea(new Dimension(400, 15)));
         buttons.add(done);
 
         buttons.setBackground(Color.getHSBColor(0, 0, 0.1f));
@@ -144,38 +148,36 @@ public class SignUpUI extends JFrame{
         auxBL.setLayout(new BorderLayout());
 
         auxBL.add(userButtons, BorderLayout.CENTER);
-        //auxBL.add(buttons, BorderLayout.SOUTH);
         auxBL.setBackground(Color.getHSBColor(0, 0, 0.1f));
 
         JPanel pN = new JPanel();
         pN.setBackground(Color.getHSBColor(0, 0, 0.2f));
-        frame.add(pN, BorderLayout.NORTH);
+        this.add(pN, BorderLayout.NORTH);
 
         JPanel pS = new JPanel();
         pS.setBackground(Color.getHSBColor(0, 0, 0.2f));
-        frame.add(pS, BorderLayout.SOUTH);
+        this.add(pS, BorderLayout.SOUTH);
 
         JPanel pE = new JPanel();
         pE.setBackground(Color.getHSBColor(0, 0, 0.2f));
-        frame.add(pE, BorderLayout.EAST);
+        this.add(pE, BorderLayout.EAST);
 
         JPanel pW = new JPanel();
         pW.setBackground(Color.getHSBColor(0, 0, 0.2f));
-        frame.add(pW, BorderLayout.WEST);
+        this.add(pW, BorderLayout.WEST);
 
-        frame.add(auxBL);
-        frame.pack();
-        frame.setSize(600, 600);
+        this.add(auxBL);
+        this.setSize(600, 600);
 
-        frame.revalidate();
-        frame.repaint();
+        this.revalidate();
+        this.repaint();
     }
 
     /**
      * Method to add the action listeners to the buttons
      * @param listener The action listener
      */
-    public void registerController(ActionListener listener) {
+    private void registerController(ActionListener listener) {
         back.addActionListener(listener);
         done.addActionListener(listener);
     }

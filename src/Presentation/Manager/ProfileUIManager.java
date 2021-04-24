@@ -15,8 +15,10 @@ import Presentation.Dictionary_login;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import static Presentation.Manager.MainFrame.setFreePianoUI;
-import static Presentation.Manager.MainFrame.setPreMenuUi;
+import static Presentation.Dictionary_login.*;
+import static Presentation.Manager.MainFrame.card;
+import static Presentation.Manager.MainFrame.contenedor;
+
 
 /**
  * The "ProfileUIManager" class will contain the different methods that are needed to control the view class "ProfileUI"
@@ -37,15 +39,15 @@ public class ProfileUIManager implements ActionListener {
         // We distinguish between our buttons.
         switch (e.getActionCommand()) {
             case Dictionary_login.LOGOUT_BUTTON:
-                setPreMenuUi();
+                card.show(contenedor, PRE_MENU_UI);
                 break;
             case Dictionary_login.DELETE_BUTTON:
                 //TODO: DELETE EVERYTHING FROM THE USER IN OUR SYSTEM
-                setPreMenuUi();
+                card.show(contenedor, PRE_MENU_UI);
                 break;
             case Dictionary_login.BACK_BUTTON:
                 //TODO: CHECK CORRECT INFORMATION, ENTER AS THE SAVED USER
-                setFreePianoUI();
+                card.show(contenedor, TEMP_FREE_PIANO_UI);
                 break;
         }
     }
