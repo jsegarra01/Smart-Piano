@@ -36,8 +36,8 @@ public class PlaylistCsvDAO implements PlaylistDAO {
      * @param playlist
      */
     @Override
-    public void savePlaylist(Playlist playlist) {
-
+    public boolean savePlaylist(Playlist playlist) {
+        return true;
     }
 
     /**
@@ -45,14 +45,17 @@ public class PlaylistCsvDAO implements PlaylistDAO {
      * @param playlist
      */
     @Override
-    public void deletePlaylist(Playlist playlist) {
+    public boolean deletePlaylist(Playlist playlist) {
         try {
-            PreparedStatement st = connection.prepareStatement("delete from SongPlaylists where playlistId = '" + playlist.getPlaylistId() + "'");
+            PreparedStatement st = connection.prepareStatement("delete from SongPlaylistsT where playlistId = '" +
+                    playlist.getPlaylistId() + "'");
             st.execute();
-            PreparedStatement st2 = connection.prepareStatement("delete from Business.Entities.Playlist where playlistId = '" + playlist.getPlaylistId() + "'");
+            PreparedStatement st2 = connection.prepareStatement("delete from PlaylistT where playlistId = '" +
+                    playlist.getPlaylistId() + "'");
             st2.execute();
+            return true;
         } catch (SQLException e) {
-            e.printStackTrace();
+            return false;
         }
     }
 
@@ -64,7 +67,7 @@ public class PlaylistCsvDAO implements PlaylistDAO {
      */
     private ArrayList<Song> getSongsForPlaylist(int id) throws SQLException {
         ResultSet myRs2 = connection.createStatement().executeQuery(
-                "select so.* from Business.Entities.Song as so inner join SongPlaylists as sp on sp.songId = so.songId and " +
+                "select so.* from SongT as so inner join SongPlaylistsT as sp on sp.songId = so.songId and " +
                         "sp.playlistId = " + id);
         ArrayList<Song> songs = new ArrayList<>();
         while(myRs2.next()) {
@@ -90,7 +93,7 @@ public class PlaylistCsvDAO implements PlaylistDAO {
     @Override
     public ArrayList<Playlist> getPlaylistByUser(String username) {
         try {
-            ResultSet myRs = connection.createStatement().executeQuery("select * from Business.Entities.Playlist as p " +
+            ResultSet myRs = connection.createStatement().executeQuery("select * from PlaylistT as p " +
                     "where p.username like '" + username + "'");
             ArrayList<Playlist> playlists = new ArrayList<>();
             while(myRs.next()){
@@ -107,13 +110,4 @@ public class PlaylistCsvDAO implements PlaylistDAO {
 
     }
 
-    /**
-     *
-     * @param id
-     * @return
-     */
-    @Override
-    public Playlist getPlaylistById(int id) {
-        return null;
-    }
 }
