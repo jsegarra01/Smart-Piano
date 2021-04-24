@@ -20,21 +20,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="Deleting files">
-      <change afterPath="$PROJECT_DIR$/src/Business/LoginUserManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Database/Database diagram.mdj" beforeDir="false" afterPath="$PROJECT_DIR$/Database/Database diagram.mdj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Business/ConfigJson.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/Entities/ConfigJson.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Business/Playlist.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/Entities/Playlist.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Business/Song.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/Entities/Song.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Business/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/Entities/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Persistence/ConnectSQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Persistence/SQL/ConnectSQL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Persistence/LoginUserCsvDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Persistence/SQL/Csv/LoginUserCsvDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Persistence/LoginUserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Persistence/LoginUserDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Persistence/PlaylistCsvDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Persistence/SQL/Csv/PlaylistCsvDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Persistence/PlaylistDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Persistence/PlaylistDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Persistence/ReadConfigJson.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Persistence/Json/ReadConfigJson.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Persistence/SongCsvDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Persistence/SQL/Csv/SongCsvDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Persistence/SongDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Persistence/SongDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/ConfigJson.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/ConnectSQL.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/LoginUserCsvDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/LoginUserDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Playlist.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/PlaylistCsvDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/PlaylistDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/MainFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/MainFrame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/LoginUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/LoginUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/ReadConfigJson.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Song.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/SongCsvDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/SongDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/User.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presentation/Manager/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Manager/MainFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presentation/Ui_Views/LoginUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Ui_Views/LoginUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,19 +85,6 @@
     <property name="project.structure.side.proportion" value="0.0" />
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="dpoo-2021-smartpiano-ice5" />
@@ -240,95 +231,5 @@
     <MESSAGE value="Pretty positioning" />
     <MESSAGE value="Deleting files" />
     <option name="LAST_COMMIT_MESSAGE" value="Deleting files" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="393" y="165" key="#Notifications" timestamp="1619007015145">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="393" y="165" key="#Notifications/0.0.1280.680@0.0.1280.680" timestamp="1619007015145" />
-    <state x="234" y="257" key="#com.intellij.ide.util.MemberChooser" timestamp="1618680238965">
-      <screen x="0" y="23" width="1792" height="1041" />
-    </state>
-    <state x="234" y="257" key="#com.intellij.ide.util.MemberChooser/0.23.1792.1041@0.23.1792.1041" timestamp="1618680238965" />
-    <state x="424" y="235" width="432" height="216" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1619072683132">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="424" y="235" width="432" height="216" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1280.680@0.0.1280.680" timestamp="1619072683132" />
-    <state x="634" y="297" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1618915196586">
-      <screen x="0" y="23" width="1792" height="1041" />
-    </state>
-    <state x="634" y="297" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1792.1041@0.23.1792.1041" timestamp="1618915196586" />
-    <state x="421" y="96" key="FileChooserDialogImpl" timestamp="1619072553730">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="421" y="96" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1619072553730" />
-    <state width="1237" height="204" key="GridCell.Tab.0.bottom" timestamp="1619013616604">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state width="1237" height="204" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1619013616604" />
-    <state width="1750" height="314" key="GridCell.Tab.0.bottom/0.23.1792.1041@0.23.1792.1041" timestamp="1618595008176" />
-    <state width="1237" height="204" key="GridCell.Tab.0.center" timestamp="1619013616604">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state width="1237" height="204" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1619013616604" />
-    <state width="1750" height="314" key="GridCell.Tab.0.center/0.23.1792.1041@0.23.1792.1041" timestamp="1618595008175" />
-    <state width="1237" height="204" key="GridCell.Tab.0.left" timestamp="1619013616604">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state width="1237" height="204" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1619013616604" />
-    <state width="1750" height="314" key="GridCell.Tab.0.left/0.23.1792.1041@0.23.1792.1041" timestamp="1618595008174" />
-    <state width="1237" height="204" key="GridCell.Tab.0.right" timestamp="1619013616604">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state width="1237" height="204" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1619013616604" />
-    <state width="1750" height="314" key="GridCell.Tab.0.right/0.23.1792.1041@0.23.1792.1041" timestamp="1618595008175" />
-    <state width="1237" height="204" key="GridCell.Tab.1.bottom" timestamp="1619013616604">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state width="1237" height="204" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1619013616604" />
-    <state width="1237" height="204" key="GridCell.Tab.1.center" timestamp="1619013616604">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state width="1237" height="204" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1619013616604" />
-    <state width="1237" height="204" key="GridCell.Tab.1.left" timestamp="1619013616604">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state width="1237" height="204" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1619013616604" />
-    <state width="1237" height="204" key="GridCell.Tab.1.right" timestamp="1619013616604">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state width="1237" height="204" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1619013616604" />
-    <state x="221" y="84" key="IDE.errors.dialog" timestamp="1619007115937">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="221" y="84" key="IDE.errors.dialog/0.0.1280.680@0.0.1280.680" timestamp="1619007115937" />
-    <state x="121" y="51" key="MergeDialog" timestamp="1619006596693">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="121" y="51" key="MergeDialog/0.0.1280.680@0.0.1280.680" timestamp="1619006596693" />
-    <state x="280" y="102" key="MultipleFileMergeDialog" timestamp="1619006596705">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="280" y="102" key="MultipleFileMergeDialog/0.0.1280.680@0.0.1280.680" timestamp="1619006596705" />
-    <state x="354" y="147" key="Vcs.Push.Dialog.v2" timestamp="1619073505014">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="354" y="147" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1619073505014" />
-    <state x="496" y="280" key="Vcs.Push.Dialog.v2/0.0.1792.1120@0.0.1792.1120" timestamp="1618681250646" />
-    <state x="496" y="283" key="Vcs.Push.Dialog.v2/0.23.1792.1041@0.23.1792.1041" timestamp="1618594976220" />
-    <state x="458" y="255" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1619072068284">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="458" y="255" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.680@0.0.1280.680" timestamp="1619072068284" />
-    <state x="641" y="413" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1792.1041@0.23.1792.1041" timestamp="1618679929468" />
-    <state x="347" y="73" width="587" height="534" key="find.popup" timestamp="1618995962149">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="347" y="73" width="587" height="534" key="find.popup/0.0.1280.680@0.0.1280.680" timestamp="1618995962149" />
-    <state x="561" y="256" width="670" height="629" key="search.everywhere.popup" timestamp="1618994055265">
-      <screen x="0" y="23" width="1792" height="1041" />
-    </state>
-    <state x="561" y="251" width="670" height="676" key="search.everywhere.popup/0.0.1792.1120@0.0.1792.1120" timestamp="1618681620283" />
-    <state x="561" y="256" width="670" height="629" key="search.everywhere.popup/0.23.1792.1041@0.23.1792.1041" timestamp="1618994055265" />
   </component>
 </project>
