@@ -108,7 +108,6 @@ public class SignUpUI extends JPanel {
         password.setAlignmentX(0.5f);
         password.setPreferredSize(new Dimension(300,40));
         password.setMaximumSize(usernameTextField.getPreferredSize());
-
         TextPrompt passwordPrompt = new TextPrompt("Password: ", new JTextField(), TextPrompt.Show.ALWAYS);
 
         passwordPrompt.setAlignmentX(0.5f);
@@ -225,5 +224,15 @@ public class SignUpUI extends JPanel {
      */
     public static String getPasswordConfirmSignUp() {
         return passwordConfirmation.getText();
+    }
+
+    /**
+     * Resets the information inside the SignUpUI
+     */
+    public static void resetUISignUpUI() {
+        usernameTextField.setText("");
+        mailTextField.setText("");
+        password.setText("");
+        passwordConfirmation.setText("");
     }
 }

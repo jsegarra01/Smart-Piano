@@ -168,4 +168,12 @@ public class LoginUI extends JPanel{
     public static String getPasswordLogin() {
         return password.getText();
     }
+
+    /**
+     * Resets the information inside the the loginUI
+     */
+    public static void resetUILogin() {
+        usernameTextField.setText("");
+        password.setText("");
+    }
 }

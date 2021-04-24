@@ -1,7 +1,7 @@
 package Presentation.Manager;
 
 //Imports needed from the dictionary, events and mainframe
-import Business.BussinesFacadeImp;
+import Business.BusinessFacadeImp;
 import Presentation.Dictionary_login;
 import Presentation.Ui_Views.LoginUI;
 
@@ -42,7 +42,7 @@ public class ProfileUIManager implements ActionListener {
                 card.show(contenedor, PRE_MENU_UI);
                 break;
             case Dictionary_login.DELETE_BUTTON:                                //In the case that the Delete button is pressed
-                new BussinesFacadeImp().deleteAccount(LoginUI.getUsernameLogin());
+                new BusinessFacadeImp().deleteAccount(LoginUI.getUsernameLogin());
                 card.show(contenedor, PRE_MENU_UI);
                 break;
             case Dictionary_login.BACK_BUTTON:                                  //In the case that the Back button is pressed

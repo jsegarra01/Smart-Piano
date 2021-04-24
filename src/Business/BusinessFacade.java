@@ -9,7 +9,7 @@ package Business;
  * @version 1.0 24 Apr 2021
  *
  */
-public interface BussinesFacade {
+public interface BusinessFacade {
 
     /**
      * Checks if the user can log in or not

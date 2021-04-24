@@ -1,6 +1,6 @@
 package Business;
 
-//Imports needed to connect the persistance layer and the business layer
+//Imports needed to connect the persistence layer and the business layer
 import Business.Entities.User;
 import Persistence.SQL.Csv.LoginUserCsvDAO;
 
@@ -15,7 +15,7 @@ import java.util.regex.Pattern;
  * @version 1.0 24 Apr 2021
  *
  */
-public class LoginUserManager {
+public class UserManager {
     LoginUserCsvDAO loginUserManager = new LoginUserCsvDAO();
 
     /**
@@ -58,6 +58,11 @@ public class LoginUserManager {
         return false;
     }
 
+    /**
+     * Checks if the mail format is correct or not
+     * @param email Mail inserted by the user in order to check if it is in a correct format
+     * @return Boolean. If it is correct the format, returns 1. If not, else
+     */
     private boolean isValid(String email) {
         String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\."+ "[a-zA-Z0-9_+&*-]+)*@" + "(?:[a-zA-Z0-9-]+\\.)+[a-z" + "A-Z]{2,7}$";
 

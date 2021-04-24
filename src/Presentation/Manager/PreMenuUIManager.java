@@ -8,6 +8,8 @@ import java.awt.event.ActionListener;
 
 import static Presentation.Dictionary_login.*;
 import static Presentation.Manager.MainFrame.*;
+import static Presentation.Ui_Views.LoginUI.resetUILogin;
+import static Presentation.Ui_Views.SignUpUI.resetUISignUpUI;
 
 /**
  * PreMenuUIManager
@@ -34,9 +36,11 @@ public class PreMenuUIManager implements ActionListener {
        // We distinguish between our buttons.
         switch (e.getActionCommand()) {
             case Dictionary_login.LOG_IN_BUTTON:                    //In the case that the LogIn button is pressed
+                resetUILogin();
                 card.show(contenedor, LOGIN_UI);
                 break;
             case Dictionary_login.SIGN_UP_BUTTON:                   //In the case that the SignUp button is pressed
+                resetUISignUpUI();
                 card.show(contenedor, SIGN_UP_UI);
                 break;
             case Dictionary_login.ENTER_AS_GUEST_BUTTON:            //In the case that the Guest button is pressed

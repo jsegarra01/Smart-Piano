@@ -9,8 +9,8 @@ package Business;
  * @version 1.0 24 Apr 2021
  *
  */
-public class BussinesFacadeImp implements Business.BussinesFacade {
-    LoginUserManager loginUserManager = new LoginUserManager();
+public class BusinessFacadeImp implements Business.BusinessFacade {
+    UserManager loginUserManager = new UserManager();
 
     @Override
     public Boolean logIn(String username, String password) {
