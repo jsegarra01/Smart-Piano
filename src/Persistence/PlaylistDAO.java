@@ -18,13 +18,13 @@ public interface PlaylistDAO {
      *
      * @param playlist
      */
-    void savePlaylist(Playlist playlist);
+    boolean savePlaylist(Playlist playlist);
 
     /**
      *
      * @param playlist
      */
-    void deletePlaylist(Playlist playlist);
+    boolean deletePlaylist(Playlist playlist);
 
     /**
      *
@@ -33,10 +33,4 @@ public interface PlaylistDAO {
      */
     ArrayList<Playlist> getPlaylistByUser(String username);
 
-    /**
-     *
-     * @param id
-     * @return
-     */
-    Playlist getPlaylistById(int id);
 }

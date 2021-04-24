@@ -21,17 +21,12 @@ public interface SongDAO {
      */
     boolean saveSong(Song mySaveSong);
 
-    /**
-     *
-     * @param mySong
-     */
-    void updateSong(Song mySong);
 
     /**
      *
      * @param mySong
      */
-    void deleteSong(Song mySong);
+    boolean deleteSong(Song mySong);
 
     /**
      *
