@@ -29,7 +29,7 @@ public class LoginUI extends JPanel{
     }
 
     private void initialize() {
-        //setLayout(frame.getLayout());
+        setLayout(new BorderLayout());
 
         JPanel userButtons = new JPanel();
         userButtons.setLayout(new BoxLayout(userButtons, BoxLayout.Y_AXIS));
@@ -97,6 +97,7 @@ public class LoginUI extends JPanel{
         buttons.add(Box.createRigidArea(new Dimension(400, 15)));
         buttons.add(done);
         buttons.setBackground(Color.getHSBColor(0, 0, 0.1f));
+        userButtons.add(Box.createRigidArea(new Dimension(400, 200)));
         userButtons.add(buttons);
 
         userButtons.setBackground(Color.getHSBColor(0, 0, 0.1f));
@@ -122,6 +123,7 @@ public class LoginUI extends JPanel{
         JPanel pW = new JPanel();
         pW.setBackground(Color.getHSBColor(0, 0, 0.2f));
         this.add(pW, BorderLayout.WEST);
+
 
         this.add(auxBL);
         this.setVisible(true);

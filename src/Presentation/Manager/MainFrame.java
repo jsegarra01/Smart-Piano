@@ -54,6 +54,7 @@ public class MainFrame extends JFrame {
         contenedor.add(loginUI);
 
         contenedor.setLayout(card);
+        contenedor.setSize(600, 600);
         card.show(contenedor, PRE_MENU_UI);
     }
 }

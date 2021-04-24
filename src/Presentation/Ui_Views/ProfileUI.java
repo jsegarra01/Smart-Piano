@@ -79,7 +79,7 @@ public class ProfileUI extends JPanel{
         userButtons.add(Box.createRigidArea(new Dimension(10, 20)));
         userButtons.add(deleteAccount);
 
-        backBoxLayoutPanel.add(Box.createRigidArea(new Dimension(30, 300)));
+        backBoxLayoutPanel.add(Box.createRigidArea(new Dimension(30, 500)));
         backBoxLayoutPanel.add(back);
         backBoxLayoutPanel.setBackground(Color.getHSBColor(0, 0, 0.1f));
 
