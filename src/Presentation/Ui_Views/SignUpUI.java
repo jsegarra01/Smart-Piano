@@ -148,7 +148,6 @@ public class SignUpUI extends JPanel {
         auxBL.setLayout(new BorderLayout());
 
         auxBL.add(userButtons, BorderLayout.CENTER);
-        //auxBL.add(buttons, BorderLayout.SOUTH);
         auxBL.setBackground(Color.getHSBColor(0, 0, 0.1f));
 
         JPanel pN = new JPanel();

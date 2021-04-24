@@ -123,12 +123,8 @@ public class LoginUI extends JPanel{
         pW.setBackground(Color.getHSBColor(0, 0, 0.2f));
         this.add(pW, BorderLayout.WEST);
 
-        //add(background);
         this.add(auxBL);
-
-        this.setSize(600, 400);
-        this.revalidate();
-        this.repaint();
+        this.setVisible(true);
     }
 
     /**
