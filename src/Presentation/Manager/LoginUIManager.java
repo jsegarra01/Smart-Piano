@@ -5,6 +5,7 @@ import Business.BusinessFacadeImp;
 import Presentation.Dictionary_login;
 import Presentation.Ui_Views.LoginUI;
 
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -43,6 +44,9 @@ public class LoginUIManager implements ActionListener {
             case Dictionary_login.DONE_BUTTON:                          //In the case that the Done button is pressed
                 BusinessFacadeImp bussinesFacadeImp = new BusinessFacadeImp();
                 if(bussinesFacadeImp.logIn(LoginUI.getUsernameLogin(), LoginUI.getPasswordLogin())) card.show(contenedor, TEMP_FREE_PIANO_UI);
+                else{
+                    JOptionPane.showMessageDialog(contenedor, "Incorrect username or password", "LogIn error" , JOptionPane.ERROR_MESSAGE);
+                }
                 break;
         }
     }

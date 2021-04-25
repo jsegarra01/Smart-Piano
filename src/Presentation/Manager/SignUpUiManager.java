@@ -4,6 +4,7 @@ package Presentation.Manager;
 import Business.BusinessFacadeImp;
 import Presentation.Dictionary_login;
 
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -41,6 +42,9 @@ public class SignUpUiManager  implements ActionListener {
                 break;
             case Dictionary_login.DONE_BUTTON:              //In the case that the Done button is pressed
                 if (new BusinessFacadeImp().SignUp(getUsernameSignUp(), getMailSignUp(), getPasswordSignUp(), getPasswordConfirmSignUp())) {card.show(contenedor, TEMP_FREE_PIANO_UI);}
+                else{
+                    JOptionPane.showMessageDialog(contenedor, "Values introduced were not accepted", "SignUp error" , JOptionPane.ERROR_MESSAGE);
+                }
                 break;
             }
         }
