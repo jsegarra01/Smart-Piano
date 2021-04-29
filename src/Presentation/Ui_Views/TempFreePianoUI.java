@@ -48,8 +48,8 @@ public class TempFreePianoUI extends JPanel {
     /**private JTextField hey;*/
 
     private ArrayList<Tile> keyboard;
-    private String whiteTileLoc = "Files/drawable/black-key.png";
-    private String blackTileLoc = "Files/drawable/white-key.png";
+    private String whiteTileLoc = "Files/drawable/white-key.png";
+    private String blackTileLoc = "Files/drawable/black-key.png";
     /*
     private String[] whiteKeys =
             { "C", "D", "E", "F", "G", "A", "B"};
@@ -95,8 +95,8 @@ public class TempFreePianoUI extends JPanel {
     private JPanel configurePanel(){
         JPanel panel = new JPanel(new BorderLayout());
         panel.setBackground(Color.black);
-        panel.add(initMenu(),BorderLayout.PAGE_START);
         panel.add(initWhiteKeys(15),BorderLayout.CENTER);
+        panel.add(initMenu(),BorderLayout.PAGE_START);
         return panel;
     }
     private JPanel initWhiteKeys(int a) {
@@ -162,7 +162,7 @@ public class TempFreePianoUI extends JPanel {
      * Method to add the action listeners to the buttons
      * @param listener The action listener
      */
-    private void registerController(ActionListener listener) {
+    private void registerController(TempFreePianoUIManager listener) {
         profile.addActionListener(listener);
         returnB.addActionListener(listener);
         recordB.addActionListener(listener);
@@ -170,9 +170,9 @@ public class TempFreePianoUI extends JPanel {
         synthSoundB.addActionListener(listener);
         nextSynther.addActionListener(listener);
         prevSynther.addActionListener(listener);
+        this.addKeyListener(listener.getKeyListener());
         for (Tile tile : keyboard) {
             tile.addActionListener(listener);
-            //tile.addKeyListener(KL);
         }
     }
 

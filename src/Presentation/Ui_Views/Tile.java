@@ -11,7 +11,7 @@ public class Tile extends JButton {
     public Tile(String name, Color myColor, String pathImage){
         this.name = name;
         this.myImage = new ImageIcon(pathImage);
-        //this.setBackground(myColor);
+        this.setBackground(myColor);
         this.setBackground(Color.black);
         this.setIcon(resizeIcon(this.myImage, Math.round(this.myImage.getIconWidth()*SIZE_MULT), Math.round(this.myImage.getIconHeight()*SIZE_MULT)));
         this.setPreferredSize(new Dimension(Math.round(this.myImage.getIconWidth()*SIZE_MULT), Math.round(this.myImage.getIconHeight()*SIZE_MULT)));

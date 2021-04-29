@@ -7,8 +7,11 @@ import Presentation.Ui_Views.Tile;
 import Business.Entities.MidiHelper;
 import Business.Entities.Translator;
 
+import javax.sound.midi.MidiUnavailableException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.Objects;
 
 import static Presentation.Dictionary_login.PROFILE_UI;
@@ -29,12 +32,33 @@ public class TempFreePianoUIManager implements ActionListener {
 
     public static String SOUND_TYPE = "SYNTH";
     public static int SOUND_SYNTHER = 127;
-    private MidiHelper midiHelp;
+    private MidiHelper finalMidiHelper;
+    MidiHelper midiHelper = null;
+    private KeyListener KL;
 
     /**
      * Parametrized constructor
      */
     public TempFreePianoUIManager() {
+        try {
+            midiHelper = new MidiHelper();
+        } catch (MidiUnavailableException exception) {
+            exception.printStackTrace();
+        }
+        this.finalMidiHelper = midiHelper;
+        this.KL = new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                finalMidiHelper.playSomething(Translator.getNumberNoteFromName(Translator.getCodeFromKey(e)), SOUND_SYNTHER);
+            }
+            @Override
+            public void keyPressed(KeyEvent e) {
+                finalMidiHelper.playSomething(Translator.getNumberNoteFromName(Translator.getCodeFromKey(e)), SOUND_SYNTHER);
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {
+            }
+        };
     }
 
     /**
@@ -60,7 +84,7 @@ public class TempFreePianoUIManager implements ActionListener {
             case TempFreePianoUI.BTN_NEXT_SYNTHER:
                 if(SOUND_SYNTHER <= 127){
                     SOUND_SYNTHER++;
-                    TempFreePianoUI.setTypeName(midiHelp.getInstrument());
+                    TempFreePianoUI.setTypeName(finalMidiHelper.getInstrument());
                 }else{
                     SOUND_SYNTHER = 0;
                 }
@@ -68,7 +92,7 @@ public class TempFreePianoUIManager implements ActionListener {
             case TempFreePianoUI.BTN_PREV_SYNTHER:
                 if(SOUND_SYNTHER >= 1){
                     SOUND_SYNTHER--;
-                    TempFreePianoUI.setTypeName(midiHelp.getInstrument());
+                    TempFreePianoUI.setTypeName(finalMidiHelper.getInstrument());
                 }else{
                     SOUND_SYNTHER = 127;
                 }
@@ -79,11 +103,14 @@ public class TempFreePianoUIManager implements ActionListener {
                 if (obj instanceof Tile) {
                     t = (Tile) obj;
                 }
-                midiHelp.playSomething(Translator.getNumberNoteFromName(Objects.requireNonNull(t).getName()),SOUND_SYNTHER);
+                finalMidiHelper.playSomething(Translator.getNumberNoteFromName(Objects.requireNonNull(t).getName()),SOUND_SYNTHER);
                 break;
             case Dictionary_login.PROFILE_BUTTON:       //In the case that the Profile button is pressed
                 card.show(contenedor, PROFILE_UI);
                 break;
         }
+    }
+    public KeyListener getKeyListener(){
+        return this.KL;
     }
 }
