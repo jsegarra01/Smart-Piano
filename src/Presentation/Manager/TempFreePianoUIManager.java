@@ -1,11 +1,11 @@
 package Presentation.Manager;
 
 //Imports needed from the dictionary, events and mainframe
-import Presentation.Dictionary_login;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import static Presentation.Dictionary_login.PROFILE_BUTTON;
 import static Presentation.Dictionary_login.PROFILE_UI;
 import static Presentation.Manager.MainFrame.card;
 import static Presentation.Manager.MainFrame.contenedor;
@@ -35,7 +35,7 @@ public class TempFreePianoUIManager implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         // We distinguish between our buttons.
         switch (e.getActionCommand()) {
-            case Dictionary_login.PROFILE_BUTTON:       //In the case that the Profile button is pressed
+            case PROFILE_BUTTON:       //In the case that the Profile button is pressed
                 card.show(contenedor, PROFILE_UI);
                 break;
         }

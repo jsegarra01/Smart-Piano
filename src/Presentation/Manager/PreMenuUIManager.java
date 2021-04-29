@@ -2,8 +2,6 @@ package Presentation.Manager;
 
 //Imports needed from the dictionary, events and mainframe
 import Business.BusinessFacadeImp;
-import Presentation.Dictionary_login;
-import Presentation.Ui_Views.LoginUI;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -38,15 +36,15 @@ public class PreMenuUIManager implements ActionListener {
     public void actionPerformed(ActionEvent e) {
        // We distinguish between our buttons.
         switch (e.getActionCommand()) {
-            case Dictionary_login.LOG_IN_BUTTON:                    //In the case that the LogIn button is pressed
+            case LOG_IN_BUTTON:                    //In the case that the LogIn button is pressed
                 resetUILogin();
                 card.show(contenedor, LOGIN_UI);
                 break;
-            case Dictionary_login.SIGN_UP_BUTTON:                   //In the case that the SignUp button is pressed
+            case SIGN_UP_BUTTON:                   //In the case that the SignUp button is pressed
                 resetUISignUpUI();
                 card.show(contenedor, SIGN_UP_UI);
                 break;
-            case Dictionary_login.ENTER_AS_GUEST_BUTTON:            //In the case that the Guest button is pressed
+            case ENTER_AS_GUEST_BUTTON:            //In the case that the Guest button is pressed
                 new BusinessFacadeImp().logIn("guest", "password");
                 setUsernameLogin("guest");
                 card.show(contenedor,TEMP_FREE_PIANO_UI);

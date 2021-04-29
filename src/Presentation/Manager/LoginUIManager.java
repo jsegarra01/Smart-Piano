@@ -2,7 +2,6 @@ package Presentation.Manager;
 
 //Imports needed from the dictionary, events and mainframe
 import Business.BusinessFacadeImp;
-import Presentation.Dictionary_login;
 import Presentation.Ui_Views.LoginUI;
 
 import javax.swing.*;
@@ -38,10 +37,10 @@ public class LoginUIManager implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         // We distinguish between our buttons.
         switch (e.getActionCommand()) {
-            case Dictionary_login.BACK_BUTTON:                          //In the case that the Back button is pressed
+            case BACK_BUTTON:                          //In the case that the Back button is pressed
                 card.show(contenedor, PRE_MENU_UI);
                 break;
-            case Dictionary_login.DONE_BUTTON:                          //In the case that the Done button is pressed
+            case DONE_BUTTON:                          //In the case that the Done button is pressed
                 if(new BusinessFacadeImp().logIn(LoginUI.getUsernameLogin(), LoginUI.getPasswordLogin())) card.show(contenedor, TEMP_FREE_PIANO_UI);
                 else{JOptionPane.showMessageDialog(contenedor, "Incorrect username or password", "LogIn error" , JOptionPane.ERROR_MESSAGE);}
                 break;
