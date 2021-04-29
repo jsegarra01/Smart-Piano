@@ -48,16 +48,13 @@ public class TempFreePianoUIManager implements ActionListener {
         this.finalMidiHelper = midiHelper;
         this.KL = new KeyListener() {
             @Override
-            public void keyTyped(KeyEvent e) {
-                //finalMidiHelper.playSomething(Translator.getNumberNoteFromName(Translator.getCodeFromKey(e)), SOUND_SYNTHER);
-            }
+            public void keyTyped(KeyEvent e) {}
             @Override
             public void keyPressed(KeyEvent e) {
                 finalMidiHelper.playSomething(Translator.getNumberNoteFromName(Translator.getCodeFromKey(e)), SOUND_SYNTHER);
             }
             @Override
-            public void keyReleased(KeyEvent e) {
-            }
+            public void keyReleased(KeyEvent e) {}
         };
     }
 
@@ -102,6 +99,11 @@ public class TempFreePianoUIManager implements ActionListener {
                 Object obj = e.getSource();
                 if (obj instanceof Tile) {
                     t = (Tile) obj;
+                }
+                try {
+                    t.setIcon();
+                } catch (InterruptedException interruptedException) {
+                    interruptedException.printStackTrace();
                 }
                 finalMidiHelper.playSomething(Translator.getNumberNoteFromName(Objects.requireNonNull(t).getName()),SOUND_SYNTHER);
                 break;

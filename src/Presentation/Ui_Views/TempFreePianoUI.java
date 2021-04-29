@@ -48,8 +48,8 @@ public class TempFreePianoUI extends JPanel {
     /**private JTextField hey;*/
 
     private ArrayList<Tile> keyboard;
-    private String whiteTileLoc = "Files/drawable/white-key.png";
-    private String blackTileLoc = "Files/drawable/black-key.png";
+    public static String whiteTileLoc = "Files/drawable/white-key.png";
+    public static String blackTileLoc = "Files/drawable/black-key.png";
     /*
     private String[] whiteKeys =
             { "C", "D", "E", "F", "G", "A", "B"};
@@ -180,5 +180,18 @@ public class TempFreePianoUI extends JPanel {
     public static void setTypeName(String name){
         soundType.setText(name);
     }
+    /*public void setImg(boolean type){
+        if(type){
+            String path = "Files/drawable/white-key-down.png";
+            for (int i = 0; i < keyboard.size(); i++) {
+                Tile tileToSet = new Tile(whiteNotes[i], colors[i%7], path);
+                keyboard.set(i, tileToSet);
+            }
+
+            Tiles.add(this.keyboard.get(i),c);
+        }else{
+            this.whiteTileLoc = "Files/drawable/white-key.png";
+        }
+    }*/
 
 }
