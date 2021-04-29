@@ -173,6 +173,7 @@ public class TempFreePianoUI extends JPanel {
         this.addKeyListener(listener.getKeyListener());
         for (Tile tile : keyboard) {
             tile.addActionListener(listener);
+            tile.addKeyListener(listener.getKeyListener());
         }
     }
 
