@@ -22,15 +22,6 @@ public class LoginUserCsvDAO implements LoginUserDAO{
 
      */
 
-    // Connection to use in order to connect to the MySQL database
-    private final Connection connection;
-
-    /**
-     * Constructor method to set the connection
-     */
-    public LoginUserCsvDAO(){
-        connection = ConnectSQL.getInstance();
-    }
 
     /**
      * Method that gets the user from the database
@@ -39,7 +30,7 @@ public class LoginUserCsvDAO implements LoginUserDAO{
      * @return Class that stores the User
      */
     private User userFromCsv(String myUserString, String state) throws SQLException {
-        ResultSet myRs = connection.createStatement().executeQuery("select * from UserT as u where u." + state +
+        ResultSet myRs = ConnectSQL.getInstance().createStatement().executeQuery("select * from UserT as u where u." + state +
                 "= '" + myUserString + "'");
         return myRsToUser(myRs);
 
@@ -73,7 +64,7 @@ public class LoginUserCsvDAO implements LoginUserDAO{
      */
     private boolean userToCsv(User myUser){
         try {
-            PreparedStatement st = connection.prepareStatement("insert into UserT values ('" + myUser.getUserName() +
+            PreparedStatement st = ConnectSQL.getInstance().prepareStatement("insert into UserT values ('" + myUser.getUserName() +
                     "', '" + myUser.getMail() + "', '" + myUser.getPassword() + "')");
             st.execute();
             return true;
@@ -110,7 +101,7 @@ public class LoginUserCsvDAO implements LoginUserDAO{
     @Override
     public boolean delete(User myUser) {
         try {
-            PreparedStatement st = connection.prepareStatement("delete from UserT where username = '" + myUser.getUserName() + "'");
+            PreparedStatement st = ConnectSQL.getInstance().prepareStatement("delete from UserT where username = '" + myUser.getUserName() + "'");
             st.execute();
             return true;
         } catch (SQLException e) {

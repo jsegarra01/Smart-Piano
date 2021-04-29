@@ -20,15 +20,6 @@ import java.util.ArrayList;
  */
 public class PlaylistCsvDAO implements PlaylistDAO {
 
-    // Connection to use in order to connect to the MySQL database
-    private final Connection connection;
-
-    /**
-     *
-     */
-    public PlaylistCsvDAO(){
-        connection = ConnectSQL.getInstance();
-    }
 
     /**
      *
@@ -37,9 +28,9 @@ public class PlaylistCsvDAO implements PlaylistDAO {
     @Override
     public boolean savePlaylist(Playlist playlist) {
         try {
-            PreparedStatement st2 = connection.prepareStatement("insert into PlaylistT values (" + ")");
+            PreparedStatement st2 = ConnectSQL.getInstance().prepareStatement("insert into PlaylistT values (" + ")");
             st2.execute();
-            PreparedStatement st = connection.prepareStatement("insert into SongPlaylistsT ");
+            PreparedStatement st = ConnectSQL.getInstance().prepareStatement("insert into SongPlaylistsT ");
             st.execute();
 
             return true;
@@ -55,10 +46,10 @@ public class PlaylistCsvDAO implements PlaylistDAO {
     @Override
     public boolean deletePlaylist(Playlist playlist) {
         try {
-            PreparedStatement st = connection.prepareStatement("delete from SongPlaylistsT where playlistId = '" +
+            PreparedStatement st = ConnectSQL.getInstance().prepareStatement("delete from SongPlaylistsT where playlistId = '" +
                     playlist.getPlaylistId() + "'");
             st.execute();
-            PreparedStatement st2 = connection.prepareStatement("delete from PlaylistT where playlistId = '" +
+            PreparedStatement st2 = ConnectSQL.getInstance().prepareStatement("delete from PlaylistT where playlistId = '" +
                     playlist.getPlaylistId() + "'");
             st2.execute();
             return true;
@@ -74,7 +65,7 @@ public class PlaylistCsvDAO implements PlaylistDAO {
      * @throws SQLException
      */
     private ArrayList<Song> getSongsForPlaylist(int id) throws SQLException {
-        ResultSet myRs2 = connection.createStatement().executeQuery(
+        ResultSet myRs2 = ConnectSQL.getInstance().createStatement().executeQuery(
                 "select so.* from SongT as so inner join SongPlaylistsT as sp on sp.songId = so.songId and " +
                         "sp.playlistId = " + id);
         ArrayList<Song> songs = new ArrayList<>();
@@ -101,7 +92,7 @@ public class PlaylistCsvDAO implements PlaylistDAO {
     @Override
     public ArrayList<Playlist> getPlaylistByUser(String username) {
         try {
-            ResultSet myRs = connection.createStatement().executeQuery("select * from PlaylistT as p " +
+            ResultSet myRs = ConnectSQL.getInstance().createStatement().executeQuery("select * from PlaylistT as p " +
                     "where p.username like '" + username + "'");
             ArrayList<Playlist> playlists = new ArrayList<>();
             while(myRs.next()){
