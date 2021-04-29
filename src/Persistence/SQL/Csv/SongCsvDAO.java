@@ -16,16 +16,7 @@ import java.util.*;
  * @version 1.0 22 Apr 2021
  */
 public class SongCsvDAO implements SongDAO {
-    
-    // Connection to use in order to connect to the MySQL database
-    private final Connection connection;
 
-    /**
-     *
-     */
-    public SongCsvDAO(){
-        connection = ConnectSQL.getInstance();
-    }
 
     /**
      * Method that gets all the songs from the database created by a user
@@ -34,7 +25,7 @@ public class SongCsvDAO implements SongDAO {
      */
     private ArrayList<Song> songFromCsv(String myUserString){
         try {
-            ResultSet myRs = connection.createStatement().executeQuery("select * from SongT as s where s.username " +
+            ResultSet myRs = ConnectSQL.getInstance().createStatement().executeQuery("select * from SongT as s where s.username " +
                     "like '" + myUserString + "'");
             ArrayList<Song> songs = myRsToSongs(myRs);
             myRs.close();
@@ -75,7 +66,7 @@ public class SongCsvDAO implements SongDAO {
     @Override
     public boolean saveSong(Song mySaveSong) {
         try {
-            PreparedStatement st = connection.prepareStatement("insert into SongT values (" +
+            PreparedStatement st = ConnectSQL.getInstance().prepareStatement("insert into SongT values (" +
                     mySaveSong.getSongId() + ", '" +
                     mySaveSong.getSongName() + "', '" +
                     mySaveSong.getAuthorName() + "', '" +
@@ -100,7 +91,7 @@ public class SongCsvDAO implements SongDAO {
     @Override
     public boolean deleteSong(Song mySong) {
         try {
-            PreparedStatement st = connection.prepareStatement("delete from SongT where songId = '" +
+            PreparedStatement st = ConnectSQL.getInstance().prepareStatement("delete from SongT where songId = '" +
                     mySong.getSongId() + "'");
             st.execute();
             return true;
@@ -117,7 +108,7 @@ public class SongCsvDAO implements SongDAO {
     @Override
     public Song getSongByID(int id) {
         try {
-            ResultSet myRs = connection.createStatement().executeQuery("select * from SongT as s where s.songId = " + id);
+            ResultSet myRs = ConnectSQL.getInstance().createStatement().executeQuery("select * from SongT as s where s.songId = " + id);
             if(myRs.next()){
                 Song song = new Song(
                         myRs.getInt("songId"),
@@ -162,7 +153,7 @@ public class SongCsvDAO implements SongDAO {
     @Override
     public ArrayList<Song> getPopularSongs() {
         try {
-            ResultSet myRs = connection.createStatement().executeQuery(
+            ResultSet myRs = ConnectSQL.getInstance().createStatement().executeQuery(
                     "SELECT s.* " +
                             "FROM SongT as s inner join SongStatisticsGeneralT as ssg on ssg.songId = s.songId " +
                             "ORDER BY MAX(ssg.timesPlayed) DESC LIMIT 5");
