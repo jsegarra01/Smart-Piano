@@ -28,7 +28,7 @@ public class UserManager {
         User user;
         user = loginUserManager.getByUsername(username);
 
-        if(user == null) return false;
+        if (user == null) return false;
 
         return user.getPassword().equals(password);
     }
@@ -39,9 +39,9 @@ public class UserManager {
      */
     public void deleteUser(String username) {
         User user = loginUserManager.getByUsername(username);
-
-        loginUserManager.delete(user);
-        System.out.println(username);
+        if (!user.getUserName().equals("guest")) {
+            loginUserManager.delete(user);
+        }
     }
 
     /**

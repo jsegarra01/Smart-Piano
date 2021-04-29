@@ -1,7 +1,9 @@
 package Presentation.Manager;
 
 //Imports needed from the dictionary, events and mainframe
+import Business.BusinessFacadeImp;
 import Presentation.Dictionary_login;
+import Presentation.Ui_Views.LoginUI;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,6 +11,7 @@ import java.awt.event.ActionListener;
 import static Presentation.Dictionary_login.*;
 import static Presentation.Manager.MainFrame.*;
 import static Presentation.Ui_Views.LoginUI.resetUILogin;
+import static Presentation.Ui_Views.LoginUI.setUsernameLogin;
 import static Presentation.Ui_Views.SignUpUI.resetUISignUpUI;
 
 /**
@@ -44,7 +47,8 @@ public class PreMenuUIManager implements ActionListener {
                 card.show(contenedor, SIGN_UP_UI);
                 break;
             case Dictionary_login.ENTER_AS_GUEST_BUTTON:            //In the case that the Guest button is pressed
-                //TODO: ENTER AS A GUEST USER
+                new BusinessFacadeImp().logIn("guest", "password");
+                setUsernameLogin("guest");
                 card.show(contenedor,TEMP_FREE_PIANO_UI);
                 break;
         }
