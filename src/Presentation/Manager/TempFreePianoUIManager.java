@@ -31,7 +31,7 @@ import static Presentation.Manager.MainFrame.contenedor;
 public class TempFreePianoUIManager implements ActionListener {
 
     public static String SOUND_TYPE = "SYNTH";
-    public static int SOUND_SYNTHER = 127;
+    public static int SOUND_SYNTHER = 0 ;
     private MidiHelper finalMidiHelper;
     MidiHelper midiHelper = null;
     private KeyListener KL;
@@ -49,7 +49,7 @@ public class TempFreePianoUIManager implements ActionListener {
         this.KL = new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {
-                finalMidiHelper.playSomething(Translator.getNumberNoteFromName(Translator.getCodeFromKey(e)), SOUND_SYNTHER);
+                //finalMidiHelper.playSomething(Translator.getNumberNoteFromName(Translator.getCodeFromKey(e)), SOUND_SYNTHER);
             }
             @Override
             public void keyPressed(KeyEvent e) {
