@@ -25,8 +25,8 @@ public class Tile extends JButton {
     public void setIcon() throws InterruptedException {
         this.myImage = new ImageIcon("Files/drawable/white-key-down.png");
         this.setIcon(resizeIcon(this.myImage, Math.round(this.myImage.getIconWidth()*SIZE_MULT), Math.round(this.myImage.getIconHeight()*SIZE_MULT)));
-        Thread.sleep(5000);
-        this.myImage = new ImageIcon("Files/drawable/white-key.png");
-        this.setIcon(resizeIcon(this.myImage, Math.round(this.myImage.getIconWidth()*SIZE_MULT), Math.round(this.myImage.getIconHeight()*SIZE_MULT)));
+//        Thread.sleep(5000);
+//        this.myImage = new ImageIcon("Files/drawable/white-key.png");
+//        this.setIcon(resizeIcon(this.myImage, Math.round(this.myImage.getIconWidth()*SIZE_MULT), Math.round(this.myImage.getIconHeight()*SIZE_MULT)));
     }
 }
