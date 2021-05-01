@@ -2,6 +2,8 @@ package Presentation.Manager;
 
 //Imports needed from the dictionary, events and mainframe
 
+import javax.sound.midi.MidiUnavailableException;
+import java.awt.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -40,13 +42,12 @@ public class TempFreePianoUIManager implements ActionListener {
         switch (e.getActionCommand()) {
             case PROFILE_BUTTON:       //In the case that the Profile button is pressed
                 card.show(contenedor, PROFILE_UI);
-                break;
             case LOG_IN_BUTTON:
-                CardLayout cc = (CardLayout)(centralPanel.getLayout());
+                CardLayout cc = (CardLayout) (centralPanel.getLayout());
                 cc.show(centralPanel, PIANO_TILES_UI_GAME);
                 break;
             case SIGN_UP_BUTTON:
-                CardLayout c2c = (CardLayout)(centralPanel.getLayout());
+                CardLayout c2c = (CardLayout) (centralPanel.getLayout());
                 c2c.show(centralPanel, PIANO_TILES_UI_SELECTOR);
                 break;
         }
