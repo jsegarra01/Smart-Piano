@@ -5,10 +5,14 @@ import Presentation.Manager.MainFrame;
 import Presentation.Manager.PianoFrameManager;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.util.ArrayList;
 
 import static Presentation.Dictionary_login.PROFILE_BUTTON;
+import static Presentation.Ui_Views.Tile.SIZE_MULT_HEIGHT;
+import static Presentation.Ui_Views.Tile.resizeIcon;
+import static javax.swing.SwingConstants.CENTER;
 
 public class FreePianoUI extends JPanel {
     private MainFrame mainFrame;
@@ -68,12 +72,18 @@ public class FreePianoUI extends JPanel {
      */
     private void initialize() {
         this.add(configurePanel());
+        this.setBackground(Color.getHSBColor(0,0,0.2f));
     }
 
     private JPanel configurePanel() {
         JPanel panel = new JPanel(new BorderLayout());
-        panel.setBackground(Color.black);
-        panel.add(initWhiteKeys(15), BorderLayout.CENTER);
+        panel.setBackground(Color.getHSBColor(0,0,0.2f));
+
+        //All information will go inside here
+        panel.add(Box.createRigidArea(new Dimension(10, 200)), BorderLayout.CENTER);
+
+        SIZE_MULT_HEIGHT = 1.31f;
+        panel.add(initWhiteKeys(15), BorderLayout.SOUTH);
         panel.add(initMenu(), BorderLayout.PAGE_START);
 
         return panel;
@@ -84,7 +94,6 @@ public class FreePianoUI extends JPanel {
         JPanel Tiles = new JPanel();
         Tile tile;
         Tiles.setLayout(new GridLayout());
-        Tiles.setBackground(Color.black);
         c.gridy = 0;
         for (int i = 0; i < a; i++) {
             c.gridx = i;
@@ -93,19 +102,26 @@ public class FreePianoUI extends JPanel {
             this.keyboard.add(tile);
             Tiles.add(this.keyboard.get(i), c);
         }
+
+        Tiles.setBorder(new EmptyBorder(4,4,4,4));
         Tiles.setBackground(Color.black);
+
         return Tiles;
     }
 
     private JPanel initMenu() {
+        JPanel layout = new JPanel(new BorderLayout());
         JPanel menu = new JPanel();
-        menu.setBackground(Color.black);
+        menu.setBackground(Color.getHSBColor(0,0,80.3f));
 
         soundType = new Label(JLAB_SYNTH_TYPE);
         soundType.setBackground(Color.WHITE);
 
-        //profile.setAlignmentX(0.5f);
         //profile.setBorder(new EmptyBorder(12,120,12,120));
+        //profile.setBackground(Color.getHSBColor(0,0,0.2f));
+        profile.setBackground(Color.black);
+        profile.setIcon(new ImageIcon("Files/drawable/profile-picture.png"));
+        profile.setIcon(resizeIcon((ImageIcon) profile.getIcon(), (int) Math.round(profile.getIcon().getIconWidth()*0.15), (int) Math.round(profile.getIcon().getIconHeight()*0.15)));
 
         menu.add(profile);
         menu.add(returnB);
@@ -116,11 +132,13 @@ public class FreePianoUI extends JPanel {
         menu.add(prevSynther);
         menu.add(soundType);
 
-        registerController3(new FreePianoUIManager());
-        return menu;
+        registerController(new FreePianoUIManager());
+        layout.add(menu, BorderLayout.WEST);
+        layout.setBackground(Color.getHSBColor(0,0,0.2f));
+        return layout;
     }
 
-    private void registerController3(FreePianoUIManager listener) {
+    private void registerController(FreePianoUIManager listener) {
         profile.addActionListener(listener);
         returnB.addActionListener(listener);
         recordB.addActionListener(listener);

@@ -15,24 +15,68 @@ import java.awt.*;
  * @version 2.0 24 Apr 2021
  *
  */
-public class PianoTilesUISelector extends JPanel {
-    /*
-     private JLabel pianoText = new JLabel(SMART_PIANO_TEXT);
-     private JLabel logInText = new JLabel(LOG_IN_TEXT);
+import Presentation.Manager.PianoTilesUISelectorManager;
+import Presentation.Manager.MainFrame;
+import Presentation.Manager.PianoFrameManager;
 
-     private static JTextField usernameTextField = new JTextField();
-     private static JPasswordField password = new JPasswordField();
-     private JButton back = new JButton(BACK_BUTTON);
-     private JButton done = new JButton(DONE_BUTTON);*/
+import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+import java.awt.*;
+import java.util.ArrayList;
+
+import static Presentation.Dictionary_login.PROFILE_BUTTON;
+import static Presentation.Ui_Views.Tile.SIZE_MULT_HEIGHT;
+import static Presentation.Ui_Views.Tile.resizeIcon;
+public class PianoTilesUISelector extends JPanel {
     private MainFrame mainFrame;
+
+    public static final String BTN_RETURN = "BTN_RETURN";
+    public static final String BTN_RECORD = "BTN_RECORD";
+    public static final String BTN_SUSTAIN_SOUND = "BTN_SUSTAIN_SOUND";
+    public static final String BTN_SYNTH_SOUND = "BTN_SYNTH_SOUND";
+    public static final String BTN_TILE = "SOUND";
+    public static final String BTN_NEXT_SYNTHER = "++";
+    public static final String BTN_PREV_SYNTHER = "--";
+    public static final String JLAB_SYNTH_TYPE = "Classic Piano";
+    private static Label soundType;
+
+
+    private final JButton returnB = new JButton(BTN_RETURN);
+    private final JButton recordB = new JButton(BTN_RECORD);
+    private final JButton pianoSoundB = new JButton(BTN_SUSTAIN_SOUND);
+    private final JButton synthSoundB = new JButton(BTN_SYNTH_SOUND);
+    private final JButton nextSynther = new JButton(BTN_NEXT_SYNTHER);
+    private final JButton prevSynther = new JButton(BTN_PREV_SYNTHER);
+    private final JButton profile = new JButton(PROFILE_BUTTON);
+
+    /**
+     * private JTextField hey;
+     */
+
+    private ArrayList<Tile> keyboard;
+    public static String whiteTileLoc = "Files/drawable/white-key.png";
+    public static String blackTileLoc = "Files/drawable/black-key.png";
+    /*
+    private String[] whiteKeys =
+            { "C", "D", "E", "F", "G", "A", "B"};
+    private String[] blackKeys =
+            { "C#", "D#", "F#", "G#", "A#"};*/
+    public static final String[] whiteNotes =
+            {"2c", "2d", "2e", "2f", "2g", "2a", "2b", "3c", "3d", "3e", "3f", "3g", "3a", "3b", "4c"};
+    public static final String[] blackNotes =
+            {"2c#", "2d#", "", "2f#", "2g#", "2a#", "", "3c#", "3d#", "", "3f#", "3g#", "3a#"};
+    private Color[] colors =
+            {Color.red, Color.orange, Color.yellow, Color.green, Color.blue, Color.magenta, Color.pink};
 
     /**
      * Constructor for the PianoTilesUISelector, you need to send the mainframe context and will create a card layout
+     *
      * @param mainFrame context necessary to create the card layout
      */
     public PianoTilesUISelector(final MainFrame mainFrame) {
         super();
-        this.mainFrame=mainFrame;
+        this.mainFrame = mainFrame;
+        this.keyboard = new ArrayList<>();
         initialize();
     }
 
@@ -40,8 +84,76 @@ public class PianoTilesUISelector extends JPanel {
      * The initialize function that creates the card layout for the PianoTilesUISelector
      */
     private void initialize() {
-        this.setLayout(new BorderLayout());
+        this.add(configurePanel());
+        this.setBackground(Color.getHSBColor(0,0,0.2f));
+    }
 
-        this.setBackground(Color.black);
+    private JPanel configurePanel() {
+        JPanel panel = new JPanel(new BorderLayout());
+        panel.setBackground(Color.getHSBColor(0,0,0.2f));
+
+        //This will be another card layout, which we will have to divide between the free piano or the song piano in order use the same piano for both
+        panel.add(Box.createRigidArea(new Dimension(10, 300)), BorderLayout.CENTER);
+
+        SIZE_MULT_HEIGHT = 0.95f;
+        panel.add(initWhiteKeys(15), BorderLayout.SOUTH);
+        panel.add(initMenu(), BorderLayout.PAGE_START);
+
+        return panel;
+    }
+
+    private JPanel initWhiteKeys(int a) {
+        GridBagConstraints c = new GridBagConstraints();
+        JPanel Tiles = new JPanel();
+        Tile tile;
+        Tiles.setLayout(new GridLayout());
+        c.gridy = 0;
+        for (int i = 0; i < a; i++) {
+            c.gridx = i;
+            tile = new Tile(whiteNotes[i], colors[i % 7], whiteTileLoc);
+            tile.setActionCommand(BTN_TILE);
+            this.keyboard.add(tile);
+            Tiles.add(this.keyboard.get(i), c);
+        }
+
+        Tiles.setBorder(new EmptyBorder(4,4,4,4));
+        Tiles.setBackground(Color.black);
+
+        return Tiles;
+    }
+
+    private JPanel initMenu() {
+        JPanel menu = new JPanel();
+        menu.setBackground(Color.getHSBColor(0,0,80.3f));
+
+        soundType = new Label(JLAB_SYNTH_TYPE);
+        soundType.setBackground(Color.WHITE);
+
+        profile.setBackground(Color.black);
+        profile.setIcon(new ImageIcon("Files/drawable/profile-picture.png"));
+        profile.setIcon(resizeIcon((ImageIcon) profile.getIcon(), (int) Math.round(profile.getIcon().getIconWidth()*0.15), (int) Math.round(profile.getIcon().getIconHeight()*0.15)));
+
+        menu.add(profile);
+        registerController(new PianoTilesUISelectorManager());
+        return menu;
+    }
+
+    private void registerController(PianoTilesUISelectorManager listener) {
+        profile.addActionListener(listener);
+        returnB.addActionListener(listener);
+        recordB.addActionListener(listener);
+        pianoSoundB.addActionListener(listener);
+        synthSoundB.addActionListener(listener);
+        nextSynther.addActionListener(listener);
+        prevSynther.addActionListener(listener);
+        this.addKeyListener(listener.getKeyListener());
+        for (Tile tile : keyboard) {
+            tile.addActionListener(listener);
+            tile.addKeyListener(listener.getKeyListener());
+        }
+    }
+
+    public static void setTypeName(String name) {
+        soundType.setText(name);
     }
 }
