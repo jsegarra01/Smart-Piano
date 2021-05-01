@@ -55,7 +55,7 @@ public class TempFreePianoUI extends JPanel {
      * The initialize function that creates the card layout for the TempFreePianoUI
      */
     private void initialize() {
-        mainFrame.setTitle("I am a piano");
+        mainFrame.setTitle("SmartPiano");
         mainFrame.setSize(1000, 400);
         setLayout(new BorderLayout());
 
