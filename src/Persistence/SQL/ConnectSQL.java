@@ -22,7 +22,7 @@ public class ConnectSQL {
             try {
                 makeConnection();
             } catch (SQLException throwables) {
-                throwables.printStackTrace();
+                System.out.println("The connection was not possible, please configure the config.json file");
             }
         }
 
