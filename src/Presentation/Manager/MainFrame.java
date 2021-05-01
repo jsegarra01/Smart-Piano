@@ -23,7 +23,7 @@ public class MainFrame extends JFrame {
     LoginUI loginUI;
     SignUpUI signUpUI;
     ProfileUI profileUI;
-    TempFreePianoUI tempFreePianoUI;
+    PianoFrame pianoFrame;
 
 
     /**
@@ -34,24 +34,24 @@ public class MainFrame extends JFrame {
         preMenuUI=  new PreMenuUI(this);
         profileUI = new ProfileUI(this);
         signUpUI = new SignUpUI(this);
-        tempFreePianoUI = new TempFreePianoUI(this);
+        pianoFrame = new PianoFrame(this);
         loginUI = new LoginUI(this);
 
         card.addLayoutComponent(preMenuUI, PRE_MENU_UI);
         card.addLayoutComponent(profileUI, PROFILE_UI);
         card.addLayoutComponent(signUpUI, SIGN_UP_UI);
-        card.addLayoutComponent(tempFreePianoUI, TEMP_FREE_PIANO_UI);
+        card.addLayoutComponent(pianoFrame, PIANO_FRAME);
         card.addLayoutComponent(loginUI, LOGIN_UI);
 
         contenedor.add(preMenuUI);
         contenedor.add(profileUI);
         contenedor.add(signUpUI);
-        contenedor.add(tempFreePianoUI);
+        contenedor.add(pianoFrame);
         contenedor.add(loginUI);
 
 
         contenedor.setLayout(card);
-        contenedor.setSize(600, 600);
+        contenedor.setSize(1500, 800);
         card.show(contenedor, PRE_MENU_UI);
     }
 }

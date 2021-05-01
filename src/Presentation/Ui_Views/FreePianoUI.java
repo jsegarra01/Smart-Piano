@@ -2,7 +2,7 @@ package Presentation.Ui_Views;
 
 import Presentation.Manager.FreePianoUIManager;
 import Presentation.Manager.MainFrame;
-import Presentation.Manager.TempFreePianoUIManager;
+import Presentation.Manager.PianoFrameManager;
 
 import javax.swing.*;
 import java.awt.*;
