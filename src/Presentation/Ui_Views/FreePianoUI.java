@@ -10,8 +10,7 @@ import java.awt.*;
 import java.util.ArrayList;
 
 import static Presentation.Dictionary_login.PROFILE_BUTTON;
-import static Presentation.Ui_Views.Tile.SIZE_MULT_HEIGHT;
-import static Presentation.Ui_Views.Tile.resizeIcon;
+import static Presentation.Ui_Views.Tile.*;
 import static javax.swing.SwingConstants.CENTER;
 
 public class FreePianoUI extends JPanel {
@@ -83,7 +82,7 @@ public class FreePianoUI extends JPanel {
         panel.add(Box.createRigidArea(new Dimension(10, 200)), BorderLayout.CENTER);
 
         SIZE_MULT_HEIGHT = 1.31f;
-        panel.add(initWhiteKeys(15), BorderLayout.SOUTH);
+        panel.add(initWhiteKeys(14), BorderLayout.SOUTH);
         panel.add(initMenu(), BorderLayout.PAGE_START);
 
         return panel;
@@ -98,6 +97,8 @@ public class FreePianoUI extends JPanel {
         for (int i = 0; i < a; i++) {
             c.gridx = i;
             tile = new Tile(whiteNotes[i], colors[i % 7], whiteTileLoc);
+            ImageIcon imageIcon = new ImageIcon("Files/drawable/white-key-down.png");
+            tile.setPressedIcon(resizeIcon(imageIcon, Math.round(imageIcon.getIconWidth()*SIZE_MULT_WIDTH), Math.round(imageIcon.getIconHeight()*SIZE_MULT_HEIGHT)));
             tile.setActionCommand(BTN_TILE);
             this.keyboard.add(tile);
             Tiles.add(this.keyboard.get(i), c);
@@ -117,8 +118,6 @@ public class FreePianoUI extends JPanel {
         soundType = new Label(JLAB_SYNTH_TYPE);
         soundType.setBackground(Color.WHITE);
 
-        //profile.setBorder(new EmptyBorder(12,120,12,120));
-        //profile.setBackground(Color.getHSBColor(0,0,0.2f));
         profile.setBackground(Color.black);
         profile.setIcon(new ImageIcon("Files/drawable/profile-picture.png"));
         profile.setIcon(resizeIcon((ImageIcon) profile.getIcon(), (int) Math.round(profile.getIcon().getIconWidth()*0.15), (int) Math.round(profile.getIcon().getIconHeight()*0.15)));

@@ -25,8 +25,8 @@ import java.awt.*;
 import java.util.ArrayList;
 
 import static Presentation.Dictionary_login.PROFILE_BUTTON;
-import static Presentation.Ui_Views.Tile.SIZE_MULT_HEIGHT;
-import static Presentation.Ui_Views.Tile.resizeIcon;
+import static Presentation.Ui_Views.Tile.*;
+
 public class PianoTilesUISelector extends JPanel {
     private MainFrame mainFrame;
 
@@ -96,7 +96,7 @@ public class PianoTilesUISelector extends JPanel {
         panel.add(Box.createRigidArea(new Dimension(10, 300)), BorderLayout.CENTER);
 
         SIZE_MULT_HEIGHT = 0.95f;
-        panel.add(initWhiteKeys(15), BorderLayout.SOUTH);
+        panel.add(initWhiteKeys(14), BorderLayout.SOUTH);
         panel.add(initMenu(), BorderLayout.PAGE_START);
 
         return panel;
@@ -111,6 +111,8 @@ public class PianoTilesUISelector extends JPanel {
         for (int i = 0; i < a; i++) {
             c.gridx = i;
             tile = new Tile(whiteNotes[i], colors[i % 7], whiteTileLoc);
+            ImageIcon imageIcon = new ImageIcon("Files/drawable/white-key-down.png");
+            tile.setPressedIcon(resizeIcon(imageIcon, Math.round(imageIcon.getIconWidth()*SIZE_MULT_WIDTH), Math.round(imageIcon.getIconHeight()*SIZE_MULT_HEIGHT)));
             tile.setActionCommand(BTN_TILE);
             this.keyboard.add(tile);
             Tiles.add(this.keyboard.get(i), c);

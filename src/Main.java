@@ -9,7 +9,7 @@ public class Main {
     public static void main(String[] args) {
         MainFrame mainframe = new MainFrame();
 
-        mainframe.setSize(1300, 675);
+        mainframe.setSize(1225, 675);
         mainframe.setVisible(true);
         mainframe.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
