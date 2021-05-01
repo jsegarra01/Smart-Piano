@@ -2,23 +2,11 @@ package Presentation.Manager;
 
 //Imports needed from the dictionary, events and mainframe
 import Presentation.Dictionary_login;
-import Presentation.Ui_Views.TempFreePianoUI;
-import Presentation.Ui_Views.Tile;
-import Business.Entities.MidiHelper;
-import Business.Entities.Translator;
-
-import javax.sound.midi.MidiUnavailableException;
-import javax.sound.midi.MidiUnavailableException;
-import java.awt.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.util.Objects;
 
-import static Presentation.DictionaryPiano.PIANO_TILES_UI_GAME;
-import static Presentation.DictionaryPiano.PIANO_TILES_UI_SELECTOR;
+import static Presentation.DictionaryPiano.*;
 import static Presentation.Dictionary_login.*;
 import static Presentation.Manager.MainFrame.card;
 import static Presentation.Manager.MainFrame.contenedor;
@@ -36,32 +24,11 @@ import static Presentation.Ui_Views.TempFreePianoUI.centralPanel;
  */
 public class TempFreePianoUIManager implements ActionListener {
 
-    public static String SOUND_TYPE = "SYNTH";
-    public static int SOUND_SYNTHER = 0 ;
-    private MidiHelper finalMidiHelper;
-    MidiHelper midiHelper = null;
-    private KeyListener KL;
 
     /**
      * Parametrized constructor
      */
     public TempFreePianoUIManager() {
-        try {
-            midiHelper = new MidiHelper();
-        } catch (MidiUnavailableException exception) {
-            exception.printStackTrace();
-        }
-        this.finalMidiHelper = midiHelper;
-        this.KL = new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {}
-            @Override
-            public void keyPressed(KeyEvent e) {
-                finalMidiHelper.playSomething(Translator.getNumberNoteFromName(Translator.getCodeFromKey(e)), SOUND_SYNTHER);
-            }
-            @Override
-            public void keyReleased(KeyEvent e) {}
-        };
     }
 
     /**
@@ -71,62 +38,19 @@ public class TempFreePianoUIManager implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         // We distinguish between our buttons.
+        CardLayout cc = (CardLayout) (centralPanel.getLayout());
         switch (e.getActionCommand()) {
-            case PROFILE_BUTTON:       //In the case that the Profile button is pressed
-            case TempFreePianoUI.BTN_RETURN:
-                System.out.println("Well... we have already NOT implemented this button!");
-                break;
-            case TempFreePianoUI.BTN_RECORD:
-                System.out.println("Well... we have already NOT implemented this button!");
-                break;
-            case TempFreePianoUI.BTN_SUSTAIN_SOUND:
-                SOUND_TYPE = "PIANO";
-                break;
-            case TempFreePianoUI.BTN_SYNTH_SOUND:
-                SOUND_TYPE = "SYNTH";
-                break;
-            case TempFreePianoUI.BTN_NEXT_SYNTHER:
-                if(SOUND_SYNTHER <= 127){
-                    SOUND_SYNTHER++;
-                    TempFreePianoUI.setTypeName(finalMidiHelper.getInstrument());
-                }else{
-                    SOUND_SYNTHER = 0;
-                }
-                break;
-            case TempFreePianoUI.BTN_PREV_SYNTHER:
-                if(SOUND_SYNTHER >= 1){
-                    SOUND_SYNTHER--;
-                    TempFreePianoUI.setTypeName(finalMidiHelper.getInstrument());
-                }else{
-                    SOUND_SYNTHER = 127;
-                }
-                break;
-            case TempFreePianoUI.BTN_TILE:
-                Tile t = null;
-                Object obj = e.getSource();
-                if (obj instanceof Tile) {
-                    t = (Tile) obj;
-                }
-                try {
-                    t.setIcon();
-                } catch (InterruptedException interruptedException) {
-                    interruptedException.printStackTrace();
-                }
-                finalMidiHelper.playSomething(Translator.getNumberNoteFromName(Objects.requireNonNull(t).getName()),SOUND_SYNTHER);
-                break;
             case Dictionary_login.PROFILE_BUTTON:       //In the case that the Profile button is pressed
                 card.show(contenedor, PROFILE_UI);
-            case LOG_IN_BUTTON:
-                CardLayout cc = (CardLayout) (centralPanel.getLayout());
-                cc.show(centralPanel, PIANO_TILES_UI_GAME);
+            case FREE_PIANO:
+                cc.show(centralPanel, FREE_PIANO_UI);
                 break;
-            case SIGN_UP_BUTTON:
-                CardLayout c2c = (CardLayout) (centralPanel.getLayout());
-                c2c.show(centralPanel, PIANO_TILES_UI_SELECTOR);
+            case PLAY_A_SONG:
+                cc.show(centralPanel, PIANO_TILES_UI_SELECTOR);
+                break;
+            case MUSIC_PLAYER:
+                cc.show(centralPanel, SPOTI_UI);
                 break;
         }
-    }
-    public KeyListener getKeyListener(){
-        return this.KL;
     }
 }
