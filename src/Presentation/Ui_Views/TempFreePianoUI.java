@@ -2,6 +2,7 @@ package Presentation.Ui_Views;
 
 //Imports all necessary libraries
 import Presentation.Manager.MainFrame;
+import Presentation.Manager.PreMenuUIManager;
 import Presentation.Manager.TempFreePianoUIManager;
 
 import javax.swing.*;
@@ -13,6 +14,7 @@ import java.util.ArrayList;
 
 import static Presentation.Dictionary_login.*;
 
+import static Presentation.DictionaryPiano.*;
 /**
  * TempFreePianoUI
  *
@@ -24,6 +26,16 @@ import static Presentation.Dictionary_login.*;
  */
 public class TempFreePianoUI extends JPanel {
     private MainFrame mainFrame;
+
+    private JButton logIn = new JButton(LOG_IN_BUTTON);
+    private JButton signUp = new JButton(SIGN_UP_BUTTON);
+    private JButton guest = new JButton(ENTER_AS_GUEST_BUTTON);
+
+    public static JPanel centralPanel = new JPanel(new CardLayout());
+
+    PianoTilesUISelector pianoTilesUISelector;
+    PianoTilesUIGame pianoTilesUIGame;
+    SpotiUI spotiUI;
 
 
 
@@ -68,6 +80,10 @@ public class TempFreePianoUI extends JPanel {
      */
     public TempFreePianoUI(final MainFrame mainFrame) {
         super();
+        this.mainFrame=mainFrame;
+        pianoTilesUISelector = new PianoTilesUISelector(mainFrame);
+        pianoTilesUIGame = new PianoTilesUIGame(mainFrame);
+        spotiUI = new SpotiUI(mainFrame);
         this.keyboard = new ArrayList<>();
         this.mainFrame = mainFrame;
         initialize();
@@ -81,10 +97,54 @@ public class TempFreePianoUI extends JPanel {
         mainFrame.setSize(1000, 400);
         setLayout(new BorderLayout());
 
+        JPanel buttonsPanel = new JPanel();
+
+        buttonsPanel.add(Box.createRigidArea(new Dimension(10, 45)));
+        logIn.setActionCommand(LOG_IN_BUTTON);
+        logIn.setAlignmentX(0.5f);
+        logIn.setBorder(new EmptyBorder(12,120,12,120));
+
+        signUp.setActionCommand(SIGN_UP_BUTTON);
+        signUp.setAlignmentX(0.5f);
+        signUp.setBorder(new EmptyBorder(12,116,12,116));
+
+        guest.setActionCommand(ENTER_AS_GUEST_BUTTON);
+        guest.setAlignmentX(0.5f);
+        guest.setBorder(new EmptyBorder(12,88,12,88));
+
+        registerController(new TempFreePianoUIManager());
+
+        buttonsPanel.add(logIn);
+        buttonsPanel.add(Box.createRigidArea(new Dimension(10, 25)));
+        buttonsPanel.add(signUp);
+        buttonsPanel.add(Box.createRigidArea(new Dimension(10, 25)));
+        buttonsPanel.add(guest);
+
+        this.add(buttonsPanel, BorderLayout.WEST);
+
+        centralPanel.add(pianoTilesUIGame, PIANO_TILES_UI_GAME);
+        centralPanel.add(pianoTilesUISelector, PIANO_TILES_UI_SELECTOR);
+        this.add(centralPanel, BorderLayout.CENTER);
+
+
+        JPanel userButtons = new JPanel();
+        userButtons.setLayout(new BoxLayout(userButtons, BoxLayout.Y_AXIS));
+
+        userButtons.add(Box.createRigidArea(new Dimension(10, 15)));
         mainFrame.setLocationRelativeTo(null);
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         this.add(configurePanel());
+        userButtons.add(Box.createRigidArea(new Dimension(10, 45)));
+        profile.setActionCommand(PROFILE_BUTTON);
+        profile.setAlignmentX(0.5f);
+        profile.setBorder(new EmptyBorder(12,120,12,120));
+
+        registerController(new TempFreePianoUIManager());
+        userButtons.add(profile);
+        this.add(userButtons, BorderLayout.NORTH);
+        this.setSize(600, 400);
+
         this.revalidate();
         this.repaint();
         this.setVisible(true);
@@ -164,6 +224,10 @@ public class TempFreePianoUI extends JPanel {
      */
     private void registerController(TempFreePianoUIManager listener) {
         profile.addActionListener(listener);
+        logIn.addActionListener(listener);
+        signUp.addActionListener(listener);
+        guest.addActionListener(listener);
+
         returnB.addActionListener(listener);
         recordB.addActionListener(listener);
         pianoSoundB.addActionListener(listener);

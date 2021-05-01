@@ -2,14 +2,12 @@ package Presentation.Manager;
 
 //Imports needed from the dictionary, events and mainframe
 import Business.BusinessFacadeImp;
-import Presentation.Dictionary_login;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import static Presentation.Dictionary_login.PRE_MENU_UI;
-import static Presentation.Dictionary_login.TEMP_FREE_PIANO_UI;
+import static Presentation.Dictionary_login.*;
 import static Presentation.Manager.MainFrame.*;
 import static Presentation.Ui_Views.SignUpUI.*;
 
@@ -37,10 +35,10 @@ public class SignUpUiManager  implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         // We distinguish between our buttons.
         switch (e.getActionCommand()) {
-            case Dictionary_login.BACK_BUTTON:              //In the case that the Back button is pressed
+            case BACK_BUTTON:              //In the case that the Back button is pressed
                 card.show(contenedor, PRE_MENU_UI);
                 break;
-            case Dictionary_login.DONE_BUTTON:              //In the case that the Done button is pressed
+            case DONE_BUTTON:              //In the case that the Done button is pressed
                 if (new BusinessFacadeImp().SignUp(getUsernameSignUp(), getMailSignUp(), getPasswordSignUp(), getPasswordConfirmSignUp())) {card.show(contenedor, TEMP_FREE_PIANO_UI);}
                 else{
                     JOptionPane.showMessageDialog(contenedor, "Values introduced were not accepted", "SignUp error" , JOptionPane.ERROR_MESSAGE);

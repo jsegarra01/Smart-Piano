@@ -2,7 +2,7 @@ package Presentation.Manager;
 
 //Imports needed from the dictionary, events and mainframe
 import Business.BusinessFacadeImp;
-import Presentation.Dictionary_login;
+//import Presentation.Dictionary_login;
 import Presentation.Ui_Views.LoginUI;
 
 import java.awt.event.ActionEvent;
@@ -37,15 +37,15 @@ public class ProfileUIManager implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         // We distinguish between our buttons.
         switch (e.getActionCommand()) {
-            case Dictionary_login.LOGOUT_BUTTON:                                //In the case that the Logout button is pressed
+            case LOGOUT_BUTTON:                                //In the case that the Logout button is pressed
                 //TODO: check if we need to do something else
                 card.show(contenedor, PRE_MENU_UI);
                 break;
-            case Dictionary_login.DELETE_BUTTON:                                //In the case that the Delete button is pressed
+            case DELETE_BUTTON:                                //In the case that the Delete button is pressed
                 new BusinessFacadeImp().deleteAccount(LoginUI.getUsernameLogin());
                 card.show(contenedor, PRE_MENU_UI);
                 break;
-            case Dictionary_login.BACK_BUTTON:                                  //In the case that the Back button is pressed
+            case BACK_BUTTON:                                  //In the case that the Back button is pressed
                 card.show(contenedor, TEMP_FREE_PIANO_UI);
                 break;
         }

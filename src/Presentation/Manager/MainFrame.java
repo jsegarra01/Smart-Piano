@@ -7,7 +7,6 @@ import javax.swing.*;
 import java.awt.*;
 
 import static Presentation.Dictionary_login.*;
-
 /**
  * MainFrame
  *
@@ -21,10 +20,10 @@ public class MainFrame extends JFrame {
     public static  CardLayout card = new CardLayout();
     public static  Container contenedor;
     PreMenuUI preMenuUI;
-    ProfileUI profileUI;
-    SignUpUI signUpUI;
-    TempFreePianoUI tempFreePianoUI;
     LoginUI loginUI;
+    SignUpUI signUpUI;
+    ProfileUI profileUI;
+    TempFreePianoUI tempFreePianoUI;
 
 
     /**
@@ -49,6 +48,7 @@ public class MainFrame extends JFrame {
         contenedor.add(signUpUI);
         contenedor.add(tempFreePianoUI);
         contenedor.add(loginUI);
+
 
         contenedor.setLayout(card);
         contenedor.setSize(600, 600);
