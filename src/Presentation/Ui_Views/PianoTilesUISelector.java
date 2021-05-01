@@ -40,6 +40,8 @@ public class PianoTilesUISelector extends JPanel {
      * The initialize function that creates the card layout for the PianoTilesUISelector
      */
     private void initialize() {
-        setLayout(new BorderLayout());
+        this.setLayout(new BorderLayout());
+
+        this.setBackground(Color.black);
     }
 }

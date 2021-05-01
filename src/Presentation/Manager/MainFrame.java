@@ -7,7 +7,6 @@ import javax.swing.*;
 import java.awt.*;
 
 import static Presentation.Dictionary_login.*;
-import static Presentation.DictionaryPiano.*;
 /**
  * MainFrame
  *
@@ -25,9 +24,6 @@ public class MainFrame extends JFrame {
     SignUpUI signUpUI;
     ProfileUI profileUI;
     TempFreePianoUI tempFreePianoUI;
-    PianoTilesUISelector pianoTilesUISelector;
-    PianoTilesUIGame pianoTilesUIGame;
-    SpotiUI spotiUI;
 
 
     /**
@@ -40,27 +36,18 @@ public class MainFrame extends JFrame {
         signUpUI = new SignUpUI(this);
         tempFreePianoUI = new TempFreePianoUI(this);
         loginUI = new LoginUI(this);
-        pianoTilesUISelector = new PianoTilesUISelector(this);
-        pianoTilesUIGame = new PianoTilesUIGame(this);
-        spotiUI = new SpotiUI(this);
 
         card.addLayoutComponent(preMenuUI, PRE_MENU_UI);
         card.addLayoutComponent(profileUI, PROFILE_UI);
         card.addLayoutComponent(signUpUI, SIGN_UP_UI);
         card.addLayoutComponent(tempFreePianoUI, TEMP_FREE_PIANO_UI);
         card.addLayoutComponent(loginUI, LOGIN_UI);
-        card.addLayoutComponent(pianoTilesUISelector, PIANO_TILES_UI_SELECTOR);
-        card.addLayoutComponent(pianoTilesUIGame, PIANO_TILES_UI_GAME);
-        card.addLayoutComponent(spotiUI, SPOTI_UI);
 
         contenedor.add(preMenuUI);
         contenedor.add(profileUI);
         contenedor.add(signUpUI);
         contenedor.add(tempFreePianoUI);
         contenedor.add(loginUI);
-        contenedor.add(pianoTilesUISelector);
-        contenedor.add(pianoTilesUIGame);
-        contenedor.add(spotiUI);
 
 
         contenedor.setLayout(card);
