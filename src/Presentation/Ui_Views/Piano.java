@@ -52,7 +52,7 @@ public abstract class Piano extends JPanel {
      * private JTextField hey;
      */
 
-    protected ArrayList<Tile> keyboard;
+    public ArrayList<Tile> keyboard;
     public static String whiteTileLoc = "Files/drawable/white-key.png";
     public static String blackTileLoc = "Files/drawable/black-key.png";
     /*

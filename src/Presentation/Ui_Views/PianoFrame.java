@@ -61,31 +61,6 @@ public class PianoFrame extends JPanel {
         mainFrame.setSize(1000, 800);
         setLayout(new BorderLayout());
 
-        /*JPanel buttonsPanel = new JPanel();
-
-        buttonsPanel.add(Box.createRigidArea(new Dimension(10, 45)));
-        freePiano.setActionCommand(FREE_PIANO);
-        freePiano.setAlignmentX(0.5f);
-        freePiano.setBorder(new EmptyBorder(12,120,12,120));
-
-        playSong.setActionCommand(PLAY_A_SONG);
-        playSong.setAlignmentX(0.5f);
-        playSong.setBorder(new EmptyBorder(12,116,12,116));
-
-        musicPlayer.setActionCommand(MUSIC_PLAYER);
-        musicPlayer.setAlignmentX(0.5f);
-        musicPlayer.setBorder(new EmptyBorder(12,88,12,88));
-
-        registerController(new PianoFrameManager());
-
-        buttonsPanel.add(freePiano);
-        buttonsPanel.add(Box.createRigidArea(new Dimension(10, 25)));
-        buttonsPanel.add(playSong);
-        buttonsPanel.add(Box.createRigidArea(new Dimension(10, 25)));
-        buttonsPanel.add(musicPlayer);
-
-        this.add(buttonsPanel, BorderLayout.WEST);*/
-
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.Y_AXIS));
 

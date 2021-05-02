@@ -15,7 +15,11 @@ import static Presentation.Ui_Views.Tile.*;
 import static javax.swing.SwingConstants.CENTER;
 
 public class FreePianoUI extends Piano {
+    private static ArrayList<Tile> keyboard;
 
+    public static ArrayList<Tile> getKeyboard() {
+        return keyboard;
+    }
 
     /**
      * Constructor for the FreePianoUI, you need to send the mainframe context and will create a card layout
@@ -110,7 +114,7 @@ public class FreePianoUI extends Piano {
         Tile tile;
 
         for (int i = 0; i < numWhiteKeys; i++) {
-            tile = new Tile(whiteNotes[i], colors[i % 7], whiteTileLoc);
+            tile = new Tile(whiteNotes[i], Color.WHITE, whiteTileLoc);
             tile.setActionCommand(BTN_TILE);
             tile.setBounds(55 + 65*i,0,65,300);
             ImageIcon imageIcon = new ImageIcon("Files/drawable/white-key-down.png");
@@ -122,7 +126,7 @@ public class FreePianoUI extends Piano {
 
         LinkedList<Tile> tiles = new LinkedList<>();
         for (int i = 0; i< numBlackKeys; i++){
-            tiles.add(new Tile(blackNotes[i], Color.WHITE, blackTileLoc));
+            tiles.add(new Tile(blackNotes[i], Color.BLACK, blackTileLoc));
             tiles.getLast().setActionCommand(BTN_TILE);
             ImageIcon imageIcon = new ImageIcon("Files/drawable/black-key-down.png");
             tiles.getLast().setPressedIcon(resizeIcon(imageIcon, Math.round(imageIcon.getIconWidth()*SIZE_MULT_WIDTH), Math.round(imageIcon.getIconHeight()*SIZE_MULT_HEIGHT)));
@@ -152,5 +156,9 @@ public class FreePianoUI extends Piano {
 
         return keyBoard;
     }
+
+
+
+
 }
 

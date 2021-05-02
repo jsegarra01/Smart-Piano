@@ -2,16 +2,19 @@ package Presentation.Ui_Views;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyEvent;
 
 public class Tile extends JButton {
     private String name;
     protected static final float SIZE_MULT_WIDTH = (float) 1.16;
     protected static float SIZE_MULT_HEIGHT = (float) 0.95;
     private String myImagePath;
+    private Color color;
     private ImageIcon myImage;
     public Tile(String name, Color myColor, String pathImage){
         this.name = name;
         this.myImage = new ImageIcon(pathImage);
+        color = myColor;
         this.setBackground(myColor);
         this.setBackground(Color.black);
         this.setIcon(resizeIcon(this.myImage, Math.round(this.myImage.getIconWidth()*SIZE_MULT_WIDTH), Math.round(this.myImage.getIconHeight()*SIZE_MULT_HEIGHT)));
@@ -25,7 +28,7 @@ public class Tile extends JButton {
         return new ImageIcon(resizedImage);
     }
 
-    public void setIcon() throws InterruptedException {
+    public void setIcon(){
         this.myImage = new ImageIcon("Files/drawable/white-key-down.png");
         this.setIcon(resizeIcon(this.myImage, Math.round(this.myImage.getIconWidth()*SIZE_MULT_WIDTH), Math.round(this.myImage.getIconHeight()*SIZE_MULT_HEIGHT)));
 //        Thread.sleep(5000);
@@ -36,5 +39,18 @@ public class Tile extends JButton {
     public void backToWhite() {
         this.myImage = new ImageIcon("Files/drawable/white-key.png");
         this.setIcon(resizeIcon(this.myImage, Math.round(this.myImage.getIconWidth()*SIZE_MULT_WIDTH), Math.round(this.myImage.getIconHeight()*SIZE_MULT_HEIGHT)));
+    }
+    public void backToBlack() {
+        this.myImage = new ImageIcon("Files/drawable/black-key.png");
+        this.setIcon(resizeIcon(this.myImage, Math.round(this.myImage.getIconWidth()*SIZE_MULT_WIDTH), Math.round(this.myImage.getIconHeight()*SIZE_MULT_HEIGHT)));
+    }
+
+
+    public Color getColor() {
+        return color;
+    }
+
+    public void setColor(Color color) {
+        this.color = color;
     }
 }

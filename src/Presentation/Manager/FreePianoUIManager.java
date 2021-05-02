@@ -3,11 +3,13 @@ package Presentation.Manager;
 //Imports needed from the dictionary, events and mainframe
 import Presentation.Dictionary_login;
 import Presentation.Ui_Views.FreePianoUI;
+import Presentation.Ui_Views.PianoTilesUISelector;
 import Presentation.Ui_Views.Tile;
 import Business.Entities.MidiHelper;
 import Business.Entities.Translator;
 
 import javax.sound.midi.MidiUnavailableException;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -35,6 +37,7 @@ public class FreePianoUIManager implements ActionListener {
     private MidiHelper finalMidiHelper;
     MidiHelper midiHelper = null;
     private KeyListener KL;
+    private boolean iAmPressed = false;
 
     /**
      * Parametrized constructor
@@ -48,13 +51,21 @@ public class FreePianoUIManager implements ActionListener {
         this.finalMidiHelper = midiHelper;
         this.KL = new KeyListener() {
             @Override
-            public void keyTyped(KeyEvent e) {}
+            public void keyTyped(KeyEvent e) {
+                }
             @Override
             public void keyPressed(KeyEvent e) {
-                finalMidiHelper.playSomething(Translator.getNumberNoteFromName(Translator.getCodeFromKey(e)), SOUND_SYNTHER);
+                if(!iAmPressed){
+                    finalMidiHelper.playSomething(Translator.getNumberNoteFromName(Translator.getCodeFromKey(e)), SOUND_SYNTHER);
+                    iAmPressed = true;
+                }
+                setIconKey(Translator.getCodeFromKey(e));
             }
             @Override
-            public void keyReleased(KeyEvent e) {}
+            public void keyReleased(KeyEvent e) {
+                setIconBack(Translator.getCodeFromKey(e));
+                iAmPressed = false;
+            }
         };
     }
 
@@ -114,5 +125,30 @@ public class FreePianoUIManager implements ActionListener {
     }
     public KeyListener getKeyListener(){
         return this.KL;
+    }
+
+
+    private void setIconKey(String string){
+        int i = 0;
+        while(!string.equals(FreePianoUI.getKeyboard().get(i).getName()) &&
+                i<FreePianoUI.getKeyboard().size()){
+            i++;
+        }
+        if(i!=FreePianoUI.getKeyboard().size()){
+            FreePianoUI.getKeyboard().get(i).setIcon();
+        }
+    }
+    private void setIconBack(String string){
+        int i = 0;
+        while(!string.equals(FreePianoUI.getKeyboard().get(i).getName()) && i<FreePianoUI.getKeyboard().size()){
+            i++;
+        }
+        if(i!=FreePianoUI.getKeyboard().size()){
+            if(FreePianoUI.getKeyboard().get(i).getColor()== Color.WHITE){
+                FreePianoUI.getKeyboard().get(i).backToWhite();
+            }else{
+                FreePianoUI.getKeyboard().get(i).backToBlack();
+            }
+        }
     }
 }
