@@ -10,7 +10,7 @@ import static Presentation.DictionaryPiano.*;
 import static Presentation.Dictionary_login.*;
 import static Presentation.Manager.MainFrame.card;
 import static Presentation.Manager.MainFrame.contenedor;
-import static Presentation.Ui_Views.TempFreePianoUI.centralPanel;
+import static Presentation.Ui_Views.PianoFrame.centralPanel;
 
 
 /**
@@ -22,13 +22,13 @@ import static Presentation.Ui_Views.TempFreePianoUI.centralPanel;
  * @version 1.0 21 Apr 2021
  *
  */
-public class TempFreePianoUIManager implements ActionListener {
+public class PianoFrameManager implements ActionListener {
 
 
     /**
      * Parametrized constructor
      */
-    public TempFreePianoUIManager() {
+    public PianoFrameManager() {
     }
 
     /**

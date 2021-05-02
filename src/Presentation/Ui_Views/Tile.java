@@ -5,7 +5,8 @@ import java.awt.*;
 
 public class Tile extends JButton {
     private String name;
-    private float SIZE_MULT = (float) 1.5;
+    protected static final float SIZE_MULT_WIDTH = (float) 1.16;
+    protected static float SIZE_MULT_HEIGHT = (float) 0.95;
     private String myImagePath;
     private ImageIcon myImage;
     public Tile(String name, Color myColor, String pathImage){
@@ -13,20 +14,27 @@ public class Tile extends JButton {
         this.myImage = new ImageIcon(pathImage);
         this.setBackground(myColor);
         this.setBackground(Color.black);
-        this.setIcon(resizeIcon(this.myImage, Math.round(this.myImage.getIconWidth()*SIZE_MULT), Math.round(this.myImage.getIconHeight()*SIZE_MULT)));
-        this.setPreferredSize(new Dimension(Math.round(this.myImage.getIconWidth()*SIZE_MULT), Math.round(this.myImage.getIconHeight()*SIZE_MULT)));
+        this.setIcon(resizeIcon(this.myImage, Math.round(this.myImage.getIconWidth()*SIZE_MULT_WIDTH), Math.round(this.myImage.getIconHeight()*SIZE_MULT_HEIGHT)));
+        this.setPreferredSize(new Dimension(Math.round(this.myImage.getIconWidth()*SIZE_MULT_WIDTH), Math.round(this.myImage.getIconHeight()*SIZE_MULT_HEIGHT)));
     }
     public String getName(){return this.name;}
-    private Icon resizeIcon(ImageIcon icon, int resizedWidth, int resizedHeight) {
+
+    public static Icon resizeIcon(ImageIcon icon, int resizedWidth, int resizedHeight) {
         Image img = icon.getImage();
         Image resizedImage = img.getScaledInstance(resizedWidth, resizedHeight,  java.awt.Image.SCALE_SMOOTH);
         return new ImageIcon(resizedImage);
     }
+
     public void setIcon() throws InterruptedException {
         this.myImage = new ImageIcon("Files/drawable/white-key-down.png");
-        this.setIcon(resizeIcon(this.myImage, Math.round(this.myImage.getIconWidth()*SIZE_MULT), Math.round(this.myImage.getIconHeight()*SIZE_MULT)));
+        this.setIcon(resizeIcon(this.myImage, Math.round(this.myImage.getIconWidth()*SIZE_MULT_WIDTH), Math.round(this.myImage.getIconHeight()*SIZE_MULT_HEIGHT)));
 //        Thread.sleep(5000);
 //        this.myImage = new ImageIcon("Files/drawable/white-key.png");
-//        this.setIcon(resizeIcon(this.myImage, Math.round(this.myImage.getIconWidth()*SIZE_MULT), Math.round(this.myImage.getIconHeight()*SIZE_MULT)));
+   //     this.setIcon(resizeIcon(this.myImage, Math.round(this.myImage.getIconWidth()*SIZE_MULT_WIDTH), Math.round(this.myImage.getIconHeight()*SIZE_MULT_HEIGHT)));
+    }
+
+    public void backToWhite() {
+        this.myImage = new ImageIcon("Files/drawable/white-key.png");
+        this.setIcon(resizeIcon(this.myImage, Math.round(this.myImage.getIconWidth()*SIZE_MULT_WIDTH), Math.round(this.myImage.getIconHeight()*SIZE_MULT_HEIGHT)));
     }
 }

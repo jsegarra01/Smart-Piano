@@ -2,7 +2,7 @@ package Presentation.Manager;
 
 //Imports needed from the dictionary, events and mainframe
 import Presentation.Dictionary_login;
-import Presentation.Ui_Views.FreePianoUI;
+import Presentation.Ui_Views.PianoTilesUISelector;
 import Presentation.Ui_Views.Tile;
 import Business.Entities.MidiHelper;
 import Business.Entities.Translator;
@@ -20,15 +20,15 @@ import static Presentation.Manager.MainFrame.contenedor;
 
 
 /**
- * FreePianoUIManager
+ * PianoTilesUISelectorManager
  *
- * The "FreePianoUIManager" class will contain the different methods that are needed to control the view class "FreePianoUI"
+ * The "PianoTilesUISelectorManager" class will contain the different methods that are needed to control the view class "PianoTilesUISelector"
  *
  * @author OOPD 20-21 ICE5
  * @version 1.0 21 Apr 2021
  *
  */
-public class FreePianoUIManager implements ActionListener {
+public class PianoTilesUISelectorManager implements ActionListener {
 
     public static String SOUND_TYPE = "SYNTH";
     public static int SOUND_SYNTHER = 0 ;
@@ -39,7 +39,7 @@ public class FreePianoUIManager implements ActionListener {
     /**
      * Parametrized constructor
      */
-    public FreePianoUIManager() {
+    public PianoTilesUISelectorManager() {
         try {
             midiHelper = new MidiHelper();
         } catch (MidiUnavailableException exception) {
@@ -66,45 +66,40 @@ public class FreePianoUIManager implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         // We distinguish between our buttons.
         switch (e.getActionCommand()) {
-            case FreePianoUI.BTN_RETURN:
+            case PianoTilesUISelector.BTN_RETURN:
                 System.out.println("Well... we have already NOT implemented this button!");
                 break;
-            case FreePianoUI.BTN_RECORD:
+            case PianoTilesUISelector.BTN_RECORD:
                 System.out.println("Well... we have already NOT implemented this button!");
                 break;
-            case FreePianoUI.BTN_SUSTAIN_SOUND:
+            case PianoTilesUISelector.BTN_SUSTAIN_SOUND:
                 SOUND_TYPE = "PIANO";
                 break;
-            case FreePianoUI.BTN_SYNTH_SOUND:
+            case PianoTilesUISelector.BTN_SYNTH_SOUND:
                 SOUND_TYPE = "SYNTH";
                 break;
-            case FreePianoUI.BTN_NEXT_SYNTHER:
+            case PianoTilesUISelector.BTN_NEXT_SYNTHER:
                 if(SOUND_SYNTHER <= 127){
                     SOUND_SYNTHER++;
-                    FreePianoUI.setTypeName(finalMidiHelper.getInstrument());
+                    PianoTilesUISelector.setTypeName(finalMidiHelper.getInstrument());
                 }else{
                     SOUND_SYNTHER = 0;
                 }
                 break;
-            case FreePianoUI.BTN_PREV_SYNTHER:
+            case PianoTilesUISelector.BTN_PREV_SYNTHER:
                 if(SOUND_SYNTHER >= 1){
                     SOUND_SYNTHER--;
-                    FreePianoUI.setTypeName(finalMidiHelper.getInstrument());
+                    PianoTilesUISelector.setTypeName(finalMidiHelper.getInstrument());
                 }else{
                     SOUND_SYNTHER = 127;
                 }
                 break;
-            case FreePianoUI.BTN_TILE:
+            case PianoTilesUISelector.BTN_TILE:
                 Tile t = null;
                 Object obj = e.getSource();
                 if (obj instanceof Tile) {
                     t = (Tile) obj;
                 }
-                /*try {
-                    t.setIcon();
-                } catch (InterruptedException interruptedException) {
-                    interruptedException.printStackTrace();
-                }*/
                 finalMidiHelper.playSomething(Translator.getNumberNoteFromName(Objects.requireNonNull(t).getName()),SOUND_SYNTHER);
                 break;
             case Dictionary_login.PROFILE_BUTTON:       //In the case that the Profile button is pressed

@@ -46,7 +46,7 @@ public class ProfileUIManager implements ActionListener {
                 card.show(contenedor, PRE_MENU_UI);
                 break;
             case BACK_BUTTON:                                  //In the case that the Back button is pressed
-                card.show(contenedor, TEMP_FREE_PIANO_UI);
+                card.show(contenedor, PIANO_FRAME);
                 break;
         }
     }
