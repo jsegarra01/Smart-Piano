@@ -21,14 +21,9 @@
   <component name="ChangeListManager">
     <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="Ui for play a song and free piano, still need to do the different options and the buttons available for the user.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/PianoTilesUISelector.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/PianoTilesUISelector.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/Tile.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/Tile.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presentation/Manager/FreePianoUIManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Manager/FreePianoUIManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presentation/Manager/PianoTilesUISelectorManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Manager/PianoTilesUISelectorManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presentation/Ui_Views/FreePianoUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Ui_Views/FreePianoUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presentation/Ui_Views/PianoTilesUISelector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Ui_Views/PianoTilesUISelector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presentation/Ui_Views/Tile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Ui_Views/Tile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Files/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/Files/config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/FreePianoUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/FreePianoUI.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -291,5 +286,27 @@
     <MESSAGE value="Left buttons to change between views (free piano, play a song and music playlist) done successfully." />
     <MESSAGE value="Ui for play a song and free piano, still need to do the different options and the buttons available for the user." />
     <option name="LAST_COMMIT_MESSAGE" value="Ui for play a song and free piano, still need to do the different options and the buttons available for the user." />
+  </component>
+  <component name="WindowStateProjectService">
+    <state width="875" height="314" key="GridCell.Tab.0.bottom" timestamp="1619946979620">
+      <screen x="0" y="23" width="1792" height="1041" />
+    </state>
+    <state width="875" height="314" key="GridCell.Tab.0.bottom/0.23.1792.1041@0.0.1792.1120" timestamp="1619946874412" />
+    <state width="875" height="314" key="GridCell.Tab.0.bottom/0.23.1792.1041@0.23.1792.1041" timestamp="1619946979620" />
+    <state width="875" height="314" key="GridCell.Tab.0.center" timestamp="1619946979619">
+      <screen x="0" y="23" width="1792" height="1041" />
+    </state>
+    <state width="875" height="314" key="GridCell.Tab.0.center/0.23.1792.1041@0.0.1792.1120" timestamp="1619946874410" />
+    <state width="875" height="314" key="GridCell.Tab.0.center/0.23.1792.1041@0.23.1792.1041" timestamp="1619946979619" />
+    <state width="875" height="314" key="GridCell.Tab.0.left" timestamp="1619946979618">
+      <screen x="0" y="23" width="1792" height="1041" />
+    </state>
+    <state width="875" height="314" key="GridCell.Tab.0.left/0.0.1792.1120@0.0.1792.1120" timestamp="1619946874344" />
+    <state width="875" height="314" key="GridCell.Tab.0.left/0.23.1792.1041@0.23.1792.1041" timestamp="1619946979618" />
+    <state width="875" height="314" key="GridCell.Tab.0.right" timestamp="1619946979619">
+      <screen x="0" y="23" width="1792" height="1041" />
+    </state>
+    <state width="875" height="314" key="GridCell.Tab.0.right/0.23.1792.1041@0.0.1792.1120" timestamp="1619946874411" />
+    <state width="875" height="314" key="GridCell.Tab.0.right/0.23.1792.1041@0.23.1792.1041" timestamp="1619946979619" />
   </component>
 </project>
