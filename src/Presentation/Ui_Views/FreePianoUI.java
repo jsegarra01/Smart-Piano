@@ -61,7 +61,9 @@ public class FreePianoUI extends Piano {
         profile.setBackground(Color.black);
         profile.setIcon(new ImageIcon("Files/drawable/profile-picture.png"));
         profile.setIcon(resizeIcon((ImageIcon) profile.getIcon(), (int) Math.round(profile.getIcon().getIconWidth()*0.15), (int) Math.round(profile.getIcon().getIconHeight()*0.15)));
-
+        recordB.setPreferredSize(new Dimension((int) Math.round(iconRec.getIconWidth()*1.15),
+                (int) Math.round(iconRec.getIconHeight()*1.2)));
+        //recordB.setName(BTN_RECORD);
         menu.add(profile);
         menu.add(returnB);
         menu.add(recordB);
@@ -81,6 +83,7 @@ public class FreePianoUI extends Piano {
         profile.addActionListener(listener);
         returnB.addActionListener(listener);
         recordB.addActionListener(listener);
+
         pianoSoundB.addActionListener(listener);
         synthSoundB.addActionListener(listener);
         nextSynther.addActionListener(listener);
@@ -108,8 +111,11 @@ public class FreePianoUI extends Piano {
 
         Tile tile;
 
+        JLabel label;
         for (int i = 0; i < numWhiteKeys; i++) {
             tile = new Tile(whiteNotes[i], Color.WHITE, whiteTileLoc);
+            //tile.setText("Do");
+            //tile.setVerticalAlignment(SwingConstants.BOTTOM);
             tile.setActionCommand(BTN_TILE);
             tile.setBounds(55 + 65*i,0,65,300);
             ImageIcon imageIcon = new ImageIcon("Files/drawable/white-key-down.png");
@@ -117,36 +123,62 @@ public class FreePianoUI extends Piano {
             keyboard.add(tile);
             keyBoard.add(keyboard.get(i), Integer.valueOf(1));
             keyBoard.add(Box.createRigidArea(new Dimension(2, 0)));
+            label = new JLabel(whiteLabels[i]);
+            label.setBounds(65*(i+1)+15,250,widthBlack,20);
+            keyBoard.add(label,Integer.valueOf(3));
         }
 
         LinkedList<Tile> tiles = new LinkedList<>();
         for (int i = 0; i< numBlackKeys; i++){
             tiles.add(new Tile(blackNotes[i], Color.BLACK, blackTileLoc));
             tiles.getLast().setActionCommand(BTN_TILE);
-            ImageIcon imageIcon = new ImageIcon("Files/drawable/black-key-down.png");
+            ImageIcon imageIcon = new ImageIcon("Files/drawable/white-key-down.png");
             tiles.getLast().setPressedIcon(resizeIcon(imageIcon, Math.round(imageIcon.getIconWidth()*SIZE_MULT_WIDTH),
                     Math.round(imageIcon.getIconHeight()*SIZE_MULT_HEIGHT)));
         }
+
+        int add = 8;
+        int yLabel = 60;
         for (int i = 0; i < 2; i++) {
             tiles.get(i*5).setBounds(102+(separationBlack*i),yBlack,widthBlack,heightBlack);
             keyboard.add(tiles.get(i*5));
             keyBoard.add(tiles.get(i*5), Integer.valueOf(2));
+            label = new JLabel(blackLabels[i*5]);
+            label.setBounds(102+(separationBlack*i)+add,yLabel,widthBlack,heightBlack);
+            label.setForeground(Color.WHITE);
+            keyBoard.add(label,Integer.valueOf(4));
 
             tiles.get(1+i*5).setBounds(167+(separationBlack*i),yBlack,widthBlack,heightBlack);
             keyboard.add(tiles.get(1+i*5));
             keyBoard.add(tiles.get(1+i*5), Integer.valueOf(2));
+            label = new JLabel(blackLabels[1+i*5]);
+            label.setBounds(167+(separationBlack*i)+add,yLabel,widthBlack,heightBlack);
+            label.setForeground(Color.WHITE);
+            keyBoard.add(label,Integer.valueOf(4));
 
             tiles.get(2+i*5).setBounds(297+(separationBlack*i),yBlack,widthBlack,heightBlack);
             keyboard.add(tiles.get(2+i*5));
             keyBoard.add(tiles.get(2+i*5), Integer.valueOf(2));
+            label = new JLabel(blackLabels[2+i*5]);
+            label.setBounds(297+(separationBlack*i)+add,yLabel,widthBlack,heightBlack);
+            label.setForeground(Color.WHITE);
+            keyBoard.add(label,Integer.valueOf(4));
 
             tiles.get(3+i*5).setBounds(362+(separationBlack*i),yBlack,widthBlack,heightBlack);
             keyboard.add(tiles.get(3+i*5));
             keyBoard.add(tiles.get(3+i*5), Integer.valueOf(2));
+            label = new JLabel(blackLabels[3+i*5]);
+            label.setBounds(359+(separationBlack*i)+add,yLabel,widthBlack,heightBlack);
+            label.setForeground(Color.WHITE);
+            keyBoard.add(label,Integer.valueOf(4));
 
             tiles.get(4+i*5).setBounds(428+(separationBlack*i),yBlack,widthBlack,heightBlack);
             keyboard.add(tiles.get(4+i*5));
             keyBoard.add(tiles.get(4+i*5), Integer.valueOf(2));
+            label = new JLabel(blackLabels[4+i*5]);
+            label.setBounds(428+(separationBlack*i)+add,yLabel,widthBlack,heightBlack);
+            label.setForeground(Color.WHITE);
+            keyBoard.add(label,Integer.valueOf(4));
 
         }
 

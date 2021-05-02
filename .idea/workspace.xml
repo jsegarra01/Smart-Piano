@@ -19,15 +19,19 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="I am not allowed to do finish feature :'(">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_14_04_2021__17_43__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_14_04_2021__17_43__Default_Changelist_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_14_04_2021__17_44__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_14_04_2021__17_44__Default_Changelist_.xml" afterDir="false" />
+    <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="Changing colors while changing through the CardLayout">
+      <change afterPath="$PROJECT_DIR$/Files/drawable/rec.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/FreePianoUIManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/FreePianoUIManager.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/PianoFrameManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/PianoFrameManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/PianoFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/PianoFrame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/PianoTilesUISelectorManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/PianoTilesUISelectorManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/FreePianoUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/FreePianoUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/Piano.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/Piano.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/PianoTilesUISelector.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/PianoTilesUISelector.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presentation/Manager/PianoFrameManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Manager/PianoFrameManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presentation/Ui_Views/PianoFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Ui_Views/PianoFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/TempFreePianoUI.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presentation/Ui_Views/FreePianoUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Ui_Views/FreePianoUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presentation/Ui_Views/Piano.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Ui_Views/Piano.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presentation/Ui_Views/PianoTilesUISelector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Ui_Views/PianoTilesUISelector.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -271,7 +275,14 @@
       <option name="project" value="LOCAL" />
       <updated>1619985324845</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Changing colors while changing through the CardLayout">
+      <created>1619991463782</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1619991463782</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -320,29 +331,34 @@
     <MESSAGE value="Piano does not keep playing anymore whenever the key is pressed. &#10;The tile changes its color, simulating that has been pressed with the keyboard" />
     <MESSAGE value="Piano works perfectly fine. Checked that everything worked as it should." />
     <MESSAGE value="I am not allowed to do finish feature :'(" />
-    <option name="LAST_COMMIT_MESSAGE" value="I am not allowed to do finish feature :'(" />
+    <MESSAGE value="Changing colors while changing through the CardLayout" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changing colors while changing through the CardLayout" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1237" height="36" key="GridCell.Tab.0.bottom" timestamp="1619990512000">
+    <state x="371" y="88" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog" timestamp="1619992519422">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="371" y="88" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/0.0.1280.680@0.0.1280.680" timestamp="1619992519422" />
+    <state width="1237" height="69" key="GridCell.Tab.0.bottom" timestamp="1619996943825">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state width="1237" height="16" key="GridCell.Tab.0.bottom/0.0.1280.680/-1920.0.1920.1040@0.0.1280.680" timestamp="1619985251016" />
-    <state width="1237" height="36" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1619990512000" />
-    <state width="1237" height="36" key="GridCell.Tab.0.center" timestamp="1619990512000">
+    <state width="1237" height="69" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1619996943825" />
+    <state width="1237" height="69" key="GridCell.Tab.0.center" timestamp="1619996943825">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state width="1237" height="16" key="GridCell.Tab.0.center/0.0.1280.680/-1920.0.1920.1040@0.0.1280.680" timestamp="1619985251016" />
-    <state width="1237" height="36" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1619990512000" />
-    <state width="1237" height="36" key="GridCell.Tab.0.left" timestamp="1619990512000">
+    <state width="1237" height="69" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1619996943825" />
+    <state width="1237" height="69" key="GridCell.Tab.0.left" timestamp="1619996943825">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state width="1237" height="16" key="GridCell.Tab.0.left/0.0.1280.680/-1920.0.1920.1040@0.0.1280.680" timestamp="1619985251016" />
-    <state width="1237" height="36" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1619990512000" />
-    <state width="1237" height="36" key="GridCell.Tab.0.right" timestamp="1619990512000">
+    <state width="1237" height="69" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1619996943825" />
+    <state width="1237" height="69" key="GridCell.Tab.0.right" timestamp="1619996943825">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state width="1237" height="16" key="GridCell.Tab.0.right/0.0.1280.680/-1920.0.1920.1040@0.0.1280.680" timestamp="1619985251016" />
-    <state width="1237" height="36" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1619990512000" />
+    <state width="1237" height="69" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1619996943825" />
     <state width="1237" height="4" key="GridCell.Tab.1.bottom" timestamp="1619985094524">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -367,11 +383,11 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="280" y="102" key="MultipleFileMergeDialog/0.0.1280.680/-1920.0.1920.1040@0.0.1280.680" timestamp="1619980275669" />
-    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1619985348930">
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1619991480035">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680/-1920.0.1920.1040@0.0.1280.680" timestamp="1619985348930" />
-    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1619962952091" />
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1619991480035" />
     <state x="458" y="255" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1619989804345">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -384,6 +400,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="342" y="98" key="refactoring.ChangeSignatureDialog/0.0.1280.680/-1920.0.1920.1040@0.0.1280.680" timestamp="1619977182533" />
+    <state x="297" y="151" key="run.anything.popup" timestamp="1619996862110">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="297" y="151" key="run.anything.popup/0.0.1280.680@0.0.1280.680" timestamp="1619996862110" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
