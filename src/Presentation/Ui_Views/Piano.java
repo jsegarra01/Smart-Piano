@@ -15,20 +15,6 @@ import static Presentation.Ui_Views.Tile.*;
 public abstract class Piano extends JPanel {
     protected MainFrame mainFrame;
 
-    PianoTilesUISelectorManager listener = new PianoTilesUISelectorManager();
-
-    public static final int NUM_KEYS = 7;
-    public static final int NUM_OCTAVES = 2;
-    /** Holds the possible notes.*/
-    protected String[] notes = {"C","D","E","F","G","A","B"};
-    /** Holds the possible sharps.*/
-    protected String[] sharps = {"C#","D#","F#","G#","A#"};
-    protected String[] octave = {"4","5"};
-
-
-
-
-
     public static final String BTN_RETURN = "BTN_RETURN";
     public static final String BTN_RECORD = "BTN_RECORD";
     public static final String BTN_SUSTAIN_SOUND = "BTN_SUSTAIN_SOUND";
@@ -52,7 +38,7 @@ public abstract class Piano extends JPanel {
      * private JTextField hey;
      */
 
-    public ArrayList<Tile> keyboard;
+    public static ArrayList<Tile> keyboard;
     public static String whiteTileLoc = "Files/drawable/white-key.png";
     public static String blackTileLoc = "Files/drawable/black-key.png";
     /*
@@ -68,7 +54,12 @@ public abstract class Piano extends JPanel {
             {"2c#", "2d#", "", "2f#", "2g#", "2a#", "", "3c#", "3d#", "", "3f#", "3g#", "3a#"};
     protected Color[] colors =
             {Color.red, Color.orange, Color.yellow, Color.green, Color.blue, Color.magenta, Color.pink};
-/*
+    public static ArrayList<Tile> getKeyboard() {
+        return keyboard;
+    }
+
+
+    /*
     public Piano(final MainFrame mainFrame){
         super();
         this.mainFrame = mainFrame;

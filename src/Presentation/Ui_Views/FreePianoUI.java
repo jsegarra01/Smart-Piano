@@ -15,11 +15,6 @@ import static Presentation.Ui_Views.Tile.*;
 import static javax.swing.SwingConstants.CENTER;
 
 public class FreePianoUI extends Piano {
-    private static ArrayList<Tile> keyboard;
-
-    public static ArrayList<Tile> getKeyboard() {
-        return keyboard;
-    }
 
     /**
      * Constructor for the FreePianoUI, you need to send the mainframe context and will create a card layout
@@ -29,7 +24,7 @@ public class FreePianoUI extends Piano {
     public FreePianoUI(final MainFrame mainFrame) {
         super();
         this.mainFrame = mainFrame;
-        this.keyboard = new ArrayList<>();
+        keyboard = new ArrayList<>();
         initialize();
     }
 
@@ -119,8 +114,8 @@ public class FreePianoUI extends Piano {
             tile.setBounds(55 + 65*i,0,65,300);
             ImageIcon imageIcon = new ImageIcon("Files/drawable/white-key-down.png");
             tile.setPressedIcon(resizeIcon(imageIcon, Math.round(imageIcon.getIconWidth()*SIZE_MULT_WIDTH), Math.round(imageIcon.getIconHeight()*SIZE_MULT_HEIGHT)));
-            this.keyboard.add(tile);
-            keyBoard.add(this.keyboard.get(i), Integer.valueOf(1));
+            keyboard.add(tile);
+            keyBoard.add(keyboard.get(i), Integer.valueOf(1));
             keyBoard.add(Box.createRigidArea(new Dimension(2, 0)));
         }
 
@@ -129,27 +124,28 @@ public class FreePianoUI extends Piano {
             tiles.add(new Tile(blackNotes[i], Color.BLACK, blackTileLoc));
             tiles.getLast().setActionCommand(BTN_TILE);
             ImageIcon imageIcon = new ImageIcon("Files/drawable/black-key-down.png");
-            tiles.getLast().setPressedIcon(resizeIcon(imageIcon, Math.round(imageIcon.getIconWidth()*SIZE_MULT_WIDTH), Math.round(imageIcon.getIconHeight()*SIZE_MULT_HEIGHT)));
+            tiles.getLast().setPressedIcon(resizeIcon(imageIcon, Math.round(imageIcon.getIconWidth()*SIZE_MULT_WIDTH),
+                    Math.round(imageIcon.getIconHeight()*SIZE_MULT_HEIGHT)));
         }
         for (int i = 0; i < 2; i++) {
             tiles.get(i*5).setBounds(102+(separationBlack*i),yBlack,widthBlack,heightBlack);
-            this.keyboard.add(tiles.get(i*5));
+            keyboard.add(tiles.get(i*5));
             keyBoard.add(tiles.get(i*5), Integer.valueOf(2));
 
             tiles.get(1+i*5).setBounds(167+(separationBlack*i),yBlack,widthBlack,heightBlack);
-            this.keyboard.add(tiles.get(1+i*5));
+            keyboard.add(tiles.get(1+i*5));
             keyBoard.add(tiles.get(1+i*5), Integer.valueOf(2));
 
             tiles.get(2+i*5).setBounds(297+(separationBlack*i),yBlack,widthBlack,heightBlack);
-            this.keyboard.add(tiles.get(2+i*5));
+            keyboard.add(tiles.get(2+i*5));
             keyBoard.add(tiles.get(2+i*5), Integer.valueOf(2));
 
             tiles.get(3+i*5).setBounds(362+(separationBlack*i),yBlack,widthBlack,heightBlack);
-            this.keyboard.add(tiles.get(3+i*5));
+            keyboard.add(tiles.get(3+i*5));
             keyBoard.add(tiles.get(3+i*5), Integer.valueOf(2));
 
             tiles.get(4+i*5).setBounds(428+(separationBlack*i),yBlack,widthBlack,heightBlack);
-            this.keyboard.add(tiles.get(4+i*5));
+            keyboard.add(tiles.get(4+i*5));
             keyBoard.add(tiles.get(4+i*5), Integer.valueOf(2));
 
         }

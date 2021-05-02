@@ -7,15 +7,6 @@ import javax.swing.*;
 import java.awt.*;
 
 
-/**
- * PianoTilesUISelector
- *
- * The "PianoTilesUISelector" class will allow us to choose the different songs we have available to play
- *
- * @author OOPD 20-21 ICE5
- * @version 2.0 24 Apr 2021
- *
- */
 import Presentation.Manager.PianoTilesUISelectorManager;
 import Presentation.Manager.MainFrame;
 import Presentation.Manager.PianoFrameManager;
@@ -30,6 +21,16 @@ import java.util.Objects;
 import static Presentation.Dictionary_login.PROFILE_BUTTON;
 import static Presentation.Ui_Views.Tile.*;
 
+
+/**
+ * PianoTilesUISelector
+ *
+ * The "PianoTilesUISelector" class will allow us to choose the different songs we have available to play
+ *
+ * @author OOPD 20-21 ICE5
+ * @version 2.0 24 Apr 2021
+ *
+ */
 public class PianoTilesUISelector extends Piano {
     private static ArrayList<Tile> keyboard;
 
@@ -45,7 +46,7 @@ public class PianoTilesUISelector extends Piano {
     public PianoTilesUISelector(final MainFrame mainFrame) {
         super();
         this.mainFrame = mainFrame;
-        this.keyboard = new ArrayList<>();
+        keyboard = new ArrayList<>();
         initialize();
     }
 
@@ -125,8 +126,8 @@ public class PianoTilesUISelector extends Piano {
             ImageIcon imageIcon = new ImageIcon("Files/drawable/white-key-down.png");
             tile.setPressedIcon(resizeIcon(imageIcon, Math.round(imageIcon.getIconWidth()*SIZE_MULT_WIDTH), Math.round(imageIcon.getIconHeight()*SIZE_MULT_HEIGHT)));
             //tile.setKeyEvent(Translator.getNumberNoteFromName(Objects.requireNonNull(tile).getName()));
-            this.keyboard.add(tile);
-            keyBoard.add(this.keyboard.get(i), Integer.valueOf(1));
+            keyboard.add(tile);
+            keyBoard.add(keyboard.get(i), Integer.valueOf(1));
             keyBoard.add(Box.createRigidArea(new Dimension(2, 0)));
         }
 
@@ -140,23 +141,23 @@ public class PianoTilesUISelector extends Piano {
         }
         for (int i = 0; i < 2; i++) {
             tiles.get(i*5).setBounds(102+(separationBlack*i),yBlack,widthBlack,heightBlack);
-            this.keyboard.add(tiles.get(i*5));
+            keyboard.add(tiles.get(i*5));
             keyBoard.add(tiles.get(i*5), Integer.valueOf(2));
 
             tiles.get(1+i*5).setBounds(167+(separationBlack*i),yBlack,widthBlack,heightBlack);
-            this.keyboard.add(tiles.get(1+i*5));
+            keyboard.add(tiles.get(1+i*5));
             keyBoard.add(tiles.get(1+i*5), Integer.valueOf(2));
 
             tiles.get(2+i*5).setBounds(297+(separationBlack*i),yBlack,widthBlack,heightBlack);
-            this.keyboard.add(tiles.get(2+i*5));
+            keyboard.add(tiles.get(2+i*5));
             keyBoard.add(tiles.get(2+i*5), Integer.valueOf(2));
 
             tiles.get(3+i*5).setBounds(362+(separationBlack*i),yBlack,widthBlack,heightBlack);
-            this.keyboard.add(tiles.get(3+i*5));
+            keyboard.add(tiles.get(3+i*5));
             keyBoard.add(tiles.get(3+i*5), Integer.valueOf(2));
 
             tiles.get(4+i*5).setBounds(428+(separationBlack*i),yBlack,widthBlack,heightBlack);
-            this.keyboard.add(tiles.get(4+i*5));
+            keyboard.add(tiles.get(4+i*5));
             keyBoard.add(tiles.get(4+i*5), Integer.valueOf(2));
 
         }
