@@ -20,8 +20,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="Left buttons to change between views (free piano, play a song and music playlist) done successfully.">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_14_04_2021__17_43__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_14_04_2021__17_43__Default_Changelist_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_14_04_2021__17_44__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_14_04_2021__17_44__Default_Changelist_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Files/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/Files/config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/FreePianoUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/FreePianoUI.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/PianoTilesUISelector.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/PianoTilesUISelector.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presentation/Ui_Views/FreePianoUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Ui_Views/FreePianoUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presentation/Ui_Views/PianoTilesUISelector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Ui_Views/PianoTilesUISelector.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -282,38 +288,33 @@
     <MESSAGE value="Basic UI classes created and added to the cardLayout." />
     <MESSAGE value="IsValidActive" />
     <MESSAGE value="Small change config" />
-    <MESSAGE value="Commit to pull" />
-    <option name="LAST_COMMIT_MESSAGE" value="Commit to pull" />
+    <option name="LAST_COMMIT_MESSAGE" value="Small change config" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="875" height="2" key="GridCell.Tab.0.bottom" timestamp="1619971095653">
-      <screen x="0" y="0" width="1792" height="1120" />
+    <state width="1237" height="133" key="GridCell.Tab.0.bottom" timestamp="1619973092839">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="133" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1619962972044" />
-    <state width="875" height="2" key="GridCell.Tab.0.bottom/0.0.1792.1120@0.0.1792.1120" timestamp="1619971095653" />
-    <state width="875" height="2" key="GridCell.Tab.0.center" timestamp="1619971095652">
-      <screen x="0" y="0" width="1792" height="1120" />
+    <state width="1237" height="133" key="GridCell.Tab.0.bottom/0.0.1280.680/-1920.0.1920.1040@0.0.1280.680" timestamp="1619973092839" />
+    <state width="1237" height="133" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1619971933676" />
+    <state width="1237" height="133" key="GridCell.Tab.0.center" timestamp="1619973092838">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="133" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1619962972043" />
-    <state width="875" height="2" key="GridCell.Tab.0.center/0.0.1792.1120@0.0.1792.1120" timestamp="1619971095652" />
-    <state width="875" height="2" key="GridCell.Tab.0.left" timestamp="1619971095651">
-      <screen x="0" y="0" width="1792" height="1120" />
+    <state width="1237" height="133" key="GridCell.Tab.0.center/0.0.1280.680/-1920.0.1920.1040@0.0.1280.680" timestamp="1619973092838" />
+    <state width="1237" height="133" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1619971933676" />
+    <state width="1237" height="133" key="GridCell.Tab.0.left" timestamp="1619973092838">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="133" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1619962972043" />
-    <state width="875" height="2" key="GridCell.Tab.0.left/0.0.1792.1120@0.0.1792.1120" timestamp="1619971095651" />
-    <state width="875" height="2" key="GridCell.Tab.0.right" timestamp="1619971095653">
-      <screen x="0" y="0" width="1792" height="1120" />
+    <state width="1237" height="133" key="GridCell.Tab.0.left/0.0.1280.680/-1920.0.1920.1040@0.0.1280.680" timestamp="1619973092838" />
+    <state width="1237" height="133" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1619971933676" />
+    <state width="1237" height="133" key="GridCell.Tab.0.right" timestamp="1619973092838">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="133" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1619962972043" />
-    <state width="875" height="2" key="GridCell.Tab.0.right/0.0.1792.1120@0.0.1792.1120" timestamp="1619971095653" />
+    <state width="1237" height="133" key="GridCell.Tab.0.right/0.0.1280.680/-1920.0.1920.1040@0.0.1280.680" timestamp="1619973092838" />
+    <state width="1237" height="133" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1619971933676" />
     <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1619962952091">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1619962952091" />
-    <state x="694" y="481" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1619971378595">
-      <screen x="0" y="0" width="1792" height="1120" />
-    </state>
-    <state x="694" y="481" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1792.1120@0.0.1792.1120" timestamp="1619971378595" />
     <state x="91" y="0" key="new project wizard" timestamp="1619905398264">
       <screen x="0" y="0" width="1280" height="680" />
     </state>

@@ -42,35 +42,13 @@ public class FreePianoUI extends Piano {
         panel.setBackground(Color.getHSBColor(0,0,0.2f));
 
         //All information will go inside here
-        panel.add(Box.createRigidArea(new Dimension(10, 200)), BorderLayout.CENTER);
+        panel.add(Box.createRigidArea(new Dimension(10, 300)), BorderLayout.CENTER);
 
         SIZE_MULT_HEIGHT = 1.31f;
         panel.add(makeKeys(), BorderLayout.SOUTH);
         panel.add(initMenu(), BorderLayout.PAGE_START);
 
         return panel;
-    }
-
-    private JPanel initWhiteKeys(int a) {
-        GridBagConstraints c = new GridBagConstraints();
-        JPanel Tiles = new JPanel();
-        Tile tile;
-        Tiles.setLayout(new GridLayout());
-        c.gridy = 0;
-        for (int i = 0; i < a; i++) {
-            c.gridx = i;
-            tile = new Tile(whiteNotes[i], colors[i % 7], whiteTileLoc);
-            ImageIcon imageIcon = new ImageIcon("Files/drawable/white-key-down.png");
-            tile.setPressedIcon(resizeIcon(imageIcon, Math.round(imageIcon.getIconWidth()*SIZE_MULT_WIDTH), Math.round(imageIcon.getIconHeight()*SIZE_MULT_HEIGHT)));
-            tile.setActionCommand(BTN_TILE);
-            this.keyboard.add(tile);
-            Tiles.add(this.keyboard.get(i), c);
-        }
-
-        Tiles.setBorder(new EmptyBorder(4,4,4,4));
-        Tiles.setBackground(Color.black);
-
-        return Tiles;
     }
 
     private JPanel initMenu() {
@@ -95,7 +73,7 @@ public class FreePianoUI extends Piano {
         menu.add(soundType);
 
         registerController(new FreePianoUIManager());
-        layout.add(menu, BorderLayout.WEST);
+        layout.add(menu, BorderLayout.NORTH);
         layout.setBackground(Color.getHSBColor(0,0,0.2f));
         return layout;
     }
@@ -120,13 +98,13 @@ public class FreePianoUI extends Piano {
     }
 
     public JLayeredPane makeKeys(){
-        int heightBlack = 180;
+        int heightBlack = 150;
         int widthBlack = 35;
         int yBlack = 0;
         int separationBlack = 455;
         // Create layerPane
         JLayeredPane keyBoard = new JLayeredPane();
-        keyBoard.setPreferredSize(new Dimension(1025,324));
+        keyBoard.setPreferredSize(new Dimension(1025,600));
         keyBoard.add(Box.createRigidArea(new Dimension(55, 0)));
 
         Tile tile;
@@ -134,7 +112,7 @@ public class FreePianoUI extends Piano {
         for (int i = 0; i < numWhiteKeys; i++) {
             tile = new Tile(whiteNotes[i], colors[i % 7], whiteTileLoc);
             tile.setActionCommand(BTN_TILE);
-            tile.setBounds(55 + 65*i,0,65,324);
+            tile.setBounds(55 + 65*i,0,65,300);
             ImageIcon imageIcon = new ImageIcon("Files/drawable/white-key-down.png");
             tile.setPressedIcon(resizeIcon(imageIcon, Math.round(imageIcon.getIconWidth()*SIZE_MULT_WIDTH), Math.round(imageIcon.getIconHeight()*SIZE_MULT_HEIGHT)));
             this.keyboard.add(tile);
