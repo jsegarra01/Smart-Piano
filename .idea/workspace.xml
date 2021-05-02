@@ -20,14 +20,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="Left buttons to change between views (free piano, play a song and music playlist) done successfully.">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_14_04_2021__17_43__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_14_04_2021__17_43__Default_Changelist_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_14_04_2021__17_44__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_14_04_2021__17_44__Default_Changelist_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Files/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/Files/config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/PianoTilesUISelectorManager$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/PianoTilesUISelectorManager$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/PianoTilesUISelectorManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/PianoTilesUISelectorManager.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/FreePianoUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/FreePianoUI.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/PianoTilesUISelector.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/PianoTilesUISelector.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presentation/Ui_Views/FreePianoUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Ui_Views/FreePianoUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presentation/Ui_Views/PianoTilesUISelector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Ui_Views/PianoTilesUISelector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presentation/Manager/PianoTilesUISelectorManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Manager/PianoTilesUISelectorManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -291,26 +289,30 @@
     <option name="LAST_COMMIT_MESSAGE" value="Small change config" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1237" height="133" key="GridCell.Tab.0.bottom" timestamp="1619973092839">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state width="875" height="268" key="GridCell.Tab.0.bottom" timestamp="1619975535463">
+      <screen x="0" y="0" width="1792" height="1120" />
     </state>
     <state width="1237" height="133" key="GridCell.Tab.0.bottom/0.0.1280.680/-1920.0.1920.1040@0.0.1280.680" timestamp="1619973092839" />
     <state width="1237" height="133" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1619971933676" />
-    <state width="1237" height="133" key="GridCell.Tab.0.center" timestamp="1619973092838">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state width="875" height="268" key="GridCell.Tab.0.bottom/0.0.1792.1120@0.0.1792.1120" timestamp="1619975535463" />
+    <state width="875" height="268" key="GridCell.Tab.0.center" timestamp="1619975535461">
+      <screen x="0" y="0" width="1792" height="1120" />
     </state>
     <state width="1237" height="133" key="GridCell.Tab.0.center/0.0.1280.680/-1920.0.1920.1040@0.0.1280.680" timestamp="1619973092838" />
     <state width="1237" height="133" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1619971933676" />
-    <state width="1237" height="133" key="GridCell.Tab.0.left" timestamp="1619973092838">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state width="875" height="268" key="GridCell.Tab.0.center/0.0.1792.1120@0.0.1792.1120" timestamp="1619975535461" />
+    <state width="875" height="268" key="GridCell.Tab.0.left" timestamp="1619975535460">
+      <screen x="0" y="0" width="1792" height="1120" />
     </state>
     <state width="1237" height="133" key="GridCell.Tab.0.left/0.0.1280.680/-1920.0.1920.1040@0.0.1280.680" timestamp="1619973092838" />
     <state width="1237" height="133" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1619971933676" />
-    <state width="1237" height="133" key="GridCell.Tab.0.right" timestamp="1619973092838">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state width="875" height="268" key="GridCell.Tab.0.left/0.0.1792.1120@0.0.1792.1120" timestamp="1619975535460" />
+    <state width="875" height="268" key="GridCell.Tab.0.right" timestamp="1619975535462">
+      <screen x="0" y="0" width="1792" height="1120" />
     </state>
     <state width="1237" height="133" key="GridCell.Tab.0.right/0.0.1280.680/-1920.0.1920.1040@0.0.1280.680" timestamp="1619973092838" />
     <state width="1237" height="133" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1619971933676" />
+    <state width="875" height="268" key="GridCell.Tab.0.right/0.0.1792.1120@0.0.1792.1120" timestamp="1619975535462" />
     <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1619962952091">
       <screen x="0" y="0" width="1280" height="680" />
     </state>

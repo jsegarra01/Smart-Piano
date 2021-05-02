@@ -35,6 +35,7 @@ public class FreePianoUIManager implements ActionListener {
     private MidiHelper finalMidiHelper;
     MidiHelper midiHelper = null;
     private KeyListener KL;
+    private boolean iAmPressed=false;
 
     /**
      * Parametrized constructor
@@ -51,10 +52,15 @@ public class FreePianoUIManager implements ActionListener {
             public void keyTyped(KeyEvent e) {}
             @Override
             public void keyPressed(KeyEvent e) {
-                finalMidiHelper.playSomething(Translator.getNumberNoteFromName(Translator.getCodeFromKey(e)), SOUND_SYNTHER);
+                if(!iAmPressed){
+                    finalMidiHelper.playSomething(Translator.getNumberNoteFromName(Translator.getCodeFromKey(e)), SOUND_SYNTHER);
+                    iAmPressed=true;
+                }
             }
             @Override
-            public void keyReleased(KeyEvent e) {}
+            public void keyReleased(KeyEvent e) {
+                iAmPressed=false;
+            }
         };
     }
 
