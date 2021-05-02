@@ -25,9 +25,9 @@ import static Presentation.DictionaryPiano.*;
 public class PianoFrame extends JPanel {
     private MainFrame mainFrame;
 
-    private JButton freePiano = new JButton(FREE_PIANO);
-    private JButton playSong = new JButton(PLAY_A_SONG);
-    private JButton musicPlayer = new JButton(MUSIC_PLAYER);
+    public static JButton freePiano = new JButton(FREE_PIANO);
+    public static JButton playSong = new JButton(PLAY_A_SONG);
+    public static JButton musicPlayer = new JButton(MUSIC_PLAYER);
 
     public static JPanel centralPanel = new JPanel(new CardLayout());
 
@@ -68,7 +68,7 @@ public class PianoFrame extends JPanel {
         freePiano.setActionCommand(FREE_PIANO);
         freePiano.setAlignmentX(0.5f);
         freePiano.setBorder(new EmptyBorder(80,40,80,40));
-        freePiano.setBackground(Color.getHSBColor(0,0,80.3f));
+        freePiano.setBackground(Color.GRAY);
 
         playSong.setActionCommand(PLAY_A_SONG);
         playSong.setAlignmentX(0.5f);

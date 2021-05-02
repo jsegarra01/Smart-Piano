@@ -19,15 +19,15 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="Piano does not keep playing anymore whenever the key is pressed. &#10;The tile changes its color, simulating that has been pressed with the keyboard">
+    <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="I am not allowed to do finish feature :'(">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_14_04_2021__17_43__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_14_04_2021__17_43__Default_Changelist_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_14_04_2021__17_44__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_14_04_2021__17_44__Default_Changelist_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Files/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/Files/config.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/FreePianoUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/FreePianoUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/Piano.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/Piano.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/PianoFrameManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/PianoFrameManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/PianoFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/PianoFrame.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/PianoTilesUISelector.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/PianoTilesUISelector.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presentation/Ui_Views/FreePianoUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Ui_Views/FreePianoUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presentation/Ui_Views/Piano.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Ui_Views/Piano.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presentation/Ui_Views/PianoTilesUISelector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Ui_Views/PianoTilesUISelector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presentation/Manager/PianoFrameManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Manager/PianoFrameManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presentation/Ui_Views/PianoFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Ui_Views/PianoFrame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,6 +50,7 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitSEFilterConfiguration">
     <file-type-list>
@@ -256,7 +257,21 @@
       <option name="project" value="LOCAL" />
       <updated>1619980100679</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Piano works perfectly fine. Checked that everything worked as it should.">
+      <created>1619985274808</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1619985274808</updated>
+    </task>
+    <task id="LOCAL-00017" summary="I am not allowed to do finish feature :'(">
+      <created>1619985324845</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1619985324845</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -303,45 +318,47 @@
     <MESSAGE value="Small change config" />
     <MESSAGE value="Changes in the piano, fancier" />
     <MESSAGE value="Piano does not keep playing anymore whenever the key is pressed. &#10;The tile changes its color, simulating that has been pressed with the keyboard" />
-    <option name="LAST_COMMIT_MESSAGE" value="Piano does not keep playing anymore whenever the key is pressed. &#10;The tile changes its color, simulating that has been pressed with the keyboard" />
+    <MESSAGE value="Piano works perfectly fine. Checked that everything worked as it should." />
+    <MESSAGE value="I am not allowed to do finish feature :'(" />
+    <option name="LAST_COMMIT_MESSAGE" value="I am not allowed to do finish feature :'(" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1237" height="16" key="GridCell.Tab.0.bottom" timestamp="1619984839180">
+    <state width="1237" height="36" key="GridCell.Tab.0.bottom" timestamp="1619990512000">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="16" key="GridCell.Tab.0.bottom/0.0.1280.680/-1920.0.1920.1040@0.0.1280.680" timestamp="1619984839180" />
-    <state width="1237" height="133" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1619971933676" />
-    <state width="1237" height="16" key="GridCell.Tab.0.center" timestamp="1619984839180">
+    <state width="1237" height="16" key="GridCell.Tab.0.bottom/0.0.1280.680/-1920.0.1920.1040@0.0.1280.680" timestamp="1619985251016" />
+    <state width="1237" height="36" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1619990512000" />
+    <state width="1237" height="36" key="GridCell.Tab.0.center" timestamp="1619990512000">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="16" key="GridCell.Tab.0.center/0.0.1280.680/-1920.0.1920.1040@0.0.1280.680" timestamp="1619984839180" />
-    <state width="1237" height="133" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1619971933676" />
-    <state width="1237" height="16" key="GridCell.Tab.0.left" timestamp="1619984839180">
+    <state width="1237" height="16" key="GridCell.Tab.0.center/0.0.1280.680/-1920.0.1920.1040@0.0.1280.680" timestamp="1619985251016" />
+    <state width="1237" height="36" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1619990512000" />
+    <state width="1237" height="36" key="GridCell.Tab.0.left" timestamp="1619990512000">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="16" key="GridCell.Tab.0.left/0.0.1280.680/-1920.0.1920.1040@0.0.1280.680" timestamp="1619984839180" />
-    <state width="1237" height="133" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1619971933676" />
-    <state width="1237" height="16" key="GridCell.Tab.0.right" timestamp="1619984839180">
+    <state width="1237" height="16" key="GridCell.Tab.0.left/0.0.1280.680/-1920.0.1920.1040@0.0.1280.680" timestamp="1619985251016" />
+    <state width="1237" height="36" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1619990512000" />
+    <state width="1237" height="36" key="GridCell.Tab.0.right" timestamp="1619990512000">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="16" key="GridCell.Tab.0.right/0.0.1280.680/-1920.0.1920.1040@0.0.1280.680" timestamp="1619984839180" />
-    <state width="1237" height="133" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1619971933676" />
-    <state width="1237" height="4" key="GridCell.Tab.1.bottom" timestamp="1619984711416">
+    <state width="1237" height="16" key="GridCell.Tab.0.right/0.0.1280.680/-1920.0.1920.1040@0.0.1280.680" timestamp="1619985251016" />
+    <state width="1237" height="36" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1619990512000" />
+    <state width="1237" height="4" key="GridCell.Tab.1.bottom" timestamp="1619985094524">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="4" key="GridCell.Tab.1.bottom/0.0.1280.680/-1920.0.1920.1040@0.0.1280.680" timestamp="1619984711416" />
-    <state width="1237" height="4" key="GridCell.Tab.1.center" timestamp="1619984711416">
+    <state width="1237" height="4" key="GridCell.Tab.1.bottom/0.0.1280.680/-1920.0.1920.1040@0.0.1280.680" timestamp="1619985094524" />
+    <state width="1237" height="4" key="GridCell.Tab.1.center" timestamp="1619985094524">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="4" key="GridCell.Tab.1.center/0.0.1280.680/-1920.0.1920.1040@0.0.1280.680" timestamp="1619984711416" />
-    <state width="1237" height="4" key="GridCell.Tab.1.left" timestamp="1619984711416">
+    <state width="1237" height="4" key="GridCell.Tab.1.center/0.0.1280.680/-1920.0.1920.1040@0.0.1280.680" timestamp="1619985094524" />
+    <state width="1237" height="4" key="GridCell.Tab.1.left" timestamp="1619985094524">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="4" key="GridCell.Tab.1.left/0.0.1280.680/-1920.0.1920.1040@0.0.1280.680" timestamp="1619984711416" />
-    <state width="1237" height="4" key="GridCell.Tab.1.right" timestamp="1619984711416">
+    <state width="1237" height="4" key="GridCell.Tab.1.left/0.0.1280.680/-1920.0.1920.1040@0.0.1280.680" timestamp="1619985094524" />
+    <state width="1237" height="4" key="GridCell.Tab.1.right" timestamp="1619985094524">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="4" key="GridCell.Tab.1.right/0.0.1280.680/-1920.0.1920.1040@0.0.1280.680" timestamp="1619984711416" />
+    <state width="1237" height="4" key="GridCell.Tab.1.right/0.0.1280.680/-1920.0.1920.1040@0.0.1280.680" timestamp="1619985094524" />
     <state x="121" y="51" key="MergeDialog" timestamp="1619980275651">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -350,11 +367,15 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="280" y="102" key="MultipleFileMergeDialog/0.0.1280.680/-1920.0.1920.1040@0.0.1280.680" timestamp="1619980275669" />
-    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1619980305291">
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1619985348930">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680/-1920.0.1920.1040@0.0.1280.680" timestamp="1619980305291" />
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680/-1920.0.1920.1040@0.0.1280.680" timestamp="1619985348930" />
     <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1619962952091" />
+    <state x="458" y="255" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1619989804345">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="458" y="255" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.680@0.0.1280.680" timestamp="1619989804343" />
     <state x="91" y="0" key="new project wizard" timestamp="1619905398264">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
