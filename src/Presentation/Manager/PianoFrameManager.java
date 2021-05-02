@@ -10,7 +10,7 @@ import static Presentation.DictionaryPiano.*;
 import static Presentation.Dictionary_login.*;
 import static Presentation.Manager.MainFrame.card;
 import static Presentation.Manager.MainFrame.contenedor;
-import static Presentation.Ui_Views.PianoFrame.centralPanel;
+import static Presentation.Ui_Views.PianoFrame.*;
 
 
 /**
@@ -39,17 +39,24 @@ public class PianoFrameManager implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         // We distinguish between our buttons.
         CardLayout cc = (CardLayout) (centralPanel.getLayout());
+
+        freePiano.setBackground(Color.getHSBColor(0,0,80.3f));
+        playSong.setBackground(Color.getHSBColor(0,0,80.3f));
+        musicPlayer.setBackground(Color.getHSBColor(0,0,80.3f));
         switch (e.getActionCommand()) {
             case Dictionary_login.PROFILE_BUTTON:       //In the case that the Profile button is pressed
                 card.show(contenedor, PROFILE_UI);
             case FREE_PIANO:
                 cc.show(centralPanel, FREE_PIANO_UI);
+                freePiano.setBackground(Color.GRAY);
                 break;
             case PLAY_A_SONG:
                 cc.show(centralPanel, PIANO_TILES_UI_SELECTOR);
+                playSong.setBackground(Color.GRAY);
                 break;
             case MUSIC_PLAYER:
                 cc.show(centralPanel, SPOTI_UI);
+                musicPlayer.setBackground(Color.GRAY);
                 break;
         }
     }

@@ -16,7 +16,7 @@ public abstract class Piano extends JPanel {
     protected MainFrame mainFrame;
 
     public static final String BTN_RETURN = "BTN_RETURN";
-    public static final String BTN_RECORD = "BTN_RECORD";
+    public static final String BTN_RECORD = " ";
     public static final String BTN_SUSTAIN_SOUND = "BTN_SUSTAIN_SOUND";
     public static final String BTN_SYNTH_SOUND = "BTN_SYNTH_SOUND";
     public static final String BTN_TILE = "SOUND";
@@ -27,7 +27,8 @@ public abstract class Piano extends JPanel {
 
 
     protected JButton returnB = new JButton(BTN_RETURN);
-    protected JButton recordB = new JButton(BTN_RECORD);
+    protected ImageIcon iconRec = new ImageIcon("Files/drawable/recIcon.png");
+    protected JButton recordB = new JButton(BTN_RECORD,iconRec);
     protected JButton pianoSoundB = new JButton(BTN_SUSTAIN_SOUND);
     protected JButton synthSoundB = new JButton(BTN_SYNTH_SOUND);
     protected JButton nextSynther = new JButton(BTN_NEXT_SYNTHER);
@@ -54,6 +55,13 @@ public abstract class Piano extends JPanel {
             {"2c#", "2d#", "", "2f#", "2g#", "2a#", "", "3c#", "3d#", "", "3f#", "3g#", "3a#"};
     protected Color[] colors =
             {Color.red, Color.orange, Color.yellow, Color.green, Color.blue, Color.magenta, Color.pink};
+    protected static final String[] whiteLabels ={
+            "Do", "Re", "Mi","Fa", "Sol", "La", "Si","Do", "Re", "Mi","Fa", "Sol", "La", "Si"
+    };
+    protected static final String[] blackLabels = {
+            "Do#", "Re#", "Fa#", "Sol#", "La#", "Do#", "Re#", "Fa#", "Sol#", "La#"
+    };
+
     public static ArrayList<Tile> getKeyboard() {
         return keyboard;
     }

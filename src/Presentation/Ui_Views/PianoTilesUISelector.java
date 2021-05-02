@@ -65,7 +65,7 @@ public class PianoTilesUISelector extends Piano {
         //This will be another card layout, which we will have to divide between the free piano or the song piano in order use the same piano for both
         panel.add(Box.createRigidArea(new Dimension(10, 350)), BorderLayout.CENTER);
 
-        SIZE_MULT_HEIGHT = 0.9f;
+
         panel.add(makeKeys(), BorderLayout.SOUTH);
         panel.add(initMenu(), BorderLayout.PAGE_START);
 
@@ -108,16 +108,19 @@ public class PianoTilesUISelector extends Piano {
     }
 
     public JLayeredPane makeKeys(){
+        SIZE_MULT_HEIGHT = 0.9f;
         int heightBlack = 120;
         int widthBlack = 35;
         int yBlack = 0;
         int separationBlack = 455;
+        int separation = 255;
         // Create layerPane
         JLayeredPane keyBoard = new JLayeredPane();
         keyBoard.setPreferredSize(new Dimension(1025,250));
         keyBoard.add(Box.createRigidArea(new Dimension(55, 0)));
 
         Tile tile;
+        JLabel label;
 
         for (int i = 0; i < numWhiteKeys; i++) {
             tile = new Tile(whiteNotes[i], Color.WHITE, whiteTileLoc);
@@ -129,6 +132,9 @@ public class PianoTilesUISelector extends Piano {
             keyboard.add(tile);
             keyBoard.add(keyboard.get(i), Integer.valueOf(1));
             keyBoard.add(Box.createRigidArea(new Dimension(2, 0)));
+            label = new JLabel(whiteLabels[i]);
+            label.setBounds(65*(i+1)+15,200,widthBlack,20);
+            keyBoard.add(label,Integer.valueOf(3));
         }
 
         LinkedList<Tile> tiles = new LinkedList<>();
@@ -139,27 +145,49 @@ public class PianoTilesUISelector extends Piano {
             tiles.getLast().setPressedIcon(resizeIcon(imageIcon, Math.round(imageIcon.getIconWidth()*SIZE_MULT_WIDTH),
                     Math.round(imageIcon.getIconHeight()*SIZE_MULT_HEIGHT)));
         }
+
+        int add = 8;
+        int yLabel = 45;
         for (int i = 0; i < 2; i++) {
             tiles.get(i*5).setBounds(102+(separationBlack*i),yBlack,widthBlack,heightBlack);
             keyboard.add(tiles.get(i*5));
             keyBoard.add(tiles.get(i*5), Integer.valueOf(2));
+            label = new JLabel(blackLabels[i*5]);
+            label.setBounds(102+(separationBlack*i)+add,yLabel,widthBlack,heightBlack);
+            label.setForeground(Color.WHITE);
+            keyBoard.add(label,Integer.valueOf(4));
 
             tiles.get(1+i*5).setBounds(167+(separationBlack*i),yBlack,widthBlack,heightBlack);
             keyboard.add(tiles.get(1+i*5));
             keyBoard.add(tiles.get(1+i*5), Integer.valueOf(2));
+            label = new JLabel(blackLabels[1+i*5]);
+            label.setBounds(167+(separationBlack*i)+add,yLabel,widthBlack,heightBlack);
+            label.setForeground(Color.WHITE);
+            keyBoard.add(label,Integer.valueOf(4));
 
             tiles.get(2+i*5).setBounds(297+(separationBlack*i),yBlack,widthBlack,heightBlack);
             keyboard.add(tiles.get(2+i*5));
             keyBoard.add(tiles.get(2+i*5), Integer.valueOf(2));
+            label = new JLabel(blackLabels[2+i*5]);
+            label.setBounds(297+(separationBlack*i)+add,yLabel,widthBlack,heightBlack);
+            label.setForeground(Color.WHITE);
+            keyBoard.add(label,Integer.valueOf(4));
 
             tiles.get(3+i*5).setBounds(362+(separationBlack*i),yBlack,widthBlack,heightBlack);
             keyboard.add(tiles.get(3+i*5));
             keyBoard.add(tiles.get(3+i*5), Integer.valueOf(2));
+            label = new JLabel(blackLabels[3+i*5]);
+            label.setBounds(359+(separationBlack*i)+add,yLabel,widthBlack,heightBlack);
+            label.setForeground(Color.WHITE);
+            keyBoard.add(label,Integer.valueOf(4));
 
             tiles.get(4+i*5).setBounds(428+(separationBlack*i),yBlack,widthBlack,heightBlack);
             keyboard.add(tiles.get(4+i*5));
             keyBoard.add(tiles.get(4+i*5), Integer.valueOf(2));
-
+            label = new JLabel(blackLabels[4+i*5]);
+            label.setBounds(428+(separationBlack*i)+add,yLabel,widthBlack,heightBlack);
+            label.setForeground(Color.WHITE);
+            keyBoard.add(label,Integer.valueOf(4));
         }
 
         return keyBoard;
