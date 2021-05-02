@@ -2,12 +2,14 @@ package Presentation.Ui_Views;
 
 //Imports all necessary libraries
 import Presentation.Manager.MainFrame;
-import Presentation.Manager.TempFreePianoUIManager;
+import Presentation.Manager.PianoFrameManager;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 import java.awt.*;
+import java.awt.event.ActionListener;
+import java.net.http.WebSocket;
 
 import static Presentation.DictionaryPiano.*;
 
@@ -20,7 +22,7 @@ import static Presentation.DictionaryPiano.*;
  * @version 1.5 1 May 2021
  *
  */
-public class TempFreePianoUI extends JPanel {
+public class PianoFrame extends JPanel {
     private MainFrame mainFrame;
 
     private JButton freePiano = new JButton(FREE_PIANO);
@@ -41,7 +43,7 @@ public class TempFreePianoUI extends JPanel {
      * Constructor for the TempFreePianoUI, you need to send the mainframe context and will create a card layout
      * @param mainFrame context necessary to create the card layout
      */
-    public TempFreePianoUI(final MainFrame mainFrame) {
+    public PianoFrame(final MainFrame mainFrame) {
         super();
         this.mainFrame=mainFrame;
         pianoTilesUISelector = new PianoTilesUISelector(mainFrame);
@@ -56,10 +58,10 @@ public class TempFreePianoUI extends JPanel {
      */
     private void initialize() {
         mainFrame.setTitle("SmartPiano");
-        mainFrame.setSize(1000, 400);
+        mainFrame.setSize(1000, 800);
         setLayout(new BorderLayout());
 
-        JPanel buttonsPanel = new JPanel();
+        /*JPanel buttonsPanel = new JPanel();
 
         buttonsPanel.add(Box.createRigidArea(new Dimension(10, 45)));
         freePiano.setActionCommand(FREE_PIANO);
@@ -74,7 +76,7 @@ public class TempFreePianoUI extends JPanel {
         musicPlayer.setAlignmentX(0.5f);
         musicPlayer.setBorder(new EmptyBorder(12,88,12,88));
 
-        registerController(new TempFreePianoUIManager());
+        registerController(new PianoFrameManager());
 
         buttonsPanel.add(freePiano);
         buttonsPanel.add(Box.createRigidArea(new Dimension(10, 25)));
@@ -82,7 +84,38 @@ public class TempFreePianoUI extends JPanel {
         buttonsPanel.add(Box.createRigidArea(new Dimension(10, 25)));
         buttonsPanel.add(musicPlayer);
 
-        this.add(buttonsPanel, BorderLayout.WEST);
+        this.add(buttonsPanel, BorderLayout.WEST);*/
+
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.Y_AXIS));
+
+        buttonPanel.add(Box.createRigidArea(new Dimension(10, 45)));
+        freePiano.setActionCommand(FREE_PIANO);
+        freePiano.setAlignmentX(0.5f);
+        freePiano.setBorder(new EmptyBorder(80,40,80,40));
+        freePiano.setBackground(Color.getHSBColor(0,0,80.3f));
+
+        playSong.setActionCommand(PLAY_A_SONG);
+        playSong.setAlignmentX(0.5f);
+        playSong.setBorder(new EmptyBorder(80,37,80,37));
+        playSong.setBackground(Color.getHSBColor(0,0,80.3f));
+
+        musicPlayer.setActionCommand(MUSIC_PLAYER);
+        musicPlayer.setAlignmentX(0.5f);
+        musicPlayer.setBorder(new EmptyBorder(80,33,80,33));
+        musicPlayer.setBackground(Color.getHSBColor(0,0,80.3f));
+
+        registerController(new PianoFrameManager());
+
+        buttonPanel.add(freePiano);
+        buttonPanel.add(Box.createRigidArea(new Dimension(150, 10)));
+        buttonPanel.add(playSong);
+        buttonPanel.add(Box.createRigidArea(new Dimension(80, 10)));
+        buttonPanel.add(musicPlayer);
+        buttonPanel.add(Box.createRigidArea(new Dimension(10, 10)));
+        buttonPanel.setBackground(Color.getHSBColor(0, 0, 0.2f));
+
+        this.add(buttonPanel, BorderLayout.WEST);
 
         centralPanel.add(freePianoUI, FREE_PIANO_UI);
         centralPanel.add(pianoTilesUIGame, PIANO_TILES_UI_GAME);
@@ -101,7 +134,7 @@ public class TempFreePianoUI extends JPanel {
      * Method to add the action listeners to the buttons
      * @param listener The action listener
      */
-    private void registerController(TempFreePianoUIManager listener) {
+    private void registerController(ActionListener listener) {
         freePiano.addActionListener(listener);
         playSong.addActionListener(listener);
         musicPlayer.addActionListener(listener);
