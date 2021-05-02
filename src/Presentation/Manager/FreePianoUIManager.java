@@ -100,11 +100,11 @@ public class FreePianoUIManager implements ActionListener {
                 if (obj instanceof Tile) {
                     t = (Tile) obj;
                 }
-                try {
+                /*try {
                     t.setIcon();
                 } catch (InterruptedException interruptedException) {
                     interruptedException.printStackTrace();
-                }
+                }*/
                 finalMidiHelper.playSomething(Translator.getNumberNoteFromName(Objects.requireNonNull(t).getName()),SOUND_SYNTHER);
                 break;
             case Dictionary_login.PROFILE_BUTTON:       //In the case that the Profile button is pressed

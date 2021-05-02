@@ -27,47 +27,8 @@ import java.util.ArrayList;
 import static Presentation.Dictionary_login.PROFILE_BUTTON;
 import static Presentation.Ui_Views.Tile.*;
 
-public class PianoTilesUISelector extends JPanel {
-    private MainFrame mainFrame;
+public class PianoTilesUISelector extends Piano {
 
-
-    public static final String BTN_RETURN = "BTN_RETURN";
-    public static final String BTN_RECORD = "BTN_RECORD";
-    public static final String BTN_SUSTAIN_SOUND = "BTN_SUSTAIN_SOUND";
-    public static final String BTN_SYNTH_SOUND = "BTN_SYNTH_SOUND";
-    public static final String BTN_TILE = "SOUND";
-    public static final String BTN_NEXT_SYNTHER = "++";
-    public static final String BTN_PREV_SYNTHER = "--";
-    public static final String JLAB_SYNTH_TYPE = "Classic Piano";
-    private static Label soundType;
-
-
-    private final JButton returnB = new JButton(BTN_RETURN);
-    private final JButton recordB = new JButton(BTN_RECORD);
-    private final JButton pianoSoundB = new JButton(BTN_SUSTAIN_SOUND);
-    private final JButton synthSoundB = new JButton(BTN_SYNTH_SOUND);
-    private final JButton nextSynther = new JButton(BTN_NEXT_SYNTHER);
-    private final JButton prevSynther = new JButton(BTN_PREV_SYNTHER);
-    private final JButton profile = new JButton(PROFILE_BUTTON);
-
-    /**
-     * private JTextField hey;
-     */
-
-    private ArrayList<Tile> keyboard;
-    public static String whiteTileLoc = "Files/drawable/white-key.png";
-    public static String blackTileLoc = "Files/drawable/black-key.png";
-    /*
-    private String[] whiteKeys =
-            { "C", "D", "E", "F", "G", "A", "B"};
-    private String[] blackKeys =
-            { "C#", "D#", "F#", "G#", "A#"};*/
-    public static final String[] whiteNotes =
-            {"2c", "2d", "2e", "2f", "2g", "2a", "2b", "3c", "3d", "3e", "3f", "3g", "3a", "3b", "4c"};
-    public static final String[] blackNotes =
-            {"2c#", "2d#", "", "2f#", "2g#", "2a#", "", "3c#", "3d#", "", "3f#", "3g#", "3a#"};
-    private Color[] colors =
-            {Color.red, Color.orange, Color.yellow, Color.green, Color.blue, Color.magenta, Color.pink};
 
     /**
      * Constructor for the PianoTilesUISelector, you need to send the mainframe context and will create a card layout

@@ -2,37 +2,84 @@ package Presentation.Ui_Views;
 
 import Presentation.Manager.FreePianoUIManager;
 import Presentation.Manager.MainFrame;
-import Presentation.Manager.PianoFrameManager;
+import Presentation.Manager.PianoTilesUISelectorManager;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.LinkedList;
 
 import static Presentation.Dictionary_login.PROFILE_BUTTON;
 import static Presentation.Ui_Views.Tile.*;
-import static javax.swing.SwingConstants.CENTER;
 
-public class FreePianoUI extends Piano {
+public abstract class Piano extends JPanel {
+    protected MainFrame mainFrame;
 
+    PianoTilesUISelectorManager listener = new PianoTilesUISelectorManager();
+
+    public static final int NUM_KEYS = 7;
+    public static final int NUM_OCTAVES = 2;
+    /** Holds the possible notes.*/
+    protected String[] notes = {"C","D","E","F","G","A","B"};
+    /** Holds the possible sharps.*/
+    protected String[] sharps = {"C#","D#","F#","G#","A#"};
+    protected String[] octave = {"4","5"};
+
+
+
+
+
+    public static final String BTN_RETURN = "BTN_RETURN";
+    public static final String BTN_RECORD = "BTN_RECORD";
+    public static final String BTN_SUSTAIN_SOUND = "BTN_SUSTAIN_SOUND";
+    public static final String BTN_SYNTH_SOUND = "BTN_SYNTH_SOUND";
+    public static final String BTN_TILE = "SOUND";
+    public static final String BTN_NEXT_SYNTHER = "++";
+    public static final String BTN_PREV_SYNTHER = "--";
+    protected static final String JLAB_SYNTH_TYPE = "Classic Piano";
+    protected static Label soundType;
+
+
+    protected JButton returnB = new JButton(BTN_RETURN);
+    protected JButton recordB = new JButton(BTN_RECORD);
+    protected JButton pianoSoundB = new JButton(BTN_SUSTAIN_SOUND);
+    protected JButton synthSoundB = new JButton(BTN_SYNTH_SOUND);
+    protected JButton nextSynther = new JButton(BTN_NEXT_SYNTHER);
+    protected JButton prevSynther = new JButton(BTN_PREV_SYNTHER);
+    protected JButton profile = new JButton(PROFILE_BUTTON);
 
     /**
-     * Constructor for the FreePianoUI, you need to send the mainframe context and will create a card layout
-     *
-     * @param mainFrame context necessary to create the card layout
+     * private JTextField hey;
      */
-    public FreePianoUI(final MainFrame mainFrame) {
+
+    protected ArrayList<Tile> keyboard;
+    public static String whiteTileLoc = "Files/drawable/white-key.png";
+    public static String blackTileLoc = "Files/drawable/black-key.png";
+    /*
+    private String[] whiteKeys =
+            { "C", "D", "E", "F", "G", "A", "B"};
+    private String[] blackKeys =
+            { "C#", "D#", "F#", "G#", "A#"};*/
+    protected static final int numWhiteKeys = 14;
+    protected static final int numBlackKeys = 10;
+    protected static final String[] whiteNotes =
+            {"2c", "2d", "2e", "2f", "2g", "2a", "2b", "3c", "3d", "3e", "3f", "3g", "3a", "3b", "4c"};
+    protected static final String[] blackNotes =
+            {"2c#", "2d#", "", "2f#", "2g#", "2a#", "", "3c#", "3d#", "", "3f#", "3g#", "3a#"};
+    protected Color[] colors =
+            {Color.red, Color.orange, Color.yellow, Color.green, Color.blue, Color.magenta, Color.pink};
+/*
+    public Piano(final MainFrame mainFrame){
         super();
         this.mainFrame = mainFrame;
         this.keyboard = new ArrayList<>();
         initialize();
-    }
 
-    /**
-     * The initialize function that creates the card layout for the FreePianoUI
-     */
-    private void initialize() {
+    }
+/**
+ * The initialize function that creates the card layout for the FreePianoUI
+ *//*
+protected void initialize() {
         this.add(configurePanel());
         this.setBackground(Color.getHSBColor(0,0,0.2f));
     }
@@ -45,7 +92,7 @@ public class FreePianoUI extends Piano {
         panel.add(Box.createRigidArea(new Dimension(10, 200)), BorderLayout.CENTER);
 
         SIZE_MULT_HEIGHT = 1.31f;
-        panel.add(makeKeys(), BorderLayout.SOUTH);
+        panel.add(initWhiteKeys(14), BorderLayout.SOUTH);
         panel.add(initMenu(), BorderLayout.PAGE_START);
 
         return panel;
@@ -117,62 +164,5 @@ public class FreePianoUI extends Piano {
 
     public static void setTypeName(String name) {
         soundType.setText(name);
-    }
-
-    public JLayeredPane makeKeys(){
-        int heightBlack = 180;
-        int widthBlack = 35;
-        int yBlack = 0;
-        int separationBlack = 455;
-        // Create layerPane
-        JLayeredPane keyBoard = new JLayeredPane();
-        keyBoard.setPreferredSize(new Dimension(1025,324));
-        keyBoard.add(Box.createRigidArea(new Dimension(55, 0)));
-
-        Tile tile;
-
-        for (int i = 0; i < numWhiteKeys; i++) {
-            tile = new Tile(whiteNotes[i], colors[i % 7], whiteTileLoc);
-            tile.setActionCommand(BTN_TILE);
-            tile.setBounds(55 + 65*i,0,65,324);
-            ImageIcon imageIcon = new ImageIcon("Files/drawable/white-key-down.png");
-            tile.setPressedIcon(resizeIcon(imageIcon, Math.round(imageIcon.getIconWidth()*SIZE_MULT_WIDTH), Math.round(imageIcon.getIconHeight()*SIZE_MULT_HEIGHT)));
-            this.keyboard.add(tile);
-            keyBoard.add(this.keyboard.get(i), Integer.valueOf(1));
-            keyBoard.add(Box.createRigidArea(new Dimension(2, 0)));
-        }
-
-        LinkedList<Tile> tiles = new LinkedList<>();
-        for (int i = 0; i< numBlackKeys; i++){
-            tiles.add(new Tile(blackNotes[i], Color.WHITE, blackTileLoc));
-            tiles.getLast().setActionCommand(BTN_TILE);
-            ImageIcon imageIcon = new ImageIcon("Files/drawable/black-key-down.png");
-            tiles.getLast().setPressedIcon(resizeIcon(imageIcon, Math.round(imageIcon.getIconWidth()*SIZE_MULT_WIDTH), Math.round(imageIcon.getIconHeight()*SIZE_MULT_HEIGHT)));
-        }
-        for (int i = 0; i < 2; i++) {
-            tiles.get(i*5).setBounds(102+(separationBlack*i),yBlack,widthBlack,heightBlack);
-            this.keyboard.add(tiles.get(i*5));
-            keyBoard.add(tiles.get(i*5), Integer.valueOf(2));
-
-            tiles.get(1+i*5).setBounds(167+(separationBlack*i),yBlack,widthBlack,heightBlack);
-            this.keyboard.add(tiles.get(1+i*5));
-            keyBoard.add(tiles.get(1+i*5), Integer.valueOf(2));
-
-            tiles.get(2+i*5).setBounds(297+(separationBlack*i),yBlack,widthBlack,heightBlack);
-            this.keyboard.add(tiles.get(2+i*5));
-            keyBoard.add(tiles.get(2+i*5), Integer.valueOf(2));
-
-            tiles.get(3+i*5).setBounds(362+(separationBlack*i),yBlack,widthBlack,heightBlack);
-            this.keyboard.add(tiles.get(3+i*5));
-            keyBoard.add(tiles.get(3+i*5), Integer.valueOf(2));
-
-            tiles.get(4+i*5).setBounds(428+(separationBlack*i),yBlack,widthBlack,heightBlack);
-            this.keyboard.add(tiles.get(4+i*5));
-            keyBoard.add(tiles.get(4+i*5), Integer.valueOf(2));
-
-        }
-
-        return keyBoard;
-    }
+    }*/
 }
-
