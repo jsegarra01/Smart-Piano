@@ -82,7 +82,7 @@ public class FreePianoUI extends JPanel {
         panel.add(Box.createRigidArea(new Dimension(10, 200)), BorderLayout.CENTER);
 
         SIZE_MULT_HEIGHT = 1.31f;
-        panel.add(initWhiteKeys(14), BorderLayout.SOUTH);
+        panel.add(makeKeys(), BorderLayout.SOUTH);
         panel.add(initMenu(), BorderLayout.PAGE_START);
 
         return panel;
@@ -155,4 +155,36 @@ public class FreePianoUI extends JPanel {
     public static void setTypeName(String name) {
         soundType.setText(name);
     }
+
+    public JLayeredPane makeKeys(){
+
+        // Create layerPane
+        JLayeredPane keyBoard = new JLayeredPane();
+        keyBoard.setPreferredSize(new Dimension(1800,324));
+        keyBoard.add(Box.createRigidArea(new Dimension(110, 0)));
+
+        Tile tile;
+
+        for (int i = 0; i < 14; i++) {
+            tile = new Tile(whiteNotes[i], colors[i % 7], whiteTileLoc);
+            tile.setActionCommand(BTN_TILE);
+            tile.setBounds(55 + 70*i,0,65,324);
+            this.keyboard.add(tile);
+            keyBoard.add(this.keyboard.get(i),new Integer(1));
+            keyBoard.add(Box.createRigidArea(new Dimension(2, 0)));
+        }
+
+        for (int i = 0; i < 10; i++) {
+            Tile tile1 = new Tile(blackNotes[i], colors[i % 7], blackTileLoc);
+            tile1.setActionCommand(BTN_TILE);
+
+            // Place the 5 keys
+            tile1.setBounds(77 + 70*i,0,35,185);
+            this.keyboard.add(tile1);
+            keyBoard.add(tile1,new Integer(2));
+        }
+
+        return keyBoard;
+    }
 }
+
