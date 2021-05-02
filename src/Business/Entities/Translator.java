@@ -1,5 +1,7 @@
 package Business.Entities;
 import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+
 /**
  * The traduction will accur as follows:
  * --2-3------5--6--7      ||  --2c#-2d#-----2f#-2g#-2a#
@@ -36,7 +38,8 @@ public class Translator {
             case KeyEvent.VK_N -> "3a";
             case KeyEvent.VK_M -> "3b";
             case KeyEvent.VK_COMMA -> "4c";
-            default -> throw new IllegalStateException("Unexpected value: "/* + key.getExtendedKeyCode()*/);
+
+            default -> throw new IllegalStateException("Unexpected value: " + key.getExtendedKeyCode());
         };
     }
     public static int getNumberNoteFromName(String input){
@@ -67,6 +70,37 @@ public class Translator {
             case "3b" -> 71;
             case "4c" -> 72;
             default -> 12;
+        };
+    }
+
+    public static int getKey(String string){
+        return switch(string){
+            case "2c#" -> KeyEvent.VK_2;
+            case "2d#" -> KeyEvent.VK_3 ;
+            case "2f#" -> KeyEvent.VK_5 ;
+            case "2g#" -> KeyEvent.VK_6;
+            case "2a#" -> KeyEvent.VK_7;
+            case "2c"  -> KeyEvent.VK_Q;
+            case "2d"  -> KeyEvent.VK_W;
+            case "2e"  -> KeyEvent.VK_E;
+            case "2f"  -> KeyEvent.VK_R;
+            case "2g"  -> KeyEvent.VK_T;
+            case "2a"  -> KeyEvent.VK_Y;
+            case "2b"  -> KeyEvent.VK_U;
+            case "3c#" -> KeyEvent.VK_S;
+            case "3d#" -> KeyEvent.VK_D;
+            case "3f#" -> KeyEvent.VK_G;
+            case "3g#" -> KeyEvent.VK_H;
+            case "3a#" -> KeyEvent.VK_J;
+            case "3c"  -> KeyEvent.VK_Z;
+            case "3d"  -> KeyEvent.VK_X;
+            case "3e"  -> KeyEvent.VK_C;
+            case "3f"  -> KeyEvent.VK_V;
+            case "3g"  -> KeyEvent.VK_B;
+            case "3a"  -> KeyEvent.VK_N;
+            case "3b"  -> KeyEvent.VK_M;
+            case "4c"  -> KeyEvent.VK_COMMA;
+            default -> throw new IllegalStateException("Unexpected value: " + string);
         };
     }
 }

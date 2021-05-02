@@ -8,6 +8,8 @@ import Business.Entities.MidiHelper;
 import Business.Entities.Translator;
 
 import javax.sound.midi.MidiUnavailableException;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -17,6 +19,7 @@ import java.util.Objects;
 import static Presentation.Dictionary_login.*;
 import static Presentation.Manager.MainFrame.card;
 import static Presentation.Manager.MainFrame.contenedor;
+import static Presentation.Ui_Views.Tile.*;
 
 
 /**
@@ -35,6 +38,7 @@ public class PianoTilesUISelectorManager implements ActionListener {
     private MidiHelper finalMidiHelper;
     MidiHelper midiHelper = null;
     private KeyListener KL;
+    private boolean iAmPressed=false;
 
     /**
      * Parametrized constructor
@@ -48,13 +52,21 @@ public class PianoTilesUISelectorManager implements ActionListener {
         this.finalMidiHelper = midiHelper;
         this.KL = new KeyListener() {
             @Override
-            public void keyTyped(KeyEvent e) {}
+            public void keyTyped(KeyEvent e) {
+                }
             @Override
             public void keyPressed(KeyEvent e) {
-                finalMidiHelper.playSomething(Translator.getNumberNoteFromName(Translator.getCodeFromKey(e)), SOUND_SYNTHER);
+                if(!iAmPressed){
+                    finalMidiHelper.playSomething(Translator.getNumberNoteFromName(Translator.getCodeFromKey(e)), SOUND_SYNTHER);
+                    iAmPressed = true;
+                }
+                setIconKey(Translator.getCodeFromKey(e));
             }
             @Override
-            public void keyReleased(KeyEvent e) {}
+            public void keyReleased(KeyEvent e) {
+                setIconBack(Translator.getCodeFromKey(e));
+                iAmPressed=false;
+            }
         };
     }
 
@@ -101,6 +113,7 @@ public class PianoTilesUISelectorManager implements ActionListener {
                     t = (Tile) obj;
                 }
                 finalMidiHelper.playSomething(Translator.getNumberNoteFromName(Objects.requireNonNull(t).getName()),SOUND_SYNTHER);
+
                 break;
             case Dictionary_login.PROFILE_BUTTON:       //In the case that the Profile button is pressed
                 card.show(contenedor, PROFILE_UI);
@@ -110,4 +123,29 @@ public class PianoTilesUISelectorManager implements ActionListener {
     public KeyListener getKeyListener(){
         return this.KL;
     }
+    private void setIconKey(String string){
+        int i = 0;
+        while(!string.equals(PianoTilesUISelector.getKeyboard().get(i).getName()) &&
+                i<PianoTilesUISelector.getKeyboard().size()){
+            i++;
+        }
+        if(i!=PianoTilesUISelector.getKeyboard().size()){
+            PianoTilesUISelector.getKeyboard().get(i).setIcon();
+        }
+    }
+    private void setIconBack(String string){
+        int i = 0;
+        while(!string.equals(PianoTilesUISelector.getKeyboard().get(i).getName()) && i<PianoTilesUISelector.getKeyboard().size()){
+            i++;
+        }
+        if(i!=PianoTilesUISelector.getKeyboard().size()){
+            if(PianoTilesUISelector.getKeyboard().get(i).getColor()== Color.WHITE){
+                PianoTilesUISelector.getKeyboard().get(i).backToWhite();
+            }else{
+                PianoTilesUISelector.getKeyboard().get(i).backToBlack();
+            }
+        }
+    }
+
+
 }

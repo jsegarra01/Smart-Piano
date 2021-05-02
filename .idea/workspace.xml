@@ -19,8 +19,15 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="Left buttons to change between views (free piano, play a song and music playlist) done successfully.">
-      <change beforePath="$PROJECT_DIR$/src/Presentation/Ui_Views/PianoFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Ui_Views/PianoFrame.java" afterDir="false" />
+    <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="Piano does not keep playing anymore whenever the key is pressed. &#10;The tile changes its color, simulating that has been pressed with the keyboard">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Files/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/Files/config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/FreePianoUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/FreePianoUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/Piano.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/Piano.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/PianoTilesUISelector.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/PianoTilesUISelector.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presentation/Ui_Views/FreePianoUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Ui_Views/FreePianoUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presentation/Ui_Views/Piano.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Ui_Views/Piano.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presentation/Ui_Views/PianoTilesUISelector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Ui_Views/PianoTilesUISelector.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,7 +50,6 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitSEFilterConfiguration">
     <file-type-list>
@@ -229,7 +235,28 @@
       <option name="project" value="LOCAL" />
       <updated>1619904423795</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Commit to pull">
+      <created>1619968366069</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1619968366069</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Changes in the piano, fancier">
+      <created>1619973493938</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1619973493938</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Piano does not keep playing anymore whenever the key is pressed. &#10;The tile changes its color, simulating that has been pressed with the keyboard">
+      <created>1619980100679</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1619980100679</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -274,32 +301,78 @@
     <MESSAGE value="Basic UI classes created and added to the cardLayout." />
     <MESSAGE value="IsValidActive" />
     <MESSAGE value="Small change config" />
-    <option name="LAST_COMMIT_MESSAGE" value="Small change config" />
+    <MESSAGE value="Changes in the piano, fancier" />
+    <MESSAGE value="Piano does not keep playing anymore whenever the key is pressed. &#10;The tile changes its color, simulating that has been pressed with the keyboard" />
+    <option name="LAST_COMMIT_MESSAGE" value="Piano does not keep playing anymore whenever the key is pressed. &#10;The tile changes its color, simulating that has been pressed with the keyboard" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1237" height="133" key="GridCell.Tab.0.bottom" timestamp="1619962972044">
+    <state width="1237" height="16" key="GridCell.Tab.0.bottom" timestamp="1619984839180">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="133" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1619962972044" />
-    <state width="1237" height="133" key="GridCell.Tab.0.center" timestamp="1619962972043">
+    <state width="1237" height="16" key="GridCell.Tab.0.bottom/0.0.1280.680/-1920.0.1920.1040@0.0.1280.680" timestamp="1619984839180" />
+    <state width="1237" height="133" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1619971933676" />
+    <state width="1237" height="16" key="GridCell.Tab.0.center" timestamp="1619984839180">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="133" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1619962972043" />
-    <state width="1237" height="133" key="GridCell.Tab.0.left" timestamp="1619962972043">
+    <state width="1237" height="16" key="GridCell.Tab.0.center/0.0.1280.680/-1920.0.1920.1040@0.0.1280.680" timestamp="1619984839180" />
+    <state width="1237" height="133" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1619971933676" />
+    <state width="1237" height="16" key="GridCell.Tab.0.left" timestamp="1619984839180">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="133" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1619962972043" />
-    <state width="1237" height="133" key="GridCell.Tab.0.right" timestamp="1619962972043">
+    <state width="1237" height="16" key="GridCell.Tab.0.left/0.0.1280.680/-1920.0.1920.1040@0.0.1280.680" timestamp="1619984839180" />
+    <state width="1237" height="133" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1619971933676" />
+    <state width="1237" height="16" key="GridCell.Tab.0.right" timestamp="1619984839180">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="133" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1619962972043" />
-    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1619962952091">
+    <state width="1237" height="16" key="GridCell.Tab.0.right/0.0.1280.680/-1920.0.1920.1040@0.0.1280.680" timestamp="1619984839180" />
+    <state width="1237" height="133" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1619971933676" />
+    <state width="1237" height="4" key="GridCell.Tab.1.bottom" timestamp="1619984711416">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
+    <state width="1237" height="4" key="GridCell.Tab.1.bottom/0.0.1280.680/-1920.0.1920.1040@0.0.1280.680" timestamp="1619984711416" />
+    <state width="1237" height="4" key="GridCell.Tab.1.center" timestamp="1619984711416">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="4" key="GridCell.Tab.1.center/0.0.1280.680/-1920.0.1920.1040@0.0.1280.680" timestamp="1619984711416" />
+    <state width="1237" height="4" key="GridCell.Tab.1.left" timestamp="1619984711416">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="4" key="GridCell.Tab.1.left/0.0.1280.680/-1920.0.1920.1040@0.0.1280.680" timestamp="1619984711416" />
+    <state width="1237" height="4" key="GridCell.Tab.1.right" timestamp="1619984711416">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="4" key="GridCell.Tab.1.right/0.0.1280.680/-1920.0.1920.1040@0.0.1280.680" timestamp="1619984711416" />
+    <state x="121" y="51" key="MergeDialog" timestamp="1619980275651">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="121" y="51" key="MergeDialog/0.0.1280.680/-1920.0.1920.1040@0.0.1280.680" timestamp="1619980275651" />
+    <state x="280" y="102" key="MultipleFileMergeDialog" timestamp="1619980275669">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="280" y="102" key="MultipleFileMergeDialog/0.0.1280.680/-1920.0.1920.1040@0.0.1280.680" timestamp="1619980275669" />
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1619980305291">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680/-1920.0.1920.1040@0.0.1280.680" timestamp="1619980305291" />
     <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1619962952091" />
     <state x="91" y="0" key="new project wizard" timestamp="1619905398264">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="91" y="0" key="new project wizard/0.0.1280.680@0.0.1280.680" timestamp="1619905398264" />
+    <state x="342" y="98" key="refactoring.ChangeSignatureDialog" timestamp="1619977182533">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="342" y="98" key="refactoring.ChangeSignatureDialog/0.0.1280.680/-1920.0.1920.1040@0.0.1280.680" timestamp="1619977182533" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Presentation/Manager/PianoTilesUISelectorManager.java</url>
+          <line>132</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

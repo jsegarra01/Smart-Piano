@@ -1,0 +1,37 @@
+Index: .idea/libraries/gson_2_8_6.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/libraries/gson_2_8_6.xml	(date 1618080057778)
++++ .idea/libraries/gson_2_8_6.xml	(date 1618080057778)
+@@ -0,0 +1,10 @@
++<component name="libraryTable">
++  <library name="gson-2.8.6">
++    <CLASSES>
++      <root url="jar://$PROJECT_DIR$/Libraries/gson-2.8.6.jar!/" />
++      <root url="jar://$PROJECT_DIR$/Libraries/gson-2.8.2.jar!/" />
++    </CLASSES>
++    <JAVADOC />
++    <SOURCES />
++  </library>
++</component>
+\ No newline at end of file
+Index: .idea/dpoo-2021-smartpiano-ice5.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<module type=\"JAVA_MODULE\" version=\"4\">\n  <component name=\"NewModuleRootManager\" inherit-compiler-output=\"true\">\n    <exclude-output />\n    <content url=\"file://$MODULE_DIR$\">\n      <sourceFolder url=\"file://$MODULE_DIR$/src\" isTestSource=\"false\" />\n    </content>\n    <orderEntry type=\"inheritedJdk\" />\n    <orderEntry type=\"sourceFolder\" forTests=\"false\" />\n    <orderEntry type=\"library\" name=\"gson-2.8.2\" level=\"project\" />\n  </component>\n</module>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/dpoo-2021-smartpiano-ice5.iml	(revision b1824017905609b8cf19ebded0a0ed878ed7e0ea)
++++ .idea/dpoo-2021-smartpiano-ice5.iml	(date 1618080057766)
+@@ -7,6 +7,6 @@
+     </content>
+     <orderEntry type="inheritedJdk" />
+     <orderEntry type="sourceFolder" forTests="false" />
+-    <orderEntry type="library" name="gson-2.8.2" level="project" />
++    <orderEntry type="library" name="gson-2.8.6" level="project" />
+   </component>
+ </module>
+\ No newline at end of file
