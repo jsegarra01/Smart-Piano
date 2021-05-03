@@ -19,14 +19,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="Name of the tile appears now. The recording button is no longer an unreadable text, is an icon">
-      <change afterPath="$PROJECT_DIR$/src/Business/Entities/Keys.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/FreePianoUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/FreePianoUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/PianoTilesUISelector.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/PianoTilesUISelector.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Business/Entities/Translator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/Entities/Translator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presentation/Ui_Views/FreePianoUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Ui_Views/FreePianoUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presentation/Ui_Views/PianoTilesUISelector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Ui_Views/PianoTilesUISelector.java" afterDir="false" />
+    <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="piano finished">
+      <change beforePath="$PROJECT_DIR$/Files/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/Files/config.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -284,7 +278,14 @@
       <option name="project" value="LOCAL" />
       <updated>1619997217406</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="piano finished">
+      <created>1620055934613</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1620055934613</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -335,33 +336,34 @@
     <MESSAGE value="I am not allowed to do finish feature :'(" />
     <MESSAGE value="Changing colors while changing through the CardLayout" />
     <MESSAGE value="Name of the tile appears now. The recording button is no longer an unreadable text, is an icon" />
-    <option name="LAST_COMMIT_MESSAGE" value="Name of the tile appears now. The recording button is no longer an unreadable text, is an icon" />
+    <MESSAGE value="piano finished" />
+    <option name="LAST_COMMIT_MESSAGE" value="piano finished" />
   </component>
   <component name="WindowStateProjectService">
     <state x="371" y="88" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog" timestamp="1619992519422">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="371" y="88" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/0.0.1280.680@0.0.1280.680" timestamp="1619992519422" />
-    <state width="1237" height="4" key="GridCell.Tab.0.bottom" timestamp="1620030962101">
+    <state width="1237" height="2" key="GridCell.Tab.0.bottom" timestamp="1620055225566">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state width="1237" height="16" key="GridCell.Tab.0.bottom/0.0.1280.680/-1920.0.1920.1040@0.0.1280.680" timestamp="1619985251016" />
-    <state width="1237" height="4" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1620030962101" />
-    <state width="1237" height="4" key="GridCell.Tab.0.center" timestamp="1620030962101">
+    <state width="1237" height="2" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1620055225566" />
+    <state width="1237" height="2" key="GridCell.Tab.0.center" timestamp="1620055225566">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state width="1237" height="16" key="GridCell.Tab.0.center/0.0.1280.680/-1920.0.1920.1040@0.0.1280.680" timestamp="1619985251016" />
-    <state width="1237" height="4" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1620030962101" />
-    <state width="1237" height="4" key="GridCell.Tab.0.left" timestamp="1620030962100">
+    <state width="1237" height="2" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1620055225566" />
+    <state width="1237" height="2" key="GridCell.Tab.0.left" timestamp="1620055225566">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state width="1237" height="16" key="GridCell.Tab.0.left/0.0.1280.680/-1920.0.1920.1040@0.0.1280.680" timestamp="1619985251016" />
-    <state width="1237" height="4" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1620030962100" />
-    <state width="1237" height="4" key="GridCell.Tab.0.right" timestamp="1620030962101">
+    <state width="1237" height="2" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1620055225566" />
+    <state width="1237" height="2" key="GridCell.Tab.0.right" timestamp="1620055225566">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state width="1237" height="16" key="GridCell.Tab.0.right/0.0.1280.680/-1920.0.1920.1040@0.0.1280.680" timestamp="1619985251016" />
-    <state width="1237" height="4" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1620030962101" />
+    <state width="1237" height="2" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1620055225566" />
     <state width="1237" height="4" key="GridCell.Tab.1.bottom" timestamp="1620030962101">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -390,11 +392,11 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="280" y="102" key="MultipleFileMergeDialog/0.0.1280.680/-1920.0.1920.1040@0.0.1280.680" timestamp="1619980275669" />
-    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1619997289210">
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1620038821013">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680/-1920.0.1920.1040@0.0.1280.680" timestamp="1619985348930" />
-    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1619997289210" />
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1620038821013" />
     <state x="458" y="255" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1620030914653">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -411,16 +413,5 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="297" y="151" key="run.anything.popup/0.0.1280.680@0.0.1280.680" timestamp="1619996862110" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Presentation/Manager/PianoTilesUISelectorManager.java</url>
-          <line>132</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
