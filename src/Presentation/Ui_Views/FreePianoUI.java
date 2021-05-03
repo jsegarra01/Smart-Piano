@@ -146,7 +146,7 @@ public class FreePianoUI extends Piano {
             label = new JLabel(blackLabels[i*5]);
             label.setBounds(102+(separationBlack*i)+add,yLabel,widthBlack,heightBlack);
             label.setForeground(Color.WHITE);
-            keyBoard.add(label,Integer.valueOf(4));
+            keyBoard.add(label,Integer.valueOf(3));
 
             tiles.get(1+i*5).setBounds(167+(separationBlack*i),yBlack,widthBlack,heightBlack);
             keyboard.add(tiles.get(1+i*5));
@@ -154,7 +154,7 @@ public class FreePianoUI extends Piano {
             label = new JLabel(blackLabels[1+i*5]);
             label.setBounds(167+(separationBlack*i)+add,yLabel,widthBlack,heightBlack);
             label.setForeground(Color.WHITE);
-            keyBoard.add(label,Integer.valueOf(4));
+            keyBoard.add(label,Integer.valueOf(3));
 
             tiles.get(2+i*5).setBounds(297+(separationBlack*i),yBlack,widthBlack,heightBlack);
             keyboard.add(tiles.get(2+i*5));
@@ -162,7 +162,7 @@ public class FreePianoUI extends Piano {
             label = new JLabel(blackLabels[2+i*5]);
             label.setBounds(297+(separationBlack*i)+add,yLabel,widthBlack,heightBlack);
             label.setForeground(Color.WHITE);
-            keyBoard.add(label,Integer.valueOf(4));
+            keyBoard.add(label,Integer.valueOf(3));
 
             tiles.get(3+i*5).setBounds(362+(separationBlack*i),yBlack,widthBlack,heightBlack);
             keyboard.add(tiles.get(3+i*5));
@@ -170,7 +170,7 @@ public class FreePianoUI extends Piano {
             label = new JLabel(blackLabels[3+i*5]);
             label.setBounds(359+(separationBlack*i)+add,yLabel,widthBlack,heightBlack);
             label.setForeground(Color.WHITE);
-            keyBoard.add(label,Integer.valueOf(4));
+            keyBoard.add(label,Integer.valueOf(3));
 
             tiles.get(4+i*5).setBounds(428+(separationBlack*i),yBlack,widthBlack,heightBlack);
             keyboard.add(tiles.get(4+i*5));
@@ -178,7 +178,7 @@ public class FreePianoUI extends Piano {
             label = new JLabel(blackLabels[4+i*5]);
             label.setBounds(428+(separationBlack*i)+add,yLabel,widthBlack,heightBlack);
             label.setForeground(Color.WHITE);
-            keyBoard.add(label,Integer.valueOf(4));
+            keyBoard.add(label,Integer.valueOf(3));
 
         }
 

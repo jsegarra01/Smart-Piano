@@ -1,6 +1,7 @@
 package Business.Entities;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.ArrayList;
 
 /**
  * The traduction will accur as follows:
@@ -10,7 +11,39 @@ import java.awt.event.KeyListener;
  * -Z--X--C--V--B--N--M    ||  -3c--3d--3e--3f--3g--3a--3b
  */
 public class Translator {
-    public Translator(){}
+
+    private ArrayList<Keys> keys = new ArrayList<>();
+
+    public Translator(){
+        keys.add(new Keys(KeyEvent.VK_2, "2c#"));
+        keys.add(new Keys(KeyEvent.VK_3, "2d#"));
+        keys.add(new Keys(KeyEvent.VK_5, "2f#"));
+        keys.add(new Keys(KeyEvent.VK_2, "2c#"));
+        keys.add(new Keys(KeyEvent.VK_2, "2c#"));
+        keys.add(new Keys(KeyEvent.VK_2, "2c#"));
+        keys.add(new Keys(KeyEvent.VK_2, "2c#"));
+        keys.add(new Keys(KeyEvent.VK_2, "2c#"));
+        keys.add(new Keys(KeyEvent.VK_2, "2c#"));
+        keys.add(new Keys(KeyEvent.VK_2, "2c#"));
+        keys.add(new Keys(KeyEvent.VK_2, "2c#"));
+        keys.add(new Keys(KeyEvent.VK_2, "2c#"));
+        keys.add(new Keys(KeyEvent.VK_2, "2c#"));
+        keys.add(new Keys(KeyEvent.VK_2, "2c#"));
+        keys.add(new Keys(KeyEvent.VK_2, "2c#"));
+        keys.add(new Keys(KeyEvent.VK_2, "2c#"));
+        keys.add(new Keys(KeyEvent.VK_2, "2c#"));
+        keys.add(new Keys(KeyEvent.VK_2, "2c#"));
+        keys.add(new Keys(KeyEvent.VK_2, "2c#"));
+        keys.add(new Keys(KeyEvent.VK_2, "2c#"));
+        keys.add(new Keys(KeyEvent.VK_2, "2c#"));
+        keys.add(new Keys(KeyEvent.VK_2, "2c#"));
+        keys.add(new Keys(KeyEvent.VK_2, "2c#"));
+        keys.add(new Keys(KeyEvent.VK_2, "2c#"));
+        keys.add(new Keys(KeyEvent.VK_2, "2c#"));
+        keys.add(new Keys(KeyEvent.VK_2, "2c#"));
+        keys.add(new Keys(KeyEvent.VK_2, "2c#"));
+        keys.add(new Keys(KeyEvent.VK_2, "2c#"));
+    }
     public static String getCodeFromKey(KeyEvent key){
         return switch(key.getExtendedKeyCode()){
             case KeyEvent.VK_2 -> "2c#";
@@ -103,4 +136,5 @@ public class Translator {
             default -> throw new IllegalStateException("Unexpected value: " + string);
         };
     }
+
 }
