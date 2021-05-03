@@ -18,8 +18,8 @@ public class Translator {
         keys.add(new Keys(KeyEvent.VK_2, "2c#"));
         keys.add(new Keys(KeyEvent.VK_3, "2d#"));
         keys.add(new Keys(KeyEvent.VK_5, "2f#"));
-        keys.add(new Keys(KeyEvent.VK_2, "2c#"));
-        keys.add(new Keys(KeyEvent.VK_2, "2c#"));
+        keys.add(new Keys(KeyEvent.VK_6, "2g#"));
+        keys.add(new Keys(KeyEvent.VK_7, "2a#"));
         keys.add(new Keys(KeyEvent.VK_2, "2c#"));
         keys.add(new Keys(KeyEvent.VK_2, "2c#"));
         keys.add(new Keys(KeyEvent.VK_2, "2c#"));
