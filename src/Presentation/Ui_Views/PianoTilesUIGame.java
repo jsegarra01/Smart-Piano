@@ -10,8 +10,6 @@ import java.awt.*;
 import static Presentation.Dictionary_login.*;
 
 
-//import static Presentation.DictionaryPiano.*;
-
 /**
  * PianoTilesUIGame
  *

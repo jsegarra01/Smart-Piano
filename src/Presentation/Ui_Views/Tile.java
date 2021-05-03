@@ -7,7 +7,7 @@ import java.awt.event.KeyEvent;
 public class Tile extends JButton {
     private String name;
     protected static final float SIZE_MULT_WIDTH = (float) 1.16;
-    protected static float SIZE_MULT_HEIGHT = (float) 0.95;
+    protected static float SIZE_MULT_HEIGHT = (float) 1.5;
     private String myImagePath;
     private Color color;
     private ImageIcon myImage;

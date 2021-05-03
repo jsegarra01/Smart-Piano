@@ -11,6 +11,7 @@ import static Presentation.Dictionary_login.*;
 import static Presentation.Manager.MainFrame.card;
 import static Presentation.Manager.MainFrame.contenedor;
 import static Presentation.Ui_Views.PianoFrame.*;
+import static Presentation.Ui_Views.SpotiUI.spotiPanel;
 
 
 /**
@@ -22,13 +23,13 @@ import static Presentation.Ui_Views.PianoFrame.*;
  * @version 1.0 21 Apr 2021
  *
  */
-public class PianoFrameManager implements ActionListener {
+public class SpotiFrameManager implements ActionListener {
 
 
     /**
      * Parametrized constructor
      */
-    public PianoFrameManager() {
+    public SpotiFrameManager() {
     }
 
     /**
@@ -38,25 +39,14 @@ public class PianoFrameManager implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         // We distinguish between our buttons.
-        CardLayout cc = (CardLayout) (centralPanel.getLayout());
+        CardLayout cc = (CardLayout) (spotiPanel.getLayout());
 
-        freePiano.setBackground(Color.GRAY);
-        playSong.setBackground(Color.GRAY);
-        musicPlayer.setBackground(Color.GRAY);
         switch (e.getActionCommand()) {
-            case Dictionary_login.PROFILE_BUTTON:       //In the case that the Profile button is pressed
-                card.show(contenedor, PROFILE_UI);
-            case FREE_PIANO:
-                cc.show(centralPanel, FREE_PIANO_UI);
-                freePiano.setBackground(Color.getHSBColor(0,0,80.3f));
+            case HOME_BUTTON:
+                cc.show(spotiPanel, STATISTICS_UI);
                 break;
-            case PLAY_A_SONG:
-                cc.show(centralPanel, PIANO_TILES_UI_SELECTOR);
-                playSong.setBackground(Color.getHSBColor(0,0,80.3f));
-                break;
-            case MUSIC_PLAYER:
-                cc.show(centralPanel, SPOTI_UI);
-                musicPlayer.setBackground(Color.getHSBColor(0,0,80.3f));
+            case CREATE_PLAYLIST:
+                cc.show(spotiPanel, PLAYLIST_UI);
                 break;
         }
     }

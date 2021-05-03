@@ -12,6 +12,7 @@ import java.awt.event.ActionListener;
 import java.net.http.WebSocket;
 
 import static Presentation.DictionaryPiano.*;
+import static Presentation.Ui_Views.Tile.SIZE_MULT_HEIGHT;
 
 /**
  * TempFreePianoUI
@@ -46,6 +47,7 @@ public class PianoFrame extends JPanel {
     public PianoFrame(final MainFrame mainFrame) {
         super();
         this.mainFrame=mainFrame;
+
         pianoTilesUISelector = new PianoTilesUISelector(mainFrame);
         pianoTilesUIGame = new PianoTilesUIGame(mainFrame);
         spotiUI = new SpotiUI(mainFrame);
@@ -68,20 +70,21 @@ public class PianoFrame extends JPanel {
         freePiano.setActionCommand(FREE_PIANO);
         freePiano.setAlignmentX(0.5f);
         freePiano.setBorder(new EmptyBorder(80,40,80,40));
-        freePiano.setBackground(Color.GRAY);
+        freePiano.setBackground(Color.getHSBColor(0,0,80.3f));
 
         playSong.setActionCommand(PLAY_A_SONG);
         playSong.setAlignmentX(0.5f);
         playSong.setBorder(new EmptyBorder(80,37,80,37));
-        playSong.setBackground(Color.getHSBColor(0,0,80.3f));
+        playSong.setBackground(Color.GRAY);
 
         musicPlayer.setActionCommand(MUSIC_PLAYER);
         musicPlayer.setAlignmentX(0.5f);
         musicPlayer.setBorder(new EmptyBorder(80,33,80,33));
-        musicPlayer.setBackground(Color.getHSBColor(0,0,80.3f));
+        musicPlayer.setBackground(Color.GRAY);
 
         registerController(new PianoFrameManager());
 
+        buttonPanel.add(Box.createRigidArea(new Dimension(150, 17)));
         buttonPanel.add(freePiano);
         buttonPanel.add(Box.createRigidArea(new Dimension(150, 10)));
         buttonPanel.add(playSong);

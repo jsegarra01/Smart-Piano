@@ -63,8 +63,7 @@ public class PianoTilesUISelector extends Piano {
         panel.setBackground(Color.getHSBColor(0,0,0.2f));
 
         //This will be another card layout, which we will have to divide between the free piano or the song piano in order use the same piano for both
-        panel.add(Box.createRigidArea(new Dimension(10, 350)), BorderLayout.CENTER);
-
+        panel.add(Box.createRigidArea(new Dimension(10, 320)), BorderLayout.CENTER);
 
         panel.add(makeKeys(), BorderLayout.SOUTH);
         panel.add(initMenu(), BorderLayout.PAGE_START);
@@ -108,7 +107,6 @@ public class PianoTilesUISelector extends Piano {
     }
 
     public JLayeredPane makeKeys(){
-        SIZE_MULT_HEIGHT = 0.9f;
         int heightBlack = 120;
         int widthBlack = 35;
         int yBlack = 0;
@@ -133,7 +131,7 @@ public class PianoTilesUISelector extends Piano {
             keyBoard.add(keyboard.get(i), Integer.valueOf(1));
             keyBoard.add(Box.createRigidArea(new Dimension(2, 0)));
             label = new JLabel(whiteLabels[i]);
-            label.setBounds(65*(i+1)+15,200,widthBlack,20);
+            label.setBounds(65*(i+1)+15,210,widthBlack,20);
             keyBoard.add(label,Integer.valueOf(3));
         }
 
