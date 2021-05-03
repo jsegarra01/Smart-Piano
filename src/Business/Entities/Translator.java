@@ -1,6 +1,7 @@
 package Business.Entities;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.security.Key;
 import java.util.ArrayList;
 
 /**
@@ -12,33 +13,42 @@ import java.util.ArrayList;
  */
 public class Translator {
 
-    private ArrayList<Keys> keys = new ArrayList<>();
-
+    private static ArrayList<Keys> keys = new ArrayList<>();
+/*
+    public static ArrayList<Keys> getInstance(){
+        if(keys == null){
+            new Translator();
+        }
+        return keys;
+    }*/
     public Translator(){
-        keys.add(new Keys(KeyEvent.VK_2, "2c#"));
-        keys.add(new Keys(KeyEvent.VK_3, "2d#"));
-        keys.add(new Keys(KeyEvent.VK_5, "2f#"));
-        keys.add(new Keys(KeyEvent.VK_6, "2g#"));
-        keys.add(new Keys(KeyEvent.VK_7, "2a#"));
-        keys.add(new Keys(KeyEvent.VK_Q, "2c"));
-        keys.add(new Keys(KeyEvent.VK_W, "2d"));
-        keys.add(new Keys(KeyEvent.VK_E, "2e"));
-        keys.add(new Keys(KeyEvent.VK_R, "2f"));
-        keys.add(new Keys(KeyEvent.VK_T, "2g"));
-        keys.add(new Keys(KeyEvent.VK_Y, "2a"));
-        keys.add(new Keys(KeyEvent.VK_U, "2b"));
-        keys.add(new Keys(KeyEvent.VK_S, "3c#"));
-        keys.add(new Keys(KeyEvent.VK_D, "3d#"));
-        keys.add(new Keys(KeyEvent.VK_G, "3f#"));
-        keys.add(new Keys(KeyEvent.VK_H, "3g#"));
-        keys.add(new Keys(KeyEvent.VK_J, "3a#"));
-        keys.add(new Keys(KeyEvent.VK_Z, "3c"));
-        keys.add(new Keys(KeyEvent.VK_X, "3d"));
-        keys.add(new Keys(KeyEvent.VK_C, "3e"));
-        keys.add(new Keys(KeyEvent.VK_V, "3f"));
-        keys.add(new Keys(KeyEvent.VK_B, "3g"));
-        keys.add(new Keys(KeyEvent.VK_N, "3a"));
-        keys.add(new Keys(KeyEvent.VK_M, "3b"));
+        if(keys.isEmpty()){
+            keys.add(new Keys(KeyEvent.VK_2, "2c#"));
+            keys.add(new Keys(KeyEvent.VK_3, "2d#"));
+            keys.add(new Keys(KeyEvent.VK_5, "2f#"));
+            keys.add(new Keys(KeyEvent.VK_6, "2g#"));
+            keys.add(new Keys(KeyEvent.VK_7, "2a#"));
+            keys.add(new Keys(KeyEvent.VK_Q, "2c"));
+            keys.add(new Keys(KeyEvent.VK_W, "2d"));
+            keys.add(new Keys(KeyEvent.VK_E, "2e"));
+            keys.add(new Keys(KeyEvent.VK_R, "2f"));
+            keys.add(new Keys(KeyEvent.VK_T, "2g"));
+            keys.add(new Keys(KeyEvent.VK_Y, "2a"));
+            keys.add(new Keys(KeyEvent.VK_U, "2b"));
+            keys.add(new Keys(KeyEvent.VK_S, "3c#"));
+            keys.add(new Keys(KeyEvent.VK_D, "3d#"));
+            keys.add(new Keys(KeyEvent.VK_G, "3f#"));
+            keys.add(new Keys(KeyEvent.VK_H, "3g#"));
+            keys.add(new Keys(KeyEvent.VK_J, "3a#"));
+            keys.add(new Keys(KeyEvent.VK_Z, "3c"));
+            keys.add(new Keys(KeyEvent.VK_X, "3d"));
+            keys.add(new Keys(KeyEvent.VK_C, "3e"));
+            keys.add(new Keys(KeyEvent.VK_V, "3f"));
+            keys.add(new Keys(KeyEvent.VK_B, "3g"));
+            keys.add(new Keys(KeyEvent.VK_N, "3a"));
+            keys.add(new Keys(KeyEvent.VK_M, "3b"));
+            keys.add(new Keys(KeyEvent.VK_COMMA,"4c"));
+        }
     }
     public static String getCodeFromKey(KeyEvent key){
         return switch(key.getExtendedKeyCode()){
@@ -131,6 +141,35 @@ public class Translator {
             case "4c"  -> KeyEvent.VK_COMMA;
             default -> throw new IllegalStateException("Unexpected value: " + string);
         };
+    }
+
+    public String getFromKey(int key){
+        boolean found = false;
+        int i = 0;
+        while(i<keys.size() && !found){
+            if(keys.get(i).getKeyCode() == key){
+                found = true;
+            }
+            i++;
+        }
+        if(found){
+            return keys.get(i).getTileKey();
+        }
+        return null;
+    }
+    public Keys getPressedFromKey(int key){
+        boolean found = false;
+        int i = 0;
+        while(i<keys.size() && !found){
+            if(keys.get(i).getKeyCode() == key){
+                found = true;
+            }
+            i++;
+        }
+        if(found){
+            return keys.get(i);
+        }
+        return null;
     }
 
 }
