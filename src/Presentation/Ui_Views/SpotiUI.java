@@ -151,6 +151,7 @@ public class SpotiUI extends JPanel {
         add(musicPlayer, BorderLayout.SOUTH);
     }
 
+
     private void confButtonLeft(JButton button, int left, int right){
         button.setAlignmentX(0.5f);
         button.setBorder(new EmptyBorder(TB_SIZE,left,TB_SIZE,right));
