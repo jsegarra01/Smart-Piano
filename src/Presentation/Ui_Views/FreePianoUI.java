@@ -52,7 +52,10 @@ public class FreePianoUI extends Piano {
     private JPanel initMenu() {
         JPanel layout = new JPanel(new BorderLayout());
         JPanel menu = new JPanel();
-        menu.setBackground(Color.getHSBColor(0,0,80.3f));
+        menu.setLayout(new BoxLayout(menu, BoxLayout.X_AXIS));
+
+        menu.add(Box.createRigidArea(new Dimension(50,10)));
+
 
         soundType = new Label(JLAB_SYNTH_TYPE);
         soundType.setBackground(Color.WHITE);
@@ -64,8 +67,9 @@ public class FreePianoUI extends Piano {
                 (int) Math.round(iconRec.getIconHeight()*1.2)));
         //recordB.setName(BTN_RECORD);
         menu.add(profile);
+        menu.add(Box.createRigidArea(new Dimension(350,10)));
         menu.add(recordB);
-        menu.add(soundType);
+        menu.setBackground(Color.getHSBColor(0,0,0.2f));
 
         registerController(new FreePianoUIManager());
         layout.add(menu, BorderLayout.NORTH);

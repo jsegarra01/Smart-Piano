@@ -24,7 +24,7 @@ public abstract class Piano extends JPanel {
 
     protected JButton returnB = new JButton(BTN_RETURN);
     protected ImageIcon iconRec = new ImageIcon("Files/drawable/recIcon.png");
-    protected JButton recordB = new JButton(BTN_RECORD,iconRec);
+    protected JButton recordB = new JButton(BTN_RECORD, iconRec);
     protected JButton profile = new JButton(PROFILE_BUTTON);
 
     /**
