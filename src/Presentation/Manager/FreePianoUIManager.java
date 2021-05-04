@@ -71,6 +71,7 @@ public class FreePianoUIManager implements ActionListener {
                 if (translator.getPressedFromKey(e.getExtendedKeyCode()) != null) {
                     setIconBack(Translator.getCodeFromKey(e));
                     translator.getPressedFromKey(e.getExtendedKeyCode()).setPressed(false);
+                    finalMidiHelper.stopPlaying(Translator.getNumberNoteFromName(translator.getFromKey(e.getExtendedKeyCode())),SOUND_SYNTHER);
 
                 }
             }

@@ -186,9 +186,13 @@ public class MidiHelper {
         this.whatInstrumentIsPlayed = whatInstrumentToPlay;
         midiChannels[0].programChange(whatInstrumentToPlay);
         midiChannels[0].noteOn(noteValueToPlay,100);
-
-
     }
+
+    public void stopPlaying(int noteValueToPlay, int whatInstrumentToPlay){
+        this.whatInstrumentIsPlayed = whatInstrumentToPlay;
+        midiChannels[0].noteOff(noteValueToPlay,15);
+    }
+
     public String getInstrument(){
         return this.instruments[whatInstrumentIsPlayed].getName();
     }
