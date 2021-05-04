@@ -35,6 +35,11 @@ public class SpotiUI extends JPanel {
     public static JButton showStadistics = new JButton(CREATE_STADISTICS);
     public static JButton topSongs = new JButton(SHOW_TOP_SONGS);
     public static JLabel playlistLabel = new JLabel(PLAYLIST_LABEL);
+    public static JButton shuffleButton = new JButton();
+    public static JButton backButton = new JButton();
+    public static JButton playButton = new JButton();
+    public static JButton nextButton = new JButton();
+    public static JButton loopButton = new JButton();
     /**
      * Constructor for the SpotiUI, you need to send the mainframe context and will create a card layout
      * @param mainFrame context necessary to create the card layout
@@ -102,19 +107,53 @@ public class SpotiUI extends JPanel {
         add(leftList, BorderLayout.WEST);
 
         //Bottom panel
-        JButton playButton = new JButton();
-        playButton.setBackground(Color.getHSBColor(0,0,0.2f));
-        playButton.setIcon(new ImageIcon("Files/drawable/shuffleWhite.png"));
-        playButton.setIcon(resizeIcon((ImageIcon) playButton.getIcon(), (int) Math.round(playButton.getIcon().getIconWidth()*0.15), (int) Math.round(playButton.getIcon().getIconHeight()*0.15)));
-        playButton.add(Box.createRigidArea(new Dimension(playButton.getIcon().getIconHeight(), playButton.getIcon().getIconHeight())));
-        //playButton.setIcon(new ImageIcon());
+        shuffleButton.setIcon(new ImageIcon("Files/drawable/shuffleWhite.png"));
+        shuffleButton.setIcon(resizeIcon((ImageIcon) shuffleButton.getIcon(), (int) Math.round(shuffleButton.getIcon().getIconWidth()*0.05),
+                (int) Math.round(shuffleButton.getIcon().getIconHeight()*0.05)));
+        confButtonsTab(shuffleButton, 10, 60);
+
+        backButton.setIcon(new ImageIcon("Files/drawable/backwardtrackWhite.png"));
+        backButton.setIcon(resizeIcon((ImageIcon) backButton.getIcon(), (int) Math.round(backButton.getIcon().getIconWidth()*0.05),
+                (int) Math.round(backButton.getIcon().getIconHeight()*0.05)));
+        confButtonsTab(backButton, 0, 60);
+
+        playButton.setIcon(new ImageIcon("Files/drawable/playbuttonWhite.png"));
+        playButton.setIcon(resizeIcon((ImageIcon) playButton.getIcon(), (int) Math.round(playButton.getIcon().getIconWidth()*0.09),
+                (int) Math.round(playButton.getIcon().getIconHeight()*0.09)));
+        confButtonsTab(playButton, 0, 60);
+
+        nextButton.setIcon(new ImageIcon("Files/drawable/fordwardtrackWhite.png"));
+        nextButton.setIcon(resizeIcon((ImageIcon) nextButton.getIcon(), (int) Math.round(nextButton.getIcon().getIconWidth()*0.05),
+                (int) Math.round(nextButton.getIcon().getIconHeight()*0.05)));
+        confButtonsTab(nextButton, 0, 60);
+
+        loopButton.setIcon(new ImageIcon("Files/drawable/exchangeWhite.png"));
+        loopButton.setIcon(resizeIcon((ImageIcon) loopButton.getIcon(), (int) Math.round(loopButton.getIcon().getIconWidth()*0.05),
+                (int) Math.round(loopButton.getIcon().getIconHeight()*0.05)));
+        confButtonsTab(loopButton, 0, 10);
 
 
 
         JPanel musicPlayer = new JPanel();
+
+       musicPlayer.setLayout(new GridBagLayout());
+       musicPlayer.setPreferredSize(new Dimension(10,90));
+        //musicPlayer.add(Box.createRigidArea(new Dimension(250, 25)));
         musicPlayer.setBackground(Color.getHSBColor(10,0,0.3f));
+        musicPlayer.add(shuffleButton);
+        musicPlayer.add(backButton);
         musicPlayer.add(playButton);
+        musicPlayer.add(nextButton);
+        musicPlayer.add(loopButton);
         add(musicPlayer, BorderLayout.SOUTH);
+    }
+
+    private void confButtonsTab(JButton button, int left, int right){
+        button.add(Box.createRigidArea(new Dimension(button.getIcon().getIconWidth(), button.getIcon().getIconHeight())));
+        button.setOpaque(false);
+        button.setContentAreaFilled(false);
+        button.setBorderPainted(false);
+        button.setBorder(new EmptyBorder(TB_SIZE,left,TB_SIZE,right));
     }
 
     private void registerController(SpotiFrameManager listener) {

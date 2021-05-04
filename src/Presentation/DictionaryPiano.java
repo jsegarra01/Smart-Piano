@@ -25,4 +25,6 @@ public class DictionaryPiano {
     public static final String PLAYLIST_UI = "CreatePlaylistUI";
     public static final String TOPSONGS_UI = "TopSongsUI";
     public static final String PLAYLIST_LABEL = "Playlists";
+
+    public static final Integer TB_SIZE = 10;
 }
