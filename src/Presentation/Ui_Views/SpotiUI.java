@@ -9,6 +9,7 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 
 import static Presentation.DictionaryPiano.*;
+import static Presentation.Ui_Views.Tile.resizeIcon;
 
 
 //import static Presentation.DictionaryPiano.*;
@@ -102,7 +103,13 @@ public class SpotiUI extends JPanel {
 
         //Bottom panel
         JButton playButton = new JButton();
-        playButton.add(Box.createRigidArea(new Dimension(10, 90)));
+        playButton.setBackground(Color.getHSBColor(0,0,0.2f));
+        playButton.setIcon(new ImageIcon("Files/drawable/shuffleWhite.png"));
+        playButton.setIcon(resizeIcon((ImageIcon) playButton.getIcon(), (int) Math.round(playButton.getIcon().getIconWidth()*0.15), (int) Math.round(playButton.getIcon().getIconHeight()*0.15)));
+        playButton.add(Box.createRigidArea(new Dimension(playButton.getIcon().getIconHeight(), playButton.getIcon().getIconHeight())));
+        //playButton.setIcon(new ImageIcon());
+
+
 
         JPanel musicPlayer = new JPanel();
         musicPlayer.setBackground(Color.getHSBColor(10,0,0.3f));

@@ -19,15 +19,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="play music menu">
-      <change afterPath="$PROJECT_DIR$/src/Presentation/Ui_Views/TopSongsUI.java" afterDir="false" />
+    <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="improvement of the display a song menu">
+      <change afterPath="$PROJECT_DIR$/Files/drawable/shuffleWhite.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Files/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/Files/config.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/DictionaryPiano.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/DictionaryPiano.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/SpotiFrameManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/SpotiFrameManager.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/SpotiUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/SpotiUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presentation/DictionaryPiano.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/DictionaryPiano.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presentation/Manager/SpotiFrameManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Manager/SpotiFrameManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Presentation/Ui_Views/SpotiUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Ui_Views/SpotiUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -74,14 +70,17 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../ClassEx/GroupManager/LayeredArchitecture" />
-    <property name="project.structure.last.edited" value="Libraries" />
-    <property name="project.structure.proportion" value="0.0" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Files/drawable" />
+    <property name="project.structure.last.edited" value="Problems" />
+    <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="Business" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Files/drawable" />
     </key>
   </component>
   <component name="RunManager">
@@ -308,7 +307,14 @@
       <option name="project" value="LOCAL" />
       <updated>1620145789461</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="improvement of the display a song menu">
+      <created>1620150719884</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1620150719884</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -337,7 +343,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="LogInUI done" />
     <MESSAGE value="LoginUserCsvDAO class" />
     <MESSAGE value="SongCsvDAO and its interface" />
     <MESSAGE value="Singleton connection" />
@@ -362,33 +367,35 @@
     <MESSAGE value="publish feature yikes" />
     <MESSAGE value="Stop Playing when key released" />
     <MESSAGE value="play music menu" />
-    <option name="LAST_COMMIT_MESSAGE" value="play music menu" />
+    <MESSAGE value="improvement of the display a song menu" />
+    <option name="LAST_COMMIT_MESSAGE" value="improvement of the display a song menu" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="875" height="156" key="GridCell.Tab.0.bottom" timestamp="1620150438214">
+    <state width="875" height="156" key="GridCell.Tab.0.bottom" timestamp="1620152523999">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state width="875" height="156" key="GridCell.Tab.0.bottom/0.0.1792.1120@0.0.1792.1120" timestamp="1620150438214" />
-    <state width="875" height="156" key="GridCell.Tab.0.center" timestamp="1620150438212">
+    <state width="875" height="156" key="GridCell.Tab.0.bottom/0.0.1792.1120@0.0.1792.1120" timestamp="1620152523999" />
+    <state width="875" height="156" key="GridCell.Tab.0.center" timestamp="1620152523997">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state width="875" height="156" key="GridCell.Tab.0.center/0.0.1792.1120@0.0.1792.1120" timestamp="1620150438212" />
-    <state width="875" height="156" key="GridCell.Tab.0.left" timestamp="1620150438182">
+    <state width="875" height="156" key="GridCell.Tab.0.center/0.0.1792.1120@0.0.1792.1120" timestamp="1620152523997" />
+    <state width="875" height="156" key="GridCell.Tab.0.left" timestamp="1620152523960">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state width="875" height="156" key="GridCell.Tab.0.left/0.0.1792.1120@0.0.1792.1120" timestamp="1620150438182" />
-    <state width="875" height="156" key="GridCell.Tab.0.right" timestamp="1620150438213">
+    <state width="875" height="156" key="GridCell.Tab.0.left/0.0.1792.1120@0.0.1792.1120" timestamp="1620152523960" />
+    <state width="875" height="156" key="GridCell.Tab.0.right" timestamp="1620152523998">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state width="875" height="156" key="GridCell.Tab.0.right/0.0.1792.1120@0.0.1792.1120" timestamp="1620150438213" />
-    <state x="384" y="141" key="SettingsEditor" timestamp="1620147052683">
-      <screen x="0" y="0" width="1792" height="1120" />
+    <state width="875" height="156" key="GridCell.Tab.0.right/0.0.1792.1120@0.0.1792.1120" timestamp="1620152523998" />
+    <state x="384" y="154" key="SettingsEditor" timestamp="1620151157533">
+      <screen x="0" y="23" width="1792" height="1041" />
     </state>
     <state x="384" y="141" key="SettingsEditor/0.0.1792.1120@0.0.1792.1120" timestamp="1620147052683" />
-    <state x="496" y="300" key="Vcs.Push.Dialog.v2" timestamp="1620145855838">
+    <state x="384" y="154" key="SettingsEditor/0.23.1792.1041@0.23.1792.1041" timestamp="1620151157533" />
+    <state x="496" y="300" key="Vcs.Push.Dialog.v2" timestamp="1620150738775">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state x="496" y="300" key="Vcs.Push.Dialog.v2/0.0.1792.1120@0.0.1792.1120" timestamp="1620145855838" />
+    <state x="496" y="300" key="Vcs.Push.Dialog.v2/0.0.1792.1120@0.0.1792.1120" timestamp="1620150738775" />
     <state x="694" y="481" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1620148672223">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
