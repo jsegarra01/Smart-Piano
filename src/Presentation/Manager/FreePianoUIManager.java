@@ -1,6 +1,7 @@
 package Presentation.Manager;
 
 //Imports needed from the dictionary, events and mainframe
+import Business.Entities.RecordingNotes;
 import Presentation.Dictionary_login;
 import Presentation.Ui_Views.FreePianoUI;
 import Presentation.Ui_Views.PianoTilesUISelector;
@@ -9,11 +10,13 @@ import Business.Entities.MidiHelper;
 import Business.Entities.Translator;
 
 import javax.sound.midi.MidiUnavailableException;
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.ArrayList;
 import java.util.Objects;
 
 import static Presentation.Dictionary_login.*;
@@ -31,19 +34,21 @@ import static Presentation.Manager.MainFrame.contenedor;
  *
  */
 public class FreePianoUIManager implements ActionListener {
-
     public static String SOUND_TYPE = "SYNTH";
     public static int SOUND_SYNTHER = 0 ;
+    public ArrayList<RecordingNotes> recordingNotes;
     private MidiHelper finalMidiHelper;
-    MidiHelper midiHelper = null;
     private KeyListener KL;
-    private boolean iAmPressed = false;
+    private boolean recording = false;
     private Translator translator = new Translator();
+    MidiHelper midiHelper = null;
+    Timer timer  = new Timer(1000, this);
 
     /**
      * Parametrized constructor
      */
     public FreePianoUIManager() {
+        timer.start();
         try {
             midiHelper = new MidiHelper();
         } catch (MidiUnavailableException exception) {
@@ -61,6 +66,11 @@ public class FreePianoUIManager implements ActionListener {
                         //finalMidiHelper.playSomething(Translator.getNumberNoteFromName(Translator.getCodeFromKey(e)), SOUND_SYNTHER);
                         finalMidiHelper.playSomething(Translator.getNumberNoteFromName(translator.getFromKey(e.getExtendedKeyCode())),SOUND_SYNTHER);
                         translator.getPressedFromKey(e.getExtendedKeyCode()).setPressed(true);
+
+                        //This gets the initial timer and key pressed for the first time it is clicked
+                        if (recording) {
+                            recordingNotes.add(new RecordingNotes(e.getKeyChar(),System.nanoTime()));
+                        }
                     }
                     setIconKey(Translator.getCodeFromKey(e));
                 }
@@ -72,7 +82,10 @@ public class FreePianoUIManager implements ActionListener {
                     setIconBack(Translator.getCodeFromKey(e));
                     translator.getPressedFromKey(e.getExtendedKeyCode()).setPressed(false);
                     finalMidiHelper.stopPlaying(Translator.getNumberNoteFromName(translator.getFromKey(e.getExtendedKeyCode())),SOUND_SYNTHER);
+                    if (recording) {
 
+                        recordingNotes.add(new RecordingNotes(e.getKeyChar(),System.nanoTime()));
+                    }
                 }
             }
         };
@@ -90,7 +103,14 @@ public class FreePianoUIManager implements ActionListener {
                 System.out.println("Well... we have already NOT implemented this button!");
                 break;
             case FreePianoUI.BTN_RECORD:
-                System.out.println("Well... we have already NOT implemented this button!");
+                if (recording) {
+                    recording = false;
+                    timer.stop();
+                }
+                else {
+                    timer.restart();
+                    recording = true;
+                }
                 break;
             case FreePianoUI.BTN_TILE:
                 Tile t = null;
