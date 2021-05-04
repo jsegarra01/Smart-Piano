@@ -57,22 +57,21 @@ public class PianoTilesUISelectorManager implements ActionListener {
                 }
             @Override
             public void keyPressed(KeyEvent e) {
-                if(!translator.getPressedFromKey(e.getExtendedKeyCode()).isPressed()){
-                    //finalMidiHelper.playSomething(Translator.getNumberNoteFromName(Translator.getCodeFromKey(e)), SOUND_SYNTHER);
-                    finalMidiHelper.playSomething(Translator.getNumberNoteFromName(translator.getFromKey(e.getExtendedKeyCode())),SOUND_SYNTHER);
-                    translator.getPressedFromKey(e.getExtendedKeyCode()).setPressed(true);
+                if(translator.getPressedFromKey(e.getExtendedKeyCode()) !=null){
+                    if(!translator.getPressedFromKey(e.getExtendedKeyCode()).isPressed()){
+                        //finalMidiHelper.playSomething(Translator.getNumberNoteFromName(Translator.getCodeFromKey(e)), SOUND_SYNTHER);
+                        finalMidiHelper.playSomething(Translator.getNumberNoteFromName(translator.getFromKey(e.getExtendedKeyCode())),SOUND_SYNTHER);
+                        translator.getPressedFromKey(e.getExtendedKeyCode()).setPressed(true);
+                    }
+                    setIconKey(Translator.getCodeFromKey(e));
                 }
-                setIconKey(Translator.getCodeFromKey(e));
-                /*if(!iAmPressed){
-                    //finalMidiHelper.playSomething(Translator.getNumberNoteFromName(Translator.getCodeFromKey(e)), SOUND_SYNTHER);
-                    iAmPressed = true;
-                }
-                setIconKey(Translator.getCodeFromKey(e));*/
             }
             @Override
             public void keyReleased(KeyEvent e) {
-                setIconBack(Translator.getCodeFromKey(e));
-                translator.getPressedFromKey(e.getExtendedKeyCode()).setPressed(false);
+                if (translator.getPressedFromKey(e.getExtendedKeyCode()) != null) {
+                    setIconBack(Translator.getCodeFromKey(e));
+                    translator.getPressedFromKey(e.getExtendedKeyCode()).setPressed(false);
+                }
             }
         };
     }

@@ -41,9 +41,8 @@ public class FreePianoUI extends Piano {
         panel.setBackground(Color.getHSBColor(0,0,0.2f));
 
         //All information will go inside here
-        panel.add(Box.createRigidArea(new Dimension(10, 300)), BorderLayout.CENTER);
+        panel.add(Box.createRigidArea(new Dimension(10, 240)), BorderLayout.CENTER);
 
-        SIZE_MULT_HEIGHT = 1.31f;
         panel.add(makeKeys(), BorderLayout.SOUTH);
         panel.add(initMenu(), BorderLayout.PAGE_START);
 
@@ -117,14 +116,14 @@ public class FreePianoUI extends Piano {
             //tile.setText("Do");
             //tile.setVerticalAlignment(SwingConstants.BOTTOM);
             tile.setActionCommand(BTN_TILE);
-            tile.setBounds(55 + 65*i,0,65,300);
+            tile.setBounds(55 + 65*i,0,65,330);
             ImageIcon imageIcon = new ImageIcon("Files/drawable/white-key-down.png");
             tile.setPressedIcon(resizeIcon(imageIcon, Math.round(imageIcon.getIconWidth()*SIZE_MULT_WIDTH), Math.round(imageIcon.getIconHeight()*SIZE_MULT_HEIGHT)));
             keyboard.add(tile);
             keyBoard.add(keyboard.get(i), Integer.valueOf(1));
             keyBoard.add(Box.createRigidArea(new Dimension(2, 0)));
             label = new JLabel(whiteLabels[i]);
-            label.setBounds(65*(i+1)+15,250,widthBlack,20);
+            label.setBounds(65*(i+1)+15,275,widthBlack,50);
             keyBoard.add(label,Integer.valueOf(3));
         }
 
@@ -179,14 +178,8 @@ public class FreePianoUI extends Piano {
             label.setBounds(428+(separationBlack*i)+add,yLabel,widthBlack,heightBlack);
             label.setForeground(Color.WHITE);
             keyBoard.add(label,Integer.valueOf(3));
-
         }
-
         return keyBoard;
     }
-
-
-
-
 }
 
