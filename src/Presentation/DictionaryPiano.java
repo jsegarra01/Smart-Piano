@@ -19,6 +19,12 @@ public class DictionaryPiano {
     public static final String SPOTI_UI = "SpotiUI";
     public static final String HOME_BUTTON = "Home";
     public static final String CREATE_PLAYLIST = "+ Create Playlist";
+    public static final String CREATE_STADISTICS = "Stadistics";
+    public static final String SHOW_TOP_SONGS = "Top 5 Songs";
     public static final String STATISTICS_UI = "StatisticsUI";
     public static final String PLAYLIST_UI = "CreatePlaylistUI";
+    public static final String TOPSONGS_UI = "TopSongsUI";
+    public static final String PLAYLIST_LABEL = "Playlists";
+
+    public static final Integer TB_SIZE = 10;
 }

@@ -19,7 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="Stop Playing when key released">
+    <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="commit to finish feature in order to help lora">
       <change beforePath="$PROJECT_DIR$/Files/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/Files/config.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -39,7 +39,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="feature/Main_GUI_development" />
+        <entry key="$PROJECT_DIR$" value="feature/Recording_a_song" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -66,14 +66,17 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../ClassEx/GroupManager/LayeredArchitecture" />
-    <property name="project.structure.last.edited" value="Libraries" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Files/drawable" />
+    <property name="project.structure.last.edited" value="Problems" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="Business" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Files/drawable" />
     </key>
   </component>
   <component name="RunManager">
@@ -293,7 +296,49 @@
       <option name="project" value="LOCAL" />
       <updated>1620126250333</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="play music menu">
+      <created>1620145789461</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1620145789461</updated>
+    </task>
+    <task id="LOCAL-00026" summary="improvement of the display a song menu">
+      <created>1620150719884</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1620150719884</updated>
+    </task>
+    <task id="LOCAL-00027" summary="player bar">
+      <created>1620152593760</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1620152593760</updated>
+    </task>
+    <task id="LOCAL-00028" summary="buttons player bar finished">
+      <created>1620156585009</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1620156585009</updated>
+    </task>
+    <task id="LOCAL-00029" summary="some corrections have been made with sizes and optimization.">
+      <created>1620157965594</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1620157965594</updated>
+    </task>
+    <task id="LOCAL-00030" summary="commit to finish feature in order to help lora">
+      <created>1620161352607</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1620161352607</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -322,12 +367,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="ProfileUI done" />
-    <MESSAGE value="LogInUI done" />
-    <MESSAGE value="LoginUserCsvDAO class" />
-    <MESSAGE value="SongCsvDAO and its interface" />
-    <MESSAGE value="Singleton connection" />
-    <MESSAGE value="Daos Config" />
     <MESSAGE value="End Feature last commit" />
     <MESSAGE value="End Feature last commit v3" />
     <MESSAGE value="main changes" />
@@ -347,6 +386,12 @@
     <MESSAGE value="Small UI views in Free Piano and Play a Song, UI logic for Music also done" />
     <MESSAGE value="publish feature yikes" />
     <MESSAGE value="Stop Playing when key released" />
-    <option name="LAST_COMMIT_MESSAGE" value="Stop Playing when key released" />
+    <MESSAGE value="play music menu" />
+    <MESSAGE value="improvement of the display a song menu" />
+    <MESSAGE value="player bar" />
+    <MESSAGE value="buttons player bar finished" />
+    <MESSAGE value="some corrections have been made with sizes and optimization." />
+    <MESSAGE value="commit to finish feature in order to help lora" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit to finish feature in order to help lora" />
   </component>
 </project>

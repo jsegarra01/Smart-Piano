@@ -50,6 +50,7 @@ public class Translator {
             keys.add(new Keys(KeyEvent.VK_COMMA,"4c"));
         }
     }
+
     public static String getCodeFromKey(KeyEvent key){
         return switch(key.getExtendedKeyCode()){
             case KeyEvent.VK_2 -> "2c#";
