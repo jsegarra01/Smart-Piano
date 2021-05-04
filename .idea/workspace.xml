@@ -20,7 +20,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="Stop Playing when key released">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Files/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/Files/config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/Entities/Translator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/Entities/Translator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/DictionaryPiano.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/DictionaryPiano.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/SpotiUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/SpotiUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Business/Entities/Translator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/Entities/Translator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presentation/DictionaryPiano.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/DictionaryPiano.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presentation/Ui_Views/SpotiUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Ui_Views/SpotiUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -348,5 +355,23 @@
     <MESSAGE value="publish feature yikes" />
     <MESSAGE value="Stop Playing when key released" />
     <option name="LAST_COMMIT_MESSAGE" value="Stop Playing when key released" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state width="875" height="156" key="GridCell.Tab.0.bottom" timestamp="1620140353584">
+      <screen x="0" y="0" width="1792" height="1120" />
+    </state>
+    <state width="875" height="156" key="GridCell.Tab.0.bottom/0.0.1792.1120@0.0.1792.1120" timestamp="1620140353584" />
+    <state width="875" height="156" key="GridCell.Tab.0.center" timestamp="1620140353582">
+      <screen x="0" y="0" width="1792" height="1120" />
+    </state>
+    <state width="875" height="156" key="GridCell.Tab.0.center/0.0.1792.1120@0.0.1792.1120" timestamp="1620140353582" />
+    <state width="875" height="156" key="GridCell.Tab.0.left" timestamp="1620140353581">
+      <screen x="0" y="0" width="1792" height="1120" />
+    </state>
+    <state width="875" height="156" key="GridCell.Tab.0.left/0.0.1792.1120@0.0.1792.1120" timestamp="1620140353581" />
+    <state width="875" height="156" key="GridCell.Tab.0.right" timestamp="1620140353583">
+      <screen x="0" y="0" width="1792" height="1120" />
+    </state>
+    <state width="875" height="156" key="GridCell.Tab.0.right/0.0.1792.1120@0.0.1792.1120" timestamp="1620140353583" />
   </component>
 </project>
