@@ -73,16 +73,18 @@ public class SpotiUI extends JPanel {
 
 
         showStadistics.setActionCommand(CREATE_STADISTICS);
-        showStadistics.setAlignmentX(0.5f);
+        confButtonLeft(showStadistics, 0, 115);
+        /*showStadistics.setAlignmentX(0.5f);
         showStadistics.setBorder(new EmptyBorder(10,0,10,115));
         showStadistics.setBackground(Color.getHSBColor(0,0,0.8f));
-        showStadistics.setForeground(Color.white);
+        showStadistics.setForeground(Color.white);*/
 
         topSongs.setActionCommand(SHOW_TOP_SONGS);
-        topSongs.setAlignmentX(0.5f);
+        confButtonLeft(topSongs, 18, 115);
+        /*topSongs.setAlignmentX(0.5f);
         topSongs.setBorder(new EmptyBorder(10,18,10,115));
         topSongs.setBackground(Color.getHSBColor(0,0,0.8f));
-        topSongs.setForeground(Color.white);
+        topSongs.setForeground(Color.white);*/
 
         playlistLabel.setAlignmentX(0.5f);
         playlistLabel.setBorder(new EmptyBorder(10,0,10,140));
@@ -90,10 +92,12 @@ public class SpotiUI extends JPanel {
         playlistLabel.setForeground(Color.white);
 
         createPlaylist.setActionCommand(CREATE_PLAYLIST);
-        createPlaylist.setAlignmentX(0.5f);
+        confButtonLeft(createPlaylist, 12, 90);
+        /*createPlaylist.setAlignmentX(0.5f);
         createPlaylist.setBorder(new EmptyBorder(10,12,10,90));
         createPlaylist.setBackground(Color.getHSBColor(0,0,0.8f));
-        createPlaylist.setForeground(Color.white);
+        createPlaylist.setForeground(Color.white);*/
+        JSeparator separator = new JSeparator();
 
         registerController(new SpotiFrameManager());
 
@@ -101,8 +105,8 @@ public class SpotiUI extends JPanel {
         leftList.add(Box.createRigidArea(new Dimension(210, 10)));
         leftList.add(topSongs);
         leftList.add(playlistLabel);
-        //leftList.setBackground(Color.getHSBColor(2,8,0.2f));
         leftList.add(createPlaylist);
+        leftList.add(separator);
         leftList.setBackground(Color.getHSBColor(10,0,0.2f));
         add(leftList, BorderLayout.WEST);
 
@@ -110,35 +114,34 @@ public class SpotiUI extends JPanel {
         shuffleButton.setIcon(new ImageIcon("Files/drawable/shuffleWhite.png"));
         shuffleButton.setIcon(resizeIcon((ImageIcon) shuffleButton.getIcon(), (int) Math.round(shuffleButton.getIcon().getIconWidth()*0.05),
                 (int) Math.round(shuffleButton.getIcon().getIconHeight()*0.05)));
-        confButtonsTab(shuffleButton, 10, 60);
+        confButtonsBar(shuffleButton, 10, 60);
 
         backButton.setIcon(new ImageIcon("Files/drawable/backwardtrackWhite.png"));
         backButton.setIcon(resizeIcon((ImageIcon) backButton.getIcon(), (int) Math.round(backButton.getIcon().getIconWidth()*0.05),
                 (int) Math.round(backButton.getIcon().getIconHeight()*0.05)));
-        confButtonsTab(backButton, 0, 60);
+        confButtonsBar(backButton, 0, 60);
 
         playButton.setIcon(new ImageIcon("Files/drawable/playbuttonWhite.png"));
         playButton.setIcon(resizeIcon((ImageIcon) playButton.getIcon(), (int) Math.round(playButton.getIcon().getIconWidth()*0.09),
                 (int) Math.round(playButton.getIcon().getIconHeight()*0.09)));
-        confButtonsTab(playButton, 0, 60);
+        confButtonsBar(playButton, 0, 60);
 
         nextButton.setIcon(new ImageIcon("Files/drawable/fordwardtrackWhite.png"));
         nextButton.setIcon(resizeIcon((ImageIcon) nextButton.getIcon(), (int) Math.round(nextButton.getIcon().getIconWidth()*0.05),
                 (int) Math.round(nextButton.getIcon().getIconHeight()*0.05)));
-        confButtonsTab(nextButton, 0, 60);
+        confButtonsBar(nextButton, 0, 60);
 
         loopButton.setIcon(new ImageIcon("Files/drawable/exchangeWhite.png"));
         loopButton.setIcon(resizeIcon((ImageIcon) loopButton.getIcon(), (int) Math.round(loopButton.getIcon().getIconWidth()*0.05),
                 (int) Math.round(loopButton.getIcon().getIconHeight()*0.05)));
-        confButtonsTab(loopButton, 0, 10);
+        confButtonsBar(loopButton, 0, 10);
 
 
 
         JPanel musicPlayer = new JPanel();
 
-       musicPlayer.setLayout(new GridBagLayout());
-       musicPlayer.setPreferredSize(new Dimension(10,90));
-        //musicPlayer.add(Box.createRigidArea(new Dimension(250, 25)));
+        musicPlayer.setLayout(new GridBagLayout());
+        musicPlayer.setPreferredSize(new Dimension(10,90));
         musicPlayer.setBackground(Color.getHSBColor(10,0,0.3f));
         musicPlayer.add(shuffleButton);
         musicPlayer.add(backButton);
@@ -148,7 +151,14 @@ public class SpotiUI extends JPanel {
         add(musicPlayer, BorderLayout.SOUTH);
     }
 
-    private void confButtonsTab(JButton button, int left, int right){
+    private void confButtonLeft(JButton button, int left, int right){
+        button.setAlignmentX(0.5f);
+        button.setBorder(new EmptyBorder(TB_SIZE,left,TB_SIZE,right));
+        button.setBackground(Color.getHSBColor(0,0,0.8f));
+        button.setForeground(Color.white);
+    }
+
+    private void confButtonsBar(JButton button, int left, int right){
         button.add(Box.createRigidArea(new Dimension(button.getIcon().getIconWidth(), button.getIcon().getIconHeight())));
         button.setOpaque(false);
         button.setContentAreaFilled(false);
@@ -160,5 +170,11 @@ public class SpotiUI extends JPanel {
         showStadistics.addActionListener(listener);
         topSongs.addActionListener(listener);
         createPlaylist.addActionListener(listener);
+
+        shuffleButton.addActionListener(listener);
+        backButton.addActionListener(listener);
+        playButton.addActionListener(listener);
+        nextButton.addActionListener(listener);
+        loopButton.addActionListener(listener);
     }
 }

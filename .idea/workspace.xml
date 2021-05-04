@@ -19,16 +19,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="player bar">
-      <change afterPath="$PROJECT_DIR$/Files/drawable/backwardtrackWhite.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Files/drawable/exchangeWhite.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Files/drawable/fordwardtrackWhite.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Files/drawable/playbuttonWhite.png" afterDir="false" />
+    <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="buttons player bar finished">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Files/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/Files/config.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/DictionaryPiano.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/DictionaryPiano.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/SpotiUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/SpotiUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presentation/DictionaryPiano.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/DictionaryPiano.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Presentation/Ui_Views/SpotiUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Ui_Views/SpotiUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -326,7 +320,14 @@
       <option name="project" value="LOCAL" />
       <updated>1620152593760</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="buttons player bar finished">
+      <created>1620156585009</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1620156585009</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -355,7 +356,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="SongCsvDAO and its interface" />
     <MESSAGE value="Singleton connection" />
     <MESSAGE value="Daos Config" />
     <MESSAGE value="End Feature last commit" />
@@ -380,34 +380,35 @@
     <MESSAGE value="play music menu" />
     <MESSAGE value="improvement of the display a song menu" />
     <MESSAGE value="player bar" />
-    <option name="LAST_COMMIT_MESSAGE" value="player bar" />
+    <MESSAGE value="buttons player bar finished" />
+    <option name="LAST_COMMIT_MESSAGE" value="buttons player bar finished" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="875" height="156" key="GridCell.Tab.0.bottom" timestamp="1620156226128">
+    <state width="875" height="156" key="GridCell.Tab.0.bottom" timestamp="1620157430042">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state width="875" height="156" key="GridCell.Tab.0.bottom/0.0.1792.1120@0.0.1792.1120" timestamp="1620156226128" />
-    <state width="875" height="156" key="GridCell.Tab.0.center" timestamp="1620156226127">
+    <state width="875" height="156" key="GridCell.Tab.0.bottom/0.0.1792.1120@0.0.1792.1120" timestamp="1620157430042" />
+    <state width="875" height="156" key="GridCell.Tab.0.center" timestamp="1620157430021">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state width="875" height="156" key="GridCell.Tab.0.center/0.0.1792.1120@0.0.1792.1120" timestamp="1620156226127" />
-    <state width="875" height="156" key="GridCell.Tab.0.left" timestamp="1620156226127">
+    <state width="875" height="156" key="GridCell.Tab.0.center/0.0.1792.1120@0.0.1792.1120" timestamp="1620157430021" />
+    <state width="875" height="156" key="GridCell.Tab.0.left" timestamp="1620157430021">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state width="875" height="156" key="GridCell.Tab.0.left/0.0.1792.1120@0.0.1792.1120" timestamp="1620156226127" />
-    <state width="875" height="156" key="GridCell.Tab.0.right" timestamp="1620156226128">
+    <state width="875" height="156" key="GridCell.Tab.0.left/0.0.1792.1120@0.0.1792.1120" timestamp="1620157430021" />
+    <state width="875" height="156" key="GridCell.Tab.0.right" timestamp="1620157430023">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state width="875" height="156" key="GridCell.Tab.0.right/0.0.1792.1120@0.0.1792.1120" timestamp="1620156226128" />
+    <state width="875" height="156" key="GridCell.Tab.0.right/0.0.1792.1120@0.0.1792.1120" timestamp="1620157430023" />
     <state x="384" y="154" key="SettingsEditor" timestamp="1620151157533">
       <screen x="0" y="23" width="1792" height="1041" />
     </state>
     <state x="384" y="141" key="SettingsEditor/0.0.1792.1120@0.0.1792.1120" timestamp="1620147052683" />
     <state x="384" y="154" key="SettingsEditor/0.23.1792.1041@0.23.1792.1041" timestamp="1620151157533" />
-    <state x="496" y="300" key="Vcs.Push.Dialog.v2" timestamp="1620152601303">
+    <state x="496" y="300" key="Vcs.Push.Dialog.v2" timestamp="1620156597270">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state x="496" y="300" key="Vcs.Push.Dialog.v2/0.0.1792.1120@0.0.1792.1120" timestamp="1620152601303" />
+    <state x="496" y="300" key="Vcs.Push.Dialog.v2/0.0.1792.1120@0.0.1792.1120" timestamp="1620156597270" />
     <state x="694" y="481" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1620148672223">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
