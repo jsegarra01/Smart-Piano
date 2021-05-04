@@ -42,8 +42,11 @@ public class SpotiFrameManager implements ActionListener {
         CardLayout cc = (CardLayout) (spotiPanel.getLayout());
 
         switch (e.getActionCommand()) {
-            case HOME_BUTTON:
+            case CREATE_STADISTICS:
                 cc.show(spotiPanel, STATISTICS_UI);
+                break;
+            case SHOW_TOP_SONGS:
+                cc.show(spotiPanel, TOPSONGS_UI);
                 break;
             case CREATE_PLAYLIST:
                 cc.show(spotiPanel, PLAYLIST_UI);

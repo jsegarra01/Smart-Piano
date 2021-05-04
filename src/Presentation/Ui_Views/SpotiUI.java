@@ -26,12 +26,14 @@ public class SpotiUI extends JPanel {
     private MainFrame mainFrame;
     StatisticsUI statisticsUI;
     PlaylistUI playlistUI;
+    TopSongsUI topSongsUI;
 
     public static JPanel spotiPanel = new JPanel(new CardLayout());
     public static JButton homeButton = new JButton(HOME_BUTTON);
     public static JButton createPlaylist = new JButton(CREATE_PLAYLIST);
     public static JButton showStadistics = new JButton(CREATE_STADISTICS);
     public static JButton topSongs = new JButton(SHOW_TOP_SONGS);
+    public static JLabel playlistLabel = new JLabel(PLAYLIST_LABEL);
     /**
      * Constructor for the SpotiUI, you need to send the mainframe context and will create a card layout
      * @param mainFrame context necessary to create the card layout
@@ -41,6 +43,7 @@ public class SpotiUI extends JPanel {
         this.mainFrame=mainFrame;
         statisticsUI = new StatisticsUI(mainFrame);
         playlistUI = new PlaylistUI(mainFrame);
+        topSongsUI = new TopSongsUI(mainFrame);
 
         initialize();
     }
@@ -52,6 +55,7 @@ public class SpotiUI extends JPanel {
         setLayout(new BorderLayout());
 
         spotiPanel.add(statisticsUI, STATISTICS_UI);
+        spotiPanel.add(topSongsUI, TOPSONGS_UI);
         spotiPanel.add(playlistUI, PLAYLIST_UI);
         add(spotiPanel, BorderLayout.CENTER);
 
@@ -64,26 +68,34 @@ public class SpotiUI extends JPanel {
 
         showStadistics.setActionCommand(CREATE_STADISTICS);
         showStadistics.setAlignmentX(0.5f);
-        showStadistics.setBorder(new EmptyBorder(10,85,10,85));
+        showStadistics.setBorder(new EmptyBorder(10,0,10,115));
         showStadistics.setBackground(Color.getHSBColor(0,0,0.8f));
+        showStadistics.setForeground(Color.white);
 
         topSongs.setActionCommand(SHOW_TOP_SONGS);
         topSongs.setAlignmentX(0.5f);
-        topSongs.setBorder(new EmptyBorder(10,85,10,85));
+        topSongs.setBorder(new EmptyBorder(10,18,10,115));
         topSongs.setBackground(Color.getHSBColor(0,0,0.8f));
+        topSongs.setForeground(Color.white);
+
+        playlistLabel.setAlignmentX(0.5f);
+        playlistLabel.setBorder(new EmptyBorder(10,0,10,140));
+        playlistLabel.setBackground(Color.getHSBColor(0,0,0.8f));
+        playlistLabel.setForeground(Color.white);
 
         createPlaylist.setActionCommand(CREATE_PLAYLIST);
         createPlaylist.setAlignmentX(0.5f);
-        createPlaylist.setBorder(new EmptyBorder(10,55,10,55));
+        createPlaylist.setBorder(new EmptyBorder(10,12,10,90));
         createPlaylist.setBackground(Color.getHSBColor(0,0,0.8f));
-
+        createPlaylist.setForeground(Color.white);
 
         registerController(new SpotiFrameManager());
 
         leftList.add(showStadistics);
         leftList.add(Box.createRigidArea(new Dimension(210, 10)));
         leftList.add(topSongs);
-        leftList.setBackground(Color.getHSBColor(2,8,0.2f));
+        leftList.add(playlistLabel);
+        //leftList.setBackground(Color.getHSBColor(2,8,0.2f));
         leftList.add(createPlaylist);
         leftList.setBackground(Color.getHSBColor(10,0,0.2f));
         add(leftList, BorderLayout.WEST);
