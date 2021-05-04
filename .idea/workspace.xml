@@ -19,36 +19,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="piano finished">
-      <change afterPath="$PROJECT_DIR$/src/Presentation/Manager/SpotiFrameManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Presentation/Ui_Views/PlaylistUI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Presentation/Ui_Views/StatisticsUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_14_04_2021__17_43__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_14_04_2021__17_43__Default_Changelist_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_14_04_2021__17_44__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_14_04_2021__17_44__Default_Changelist_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="Small UI views in Free Piano and Play a Song, UI logic for Music also done">
       <change beforePath="$PROJECT_DIR$/Files/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/Files/config.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/Entities/Keys.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/Entities/Keys.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/FreePianoUIManager$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/FreePianoUIManager$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/FreePianoUIManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/FreePianoUIManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/PianoFrameManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/PianoFrameManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/PianoTilesUISelectorManager$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/PianoTilesUISelectorManager$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/PianoTilesUISelectorManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/PianoTilesUISelectorManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/FreePianoUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/FreePianoUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/PianoFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/PianoFrame.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/PianoTilesUIGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/PianoTilesUIGame.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/PianoTilesUISelector.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/PianoTilesUISelector.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/SpotiUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/SpotiUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/Tile.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/Tile.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presentation/DictionaryPiano.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/DictionaryPiano.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presentation/Manager/FreePianoUIManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Manager/FreePianoUIManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presentation/Manager/PianoFrameManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Manager/PianoFrameManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presentation/Manager/PianoTilesUISelectorManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Manager/PianoTilesUISelectorManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presentation/Ui_Views/FreePianoUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Ui_Views/FreePianoUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presentation/Ui_Views/PianoFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Ui_Views/PianoFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presentation/Ui_Views/PianoTilesUIGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Ui_Views/PianoTilesUIGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presentation/Ui_Views/PianoTilesUISelector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Ui_Views/PianoTilesUISelector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presentation/Ui_Views/SpotiUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Ui_Views/SpotiUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presentation/Ui_Views/Tile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Ui_Views/Tile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/DictionaryPiano.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/DictionaryPiano.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,17 +78,6 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="dpoo-2021-smartpiano-ice5" />
@@ -315,7 +277,14 @@
       <option name="project" value="LOCAL" />
       <updated>1620055934613</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="Small UI views in Free Piano and Play a Song, UI logic for Music also done">
+      <created>1620066996333</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1620066996333</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -367,6 +336,7 @@
     <MESSAGE value="Changing colors while changing through the CardLayout" />
     <MESSAGE value="Name of the tile appears now. The recording button is no longer an unreadable text, is an icon" />
     <MESSAGE value="piano finished" />
-    <option name="LAST_COMMIT_MESSAGE" value="piano finished" />
+    <MESSAGE value="Small UI views in Free Piano and Play a Song, UI logic for Music also done" />
+    <option name="LAST_COMMIT_MESSAGE" value="Small UI views in Free Piano and Play a Song, UI logic for Music also done" />
   </component>
 </project>
