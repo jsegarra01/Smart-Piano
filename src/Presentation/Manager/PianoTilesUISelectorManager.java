@@ -90,28 +90,6 @@ public class PianoTilesUISelectorManager implements ActionListener {
             case PianoTilesUISelector.BTN_RECORD:
                 System.out.println("Well... we have already NOT implemented this button!");
                 break;
-            case PianoTilesUISelector.BTN_SUSTAIN_SOUND:
-                SOUND_TYPE = "PIANO";
-                break;
-            case PianoTilesUISelector.BTN_SYNTH_SOUND:
-                SOUND_TYPE = "SYNTH";
-                break;
-            case PianoTilesUISelector.BTN_NEXT_SYNTHER:
-                if(SOUND_SYNTHER <= 127){
-                    SOUND_SYNTHER++;
-                    PianoTilesUISelector.setTypeName(finalMidiHelper.getInstrument());
-                }else{
-                    SOUND_SYNTHER = 0;
-                }
-                break;
-            case PianoTilesUISelector.BTN_PREV_SYNTHER:
-                if(SOUND_SYNTHER >= 1){
-                    SOUND_SYNTHER--;
-                    PianoTilesUISelector.setTypeName(finalMidiHelper.getInstrument());
-                }else{
-                    SOUND_SYNTHER = 127;
-                }
-                break;
             case PianoTilesUISelector.BTN_TILE:
                 Tile t = null;
                 Object obj = e.getSource();

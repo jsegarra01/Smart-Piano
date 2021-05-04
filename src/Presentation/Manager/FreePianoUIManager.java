@@ -92,28 +92,6 @@ public class FreePianoUIManager implements ActionListener {
             case FreePianoUI.BTN_RECORD:
                 System.out.println("Well... we have already NOT implemented this button!");
                 break;
-            case FreePianoUI.BTN_SUSTAIN_SOUND:
-                SOUND_TYPE = "PIANO";
-                break;
-            case FreePianoUI.BTN_SYNTH_SOUND:
-                SOUND_TYPE = "SYNTH";
-                break;
-            case FreePianoUI.BTN_NEXT_SYNTHER:
-                if(SOUND_SYNTHER <= 127){
-                    SOUND_SYNTHER++;
-                    FreePianoUI.setTypeName(finalMidiHelper.getInstrument());
-                }else{
-                    SOUND_SYNTHER = 0;
-                }
-                break;
-            case FreePianoUI.BTN_PREV_SYNTHER:
-                if(SOUND_SYNTHER >= 1){
-                    SOUND_SYNTHER--;
-                    FreePianoUI.setTypeName(finalMidiHelper.getInstrument());
-                }else{
-                    SOUND_SYNTHER = 127;
-                }
-                break;
             case FreePianoUI.BTN_TILE:
                 Tile t = null;
                 Object obj = e.getSource();

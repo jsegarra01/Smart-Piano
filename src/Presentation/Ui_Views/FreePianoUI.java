@@ -64,12 +64,7 @@ public class FreePianoUI extends Piano {
                 (int) Math.round(iconRec.getIconHeight()*1.2)));
         //recordB.setName(BTN_RECORD);
         menu.add(profile);
-        menu.add(returnB);
         menu.add(recordB);
-        menu.add(pianoSoundB);
-        menu.add(synthSoundB);
-        menu.add(nextSynther);
-        menu.add(prevSynther);
         menu.add(soundType);
 
         registerController(new FreePianoUIManager());
@@ -83,10 +78,6 @@ public class FreePianoUI extends Piano {
         returnB.addActionListener(listener);
         recordB.addActionListener(listener);
 
-        pianoSoundB.addActionListener(listener);
-        synthSoundB.addActionListener(listener);
-        nextSynther.addActionListener(listener);
-        prevSynther.addActionListener(listener);
         this.addKeyListener(listener.getKeyListener());
         for (Tile tile : keyboard) {
             tile.addActionListener(listener);
