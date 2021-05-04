@@ -19,7 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="buttons player bar finished">
+    <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="some corrections have been made with sizes and optimization.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Files/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/Files/config.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/SpotiUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/SpotiUI.class" afterDir="false" />
@@ -327,7 +327,14 @@
       <option name="project" value="LOCAL" />
       <updated>1620156585009</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="some corrections have been made with sizes and optimization.">
+      <created>1620157965594</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1620157965594</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -356,7 +363,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Singleton connection" />
     <MESSAGE value="Daos Config" />
     <MESSAGE value="End Feature last commit" />
     <MESSAGE value="End Feature last commit v3" />
@@ -381,34 +387,35 @@
     <MESSAGE value="improvement of the display a song menu" />
     <MESSAGE value="player bar" />
     <MESSAGE value="buttons player bar finished" />
-    <option name="LAST_COMMIT_MESSAGE" value="buttons player bar finished" />
+    <MESSAGE value="some corrections have been made with sizes and optimization." />
+    <option name="LAST_COMMIT_MESSAGE" value="some corrections have been made with sizes and optimization." />
   </component>
   <component name="WindowStateProjectService">
-    <state width="875" height="156" key="GridCell.Tab.0.bottom" timestamp="1620157430042">
+    <state width="875" height="156" key="GridCell.Tab.0.bottom" timestamp="1620158773479">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state width="875" height="156" key="GridCell.Tab.0.bottom/0.0.1792.1120@0.0.1792.1120" timestamp="1620157430042" />
-    <state width="875" height="156" key="GridCell.Tab.0.center" timestamp="1620157430021">
+    <state width="875" height="156" key="GridCell.Tab.0.bottom/0.0.1792.1120@0.0.1792.1120" timestamp="1620158773479" />
+    <state width="875" height="156" key="GridCell.Tab.0.center" timestamp="1620158773475">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state width="875" height="156" key="GridCell.Tab.0.center/0.0.1792.1120@0.0.1792.1120" timestamp="1620157430021" />
-    <state width="875" height="156" key="GridCell.Tab.0.left" timestamp="1620157430021">
+    <state width="875" height="156" key="GridCell.Tab.0.center/0.0.1792.1120@0.0.1792.1120" timestamp="1620158773475" />
+    <state width="875" height="156" key="GridCell.Tab.0.left" timestamp="1620158773474">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state width="875" height="156" key="GridCell.Tab.0.left/0.0.1792.1120@0.0.1792.1120" timestamp="1620157430021" />
-    <state width="875" height="156" key="GridCell.Tab.0.right" timestamp="1620157430023">
+    <state width="875" height="156" key="GridCell.Tab.0.left/0.0.1792.1120@0.0.1792.1120" timestamp="1620158773474" />
+    <state width="875" height="156" key="GridCell.Tab.0.right" timestamp="1620158773477">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state width="875" height="156" key="GridCell.Tab.0.right/0.0.1792.1120@0.0.1792.1120" timestamp="1620157430023" />
+    <state width="875" height="156" key="GridCell.Tab.0.right/0.0.1792.1120@0.0.1792.1120" timestamp="1620158773477" />
     <state x="384" y="154" key="SettingsEditor" timestamp="1620151157533">
       <screen x="0" y="23" width="1792" height="1041" />
     </state>
     <state x="384" y="141" key="SettingsEditor/0.0.1792.1120@0.0.1792.1120" timestamp="1620147052683" />
     <state x="384" y="154" key="SettingsEditor/0.23.1792.1041@0.23.1792.1041" timestamp="1620151157533" />
-    <state x="496" y="300" key="Vcs.Push.Dialog.v2" timestamp="1620156597270">
+    <state x="496" y="300" key="Vcs.Push.Dialog.v2" timestamp="1620157979153">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state x="496" y="300" key="Vcs.Push.Dialog.v2/0.0.1792.1120@0.0.1792.1120" timestamp="1620156597270" />
+    <state x="496" y="300" key="Vcs.Push.Dialog.v2/0.0.1792.1120@0.0.1792.1120" timestamp="1620157979153" />
     <state x="694" y="481" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1620148672223">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
