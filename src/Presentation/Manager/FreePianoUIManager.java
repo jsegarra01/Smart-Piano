@@ -123,7 +123,14 @@ public class FreePianoUIManager implements ActionListener {
                 if (recording) {
                     recording = false;
                     timer.stop();
-                    businessFacadeImp.
+
+                    JPanel myPanel = new JPanel();
+                    JTextField xField = new JTextField( 20);
+                    myPanel.add(xField);
+                    JCheckBox box = new JCheckBox("is private?");
+                    myPanel.add(box);
+
+                    JOptionPane.showMessageDialog(null, myPanel, "Enter a title for the song", 1);
                 }
                 else {
                     recordingTime = 0;
