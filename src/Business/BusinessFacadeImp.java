@@ -1,5 +1,13 @@
 package Business;
 
+import Business.Entities.RecordingNotes;
+import Business.Entities.SongRecorded;
+import Business.Entities.SongToJson;
+
+import java.util.ArrayList;
+
+import static Business.Entities.SongToJson.writeJSONsong;
+
 /**
  * BusinessFacade
  *
@@ -28,5 +36,11 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
     @Override
     public void deleteAccount(String username) {
         loginUserManager.deleteUser(username);
+    }
+
+    @Override
+    public void recordedNotesSend(ArrayList<RecordingNotes> recordedNotes, String songName, boolean isPrivate) {
+        SongRecorded songRecorded = new SongRecorded(recordedNotes,songName, isPrivate);
+        writeJSONsong(songRecorded, songName);
     }
 }

@@ -1,6 +1,7 @@
 package Presentation.Manager;
 
 //Imports needed from the dictionary, events and mainframe
+import Business.BusinessFacadeImp;
 import Business.Entities.RecordingNotes;
 import Presentation.Dictionary_login;
 import Presentation.Ui_Views.FreePianoUI;
@@ -38,11 +39,14 @@ public class FreePianoUIManager implements ActionListener {
     public static String SOUND_TYPE = "SYNTH";
     public static int SOUND_SYNTHER = 0 ;
     public ArrayList<RecordingNotes> recordingNotes = new ArrayList<RecordingNotes>();
+
     private MidiHelper finalMidiHelper;
     private KeyListener KL;
     private boolean recording = false;
     private Translator translator = new Translator();
     private float recordingTime = 0;
+    BusinessFacadeImp businessFacadeImp = new BusinessFacadeImp();
+
     MidiHelper midiHelper = null;
     Timer timer  = new Timer(10, this);
 
@@ -79,8 +83,8 @@ public class FreePianoUIManager implements ActionListener {
 
         //sequencer
         //synthesiser
-
             }
+
             @Override
             public void keyReleased(KeyEvent e) {
                 if (translator.getPressedFromKey(e.getExtendedKeyCode()) != null) {
@@ -119,6 +123,7 @@ public class FreePianoUIManager implements ActionListener {
                 if (recording) {
                     recording = false;
                     timer.stop();
+                    businessFacadeImp.
                 }
                 else {
                     recordingTime = 0;
@@ -144,6 +149,7 @@ public class FreePianoUIManager implements ActionListener {
                 break;
         }
     }
+
     public KeyListener getKeyListener(){
         return this.KL;
     }
@@ -159,6 +165,7 @@ public class FreePianoUIManager implements ActionListener {
             FreePianoUI.getKeyboard().get(i).setIcon();
         }
     }
+
     private void setIconBack(String string){
         int i = 0;
         while(!string.equals(FreePianoUI.getKeyboard().get(i).getName()) && i<FreePianoUI.getKeyboard().size()){

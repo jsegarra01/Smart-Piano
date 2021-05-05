@@ -1,5 +1,9 @@
 package Business;
 
+import Business.Entities.RecordingNotes;
+
+import java.util.ArrayList;
+
 /**
  * BusinessFacade
  *
@@ -34,4 +38,10 @@ public interface BusinessFacade {
      * @param username Username string to delete the account
      */
     void deleteAccount(String username);
+
+    /**
+     * Gets the arraylist of recorded notes from the UI
+     * @param recordedNotes array with the notes
+     */
+    void recordedNotesSend(ArrayList<RecordingNotes> recordedNotes, String songName, boolean isPrivate);
 }
