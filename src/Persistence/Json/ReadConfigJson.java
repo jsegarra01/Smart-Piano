@@ -31,11 +31,8 @@ public class ReadConfigJson {
             reader.close();
             //Saving the values of the Json file in the attributes of each of the corresponding classes.
         } catch (IOException e) {
-            System.out.println("\nError opening the config.json file or closing the file");
             System.exit(1);
         }
-
-        System.out.println("\nThe file config.json was read correctly");
 
 
     }

@@ -77,7 +77,7 @@ public class Translator {
             case KeyEvent.VK_B -> "3g";
             case KeyEvent.VK_N -> "3a";
             case KeyEvent.VK_M -> "3b";
-            case KeyEvent.VK_COMMA -> "4c";
+            //case KeyEvent.VK_COMMA -> "4c";
 
             default -> throw new IllegalStateException("Unexpected value: " + key.getExtendedKeyCode());
         };
@@ -150,8 +150,10 @@ public class Translator {
         while(i<keys.size() && !found){
             if(keys.get(i).getKeyCode() == key){
                 found = true;
+            }else{
+
+                i++;
             }
-            i++;
         }
         if(found){
             return keys.get(i).getTileKey();

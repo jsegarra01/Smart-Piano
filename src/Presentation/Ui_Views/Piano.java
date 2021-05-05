@@ -50,9 +50,9 @@ public abstract class Piano extends JPanel {
     protected static final int numWhiteKeys = 14;
     protected static final int numBlackKeys = 10;
     protected static final String[] whiteNotes =
-            {"2c", "2d", "2e", "2f", "2g", "2a", "2b", "3c", "3d", "3e", "3f", "3g", "3a", "3b", "4c"};
+            {"2c", "2d", "2e", "2f", "2g", "2a", "2b", "3c", "3d", "3e", "3f", "3g", "3a", "3b"};
     protected static final String[] blackNotes =
-            {"2c#", "2d#", "", "2f#", "2g#", "2a#", "", "3c#", "3d#", "", "3f#", "3g#", "3a#"};
+            {"2c#", "2d#", "2f#", "2g#", "2a#", "3c#", "3d#", "3f#", "3g#", "3a#"};
     protected Color[] colors =
             {Color.red, Color.orange, Color.yellow, Color.green, Color.blue, Color.magenta, Color.pink};
     protected static final String[] whiteLabels ={

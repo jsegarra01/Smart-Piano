@@ -1,4 +1,5 @@
 import Presentation.Manager.MainFrame;
+
 import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 
 /**
