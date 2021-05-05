@@ -21,4 +21,5 @@ public class DictionaryPiano {
     public static final String CREATE_PLAYLIST = "+ Create Playlist";
     public static final String STATISTICS_UI = "StatisticsUI";
     public static final String PLAYLIST_UI = "CreatePlaylistUI";
+    public static final String RECORDING_TIMER = "recording timer";
 }

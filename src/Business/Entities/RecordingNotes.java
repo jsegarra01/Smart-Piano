@@ -2,24 +2,24 @@ package Business.Entities;
 
 public class RecordingNotes {
     private final char key;
-    private final long startTime;
-    private long endTime;
+    private final float time;
+    private float duration = 0;
 
-    public RecordingNotes (char key, long startTime) {
+    public RecordingNotes (char key, float startTime) {
         this.key = key;
-        this.startTime = startTime;
+        this.time = startTime;
     }
 
-    public void setEndTime (long endTime) {
-        this.endTime = endTime;
+    public void setDuration (float endTime) {
+        this.duration = endTime;
     }
 
-    public long getEndTime() {
-        return endTime;
+    public float getDuration() {
+        return duration;
     }
 
-    public long getStartTime() {
-        return startTime;
+    public float getTime() {
+        return time;
     }
 
     public char getKey() {
