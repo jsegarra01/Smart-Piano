@@ -47,7 +47,7 @@ public class Translator {
             keys.add(new Keys(KeyEvent.VK_B, "3g"));
             keys.add(new Keys(KeyEvent.VK_N, "3a"));
             keys.add(new Keys(KeyEvent.VK_M, "3b"));
-            keys.add(new Keys(KeyEvent.VK_COMMA,"4c"));
+           // keys.add(new Keys(KeyEvent.VK_COMMA,"4c"));
         }
     }
 
@@ -165,7 +165,10 @@ public class Translator {
             if(keys.get(i).getKeyCode() == key){
                 found = true;
             }
-            i++;
+            else{
+                i++;
+            }
+
         }
         if(found){
             return keys.get(i);
