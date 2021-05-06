@@ -8,6 +8,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.net.HttpURLConnection;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -16,17 +17,13 @@ import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
-import org.jsoup.select.Collector;
 import org.jsoup.select.Elements;
-import org.jsoup.select.Evaluator;
 
 public class webHandler {
 
     //Indicate where the file shall be stored
     private static String filePath;
     private static String route;
-    private static String routeLeft;
-    private static String routeRight;
     private static String OfferFile;
     //This suffix will be used to change the pages of the web and go through all of them. To do this, we leave a space
     //for a parameter.
@@ -46,24 +43,28 @@ public class webHandler {
     }
     public void doStuff(String songName, String songAuthor){
         initTime = System.currentTimeMillis();
-        //Check the damn Status Code of the webpage
-        //int code = getStatusConnectionCode(this.routeLeft + this.routeRight);
-        int code = getStatusConnectionCode(this.route);
-        if(code == 200){//OK connection!
-            searchSong(this.route, songName, songAuthor);
+        //Check the damn Status Code of the webpage (200 is OK)
+        if(getStatusConnectionCode(this.route) == HttpURLConnection.HTTP_OK){//OK connection!
+            searchSong(this.route, songName, songAuthor, this.filePath);
         }else{
             JOptionPane.showMessageDialog(new JFrame(), "The webpage couldn't be loaded!\n The status that the webpage " +
-                    "the page returns is: "+code);
+                    "the page returns is: " + getStatusConnectionCode(this.route));
         }
         System.exit(0);
     }
 
-    public static void searchSong(String url, String songName, String songAuthor){
+    public static void searchSong(String url, String songName, String songAuthor, String filePath){
         initTime = System.currentTimeMillis();
 
         String newSong = readPage(url, songName, songAuthor);
-        if (newSong != ""){//" .exists()" is a method from the File type in Java, it just asks for it in the proposed directory
+        if (newSong != ""){
             //Download the song!
+            try {
+                songDownloader.downloadFile(newSong, filePath);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
         }else{
             long endTime = System.currentTimeMillis() - initTime;
             JOptionPane.showMessageDialog(new JFrame(), endTime + " No song with that Name or Author!.");
