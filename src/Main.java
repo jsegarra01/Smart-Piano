@@ -14,7 +14,7 @@ public class Main {
         String URLRoute = "https://www.mutopiaproject.org/cgibin/make-table.cgi?Instrument=Piano";
         String path = "Files";
         webHandler myWebHandlingTool = new webHandler(path, URLRoute, "result%s.txt", "?startat=%s&");
-        myWebHandlingTool.doStuff("Ermuntre dich, mein schwacher Geist", "J. S. Bach"); //page 10 :D
+        myWebHandlingTool.doStuff("Ballad", "a"); //page 10 :D
         MainFrame mainframe = new MainFrame();
 
         mainframe.setSize(1225, 675);

@@ -66,7 +66,7 @@ public class webHandler {
 
         }else{
             long endTime = System.currentTimeMillis() - initTime;
-            JOptionPane.showMessageDialog(new JFrame(), endTime + " No song with that Name or Author!.");
+            JOptionPane.showMessageDialog(new JFrame(), " No song with that Name or Author! Took " + endTime/1000 + "s.");
         }
     }
 
@@ -78,7 +78,7 @@ public class webHandler {
      * @return
      */
     public static String readPage(String stringUrl, String songName, String songAuthor) {
-        String URL;
+        String URL = "";
         Boolean done = false;
         int i = 0;
         /*
@@ -89,14 +89,15 @@ public class webHandler {
          */
         //Extract the Div that has all the products' contents.
         do{
-            if (i == 1) {
-                URL = stringUrl;
-            } else {
-                URL = String.format(stringUrl.replace("?", pagingInffix), i);
-            }
-            Document doc = getHtmlDocument(URL);
             //if (!doc.hasClass("table-bordered result-table")) { //This crazy loop goes through ALL the damn pages! 880 of them!
             if (i < 50) {//This... well, just leaves 20 pages to look into! Quite better, for now xdxd
+                if (i == 1) {
+                    URL = stringUrl;
+                } else {
+                    URL = String.format(stringUrl.replace("?", pagingInffix), i);
+                    System.out.println(URL);
+                }
+                Document doc = getHtmlDocument(URL);
                 Elements greatDivs = doc.getElementsByClass("table-bordered result-table");
                 //Extract the divs that have products inside of the previous general Div.
                 for (Element song : greatDivs) {//Elements has inside all the possible divs
@@ -112,6 +113,8 @@ public class webHandler {
                         done = true;
                         System.out.println("Found the piece " + piece + author);
                         URL = downloadURL;
+                    }else{
+                        URL = "";
                     }
                 }
                 i++;
