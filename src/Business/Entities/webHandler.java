@@ -71,7 +71,6 @@ public class webHandler {
         }
     }
 
-
     /**
      * Reads the parametrized webpage and returns the filtered and processed document
      * @param stringUrl
@@ -82,7 +81,6 @@ public class webHandler {
     public static String readPage(String stringUrl, String songName, String songAuthor) {
         String URL;
         Boolean done = false;
-        String toreturn = null;
         int i = 0;
         /*
          * This web returns repeated content if we try to read an index of an non existing page. Sometimes if there are only 2 pages
