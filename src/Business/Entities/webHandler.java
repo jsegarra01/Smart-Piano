@@ -39,13 +39,13 @@ public class webHandler {
     private static String pagingInffix= "-startat=%s&"; //https://www.mutopiaproject.org/cgibin/make-table.cgi?startat=10&Instrument=Piano
     private static long initTime;
 
-    public webHandler(String filePath, String URLroute, String OfferFile){
+    public webHandler(String filePath, String URLroute, String nameFile){
         //this.routeLeft = URLroute.replace("?", pagingInffix);
         //this.routeLeft = URLroute.substring(0,53);
         //this.routeRight = URLroute.substring(53,filePath.length()-1);
         this.route = URLroute;
         //this.filePath = System.getProperty("user.dir")+"/";
-        this.OfferFile = OfferFile;
+        this.OfferFile = nameFile;
         //this.OfferFile = "things.txt";
         this.filePath = filePath;
         //this.route = "https://www.mutopiaproject.org/cgibin/make-table.cgi?Instrument=Piano";
