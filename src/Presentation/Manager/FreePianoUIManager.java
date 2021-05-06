@@ -1,6 +1,7 @@
 package Presentation.Manager;
 
 //Imports needed from the dictionary, events and mainframe
+import Business.Entities.Keys;
 import Presentation.Dictionary_login;
 import Presentation.Ui_Views.FreePianoUI;
 import Presentation.Ui_Views.PianoTilesUISelector;
@@ -9,6 +10,7 @@ import Business.Entities.MidiHelper;
 import Business.Entities.Translator;
 
 import javax.sound.midi.MidiUnavailableException;
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -39,6 +41,9 @@ public class FreePianoUIManager implements ActionListener {
     private KeyListener KL;
     private boolean iAmPressed = false;
     private Translator translator = new Translator();
+    private boolean modifying = false;
+    private boolean selected = false;
+    private String tileSelected;
 
     /**
      * Parametrized constructor
@@ -56,20 +61,29 @@ public class FreePianoUIManager implements ActionListener {
                 }
             @Override
             public void keyPressed(KeyEvent e) {
-                if(translator.getPressedFromKey(e.getExtendedKeyCode()) !=null){
-                    if(!translator.getPressedFromKey(e.getExtendedKeyCode()).isPressed()){
-                        //finalMidiHelper.playSomething(Translator.getNumberNoteFromName(Translator.getCodeFromKey(e)), SOUND_SYNTHER);
-                        finalMidiHelper.playSomething(Translator.getNumberNoteFromName(translator.getFromKey(e.getExtendedKeyCode())),SOUND_SYNTHER);
-                        translator.getPressedFromKey(e.getExtendedKeyCode()).setPressed(true);
+                if(modifying){
+                    if(selected){
+                        FreePianoUI.modifyKey(translator.getFromTile(tileSelected), e);
+                        translator.setNewKey(tileSelected,e.getExtendedKeyCode());
+                        selected = false;
                     }
-                    setIconKey(Translator.getCodeFromKey(e));
+                }else{
+                    if(translator.getPressedFromKey(e.getExtendedKeyCode()) !=null){
+                        if(!translator.getPressedFromKey(e.getExtendedKeyCode()).isPressed()){
+                            //finalMidiHelper.playSomething(Translator.getNumberNoteFromName(Translator.getCodeFromKey(e)), SOUND_SYNTHER);
+                            finalMidiHelper.playSomething(Translator.getNumberNoteFromName(translator.getFromKey(e.getExtendedKeyCode())),SOUND_SYNTHER);
+                            translator.getPressedFromKey(e.getExtendedKeyCode()).setPressed(true);
+                        }
+                        setIconKey(translator.getFromKey(e.getExtendedKeyCode()));
+                    }
                 }
+
 
             }
             @Override
             public void keyReleased(KeyEvent e) {
                 if (translator.getPressedFromKey(e.getExtendedKeyCode()) != null) {
-                    setIconBack(Translator.getCodeFromKey(e));
+                    setIconBack(translator.getFromKey(e.getExtendedKeyCode()));
                     translator.getPressedFromKey(e.getExtendedKeyCode()).setPressed(false);
                     finalMidiHelper.stopPlaying(Translator.getNumberNoteFromName(translator.getFromKey(e.getExtendedKeyCode())),SOUND_SYNTHER);
 
@@ -125,10 +139,26 @@ public class FreePianoUIManager implements ActionListener {
                 } catch (InterruptedException interruptedException) {
                     interruptedException.printStackTrace();
                 }*/
-                finalMidiHelper.playSomething(Translator.getNumberNoteFromName(Objects.requireNonNull(t).getName()),SOUND_SYNTHER);
+                if(modifying){
+                   if(!selected){
+                       FreePianoUI.setTileColor(t);
+                       tileSelected = Objects.requireNonNull(t).getName();
+                       selected = true;
+                   }
+
+                }else{
+                    finalMidiHelper.playSomething(Translator.getNumberNoteFromName(Objects.requireNonNull(t).getName()),SOUND_SYNTHER);
+                }
                 break;
             case Dictionary_login.PROFILE_BUTTON:       //In the case that the Profile button is pressed
                 card.show(contenedor, PROFILE_UI);
+                break;
+            case FreePianoUI.MODIFY:
+                AbstractButton abstractButton = (AbstractButton) e.getSource();
+                modifying = abstractButton.getModel().isSelected();
+                FreePianoUI.labelAppear(modifying);
+                selected = false;
+
                 break;
         }
     }

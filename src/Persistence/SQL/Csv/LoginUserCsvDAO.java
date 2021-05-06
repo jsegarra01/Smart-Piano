@@ -30,9 +30,15 @@ public class LoginUserCsvDAO implements LoginUserDAO{
      * @return Class that stores the User
      */
     private User userFromCsv(String myUserString, String state) throws SQLException {
-        ResultSet myRs = ConnectSQL.getInstance().createStatement().executeQuery("select * from UserT as u where u." + state +
-                "= '" + myUserString + "'");
-        return myRsToUser(myRs);
+        if(ConnectSQL.getInstance() != null){
+            ResultSet myRs = ConnectSQL.getInstance().createStatement().executeQuery("select * from UserT as u where u." + state +
+                    "= '" + myUserString + "'");
+            return myRsToUser(myRs);
+        }else{
+            return null;
+        }
+
+
 
     }
 
@@ -63,15 +69,20 @@ public class LoginUserCsvDAO implements LoginUserDAO{
      * @param myUser Defines the user that will be stored in the db
      */
     private boolean userToCsv(User myUser){
-        try {
-            PreparedStatement st = ConnectSQL.getInstance().prepareStatement("insert into UserT values ('" + myUser.getUserName() +
-                    "', '" + myUser.getMail() + "', '" + myUser.getPassword() + "')");
-            st.execute();
-            return true;
+        if(ConnectSQL.getInstance()!=null){
+            try {
+                PreparedStatement st = ConnectSQL.getInstance().prepareStatement("insert into UserT values ('" + myUser.getUserName() +
+                        "', '" + myUser.getMail() + "', '" + myUser.getPassword() + "')");
+                st.execute();
+                return true;
 
-        } catch (SQLException e) {
+            } catch (SQLException e) {
+                return false;
+            }
+        }else{
             return false;
         }
+
     }
 
     /**
@@ -100,13 +111,18 @@ public class LoginUserCsvDAO implements LoginUserDAO{
      */
     @Override
     public boolean delete(User myUser) {
-        try {
-            PreparedStatement st = ConnectSQL.getInstance().prepareStatement("delete from UserT where username = '" + myUser.getUserName() + "'");
-            st.execute();
-            return true;
-        } catch (SQLException e) {
+        if(ConnectSQL.getInstance()!=null){
+            try {
+                PreparedStatement st = ConnectSQL.getInstance().prepareStatement("delete from UserT where username = '" + myUser.getUserName() + "'");
+                st.execute();
+                return true;
+            } catch (SQLException e) {
+                return false;
+            }
+        }else{
             return false;
         }
+
     }
 
     /**

@@ -1,5 +1,7 @@
 package Presentation.Ui_Views;
 
+import Business.Entities.Keys;
+import Business.Entities.Translator;
 import Presentation.Manager.FreePianoUIManager;
 import Presentation.Manager.MainFrame;
 import Presentation.Manager.PianoFrameManager;
@@ -7,6 +9,7 @@ import Presentation.Manager.PianoFrameManager;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
@@ -42,8 +45,8 @@ public class FreePianoUI extends Piano {
 
         //All information will go inside here
         panel.add(Box.createRigidArea(new Dimension(10, 240)), BorderLayout.CENTER);
-
-        panel.add(makeKeys(), BorderLayout.SOUTH);
+        layeredPane = makeKeys();
+        panel.add(layeredPane, BorderLayout.SOUTH);
         panel.add(initMenu(), BorderLayout.PAGE_START);
 
         return panel;
@@ -62,6 +65,7 @@ public class FreePianoUI extends Piano {
         profile.setIcon(resizeIcon((ImageIcon) profile.getIcon(), (int) Math.round(profile.getIcon().getIconWidth()*0.15), (int) Math.round(profile.getIcon().getIconHeight()*0.15)));
         recordB.setPreferredSize(new Dimension((int) Math.round(iconRec.getIconWidth()*1.15),
                 (int) Math.round(iconRec.getIconHeight()*1.2)));
+
         //recordB.setName(BTN_RECORD);
         menu.add(profile);
         menu.add(returnB);
@@ -71,6 +75,7 @@ public class FreePianoUI extends Piano {
         menu.add(nextSynther);
         menu.add(prevSynther);
         menu.add(soundType);
+        menu.add(modifyKeys);
 
         registerController(new FreePianoUIManager());
         layout.add(menu, BorderLayout.NORTH);
@@ -82,6 +87,7 @@ public class FreePianoUI extends Piano {
         profile.addActionListener(listener);
         returnB.addActionListener(listener);
         recordB.addActionListener(listener);
+        modifyKeys.addActionListener(listener);
 
         pianoSoundB.addActionListener(listener);
         synthSoundB.addActionListener(listener);
@@ -98,7 +104,7 @@ public class FreePianoUI extends Piano {
         soundType.setText(name);
     }
 
-    public JLayeredPane makeKeys(){
+    public static JLayeredPane makeKeys(){
         int heightBlack = 150;
         int widthBlack = 35;
         int yBlack = 0;
@@ -179,7 +185,123 @@ public class FreePianoUI extends Piano {
             label.setForeground(Color.WHITE);
             keyBoard.add(label,Integer.valueOf(3));
         }
+
+        for (int i = 0; i < numWhiteKeys; i++) {
+            label = new JLabel(Translator.keys.get(i).getNameKey());
+            label.setName(Translator.keys.get(i).getNameKey());
+            label.setBounds(65*(i+1)+12,170,widthBlack,40);
+            label.setFont(new Font(label.getFont().getName(),Font.PLAIN,label.getFont().getSize()*2));
+            label.setVisible(false);
+            keyBoard.add(label,Integer.valueOf(4));
+
+        }
+        yLabel = 10;
+        add = 12;
+        int j = 0;
+        for (int i = numWhiteKeys; i < numWhiteKeys+2; i++) {
+            label = new JLabel(Translator.keys.get(i+4*j).getNameKey());
+            label.setName(Translator.keys.get(i+4*j).getNameKey());
+            label.setBounds(102+(separationBlack*i)+add,yLabel,widthBlack,heightBlack);
+            label.setForeground(Color.WHITE);
+            label.setVisible(false);
+            label.setFont(new Font(label.getFont().getName(),Font.PLAIN, (int) (label.getFont().getSize()*1.7)));
+            keyBoard.add(label,Integer.valueOf(4));
+
+            label = new JLabel(Translator.keys.get(1+i+4*j).getNameKey());
+            label.setName(Translator.keys.get(1+i+4*j).getNameKey());
+            label.setBounds(167+(separationBlack*i)+add,yLabel,widthBlack,heightBlack);
+            label.setForeground(Color.WHITE);
+            label.setVisible(false);
+            label.setFont(new Font(label.getFont().getName(),Font.PLAIN, (int) (label.getFont().getSize()*1.7)));
+            keyBoard.add(label,Integer.valueOf(4));
+
+            label = new JLabel(Translator.keys.get(2+i+4*j).getNameKey());
+            label.setName(Translator.keys.get(2+i+4*j).getNameKey());
+            label.setBounds(297+(separationBlack*i)+add,yLabel,widthBlack,heightBlack);
+            label.setForeground(Color.WHITE);
+            label.setVisible(false);
+            label.setFont(new Font(label.getFont().getName(),Font.PLAIN, (int) (label.getFont().getSize()*1.7)));
+            keyBoard.add(label,Integer.valueOf(4));
+
+            label = new JLabel(Translator.keys.get(3+i+4*j).getNameKey());
+            label.setName(Translator.keys.get(3+i+4*j).getNameKey());
+            label.setBounds(361+(separationBlack*i)+add,yLabel,widthBlack,heightBlack);
+            label.setForeground(Color.WHITE);
+            label.setVisible(false);
+            label.setFont(new Font(label.getFont().getName(),Font.PLAIN, (int) (label.getFont().getSize()*1.7)));
+            keyBoard.add(label,Integer.valueOf(4));
+
+            label = new JLabel(Translator.keys.get(4+i+4*j).getNameKey());
+            label.setName(Translator.keys.get(4+i+4*j).getNameKey());
+            label.setBounds(430+(separationBlack*i)+add,yLabel,widthBlack,heightBlack);
+            label.setForeground(Color.WHITE);
+            label.setVisible(false);
+            label.setFont(new Font(label.getFont().getName(),Font.PLAIN, (int) (label.getFont().getSize()*1.7)));
+            keyBoard.add(label,Integer.valueOf(4));
+            j = 1;
+        }
         return keyBoard;
     }
+
+    public static void labelAppear(boolean modify){
+        for(int i =0;i<24;i++){
+            layeredPane.getComponent(i).setVisible(modify);
+        }
+        ImageIcon icon;
+        if(modify){
+            icon = iconPressed;
+        }else{
+            icon = new ImageIcon("Files/drawable/white-key-down.png");
+
+        }
+        for(int i = 0; i<14;i++){
+            keyboard.get(i).setSelectedIcon(iconResetWhite);
+            keyboard.get(i).setPressedIcon(resizeIcon(icon, Math.round(icon.getIconWidth()*SIZE_MULT_WIDTH), Math.round(icon.getIconHeight()*SIZE_MULT_HEIGHT)));
+        }
+        for(int i = 14; i<keyboard.size();i++){
+            keyboard.get(i).setSelectedIcon(iconResetBlack);
+            keyboard.get(i).setPressedIcon(resizeIcon(icon, Math.round(icon.getIconWidth()*SIZE_MULT_WIDTH), Math.round(icon.getIconHeight()*SIZE_MULT_HEIGHT)));
+        }
+    }
+    public static void setTileColor(Tile tile){
+        boolean found = false;
+        int i  = 0;
+        while(i< keyboard.size() && !found){
+            if(tile.equals(keyboard.get(i))){
+                found = true;
+            }else{
+                i++;
+            }
+        }
+        if(found){
+            tile.setSelectedIcon(iconPressed);
+        }
+    }
+    public static void modifyKey(Keys key, KeyEvent keyEvent){
+        int i = 0;
+        boolean found=false;
+        while(i<24 && !found){
+            if(layeredPane.getComponent(i).getName().equals(key.getNameKey())){
+                found=true;
+            }else{
+                i++;
+            }
+
+        }
+        if (found){
+            layeredPane.getComponent(i).setName(Translator.getKeyFromCode(keyEvent));
+            //layeredPane.getComponent(i).setFont(new Font((layeredPane.getComponent(i).getName()), Font.PLAIN, (int) (layeredPane.getComponent(i).getFont().getSize()*1.7)));
+
+           /* for(int j = 0;j<72;j++){
+                layeredPane.remove(j);
+            }
+            layeredPane = makeKeys();
+*/
+        }
+
+
+
+    }
+
 }
 

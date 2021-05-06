@@ -23,6 +23,7 @@ public abstract class Piano extends JPanel {
     public static final String BTN_NEXT_SYNTHER = "++";
     public static final String BTN_PREV_SYNTHER = "--";
     protected static final String JLAB_SYNTH_TYPE = "Classic Piano";
+    public static final String MODIFY = "MODIFY_KEYS";
     protected static Label soundType;
 
 
@@ -34,6 +35,8 @@ public abstract class Piano extends JPanel {
     protected JButton nextSynther = new JButton(BTN_NEXT_SYNTHER);
     protected JButton prevSynther = new JButton(BTN_PREV_SYNTHER);
     protected JButton profile = new JButton(PROFILE_BUTTON);
+    //protected JButton modifyKeys = new JButton();
+    protected JToggleButton modifyKeys = new JToggleButton(MODIFY);
 
     /**
      * private JTextField hey;
@@ -50,9 +53,9 @@ public abstract class Piano extends JPanel {
     protected static final int numWhiteKeys = 14;
     protected static final int numBlackKeys = 10;
     protected static final String[] whiteNotes =
-            {"2c", "2d", "2e", "2f", "2g", "2a", "2b", "3c", "3d", "3e", "3f", "3g", "3a", "3b", "4c"};
+            {"2c", "2d", "2e", "2f", "2g", "2a", "2b", "3c", "3d", "3e", "3f", "3g", "3a", "3b"};
     protected static final String[] blackNotes =
-            {"2c#", "2d#", "", "2f#", "2g#", "2a#", "", "3c#", "3d#", "", "3f#", "3g#", "3a#"};
+            {"2c#", "2d#", "2f#", "2g#", "2a#", "3c#", "3d#", "3f#", "3g#", "3a#"};
     protected Color[] colors =
             {Color.red, Color.orange, Color.yellow, Color.green, Color.blue, Color.magenta, Color.pink};
     protected static final String[] whiteLabels ={
@@ -61,6 +64,15 @@ public abstract class Piano extends JPanel {
     protected static final String[] blackLabels = {
             "Do#", "Re#", "Fa#", "Sol#", "La#", "Do#", "Re#", "Fa#", "Sol#", "La#"
     };
+    protected static final String[] keyWhite = {"Q","W","E","R","T","Y","U","Z","X","C","V","B","N","M"};
+    protected static final String[] keyBlack = {"2","3","5","6","7","S","D","G","H","J"};
+
+    protected static JLayeredPane layeredPane;
+    public static ImageIcon iconPressed = new ImageIcon("Files/drawable/selected.png");
+    public static ImageIcon iconResetWhite = new ImageIcon(whiteTileLoc);
+    public static ImageIcon iconResetBlack  = new ImageIcon(blackTileLoc);
+
+
 
     public static ArrayList<Tile> getKeyboard() {
         return keyboard;

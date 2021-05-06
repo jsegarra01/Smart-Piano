@@ -35,6 +35,11 @@ public class Tile extends JButton {
 //        this.myImage = new ImageIcon("Files/drawable/white-key.png");
    //     this.setIcon(resizeIcon(this.myImage, Math.round(this.myImage.getIconWidth()*SIZE_MULT_WIDTH), Math.round(this.myImage.getIconHeight()*SIZE_MULT_HEIGHT)));
     }
+    public void setSelectedIcon(ImageIcon icon){
+        this.myImage = icon;
+        this.setIcon(resizeIcon(this.myImage, Math.round(this.myImage.getIconWidth()*SIZE_MULT_WIDTH), Math.round(this.myImage.getIconHeight()*SIZE_MULT_HEIGHT)));
+
+    }
 
     public void backToWhite() {
         this.myImage = new ImageIcon("Files/drawable/white-key.png");
