@@ -15,7 +15,6 @@ import javax.print.Doc;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -91,7 +90,7 @@ public class webHandler {
                 try {
                     bufferedReader.close();
                 } catch (IOException e) {
-                    // TODO Auto-generated catch block
+                    // Auto-generated catch block
                     e.printStackTrace();
                 }
             }
