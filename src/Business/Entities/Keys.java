@@ -3,12 +3,14 @@ package Business.Entities;
 public class Keys {
     private int keyCode;
     private String tileKey;
+    private String nameKey;
     private boolean pressed = false;
 
 
-    public Keys(int keyCode, String tileKey){
+    public Keys(int keyCode, String tileKey, String nameKey){
         this.keyCode = keyCode;
         this.tileKey = tileKey;
+        this.nameKey = nameKey;
     }
     public int getKeyCode() {
         return keyCode;
@@ -32,5 +34,13 @@ public class Keys {
 
     public void setPressed(boolean pressed) {
         this.pressed = pressed;
+    }
+
+    public String getNameKey() {
+        return nameKey;
+    }
+
+    public void setNameKey(String nameKey) {
+        this.nameKey = nameKey;
     }
 }

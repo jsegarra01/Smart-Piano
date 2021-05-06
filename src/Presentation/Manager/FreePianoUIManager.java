@@ -1,6 +1,7 @@
 package Presentation.Manager;
 
 //Imports needed from the dictionary, events and mainframe
+import Business.Entities.Keys;
 import Presentation.Dictionary_login;
 import Presentation.Ui_Views.FreePianoUI;
 import Presentation.Ui_Views.PianoTilesUISelector;
@@ -62,6 +63,7 @@ public class FreePianoUIManager implements ActionListener {
             public void keyPressed(KeyEvent e) {
                 if(modifying){
                     if(selected){
+                        FreePianoUI.modifyKey(translator.getFromTile(tileSelected), e);
                         translator.setNewKey(tileSelected,e.getExtendedKeyCode());
                         selected = false;
                     }

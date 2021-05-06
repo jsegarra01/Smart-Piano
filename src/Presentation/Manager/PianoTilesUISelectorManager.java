@@ -63,14 +63,15 @@ public class PianoTilesUISelectorManager implements ActionListener {
                         finalMidiHelper.playSomething(Translator.getNumberNoteFromName(translator.getFromKey(e.getExtendedKeyCode())),SOUND_SYNTHER);
                         translator.getPressedFromKey(e.getExtendedKeyCode()).setPressed(true);
                     }
-                    setIconKey(Translator.getCodeFromKey(e));
+                    setIconKey(translator.getFromKey(e.getExtendedKeyCode()));
                 }
             }
             @Override
             public void keyReleased(KeyEvent e) {
                 if (translator.getPressedFromKey(e.getExtendedKeyCode()) != null) {
-                    setIconBack(Translator.getCodeFromKey(e));
+                    setIconBack(translator.getFromKey(e.getExtendedKeyCode()));
                     translator.getPressedFromKey(e.getExtendedKeyCode()).setPressed(false);
+                    finalMidiHelper.stopPlaying(Translator.getNumberNoteFromName(translator.getFromKey(e.getExtendedKeyCode())),SOUND_SYNTHER);
                 }
             }
         };
