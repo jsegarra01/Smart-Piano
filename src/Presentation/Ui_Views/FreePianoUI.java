@@ -237,8 +237,23 @@ public class FreePianoUI extends Piano {
         for(int i = 24;i<48;i++){
             layeredPane.getComponent(i).setVisible(modify);
         }
+        ImageIcon icon;
+        if(modify){
+            icon = iconPressed;
+        }else{
+            icon = new ImageIcon("Files/drawable/white-key-down.png");
+
+        }
+        for(int i = 0; i<14;i++){
+            keyboard.get(i).setSelectedIcon(iconResetWhite);
+            keyboard.get(i).setPressedIcon(resizeIcon(icon, Math.round(icon.getIconWidth()*SIZE_MULT_WIDTH), Math.round(icon.getIconHeight()*SIZE_MULT_HEIGHT)));
+        }
+        for(int i = 14; i<keyboard.size();i++){
+            keyboard.get(i).setSelectedIcon(iconResetBlack);
+            keyboard.get(i).setPressedIcon(resizeIcon(icon, Math.round(icon.getIconWidth()*SIZE_MULT_WIDTH), Math.round(icon.getIconHeight()*SIZE_MULT_HEIGHT)));
+        }
     }
-    public static void setTileColor(Tile tile, boolean color){
+    public static void setTileColor(Tile tile){
         boolean found = false;
         int i  = 0;
         while(i< keyboard.size() && !found){
@@ -249,12 +264,21 @@ public class FreePianoUI extends Piano {
             }
         }
         if(found){
-            if(color){
-                keyboard.get(i).setBackground(Color.red);
-            }else{
-                keyboard.get(i).setBackground(Color.green);
-            }
+            tile.setSelectedIcon(iconPressed);
         }
+    }
+    public static void modifyKey(){
+        int i = 24;
+        /*boolean found;
+        while(i<48 && !found){
+            if(layeredPane.getComponent(i).getName()){
+
+            }else{
+                i++;
+            }
+        }*/
+
+
     }
 
 }

@@ -41,6 +41,8 @@ public class FreePianoUIManager implements ActionListener {
     private boolean iAmPressed = false;
     private Translator translator = new Translator();
     private boolean modifying = false;
+    private boolean selected = false;
+    private String tileSelected;
 
     /**
      * Parametrized constructor
@@ -58,20 +60,28 @@ public class FreePianoUIManager implements ActionListener {
                 }
             @Override
             public void keyPressed(KeyEvent e) {
-                if(translator.getPressedFromKey(e.getExtendedKeyCode()) !=null){
-                    if(!translator.getPressedFromKey(e.getExtendedKeyCode()).isPressed()){
-                        //finalMidiHelper.playSomething(Translator.getNumberNoteFromName(Translator.getCodeFromKey(e)), SOUND_SYNTHER);
-                        finalMidiHelper.playSomething(Translator.getNumberNoteFromName(translator.getFromKey(e.getExtendedKeyCode())),SOUND_SYNTHER);
-                        translator.getPressedFromKey(e.getExtendedKeyCode()).setPressed(true);
+                if(modifying){
+                    if(selected){
+                        translator.setNewKey(tileSelected,e.getExtendedKeyCode());
+                        selected = false;
                     }
-                    setIconKey(Translator.getCodeFromKey(e));
+                }else{
+                    if(translator.getPressedFromKey(e.getExtendedKeyCode()) !=null){
+                        if(!translator.getPressedFromKey(e.getExtendedKeyCode()).isPressed()){
+                            //finalMidiHelper.playSomething(Translator.getNumberNoteFromName(Translator.getCodeFromKey(e)), SOUND_SYNTHER);
+                            finalMidiHelper.playSomething(Translator.getNumberNoteFromName(translator.getFromKey(e.getExtendedKeyCode())),SOUND_SYNTHER);
+                            translator.getPressedFromKey(e.getExtendedKeyCode()).setPressed(true);
+                        }
+                        setIconKey(translator.getFromKey(e.getExtendedKeyCode()));
+                    }
                 }
+
 
             }
             @Override
             public void keyReleased(KeyEvent e) {
                 if (translator.getPressedFromKey(e.getExtendedKeyCode()) != null) {
-                    setIconBack(Translator.getCodeFromKey(e));
+                    setIconBack(translator.getFromKey(e.getExtendedKeyCode()));
                     translator.getPressedFromKey(e.getExtendedKeyCode()).setPressed(false);
                     finalMidiHelper.stopPlaying(Translator.getNumberNoteFromName(translator.getFromKey(e.getExtendedKeyCode())),SOUND_SYNTHER);
 
@@ -128,7 +138,12 @@ public class FreePianoUIManager implements ActionListener {
                     interruptedException.printStackTrace();
                 }*/
                 if(modifying){
-                    FreePianoUI.setTileColor(t, true);
+                   if(!selected){
+                       FreePianoUI.setTileColor(t);
+                       tileSelected = Objects.requireNonNull(t).getName();
+                       selected = true;
+                   }
+
                 }else{
                     finalMidiHelper.playSomething(Translator.getNumberNoteFromName(Objects.requireNonNull(t).getName()),SOUND_SYNTHER);
                 }

@@ -220,5 +220,20 @@ public class Translator {
         }
         return null;
     }
+    public void setNewKey(String tile, int keyCode){
+        boolean found = false;
+        int i = 0;
+        while(i<keys.size() && !found){
+            if(keys.get(i).getTileKey().equals(tile)){
+                found = true;
+            }
+            else{
+                i++;
+            }
+        }
+        if(found){
+            keys.get(i).setKeyCode(keyCode);
+        }
+    }
 
 }
