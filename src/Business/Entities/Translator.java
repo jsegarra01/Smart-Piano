@@ -82,6 +82,49 @@ public class Translator {
             default -> throw new IllegalStateException("Unexpected value: " + key.getExtendedKeyCode());
         };
     }
+    public static char getKeyFromCode(KeyEvent key){
+        return switch(key.getExtendedKeyCode()){
+            case KeyEvent.VK_1 -> '1';
+            case KeyEvent.VK_2 -> '2';
+            case KeyEvent.VK_3 -> '3';
+            case KeyEvent.VK_4 -> '4';
+            case KeyEvent.VK_5 -> '5';
+            case KeyEvent.VK_6 -> '6';
+            case KeyEvent.VK_7 -> '7';
+            case KeyEvent.VK_8 -> '8';
+            case KeyEvent.VK_9 -> '9';
+            case KeyEvent.VK_0 -> '0';
+            case KeyEvent.VK_Q -> 'Q';
+            case KeyEvent.VK_W -> 'W';
+            case KeyEvent.VK_E -> 'E';
+            case KeyEvent.VK_R -> 'R';
+            case KeyEvent.VK_T -> 'T';
+            case KeyEvent.VK_Y -> 'Y';
+            case KeyEvent.VK_U -> 'U';
+            case KeyEvent.VK_I -> 'I';
+            case KeyEvent.VK_O -> 'O';
+            case KeyEvent.VK_P -> 'P';
+            case KeyEvent.VK_A -> 'A';
+            case KeyEvent.VK_S -> 'S';
+            case KeyEvent.VK_D -> 'D';
+            case KeyEvent.VK_F -> 'F';
+            case KeyEvent.VK_G -> 'G';
+            case KeyEvent.VK_H -> 'H';
+            case KeyEvent.VK_J -> 'J';
+            case KeyEvent.VK_K -> 'K';
+            case KeyEvent.VK_L -> 'L';
+            case KeyEvent.VK_Z -> 'Z';
+            case KeyEvent.VK_X -> 'X';
+            case KeyEvent.VK_C -> 'C';
+            case KeyEvent.VK_V -> 'V';
+            case KeyEvent.VK_B -> 'B';
+            case KeyEvent.VK_N -> 'N';
+            case KeyEvent.VK_M -> 'M';
+            //case KeyEvent.VK_COMMA -> "4c";
+
+            default -> throw new IllegalStateException("Unexpected value: " + key.getExtendedKeyCode());
+        };
+    }
     public static int getNumberNoteFromName(String input){
         return switch (input) {
             case "2c" -> 48;

@@ -42,8 +42,8 @@ public class FreePianoUI extends Piano {
 
         //All information will go inside here
         panel.add(Box.createRigidArea(new Dimension(10, 240)), BorderLayout.CENTER);
-
-        panel.add(makeKeys(), BorderLayout.SOUTH);
+        layeredPane = makeKeys();
+        panel.add(layeredPane, BorderLayout.SOUTH);
         panel.add(initMenu(), BorderLayout.PAGE_START);
 
         return panel;
@@ -62,6 +62,7 @@ public class FreePianoUI extends Piano {
         profile.setIcon(resizeIcon((ImageIcon) profile.getIcon(), (int) Math.round(profile.getIcon().getIconWidth()*0.15), (int) Math.round(profile.getIcon().getIconHeight()*0.15)));
         recordB.setPreferredSize(new Dimension((int) Math.round(iconRec.getIconWidth()*1.15),
                 (int) Math.round(iconRec.getIconHeight()*1.2)));
+
         //recordB.setName(BTN_RECORD);
         menu.add(profile);
         menu.add(returnB);
@@ -71,6 +72,7 @@ public class FreePianoUI extends Piano {
         menu.add(nextSynther);
         menu.add(prevSynther);
         menu.add(soundType);
+        menu.add(modifyKeys);
 
         registerController(new FreePianoUIManager());
         layout.add(menu, BorderLayout.NORTH);
@@ -82,6 +84,7 @@ public class FreePianoUI extends Piano {
         profile.addActionListener(listener);
         returnB.addActionListener(listener);
         recordB.addActionListener(listener);
+        modifyKeys.addActionListener(listener);
 
         pianoSoundB.addActionListener(listener);
         synthSoundB.addActionListener(listener);
@@ -179,7 +182,80 @@ public class FreePianoUI extends Piano {
             label.setForeground(Color.WHITE);
             keyBoard.add(label,Integer.valueOf(3));
         }
+
+
+        for (int i = 0; i < numWhiteKeys; i++) {
+            label = new JLabel(keyWhite[i]);
+            label.setBounds(65*(i+1)+12,170,widthBlack,40);
+            label.setFont(new Font(label.getFont().getName(),Font.PLAIN,label.getFont().getSize()*2));
+            label.setVisible(false);
+            keyBoard.add(label,Integer.valueOf(3));
+
+        }
+        yLabel = 10;
+        add = 12;
+        for (int i = 0; i < 2; i++) {
+            label = new JLabel(keyBlack[i*5]);
+            label.setBounds(102+(separationBlack*i)+add,yLabel,widthBlack,heightBlack);
+            label.setForeground(Color.WHITE);
+            label.setVisible(false);
+            label.setFont(new Font(label.getFont().getName(),Font.PLAIN, (int) (label.getFont().getSize()*1.7)));
+            keyBoard.add(label,Integer.valueOf(3));
+
+            label = new JLabel(keyBlack[1+i*5]);
+            label.setBounds(167+(separationBlack*i)+add,yLabel,widthBlack,heightBlack);
+            label.setForeground(Color.WHITE);
+            label.setVisible(false);
+            label.setFont(new Font(label.getFont().getName(),Font.PLAIN, (int) (label.getFont().getSize()*1.7)));
+            keyBoard.add(label,Integer.valueOf(3));
+
+            label = new JLabel(keyBlack[2+i*5]);
+            label.setBounds(297+(separationBlack*i)+add,yLabel,widthBlack,heightBlack);
+            label.setForeground(Color.WHITE);
+            label.setVisible(false);
+            label.setFont(new Font(label.getFont().getName(),Font.PLAIN, (int) (label.getFont().getSize()*1.7)));
+            keyBoard.add(label,Integer.valueOf(3));
+
+            label = new JLabel(keyBlack[3+i*5]);
+            label.setBounds(361+(separationBlack*i)+add,yLabel,widthBlack,heightBlack);
+            label.setForeground(Color.WHITE);
+            label.setVisible(false);
+            label.setFont(new Font(label.getFont().getName(),Font.PLAIN, (int) (label.getFont().getSize()*1.7)));
+            keyBoard.add(label,Integer.valueOf(3));
+
+            label = new JLabel(keyBlack[4+i*5]);
+            label.setBounds(430+(separationBlack*i)+add,yLabel,widthBlack,heightBlack);
+            label.setForeground(Color.WHITE);
+            label.setVisible(false);
+            label.setFont(new Font(label.getFont().getName(),Font.PLAIN, (int) (label.getFont().getSize()*1.7)));
+            keyBoard.add(label,Integer.valueOf(3));
+        }
         return keyBoard;
     }
+
+    public static void labelAppear(boolean modify){
+        for(int i = 24;i<48;i++){
+            layeredPane.getComponent(i).setVisible(modify);
+        }
+    }
+    public static void setTileColor(Tile tile, boolean color){
+        boolean found = false;
+        int i  = 0;
+        while(i< keyboard.size() && !found){
+            if(tile.equals(keyboard.get(i))){
+                found = true;
+            }else{
+                i++;
+            }
+        }
+        if(found){
+            if(color){
+                keyboard.get(i).setBackground(Color.red);
+            }else{
+                keyboard.get(i).setBackground(Color.green);
+            }
+        }
+    }
+
 }
 
