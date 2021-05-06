@@ -50,7 +50,6 @@ public class webHandler {
             JOptionPane.showMessageDialog(new JFrame(), "The webpage couldn't be loaded!\n The status that the webpage " +
                     "the page returns is: " + getStatusConnectionCode(this.route));
         }
-        System.exit(0);
     }
 
     public static void searchSong(String url, String songName, String songAuthor, String filePath){
@@ -94,7 +93,6 @@ public class webHandler {
                 URL = stringUrl;
             } else {
                 URL = String.format(stringUrl.replace("?", pagingInffix), i);
-                System.out.println(URL);
             }
             Document doc = getHtmlDocument(URL);
             //if (!doc.hasClass("table-bordered result-table")) { //This crazy loop goes through ALL the damn pages! 880 of them!
@@ -114,7 +112,6 @@ public class webHandler {
                         done = true;
                         System.out.println("Found the piece " + piece + author);
                         URL = downloadURL;
-                        break;
                     }
                 }
                 i++;
@@ -124,39 +121,6 @@ public class webHandler {
         }while(!done);
         System.out.println(URL);
         return URL;
-    }
-
-    /**
-     * Writes the complete text into the file in the specified filePath
-     * @param myFile
-     * @param processedText
-     * @return
-     */
-    public static Boolean writeCompleteFile(String processedText, File myFile){
-        FileWriter writer = null;
-        Boolean status = false;
-        try{
-            writer = new FileWriter(myFile);
-            writer.write(processedText);
-            status = true;
-        }catch(FileNotFoundException e){
-            System.out.println("The specified file does not exist OR the file is in another folder");
-            JOptionPane.showMessageDialog(new JFrame(), "There was an error during the creation of the file"
-                    + "\nIn the following Path: "+filePath);
-        }catch(IOException e){
-            JOptionPane.showMessageDialog(new JFrame(), "There was an error during the creation of the file"
-                    + "\nIn the following Path: "+filePath);
-        }finally{
-            if (writer != null){
-                try {
-                    writer.close();
-                } catch (IOException e) {
-                    //Esto es un cachondeo xd
-                    e.printStackTrace();
-                }
-            }
-        }
-        return status;
     }
 
     /**
