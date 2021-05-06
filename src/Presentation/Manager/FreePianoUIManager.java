@@ -155,6 +155,7 @@ public class FreePianoUIManager implements ActionListener {
                 AbstractButton abstractButton = (AbstractButton) e.getSource();
                 modifying = abstractButton.getModel().isSelected();
                 FreePianoUI.labelAppear(modifying);
+                selected = false;
 
                 break;
         }
