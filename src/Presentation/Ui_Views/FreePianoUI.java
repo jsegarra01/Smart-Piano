@@ -46,7 +46,10 @@ public class FreePianoUI extends Piano {
         //All information will go inside here
         panel.add(Box.createRigidArea(new Dimension(10, 240)), BorderLayout.CENTER);
         layeredPane = makeKeys();
+        layeredPane.requestFocus();
         panel.add(layeredPane, BorderLayout.SOUTH);
+        panel.requestFocus();
+
         panel.add(initMenu(), BorderLayout.PAGE_START);
 
         return panel;
@@ -119,12 +122,10 @@ public class FreePianoUI extends Piano {
         JLabel label;
         for (int i = 0; i < numWhiteKeys; i++) {
             tile = new Tile(whiteNotes[i], Color.WHITE, whiteTileLoc);
-            //tile.setText("Do");
-            //tile.setVerticalAlignment(SwingConstants.BOTTOM);
             tile.setActionCommand(BTN_TILE);
             tile.setBounds(55 + 65*i,0,65,330);
-            ImageIcon imageIcon = new ImageIcon("Files/drawable/white-key-down.png");
-            tile.setPressedIcon(resizeIcon(imageIcon, Math.round(imageIcon.getIconWidth()*SIZE_MULT_WIDTH), Math.round(imageIcon.getIconHeight()*SIZE_MULT_HEIGHT)));
+            tile.setPressedIcon(resizeIcon(iconPressedDown, Math.round(iconPressedDown.getIconWidth()*SIZE_MULT_WIDTH),
+                    Math.round(iconPressedDown.getIconHeight()*SIZE_MULT_HEIGHT)));
             keyboard.add(tile);
             keyBoard.add(keyboard.get(i), Integer.valueOf(1));
             keyBoard.add(Box.createRigidArea(new Dimension(2, 0)));
@@ -137,9 +138,8 @@ public class FreePianoUI extends Piano {
         for (int i = 0; i< numBlackKeys; i++){
             tiles.add(new Tile(blackNotes[i], Color.BLACK, blackTileLoc));
             tiles.getLast().setActionCommand(BTN_TILE);
-            ImageIcon imageIcon = new ImageIcon("Files/drawable/white-key-down.png");
-            tiles.getLast().setPressedIcon(resizeIcon(imageIcon, Math.round(imageIcon.getIconWidth()*SIZE_MULT_WIDTH),
-                    Math.round(imageIcon.getIconHeight()*SIZE_MULT_HEIGHT)));
+            tiles.getLast().setPressedIcon(resizeIcon(iconPressedDown, Math.round(iconPressedDown.getIconWidth()*SIZE_MULT_WIDTH),
+                    Math.round(iconPressedDown.getIconHeight()*SIZE_MULT_HEIGHT)));
         }
 
         int add = 8;
@@ -187,8 +187,8 @@ public class FreePianoUI extends Piano {
         }
 
         for (int i = 0; i < numWhiteKeys; i++) {
-            label = new JLabel(Translator.keys.get(i).getNameKey());
-            label.setName(Translator.keys.get(i).getNameKey());
+            label = new JLabel(Translator.getKeys().get(i).getNameKey());
+            label.setName(Translator.getKeys().get(i).getNameKey());
             label.setBounds(65*(i+1)+12,170,widthBlack,40);
             label.setFont(new Font(label.getFont().getName(),Font.PLAIN,label.getFont().getSize()*2));
             label.setVisible(false);
@@ -199,41 +199,41 @@ public class FreePianoUI extends Piano {
         add = 12;
         int j = 0;
         for (int i = numWhiteKeys; i < numWhiteKeys+2; i++) {
-            label = new JLabel(Translator.keys.get(i+4*j).getNameKey());
-            label.setName(Translator.keys.get(i+4*j).getNameKey());
-            label.setBounds(102+(separationBlack*i)+add,yLabel,widthBlack,heightBlack);
+            label = new JLabel(Translator.getKeys().get(i+4*j).getNameKey());
+            label.setName(Translator.getKeys().get(i+4*j).getNameKey());
+            label.setBounds(102+(separationBlack*(i-numWhiteKeys))+add,yLabel,widthBlack,heightBlack);
             label.setForeground(Color.WHITE);
             label.setVisible(false);
             label.setFont(new Font(label.getFont().getName(),Font.PLAIN, (int) (label.getFont().getSize()*1.7)));
             keyBoard.add(label,Integer.valueOf(4));
 
-            label = new JLabel(Translator.keys.get(1+i+4*j).getNameKey());
-            label.setName(Translator.keys.get(1+i+4*j).getNameKey());
-            label.setBounds(167+(separationBlack*i)+add,yLabel,widthBlack,heightBlack);
+            label = new JLabel(Translator.getKeys().get(1+i+4*j).getNameKey());
+            label.setName(Translator.getKeys().get(1+i+4*j).getNameKey());
+            label.setBounds(167+(separationBlack*(i-numWhiteKeys))+add,yLabel,widthBlack,heightBlack);
             label.setForeground(Color.WHITE);
             label.setVisible(false);
             label.setFont(new Font(label.getFont().getName(),Font.PLAIN, (int) (label.getFont().getSize()*1.7)));
             keyBoard.add(label,Integer.valueOf(4));
 
-            label = new JLabel(Translator.keys.get(2+i+4*j).getNameKey());
-            label.setName(Translator.keys.get(2+i+4*j).getNameKey());
-            label.setBounds(297+(separationBlack*i)+add,yLabel,widthBlack,heightBlack);
+            label = new JLabel(Translator.getKeys().get(2+i+4*j).getNameKey());
+            label.setName(Translator.getKeys().get(2+i+4*j).getNameKey());
+            label.setBounds(297+(separationBlack*(i-numWhiteKeys))+add,yLabel,widthBlack,heightBlack);
             label.setForeground(Color.WHITE);
             label.setVisible(false);
             label.setFont(new Font(label.getFont().getName(),Font.PLAIN, (int) (label.getFont().getSize()*1.7)));
             keyBoard.add(label,Integer.valueOf(4));
 
-            label = new JLabel(Translator.keys.get(3+i+4*j).getNameKey());
-            label.setName(Translator.keys.get(3+i+4*j).getNameKey());
-            label.setBounds(361+(separationBlack*i)+add,yLabel,widthBlack,heightBlack);
+            label = new JLabel(Translator.getKeys().get(3+i+4*j).getNameKey());
+            label.setName(Translator.getKeys().get(3+i+4*j).getNameKey());
+            label.setBounds(361+(separationBlack*(i-numWhiteKeys))+add,yLabel,widthBlack,heightBlack);
             label.setForeground(Color.WHITE);
             label.setVisible(false);
             label.setFont(new Font(label.getFont().getName(),Font.PLAIN, (int) (label.getFont().getSize()*1.7)));
             keyBoard.add(label,Integer.valueOf(4));
 
-            label = new JLabel(Translator.keys.get(4+i+4*j).getNameKey());
-            label.setName(Translator.keys.get(4+i+4*j).getNameKey());
-            label.setBounds(430+(separationBlack*i)+add,yLabel,widthBlack,heightBlack);
+            label = new JLabel(Translator.getKeys().get(4+i+4*j).getNameKey());
+            label.setName(Translator.getKeys().get(4+i+4*j).getNameKey());
+            label.setBounds(430+(separationBlack*(i-numWhiteKeys))+add,yLabel,widthBlack,heightBlack);
             label.setForeground(Color.WHITE);
             label.setVisible(false);
             label.setFont(new Font(label.getFont().getName(),Font.PLAIN, (int) (label.getFont().getSize()*1.7)));
@@ -251,7 +251,7 @@ public class FreePianoUI extends Piano {
         if(modify){
             icon = iconPressed;
         }else{
-            icon = new ImageIcon("Files/drawable/white-key-down.png");
+            icon = iconPressedDown;
 
         }
         for(int i = 0; i<14;i++){

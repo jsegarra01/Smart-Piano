@@ -11,14 +11,12 @@ import java.util.ArrayList;
  */
 public class Translator {
 
-    public static ArrayList<Keys> keys = new ArrayList<>();
-/*
-    public static ArrayList<Keys> getInstance(){
-        if(keys == null){
-            new Translator();
-        }
+    private static ArrayList<Keys> keys = new ArrayList<>();
+
+    public static ArrayList<Keys> getKeys() {
         return keys;
-    }*/
+    }
+
     public Translator(){
         if(keys.isEmpty()){
             keys.add(new Keys(KeyEvent.VK_Q, "2c", "Q"));
@@ -218,8 +216,9 @@ public class Translator {
         }
         return null;
     }
-    public void setNewKey(String tile, int keyCode){
+    public boolean setNewKey(String tile, int keyCode){
         boolean found = false;
+        boolean foundKey = false;
         int i = 0;
         while(i<keys.size() && !found){
             if(keys.get(i).getTileKey().equals(tile)){
@@ -229,8 +228,19 @@ public class Translator {
                 i++;
             }
         }
-        if(found){
+        int j=0;
+        while(j<keys.size() && !foundKey){
+            if(keys.get(j).getKeyCode()==keyCode){
+                foundKey = true;
+            }else{
+                j++;
+            }
+        }
+        if(found && !foundKey){
             keys.get(i).setKeyCode(keyCode);
+            return true;
+        }else{
+            return false;
         }
     }
 

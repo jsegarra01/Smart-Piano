@@ -25,8 +25,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="Setting of the keys, to change the name of the key when we modify it (it is in process yet)">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="commit to finish feature">
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/FreePianoUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/FreePianoUI.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,12 +70,13 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/Files/drawable" />
-    <property name="project.structure.last.edited" value="Problems" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="project.structure.side.proportion" value="0.1345895" />
   </component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
@@ -86,17 +87,6 @@
     </key>
   </component>
   <component name="RunManager" selected="Application.Main">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="dpoo-2021-smartpiano-ice5" />
@@ -411,7 +401,28 @@
       <option name="project" value="LOCAL" />
       <updated>1620317999701</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="We forgot to check if the name of the black tiles was correct (which wasn't)&#10;Keys must be private, using a getter now">
+      <created>1620387336595</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1620387336595</updated>
+    </task>
+    <task id="LOCAL-00038" summary="commit to finish feature">
+      <created>1620388473901</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1620388473901</updated>
+    </task>
+    <task id="LOCAL-00039" summary="commit to finish feature">
+      <created>1620388572089</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1620388572089</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -440,8 +451,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Logic for the Enter as Guest changed and adapted to not be deleted and to be a user called guest." />
-    <MESSAGE value="Basic UI classes created and added to the cardLayout." />
     <MESSAGE value="IsValidActive" />
     <MESSAGE value="Small change config" />
     <MESSAGE value="Changes in the piano, fancier" />
@@ -465,56 +474,38 @@
     <MESSAGE value="Set keys done, missing setting up the color and selecting the keys, the jtoggle is implemented" />
     <MESSAGE value="Sets the new key, however it does not change the label, to be checked" />
     <MESSAGE value="Setting of the keys, to change the name of the key when we modify it (it is in process yet)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Setting of the keys, to change the name of the key when we modify it (it is in process yet)" />
+    <MESSAGE value="We forgot to check if the name of the black tiles was correct (which wasn't)&#10;Keys must be private, using a getter now" />
+    <MESSAGE value="commit to finish feature" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit to finish feature" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1750" height="318" key="GridCell.Tab.0.bottom" timestamp="1620317781481">
+    <state width="1750" height="318" key="GridCell.Tab.0.bottom" timestamp="1620388579967">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state width="1750" height="318" key="GridCell.Tab.0.bottom/0.0.1792.1120@0.0.1792.1120" timestamp="1620317781481" />
-    <state width="1750" height="318" key="GridCell.Tab.0.center" timestamp="1620317781480">
+    <state width="1750" height="318" key="GridCell.Tab.0.bottom/0.0.1792.1120@0.0.1792.1120" timestamp="1620388579967" />
+    <state width="1750" height="318" key="GridCell.Tab.0.center" timestamp="1620388579966">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state width="1750" height="318" key="GridCell.Tab.0.center/0.0.1792.1120@0.0.1792.1120" timestamp="1620317781480" />
-    <state width="1750" height="318" key="GridCell.Tab.0.left" timestamp="1620317781479">
+    <state width="1750" height="318" key="GridCell.Tab.0.center/0.0.1792.1120@0.0.1792.1120" timestamp="1620388579966" />
+    <state width="1750" height="318" key="GridCell.Tab.0.left" timestamp="1620388579965">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state width="1750" height="318" key="GridCell.Tab.0.left/0.0.1792.1120@0.0.1792.1120" timestamp="1620317781479" />
-    <state width="1750" height="318" key="GridCell.Tab.0.right" timestamp="1620317781480">
+    <state width="1750" height="318" key="GridCell.Tab.0.left/0.0.1792.1120@0.0.1792.1120" timestamp="1620388579965" />
+    <state width="1750" height="318" key="GridCell.Tab.0.right" timestamp="1620388579966">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state width="1750" height="318" key="GridCell.Tab.0.right/0.0.1792.1120@0.0.1792.1120" timestamp="1620317781480" />
-    <state width="1750" height="392" key="GridCell.Tab.1.bottom" timestamp="1620314082163">
+    <state width="1750" height="318" key="GridCell.Tab.0.right/0.0.1792.1120@0.0.1792.1120" timestamp="1620388579966" />
+    <state x="496" y="300" key="Vcs.Push.Dialog.v2" timestamp="1620388499998">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state width="1750" height="392" key="GridCell.Tab.1.bottom/0.0.1792.1120@0.0.1792.1120" timestamp="1620314082163" />
-    <state width="1750" height="392" key="GridCell.Tab.1.bottom/0.23.1792.1041@0.23.1792.1041" timestamp="1620314018514" />
-    <state width="1750" height="392" key="GridCell.Tab.1.center" timestamp="1620314082161">
+    <state x="496" y="300" key="Vcs.Push.Dialog.v2/0.0.1792.1120@0.0.1792.1120" timestamp="1620388499998" />
+    <state x="694" y="481" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1620388441922">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state width="1750" height="392" key="GridCell.Tab.1.center/0.0.1792.1120@0.0.1792.1120" timestamp="1620314082161" />
-    <state width="1750" height="392" key="GridCell.Tab.1.center/0.23.1792.1041@0.23.1792.1041" timestamp="1620314018513" />
-    <state width="1750" height="392" key="GridCell.Tab.1.left" timestamp="1620314082161">
+    <state x="694" y="481" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1792.1120@0.0.1792.1120" timestamp="1620388441922" />
+    <state x="507" y="280" key="git4idea.branch.GitSmartOperationDialog" timestamp="1620388423589">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state width="1750" height="392" key="GridCell.Tab.1.left/0.0.1792.1120@0.0.1792.1120" timestamp="1620314082161" />
-    <state width="1750" height="392" key="GridCell.Tab.1.left/0.23.1792.1041@0.23.1792.1041" timestamp="1620314018512" />
-    <state width="1750" height="392" key="GridCell.Tab.1.right" timestamp="1620314082162">
-      <screen x="0" y="0" width="1792" height="1120" />
-    </state>
-    <state width="1750" height="392" key="GridCell.Tab.1.right/0.0.1792.1120@0.0.1792.1120" timestamp="1620314082162" />
-    <state width="1750" height="392" key="GridCell.Tab.1.right/0.23.1792.1041@0.23.1792.1041" timestamp="1620314018513" />
-    <state x="496" y="300" key="Vcs.Push.Dialog.v2" timestamp="1620318007686">
-      <screen x="0" y="0" width="1792" height="1120" />
-    </state>
-    <state x="496" y="300" key="Vcs.Push.Dialog.v2/0.0.1792.1120@0.0.1792.1120" timestamp="1620318007686" />
-    <state x="694" y="481" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1620308688310">
-      <screen x="0" y="0" width="1792" height="1120" />
-    </state>
-    <state x="694" y="481" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1792.1120@0.0.1792.1120" timestamp="1620308688310" />
-    <state width="600" height="428" key="javadoc.popup" timestamp="1620316742729">
-      <screen x="0" y="0" width="1792" height="1120" />
-    </state>
-    <state width="600" height="428" key="javadoc.popup/0.0.1792.1120@0.0.1792.1120" timestamp="1620316742729" />
+    <state x="507" y="280" key="git4idea.branch.GitSmartOperationDialog/0.0.1792.1120@0.0.1792.1120" timestamp="1620388423589" />
   </component>
 </project>
