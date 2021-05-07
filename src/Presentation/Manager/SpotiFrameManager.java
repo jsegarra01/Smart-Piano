@@ -1,7 +1,10 @@
 package Presentation.Manager;
 
 //Imports needed from the dictionary, events and mainframe
+import Business.Entities.webHandler;
 import Presentation.Dictionary_login;
+import Presentation.Ui_Views.SpotiUI;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -25,6 +28,9 @@ import static Presentation.Ui_Views.SpotiUI.spotiPanel;
  */
 public class SpotiFrameManager implements ActionListener {
 
+    String URLRoute = "https://www.mutopiaproject.org/cgibin/make-table.cgi?Instrument=Piano";
+    String path = "Files";
+    webHandler myWebHandlingTool = new webHandler(path, URLRoute, "result%s.txt", "?startat=%s&");
 
     /**
      * Parametrized constructor
@@ -49,6 +55,10 @@ public class SpotiFrameManager implements ActionListener {
                 cc.show(spotiPanel, TOPSONGS_UI);
                 break;
             case CREATE_PLAYLIST:
+                cc.show(spotiPanel, PLAYLIST_UI);
+                break;
+            case SEARCH_SONG:
+                this.myWebHandlingTool.doStuff(SpotiUI.getInputedSongName(), "by");
                 cc.show(spotiPanel, PLAYLIST_UI);
                 break;
         }

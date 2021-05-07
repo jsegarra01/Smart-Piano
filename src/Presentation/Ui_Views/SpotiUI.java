@@ -40,6 +40,10 @@ public class SpotiUI extends JPanel {
     public static JButton playButton = new JButton();
     public static JButton nextButton = new JButton();
     public static JButton loopButton = new JButton();
+
+
+    private static JTextField songNameInputText = new JTextField();
+    public static JButton searchButton = new JButton();
     /**
      * Constructor for the SpotiUI, you need to send the mainframe context and will create a card layout
      * @param mainFrame context necessary to create the card layout
@@ -72,6 +76,21 @@ public class SpotiUI extends JPanel {
         leftList.add(Box.createRigidArea(new Dimension(210, 50)));
 
 
+
+
+        songNameInputText.setAlignmentX(0.5f);
+        songNameInputText.setPreferredSize(new Dimension(200,30));
+        songNameInputText.setMaximumSize(songNameInputText.getPreferredSize());
+        songNameInputText.setBackground(Color.WHITE);
+//This two guys should be inside their own damn JPanel with BorderLayout.WEST/CENTER, not going to bother for now, functionality comes first!
+        searchButton.setIcon(new ImageIcon("Files/drawable/playbuttonWhite.png"));
+        searchButton.setIcon(resizeIcon((ImageIcon) searchButton.getIcon(), (int) Math.round(searchButton.getIcon().getIconWidth()*0.05),
+                (int) Math.round(searchButton.getIcon().getIconHeight()*0.05)));
+        confButtonsBar(searchButton, 0, 60);
+        searchButton.setActionCommand(SEARCH_SONG);
+
+
+
         showStadistics.setActionCommand(CREATE_STADISTICS);
         confButtonLeft(showStadistics, 0, 115);
         /*showStadistics.setAlignmentX(0.5f);
@@ -100,7 +119,8 @@ public class SpotiUI extends JPanel {
         JSeparator separator = new JSeparator();
 
         registerController(new SpotiFrameManager());
-
+        leftList.add(songNameInputText);
+        leftList.add(searchButton);
         leftList.add(showStadistics);
         leftList.add(Box.createRigidArea(new Dimension(210, 10)));
         leftList.add(topSongs);
@@ -111,31 +131,11 @@ public class SpotiUI extends JPanel {
         add(leftList, BorderLayout.WEST);
 
         //Bottom panel
-        shuffleButton.setIcon(new ImageIcon("Files/drawable/shuffleWhite.png"));
-        shuffleButton.setIcon(resizeIcon((ImageIcon) shuffleButton.getIcon(), (int) Math.round(shuffleButton.getIcon().getIconWidth()*0.05),
-                (int) Math.round(shuffleButton.getIcon().getIconHeight()*0.05)));
-        confButtonsBar(shuffleButton, 10, 60);
-
-        backButton.setIcon(new ImageIcon("Files/drawable/backwardtrackWhite.png"));
-        backButton.setIcon(resizeIcon((ImageIcon) backButton.getIcon(), (int) Math.round(backButton.getIcon().getIconWidth()*0.05),
-                (int) Math.round(backButton.getIcon().getIconHeight()*0.05)));
-        confButtonsBar(backButton, 0, 60);
-
-        playButton.setIcon(new ImageIcon("Files/drawable/playbuttonWhite.png"));
-        playButton.setIcon(resizeIcon((ImageIcon) playButton.getIcon(), (int) Math.round(playButton.getIcon().getIconWidth()*0.09),
-                (int) Math.round(playButton.getIcon().getIconHeight()*0.09)));
-        confButtonsBar(playButton, 0, 60);
-
-        nextButton.setIcon(new ImageIcon("Files/drawable/fordwardtrackWhite.png"));
-        nextButton.setIcon(resizeIcon((ImageIcon) nextButton.getIcon(), (int) Math.round(nextButton.getIcon().getIconWidth()*0.05),
-                (int) Math.round(nextButton.getIcon().getIconHeight()*0.05)));
-        confButtonsBar(nextButton, 0, 60);
-
-        loopButton.setIcon(new ImageIcon("Files/drawable/exchangeWhite.png"));
-        loopButton.setIcon(resizeIcon((ImageIcon) loopButton.getIcon(), (int) Math.round(loopButton.getIcon().getIconWidth()*0.05),
-                (int) Math.round(loopButton.getIcon().getIconHeight()*0.05)));
-        confButtonsBar(loopButton, 0, 10);
-
+        shuffleButton = createConfButtons("Files/drawable/shuffleWhite.png", 10, 60);
+        backButton    = createConfButtons("Files/drawable/backwardtrackWhite.png", 0, 60);
+        playButton    = createConfButtons("Files/drawable/playbuttonWhite.png", 0, 60);
+        nextButton    = createConfButtons("Files/drawable/fordwardtrackWhite.png", 0, 60);
+        loopButton    = createConfButtons("Files/drawable/exchangeWhite.png", 0, 10);
 
 
         JPanel musicPlayer = new JPanel();
@@ -151,6 +151,16 @@ public class SpotiUI extends JPanel {
         add(musicPlayer, BorderLayout.SOUTH);
     }
 
+
+    private JButton createConfButtons(String imagePath, int index1, int index2){
+        JButton toReturnButton;
+        toReturnButton = new JButton();
+        toReturnButton.setIcon(new ImageIcon(imagePath));
+        toReturnButton.setIcon(resizeIcon((ImageIcon) toReturnButton.getIcon(), (int) Math.round(toReturnButton.getIcon().getIconWidth()*0.05),
+                (int) Math.round(toReturnButton.getIcon().getIconHeight()*0.05)));
+        confButtonsBar(toReturnButton, index1, index2);
+        return toReturnButton;
+    }
 
     private void confButtonLeft(JButton button, int left, int right){
         button.setAlignmentX(0.5f);
@@ -177,5 +187,11 @@ public class SpotiUI extends JPanel {
         playButton.addActionListener(listener);
         nextButton.addActionListener(listener);
         loopButton.addActionListener(listener);
+
+        searchButton.addActionListener(listener);
+    }
+
+    public static String getInputedSongName() {
+        return songNameInputText.getText();
     }
 }

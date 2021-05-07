@@ -11,10 +11,10 @@ import Business.Entities.webHandler;
 public class Main {
 
     public static void main(String[] args) {
-        String URLRoute = "https://www.mutopiaproject.org/cgibin/make-table.cgi?Instrument=Piano";
+        /*String URLRoute = "https://www.mutopiaproject.org/cgibin/make-table.cgi?Instrument=Piano";
         String path = "Files";
         webHandler myWebHandlingTool = new webHandler(path, URLRoute, "result%s.txt", "?startat=%s&");
-        myWebHandlingTool.doStuff("Ballad", "a"); //page 10 :D
+        myWebHandlingTool.doStuff("Ballad", "a"); //page 10 :D*/
         MainFrame mainframe = new MainFrame();
 
         mainframe.setSize(1225, 675);
