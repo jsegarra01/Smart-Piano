@@ -74,7 +74,6 @@ public abstract class Piano extends JPanel {
     protected static ImageIcon iconPressedDown = new ImageIcon("Files/drawable/white-key-down.png");
 
 
-
     public static ArrayList<Tile> getKeyboard() {
         return keyboard;
     }
