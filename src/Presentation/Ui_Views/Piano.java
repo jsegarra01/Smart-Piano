@@ -68,9 +68,10 @@ public abstract class Piano extends JPanel {
     protected static final String[] keyBlack = {"2","3","5","6","7","S","D","G","H","J"};
 
     protected static JLayeredPane layeredPane;
-    public static ImageIcon iconPressed = new ImageIcon("Files/drawable/selected.png");
-    public static ImageIcon iconResetWhite = new ImageIcon(whiteTileLoc);
-    public static ImageIcon iconResetBlack  = new ImageIcon(blackTileLoc);
+    protected static ImageIcon iconPressed = new ImageIcon("Files/drawable/selected.png");
+    protected static ImageIcon iconResetWhite = new ImageIcon(whiteTileLoc);
+    protected static ImageIcon iconResetBlack  = new ImageIcon(blackTileLoc);
+    protected static ImageIcon iconPressedDown = new ImageIcon("Files/drawable/white-key-down.png");
 
 
 
