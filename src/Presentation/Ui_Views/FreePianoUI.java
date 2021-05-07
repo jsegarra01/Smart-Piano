@@ -46,7 +46,10 @@ public class FreePianoUI extends Piano {
         //All information will go inside here
         panel.add(Box.createRigidArea(new Dimension(10, 240)), BorderLayout.CENTER);
         layeredPane = makeKeys();
+        layeredPane.requestFocus();
         panel.add(layeredPane, BorderLayout.SOUTH);
+        panel.requestFocus();
+
         panel.add(initMenu(), BorderLayout.PAGE_START);
 
         return panel;
@@ -187,8 +190,8 @@ public class FreePianoUI extends Piano {
         }
 
         for (int i = 0; i < numWhiteKeys; i++) {
-            label = new JLabel(Translator.keys.get(i).getNameKey());
-            label.setName(Translator.keys.get(i).getNameKey());
+            label = new JLabel(Translator.getKeys().get(i).getNameKey());
+            label.setName(Translator.getKeys().get(i).getNameKey());
             label.setBounds(65*(i+1)+12,170,widthBlack,40);
             label.setFont(new Font(label.getFont().getName(),Font.PLAIN,label.getFont().getSize()*2));
             label.setVisible(false);
@@ -199,41 +202,41 @@ public class FreePianoUI extends Piano {
         add = 12;
         int j = 0;
         for (int i = numWhiteKeys; i < numWhiteKeys+2; i++) {
-            label = new JLabel(Translator.keys.get(i+4*j).getNameKey());
-            label.setName(Translator.keys.get(i+4*j).getNameKey());
-            label.setBounds(102+(separationBlack*i)+add,yLabel,widthBlack,heightBlack);
+            label = new JLabel(Translator.getKeys().get(i+4*j).getNameKey());
+            label.setName(Translator.getKeys().get(i+4*j).getNameKey());
+            label.setBounds(102+(separationBlack*(i-numWhiteKeys))+add,yLabel,widthBlack,heightBlack);
             label.setForeground(Color.WHITE);
             label.setVisible(false);
             label.setFont(new Font(label.getFont().getName(),Font.PLAIN, (int) (label.getFont().getSize()*1.7)));
             keyBoard.add(label,Integer.valueOf(4));
 
-            label = new JLabel(Translator.keys.get(1+i+4*j).getNameKey());
-            label.setName(Translator.keys.get(1+i+4*j).getNameKey());
-            label.setBounds(167+(separationBlack*i)+add,yLabel,widthBlack,heightBlack);
+            label = new JLabel(Translator.getKeys().get(1+i+4*j).getNameKey());
+            label.setName(Translator.getKeys().get(1+i+4*j).getNameKey());
+            label.setBounds(167+(separationBlack*(i-numWhiteKeys))+add,yLabel,widthBlack,heightBlack);
             label.setForeground(Color.WHITE);
             label.setVisible(false);
             label.setFont(new Font(label.getFont().getName(),Font.PLAIN, (int) (label.getFont().getSize()*1.7)));
             keyBoard.add(label,Integer.valueOf(4));
 
-            label = new JLabel(Translator.keys.get(2+i+4*j).getNameKey());
-            label.setName(Translator.keys.get(2+i+4*j).getNameKey());
-            label.setBounds(297+(separationBlack*i)+add,yLabel,widthBlack,heightBlack);
+            label = new JLabel(Translator.getKeys().get(2+i+4*j).getNameKey());
+            label.setName(Translator.getKeys().get(2+i+4*j).getNameKey());
+            label.setBounds(297+(separationBlack*(i-numWhiteKeys))+add,yLabel,widthBlack,heightBlack);
             label.setForeground(Color.WHITE);
             label.setVisible(false);
             label.setFont(new Font(label.getFont().getName(),Font.PLAIN, (int) (label.getFont().getSize()*1.7)));
             keyBoard.add(label,Integer.valueOf(4));
 
-            label = new JLabel(Translator.keys.get(3+i+4*j).getNameKey());
-            label.setName(Translator.keys.get(3+i+4*j).getNameKey());
-            label.setBounds(361+(separationBlack*i)+add,yLabel,widthBlack,heightBlack);
+            label = new JLabel(Translator.getKeys().get(3+i+4*j).getNameKey());
+            label.setName(Translator.getKeys().get(3+i+4*j).getNameKey());
+            label.setBounds(361+(separationBlack*(i-numWhiteKeys))+add,yLabel,widthBlack,heightBlack);
             label.setForeground(Color.WHITE);
             label.setVisible(false);
             label.setFont(new Font(label.getFont().getName(),Font.PLAIN, (int) (label.getFont().getSize()*1.7)));
             keyBoard.add(label,Integer.valueOf(4));
 
-            label = new JLabel(Translator.keys.get(4+i+4*j).getNameKey());
-            label.setName(Translator.keys.get(4+i+4*j).getNameKey());
-            label.setBounds(430+(separationBlack*i)+add,yLabel,widthBlack,heightBlack);
+            label = new JLabel(Translator.getKeys().get(4+i+4*j).getNameKey());
+            label.setName(Translator.getKeys().get(4+i+4*j).getNameKey());
+            label.setBounds(430+(separationBlack*(i-numWhiteKeys))+add,yLabel,widthBlack,heightBlack);
             label.setForeground(Color.WHITE);
             label.setVisible(false);
             label.setFont(new Font(label.getFont().getName(),Font.PLAIN, (int) (label.getFont().getSize()*1.7)));

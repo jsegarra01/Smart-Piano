@@ -64,8 +64,15 @@ public class FreePianoUIManager implements ActionListener {
                 if(modifying){
                     if(selected){
                         FreePianoUI.modifyKey(translator.getFromTile(tileSelected), e);
-                        translator.setNewKey(tileSelected,e.getExtendedKeyCode());
-                        selected = false;
+                        boolean checkKeyExisted =translator.setNewKey(tileSelected,e.getExtendedKeyCode());
+                        if(!checkKeyExisted){
+                            JOptionPane.showMessageDialog(contenedor,
+                                    "This key is already assigned!", "Modify keys error" , JOptionPane.ERROR_MESSAGE);
+                        }else{
+
+                            selected = false;
+
+                        }
                     }
                 }else{
                     if(translator.getPressedFromKey(e.getExtendedKeyCode()) !=null){
