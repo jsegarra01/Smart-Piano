@@ -41,7 +41,10 @@ public class LoginUIManager implements ActionListener {
                 card.show(contenedor, PRE_MENU_UI);
                 break;
             case DONE_BUTTON:                          //In the case that the Done button is pressed
-                if(new BusinessFacadeImp().logIn(LoginUI.getUsernameLogin(), LoginUI.getPasswordLogin())) card.show(contenedor, PIANO_FRAME);
+                if(new BusinessFacadeImp().logIn(LoginUI.getUsernameLogin(), LoginUI.getPasswordLogin())){
+                    card.show(contenedor, PIANO_FRAME);
+
+                }
                 else{JOptionPane.showMessageDialog(contenedor, "Incorrect username or password", "LogIn error" , JOptionPane.ERROR_MESSAGE);}
                 break;
         }

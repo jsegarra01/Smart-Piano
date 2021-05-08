@@ -1,10 +1,14 @@
 package Presentation.Manager;
 
 //Imports needed from the dictionary, events and mainframe
+import Business.Entities.Playlist;
+import Business.UserManager;
+import Persistence.SQL.Csv.PlaylistCsvDAO;
 import Presentation.Dictionary_login;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import static Presentation.DictionaryPiano.*;
 import static Presentation.Dictionary_login.*;
@@ -24,8 +28,6 @@ import static Presentation.Ui_Views.SpotiUI.spotiPanel;
  *
  */
 public class SpotiFrameManager implements ActionListener {
-
-
     /**
      * Parametrized constructor
      */
@@ -53,4 +55,5 @@ public class SpotiFrameManager implements ActionListener {
                 break;
         }
     }
+
 }

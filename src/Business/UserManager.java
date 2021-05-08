@@ -18,6 +18,11 @@ import java.util.regex.Pattern;
 public class UserManager {
     private LoginUserCsvDAO loginUserManager = new LoginUserCsvDAO();
     private static User user;
+
+    public static User getUser() {
+        return user;
+    }
+
     /**
      * Checks if the user exists or not
      * @param username Username string which the user has inputted while logging in
