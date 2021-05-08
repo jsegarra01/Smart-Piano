@@ -1,5 +1,8 @@
 package Presentation.Ui_Views;
 
+import Business.BusinessFacadeImp;
+import Business.Entities.Playlist;
+import Business.PlaylistManager;
 import Presentation.Manager.MainFrame;
 import Presentation.Manager.PianoFrameManager;
 import Presentation.Manager.SpotiFrameManager;
@@ -28,6 +31,8 @@ public class SpotiUI extends JPanel {
     StatisticsUI statisticsUI;
     PlaylistUI playlistUI;
     TopSongsUI topSongsUI;
+
+    Playlist myPlaylist;
 
     public static JPanel spotiPanel = new JPanel(new CardLayout());
     public static JButton homeButton = new JButton(HOME_BUTTON);
@@ -77,8 +82,6 @@ public class SpotiUI extends JPanel {
         leftList.add(Box.createRigidArea(new Dimension(210, 50)));
 
 
-
-
         songNameInputText.setAlignmentX(0.5f);
         songNameInputText.setPreferredSize(new Dimension(200,30));
         songNameInputText.setMaximumSize(songNameInputText.getPreferredSize());
@@ -94,17 +97,9 @@ public class SpotiUI extends JPanel {
 
         showStadistics.setActionCommand(CREATE_STADISTICS);
         confButtonLeft(showStadistics, 0, 115);
-        /*showStadistics.setAlignmentX(0.5f);
-        showStadistics.setBorder(new EmptyBorder(10,0,10,115));
-        showStadistics.setBackground(Color.getHSBColor(0,0,0.8f));
-        showStadistics.setForeground(Color.white);*/
 
         topSongs.setActionCommand(SHOW_TOP_SONGS);
         confButtonLeft(topSongs, 18, 115);
-        /*topSongs.setAlignmentX(0.5f);
-        topSongs.setBorder(new EmptyBorder(10,18,10,115));
-        topSongs.setBackground(Color.getHSBColor(0,0,0.8f));
-        topSongs.setForeground(Color.white);*/
 
         playlistLabel.setAlignmentX(0.5f);
         playlistLabel.setBorder(new EmptyBorder(10,0,10,140));
@@ -113,10 +108,7 @@ public class SpotiUI extends JPanel {
 
         createPlaylist.setActionCommand(CREATE_PLAYLIST);
         confButtonLeft(createPlaylist, 12, 90);
-        /*createPlaylist.setAlignmentX(0.5f);
-        createPlaylist.setBorder(new EmptyBorder(10,12,10,90));
-        createPlaylist.setBackground(Color.getHSBColor(0,0,0.8f));
-        createPlaylist.setForeground(Color.white);*/
+
         JSeparator separator = new JSeparator();
 
         registerController(new SpotiFrameManager());
@@ -128,6 +120,7 @@ public class SpotiUI extends JPanel {
         leftList.add(playlistLabel);
         leftList.add(createPlaylist);
         leftList.add(separator);
+        addPlaylists();
         leftList.setBackground(Color.getHSBColor(10,0,0.2f));
         add(leftList, BorderLayout.WEST);
 
@@ -201,5 +194,12 @@ public class SpotiUI extends JPanel {
 
     public static String getInputedSongName() {
         return songNameInputText.getText();
+    }
+
+    private void addPlaylists(){
+        for(int i=0; i< new BusinessFacadeImp().getPlaylistManager().getPlaylists().size(); i++){
+            myPlaylist = new BusinessFacadeImp().getPlaylistManager().getPlaylists().get(i);
+
+        }
     }
 }
