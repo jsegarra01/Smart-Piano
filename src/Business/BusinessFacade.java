@@ -31,7 +31,7 @@ public interface BusinessFacade {
 
     /**
      * Deletes the account and everything involved with the user introduced
-     * @param username Username string to delete the account
+     //* @param username Username string to delete the account
      */
-    void deleteAccount(String username);
+    void deleteAccount();
 }
