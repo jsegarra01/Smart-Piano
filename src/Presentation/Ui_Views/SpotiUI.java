@@ -40,6 +40,7 @@ public class SpotiUI extends JPanel {
     public static JButton playButton = new JButton();
     public static JButton nextButton = new JButton();
     public static JButton loopButton = new JButton();
+    //public static JButton pauseButton = new JButton();
 
 
     private static JTextField songNameInputText = new JTextField();
@@ -131,11 +132,17 @@ public class SpotiUI extends JPanel {
         add(leftList, BorderLayout.WEST);
 
         //Bottom panel
-        shuffleButton = createConfButtons("Files/drawable/shuffleWhite.png", 10, 60);
-        backButton    = createConfButtons("Files/drawable/backwardtrackWhite.png", 0, 60);
-        playButton    = createConfButtons("Files/drawable/playbuttonWhite.png", 0, 60);
-        nextButton    = createConfButtons("Files/drawable/fordwardtrackWhite.png", 0, 60);
-        loopButton    = createConfButtons("Files/drawable/exchangeWhite.png", 0, 10);
+        shuffleButton = createConfButtons("Files/drawable/shuffleWhite.png", 10, 60, SHUFFLE_BUTTON);
+        backButton    = createConfButtons("Files/drawable/backwardtrackWhite.png", 0, 60, LAST_BUTTON);
+        nextButton    = createConfButtons("Files/drawable/fordwardtrackWhite.png", 0, 60, NEXT_BUTTON);
+        loopButton    = createConfButtons("Files/drawable/exchangeWhite.png", 0, 10, LOOP_BUTTON);
+
+        playButton.setIcon(new ImageIcon("Files/drawable/playbuttonWhite.png"));
+        playButton.setIcon(resizeIcon((ImageIcon) playButton.getIcon(), (int) Math.round(playButton.getIcon().getIconWidth()*0.09),
+                (int) Math.round(playButton.getIcon().getIconHeight()*0.09)));
+        confButtonsBar(playButton, 0, 60);
+        playButton .setActionCommand(PLAY_BUTTON);
+
 
 
         JPanel musicPlayer = new JPanel();
@@ -152,13 +159,14 @@ public class SpotiUI extends JPanel {
     }
 
 
-    private JButton createConfButtons(String imagePath, int index1, int index2){
+    private JButton createConfButtons(String imagePath, int index1, int index2, String label){
         JButton toReturnButton;
         toReturnButton = new JButton();
         toReturnButton.setIcon(new ImageIcon(imagePath));
         toReturnButton.setIcon(resizeIcon((ImageIcon) toReturnButton.getIcon(), (int) Math.round(toReturnButton.getIcon().getIconWidth()*0.05),
                 (int) Math.round(toReturnButton.getIcon().getIconHeight()*0.05)));
         confButtonsBar(toReturnButton, index1, index2);
+        toReturnButton.setActionCommand(label);
         return toReturnButton;
     }
 

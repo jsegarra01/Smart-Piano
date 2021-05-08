@@ -26,6 +26,11 @@ public class DictionaryPiano {
     public static final String TOPSONGS_UI = "TopSongsUI";
     public static final String PLAYLIST_LABEL = "Playlists";
     public static final String SEARCH_SONG = "webHelperSongSearch";
+    public static final String SHUFFLE_BUTTON = "shuffleSongs";
+    public static final String NEXT_BUTTON = "goToNextSong";
+    public static final String LAST_BUTTON = "goToPreviousSong";
+    public static final String PLAY_BUTTON = "playSong";
+    public static final String LOOP_BUTTON = "loopSong";
 
     public static final Integer TB_SIZE = 10;
 }
