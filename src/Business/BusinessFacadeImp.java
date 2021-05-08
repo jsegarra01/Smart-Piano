@@ -10,7 +10,9 @@ package Business;
  *
  */
 public class BusinessFacadeImp implements Business.BusinessFacade {
-    UserManager loginUserManager = new UserManager();
+    private UserManager loginUserManager = new UserManager();
+    private SongManager songpanager = new SongManager();
+    private PlaylistManager playlistManager = new PlaylistManager();
 
     @Override
     public Boolean logIn(String username, String password) {
@@ -28,5 +30,9 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
     @Override
     public void deleteAccount() {
         loginUserManager.deleteUser();
+    }
+
+    public PlaylistManager getPlaylistManager() {
+        return playlistManager;
     }
 }

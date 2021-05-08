@@ -37,7 +37,6 @@ public class SpotiFrameManager implements ActionListener {
     private ImageIcon playIcon = new ImageIcon("Files/drawable/playbuttonWhite.png");
     private ImageIcon pauseIcon = new ImageIcon("Files/drawable/pauseWhite.png");
 
-
     webHandler myWebHandlingTool = new webHandler(path, URLRoute, "result%s.txt", "?startat=%s&");
 
     /**
