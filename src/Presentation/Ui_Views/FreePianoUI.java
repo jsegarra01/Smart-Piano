@@ -98,7 +98,7 @@ public class FreePianoUI extends Piano {
         prevSynther.addActionListener(listener);
         this.addKeyListener(listener.getKeyListener());
         for (Tile tile : keyboard) {
-            tile.addActionListener(listener);
+            tile.addMouseListener(listener);
             tile.addKeyListener(listener.getKeyListener());
         }
     }
