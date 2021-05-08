@@ -7,6 +7,7 @@ import Business.Entities.SongToJson;
 import java.util.ArrayList;
 
 import static Business.Entities.SongToJson.writeJSONsong;
+import static Business.Entities.SongToJson.writeMidi;
 
 /**
  * BusinessFacade
@@ -39,8 +40,9 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
     }
 
     @Override
-    public void recordedNotesSend(ArrayList<RecordingNotes> recordedNotes, String songName, boolean isPrivate) {
+    public void recordedNotesSend(ArrayList<RecordingNotes> recordedNotes, String songName, boolean isPrivate, float endtime) {
         SongRecorded songRecorded = new SongRecorded(recordedNotes,songName, isPrivate);
-        writeJSONsong(songRecorded, songName);
+        //writeJSONsong(songRecorded, songName);
+        writeMidi(songName, songRecorded.getRecordingNotes(), endtime);
     }
 }

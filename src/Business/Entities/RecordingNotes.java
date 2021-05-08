@@ -1,11 +1,11 @@
 package Business.Entities;
 
 public class RecordingNotes {
-    private final char key;
+    private final String key;
     private final float time;
     private float duration = 0;
 
-    public RecordingNotes (char key, float startTime) {
+    public RecordingNotes (String key, float startTime) {
         this.key = key;
         this.time = startTime;
     }
@@ -22,7 +22,7 @@ public class RecordingNotes {
         return time;
     }
 
-    public char getKey() {
+    public String getKey() {
         return key;
     }
 }

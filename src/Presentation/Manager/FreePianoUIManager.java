@@ -10,7 +10,10 @@ import Presentation.Ui_Views.Tile;
 import Business.Entities.MidiHelper;
 import Business.Entities.Translator;
 
+import javax.sound.midi.*;
+
 import javax.sound.midi.MidiUnavailableException;
+import javax.sound.midi.spi.MidiFileWriter;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -75,7 +78,7 @@ public class FreePianoUIManager implements ActionListener {
 
                         //This gets the initial timer and key pressed for the first time it is clicked
                         if (recording) {
-                            recordingNotes.add(new RecordingNotes(e.getKeyChar(),recordingTime));
+                            recordingNotes.add(new RecordingNotes(Translator.getCodeFromKey(e),recordingTime));
                         }
                     }
                     setIconKey(Translator.getCodeFromKey(e));
@@ -93,7 +96,7 @@ public class FreePianoUIManager implements ActionListener {
                     finalMidiHelper.stopPlaying(Translator.getNumberNoteFromName(translator.getFromKey(e.getExtendedKeyCode())),SOUND_SYNTHER);
                     if (recording) {
                         for (int i = 0; recordingNotes.size() != i; i++) {
-                            if (recordingNotes.get(i).getKey() == e.getKeyChar() && recordingNotes.get(i).getDuration() == 0) {
+                            if (recordingNotes.get(i).getKey() == Translator.getCodeFromKey(e) && recordingNotes.get(i).getDuration() == 0) {
                                 recordingNotes.get(i).setDuration(recordingTime - recordingNotes.get(i).getTime());
                                 System.out.println( recordingNotes.get(i).getDuration());
                             }
@@ -132,7 +135,7 @@ public class FreePianoUIManager implements ActionListener {
 
                     JOptionPane.showMessageDialog(null, myPanel, "Enter a title for the song", 1);
 
-                    businessFacadeImp.recordedNotesSend(recordingNotes, titleField.toString(), box.isSelected());
+                    businessFacadeImp.recordedNotesSend(recordingNotes, titleField.getText(), box.isSelected(), recordingTime);
                 }
                 else {
                     recordingTime = 0;

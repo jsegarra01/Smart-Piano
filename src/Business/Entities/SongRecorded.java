@@ -13,4 +13,28 @@ public class SongRecorded {
         this.recordingNotes = recordingNotes;
         this.SongName = SongName;
     }
+
+    public ArrayList<RecordingNotes> getRecordingNotes() {
+        return recordingNotes;
+    }
+
+    public void setRecordingNotes(ArrayList<RecordingNotes> recordingNotes) {
+        this.recordingNotes = recordingNotes;
+    }
+
+    public String getSongName() {
+        return SongName;
+    }
+
+    public void setSongName(String songName) {
+        SongName = songName;
+    }
+
+    public boolean isPrivate() {
+        return isPrivate;
+    }
+
+    public void setPrivate(boolean aPrivate) {
+        isPrivate = aPrivate;
+    }
 }
