@@ -25,17 +25,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="commit to make feature public">
-      <change afterPath="$PROJECT_DIR$/src/Business/SongManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/BusinessFacadeImp.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/BusinessFacadeImp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/PlaylistManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/PlaylistManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/LoginUIManager.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/SpotiFrameManager.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Business/BusinessFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/BusinessFacade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Business/BusinessFacadeImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/BusinessFacadeImp.java" afterDir="false" />
+    <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="access to playlist done">
       <change beforePath="$PROJECT_DIR$/src/Business/PlaylistManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/PlaylistManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presentation/Manager/LoginUIManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Manager/LoginUIManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -445,7 +436,14 @@
       <option name="project" value="LOCAL" />
       <updated>1620495062170</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="access to playlist done">
+      <created>1620496434397</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1620496434397</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -474,7 +472,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Changes in the piano, fancier" />
     <MESSAGE value="Piano does not keep playing anymore whenever the key is pressed. &#10;The tile changes its color, simulating that has been pressed with the keyboard" />
     <MESSAGE value="Piano works perfectly fine. Checked that everything worked as it should." />
     <MESSAGE value="I am not allowed to do finish feature :'(" />
@@ -499,29 +496,46 @@
     <MESSAGE value="commit to finish feature" />
     <MESSAGE value="commit to start feature" />
     <MESSAGE value="commit to make feature public" />
-    <option name="LAST_COMMIT_MESSAGE" value="commit to make feature public" />
+    <MESSAGE value="access to playlist done" />
+    <option name="LAST_COMMIT_MESSAGE" value="access to playlist done" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="875" height="318" key="GridCell.Tab.0.bottom" timestamp="1620496064085">
+    <state width="875" height="392" key="GridCell.Tab.0.bottom" timestamp="1620496293582">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state width="875" height="318" key="GridCell.Tab.0.bottom/0.0.1792.1120@0.0.1792.1120" timestamp="1620496064085" />
-    <state width="875" height="318" key="GridCell.Tab.0.center" timestamp="1620496064083">
+    <state width="875" height="392" key="GridCell.Tab.0.bottom/0.0.1792.1120@0.0.1792.1120" timestamp="1620496293582" />
+    <state width="875" height="392" key="GridCell.Tab.0.center" timestamp="1620496293581">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state width="875" height="318" key="GridCell.Tab.0.center/0.0.1792.1120@0.0.1792.1120" timestamp="1620496064083" />
-    <state width="875" height="318" key="GridCell.Tab.0.left" timestamp="1620496064083">
+    <state width="875" height="392" key="GridCell.Tab.0.center/0.0.1792.1120@0.0.1792.1120" timestamp="1620496293581" />
+    <state width="875" height="392" key="GridCell.Tab.0.left" timestamp="1620496293581">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state width="875" height="318" key="GridCell.Tab.0.left/0.0.1792.1120@0.0.1792.1120" timestamp="1620496064083" />
-    <state width="875" height="318" key="GridCell.Tab.0.right" timestamp="1620496064084">
+    <state width="875" height="392" key="GridCell.Tab.0.left/0.0.1792.1120@0.0.1792.1120" timestamp="1620496293581" />
+    <state width="875" height="392" key="GridCell.Tab.0.right" timestamp="1620496293582">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state width="875" height="318" key="GridCell.Tab.0.right/0.0.1792.1120@0.0.1792.1120" timestamp="1620496064084" />
-    <state x="496" y="300" key="Vcs.Push.Dialog.v2" timestamp="1620495076618">
+    <state width="875" height="392" key="GridCell.Tab.0.right/0.0.1792.1120@0.0.1792.1120" timestamp="1620496293582" />
+    <state width="875" height="392" key="GridCell.Tab.1.bottom" timestamp="1620496318483">
+      <screen x="0" y="23" width="1792" height="1044" />
+    </state>
+    <state width="875" height="392" key="GridCell.Tab.1.bottom/0.23.1792.1044@0.23.1792.1044" timestamp="1620496318483" />
+    <state width="875" height="392" key="GridCell.Tab.1.center" timestamp="1620496318482">
+      <screen x="0" y="23" width="1792" height="1044" />
+    </state>
+    <state width="875" height="392" key="GridCell.Tab.1.center/0.23.1792.1044@0.23.1792.1044" timestamp="1620496318482" />
+    <state width="875" height="392" key="GridCell.Tab.1.left" timestamp="1620496318481">
+      <screen x="0" y="23" width="1792" height="1044" />
+    </state>
+    <state width="875" height="392" key="GridCell.Tab.1.left/0.23.1792.1044@0.23.1792.1044" timestamp="1620496318481" />
+    <state width="875" height="392" key="GridCell.Tab.1.right" timestamp="1620496318482">
+      <screen x="0" y="23" width="1792" height="1044" />
+    </state>
+    <state width="875" height="392" key="GridCell.Tab.1.right/0.23.1792.1044@0.23.1792.1044" timestamp="1620496318482" />
+    <state x="496" y="300" key="Vcs.Push.Dialog.v2" timestamp="1620496524451">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state x="496" y="300" key="Vcs.Push.Dialog.v2/0.0.1792.1120@0.0.1792.1120" timestamp="1620495076618" />
+    <state x="496" y="300" key="Vcs.Push.Dialog.v2/0.0.1792.1120@0.0.1792.1120" timestamp="1620496524451" />
     <state x="694" y="481" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1620388441922">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
@@ -530,16 +544,5 @@
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
     <state x="507" y="280" key="git4idea.branch.GitSmartOperationDialog/0.0.1792.1120@0.0.1792.1120" timestamp="1620388423589" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Business/PlaylistManager.java</url>
-          <line>18</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
