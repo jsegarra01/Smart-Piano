@@ -1,5 +1,7 @@
 package Business.Entities;
 import java.awt.event.KeyEvent;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -12,8 +14,21 @@ import java.util.ArrayList;
 public class Translator {
 
     private static ArrayList<Keys> keys = new ArrayList<>();
-
+    /*
     public static ArrayList<Keys> getKeys() {
+        return keys;
+    }*/
+
+
+    /**
+     *
+     * @return
+     */
+    public static ArrayList<Keys> getInstance(){
+        if(keys.isEmpty()){
+            new Translator();
+        }
+
         return keys;
     }
 

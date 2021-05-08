@@ -1,5 +1,7 @@
 package Presentation.Ui_Views;
 
+import Business.Entities.Keys;
+import Business.Entities.Translator;
 import Presentation.Manager.FreePianoUIManager;
 import Presentation.Manager.MainFrame;
 import Presentation.Manager.PianoTilesUISelectorManager;
@@ -7,6 +9,7 @@ import Presentation.Manager.PianoTilesUISelectorManager;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
 import static Presentation.Dictionary_login.PROFILE_BUTTON;
@@ -78,7 +81,65 @@ public abstract class Piano extends JPanel {
         return keyboard;
     }
 
+    public static void labelAppear(boolean modify){
+        for(int i =0;i<24;i++){
+            layeredPane.getComponent(i).setVisible(modify);
+        }
+        ImageIcon icon;
+        if(modify){
+            icon = iconPressed;
+        }else{
+            icon = iconPressedDown;
 
+        }
+        for(int i = 0; i<14;i++){
+            keyboard.get(i).setSelectedIcon(iconResetWhite);
+            keyboard.get(i).setPressedIcon(resizeIcon(icon, Math.round(icon.getIconWidth()*SIZE_MULT_WIDTH), Math.round(icon.getIconHeight()*SIZE_MULT_HEIGHT)));
+        }
+        for(int i = 14; i<keyboard.size();i++){
+            keyboard.get(i).setSelectedIcon(iconResetBlack);
+            keyboard.get(i).setPressedIcon(resizeIcon(icon, Math.round(icon.getIconWidth()*SIZE_MULT_WIDTH), Math.round(icon.getIconHeight()*SIZE_MULT_HEIGHT)));
+        }
+    }
+    public static void setTileColor(Tile tile){
+        boolean found = false;
+        int i  = 0;
+        while(i< keyboard.size() && !found){
+            if(tile.equals(keyboard.get(i))){
+                found = true;
+            }else{
+                i++;
+            }
+        }
+        if(found){
+            tile.setSelectedIcon(iconPressed);
+        }
+    }
+    public static void modifyKey(Keys key, KeyEvent keyEvent){
+        int i = 0;
+        boolean found=false;
+        while(i<24 && !found){
+            if(layeredPane.getComponent(i).getName().equals(key.getNameKey())){
+                found=true;
+            }else{
+                i++;
+            }
+
+        }
+        if (found){
+            layeredPane.getComponent(i).setName(Translator.getKeyFromCode(keyEvent));
+            //layeredPane.getComponent(i).setFont(new Font((layeredPane.getComponent(i).getName()), Font.PLAIN, (int) (layeredPane.getComponent(i).getFont().getSize()*1.7)));
+
+           /* for(int j = 0;j<72;j++){
+                layeredPane.remove(j);
+            }
+            layeredPane = makeKeys();
+*/
+        }
+
+
+
+    }
     /*
     public Piano(final MainFrame mainFrame){
         super();
