@@ -39,7 +39,6 @@ public class FreePianoUIManager implements ActionListener {
     private MidiHelper finalMidiHelper;
     MidiHelper midiHelper = null;
     private KeyListener KL;
-    private boolean iAmPressed = false;
     private Translator translator = new Translator();
     private boolean modifying = false;
     private boolean selected = false;
