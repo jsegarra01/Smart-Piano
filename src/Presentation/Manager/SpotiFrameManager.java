@@ -5,6 +5,7 @@ import Business.Entities.webHandler;
 import Presentation.Dictionary_login;
 import Presentation.Ui_Views.SpotiUI;
 
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,7 +15,9 @@ import static Presentation.Dictionary_login.*;
 import static Presentation.Manager.MainFrame.card;
 import static Presentation.Manager.MainFrame.contenedor;
 import static Presentation.Ui_Views.PianoFrame.*;
+import static Presentation.Ui_Views.SpotiUI.playButton;
 import static Presentation.Ui_Views.SpotiUI.spotiPanel;
+import static Presentation.Ui_Views.Tile.resizeIcon;
 
 
 /**
@@ -28,8 +31,13 @@ import static Presentation.Ui_Views.SpotiUI.spotiPanel;
  */
 public class SpotiFrameManager implements ActionListener {
 
-    String URLRoute = "https://www.mutopiaproject.org/cgibin/make-table.cgi?Instrument=Piano";
-    String path = "Files";
+    private String URLRoute = "https://www.mutopiaproject.org/cgibin/make-table.cgi?Instrument=Piano";
+    private String path = "Files";
+    private boolean play=false;
+    private ImageIcon playIcon = new ImageIcon("Files/drawable/playbuttonWhite.png");
+    private ImageIcon pauseIcon = new ImageIcon("Files/drawable/pauseWhite.png");
+
+
     webHandler myWebHandlingTool = new webHandler(path, URLRoute, "result%s.txt", "?startat=%s&");
 
     /**
@@ -60,6 +68,21 @@ public class SpotiFrameManager implements ActionListener {
             case SEARCH_SONG:
                 this.myWebHandlingTool.doStuff(SpotiUI.getInputedSongName(), "by");
                 cc.show(spotiPanel, PLAYLIST_UI);
+                break;
+            case PLAY_BUTTON:
+                if(!play){
+                    playButton.setIcon(pauseIcon);
+                    playButton.setIcon(resizeIcon((ImageIcon) playButton.getIcon(), (int) Math.round(playButton.getIcon().getIconWidth()*0.09),
+                            (int) Math.round(playButton.getIcon().getIconHeight()*0.09)));
+                    play = true;
+                }
+                else{
+                    playButton.setIcon(playIcon);
+                    playButton.setIcon(resizeIcon((ImageIcon) playButton.getIcon(), (int) Math.round(playButton.getIcon().getIconWidth()*0.09),
+                            (int) Math.round(playButton.getIcon().getIconHeight()*0.09)));
+                    play = false;
+                }
+
                 break;
         }
     }
