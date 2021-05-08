@@ -26,7 +26,7 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
     }
 
     @Override
-    public void deleteAccount(String username) {
-        loginUserManager.deleteUser(username);
+    public void deleteAccount() {
+        loginUserManager.deleteUser();
     }
 }

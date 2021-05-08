@@ -16,7 +16,12 @@ import java.util.regex.Pattern;
  *
  */
 public class UserManager {
-    LoginUserCsvDAO loginUserManager = new LoginUserCsvDAO();
+    private LoginUserCsvDAO loginUserManager = new LoginUserCsvDAO();
+    private static User user;
+
+    public static User getUser() {
+        return user;
+    }
 
     /**
      * Checks if the user exists or not
@@ -25,7 +30,6 @@ public class UserManager {
      * @return Boolean. If it is a 1, the user exists. If it is a 0, it doesn't.
      */
     public boolean checkUser(String username, String password) {
-        User user;
         user = loginUserManager.getByUsername(username);
 
         if (user == null) return false;
@@ -35,10 +39,9 @@ public class UserManager {
 
     /**
      * Deletes the user inserted
-     * @param username Username string of the user we want to delete
+     //* @param username Username string of the user we want to delete
      */
-    public void deleteUser(String username) {
-        User user = loginUserManager.getByUsername(username);
+    public void deleteUser() {
         if (!user.getUserName().equals("guest")) {
             loginUserManager.delete(user);
         }
@@ -53,7 +56,8 @@ public class UserManager {
      */
     public Boolean signUser(String username, String mail, String password) {
         if (isValid(mail)) {
-        return loginUserManager.save(new User(username,mail,password));
+            user = new User(username,mail,password);
+        return loginUserManager.save(user);
     }
         return false;
     }

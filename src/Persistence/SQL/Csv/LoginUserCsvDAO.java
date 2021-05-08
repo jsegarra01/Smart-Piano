@@ -111,9 +111,11 @@ public class LoginUserCsvDAO implements LoginUserDAO{
      */
     @Override
     public boolean delete(User myUser) {
+        System.out.println("hola");
         if(ConnectSQL.getInstance()!=null){
             try {
-                PreparedStatement st = ConnectSQL.getInstance().prepareStatement("delete from UserT where username = '" + myUser.getUserName() + "'");
+                PreparedStatement st = ConnectSQL.getInstance().prepareStatement("delete from UserT where username = '" + myUser.getUserName()+"'");
+                //PreparedStatement st = ConnectSQL.getInstance().prepareStatement("delete from UserT where username = '" + myUser.getUserName()+"'");
                 st.execute();
                 return true;
             } catch (SQLException e) {
