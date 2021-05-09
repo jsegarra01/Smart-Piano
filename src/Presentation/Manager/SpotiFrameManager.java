@@ -1,6 +1,7 @@
 package Presentation.Manager;
 
 //Imports needed from the dictionary, events and mainframe
+import Business.Entities.Playlist;
 import Business.Entities.webHandler;
 import Presentation.Dictionary_login;
 import Presentation.Ui_Views.SpotiUI;
@@ -9,6 +10,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import static Presentation.DictionaryPiano.*;
 import static Presentation.Dictionary_login.*;
@@ -84,5 +86,8 @@ public class SpotiFrameManager implements ActionListener {
 
                 break;
         }
+    }
+    public static void addPlaylists(ArrayList<Playlist> playlists){
+        SpotiUI.addPlaylists(playlists);
     }
 }

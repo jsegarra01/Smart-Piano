@@ -16,6 +16,5 @@ public class PlaylistManager {
 
     public void setPlaylists(String username) {
         playlists = playlistCsvDAO.getPlaylistByUser(username);
-        System.out.println("holi");
     }
 }

@@ -33,7 +33,7 @@ public class SpotiUI extends JPanel {
     private PlaylistUI playlistUI;
     private TopSongsUI topSongsUI;
 
-
+    public static JPanel leftList = new JPanel();
 
     private SpotiFrameManager spotiFrame;
 
@@ -79,7 +79,7 @@ public class SpotiUI extends JPanel {
         add(spotiPanel, BorderLayout.CENTER);
 
         //left buttons
-        JPanel leftList = new JPanel();
+        //JPanel leftList = new JPanel();
         leftList.setLayout(new BoxLayout(leftList, BoxLayout.Y_AXIS));
 
         leftList.add(Box.createRigidArea(new Dimension(210, 50)));
@@ -126,7 +126,6 @@ public class SpotiUI extends JPanel {
        // ArrayList<Playlist> play;
         // play= new BusinessFacadeImp().getPlaylistManager().getPlaylists();
        // System.out.println(play);
-        addPlaylists(leftList);
         leftList.setBackground(Color.getHSBColor(10,0,0.2f));
         add(leftList, BorderLayout.WEST);
 
@@ -169,7 +168,7 @@ public class SpotiUI extends JPanel {
         return toReturnButton;
     }
 
-    private void confButtonLeft(JButton button, int left, int right){
+    private static void confButtonLeft(JButton button, int left, int right){
         button.setAlignmentX(0.5f);
         button.setBorder(new EmptyBorder(TB_SIZE,left,TB_SIZE,right));
         button.setBackground(Color.getHSBColor(0,0,0.8f));
@@ -203,19 +202,17 @@ public class SpotiUI extends JPanel {
         return songNameInputText.getText();
     }
 
-    private void addPlaylists(JPanel list){
-        ArrayList<Playlist> play;
+    public static void addPlaylists(ArrayList<Playlist> playlists){
         Playlist myPlaylist;
         String aux;
-        play = new BusinessFacadeImp().getPlaylistManager().getPlaylists();
-        if(!play.isEmpty()){
-            for(int i=0; i<play.size(); i++){
-                myPlaylist = new BusinessFacadeImp().getPlaylistManager().getPlaylists().get(i);
+        if(!playlists.isEmpty()){
+            for(int i=0; i<playlists.size(); i++){
+                myPlaylist = playlists.get(i);
                 aux="playlist"+i;
                 JButton buttonAux = new JButton(aux);
                 buttonAux.setActionCommand(aux);
                 confButtonLeft(buttonAux, 18, 115);
-                list.add(buttonAux);
+                leftList.add(buttonAux);
                 buttonAux.addActionListener(new SpotiFrameManager());
             }
         }
