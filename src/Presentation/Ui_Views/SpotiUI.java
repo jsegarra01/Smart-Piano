@@ -1,5 +1,8 @@
 package Presentation.Ui_Views;
 
+import Business.BusinessFacadeImp;
+import Business.Entities.Playlist;
+import Business.PlaylistManager;
 import Presentation.Manager.MainFrame;
 import Presentation.Manager.PianoFrameManager;
 import Presentation.Manager.SpotiFrameManager;
@@ -7,6 +10,7 @@ import Presentation.Manager.SpotiFrameManager;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.util.ArrayList;
 
 import static Presentation.DictionaryPiano.*;
 import static Presentation.Ui_Views.Tile.resizeIcon;
@@ -25,9 +29,13 @@ import static Presentation.Ui_Views.Tile.resizeIcon;
  */
 public class SpotiUI extends JPanel {
     private MainFrame mainFrame;
-    StatisticsUI statisticsUI;
-    PlaylistUI playlistUI;
-    TopSongsUI topSongsUI;
+    private StatisticsUI statisticsUI;
+    private PlaylistUI playlistUI;
+    private TopSongsUI topSongsUI;
+
+    public static JPanel leftList = new JPanel();
+
+    private SpotiFrameManager spotiFrame;
 
     public static JPanel spotiPanel = new JPanel(new CardLayout());
     public static JButton homeButton = new JButton(HOME_BUTTON);
@@ -71,12 +79,10 @@ public class SpotiUI extends JPanel {
         add(spotiPanel, BorderLayout.CENTER);
 
         //left buttons
-        JPanel leftList = new JPanel();
+        //JPanel leftList = new JPanel();
         leftList.setLayout(new BoxLayout(leftList, BoxLayout.Y_AXIS));
 
         leftList.add(Box.createRigidArea(new Dimension(210, 50)));
-
-
 
 
         songNameInputText.setAlignmentX(0.5f);
@@ -94,17 +100,9 @@ public class SpotiUI extends JPanel {
 
         showStadistics.setActionCommand(CREATE_STADISTICS);
         confButtonLeft(showStadistics, 0, 115);
-        /*showStadistics.setAlignmentX(0.5f);
-        showStadistics.setBorder(new EmptyBorder(10,0,10,115));
-        showStadistics.setBackground(Color.getHSBColor(0,0,0.8f));
-        showStadistics.setForeground(Color.white);*/
 
         topSongs.setActionCommand(SHOW_TOP_SONGS);
         confButtonLeft(topSongs, 18, 115);
-        /*topSongs.setAlignmentX(0.5f);
-        topSongs.setBorder(new EmptyBorder(10,18,10,115));
-        topSongs.setBackground(Color.getHSBColor(0,0,0.8f));
-        topSongs.setForeground(Color.white);*/
 
         playlistLabel.setAlignmentX(0.5f);
         playlistLabel.setBorder(new EmptyBorder(10,0,10,140));
@@ -113,10 +111,7 @@ public class SpotiUI extends JPanel {
 
         createPlaylist.setActionCommand(CREATE_PLAYLIST);
         confButtonLeft(createPlaylist, 12, 90);
-        /*createPlaylist.setAlignmentX(0.5f);
-        createPlaylist.setBorder(new EmptyBorder(10,12,10,90));
-        createPlaylist.setBackground(Color.getHSBColor(0,0,0.8f));
-        createPlaylist.setForeground(Color.white);*/
+
         JSeparator separator = new JSeparator();
 
         registerController(new SpotiFrameManager());
@@ -128,6 +123,9 @@ public class SpotiUI extends JPanel {
         leftList.add(playlistLabel);
         leftList.add(createPlaylist);
         leftList.add(separator);
+       // ArrayList<Playlist> play;
+        // play= new BusinessFacadeImp().getPlaylistManager().getPlaylists();
+       // System.out.println(play);
         leftList.setBackground(Color.getHSBColor(10,0,0.2f));
         add(leftList, BorderLayout.WEST);
 
@@ -170,7 +168,7 @@ public class SpotiUI extends JPanel {
         return toReturnButton;
     }
 
-    private void confButtonLeft(JButton button, int left, int right){
+    private static void confButtonLeft(JButton button, int left, int right){
         button.setAlignmentX(0.5f);
         button.setBorder(new EmptyBorder(TB_SIZE,left,TB_SIZE,right));
         button.setBackground(Color.getHSBColor(0,0,0.8f));
@@ -199,7 +197,25 @@ public class SpotiUI extends JPanel {
         searchButton.addActionListener(listener);
     }
 
+
     public static String getInputedSongName() {
         return songNameInputText.getText();
     }
+
+    public static void addPlaylists(ArrayList<Playlist> playlists){
+        Playlist myPlaylist;
+        String aux;
+        if(!playlists.isEmpty()){
+            for(int i=0; i<playlists.size(); i++){
+                myPlaylist = playlists.get(i);
+                aux="playlist"+i;
+                JButton buttonAux = new JButton(aux);
+                buttonAux.setActionCommand(aux);
+                confButtonLeft(buttonAux, 18, 115);
+                leftList.add(buttonAux);
+                buttonAux.addActionListener(new SpotiFrameManager());
+            }
+        }
+    }
+
 }
