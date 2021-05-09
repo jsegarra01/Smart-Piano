@@ -10,6 +10,7 @@ public class PlaylistManager {
     private ArrayList<Playlist> playlists;
     private PlaylistCsvDAO playlistCsvDAO = new PlaylistCsvDAO();
 
+
     public ArrayList<Playlist> getPlaylists() {
         return playlists;
     }

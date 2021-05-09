@@ -8,6 +8,7 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 import static Presentation.Dictionary_login.PROFILE_BUTTON;
 import static Presentation.Ui_Views.Tile.*;
@@ -176,4 +177,79 @@ protected void initialize() {
     public static void setTypeName(String name) {
         soundType.setText(name);
     }*/
+
+
+    protected JLayeredPane makeTiles(JLayeredPane keyBoard, int heightBlack, int heightBounds, int yLabel, ArrayList<Tile> keyboard, int whiteLabel, int whiteY){
+        int widthBlack = 35;
+        int yBlack = 0;
+        int separationBlack = 455;
+        Tile tile;
+        JLabel label;
+        //keyboard = new ArrayList<>();
+        for (int i = 0; i < numWhiteKeys; i++) {
+            tile = new Tile(whiteNotes[i], Color.WHITE, whiteTileLoc);
+            tile.setActionCommand(BTN_TILE);
+            tile.setBounds(55 + 65*i,0,65,heightBounds);
+            tile.setPressedIcon(resizeIcon(iconPressedDown, Math.round(iconPressedDown.getIconWidth()*SIZE_MULT_WIDTH),
+                    Math.round(iconPressedDown.getIconHeight()*SIZE_MULT_HEIGHT)));
+            keyboard.add(tile);
+            keyBoard.add(keyboard.get(i), Integer.valueOf(1));
+            keyBoard.add(Box.createRigidArea(new Dimension(2, 0)));
+            label = new JLabel(whiteLabels[i]);
+            label.setBounds(65*(i+1)+15,whiteY,widthBlack,whiteLabel);
+            keyBoard.add(label,Integer.valueOf(3));
+        }
+
+        LinkedList<Tile> tiles = new LinkedList<>();
+        for (int i = 0; i< numBlackKeys; i++){
+            tiles.add(new Tile(blackNotes[i], Color.BLACK, blackTileLoc));
+            tiles.getLast().setActionCommand(BTN_TILE);
+            tiles.getLast().setPressedIcon(resizeIcon(iconPressedDown, Math.round(iconPressedDown.getIconWidth()*SIZE_MULT_WIDTH),
+                    Math.round(iconPressedDown.getIconHeight()*SIZE_MULT_HEIGHT)));
+        }
+
+        int add = 8;
+        for (int i = 0; i < 2; i++) {
+            tiles.get(i*5).setBounds(102+(separationBlack*i),yBlack,widthBlack,heightBlack);
+            keyboard.add(tiles.get(i*5));
+            keyBoard.add(tiles.get(i*5), Integer.valueOf(2));
+            label = new JLabel(blackLabels[i*5]);
+            label.setBounds(102+(separationBlack*i)+add,yLabel,widthBlack,heightBlack);
+            label.setForeground(Color.WHITE);
+            keyBoard.add(label,Integer.valueOf(3));
+
+            tiles.get(1+i*5).setBounds(167+(separationBlack*i),yBlack,widthBlack,heightBlack);
+            keyboard.add(tiles.get(1+i*5));
+            keyBoard.add(tiles.get(1+i*5), Integer.valueOf(2));
+            label = new JLabel(blackLabels[1+i*5]);
+            label.setBounds(167+(separationBlack*i)+add,yLabel,widthBlack,heightBlack);
+            label.setForeground(Color.WHITE);
+            keyBoard.add(label,Integer.valueOf(3));
+
+            tiles.get(2+i*5).setBounds(297+(separationBlack*i),yBlack,widthBlack,heightBlack);
+            keyboard.add(tiles.get(2+i*5));
+            keyBoard.add(tiles.get(2+i*5), Integer.valueOf(2));
+            label = new JLabel(blackLabels[2+i*5]);
+            label.setBounds(297+(separationBlack*i)+add,yLabel,widthBlack,heightBlack);
+            label.setForeground(Color.WHITE);
+            keyBoard.add(label,Integer.valueOf(3));
+
+            tiles.get(3+i*5).setBounds(362+(separationBlack*i),yBlack,widthBlack,heightBlack);
+            keyboard.add(tiles.get(3+i*5));
+            keyBoard.add(tiles.get(3+i*5), Integer.valueOf(2));
+            label = new JLabel(blackLabels[3+i*5]);
+            label.setBounds(359+(separationBlack*i)+add,yLabel,widthBlack,heightBlack);
+            label.setForeground(Color.WHITE);
+            keyBoard.add(label,Integer.valueOf(3));
+
+            tiles.get(4+i*5).setBounds(428+(separationBlack*i),yBlack,widthBlack,heightBlack);
+            keyboard.add(tiles.get(4+i*5));
+            keyBoard.add(tiles.get(4+i*5), Integer.valueOf(2));
+            label = new JLabel(blackLabels[4+i*5]);
+            label.setBounds(428+(separationBlack*i)+add,yLabel,widthBlack,heightBlack);
+            label.setForeground(Color.WHITE);
+            keyBoard.add(label,Integer.valueOf(3));
+        }
+        return keyBoard;
+    }
 }

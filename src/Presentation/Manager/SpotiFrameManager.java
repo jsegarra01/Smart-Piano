@@ -2,15 +2,21 @@ package Presentation.Manager;
 
 //Imports needed from the dictionary, events and mainframe
 import Business.Entities.Playlist;
+import Business.BusinessFacadeImp;
+import Business.Entities.MidiHelper;
+import Business.Entities.Translator;
 import Business.Entities.webHandler;
+import Business.PlaylistManager;
 import Presentation.Dictionary_login;
 import Presentation.Ui_Views.SpotiUI;
 
+import javax.sound.midi.MidiUnavailableException;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.io.File;
 
 import static Presentation.DictionaryPiano.*;
 import static Presentation.Dictionary_login.*;
@@ -38,6 +44,16 @@ public class SpotiFrameManager implements ActionListener {
     private boolean play=false;
     private ImageIcon playIcon = new ImageIcon("Files/drawable/playbuttonWhite.png");
     private ImageIcon pauseIcon = new ImageIcon("Files/drawable/pauseWhite.png");
+
+    private MidiHelper finalMidiHelper;
+
+    {
+        try {
+            finalMidiHelper = new MidiHelper();
+        } catch (MidiUnavailableException e) {
+            e.printStackTrace();
+        }
+    }
 
     webHandler myWebHandlingTool = new webHandler(path, URLRoute, "result%s.txt", "?startat=%s&");
 
@@ -75,6 +91,7 @@ public class SpotiFrameManager implements ActionListener {
                     playButton.setIcon(pauseIcon);
                     playButton.setIcon(resizeIcon((ImageIcon) playButton.getIcon(), (int) Math.round(playButton.getIcon().getIconWidth()*0.09),
                             (int) Math.round(playButton.getIcon().getIconHeight()*0.09)));
+                    finalMidiHelper.playSong(new File(new BusinessFacadeImp().getPlaylistManager().getPlaylists().get(0).getSongs().get(0).getSongFile()));
                     play = true;
                 }
                 else{
@@ -82,6 +99,7 @@ public class SpotiFrameManager implements ActionListener {
                     playButton.setIcon(resizeIcon((ImageIcon) playButton.getIcon(), (int) Math.round(playButton.getIcon().getIconWidth()*0.09),
                             (int) Math.round(playButton.getIcon().getIconHeight()*0.09)));
                     play = false;
+                    finalMidiHelper.stopSong();
                 }
 
                 break;

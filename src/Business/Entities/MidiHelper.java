@@ -2,6 +2,8 @@ package Business.Entities;
 import javax.sound.midi.*;
 import javax.sound.midi.MidiSystem;
 import javax.sound.midi.MidiUnavailableException;
+import java.io.File;
+import java.io.IOException;
 
 /**
  * Piano:
@@ -174,6 +176,8 @@ public class MidiHelper {
     private MidiChannel[] midiChannels;
     private Instrument[] instruments;
     private int whatInstrumentIsPlayed;
+    private Sequencer sequencer = MidiSystem.getSequencer();
+    private Sequence sequence;
     public MidiHelper() throws MidiUnavailableException {
         synth = MidiSystem.getSynthesizer();
         long startTime = System.nanoTime();
@@ -181,6 +185,7 @@ public class MidiHelper {
         long estimatedTime = System.nanoTime() - startTime;
         midiChannels = synth.getChannels();
         instruments = synth.getDefaultSoundbank().getInstruments();
+        sequencer.open();
     }
     public void playSomething(int noteValueToPlay, int whatInstrumentToPlay){
         this.whatInstrumentIsPlayed = whatInstrumentToPlay;
@@ -192,8 +197,22 @@ public class MidiHelper {
         this.whatInstrumentIsPlayed = whatInstrumentToPlay;
         midiChannels[0].noteOff(noteValueToPlay,15);
     }
+    public void playSong(File file){
+        try {
+             // Open device
+            // Create sequence, the File must contain MIDI file data.
+            sequence = MidiSystem.getSequence(file);
+            sequencer.setSequence(sequence); // load it into sequencer
+            sequencer.start();  // start the playback
+        } catch (InvalidMidiDataException | IOException ex) {
+            ex.printStackTrace();
+        }
+    }
 
     public String getInstrument(){
         return this.instruments[whatInstrumentIsPlayed].getName();
+    }
+    public void stopSong(){
+        sequencer.stop();
     }
 }

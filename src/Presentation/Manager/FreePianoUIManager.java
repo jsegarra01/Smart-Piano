@@ -12,10 +12,7 @@ import Business.Entities.Translator;
 import javax.sound.midi.MidiUnavailableException;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+import java.awt.event.*;
 import java.util.Objects;
 
 import static Presentation.Dictionary_login.*;
@@ -32,14 +29,13 @@ import static Presentation.Manager.MainFrame.contenedor;
  * @version 1.0 21 Apr 2021
  *
  */
-public class FreePianoUIManager implements ActionListener {
+public class FreePianoUIManager implements ActionListener, MouseListener {
 
     public static String SOUND_TYPE = "SYNTH";
     public static int SOUND_SYNTHER = 0 ;
     private MidiHelper finalMidiHelper;
     MidiHelper midiHelper = null;
     private KeyListener KL;
-    private boolean iAmPressed = false;
     private Translator translator = new Translator();
     private boolean modifying = false;
     private boolean selected = false;
@@ -135,28 +131,6 @@ public class FreePianoUIManager implements ActionListener {
                     SOUND_SYNTHER = 127;
                 }
                 break;
-            case FreePianoUI.BTN_TILE:
-                Tile t = null;
-                Object obj = e.getSource();
-                if (obj instanceof Tile) {
-                    t = (Tile) obj;
-                }
-                /*try {
-                    t.setIcon();
-                } catch (InterruptedException interruptedException) {
-                    interruptedException.printStackTrace();
-                }*/
-                if(modifying){
-                   if(!selected){
-                       FreePianoUI.setTileColor(t);
-                       tileSelected = Objects.requireNonNull(t).getName();
-                       selected = true;
-                   }
-
-                }else{
-                    finalMidiHelper.playSomething(Translator.getNumberNoteFromName(Objects.requireNonNull(t).getName()),SOUND_SYNTHER);
-                }
-                break;
             case Dictionary_login.PROFILE_BUTTON:       //In the case that the Profile button is pressed
                 card.show(contenedor, PROFILE_UI);
                 break;
@@ -196,5 +170,44 @@ public class FreePianoUIManager implements ActionListener {
                 FreePianoUI.getKeyboard().get(i).backToBlack();
             }
         }
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+        Tile t = null;
+        Object obj = e.getSource();
+        if (obj instanceof Tile) {
+            t = (Tile) obj;
+        }
+        if(modifying){
+            if(!selected){
+                FreePianoUI.setTileColor(t);
+                tileSelected = Objects.requireNonNull(t).getName();
+                selected = true;
+            }
+
+        }else{
+            finalMidiHelper.playSomething(Translator.getNumberNoteFromName(e.getComponent().getName()), SOUND_SYNTHER);
+        }
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+        finalMidiHelper.stopPlaying(Translator.getNumberNoteFromName(e.getComponent().getName()),SOUND_SYNTHER);
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+
     }
 }
