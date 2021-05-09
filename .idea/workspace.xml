@@ -25,7 +25,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="now the playlists are called in a different class (SpotiFrameManager) because of some error" />
+    <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="commit to merge">
+      <change beforePath="$PROJECT_DIR$/Files/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/Files/config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presentation/Ui_Views/LoginUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Ui_Views/LoginUI.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -448,7 +451,14 @@
       <option name="project" value="LOCAL" />
       <updated>1620557234502</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="commit to merge">
+      <created>1620558298447</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1620558298447</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -477,7 +487,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Changes in the piano, fancier" />
     <MESSAGE value="Piano does not keep playing anymore whenever the key is pressed. &#10;The tile changes its color, simulating that has been pressed with the keyboard" />
     <MESSAGE value="Piano works perfectly fine. Checked that everything worked as it should." />
     <MESSAGE value="I am not allowed to do finish feature :'(" />
@@ -504,28 +513,26 @@
     <MESSAGE value="commit to make feature public" />
     <MESSAGE value="adding playlist in SpotiUI" />
     <MESSAGE value="now the playlists are called in a different class (SpotiFrameManager) because of some error" />
-    <option name="LAST_COMMIT_MESSAGE" value="now the playlists are called in a different class (SpotiFrameManager) because of some error" />
+    <MESSAGE value="commit to merge" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit to merge" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="875" height="318" key="GridCell.Tab.0.bottom" timestamp="1620556906252">
+    <state width="875" height="318" key="GridCell.Tab.0.bottom" timestamp="1620558152951">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state width="875" height="318" key="GridCell.Tab.0.bottom/0.0.1792.1120@0.0.1792.1120" timestamp="1620556906252" />
-    <state width="875" height="318" key="GridCell.Tab.0.center" timestamp="1620556906251">
+    <state width="875" height="318" key="GridCell.Tab.0.bottom/0.0.1792.1120@0.0.1792.1120" timestamp="1620558152951" />
+    <state width="875" height="318" key="GridCell.Tab.0.center" timestamp="1620558152951">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state width="875" height="318" key="GridCell.Tab.0.center/0.0.1792.1120@0.0.1792.1120" timestamp="1620556906251" />
-    <state width="875" height="318" key="GridCell.Tab.0.left" timestamp="1620556906251">
+    <state width="875" height="318" key="GridCell.Tab.0.center/0.0.1792.1120@0.0.1792.1120" timestamp="1620558152951" />
+    <state width="875" height="318" key="GridCell.Tab.0.left" timestamp="1620558152950">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state width="875" height="318" key="GridCell.Tab.0.left/0.0.1792.1120@0.0.1792.1120" timestamp="1620556906251" />
-    <state width="875" height="318" key="GridCell.Tab.0.right" timestamp="1620556906252">
+    <state width="875" height="318" key="GridCell.Tab.0.left/0.0.1792.1120@0.0.1792.1120" timestamp="1620558152950" />
+    <state width="875" height="318" key="GridCell.Tab.0.right" timestamp="1620558152951">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state width="875" height="318" key="GridCell.Tab.0.bottom/0.0.1792.1120@0.0.1792.1120" timestamp="1620496064085" />
-    <state width="875" height="318" key="GridCell.Tab.0.center" timestamp="1620496064083">
-      <screen x="0" y="0" width="1792" height="1120" />
-    </state>
+    <state width="875" height="318" key="GridCell.Tab.0.right/0.0.1792.1120@0.0.1792.1120" timestamp="1620558152951" />
     <state width="875" height="392" key="GridCell.Tab.1.bottom/0.0.1792.1120@0.0.1792.1120" timestamp="1620553133729" />
     <state width="875" height="392" key="GridCell.Tab.1.bottom/0.23.1792.1043@0.23.1792.1043" timestamp="1620553012946" />
     <state width="875" height="392" key="GridCell.Tab.1.center" timestamp="1620553133728">
@@ -543,10 +550,10 @@
     </state>
     <state width="875" height="392" key="GridCell.Tab.1.right/0.0.1792.1120@0.0.1792.1120" timestamp="1620553133729" />
     <state width="875" height="392" key="GridCell.Tab.1.right/0.23.1792.1043@0.23.1792.1043" timestamp="1620553012946" />
-    <state x="496" y="300" key="Vcs.Push.Dialog.v2" timestamp="1620557238170">
+    <state x="496" y="300" key="Vcs.Push.Dialog.v2" timestamp="1620558315081">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state x="496" y="300" key="Vcs.Push.Dialog.v2/0.0.1792.1120@0.0.1792.1120" timestamp="1620557238170" />
+    <state x="496" y="300" key="Vcs.Push.Dialog.v2/0.0.1792.1120@0.0.1792.1120" timestamp="1620558315081" />
     <state x="694" y="481" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1620388441922">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
