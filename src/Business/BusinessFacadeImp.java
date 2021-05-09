@@ -10,9 +10,9 @@ package Business;
  *
  */
 public class BusinessFacadeImp implements Business.BusinessFacade {
-    private UserManager loginUserManager = new UserManager();
-    private SongManager songpanager = new SongManager();
-    private PlaylistManager playlistManager = new PlaylistManager();
+    private static UserManager loginUserManager = new UserManager();
+    private static SongManager songpanager = new SongManager();
+    private static PlaylistManager playlistManager = new PlaylistManager();
 
     @Override
     public Boolean logIn(String username, String password) {

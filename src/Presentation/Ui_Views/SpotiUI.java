@@ -126,7 +126,7 @@ public class SpotiUI extends JPanel {
        // ArrayList<Playlist> play;
         // play= new BusinessFacadeImp().getPlaylistManager().getPlaylists();
        // System.out.println(play);
-        //addPlaylists(leftList);
+        addPlaylists(leftList);
         leftList.setBackground(Color.getHSBColor(10,0,0.2f));
         add(leftList, BorderLayout.WEST);
 
@@ -202,7 +202,7 @@ public class SpotiUI extends JPanel {
     public static String getInputedSongName() {
         return songNameInputText.getText();
     }
-/*
+
     private void addPlaylists(JPanel list){
         ArrayList<Playlist> play;
         Playlist myPlaylist;
@@ -219,6 +219,6 @@ public class SpotiUI extends JPanel {
                 buttonAux.addActionListener(new SpotiFrameManager());
             }
         }
-    }*/
+    }
 
 }

@@ -8,6 +8,7 @@ import Presentation.Ui_Views.LoginUI;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import static Presentation.Dictionary_login.*;
 import static Presentation.Manager.MainFrame.card;
@@ -45,7 +46,6 @@ public class LoginUIManager implements ActionListener {
                 if(new BusinessFacadeImp().logIn(LoginUI.getUsernameLogin(), LoginUI.getPasswordLogin())){
                     card.show(contenedor, PIANO_FRAME);
                     new BusinessFacadeImp().getPlaylistManager().setPlaylists(UserManager.getUser().getUserName());
-
                 }
                 else{JOptionPane.showMessageDialog(contenedor, "Incorrect username or password", "LogIn error" , JOptionPane.ERROR_MESSAGE);}
                 break;
