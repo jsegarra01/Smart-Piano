@@ -202,6 +202,7 @@ public class MidiHelper {
              // Open device
             // Create sequence, the File must contain MIDI file data.
             sequence = MidiSystem.getSequence(file);
+            System.out.println(sequence);
             sequencer.setSequence(sequence); // load it into sequencer
             sequencer.start();  // start the playback
         } catch (InvalidMidiDataException | IOException ex) {

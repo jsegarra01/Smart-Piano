@@ -119,7 +119,7 @@ public class FreePianoUI extends Piano {
 
 
         JLabel label;
-        keyBoard = makeTiles(keyBoard, 150, heightBlack, 60, keyboard, 50, 275);
+        keyBoard = makeTiles(keyBoard, heightBlack, 330, 60, keyboard, 50, 275);
 
         for (int i = 0; i < numWhiteKeys; i++) {
             label = new JLabel(Translator.getInstance().get(i).getNameKey());
