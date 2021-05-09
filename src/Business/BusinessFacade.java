@@ -44,4 +44,7 @@ public interface BusinessFacade {
      * @param recordedNotes array with the notes
      */
     void recordedNotesSend(ArrayList<RecordingNotes> recordedNotes, String songName, boolean isPrivate, float endtime);
+
+
+    PlaylistManager getPlaylistManager();
 }

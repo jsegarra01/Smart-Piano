@@ -34,7 +34,6 @@ public class SongToJson {
     }
 
     public static void writeMidi(String title, ArrayList<RecordingNotes> recordingNotes, float endtime) {
-        System.out.println("midifile begin ");
         try
         {
 //****  Create a new MIDI sequence with 24 ticks per beat  ****
@@ -110,6 +109,5 @@ public class SongToJson {
         {
             System.out.println("Exception caught " + e.toString());
         } //catch
-        System.out.println("midifile end ");
     }
 }

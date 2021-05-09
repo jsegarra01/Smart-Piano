@@ -16,7 +16,6 @@ import static Presentation.Ui_Views.Tile.*;
 public abstract class Piano extends JPanel {
     protected MainFrame mainFrame;
 
-    public static final String BTN_RETURN = "BTN_RETURN";
     public static final String BTN_RECORD = " ";
     public static final String BTN_TILE = "SOUND";
     protected static final String JLAB_SYNTH_TYPE = "Classic Piano";
@@ -24,7 +23,6 @@ public abstract class Piano extends JPanel {
     protected static Label soundType;
 
 
-    protected JButton returnB = new JButton(BTN_RETURN);
     protected ImageIcon iconRec = new ImageIcon("Files/drawable/recIcon.png");
     protected JButton recordB = new JButton(BTN_RECORD, iconRec);
     protected JButton profile = new JButton(PROFILE_BUTTON);
@@ -70,106 +68,6 @@ public abstract class Piano extends JPanel {
     public static ArrayList<Tile> getKeyboard() {
         return keyboard;
     }
-
-
-    /*
-    public Piano(final MainFrame mainFrame){
-        super();
-        this.mainFrame = mainFrame;
-        this.keyboard = new ArrayList<>();
-        initialize();
-
-    }
-/**
- * The initialize function that creates the card layout for the FreePianoUI
- *//*
-protected void initialize() {
-        this.add(configurePanel());
-        this.setBackground(Color.getHSBColor(0,0,0.2f));
-    }
-
-    private JPanel configurePanel() {
-        JPanel panel = new JPanel(new BorderLayout());
-        panel.setBackground(Color.getHSBColor(0,0,0.2f));
-
-        //All information will go inside here
-        panel.add(Box.createRigidArea(new Dimension(10, 200)), BorderLayout.CENTER);
-
-        SIZE_MULT_HEIGHT = 1.31f;
-        panel.add(initWhiteKeys(14), BorderLayout.SOUTH);
-        panel.add(initMenu(), BorderLayout.PAGE_START);
-
-        return panel;
-    }
-
-    private JPanel initWhiteKeys(int a) {
-        GridBagConstraints c = new GridBagConstraints();
-        JPanel Tiles = new JPanel();
-        Tile tile;
-        Tiles.setLayout(new GridLayout());
-        c.gridy = 0;
-        for (int i = 0; i < a; i++) {
-            c.gridx = i;
-            tile = new Tile(whiteNotes[i], colors[i % 7], whiteTileLoc);
-            ImageIcon imageIcon = new ImageIcon("Files/drawable/white-key-down.png");
-            tile.setPressedIcon(resizeIcon(imageIcon, Math.round(imageIcon.getIconWidth()*SIZE_MULT_WIDTH), Math.round(imageIcon.getIconHeight()*SIZE_MULT_HEIGHT)));
-            tile.setActionCommand(BTN_TILE);
-            this.keyboard.add(tile);
-            Tiles.add(this.keyboard.get(i), c);
-        }
-
-        Tiles.setBorder(new EmptyBorder(4,4,4,4));
-        Tiles.setBackground(Color.black);
-
-        return Tiles;
-    }
-
-    private JPanel initMenu() {
-        JPanel layout = new JPanel(new BorderLayout());
-        JPanel menu = new JPanel();
-        menu.setBackground(Color.getHSBColor(0,0,80.3f));
-
-        soundType = new Label(JLAB_SYNTH_TYPE);
-        soundType.setBackground(Color.WHITE);
-
-        profile.setBackground(Color.black);
-        profile.setIcon(new ImageIcon("Files/drawable/profile-picture.png"));
-        profile.setIcon(resizeIcon((ImageIcon) profile.getIcon(), (int) Math.round(profile.getIcon().getIconWidth()*0.15), (int) Math.round(profile.getIcon().getIconHeight()*0.15)));
-
-        menu.add(profile);
-        menu.add(returnB);
-        menu.add(recordB);
-        menu.add(pianoSoundB);
-        menu.add(synthSoundB);
-        menu.add(nextSynther);
-        menu.add(prevSynther);
-        menu.add(soundType);
-
-        registerController(new FreePianoUIManager());
-        layout.add(menu, BorderLayout.WEST);
-        layout.setBackground(Color.getHSBColor(0,0,0.2f));
-        return layout;
-    }
-
-    private void registerController(FreePianoUIManager listener) {
-        profile.addActionListener(listener);
-        returnB.addActionListener(listener);
-        recordB.addActionListener(listener);
-        pianoSoundB.addActionListener(listener);
-        synthSoundB.addActionListener(listener);
-        nextSynther.addActionListener(listener);
-        prevSynther.addActionListener(listener);
-        this.addKeyListener(listener.getKeyListener());
-        for (Tile tile : keyboard) {
-            tile.addActionListener(listener);
-            tile.addKeyListener(listener.getKeyListener());
-        }
-    }
-
-    public static void setTypeName(String name) {
-        soundType.setText(name);
-    }*/
-
 
     protected JLayeredPane makeTiles(JLayeredPane keyBoard, int heightBlack, int heightBounds, int yLabel, ArrayList<Tile> keyboard, int whiteLabel, int whiteY){
         int widthBlack = 35;

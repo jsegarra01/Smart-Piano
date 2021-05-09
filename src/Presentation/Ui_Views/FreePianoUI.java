@@ -87,7 +87,6 @@ public class FreePianoUI extends Piano {
 
     private void registerController(FreePianoUIManager listener) {
         profile.addActionListener(listener);
-        returnB.addActionListener(listener);
         recordB.addActionListener(listener);
         modifyKeys.addActionListener(listener);
 
