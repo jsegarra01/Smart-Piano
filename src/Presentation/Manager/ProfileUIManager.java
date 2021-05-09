@@ -42,8 +42,9 @@ public class ProfileUIManager implements ActionListener {
                 card.show(contenedor, PRE_MENU_UI);
                 break;
             case DELETE_BUTTON:                                //In the case that the Delete button is pressed
-                new BusinessFacadeImp().deleteAccount();
-                card.show(contenedor, PRE_MENU_UI);
+                if (new BusinessFacadeImp().deleteAccount()) {
+                    card.show(contenedor, PRE_MENU_UI);
+                }
                 break;
             case BACK_BUTTON:                                  //In the case that the Back button is pressed
                 card.show(contenedor, PIANO_FRAME);

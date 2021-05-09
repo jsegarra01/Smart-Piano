@@ -32,18 +32,28 @@ public class UserManager {
     public boolean checkUser(String username, String password) {
         user = loginUserManager.getByUsername(username);
 
-        if (user == null) return false;
+        if (user == null) {
+            if (username.equals("guest")) {
+                signUser(username, "WeLoveChallenge@lasal.com", password);
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
 
         return user.getPassword().equals(password);
     }
 
     /**
      * Deletes the user inserted
-     //* @param username Username string of the user we want to delete
-     */
-    public void deleteUser() {
+      */
+    public boolean deleteUser() {
         if (!user.getUserName().equals("guest")) {
-            loginUserManager.delete(user);
+            return loginUserManager.delete(user);
+        }
+        else {
+            return false;
         }
     }
 
@@ -54,10 +64,10 @@ public class UserManager {
      * @param password Password string which the user has inputted while signing up
      * @return Boolean. If it can create a new user, returns 1. Else, returns 0
      */
-    public Boolean signUser(String username, String mail, String password) {
+    public boolean signUser(String username, String mail, String password) {
         if (isValid(mail)) {
             user = new User(username,mail,password);
-        return loginUserManager.save(user);
+            return loginUserManager.save(user);
     }
         return false;
     }

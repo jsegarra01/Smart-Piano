@@ -58,7 +58,10 @@ public class FreePianoUI extends Piano {
     private JPanel initMenu() {
         JPanel layout = new JPanel(new BorderLayout());
         JPanel menu = new JPanel();
-        menu.setBackground(Color.getHSBColor(0,0,80.3f));
+        menu.setLayout(new BoxLayout(menu, BoxLayout.X_AXIS));
+
+        menu.add(Box.createRigidArea(new Dimension(50,10)));
+
 
         soundType = new Label(JLAB_SYNTH_TYPE);
         soundType.setBackground(Color.WHITE);
@@ -71,14 +74,10 @@ public class FreePianoUI extends Piano {
 
         //recordB.setName(BTN_RECORD);
         menu.add(profile);
-        menu.add(returnB);
+        menu.add(Box.createRigidArea(new Dimension(350,10)));
         menu.add(recordB);
-        menu.add(pianoSoundB);
-        menu.add(synthSoundB);
-        menu.add(nextSynther);
-        menu.add(prevSynther);
-        menu.add(soundType);
         menu.add(modifyKeys);
+        menu.setBackground(Color.getHSBColor(0,0,0.2f));
 
         registerController(new FreePianoUIManager());
         layout.add(menu, BorderLayout.NORTH);
@@ -92,10 +91,6 @@ public class FreePianoUI extends Piano {
         recordB.addActionListener(listener);
         modifyKeys.addActionListener(listener);
 
-        pianoSoundB.addActionListener(listener);
-        synthSoundB.addActionListener(listener);
-        nextSynther.addActionListener(listener);
-        prevSynther.addActionListener(listener);
         this.addKeyListener(listener.getKeyListener());
         for (Tile tile : keyboard) {
             tile.addMouseListener(listener);
@@ -107,7 +102,7 @@ public class FreePianoUI extends Piano {
         soundType.setText(name);
     }
 
-    public  JLayeredPane makeKeys(){
+    public JLayeredPane makeKeys(){
         int heightBlack = 150;
         int widthBlack = 35;
         int separationBlack = 455;

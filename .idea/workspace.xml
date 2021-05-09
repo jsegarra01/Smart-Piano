@@ -19,12 +19,41 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="commit to merge">
-      <change beforePath="$PROJECT_DIR$/Files/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/Files/config.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presentation/Ui_Views/LoginUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Ui_Views/LoginUI.java" afterDir="false" />
-    </list>
-    <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="Final commit for finish feature">
-      <change beforePath="$PROJECT_DIR$/Files/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/Files/config.json" afterDir="false" />
+    <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="Final commit for finish feature v3">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/gson_2_8_22.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/Entities/RecordingNotes.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/Entities/SongRecorded.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/Entities/SongToJson.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Business/Entities/RecordingNotes.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Business/Entities/SongRecorded.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Business/Entities/SongToJson.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/gson_2_8_21.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/gson_2_8_21.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/BusinessFacade.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/BusinessFacade.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/BusinessFacadeImp.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/BusinessFacadeImp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/UserManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/UserManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/DictionaryPiano.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/DictionaryPiano.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/FreePianoUIManager$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/FreePianoUIManager$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/FreePianoUIManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/FreePianoUIManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/LoginUIManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/LoginUIManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/PianoTilesUISelectorManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/PianoTilesUISelectorManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/PreMenuUIManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/PreMenuUIManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/ProfileUIManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/ProfileUIManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/SignUpUiManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/SignUpUiManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/FreePianoUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/FreePianoUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/Piano.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/Piano.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/PianoTilesUISelector.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/PianoTilesUISelector.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Business/BusinessFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/BusinessFacade.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Business/BusinessFacadeImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/BusinessFacadeImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Business/UserManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/UserManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presentation/DictionaryPiano.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/DictionaryPiano.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presentation/Manager/FreePianoUIManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Manager/FreePianoUIManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presentation/Manager/PianoTilesUISelectorManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Manager/PianoTilesUISelectorManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presentation/Manager/ProfileUIManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Manager/ProfileUIManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presentation/Manager/SignUpUiManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Manager/SignUpUiManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presentation/Ui_Views/FreePianoUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Ui_Views/FreePianoUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presentation/Ui_Views/Piano.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Ui_Views/Piano.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presentation/Ui_Views/PianoTilesUISelector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Ui_Views/PianoTilesUISelector.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,6 +72,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
+        <entry key="$PROJECT_DIR$" value="develop" />
         <entry key="$PROJECT_DIR$" value="feature/midiReader" />
       </map>
     </option>
@@ -56,6 +86,11 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$USER_HOME$/AppData/Local/Temp/tmp__BusinessFacade.class" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/AppData/Local/Temp/tmp_2_BusinessFacade.class" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/AppData/Local/Temp/tmp_1_BusinessFacade.class" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="1rJFk1kxk8Xv4CyvEYmgAeEg0Bi" />
   <component name="ProjectLevelVcsManager">
@@ -71,10 +106,17 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Libraries/mysql-connector-java-8.0.23.jar" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/Files/drawable" />
     <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.1345895" />
+  </component>
+  <component name="ReaderModeSettings">
+    <option name="enabled" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
@@ -119,8 +161,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.ReadMidi" />
       </list>
@@ -146,6 +200,8 @@
       <workItem from="1619874429359" duration="2292000" />
       <workItem from="1620117586134" duration="205000" />
       <workItem from="1620123828666" duration="2400000" />
+      <workItem from="1620203041978" duration="5676000" />
+      <workItem from="1620224858293" duration="3882000" />
     </task>
     <task id="LOCAL-00001" summary="ProfileUi connections done">
       <created>1618916466488</created>
@@ -329,12 +385,12 @@
       <option name="project" value="LOCAL" />
       <updated>1620150719884</updated>
     </task>
-    <task id="LOCAL-00027" summary="player bar">
-      <created>1620152593760</created>
+    <task id="LOCAL-00027" summary="Final commit for finish feature">
+      <created>1620586680797</created>
       <option name="number" value="00027" />
       <option name="presentableId" value="LOCAL-00027" />
       <option name="project" value="LOCAL" />
-      <updated>1620152593760</updated>
+      <updated>1620586680797</updated>
     </task>
     <task id="LOCAL-00028" summary="buttons player bar finished">
       <created>1620156585009</created>
@@ -455,14 +511,6 @@
       <option name="project" value="LOCAL" />
       <updated>1620558298447</updated>
     </task>
-    <task id="LOCAL-00027" summary="Final commit for finish feature">
-      <created>1620586680797</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1620586680797</updated>
-    </task>
-    <option name="localTasksCounter" value="28" />
     <option name="localTasksCounter" value="45" />
     <servers />
   </component>
@@ -470,12 +518,12 @@
     <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.History.Properties">
-    <option name="COLUMN_ORDER">
+    <option name="COLUMN_ID_ORDER">
       <list>
-        <option value="0" />
-        <option value="2" />
-        <option value="3" />
-        <option value="1" />
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
       </list>
     </option>
   </component>
@@ -484,7 +532,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="develop" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -492,9 +552,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="SongCsvDAO and its interface" />
-    <MESSAGE value="Singleton connection" />
-    <MESSAGE value="Daos Config" />
     <MESSAGE value="End Feature last commit" />
     <MESSAGE value="End Feature last commit v3" />
     <MESSAGE value="main changes" />
@@ -514,6 +571,8 @@
     <MESSAGE value="Small UI views in Free Piano and Play a Song, UI logic for Music also done" />
     <MESSAGE value="publish feature yikes" />
     <MESSAGE value="Stop Playing when key released" />
+    <MESSAGE value="Recording of the Notes is done correctly through a Timer. We need to do the conversion to json and to MiDi and ask for the name of the song" />
+    <MESSAGE value="record send implemented, need to fix a couple of errors." />
     <MESSAGE value="play music menu" />
     <MESSAGE value="improvement of the display a song menu" />
     <MESSAGE value="player bar" />
@@ -532,57 +591,8 @@
     <MESSAGE value="adding playlist in SpotiUI" />
     <MESSAGE value="now the playlists are called in a different class (SpotiFrameManager) because of some error" />
     <MESSAGE value="commit to merge" />
-    <option name="LAST_COMMIT_MESSAGE" value="commit to merge" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state width="875" height="318" key="GridCell.Tab.0.bottom" timestamp="1620558152951">
-      <screen x="0" y="0" width="1792" height="1120" />
-    </state>
-    <state width="875" height="318" key="GridCell.Tab.0.bottom/0.0.1792.1120@0.0.1792.1120" timestamp="1620558152951" />
-    <state width="875" height="318" key="GridCell.Tab.0.center" timestamp="1620558152951">
-      <screen x="0" y="0" width="1792" height="1120" />
-    </state>
-    <state width="875" height="318" key="GridCell.Tab.0.center/0.0.1792.1120@0.0.1792.1120" timestamp="1620558152951" />
-    <state width="875" height="318" key="GridCell.Tab.0.left" timestamp="1620558152950">
-      <screen x="0" y="0" width="1792" height="1120" />
-    </state>
-    <state width="875" height="318" key="GridCell.Tab.0.left/0.0.1792.1120@0.0.1792.1120" timestamp="1620558152950" />
-    <state width="875" height="318" key="GridCell.Tab.0.right" timestamp="1620558152951">
-      <screen x="0" y="0" width="1792" height="1120" />
-    </state>
-    <state width="875" height="318" key="GridCell.Tab.0.right/0.0.1792.1120@0.0.1792.1120" timestamp="1620558152951" />
-    <state width="875" height="392" key="GridCell.Tab.1.bottom/0.0.1792.1120@0.0.1792.1120" timestamp="1620553133729" />
-    <state width="875" height="392" key="GridCell.Tab.1.bottom/0.23.1792.1043@0.23.1792.1043" timestamp="1620553012946" />
-    <state width="875" height="392" key="GridCell.Tab.1.center" timestamp="1620553133728">
-      <screen x="0" y="0" width="1792" height="1120" />
-    </state>
-    <state width="875" height="392" key="GridCell.Tab.1.center/0.0.1792.1120@0.0.1792.1120" timestamp="1620553133728" />
-    <state width="875" height="392" key="GridCell.Tab.1.center/0.23.1792.1043@0.23.1792.1043" timestamp="1620553012946" />
-    <state width="875" height="392" key="GridCell.Tab.1.left" timestamp="1620553133728">
-      <screen x="0" y="0" width="1792" height="1120" />
-    </state>
-    <state width="875" height="392" key="GridCell.Tab.1.left/0.0.1792.1120@0.0.1792.1120" timestamp="1620553133728" />
-    <state width="875" height="392" key="GridCell.Tab.1.left/0.23.1792.1043@0.23.1792.1043" timestamp="1620553012946" />
-    <state width="875" height="392" key="GridCell.Tab.1.right" timestamp="1620553133729">
-      <screen x="0" y="0" width="1792" height="1120" />
-    </state>
-    <state width="875" height="392" key="GridCell.Tab.1.right/0.0.1792.1120@0.0.1792.1120" timestamp="1620553133729" />
-    <state width="875" height="392" key="GridCell.Tab.1.right/0.23.1792.1043@0.23.1792.1043" timestamp="1620553012946" />
-    <state x="496" y="300" key="Vcs.Push.Dialog.v2" timestamp="1620558315081">
-      <screen x="0" y="0" width="1792" height="1120" />
-    </state>
-    <state x="496" y="300" key="Vcs.Push.Dialog.v2/0.0.1792.1120@0.0.1792.1120" timestamp="1620558315081" />
-    <state x="694" y="481" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1620388441922">
-      <screen x="0" y="0" width="1792" height="1120" />
-    </state>
-    <state x="694" y="481" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1792.1120@0.0.1792.1120" timestamp="1620388441922" />
-    <state x="507" y="280" key="git4idea.branch.GitSmartOperationDialog" timestamp="1620388423589">
-      <screen x="0" y="0" width="1792" height="1120" />
-    </state>
-    <state x="507" y="280" key="git4idea.branch.GitSmartOperationDialog/0.0.1792.1120@0.0.1792.1120" timestamp="1620388423589" />
-    <MESSAGE value="Recording of the Notes is done correctly through a Timer. We need to do the conversion to json and to MiDi and ask for the name of the song" />
-    <MESSAGE value="record send implemented, need to fix a couple of errors." />
     <MESSAGE value="Final commit for finish feature" />
-    <option name="LAST_COMMIT_MESSAGE" value="Final commit for finish feature" />
+    <MESSAGE value="Final commit for finish feature v3" />
+    <option name="LAST_COMMIT_MESSAGE" value="Final commit for finish feature v3" />
   </component>
 </project>

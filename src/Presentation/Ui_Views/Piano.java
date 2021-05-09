@@ -18,11 +18,7 @@ public abstract class Piano extends JPanel {
 
     public static final String BTN_RETURN = "BTN_RETURN";
     public static final String BTN_RECORD = " ";
-    public static final String BTN_SUSTAIN_SOUND = "BTN_SUSTAIN_SOUND";
-    public static final String BTN_SYNTH_SOUND = "BTN_SYNTH_SOUND";
     public static final String BTN_TILE = "SOUND";
-    public static final String BTN_NEXT_SYNTHER = "++";
-    public static final String BTN_PREV_SYNTHER = "--";
     protected static final String JLAB_SYNTH_TYPE = "Classic Piano";
     public static final String MODIFY = "MODIFY_KEYS";
     protected static Label soundType;
@@ -30,11 +26,7 @@ public abstract class Piano extends JPanel {
 
     protected JButton returnB = new JButton(BTN_RETURN);
     protected ImageIcon iconRec = new ImageIcon("Files/drawable/recIcon.png");
-    protected JButton recordB = new JButton(BTN_RECORD,iconRec);
-    protected JButton pianoSoundB = new JButton(BTN_SUSTAIN_SOUND);
-    protected JButton synthSoundB = new JButton(BTN_SYNTH_SOUND);
-    protected JButton nextSynther = new JButton(BTN_NEXT_SYNTHER);
-    protected JButton prevSynther = new JButton(BTN_PREV_SYNTHER);
+    protected JButton recordB = new JButton(BTN_RECORD, iconRec);
     protected JButton profile = new JButton(PROFILE_BUTTON);
     //protected JButton modifyKeys = new JButton();
     protected JToggleButton modifyKeys = new JToggleButton(MODIFY);

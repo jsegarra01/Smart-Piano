@@ -23,6 +23,7 @@ public class DictionaryPiano {
     public static final String SHOW_TOP_SONGS = "Top 5 Songs";
     public static final String STATISTICS_UI = "StatisticsUI";
     public static final String PLAYLIST_UI = "CreatePlaylistUI";
+    public static final String RECORDING_TIMER = "recording timer";
     public static final String TOPSONGS_UI = "TopSongsUI";
     public static final String PLAYLIST_LABEL = "Playlists";
     public static final String SEARCH_SONG = "webHelperSongSearch";

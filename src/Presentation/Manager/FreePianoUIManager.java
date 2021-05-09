@@ -2,6 +2,8 @@ package Presentation.Manager;
 
 //Imports needed from the dictionary, events and mainframe
 import Business.Entities.Keys;
+import Business.BusinessFacadeImp;
+import Business.Entities.RecordingNotes;
 import Presentation.Dictionary_login;
 import Presentation.Ui_Views.FreePianoUI;
 import Presentation.Ui_Views.PianoTilesUISelector;
@@ -9,12 +11,22 @@ import Presentation.Ui_Views.Tile;
 import Business.Entities.MidiHelper;
 import Business.Entities.Translator;
 
+import javax.sound.midi.*;
+
 import javax.sound.midi.MidiUnavailableException;
+import javax.swing.*;
+import javax.sound.midi.spi.MidiFileWriter;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.util.ArrayList;
 import java.util.Objects;
 
+import static Presentation.DictionaryPiano.RECORDING_TIMER;
 import static Presentation.Dictionary_login.*;
 import static Presentation.Manager.MainFrame.card;
 import static Presentation.Manager.MainFrame.contenedor;
@@ -33,10 +45,17 @@ public class FreePianoUIManager implements ActionListener, MouseListener {
 
     public static String SOUND_TYPE = "SYNTH";
     public static int SOUND_SYNTHER = 0 ;
+    public ArrayList<RecordingNotes> recordingNotes = new ArrayList<RecordingNotes>();
+
     private MidiHelper finalMidiHelper;
-    MidiHelper midiHelper = null;
     private KeyListener KL;
+    private boolean recording = false;
     private Translator translator = new Translator();
+    private float recordingTime = 0;
+    BusinessFacadeImp businessFacadeImp = new BusinessFacadeImp();
+
+    MidiHelper midiHelper = null;
+    Timer timer  = new Timer(10, this);
     private boolean modifying = false;
     private boolean selected = false;
     private String tileSelected;
@@ -45,6 +64,7 @@ public class FreePianoUIManager implements ActionListener, MouseListener {
      * Parametrized constructor
      */
     public FreePianoUIManager() {
+        timer.setActionCommand(RECORDING_TIMER);
         try {
             midiHelper = new MidiHelper();
         } catch (MidiUnavailableException exception) {
@@ -76,6 +96,10 @@ public class FreePianoUIManager implements ActionListener, MouseListener {
                             //finalMidiHelper.playSomething(Translator.getNumberNoteFromName(Translator.getCodeFromKey(e)), SOUND_SYNTHER);
                             finalMidiHelper.playSomething(Translator.getNumberNoteFromName(translator.getFromKey(e.getExtendedKeyCode())),SOUND_SYNTHER);
                             translator.getPressedFromKey(e.getExtendedKeyCode()).setPressed(true);
+                            //This gets the initial timer and key pressed for the first time it is clicked
+                            if (recording) {
+                                recordingNotes.add(new RecordingNotes(Translator.getCodeFromKey(e),recordingTime));
+                            }
                         }
                         setIconKey(translator.getFromKey(e.getExtendedKeyCode()));
                     }
@@ -83,13 +107,21 @@ public class FreePianoUIManager implements ActionListener, MouseListener {
 
 
             }
+
             @Override
             public void keyReleased(KeyEvent e) {
                 if (translator.getPressedFromKey(e.getExtendedKeyCode()) != null) {
                     setIconBack(translator.getFromKey(e.getExtendedKeyCode()));
                     translator.getPressedFromKey(e.getExtendedKeyCode()).setPressed(false);
                     finalMidiHelper.stopPlaying(Translator.getNumberNoteFromName(translator.getFromKey(e.getExtendedKeyCode())),SOUND_SYNTHER);
-
+                    if (recording) {
+                        for (int i = 0; recordingNotes.size() != i; i++) {
+                            if (recordingNotes.get(i).getKey() == Translator.getCodeFromKey(e) && recordingNotes.get(i).getDuration() == 0) {
+                                recordingNotes.get(i).setDuration(recordingTime - recordingNotes.get(i).getTime());
+                                System.out.println( recordingNotes.get(i).getDuration());
+                            }
+                        }
+                    }
                 }
             }
         };
@@ -102,33 +134,33 @@ public class FreePianoUIManager implements ActionListener, MouseListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         // We distinguish between our buttons.
+
         switch (e.getActionCommand()) {
+            case RECORDING_TIMER:
+                    recordingTime += 0.01;
+                break;
             case FreePianoUI.BTN_RETURN:
                 System.out.println("Well... we have already NOT implemented this button!");
                 break;
             case FreePianoUI.BTN_RECORD:
-                System.out.println("Well... we have already NOT implemented this button!");
-                break;
-            case FreePianoUI.BTN_SUSTAIN_SOUND:
-                SOUND_TYPE = "PIANO";
-                break;
-            case FreePianoUI.BTN_SYNTH_SOUND:
-                SOUND_TYPE = "SYNTH";
-                break;
-            case FreePianoUI.BTN_NEXT_SYNTHER:
-                if(SOUND_SYNTHER <= 127){
-                    SOUND_SYNTHER++;
-                    FreePianoUI.setTypeName(finalMidiHelper.getInstrument());
-                }else{
-                    SOUND_SYNTHER = 0;
+                if (recording) {
+                    recording = false;
+                    timer.stop();
+
+                    JPanel myPanel = new JPanel();
+                    JTextField titleField = new JTextField( 20);
+                    myPanel.add(titleField);
+                    JCheckBox box = new JCheckBox("is private?");
+                    myPanel.add(box);
+
+                    JOptionPane.showMessageDialog(null, myPanel, "Enter a title for the song", 1);
+
+                    businessFacadeImp.recordedNotesSend(recordingNotes, titleField.getText(), box.isSelected(), recordingTime);
                 }
-                break;
-            case FreePianoUI.BTN_PREV_SYNTHER:
-                if(SOUND_SYNTHER >= 1){
-                    SOUND_SYNTHER--;
-                    FreePianoUI.setTypeName(finalMidiHelper.getInstrument());
-                }else{
-                    SOUND_SYNTHER = 127;
+                else {
+                    recordingTime = 0;
+                    timer.restart();
+                    recording = true;
                 }
                 break;
             case Dictionary_login.PROFILE_BUTTON:       //In the case that the Profile button is pressed
@@ -143,6 +175,7 @@ public class FreePianoUIManager implements ActionListener, MouseListener {
                 break;
         }
     }
+
     public KeyListener getKeyListener(){
         return this.KL;
     }
@@ -158,6 +191,7 @@ public class FreePianoUIManager implements ActionListener, MouseListener {
             FreePianoUI.getKeyboard().get(i).setIcon();
         }
     }
+
     private void setIconBack(String string){
         int i = 0;
         while(!string.equals(FreePianoUI.getKeyboard().get(i).getName()) && i<FreePianoUI.getKeyboard().size()){
