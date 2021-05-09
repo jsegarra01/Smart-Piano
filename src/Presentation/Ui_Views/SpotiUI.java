@@ -10,6 +10,7 @@ import Presentation.Manager.SpotiFrameManager;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.util.ArrayList;
 
 import static Presentation.DictionaryPiano.*;
 import static Presentation.Ui_Views.Tile.resizeIcon;
@@ -28,11 +29,13 @@ import static Presentation.Ui_Views.Tile.resizeIcon;
  */
 public class SpotiUI extends JPanel {
     private MainFrame mainFrame;
-    StatisticsUI statisticsUI;
-    PlaylistUI playlistUI;
-    TopSongsUI topSongsUI;
+    private StatisticsUI statisticsUI;
+    private PlaylistUI playlistUI;
+    private TopSongsUI topSongsUI;
 
-    Playlist myPlaylist;
+
+
+    private SpotiFrameManager spotiFrame;
 
     public static JPanel spotiPanel = new JPanel(new CardLayout());
     public static JButton homeButton = new JButton(HOME_BUTTON);
@@ -120,7 +123,10 @@ public class SpotiUI extends JPanel {
         leftList.add(playlistLabel);
         leftList.add(createPlaylist);
         leftList.add(separator);
-        addPlaylists();
+       // ArrayList<Playlist> play;
+        // play= new BusinessFacadeImp().getPlaylistManager().getPlaylists();
+       // System.out.println(play);
+        //addPlaylists(leftList);
         leftList.setBackground(Color.getHSBColor(10,0,0.2f));
         add(leftList, BorderLayout.WEST);
 
@@ -192,14 +198,27 @@ public class SpotiUI extends JPanel {
         searchButton.addActionListener(listener);
     }
 
+
     public static String getInputedSongName() {
         return songNameInputText.getText();
     }
-
-    private void addPlaylists(){
-        for(int i=0; i< new BusinessFacadeImp().getPlaylistManager().getPlaylists().size(); i++){
-            myPlaylist = new BusinessFacadeImp().getPlaylistManager().getPlaylists().get(i);
-
+/*
+    private void addPlaylists(JPanel list){
+        ArrayList<Playlist> play;
+        Playlist myPlaylist;
+        String aux;
+        play = new BusinessFacadeImp().getPlaylistManager().getPlaylists();
+        if(!play.isEmpty()){
+            for(int i=0; i<play.size(); i++){
+                myPlaylist = new BusinessFacadeImp().getPlaylistManager().getPlaylists().get(i);
+                aux="playlist"+i;
+                JButton buttonAux = new JButton(aux);
+                buttonAux.setActionCommand(aux);
+                confButtonLeft(buttonAux, 18, 115);
+                list.add(buttonAux);
+                buttonAux.addActionListener(new SpotiFrameManager());
+            }
         }
-    }
+    }*/
+
 }
