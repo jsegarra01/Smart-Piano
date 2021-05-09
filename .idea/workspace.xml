@@ -25,16 +25,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="The abstract class is used more, not only for attributes, but for the keys it is reused">
+    <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="commit to make feature public">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/Entities/MidiHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/Entities/MidiHelper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/PlaylistManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/PlaylistManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/FreePianoUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/FreePianoUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Business/Entities/MidiHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/Entities/MidiHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presentation/Manager/LoginUIManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Manager/LoginUIManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presentation/Manager/PianoFrameManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Manager/PianoFrameManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presentation/Manager/SpotiFrameManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Manager/SpotiFrameManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presentation/Ui_Views/FreePianoUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Ui_Views/FreePianoUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presentation/Ui_Views/SpotiUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Ui_Views/SpotiUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +46,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="develop" />
+        <entry key="$PROJECT_DIR$" value="feature/midiReader" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -444,49 +437,7 @@
       <option name="project" value="LOCAL" />
       <updated>1620495062170</updated>
     </task>
-    <task id="LOCAL-00042" summary="access to playlist done">
-      <created>1620496434397</created>
-      <option name="number" value="00042" />
-      <option name="presentableId" value="LOCAL-00042" />
-      <option name="project" value="LOCAL" />
-      <updated>1620496434397</updated>
-    </task>
-    <task id="LOCAL-00043" summary="Bohemian rhapsody can be played and paused, still it needs to get random playlists and songs but pasito a pasito">
-      <created>1620499435005</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1620499435005</updated>
-    </task>
-    <task id="LOCAL-00044" summary="Piano tiles has the labels, they can't appear though, still on it">
-      <created>1620514683670</created>
-      <option name="number" value="00044" />
-      <option name="presentableId" value="LOCAL-00044" />
-      <option name="project" value="LOCAL" />
-      <updated>1620514683670</updated>
-    </task>
-    <task id="LOCAL-00045" summary="Tiles cannot be played as a JButton, it cannot be controlled whenever we pressed and leave it, as far as I am concerned, everything must be changed to a mouseEvent, let's see what happens">
-      <created>1620516299241</created>
-      <option name="number" value="00045" />
-      <option name="presentableId" value="LOCAL-00045" />
-      <option name="project" value="LOCAL" />
-      <updated>1620516299241</updated>
-    </task>
-    <task id="LOCAL-00046" summary="Free piano sound different when pressing than when maintaining a key pressed with the mouse, it only worked with the keyboard previously">
-      <created>1620517893915</created>
-      <option name="number" value="00046" />
-      <option name="presentableId" value="LOCAL-00046" />
-      <option name="project" value="LOCAL" />
-      <updated>1620517893915</updated>
-    </task>
-    <task id="LOCAL-00047" summary="The abstract class is used more, not only for attributes, but for the keys it is reused">
-      <created>1620520137055</created>
-      <option name="number" value="00047" />
-      <option name="presentableId" value="LOCAL-00047" />
-      <option name="project" value="LOCAL" />
-      <updated>1620520137055</updated>
-    </task>
-    <option name="localTasksCounter" value="48" />
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -515,6 +466,12 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
+    <MESSAGE value="Changes in the piano, fancier" />
+    <MESSAGE value="Piano does not keep playing anymore whenever the key is pressed. &#10;The tile changes its color, simulating that has been pressed with the keyboard" />
+    <MESSAGE value="Piano works perfectly fine. Checked that everything worked as it should." />
+    <MESSAGE value="I am not allowed to do finish feature :'(" />
+    <MESSAGE value="Changing colors while changing through the CardLayout" />
+    <MESSAGE value="Name of the tile appears now. The recording button is no longer an unreadable text, is an icon" />
     <MESSAGE value="piano finished" />
     <MESSAGE value="Small UI views in Free Piano and Play a Song, UI logic for Music also done" />
     <MESSAGE value="publish feature yikes" />
@@ -534,23 +491,36 @@
     <MESSAGE value="commit to finish feature" />
     <MESSAGE value="commit to start feature" />
     <MESSAGE value="commit to make feature public" />
-    <MESSAGE value="access to playlist done" />
-    <MESSAGE value="Bohemian rhapsody can be played and paused, still it needs to get random playlists and songs but pasito a pasito" />
-    <MESSAGE value="Piano tiles has the labels, they can't appear though, still on it" />
-    <MESSAGE value="Tiles cannot be played as a JButton, it cannot be controlled whenever we pressed and leave it, as far as I am concerned, everything must be changed to a mouseEvent, let's see what happens" />
-    <MESSAGE value="Free piano sound different when pressing than when maintaining a key pressed with the mouse, it only worked with the keyboard previously" />
-    <MESSAGE value="The abstract class is used more, not only for attributes, but for the keys it is reused" />
-    <option name="LAST_COMMIT_MESSAGE" value="The abstract class is used more, not only for attributes, but for the keys it is reused" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit to make feature public" />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Business/Entities/MidiHelper.java</url>
-          <line>204</line>
-          <option name="timeStamp" value="15" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+  <component name="WindowStateProjectService">
+    <state width="875" height="318" key="GridCell.Tab.0.bottom" timestamp="1620496064085">
+      <screen x="0" y="0" width="1792" height="1120" />
+    </state>
+    <state width="875" height="318" key="GridCell.Tab.0.bottom/0.0.1792.1120@0.0.1792.1120" timestamp="1620496064085" />
+    <state width="875" height="318" key="GridCell.Tab.0.center" timestamp="1620496064083">
+      <screen x="0" y="0" width="1792" height="1120" />
+    </state>
+    <state width="875" height="318" key="GridCell.Tab.0.center/0.0.1792.1120@0.0.1792.1120" timestamp="1620496064083" />
+    <state width="875" height="318" key="GridCell.Tab.0.left" timestamp="1620496064083">
+      <screen x="0" y="0" width="1792" height="1120" />
+    </state>
+    <state width="875" height="318" key="GridCell.Tab.0.left/0.0.1792.1120@0.0.1792.1120" timestamp="1620496064083" />
+    <state width="875" height="318" key="GridCell.Tab.0.right" timestamp="1620496064084">
+      <screen x="0" y="0" width="1792" height="1120" />
+    </state>
+    <state width="875" height="318" key="GridCell.Tab.0.right/0.0.1792.1120@0.0.1792.1120" timestamp="1620496064084" />
+    <state x="496" y="300" key="Vcs.Push.Dialog.v2" timestamp="1620495076618">
+      <screen x="0" y="0" width="1792" height="1120" />
+    </state>
+    <state x="496" y="300" key="Vcs.Push.Dialog.v2/0.0.1792.1120@0.0.1792.1120" timestamp="1620495076618" />
+    <state x="694" y="481" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1620388441922">
+      <screen x="0" y="0" width="1792" height="1120" />
+    </state>
+    <state x="694" y="481" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1792.1120@0.0.1792.1120" timestamp="1620388441922" />
+    <state x="507" y="280" key="git4idea.branch.GitSmartOperationDialog" timestamp="1620388423589">
+      <screen x="0" y="0" width="1792" height="1120" />
+    </state>
+    <state x="507" y="280" key="git4idea.branch.GitSmartOperationDialog/0.0.1792.1120@0.0.1792.1120" timestamp="1620388423589" />
   </component>
 </project>
