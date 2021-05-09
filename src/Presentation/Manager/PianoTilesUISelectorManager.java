@@ -2,6 +2,7 @@ package Presentation.Manager;
 
 //Imports needed from the dictionary, events and mainframe
 import Presentation.Dictionary_login;
+import Presentation.Ui_Views.FreePianoUI;
 import Presentation.Ui_Views.PianoTilesUISelector;
 import Presentation.Ui_Views.Tile;
 import Business.Entities.MidiHelper;
@@ -10,10 +11,7 @@ import Business.Entities.Translator;
 import javax.sound.midi.MidiUnavailableException;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+import java.awt.event.*;
 import java.util.Objects;
 
 import static Presentation.Dictionary_login.*;
@@ -31,7 +29,7 @@ import static Presentation.Ui_Views.Tile.*;
  * @version 1.0 21 Apr 2021
  *
  */
-public class PianoTilesUISelectorManager implements ActionListener {
+public class PianoTilesUISelectorManager implements ActionListener, MouseListener {
 
     public static String SOUND_TYPE = "SYNTH";
     public static int SOUND_SYNTHER = 0 ;
@@ -155,4 +153,29 @@ public class PianoTilesUISelectorManager implements ActionListener {
     }
 
 
+    @Override
+    public void mouseClicked(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+        finalMidiHelper.playSomething(Translator.getNumberNoteFromName(e.getComponent().getName()), SOUND_SYNTHER);
+
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+        finalMidiHelper.stopPlaying(Translator.getNumberNoteFromName(e.getComponent().getName()),SOUND_SYNTHER);
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+
+    }
 }

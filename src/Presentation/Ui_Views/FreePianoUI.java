@@ -107,84 +107,19 @@ public class FreePianoUI extends Piano {
         soundType.setText(name);
     }
 
-    public static JLayeredPane makeKeys(){
+    public  JLayeredPane makeKeys(){
         int heightBlack = 150;
         int widthBlack = 35;
-        int yBlack = 0;
         int separationBlack = 455;
         // Create layerPane
         JLayeredPane keyBoard = new JLayeredPane();
         keyBoard.setPreferredSize(new Dimension(1025,600));
         keyBoard.add(Box.createRigidArea(new Dimension(55, 0)));
 
-        Tile tile;
+
 
         JLabel label;
-        for (int i = 0; i < numWhiteKeys; i++) {
-            tile = new Tile(whiteNotes[i], Color.WHITE, whiteTileLoc);
-            tile.setActionCommand(BTN_TILE);
-            tile.setBounds(55 + 65*i,0,65,330);
-            tile.setPressedIcon(resizeIcon(iconPressedDown, Math.round(iconPressedDown.getIconWidth()*SIZE_MULT_WIDTH),
-                    Math.round(iconPressedDown.getIconHeight()*SIZE_MULT_HEIGHT)));
-            keyboard.add(tile);
-            keyBoard.add(keyboard.get(i), Integer.valueOf(1));
-            keyBoard.add(Box.createRigidArea(new Dimension(2, 0)));
-            label = new JLabel(whiteLabels[i]);
-            label.setBounds(65*(i+1)+15,275,widthBlack,50);
-            keyBoard.add(label,Integer.valueOf(3));
-        }
-
-        LinkedList<Tile> tiles = new LinkedList<>();
-        for (int i = 0; i< numBlackKeys; i++){
-            tiles.add(new Tile(blackNotes[i], Color.BLACK, blackTileLoc));
-            tiles.getLast().setActionCommand(BTN_TILE);
-            tiles.getLast().setPressedIcon(resizeIcon(iconPressedDown, Math.round(iconPressedDown.getIconWidth()*SIZE_MULT_WIDTH),
-                    Math.round(iconPressedDown.getIconHeight()*SIZE_MULT_HEIGHT)));
-        }
-
-        int add = 8;
-        int yLabel = 60;
-        for (int i = 0; i < 2; i++) {
-            tiles.get(i*5).setBounds(102+(separationBlack*i),yBlack,widthBlack,heightBlack);
-            keyboard.add(tiles.get(i*5));
-            keyBoard.add(tiles.get(i*5), Integer.valueOf(2));
-            label = new JLabel(blackLabels[i*5]);
-            label.setBounds(102+(separationBlack*i)+add,yLabel,widthBlack,heightBlack);
-            label.setForeground(Color.WHITE);
-            keyBoard.add(label,Integer.valueOf(3));
-
-            tiles.get(1+i*5).setBounds(167+(separationBlack*i),yBlack,widthBlack,heightBlack);
-            keyboard.add(tiles.get(1+i*5));
-            keyBoard.add(tiles.get(1+i*5), Integer.valueOf(2));
-            label = new JLabel(blackLabels[1+i*5]);
-            label.setBounds(167+(separationBlack*i)+add,yLabel,widthBlack,heightBlack);
-            label.setForeground(Color.WHITE);
-            keyBoard.add(label,Integer.valueOf(3));
-
-            tiles.get(2+i*5).setBounds(297+(separationBlack*i),yBlack,widthBlack,heightBlack);
-            keyboard.add(tiles.get(2+i*5));
-            keyBoard.add(tiles.get(2+i*5), Integer.valueOf(2));
-            label = new JLabel(blackLabels[2+i*5]);
-            label.setBounds(297+(separationBlack*i)+add,yLabel,widthBlack,heightBlack);
-            label.setForeground(Color.WHITE);
-            keyBoard.add(label,Integer.valueOf(3));
-
-            tiles.get(3+i*5).setBounds(362+(separationBlack*i),yBlack,widthBlack,heightBlack);
-            keyboard.add(tiles.get(3+i*5));
-            keyBoard.add(tiles.get(3+i*5), Integer.valueOf(2));
-            label = new JLabel(blackLabels[3+i*5]);
-            label.setBounds(359+(separationBlack*i)+add,yLabel,widthBlack,heightBlack);
-            label.setForeground(Color.WHITE);
-            keyBoard.add(label,Integer.valueOf(3));
-
-            tiles.get(4+i*5).setBounds(428+(separationBlack*i),yBlack,widthBlack,heightBlack);
-            keyboard.add(tiles.get(4+i*5));
-            keyBoard.add(tiles.get(4+i*5), Integer.valueOf(2));
-            label = new JLabel(blackLabels[4+i*5]);
-            label.setBounds(428+(separationBlack*i)+add,yLabel,widthBlack,heightBlack);
-            label.setForeground(Color.WHITE);
-            keyBoard.add(label,Integer.valueOf(3));
-        }
+        keyBoard = makeTiles(keyBoard, 150, heightBlack, 60, keyboard, 50, 275);
 
         for (int i = 0; i < numWhiteKeys; i++) {
             label = new JLabel(Translator.getInstance().get(i).getNameKey());
@@ -195,8 +130,8 @@ public class FreePianoUI extends Piano {
             keyBoard.add(label,Integer.valueOf(4));
 
         }
-        yLabel = 10;
-        add = 12;
+        int yLabel = 10;
+        int add = 12;
         int j = 0;
         for (int i = numWhiteKeys; i < numWhiteKeys+2; i++) {
             label = new JLabel(Translator.getInstance().get(i+4*j).getNameKey());
