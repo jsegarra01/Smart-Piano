@@ -209,9 +209,19 @@ public class SpotiUI extends JPanel {
             for(int i=0; i<playlists.size(); i++){
                 myPlaylist = playlists.get(i);
                 aux="playlist"+i;
-                JButton buttonAux = new JButton(aux);
+                JButton buttonAux = new JButton(playlists.get(i).getPlaylistName());
                 buttonAux.setActionCommand(aux);
-                confButtonLeft(buttonAux, 18, 115);
+                buttonAux.setAlignmentX(0.5f);
+                System.out.println(spotiPanel.getHeight() + " " + leftList.getHeight());
+                if(playlists.size() - i == 1){
+                    buttonAux.setBorder(new EmptyBorder(10,100, spotiPanel.getHeight(),leftList.getWidth()-buttonAux.getWidth()));
+                    System.out.println("leftlist: " + leftList.getWidth() + " button: " + buttonAux.getWidth() + "\n");
+                }else{
+                    buttonAux.setBorder(new EmptyBorder(10,100,10,leftList.getWidth()-buttonAux.getWidth()));
+                    System.out.println("leftlist: " + leftList.getWidth() + " button: " + buttonAux.getWidth() + "\n");
+                }
+                buttonAux.setBackground(Color.getHSBColor(0,0,0.8f));
+                buttonAux.setForeground(Color.white);
                 leftList.add(buttonAux);
                 buttonAux.addActionListener(new SpotiFrameManager());
             }
