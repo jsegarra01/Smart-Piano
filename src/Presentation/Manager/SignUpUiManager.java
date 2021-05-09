@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 
 import static Presentation.Dictionary_login.*;
 import static Presentation.Manager.MainFrame.*;
+import static Presentation.Ui_Views.LoginUI.setUsernameLogin;
 import static Presentation.Ui_Views.SignUpUI.*;
 
 /**
@@ -39,7 +40,10 @@ public class SignUpUiManager  implements ActionListener {
                 card.show(contenedor, PRE_MENU_UI);
                 break;
             case DONE_BUTTON:              //In the case that the Done button is pressed
-                if (new BusinessFacadeImp().SignUp(getUsernameSignUp(), getMailSignUp(), getPasswordSignUp(), getPasswordConfirmSignUp())) {card.show(contenedor, PIANO_FRAME);}
+                if (new BusinessFacadeImp().SignUp(getUsernameSignUp(), getMailSignUp(), getPasswordSignUp(), getPasswordConfirmSignUp())) {
+                    setUsernameLogin(getUsernameSignUp());
+                    card.show(contenedor, PIANO_FRAME);
+                }
                 else{
                     JOptionPane.showMessageDialog(contenedor, "Values introduced were not accepted", "SignUp error" , JOptionPane.ERROR_MESSAGE);
                 }

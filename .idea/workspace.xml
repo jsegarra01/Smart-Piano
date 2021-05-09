@@ -24,16 +24,11 @@
       <change beforePath="$PROJECT_DIR$/Files/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/Files/config.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/BusinessFacade.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/BusinessFacade.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/BusinessFacadeImp.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/BusinessFacadeImp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/Entities/RecordingNotes.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/Entities/RecordingNotes.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/Entities/SongRecorded.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/Entities/SongRecorded.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/FreePianoUIManager$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/FreePianoUIManager$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/FreePianoUIManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/FreePianoUIManager.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Business/BusinessFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/BusinessFacade.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Business/BusinessFacadeImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/BusinessFacadeImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Business/Entities/RecordingNotes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/Entities/RecordingNotes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Business/Entities/SongRecorded.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/Entities/SongRecorded.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Business/Entities/SongToJson.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/Entities/SongToJson.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presentation/Manager/FreePianoUIManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Manager/FreePianoUIManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Business/UserManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/UserManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presentation/Manager/ProfileUIManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Manager/ProfileUIManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presentation/Manager/SignUpUiManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Manager/SignUpUiManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,15 +106,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -402,5 +395,16 @@
     <MESSAGE value="Recording of the Notes is done correctly through a Timer. We need to do the conversion to json and to MiDi and ask for the name of the song" />
     <MESSAGE value="record send implemented, need to fix a couple of errors." />
     <option name="LAST_COMMIT_MESSAGE" value="record send implemented, need to fix a couple of errors." />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Business/UserManager.java</url>
+          <line>49</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

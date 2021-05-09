@@ -21,7 +21,7 @@ public interface BusinessFacade {
      * @param password Password string which the user has inputted while logging in
      * @return Boolean: 1 if it can log in, 0 if it cannot log in
      */
-    Boolean logIn(String username, String password);
+    boolean logIn(String username, String password);
 
     /**
      * Checks if the user can do the sign up or not
@@ -31,13 +31,14 @@ public interface BusinessFacade {
      * @param passwordConfirm PasswordConfirmation string which the user has inputted while signing up
      * @return Boolean: 1 if it can sign up in, 0 if it cannot sign up
      */
-    Boolean SignUp(String username, String mail, String password, String passwordConfirm);
+    boolean SignUp(String username, String mail, String password, String passwordConfirm);
 
     /**
      * Deletes the account and everything involved with the user introduced
      * @param username Username string to delete the account
+     * @return Boolean: If it can delete the account, returns 1, else 0
      */
-    void deleteAccount(String username);
+    boolean deleteAccount(String username);
 
     /**
      * Gets the arraylist of recorded notes from the UI

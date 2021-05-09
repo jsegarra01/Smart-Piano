@@ -22,12 +22,12 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
     UserManager loginUserManager = new UserManager();
 
     @Override
-    public Boolean logIn(String username, String password) {
+    public boolean logIn(String username, String password) {
         return loginUserManager.checkUser(username, password);
     }
 
     @Override
-    public Boolean SignUp(String username, String mail, String password, String passwordConfirm) {
+    public boolean SignUp(String username, String mail, String password, String passwordConfirm) {
         if (!password.equals(passwordConfirm)) {
             return false;
         }
@@ -35,14 +35,12 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
     }
 
     @Override
-    public void deleteAccount(String username) {
-        loginUserManager.deleteUser(username);
+    public boolean deleteAccount(String username) {
+        return loginUserManager.deleteUser(username);
     }
 
     @Override
     public void recordedNotesSend(ArrayList<RecordingNotes> recordedNotes, String songName, boolean isPrivate, float endtime) {
-        SongRecorded songRecorded = new SongRecorded(recordedNotes,songName, isPrivate);
-        //writeJSONsong(songRecorded, songName);
-        writeMidi(songName, songRecorded.getRecordingNotes(), endtime);
+        writeMidi(songName, new SongRecorded(recordedNotes,songName, isPrivate).getRecordingNotes(), endtime);
     }
 }
