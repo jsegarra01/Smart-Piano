@@ -1,13 +1,12 @@
 package Business;
 
+//Imports needed for the managers and arraylists
 import Business.Entities.RecordingNotes;
 import Business.Entities.SongRecorded;
-import Business.Entities.SongToJson;
 
 import java.util.ArrayList;
 
-import static Business.Entities.SongToJson.writeJSONsong;
-import static Business.Entities.SongToJson.writeMidi;
+import static Business.Entities.SongToMidi.writeMidi;
 
 /**
  * BusinessFacade

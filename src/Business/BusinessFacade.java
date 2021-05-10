@@ -46,5 +46,9 @@ public interface BusinessFacade {
     void recordedNotesSend(ArrayList<RecordingNotes> recordedNotes, String songName, boolean isPrivate, float endtime);
 
 
+    /**
+     * Gets the PlayListManager
+     * @return PlaylistManager returns the manager for the playlist in order to implement its methods
+     */
     PlaylistManager getPlaylistManager();
 }

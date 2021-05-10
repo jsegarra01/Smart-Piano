@@ -1,11 +1,9 @@
 package Presentation.Ui_Views;
 
-import Presentation.Manager.FreePianoUIManager;
+//Imports needed from the dictionary, events and mainframe
 import Presentation.Manager.MainFrame;
-import Presentation.Manager.PianoTilesUISelectorManager;
 
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -65,10 +63,25 @@ public abstract class Piano extends JPanel {
     protected static ImageIcon iconPressedDown = new ImageIcon("Files/drawable/white-key-down.png");
 
 
+    /**
+     * Gets the current keyboard
+     * @return ArrayList<Tile> keyboard. Returns the keyboard we currently have
+     */
     public static ArrayList<Tile> getKeyboard() {
         return keyboard;
     }
 
+    /**
+     * Creates the Tiles for the keyboard, depending on various parameters.
+     * @param keyBoard JLayeredPane Where we want the keyboard to be placed.
+     * @param heightBlack int The height we want the black tiles to have.
+     * @param heightBounds int The maximum height we want for the tiles to have.
+     * @param yLabel int The different key names for the y
+     * @param keyboard ArrayList<Tile> Current keyboard we have to create the tiles in based on the different tiles
+     * @param whiteLabel int The different key names for the white tiles
+     * @param whiteY int The maximum height we want the white tiles to have
+     * @return JLayeredPane Returns the Pane in which all the keys have been created.
+     */
     protected JLayeredPane makeTiles(JLayeredPane keyBoard, int heightBlack, int heightBounds, int yLabel, ArrayList<Tile> keyboard, int whiteLabel, int whiteY){
         int widthBlack = 35;
         int yBlack = 0;
