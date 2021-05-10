@@ -226,6 +226,9 @@ public class FreePianoUIManager implements ActionListener, MouseListener {
             }
 
         }else{
+            if (recording) {
+                recordingNotes.add(new RecordingNotes(e.getComponent().getName(),recordingTime));
+            }
             finalMidiHelper.playSomething(Translator.getNumberNoteFromName(e.getComponent().getName()), SOUND_SYNTHER);
         }
     }
@@ -233,6 +236,15 @@ public class FreePianoUIManager implements ActionListener, MouseListener {
     @Override
     public void mouseReleased(MouseEvent e) {
         finalMidiHelper.stopPlaying(Translator.getNumberNoteFromName(e.getComponent().getName()),SOUND_SYNTHER);
+
+        if (recording) {
+            for (int i = 0; recordingNotes.size() != i; i++) {
+                if (recordingNotes.get(i).getKey() == e.getComponent().getName() && recordingNotes.get(i).getDuration() == 0) {
+                    recordingNotes.get(i).setDuration(recordingTime - recordingNotes.get(i).getTime());
+                    System.out.println( recordingNotes.get(i).getDuration());
+                }
+            }
+        }
     }
 
     @Override
