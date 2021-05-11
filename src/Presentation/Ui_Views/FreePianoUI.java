@@ -44,7 +44,9 @@ public class FreePianoUI extends Piano {
         panel.setBackground(Color.getHSBColor(0,0,0.2f));
 
         //All information will go inside here
-        panel.add(Box.createRigidArea(new Dimension(10, 240)), BorderLayout.CENTER);
+        //panel.add(createGamePane(), BorderLayout.CENTER);
+
+        panel.add(Box.createRigidArea(new Dimension(10, 210)), BorderLayout.CENTER);
         layeredPane = makeKeys();
         layeredPane.requestFocus();
         panel.add(layeredPane, BorderLayout.SOUTH);
@@ -100,6 +102,25 @@ public class FreePianoUI extends Piano {
 
     public static void setTypeName(String name) {
         soundType.setText(name);
+    }
+
+    private JLayeredPane createGamePane(){
+        JLayeredPane jLayeredPane = new JLayeredPane();
+        jLayeredPane.setLayout(new BoxLayout(jLayeredPane, BoxLayout.X_AXIS));
+        for (int i = 0; i < 14; i++) {
+            JPanel panel1 = new JPanel();
+            panel1.setBounds(55 + 65*i,0,65,30);
+            jLayeredPane.add(panel1, Integer.valueOf(1));
+        }
+
+        for (int i = 0; i < 10; i++) {
+            JPanel panel1 = new JPanel();
+            panel1.setBounds(95 + 65*i,0,65,30);
+            panel1.setBackground(Color.black);
+            jLayeredPane.add(panel1, Integer.valueOf(3));
+        }
+
+        return jLayeredPane;
     }
 
     public JLayeredPane makeKeys(){
