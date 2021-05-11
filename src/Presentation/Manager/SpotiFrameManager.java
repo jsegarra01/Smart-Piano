@@ -9,6 +9,7 @@ import Business.Entities.webHandler;
 import Business.PlaylistManager;
 import Presentation.Dictionary_login;
 import Presentation.Ui_Views.SpotiUI;
+import Presentation.Ui_Views.Tile;
 
 import javax.sound.midi.MidiUnavailableException;
 import javax.swing.*;
@@ -101,7 +102,14 @@ public class SpotiFrameManager implements ActionListener {
                     play = false;
                     finalMidiHelper.stopSong();
                 }
-
+                break;
+            case PLAYLIST_LIST:
+                JButton button;
+                Object obj = e.getSource();
+                if (obj instanceof JButton) {
+                    button = (JButton) obj;
+                }
+                System.out.println("hola julio");
                 break;
         }
     }

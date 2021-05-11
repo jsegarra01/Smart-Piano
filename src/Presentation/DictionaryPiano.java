@@ -31,6 +31,7 @@ public class DictionaryPiano {
     public static final String LAST_BUTTON = "goToPreviousSong";
     public static final String PLAY_BUTTON = "playSong";
     public static final String LOOP_BUTTON = "loopSong";
+    public static final String PLAYLIST_LIST = "playlist";
 
     public static final Integer TB_SIZE = 10;
 }
