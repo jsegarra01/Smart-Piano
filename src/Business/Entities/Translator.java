@@ -13,26 +13,13 @@ import java.util.ArrayList;
  */
 public class Translator {
 
-    private static ArrayList<Keys> keys = new ArrayList<>();
-    /*
-    public static ArrayList<Keys> getKeys() {
-        return keys;
-    }*/
-
+    private static final ArrayList<Keys> keys = new ArrayList<>();
 
     /**
      *
      * @return
      */
     public static ArrayList<Keys> getInstance(){
-        if(keys.isEmpty()){
-            new Translator();
-        }
-
-        return keys;
-    }
-
-    public Translator(){
         if(keys.isEmpty()){
             keys.add(new Keys(KeyEvent.VK_Q, "2c", "Q"));
             keys.add(new Keys(KeyEvent.VK_W, "2d", "W"));
@@ -58,84 +45,11 @@ public class Translator {
             keys.add(new Keys(KeyEvent.VK_G, "3f#", "G"));
             keys.add(new Keys(KeyEvent.VK_H, "3g#", "H"));
             keys.add(new Keys(KeyEvent.VK_J, "3a#", "J"));
-           // keys.add(new Keys(KeyEvent.VK_COMMA,"4c"));
         }
+
+        return keys;
     }
 
-    public static String getCodeFromKey(KeyEvent key){
-        return switch(key.getExtendedKeyCode()){
-            case KeyEvent.VK_2 -> "2c#";
-            case KeyEvent.VK_3 -> "2d#";
-            case KeyEvent.VK_5 -> "2f#";
-            case KeyEvent.VK_6 -> "2g#";
-            case KeyEvent.VK_7 -> "2a#";
-            case KeyEvent.VK_Q -> "2c";
-            case KeyEvent.VK_W -> "2d";
-            case KeyEvent.VK_E -> "2e";
-            case KeyEvent.VK_R -> "2f";
-            case KeyEvent.VK_T -> "2g";
-            case KeyEvent.VK_Y -> "2a";
-            case KeyEvent.VK_U -> "2b";
-            case KeyEvent.VK_S -> "3c#";
-            case KeyEvent.VK_D -> "3d#";
-            case KeyEvent.VK_G -> "3f#";
-            case KeyEvent.VK_H -> "3g#";
-            case KeyEvent.VK_J -> "3a#";
-            case KeyEvent.VK_Z -> "3c";
-            case KeyEvent.VK_X -> "3d";
-            case KeyEvent.VK_C -> "3e";
-            case KeyEvent.VK_V -> "3f";
-            case KeyEvent.VK_B -> "3g";
-            case KeyEvent.VK_N -> "3a";
-            case KeyEvent.VK_M -> "3b";
-            //case KeyEvent.VK_COMMA -> "4c";
-
-            default -> throw new IllegalStateException("Unexpected value: " + key.getExtendedKeyCode());
-        };
-    }
-    public static String getKeyFromCode(KeyEvent key){
-        return switch(key.getExtendedKeyCode()){
-            case KeyEvent.VK_1 -> "1";
-            case KeyEvent.VK_2 -> "2";
-            case KeyEvent.VK_3 -> "3";
-            case KeyEvent.VK_4 -> "4";
-            case KeyEvent.VK_5 -> "5";
-            case KeyEvent.VK_6 -> "6";
-            case KeyEvent.VK_7 -> "7";
-            case KeyEvent.VK_8 -> "8";
-            case KeyEvent.VK_9 -> "9";
-            case KeyEvent.VK_0 -> "0";
-            case KeyEvent.VK_Q -> "Q";
-            case KeyEvent.VK_W -> "W";
-            case KeyEvent.VK_E -> "E";
-            case KeyEvent.VK_R -> "R";
-            case KeyEvent.VK_T -> "T";
-            case KeyEvent.VK_Y -> "Y";
-            case KeyEvent.VK_U -> "U";
-            case KeyEvent.VK_I -> "I";
-            case KeyEvent.VK_O -> "O";
-            case KeyEvent.VK_P -> "P";
-            case KeyEvent.VK_A -> "A";
-            case KeyEvent.VK_S -> "S";
-            case KeyEvent.VK_D -> "D";
-            case KeyEvent.VK_F -> "F";
-            case KeyEvent.VK_G -> "G";
-            case KeyEvent.VK_H -> "H";
-            case KeyEvent.VK_J -> "J";
-            case KeyEvent.VK_K -> "K";
-            case KeyEvent.VK_L -> "L";
-            case KeyEvent.VK_Z -> "Z";
-            case KeyEvent.VK_X -> "X";
-            case KeyEvent.VK_C -> "C";
-            case KeyEvent.VK_V -> "V";
-            case KeyEvent.VK_B -> "B";
-            case KeyEvent.VK_N -> "N";
-            case KeyEvent.VK_M -> "M";
-            //case KeyEvent.VK_COMMA -> "4c";
-
-            default -> throw new IllegalStateException("Unexpected value: " + key.getExtendedKeyCode());
-        };
-    }
     public static int getNumberNoteFromName(String input){
         return switch (input) {
             case "2c" -> 48;
@@ -167,38 +81,9 @@ public class Translator {
         };
     }
 
-    public static int getKey(String string){
-        return switch(string){
-            case "2c#" -> KeyEvent.VK_2;
-            case "2d#" -> KeyEvent.VK_3 ;
-            case "2f#" -> KeyEvent.VK_5 ;
-            case "2g#" -> KeyEvent.VK_6;
-            case "2a#" -> KeyEvent.VK_7;
-            case "2c"  -> KeyEvent.VK_Q;
-            case "2d"  -> KeyEvent.VK_W;
-            case "2e"  -> KeyEvent.VK_E;
-            case "2f"  -> KeyEvent.VK_R;
-            case "2g"  -> KeyEvent.VK_T;
-            case "2a"  -> KeyEvent.VK_Y;
-            case "2b"  -> KeyEvent.VK_U;
-            case "3c#" -> KeyEvent.VK_S;
-            case "3d#" -> KeyEvent.VK_D;
-            case "3f#" -> KeyEvent.VK_G;
-            case "3g#" -> KeyEvent.VK_H;
-            case "3a#" -> KeyEvent.VK_J;
-            case "3c"  -> KeyEvent.VK_Z;
-            case "3d"  -> KeyEvent.VK_X;
-            case "3e"  -> KeyEvent.VK_C;
-            case "3f"  -> KeyEvent.VK_V;
-            case "3g"  -> KeyEvent.VK_B;
-            case "3a"  -> KeyEvent.VK_N;
-            case "3b"  -> KeyEvent.VK_M;
-            case "4c"  -> KeyEvent.VK_COMMA;
-            default -> throw new IllegalStateException("Unexpected value: " + string);
-        };
-    }
 
-    public String getFromKey(int key){
+
+    public static String getFromKey(int key){
         boolean found = false;
         int i = 0;
         while(i<keys.size() && !found){
@@ -214,7 +99,7 @@ public class Translator {
         }
         return null;
     }
-    public Keys getPressedFromKey(int key){
+    public static Keys getPressedFromKey(int key){
         boolean found = false;
         int i = 0;
         while(i<keys.size() && !found){
@@ -231,7 +116,7 @@ public class Translator {
         }
         return null;
     }
-    public boolean setNewKey(String tile, int keyCode){
+    public static int setNewKey(String tile, int keyCode){
         boolean found = false;
         boolean foundKey = false;
         int i = 0;
@@ -252,14 +137,13 @@ public class Translator {
             }
         }
         if(found && !foundKey){
-            keys.get(i).setKeyCode(keyCode);
-            return true;
+            return i;
         }else{
-            return false;
+            return -1;
         }
     }
 
-    public Keys getFromTile(String tileKey){
+    public static Keys getFromTile(String tileKey){
         boolean found = false;
         int i = 0;
         while(i<keys.size() && !found){
@@ -276,5 +160,8 @@ public class Translator {
         }
         return null;
     }
-
+    public static void setKeys(int i, int keyCode){
+        keys.get(i).setKeyCode(keyCode);
+        keys.get(i).setNameKey(KeyEvent.getKeyText(keyCode));
+    }
 }

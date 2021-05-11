@@ -50,7 +50,7 @@ public class FreePianoUIManager implements ActionListener, MouseListener {
     private MidiHelper finalMidiHelper;
     private KeyListener KL;
     private boolean recording = false;
-    private Translator translator = new Translator();
+    //private Translator translator = new Translator();
     private float recordingTime = 0;
     BusinessFacadeImp businessFacadeImp = new BusinessFacadeImp();
 
@@ -79,29 +79,28 @@ public class FreePianoUIManager implements ActionListener, MouseListener {
             public void keyPressed(KeyEvent e) {
                 if(modifying){
                     if(selected){
-                        FreePianoUI.modifyKey(translator.getFromTile(tileSelected), e);
-                        boolean checkKeyExisted =translator.setNewKey(tileSelected,e.getExtendedKeyCode());
-                        if(!checkKeyExisted){
+                        int checkKeyExisted =Translator.setNewKey(tileSelected,e.getExtendedKeyCode());
+                        if(checkKeyExisted == -1){
                             JOptionPane.showMessageDialog(contenedor,
                                     "This key is already assigned!", "Modify keys error" , JOptionPane.ERROR_MESSAGE);
                         }else{
-
+                            FreePianoUI.modifyKey(Translator.getFromTile(tileSelected), e);
+                            Translator.setKeys(checkKeyExisted, e.getExtendedKeyCode());
                             selected = false;
-
                         }
                     }
                 }else{
-                    if(translator.getPressedFromKey(e.getExtendedKeyCode()) !=null){
-                        if(!translator.getPressedFromKey(e.getExtendedKeyCode()).isPressed()){
+                    if(Translator.getPressedFromKey(e.getExtendedKeyCode()) !=null){
+                        if(!Objects.requireNonNull(Translator.getPressedFromKey(e.getExtendedKeyCode())).isPressed()){
                             //finalMidiHelper.playSomething(Translator.getNumberNoteFromName(Translator.getCodeFromKey(e)), SOUND_SYNTHER);
-                            finalMidiHelper.playSomething(Translator.getNumberNoteFromName(translator.getFromKey(e.getExtendedKeyCode())),SOUND_SYNTHER);
-                            translator.getPressedFromKey(e.getExtendedKeyCode()).setPressed(true);
+                            finalMidiHelper.playSomething(Translator.getNumberNoteFromName(Translator.getFromKey(e.getExtendedKeyCode())),SOUND_SYNTHER);
+                            Objects.requireNonNull(Translator.getPressedFromKey(e.getExtendedKeyCode())).setPressed(true);
                             //This gets the initial timer and key pressed for the first time it is clicked
                             if (recording) {
-                                recordingNotes.add(new RecordingNotes(Translator.getCodeFromKey(e),recordingTime));
+                                recordingNotes.add(new RecordingNotes(Translator.getFromKey(e.getKeyCode()),recordingTime));
                             }
                         }
-                        setIconKey(translator.getFromKey(e.getExtendedKeyCode()));
+                        setIconKey(Objects.requireNonNull(Translator.getFromKey(e.getExtendedKeyCode())));
                     }
                 }
 
@@ -110,13 +109,13 @@ public class FreePianoUIManager implements ActionListener, MouseListener {
 
             @Override
             public void keyReleased(KeyEvent e) {
-                if (translator.getPressedFromKey(e.getExtendedKeyCode()) != null) {
-                    setIconBack(translator.getFromKey(e.getExtendedKeyCode()));
-                    translator.getPressedFromKey(e.getExtendedKeyCode()).setPressed(false);
-                    finalMidiHelper.stopPlaying(Translator.getNumberNoteFromName(translator.getFromKey(e.getExtendedKeyCode())),SOUND_SYNTHER);
+                if (Translator.getPressedFromKey(e.getExtendedKeyCode()) != null) {
+                    setIconBack(Objects.requireNonNull(Translator.getFromKey(e.getExtendedKeyCode())));
+                    Objects.requireNonNull(Translator.getPressedFromKey(e.getExtendedKeyCode())).setPressed(false);
+                    finalMidiHelper.stopPlaying(Translator.getNumberNoteFromName(Translator.getFromKey(e.getExtendedKeyCode())),SOUND_SYNTHER);
                     if (recording) {
                         for (int i = 0; recordingNotes.size() != i; i++) {
-                            if (recordingNotes.get(i).getKey() == Translator.getCodeFromKey(e) && recordingNotes.get(i).getDuration() == 0) {
+                            if (recordingNotes.get(i).getKey().equals(Translator.getFromKey(e.getKeyCode())) && recordingNotes.get(i).getDuration() == 0) {
                                 recordingNotes.get(i).setDuration(recordingTime - recordingNotes.get(i).getTime());
                                 System.out.println( recordingNotes.get(i).getDuration());
                             }

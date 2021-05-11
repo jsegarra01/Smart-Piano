@@ -219,14 +219,12 @@ public class FreePianoUI extends Piano {
 
         }
         if (found){
-            layeredPane.getComponent(i).setName(Translator.getKeyFromCode(keyEvent));
-            //layeredPane.getComponent(i).setFont(new Font((layeredPane.getComponent(i).getName()), Font.PLAIN, (int) (layeredPane.getComponent(i).getFont().getSize()*1.7)));
-
-           /* for(int j = 0;j<72;j++){
-                layeredPane.remove(j);
+            layeredPane.getComponent(i).setName(KeyEvent.getKeyText(keyEvent.getKeyCode()));
+            //TODO: Check with Edu if we need to control if Java does not know our char
+            if(layeredPane.getComponent(i) instanceof JLabel){
+                ((JLabel)layeredPane.getComponent(i)).setText(KeyEvent.getKeyText(keyEvent.getKeyCode()));
             }
-            layeredPane = makeKeys();
-*/
+
         }
 
 
