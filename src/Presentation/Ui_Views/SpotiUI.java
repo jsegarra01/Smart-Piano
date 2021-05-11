@@ -33,8 +33,6 @@ public class SpotiUI extends JPanel {
     private PlaylistUI playlistUI;
     private TopSongsUI topSongsUI;
 
-    public static JPanel leftList = new JPanel();
-
     private SpotiFrameManager spotiFrame;
 
     public static JPanel spotiPanel = new JPanel(new CardLayout());
@@ -49,6 +47,9 @@ public class SpotiUI extends JPanel {
     public static JButton nextButton = new JButton();
     public static JButton loopButton = new JButton();
     //public static JButton pauseButton = new JButton();
+
+
+    public static JPanel leftList = new JPanel();
 
 
     private static JTextField songNameInputText = new JTextField();
@@ -114,6 +115,7 @@ public class SpotiUI extends JPanel {
 
         JSeparator separator = new JSeparator();
 
+        //JScrollPane scroll = new JScrollPane();
         registerController(new SpotiFrameManager());
         leftList.add(songNameInputText);
         leftList.add(searchButton);
@@ -123,9 +125,7 @@ public class SpotiUI extends JPanel {
         leftList.add(playlistLabel);
         leftList.add(createPlaylist);
         leftList.add(separator);
-       // ArrayList<Playlist> play;
-        // play= new BusinessFacadeImp().getPlaylistManager().getPlaylists();
-       // System.out.println(play);
+
         leftList.setBackground(Color.getHSBColor(10,0,0.2f));
         add(leftList, BorderLayout.WEST);
 
@@ -202,19 +202,31 @@ public class SpotiUI extends JPanel {
         return songNameInputText.getText();
     }
 
+    //TODO poner bn las boxes (size lateral)
     public static void addPlaylists(ArrayList<Playlist> playlists){
         Playlist myPlaylist;
         String aux;
         if(!playlists.isEmpty()){
             for(int i=0; i<playlists.size(); i++){
                 myPlaylist = playlists.get(i);
-                aux="playlist"+i;
-                JButton buttonAux = new JButton(aux);
-                buttonAux.setActionCommand(aux);
-                confButtonLeft(buttonAux, 18, 115);
+                JButton buttonAux = new JButton(playlists.get(i).getPlaylistName());
+                buttonAux.setName(playlists.get(i).getPlaylistName());
+                buttonAux.setActionCommand(PLAYLIST_LIST);
+                buttonAux.setAlignmentX(0.5f);
+                if(playlists.size() - i == 1){
+                    buttonAux.setBorder(new EmptyBorder(10,0, spotiPanel.getHeight(),0));
+                }else{
+                    buttonAux.setBorder(new EmptyBorder(10,18,10,115));
+                    System.out.println("leftlist: " + leftList.getWidth() + " button: " + buttonAux.getWidth() + "\n");
+                }
+                buttonAux.setBackground(Color.getHSBColor(0,0,0.8f));
+                buttonAux.setForeground(Color.white);
                 leftList.add(buttonAux);
                 buttonAux.addActionListener(new SpotiFrameManager());
             }
+            //JScrollPane scroll = new JScrollPane(leftList);
+
+         //   leftList.add(scroll);
         }
     }
 
