@@ -89,7 +89,6 @@ public class PianoTilesUISelector extends Piano {
 
     private void registerController(PianoTilesUISelectorManager listener) {
         profile.addActionListener(listener);
-        returnB.addActionListener(listener);
         recordB.addActionListener(listener);
         this.addKeyListener(listener.getKeyListener());
         for (Tile tile : keyboard) {

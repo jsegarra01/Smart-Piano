@@ -83,9 +83,6 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
     public void actionPerformed(ActionEvent e) {
         // We distinguish between our buttons.
         switch (e.getActionCommand()) {
-            case PianoTilesUISelector.BTN_RETURN:
-                System.out.println("Well... we have already NOT implemented this button!");
-                break;
             case PianoTilesUISelector.BTN_RECORD:
                 System.out.println("Well... we have already NOT implemented this button!");
                 break;
