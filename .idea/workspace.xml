@@ -25,6 +25,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
+    <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="Commentaries for the PianoTilesUISelector and the PianoTilesUISelectorManager">
+    </list>
     <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="I have added TODO's as there are things we have to see how they look in a windows (as with a mac they are weird)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Files/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/Files/config.json" afterDir="false" />
@@ -87,6 +89,8 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
+        <entry key="$PROJECT_DIR$" value="Bug_errors_and_comments" />
+        <entry key="$PROJECT_DIR$" value="feature/midiTime" />
         <entry key="$PROJECT_DIR$" value="feature/play_a_song" />
       </map>
     </option>
@@ -110,6 +114,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
@@ -119,6 +124,7 @@
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.1345895" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
@@ -180,6 +186,8 @@
       <list>
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.ReadMidi" />
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.ReadMidi" />
       </list>
     </recent_temporary>
   </component>
@@ -203,6 +211,12 @@
       <workItem from="1619874429359" duration="2292000" />
       <workItem from="1620117586134" duration="205000" />
       <workItem from="1620123828666" duration="2400000" />
+      <workItem from="1620203041978" duration="5676000" />
+      <workItem from="1620224858293" duration="3882000" />
+      <workItem from="1620592401621" duration="2084000" />
+      <workItem from="1620641855278" duration="3071000" />
+      <workItem from="1620729555579" duration="936000" />
+      <workItem from="1620807482423" duration="1303000" />
     </task>
     <task id="LOCAL-00001" summary="ProfileUi connections done">
       <created>1618916466488</created>
@@ -519,6 +533,42 @@
       <option name="project" value="LOCAL" />
       <updated>1620569541975</updated>
     </task>
+    <task id="LOCAL-00045" summary="Final commit for finish feature v3">
+      <created>1620588909948</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1620588909948</updated>
+    </task>
+    <task id="LOCAL-00046" summary="Comments for the FreePianoUIManager, implementation of the recording for the mouse (now mouse records too) and eliminated some System.outs">
+      <created>1620594450870</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1620594450870</updated>
+    </task>
+    <task id="LOCAL-00047" summary="Comments for the FreePianoUI, PianoUI and SongToMidi">
+      <created>1620644918202</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1620644918202</updated>
+    </task>
+    <task id="LOCAL-00048" summary="Small changes added">
+      <created>1620730531167</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1620730531167</updated>
+    </task>
+    <task id="LOCAL-00049" summary="Commentaries for the PianoTilesUISelector and the PianoTilesUISelectorManager">
+      <created>1620808412547</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1620808412547</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <option name="localTasksCounter" value="46" />
     <servers />
   </component>
@@ -548,6 +598,13 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Logic for the Enter as Guest changed and adapted to not be deleted and to be a user called guest." />
+    <MESSAGE value="Basic UI classes created and added to the cardLayout." />
+    <MESSAGE value="IsValidActive" />
+    <MESSAGE value="Small change config" />
+    <MESSAGE value="Changes in the piano, fancier" />
+    <MESSAGE value="Piano does not keep playing anymore whenever the key is pressed. &#10;The tile changes its color, simulating that has been pressed with the keyboard" />
     <MESSAGE value="Piano works perfectly fine. Checked that everything worked as it should." />
     <MESSAGE value="I am not allowed to do finish feature :'(" />
     <MESSAGE value="Changing colors while changing through the CardLayout" />
@@ -573,6 +630,14 @@
     <MESSAGE value="commit to make feature public" />
     <MESSAGE value="adding playlist in SpotiUI" />
     <MESSAGE value="now the playlists are called in a different class (SpotiFrameManager) because of some error" />
+    <MESSAGE value="commit to merge" />
+    <MESSAGE value="Final commit for finish feature" />
+    <MESSAGE value="Final commit for finish feature v3" />
+    <MESSAGE value="Comments for the FreePianoUIManager, implementation of the recording for the mouse (now mouse records too) and eliminated some System.outs" />
+    <MESSAGE value="Comments for the FreePianoUI, PianoUI and SongToMidi" />
+    <MESSAGE value="Small changes added" />
+    <MESSAGE value="Commentaries for the PianoTilesUISelector and the PianoTilesUISelectorManager" />
+    <option name="LAST_COMMIT_MESSAGE" value="Commentaries for the PianoTilesUISelector and the PianoTilesUISelectorManager" />
     <MESSAGE value="resizing positions (this still needs some fixing in the x-axis)" />
     <MESSAGE value="I have added TODO's as there are things we have to see how they look in a windows (as with a mac they are weird)" />
     <option name="LAST_COMMIT_MESSAGE" value="I have added TODO's as there are things we have to see how they look in a windows (as with a mac they are weird)" />

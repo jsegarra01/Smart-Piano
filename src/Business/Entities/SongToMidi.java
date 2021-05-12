@@ -1,5 +1,6 @@
 package Business.Entities;
 
+//Imports needed from the Gson, files and midis
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -11,8 +12,23 @@ import java.io.*;
 import java.util.*;
 import javax.sound.midi.*;
 
-public class SongToJson {
+/**
+ * SongToMidi
+ *
+ * The "SongToMidi" class will contain the method to write from the different songRecorded to a MIDI file 
+ *
+ * @author OOPD 20-21 ICE5
+ * @version 2.0 9 May 2021
+ *
+ */
 
+public class SongToMidi {
+
+    /**
+     * Static method in order to be able to write in a song from the information stored in SongRecorded in a JSON format
+     * @param songRecorded SongRecorded. Information recorded from the song we want to transform into JSON
+     * @param songName String. Name of the song
+     */
     public static void writeJSONsong (SongRecorded songRecorded, String songName) {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         Writer writer = null;
@@ -33,8 +49,13 @@ public class SongToJson {
         }
     }
 
+    /**
+     * Static method in order to be able to write in a song from the information stored in recordingNotes in a MIDI format
+     * @param title String. Name of the song
+     * @param recordingNotes ArrayList<RecordingNotes>. Information recorded from the song we want to transform into MIDI
+     * @param endtime float. Ending time of the song
+     */
     public static void writeMidi(String title, ArrayList<RecordingNotes> recordingNotes, float endtime) {
-        System.out.println("midifile begin ");
         try
         {
 //****  Create a new MIDI sequence with 24 ticks per beat  ****
@@ -110,6 +131,5 @@ public class SongToJson {
         {
             System.out.println("Exception caught " + e.toString());
         } //catch
-        System.out.println("midifile end ");
     }
 }

@@ -109,14 +109,13 @@ public class LoginUserCsvDAO implements LoginUserDAO{
     /**
      * Method that is in charge of deleting the user passed in the parameter
      * @param myUser Defines the user that will be deleted from the db
+     * @return boolean: In case the user exists, returns 1, if it doesn't, returns 0
      */
     @Override
     public boolean delete(User myUser) {
-        System.out.println("hola");
         if(ConnectSQL.getInstance()!=null){
             try {
                 PreparedStatement st = ConnectSQL.getInstance().prepareStatement("delete from UserT where username = '" + myUser.getUserName()+"'");
-                //PreparedStatement st = ConnectSQL.getInstance().prepareStatement("delete from UserT where username = '" + myUser.getUserName()+"'");
                 st.execute();
                 return true;
             } catch (SQLException e) {

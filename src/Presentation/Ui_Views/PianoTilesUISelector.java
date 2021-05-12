@@ -1,24 +1,12 @@
 package Presentation.Ui_Views;
 
-import Business.Entities.Translator;
+//imports needed for the piano tiles
 import Presentation.Manager.MainFrame;
-
 import javax.swing.*;
 import java.awt.*;
-
-
 import Presentation.Manager.PianoTilesUISelectorManager;
-import Presentation.Manager.MainFrame;
-import Presentation.Manager.PianoFrameManager;
-
-import javax.swing.*;
-import javax.swing.border.EmptyBorder;
-import java.awt.*;
 import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.Objects;
 
-import static Presentation.Dictionary_login.PROFILE_BUTTON;
 import static Presentation.Ui_Views.Tile.*;
 
 
@@ -28,7 +16,7 @@ import static Presentation.Ui_Views.Tile.*;
  * The "PianoTilesUISelector" class will allow us to choose the different songs we have available to play
  *
  * @author OOPD 20-21 ICE5
- * @version 2.0 24 Apr 2021
+ * @version 2.0 7 May 2021
  *
  */
 public class PianoTilesUISelector extends Piano {
@@ -58,6 +46,10 @@ public class PianoTilesUISelector extends Piano {
         this.setBackground(Color.getHSBColor(0,0,0.2f));
     }
 
+    /**
+     * Configures the main Panel for the PianoTilesUISelectorManager
+     * @return Returns the JPanel configured for the general settings of the PianoTilesUISelectorManager
+     */
     private JPanel configurePanel() {
         JPanel panel = new JPanel(new BorderLayout());
         panel.setBackground(Color.getHSBColor(0,0,0.2f));
@@ -71,6 +63,10 @@ public class PianoTilesUISelector extends Piano {
         return panel;
     }
 
+    /**
+     * Initializes the Menu of the main pianoUI panel gets configured
+     * @return Menu panel of the piano UI configured
+     */
     private JPanel initMenu() {
         JPanel menu = new JPanel();
         menu.setBackground(Color.getHSBColor(0,0,80.3f));
@@ -87,9 +83,12 @@ public class PianoTilesUISelector extends Piano {
         return menu;
     }
 
+    /**
+     * Registers the different buttons with the controller PianoTilesUISelectorManager
+     * @param listener PianoTilesUISelectorManager. Gets which controller will listen to the different buttons
+     */
     private void registerController(PianoTilesUISelectorManager listener) {
         profile.addActionListener(listener);
-        returnB.addActionListener(listener);
         recordB.addActionListener(listener);
         this.addKeyListener(listener.getKeyListener());
         for (Tile tile : keyboard) {
@@ -98,10 +97,18 @@ public class PianoTilesUISelector extends Piano {
         }
     }
 
+    /**
+     * Deprecated. Way to put the setTypeName
+     * @param name Sets the name for the different type names.
+     */
     public static void setTypeName(String name) {
         soundType.setText(name);
     }
 
+    /**
+     * Generates the keys in a JLayeredPane.
+     * @return JLayeredPane. Contains all the different keys and tiles for our PianoTilesUISelector keyboard
+     */
     public JLayeredPane makeKeys(){
         // Create layerPane
         JLayeredPane keyBoard = new JLayeredPane();
