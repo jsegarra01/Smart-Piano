@@ -26,12 +26,10 @@ import static Presentation.Ui_Views.Tile.*;
  * The "PianoTilesUISelectorManager" class will contain the different methods that are needed to control the view class "PianoTilesUISelector"
  *
  * @author OOPD 20-21 ICE5
- * @version 1.0 21 Apr 2021
+ * @version 2.0 8 May 2021
  *
  */
 public class PianoTilesUISelectorManager implements ActionListener, MouseListener {
-
-    public static String SOUND_TYPE = "SYNTH";
     public static int SOUND_SYNTHER = 0 ;
     private MidiHelper finalMidiHelper;
     MidiHelper midiHelper = null;
@@ -40,7 +38,7 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
     private Translator translator = new Translator();
 
     /**
-     * Parametrized constructor
+     * Parametrized constructor, initializes the recorder and teh different overwrites for when a key is pressed in the keyboard
      */
     public PianoTilesUISelectorManager() {
         try {
@@ -50,9 +48,19 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
         }
         this.finalMidiHelper = midiHelper;
         this.KL = new KeyListener() {
+
+            /**
+             * When a key has been typed by the user
+             * @param e Key that has been pressed
+             */
             @Override
             public void keyTyped(KeyEvent e) {
                 }
+
+            /**
+             * When a key has been pressed it will output the music.
+             * @param e Key that has been pressed
+             */
             @Override
             public void keyPressed(KeyEvent e) {
                 if(translator.getPressedFromKey(e.getExtendedKeyCode()) !=null){
@@ -64,6 +72,10 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
                     setIconKey(translator.getFromKey(e.getExtendedKeyCode()));
                 }
             }
+            /**
+             * When a key has been pressed it will stop the music.
+             * @param e Key that has been pressed
+             */
             @Override
             public void keyReleased(KeyEvent e) {
                 if (translator.getPressedFromKey(e.getExtendedKeyCode()) != null) {
@@ -100,9 +112,22 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
                 break;
         }
     }
+
+
+    /**
+     * Obtains the listener for the key event
+     * @return KeyListener. returns the listener for the key event
+     */
     public KeyListener getKeyListener(){
         return this.KL;
     }
+
+
+    //TODO I DON'T UNDERSTAND THESE METHODS, ALEX EXPLICA QUE CONY SON :p (LA SEGUENT TMB PORFAPLIS)
+    /**
+     *
+     * @param string
+     */
     private void setIconKey(String string){
         int i = 0;
         while(!string.equals(PianoTilesUISelector.getKeyboard().get(i).getName()) &&
@@ -113,6 +138,11 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
             PianoTilesUISelector.getKeyboard().get(i).setIcon();
         }
     }
+
+    /**
+     *
+     * @param string
+     */
     private void setIconBack(String string){
         int i = 0;
         while(!string.equals(PianoTilesUISelector.getKeyboard().get(i).getName()) && i<PianoTilesUISelector.getKeyboard().size()){
@@ -127,28 +157,46 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
         }
     }
 
-
+    /**
+     * Event that happens when the mouse has clicked something
+     * @param e Event of the mouse
+     */
     @Override
     public void mouseClicked(MouseEvent e) {
 
     }
 
+    /**
+     * Event that happens when the mouse has pressed something. Needs to start playing music
+     * @param e Event of the mouse
+     */
     @Override
     public void mousePressed(MouseEvent e) {
         finalMidiHelper.playSomething(Translator.getNumberNoteFromName(e.getComponent().getName()), SOUND_SYNTHER);
 
     }
 
+    /** Event that happens when the mouse has release something. Stops playing the music
+     * @param e Event of the mouse
+     */
     @Override
     public void mouseReleased(MouseEvent e) {
         finalMidiHelper.stopPlaying(Translator.getNumberNoteFromName(e.getComponent().getName()),SOUND_SYNTHER);
     }
 
+    /**
+     * Event that happens when the mouse has entered something
+     * @param e Event of the mouse
+     */
     @Override
     public void mouseEntered(MouseEvent e) {
 
     }
 
+    /**
+     * Event that happens when the mouse has exited something
+     * @param e Event of the mouse
+     */
     @Override
     public void mouseExited(MouseEvent e) {
 

@@ -186,7 +186,7 @@ public class FreePianoUIManager implements ActionListener, MouseListener {
     }
 
 
-    //TODO I DON'T UNDERSTAND THESE QUESTIONS, ALEX EXPLICA QUE CONY SON :p (LA SEGUENT TMB PORFAPLIS)
+    //TODO I DON'T UNDERSTAND THESE METHODS, ALEX EXPLICA QUE CONY SON :p (LA SEGUENT TMB PORFAPLIS)
     /**
      *
      * @param string
