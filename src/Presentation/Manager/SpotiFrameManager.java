@@ -1,11 +1,8 @@
 package Presentation.Manager;
 
 //Imports needed from the dictionary, events and mainframe
-import Business.Entities.Playlist;
+import Business.Entities.*;
 import Business.BusinessFacadeImp;
-import Business.Entities.MidiHelper;
-import Business.Entities.Translator;
-import Business.Entities.webHandler;
 import Business.PlaylistManager;
 import Presentation.Dictionary_login;
 import Presentation.Ui_Views.SpotiUI;
@@ -13,11 +10,14 @@ import Presentation.Ui_Views.Tile;
 
 import javax.sound.midi.MidiUnavailableException;
 import javax.swing.*;
+import javax.xml.crypto.Data;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.io.File;
+import java.util.Date;
+import java.util.HashMap;
 
 import static Presentation.DictionaryPiano.*;
 import static Presentation.Dictionary_login.*;
@@ -49,7 +49,14 @@ public class SpotiFrameManager implements ActionListener {
     private long startMin=0;
     private long lastMin=0;
 
+
+
+    //private Timer min  = new Timer(10, this);
+    private Date date = new Date();
+
     private MidiHelper finalMidiHelper;
+
+    //HashMap<Integer, List<Stadistics>> hashMap;
 
     {
         try {
@@ -65,6 +72,7 @@ public class SpotiFrameManager implements ActionListener {
      * Parametrized constructor
      */
     public SpotiFrameManager() {
+
     }
 
     /**
@@ -76,6 +84,8 @@ public class SpotiFrameManager implements ActionListener {
 
         // We distinguish between our buttons.
         CardLayout cc = (CardLayout) (spotiPanel.getLayout());
+
+        //min.setActionCommand(RECORDING_TIMER);
 
         switch (e.getActionCommand()) {
             case CREATE_STADISTICS:
@@ -97,8 +107,9 @@ public class SpotiFrameManager implements ActionListener {
                     playButton.setIcon(resizeIcon((ImageIcon) playButton.getIcon(), (int) Math.round(playButton.getIcon().getIconWidth()*0.09),
                             (int) Math.round(playButton.getIcon().getIconHeight()*0.09)));
                     startMin = System.currentTimeMillis();
-                    System.out.println("startMin: " + startMin + '\n');
                     //minPlayed = System.currentTimeMillis();
+
+                    System.out.println(date.getHours());
                     finalMidiHelper.playSong(new File(new BusinessFacadeImp().getPlaylistManager().getPlaylists().get(0).getSongs().get(0).getSongFile()));
                     play = true;
                 }
@@ -107,9 +118,10 @@ public class SpotiFrameManager implements ActionListener {
                     playButton.setIcon(resizeIcon((ImageIcon) playButton.getIcon(), (int) Math.round(playButton.getIcon().getIconWidth()*0.09),
                             (int) Math.round(playButton.getIcon().getIconHeight()*0.09)));
                     lastMin = System.currentTimeMillis();
-                    System.out.println("lastMin: " + lastMin + '\n');
                     // String lastSong =
                     minPlayed = (float)(lastMin - startMin)/60000;
+                    Stadistics stats = new Stadistics(date.getHours(), 1, minPlayed);
+                    //stats.setHour(date.getHours());
                     System.out.println("minTotal: " + minPlayed);
                     play = false;
                     finalMidiHelper.stopSong();
