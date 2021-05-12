@@ -103,14 +103,14 @@ public class SpotiFrameManager implements ActionListener {
                     finalMidiHelper.stopSong();
                 }
                 break;
-            case PLAYLIST_LIST:
+           /* case PLAYLIST_LIST:
                 JButton button;
                 Object obj = e.getSource();
                 if (obj instanceof JButton) {
                     button = (JButton) obj;
                 }
                 System.out.println("hola julio");
-                break;
+                break;*/
         }
     }
     public static void addPlaylists(ArrayList<Playlist> playlists){

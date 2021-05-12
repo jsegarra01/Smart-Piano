@@ -211,7 +211,7 @@ public class SpotiUI extends JPanel {
                 myPlaylist = playlists.get(i);
                 JButton buttonAux = new JButton(playlists.get(i).getPlaylistName());
                 buttonAux.setName(playlists.get(i).getPlaylistName());
-                buttonAux.setActionCommand(PLAYLIST_LIST);
+                //buttonAux.setActionCommand(PLAYLIST_LIST);
                 buttonAux.setAlignmentX(0.5f);
                 if(playlists.size() - i == 1){
                     buttonAux.setBorder(new EmptyBorder(10,0, spotiPanel.getHeight(),0));

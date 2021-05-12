@@ -42,8 +42,8 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
     }
 
     @Override
-    public void recordedNotesSend(ArrayList<RecordingNotes> recordedNotes, String songName, boolean isPrivate, float endtime) {
-        writeMidi(songName, new SongRecorded(recordedNotes,songName, isPrivate).getRecordingNotes(), endtime);
+    public void recordedNotesSend(ArrayList<RecordingNotes> recordedNotes, String songName, boolean isPublic, float endtime) {
+        songpanager.saveRecording(recordedNotes,songName,isPublic,endtime);
     }
 
     public PlaylistManager getPlaylistManager() {

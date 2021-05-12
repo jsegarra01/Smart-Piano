@@ -17,7 +17,6 @@ import java.util.*;
  */
 public class SongCsvDAO implements SongDAO {
 
-
     /**
      * Method that gets all the songs from the database created by a user
      * @param myUserString Defines the username of the user who we want to get their songs
@@ -47,7 +46,6 @@ public class SongCsvDAO implements SongDAO {
         ArrayList<Song> songs = new ArrayList<>();
         while(myRs.next()){
             songs.add(new Song(
-                    myRs.getInt("songId"),
                     myRs.getString("songName"),
                     myRs.getString("authorsName"),
                     myRs.getFloat("duration"),
@@ -66,19 +64,21 @@ public class SongCsvDAO implements SongDAO {
     @Override
     public boolean saveSong(Song mySaveSong) {
         try {
-            PreparedStatement st = ConnectSQL.getInstance().prepareStatement("insert into SongT values (" +
-                    mySaveSong.getSongId() + ", '" +
-                    mySaveSong.getSongName() + "', '" +
-                    mySaveSong.getAuthorName() + "', '" +
-                    mySaveSong.getDuration() + "', '" +
-                    mySaveSong.getRecordingDate() + "', " +
-                    mySaveSong.isPublicBoolean() + ", '" +
-                    mySaveSong.getSongFile() + "', '" +
-                    mySaveSong.getCreator() + "')");
+            PreparedStatement st = ConnectSQL.getInstance().prepareStatement(
+                    "insert into SongT (songName, authorsName, duration, recordingDate, publicBoolean, songFile, username) values ('" +
+                            mySaveSong.getSongName() + "', '" +
+                            mySaveSong.getAuthorName() + "', '" +
+                            mySaveSong.getDuration() + "', " +
+                            "current_date, " +
+                            mySaveSong.isPublicBoolean() + ", '" +
+                            mySaveSong.getSongFile() + "', '" +
+                            mySaveSong.getCreator() +"')");
             st.execute();
             return true;
 
         } catch (SQLException throwable) {
+            throwable.printStackTrace();
+            System.out.println("tu puta madre");
             return false;
         }
     }
@@ -91,8 +91,8 @@ public class SongCsvDAO implements SongDAO {
     @Override
     public boolean deleteSong(Song mySong) {
         try {
-            PreparedStatement st = ConnectSQL.getInstance().prepareStatement("delete from SongT where songId = '" +
-                    mySong.getSongId() + "'");
+            PreparedStatement st = ConnectSQL.getInstance().prepareStatement("delete from SongT where songName = '" +
+                    mySong.getSongName() + "'");
             st.execute();
             return true;
         } catch (SQLException e) {
@@ -111,7 +111,7 @@ public class SongCsvDAO implements SongDAO {
             ResultSet myRs = ConnectSQL.getInstance().createStatement().executeQuery("select * from SongT as s where s.songId = " + id);
             if(myRs.next()){
                 Song song = new Song(
-                        myRs.getInt("songId"),
+
                         myRs.getString("songName"),
                         myRs.getString("authorsName"),
                         myRs.getFloat("duration"),

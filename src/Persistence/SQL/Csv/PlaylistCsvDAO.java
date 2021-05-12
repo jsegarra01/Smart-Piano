@@ -71,7 +71,7 @@ public class PlaylistCsvDAO implements PlaylistDAO {
         ArrayList<Song> songs = new ArrayList<>();
         while(myRs2.next()) {
             songs.add(new Song(
-                    myRs2.getInt("songId"),
+                    //myRs2.getInt("songId"),
                     myRs2.getString("songName"),
                     myRs2.getString("authorsName"),
                     myRs2.getFloat("duration"),

@@ -7,7 +7,6 @@ import java.sql.Blob;
 import java.util.Date;
 
 public class Song {
-    private int songId;
     private String songName;
     private String authorName;
     private float duration;
@@ -18,8 +17,7 @@ public class Song {
     private float minPlayed;
     private int timesPlayed;
 
-    public Song(int songId, String songName, String authorName, float duration, Date recordingDate, boolean publicBoolean, String songFile, String creator){
-        this.songId = songId;
+    public Song(String songName, String authorName, float duration, Date recordingDate, boolean publicBoolean, String songFile, String creator){
         this.songName = songName;
         this.authorName = authorName;
         this.duration = duration;
@@ -29,13 +27,15 @@ public class Song {
         this.creator = creator;
     }
 
-    public int getSongId() {
-        return songId;
+    public Song(String songName, String authorName, float duration, boolean publicBoolean, String songFile, String creator){
+        this.songName = songName;
+        this.authorName = authorName;
+        this.duration = duration;
+        this.publicBoolean = publicBoolean;
+        this.songFile = songFile;
+        this.creator = creator;
     }
 
-    public void setSongId(int songId) {
-        this.songId = songId;
-    }
 
     public String getSongName() {
         return songName;

@@ -149,7 +149,7 @@ public class FreePianoUIManager implements ActionListener, MouseListener {
                     JPanel myPanel = new JPanel();
                     JTextField titleField = new JTextField( 20);
                     myPanel.add(titleField);
-                    JCheckBox box = new JCheckBox("is private?");
+                    JCheckBox box = new JCheckBox("is public?");
                     myPanel.add(box);
 
                     JOptionPane.showMessageDialog(null, myPanel, "Enter a title for the song", 1);
