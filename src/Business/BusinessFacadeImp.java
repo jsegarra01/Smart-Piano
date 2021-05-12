@@ -1,5 +1,6 @@
 package Business;
 
+import Business.Entities.Playlist;
 import Business.Entities.RecordingNotes;
 import Business.Entities.SongRecorded;
 import Business.Entities.SongToJson;
@@ -45,8 +46,13 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
     public void recordedNotesSend(ArrayList<RecordingNotes> recordedNotes, String songName, boolean isPrivate, float endtime) {
         writeMidi(songName, new SongRecorded(recordedNotes,songName, isPrivate).getRecordingNotes(), endtime);
     }
-
+    @Override
     public PlaylistManager getPlaylistManager() {
         return playlistManager;
+    }
+
+    @Override
+    public Playlist getPlaylist(String name){
+        return playlistManager.getFromName(name);
     }
 }

@@ -1,5 +1,6 @@
 package Business;
 
+import Business.Entities.Playlist;
 import Business.Entities.RecordingNotes;
 
 import java.util.ArrayList;
@@ -44,4 +45,8 @@ public interface BusinessFacade {
      * @param recordedNotes array with the notes
      */
     void recordedNotesSend(ArrayList<RecordingNotes> recordedNotes, String songName, boolean isPrivate, float endtime);
+
+    PlaylistManager getPlaylistManager();
+
+    Playlist getPlaylist(String name);
 }

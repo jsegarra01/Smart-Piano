@@ -8,6 +8,7 @@ import Business.Entities.Translator;
 import Business.Entities.webHandler;
 import Business.PlaylistManager;
 import Presentation.Dictionary_login;
+import Presentation.Ui_Views.PlaylistUI;
 import Presentation.Ui_Views.SpotiUI;
 import Presentation.Ui_Views.Tile;
 
@@ -92,7 +93,7 @@ public class SpotiFrameManager implements ActionListener {
                     playButton.setIcon(pauseIcon);
                     playButton.setIcon(resizeIcon((ImageIcon) playButton.getIcon(), (int) Math.round(playButton.getIcon().getIconWidth()*0.09),
                             (int) Math.round(playButton.getIcon().getIconHeight()*0.09)));
-                    finalMidiHelper.playSong(new File(new BusinessFacadeImp().getPlaylistManager().getPlaylists().get(0).getSongs().get(0).getSongFile()));
+                    finalMidiHelper.playSong(new File(new BusinessFacadeImp().getPlaylistManager().getPlaylists().get(0).getSongs().get(8).getSongFile()));
                     play = true;
                 }
                 else{
@@ -108,8 +109,9 @@ public class SpotiFrameManager implements ActionListener {
                 Object obj = e.getSource();
                 if (obj instanceof JButton) {
                     button = (JButton) obj;
+                    PlaylistUI.setInfo(new BusinessFacadeImp().getPlaylist(button.getName()));
+                    cc.show(spotiPanel, PLAYLIST_UI);
                 }
-                System.out.println("hola julio");
                 break;
         }
     }
