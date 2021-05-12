@@ -104,25 +104,6 @@ public class FreePianoUI extends Piano {
         soundType.setText(name);
     }
 
-    private JLayeredPane createGamePane(){
-        JLayeredPane jLayeredPane = new JLayeredPane();
-        jLayeredPane.setLayout(new BoxLayout(jLayeredPane, BoxLayout.X_AXIS));
-        for (int i = 0; i < 14; i++) {
-            JPanel panel1 = new JPanel();
-            panel1.setBounds(55 + 65*i,0,65,30);
-            jLayeredPane.add(panel1, Integer.valueOf(1));
-        }
-
-        for (int i = 0; i < 10; i++) {
-            JPanel panel1 = new JPanel();
-            panel1.setBounds(95 + 65*i,0,65,30);
-            panel1.setBackground(Color.black);
-            jLayeredPane.add(panel1, Integer.valueOf(3));
-        }
-
-        return jLayeredPane;
-    }
-
     public JLayeredPane makeKeys(){
         int heightBlack = 150;
         int widthBlack = 35;

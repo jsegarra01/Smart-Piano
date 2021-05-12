@@ -14,6 +14,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.Objects;
 
+import static Presentation.DictionaryPiano.RECORDING_TIMER;
 import static Presentation.Dictionary_login.*;
 import static Presentation.Manager.MainFrame.card;
 import static Presentation.Manager.MainFrame.contenedor;
@@ -39,10 +40,17 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
     private boolean iAmPressed=false;
     private Translator translator = new Translator();
 
+    public static int recordingTime = 0;
+    Timer timer  = new Timer(100, this);
+
+
+
+
     /**
      * Parametrized constructor
      */
     public PianoTilesUISelectorManager() {
+        timer.setActionCommand(RECORDING_TIMER);
         try {
             midiHelper = new MidiHelper();
         } catch (MidiUnavailableException exception) {
@@ -75,6 +83,10 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
         };
     }
 
+    public void activateTimer() {
+        timer.setActionCommand(RECORDING_TIMER);
+    }
+
     /**
      * Method that will be called every time a button is pressed, overriden from the interface to provide an implementation.
      * @param e ActionEvent from the UI
@@ -83,6 +95,9 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
     public void actionPerformed(ActionEvent e) {
         // We distinguish between our buttons.
         switch (e.getActionCommand()) {
+            case RECORDING_TIMER:
+                recordingTime += 1;
+                break;
             case PianoTilesUISelector.BTN_RETURN:
                 System.out.println("Well... we have already NOT implemented this button!");
                 break;

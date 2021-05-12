@@ -1,5 +1,6 @@
 package Presentation.Ui_Views;
 
+import Business.Entities.MidiHelper;
 import Business.Entities.Translator;
 import Presentation.Manager.MainFrame;
 
@@ -34,6 +35,7 @@ import static Presentation.Ui_Views.Tile.*;
 public class PianoTilesUISelector extends Piano {
     private static ArrayList<Tile> keyboard;
 
+
     public static ArrayList<Tile> getKeyboard() {
         return keyboard;
     }
@@ -56,6 +58,8 @@ public class PianoTilesUISelector extends Piano {
     private void initialize() {
         this.add(configurePanel());
         this.setBackground(Color.getHSBColor(0,0,0.2f));
+
+
     }
 
     private JPanel configurePanel() {
@@ -64,6 +68,7 @@ public class PianoTilesUISelector extends Piano {
 
         //This will be another card layout, which we will have to divide between the free piano or the song piano in order use the same piano for both
         panel.add(Box.createRigidArea(new Dimension(10, 320)), BorderLayout.CENTER);
+        panel.add(createGamePane(), BorderLayout.CENTER);
         layeredPane = makeKeys();
         panel.add(layeredPane, BorderLayout.SOUTH);
         panel.add(initMenu(), BorderLayout.PAGE_START);
@@ -96,6 +101,59 @@ public class PianoTilesUISelector extends Piano {
             tile.addMouseListener(listener);
             tile.addKeyListener(listener.getKeyListener());
         }
+    }
+
+    private JLayeredPane createGamePane(){
+        JLayeredPane panel = new JLayeredPane();
+        panel.setPreferredSize(new Dimension(1025,320));
+        panel.add(Box.createRigidArea(new Dimension(55, 320)));
+
+        int widthBlack = 35;
+        int yBlack = 0;
+        int separationBlack = 455;
+
+        for (int i = 0; i < numWhiteKeys; i++) {
+            JPanel paneel = new JPanel();
+            paneel.setBounds(55 + 65*i,0,65,320);
+            panel.add(paneel, Integer.valueOf(1));
+            panel.add(Box.createRigidArea(new Dimension(2, 0)));
+        }
+
+        int add = 8;
+        for (int i = 0; i < 2; i++) {
+            JPanel panel1 = new JPanel();
+            JPanel panel2 = new JPanel();
+            JPanel panel3 = new JPanel();
+            JPanel panel4 = new JPanel();
+            JPanel panel5 = new JPanel();
+
+            panel1.setBounds(102+(separationBlack*i),yBlack,widthBlack,PianoTilesUISelectorManager.recordingTime);
+            panel1.setBackground(Color.BLACK);
+            panel.add(panel1, Integer.valueOf(2));
+
+            panel2.setBounds(167+(separationBlack*i),yBlack,widthBlack,320);
+            panel2.setBackground(Color.BLACK);
+            panel.add(panel2, Integer.valueOf(2));
+
+            panel3.setBounds(297+(separationBlack*i),yBlack,widthBlack,320);
+            panel3.setBackground(Color.BLACK);
+            panel.add(panel3, Integer.valueOf(2));
+
+            panel4.setBounds(362+(separationBlack*i),yBlack,widthBlack,320);
+            panel4.setBackground(Color.BLACK);
+            panel.add(panel4, Integer.valueOf(2));
+
+            panel5.setBounds(428+(separationBlack*i),yBlack,widthBlack,320);
+            panel5.setBackground(Color.BLACK);
+            panel.add(panel5, Integer.valueOf(2));
+
+            SwingUtilities.invokeLater(new Runnable() {
+                public void run() {
+                    mainFrame.repaint();  // repaint(), etc. according to changed states
+                }
+            });
+        }
+        return panel;
     }
 
     public static void setTypeName(String name) {
