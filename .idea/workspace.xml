@@ -19,8 +19,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="Small changes added">
-      <change beforePath="$PROJECT_DIR$/Files/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/Files/config.json" afterDir="false" />
+    <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="Commentaries for the PianoTilesUISelector and the PianoTilesUISelectorManager">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -155,6 +155,7 @@
       <workItem from="1620592401621" duration="2084000" />
       <workItem from="1620641855278" duration="3071000" />
       <workItem from="1620729555579" duration="936000" />
+      <workItem from="1620807482423" duration="1303000" />
     </task>
     <task id="LOCAL-00001" summary="ProfileUi connections done">
       <created>1618916466488</created>
@@ -492,7 +493,14 @@
       <option name="project" value="LOCAL" />
       <updated>1620730531167</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="Commentaries for the PianoTilesUISelector and the PianoTilesUISelectorManager">
+      <created>1620808412547</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1620808412547</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -534,7 +542,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Deleting files" />
     <MESSAGE value="Logic for the Enter as Guest changed and adapted to not be deleted and to be a user called guest." />
     <MESSAGE value="Basic UI classes created and added to the cardLayout." />
     <MESSAGE value="IsValidActive" />
@@ -574,6 +581,7 @@
     <MESSAGE value="Comments for the FreePianoUIManager, implementation of the recording for the mouse (now mouse records too) and eliminated some System.outs" />
     <MESSAGE value="Comments for the FreePianoUI, PianoUI and SongToMidi" />
     <MESSAGE value="Small changes added" />
-    <option name="LAST_COMMIT_MESSAGE" value="Small changes added" />
+    <MESSAGE value="Commentaries for the PianoTilesUISelector and the PianoTilesUISelectorManager" />
+    <option name="LAST_COMMIT_MESSAGE" value="Commentaries for the PianoTilesUISelector and the PianoTilesUISelectorManager" />
   </component>
 </project>
