@@ -1,9 +1,6 @@
 package Business.Entities;
 
-import com.google.gson.JsonObject;
-
-import java.io.File;
-import java.sql.Blob;
+//Import the Date format
 import java.util.Date;
 
 public class Song {

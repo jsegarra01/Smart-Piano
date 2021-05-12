@@ -1,22 +1,28 @@
 package Presentation.Ui_Views;
 
+//Imports needed from the dictionary, events and mainframe
 import Business.Entities.Keys;
 import Business.Entities.Translator;
 import Presentation.Manager.FreePianoUIManager;
 import Presentation.Manager.MainFrame;
-import Presentation.Manager.PianoFrameManager;
 
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
-import java.util.LinkedList;
 
-import static Presentation.Dictionary_login.PROFILE_BUTTON;
 import static Presentation.Ui_Views.Tile.*;
-import static javax.swing.SwingConstants.CENTER;
 
+
+/**
+ * FreePianoUI
+ *
+ * The "FreePianoUI" class will different views for the PianoUI
+ *
+ * @author OOPD 20-21 ICE5
+ * @version 2.0 9 May 2021
+ *
+ */
 public class FreePianoUI extends Piano {
 
     /**
@@ -39,6 +45,10 @@ public class FreePianoUI extends Piano {
         this.setBackground(Color.getHSBColor(0,0,0.2f));
     }
 
+    /**
+     * Configures the main Panel for the PianoUI
+     * @return Returns the JPanel configured for the general settings of the PianoUI
+     */
     private JPanel configurePanel() {
         JPanel panel = new JPanel(new BorderLayout());
         panel.setBackground(Color.getHSBColor(0,0,0.2f));
@@ -55,6 +65,10 @@ public class FreePianoUI extends Piano {
         return panel;
     }
 
+    /**
+     * Initializes the Menu of the main pianoUI panel gets configured
+     * @return Menu panel of the piano UI configured
+     */
     private JPanel initMenu() {
         JPanel layout = new JPanel(new BorderLayout());
         JPanel menu = new JPanel();
@@ -85,9 +99,12 @@ public class FreePianoUI extends Piano {
         return layout;
     }
 
+    /**
+     * Registers the different buttons with the controller FreePianoUIManager
+     * @param listener Gets which controller will listen to the different buttons
+     */
     private void registerController(FreePianoUIManager listener) {
         profile.addActionListener(listener);
-        returnB.addActionListener(listener);
         recordB.addActionListener(listener);
         modifyKeys.addActionListener(listener);
 
@@ -98,10 +115,10 @@ public class FreePianoUI extends Piano {
         }
     }
 
-    public static void setTypeName(String name) {
-        soundType.setText(name);
-    }
-
+    /**
+     * Generates the keys in a JLayeredPane.
+     * @return JLayeredPane. Contains all the different keys and tiles for our piano keyboard
+     */
     public JLayeredPane makeKeys(){
         int heightBlack = 150;
         int widthBlack = 35;
@@ -110,8 +127,6 @@ public class FreePianoUI extends Piano {
         JLayeredPane keyBoard = new JLayeredPane();
         keyBoard.setPreferredSize(new Dimension(1025,600));
         keyBoard.add(Box.createRigidArea(new Dimension(55, 0)));
-
-
 
         JLabel label;
         keyBoard = makeTiles(keyBoard, heightBlack, 330, 60, keyboard, 50, 275);
@@ -173,6 +188,10 @@ public class FreePianoUI extends Piano {
         return keyBoard;
     }
 
+    /**
+     * Makes the label for each key (which key in the keyboard is that tile) in the Piano to appear
+     * @param modify Boolean. Checks if we need to modify the keys or not
+     */
     public static void labelAppear(boolean modify){
         for(int i =0;i<24;i++){
             layeredPane.getComponent(i).setVisible(modify);
@@ -193,6 +212,11 @@ public class FreePianoUI extends Piano {
             keyboard.get(i).setPressedIcon(resizeIcon(icon, Math.round(icon.getIconWidth()*SIZE_MULT_WIDTH), Math.round(icon.getIconHeight()*SIZE_MULT_HEIGHT)));
         }
     }
+
+    /**
+     * Sets a color for the Tile
+     * @param tile Sets the color for the tile to appear
+     */
     public static void setTileColor(Tile tile){
         boolean found = false;
         int i  = 0;
@@ -207,6 +231,12 @@ public class FreePianoUI extends Piano {
             tile.setSelectedIcon(iconPressed);
         }
     }
+
+    /**
+     * Enables the modification of the key selected in order to select which key is that tile.
+     * @param key new key that we want to modify to the old tile
+     * @param keyEvent keyEvent listener we want to be modified and selected for the new key
+     */
     public static void modifyKey(Keys key, KeyEvent keyEvent){
         int i = 0;
         boolean found=false;
