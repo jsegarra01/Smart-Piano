@@ -126,8 +126,9 @@ public class FreePianoUIManager implements ActionListener, MouseListener {
                     finalMidiHelper.stopPlaying(Translator.getNumberNoteFromName(Translator.getFromKey(e.getExtendedKeyCode())),SOUND_SYNTHER);
                     if (recording) {
                         for (int i = 0; recordingNotes.size() != i; i++) {
-                            if (recordingNotes.get(i).getKey().equals(Translator.getCodeFromKey(e)) && recordingNotes.get(i).getDuration() == 0) {
+                            if (recordingNotes.get(i).getKey().equals(Translator.getFromKey(e.getKeyCode())) && recordingNotes.get(i).getDuration() == 0) {
                                 recordingNotes.get(i).setDuration(recordingTime - recordingNotes.get(i).getTime());
+                                System.out.println( recordingNotes.get(i).getDuration());
                             }
                         }
                     }

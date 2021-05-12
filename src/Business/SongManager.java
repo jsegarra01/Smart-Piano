@@ -9,7 +9,7 @@ import Persistence.SQL.Csv.SongCsvDAO;
 import java.util.ArrayList;
 import java.util.Date;
 
-import static Business.Entities.SongToJson.writeMidi;
+import static Business.Entities.SongToMidi.writeMidi;
 
 public class SongManager {
     private Song song;
