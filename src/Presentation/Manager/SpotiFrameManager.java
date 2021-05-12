@@ -45,6 +45,9 @@ public class SpotiFrameManager implements ActionListener {
     private boolean play=false;
     private ImageIcon playIcon = new ImageIcon("Files/drawable/playbuttonWhite.png");
     private ImageIcon pauseIcon = new ImageIcon("Files/drawable/pauseWhite.png");
+    private float minPlayed;
+    private long startMin=0;
+    private long lastMin=0;
 
     private MidiHelper finalMidiHelper;
 
@@ -70,6 +73,7 @@ public class SpotiFrameManager implements ActionListener {
      */
     @Override
     public void actionPerformed(ActionEvent e) {
+
         // We distinguish between our buttons.
         CardLayout cc = (CardLayout) (spotiPanel.getLayout());
 
@@ -92,6 +96,9 @@ public class SpotiFrameManager implements ActionListener {
                     playButton.setIcon(pauseIcon);
                     playButton.setIcon(resizeIcon((ImageIcon) playButton.getIcon(), (int) Math.round(playButton.getIcon().getIconWidth()*0.09),
                             (int) Math.round(playButton.getIcon().getIconHeight()*0.09)));
+                    startMin = System.currentTimeMillis();
+                    System.out.println("startMin: " + startMin + '\n');
+                    //minPlayed = System.currentTimeMillis();
                     finalMidiHelper.playSong(new File(new BusinessFacadeImp().getPlaylistManager().getPlaylists().get(0).getSongs().get(0).getSongFile()));
                     play = true;
                 }
@@ -99,17 +106,21 @@ public class SpotiFrameManager implements ActionListener {
                     playButton.setIcon(playIcon);
                     playButton.setIcon(resizeIcon((ImageIcon) playButton.getIcon(), (int) Math.round(playButton.getIcon().getIconWidth()*0.09),
                             (int) Math.round(playButton.getIcon().getIconHeight()*0.09)));
+                    lastMin = System.currentTimeMillis();
+                    System.out.println("lastMin: " + lastMin + '\n');
+                    // String lastSong =
+                    minPlayed = (float)(lastMin - startMin)/60000;
+                    System.out.println("minTotal: " + minPlayed);
                     play = false;
                     finalMidiHelper.stopSong();
                 }
                 break;
-            case PLAYLIST_LIST:
+            case PLAYLIST_INFO:
                 JButton button;
                 Object obj = e.getSource();
                 if (obj instanceof JButton) {
                     button = (JButton) obj;
                 }
-                System.out.println("hola julio");
                 break;
         }
     }

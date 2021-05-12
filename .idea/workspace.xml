@@ -26,10 +26,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="I have added TODO's as there are things we have to see how they look in a windows (as with a mac they are weird)">
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/gson_2_8_22.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/gson_2_8_2.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/DictionaryPiano.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/DictionaryPiano.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/PianoFrameManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/PianoFrameManager.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/SpotiFrameManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/SpotiFrameManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/PianoFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/PianoFrame.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/SpotiUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/SpotiUI.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Presentation/DictionaryPiano.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/DictionaryPiano.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Presentation/Manager/SpotiFrameManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Manager/SpotiFrameManager.java" afterDir="false" />
@@ -530,26 +531,34 @@
     <option name="LAST_COMMIT_MESSAGE" value="I have added TODO's as there are things we have to see how they look in a windows (as with a mac they are weird)" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="875" height="318" key="GridCell.Tab.0.bottom" timestamp="1620595451867">
-      <screen x="0" y="0" width="1792" height="1120" />
+    <state width="875" height="296" key="GridCell.Tab.0.bottom" timestamp="1620816032277">
+      <screen x="0" y="23" width="1792" height="1045" />
     </state>
     <state width="875" height="318" key="GridCell.Tab.0.bottom/0.0.1792.1120@0.0.1792.1120" timestamp="1620595451867" />
     <state width="875" height="318" key="GridCell.Tab.0.bottom/0.23.1792.1042@0.23.1792.1042" timestamp="1620570473679" />
-    <state width="875" height="318" key="GridCell.Tab.0.center" timestamp="1620595451866">
-      <screen x="0" y="0" width="1792" height="1120" />
+    <state width="875" height="296" key="GridCell.Tab.0.bottom/0.23.1792.1045@0.23.1792.1045" timestamp="1620816032277" />
+    <state width="875" height="296" key="GridCell.Tab.0.bottom/0.23.1792.1046@0.23.1792.1046" timestamp="1620811262260" />
+    <state width="875" height="296" key="GridCell.Tab.0.center" timestamp="1620816032277">
+      <screen x="0" y="23" width="1792" height="1045" />
     </state>
     <state width="875" height="318" key="GridCell.Tab.0.center/0.0.1792.1120@0.0.1792.1120" timestamp="1620595451866" />
     <state width="875" height="318" key="GridCell.Tab.0.center/0.23.1792.1042@0.23.1792.1042" timestamp="1620570473678" />
-    <state width="875" height="318" key="GridCell.Tab.0.left" timestamp="1620595451865">
-      <screen x="0" y="0" width="1792" height="1120" />
+    <state width="875" height="296" key="GridCell.Tab.0.center/0.23.1792.1045@0.23.1792.1045" timestamp="1620816032277" />
+    <state width="875" height="296" key="GridCell.Tab.0.center/0.23.1792.1046@0.23.1792.1046" timestamp="1620811262260" />
+    <state width="875" height="296" key="GridCell.Tab.0.left" timestamp="1620816032276">
+      <screen x="0" y="23" width="1792" height="1045" />
     </state>
     <state width="875" height="318" key="GridCell.Tab.0.left/0.0.1792.1120@0.0.1792.1120" timestamp="1620595451865" />
     <state width="875" height="318" key="GridCell.Tab.0.left/0.23.1792.1042@0.23.1792.1042" timestamp="1620570473678" />
-    <state width="875" height="318" key="GridCell.Tab.0.right" timestamp="1620595451866">
-      <screen x="0" y="0" width="1792" height="1120" />
+    <state width="875" height="296" key="GridCell.Tab.0.left/0.23.1792.1045@0.23.1792.1045" timestamp="1620816032276" />
+    <state width="875" height="296" key="GridCell.Tab.0.left/0.23.1792.1046@0.23.1792.1046" timestamp="1620811262260" />
+    <state width="875" height="296" key="GridCell.Tab.0.right" timestamp="1620816032277">
+      <screen x="0" y="23" width="1792" height="1045" />
     </state>
     <state width="875" height="318" key="GridCell.Tab.0.right/0.0.1792.1120@0.0.1792.1120" timestamp="1620595451866" />
     <state width="875" height="318" key="GridCell.Tab.0.right/0.23.1792.1042@0.23.1792.1042" timestamp="1620570473678" />
+    <state width="875" height="296" key="GridCell.Tab.0.right/0.23.1792.1045@0.23.1792.1045" timestamp="1620816032277" />
+    <state width="875" height="296" key="GridCell.Tab.0.right/0.23.1792.1046@0.23.1792.1046" timestamp="1620811262260" />
     <state width="875" height="207" key="GridCell.Tab.1.bottom" timestamp="1620593722622">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
@@ -582,16 +591,5 @@
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
     <state x="507" y="280" key="git4idea.branch.GitSmartOperationDialog/0.0.1792.1120@0.0.1792.1120" timestamp="1620388423589" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Presentation/Manager/SpotiFrameManager.java</url>
-          <line>111</line>
-          <option name="timeStamp" value="17" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

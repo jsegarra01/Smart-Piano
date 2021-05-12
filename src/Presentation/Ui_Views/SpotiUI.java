@@ -3,6 +3,7 @@ package Presentation.Ui_Views;
 import Business.BusinessFacadeImp;
 import Business.Entities.Playlist;
 import Business.PlaylistManager;
+import Presentation.DictionaryPiano;
 import Presentation.Manager.MainFrame;
 import Presentation.Manager.PianoFrameManager;
 import Presentation.Manager.SpotiFrameManager;
@@ -211,13 +212,12 @@ public class SpotiUI extends JPanel {
                 myPlaylist = playlists.get(i);
                 JButton buttonAux = new JButton(playlists.get(i).getPlaylistName());
                 buttonAux.setName(playlists.get(i).getPlaylistName());
-                buttonAux.setActionCommand(PLAYLIST_LIST);
+                buttonAux.setActionCommand(DictionaryPiano.PLAYLIST_INFO);
                 buttonAux.setAlignmentX(0.5f);
                 if(playlists.size() - i == 1){
                     buttonAux.setBorder(new EmptyBorder(10,0, spotiPanel.getHeight(),0));
                 }else{
                     buttonAux.setBorder(new EmptyBorder(10,18,10,115));
-                    System.out.println("leftlist: " + leftList.getWidth() + " button: " + buttonAux.getWidth() + "\n");
                 }
                 buttonAux.setBackground(Color.getHSBColor(0,0,0.8f));
                 buttonAux.setForeground(Color.white);
