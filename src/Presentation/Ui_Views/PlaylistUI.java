@@ -173,7 +173,12 @@ public class PlaylistUI extends JPanel {
             data[i][1] = playlist.getSongs().get(i).getAuthorName();
             data[i][2]  = "Delete";
         }
-        DefaultTableModel model = new DefaultTableModel(data, columnNames);
+        DefaultTableModel model = new DefaultTableModel(data, columnNames){
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return column == 2;
+            }
+        };
         table = new JTable(model);
         table.setBackground(Color.LIGHT_GRAY);
         table.setGridColor(Color.lightGray);

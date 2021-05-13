@@ -93,7 +93,7 @@ public class SpotiFrameManager implements ActionListener {
                     playButton.setIcon(pauseIcon);
                     playButton.setIcon(resizeIcon((ImageIcon) playButton.getIcon(), (int) Math.round(playButton.getIcon().getIconWidth()*0.09),
                             (int) Math.round(playButton.getIcon().getIconHeight()*0.09)));
-                    finalMidiHelper.playSong(new File(new BusinessFacadeImp().getPlaylistManager().getPlaylists().get(0).getSongs().get(8).getSongFile()));
+                    finalMidiHelper.playSong(new File(new BusinessFacadeImp().getPlaylistManager().getPlaylists().get(0).getSongs().get(10).getSongFile()));
                     play = true;
                 }
                 else{
