@@ -2,9 +2,16 @@ package Presentation.Manager;
 
 //Imports needed from the dictionary, events and mainframe
 import Presentation.Dictionary_login;
+
+import javax.security.auth.RefreshFailedException;
+import javax.security.auth.Refreshable;
+import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Arrays;
 
 import static Presentation.DictionaryPiano.*;
 import static Presentation.Dictionary_login.*;
@@ -43,6 +50,8 @@ public class PianoFrameManager implements ActionListener {
         freePiano.setBackground(Color.GRAY);
         playSong.setBackground(Color.GRAY);
         musicPlayer.setBackground(Color.GRAY);
+
+
         switch (e.getActionCommand()) {
             case Dictionary_login.PROFILE_BUTTON:       //In the case that the Profile button is pressed
                 card.show(contenedor, PROFILE_UI);
@@ -51,7 +60,17 @@ public class PianoFrameManager implements ActionListener {
                 freePiano.setBackground(Color.getHSBColor(0,0,80.3f));
                 break;
             case PLAY_A_SONG:
+                refreshPianoTilesUI();
                 cc.show(centralPanel, PIANO_TILES_UI_SELECTOR);
+                centralPanel.repaint();
+                centralPanel.revalidate();
+/*
+                try {
+                    ((Refreshable) centralPanel.getLayout()).refresh();
+                } catch (RefreshFailedException refreshFailedException) {
+                    refreshFailedException.printStackTrace();
+                }*/
+
                 playSong.setBackground(Color.getHSBColor(0,0,80.3f));
                 break;
             case MUSIC_PLAYER:
@@ -60,5 +79,4 @@ public class PianoFrameManager implements ActionListener {
                 break;
         }
     }
-
 }

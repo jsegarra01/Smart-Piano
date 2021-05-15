@@ -42,6 +42,7 @@ public class SignUpUiManager  implements ActionListener {
             case DONE_BUTTON:              //In the case that the Done button is pressed
                 if (new BusinessFacadeImp().SignUp(getUsernameSignUp(), getMailSignUp(), getPasswordSignUp(), getPasswordConfirmSignUp())) {
                     setUsernameLogin(getUsernameSignUp());
+                    new BusinessFacadeImp().setSongUser();
                     card.show(contenedor, PIANO_FRAME);
                 }
                 else{

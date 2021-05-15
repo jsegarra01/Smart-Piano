@@ -3,6 +3,8 @@ package Presentation.Ui_Views;
 import Business.Entities.Translator;
 import Presentation.Manager.MainFrame;
 
+import javax.security.auth.RefreshFailedException;
+import javax.security.auth.Refreshable;
 import javax.swing.*;
 import java.awt.*;
 
@@ -13,6 +15,8 @@ import Presentation.Manager.PianoFrameManager;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.text.JTextComponent;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -50,6 +54,7 @@ public class PianoTilesUISelector extends Piano {
         initialize();
     }
 
+
     /**
      * The initialize function that creates the card layout for the PianoTilesUISelector
      */
@@ -84,7 +89,11 @@ public class PianoTilesUISelector extends Piano {
         profile.setIcon(new ImageIcon("Files/drawable/profile-picture.png"));
         profile.setIcon(resizeIcon((ImageIcon) profile.getIcon(), (int) Math.round(profile.getIcon().getIconWidth()*0.15), (int) Math.round(profile.getIcon().getIconHeight()*0.15)));
 
-        menu.add(profile);
+
+        menu.add(profile, BorderLayout.WEST);
+        menu.add(Box.createRigidArea(new Dimension(400,10)), BorderLayout.CENTER);
+        menu.add(songSelector(), BorderLayout.CENTER);
+        menu.add(Box.createRigidArea(new Dimension(200,10)), BorderLayout.CENTER);
         registerController(new PianoTilesUISelectorManager());
         return menu;
     }
@@ -108,7 +117,7 @@ public class PianoTilesUISelector extends Piano {
 
         JLayeredPane jLayeredPane = new JLayeredPane();                             //Sets the middle columns, the ones
         jLayeredPane.setLayout(null);                                               //We care about for the pianoTiles
-        jLayeredPane.setPreferredSize(new Dimension(10,320));           //Through the jLayeredPane settings
+        jLayeredPane.setPreferredSize(new Dimension(10,300));           //Through the jLayeredPane settings
         jLayeredPane.setBackground(Color.black);
         jLayeredPane.setOpaque(true);
 
@@ -121,14 +130,21 @@ public class PianoTilesUISelector extends Piano {
         jLayeredPane.add(panel,Integer.valueOf(1));
         */
 
-        for (int i = 0; i < 14; i++) {
+        for (int i = 0; i < 14; i++) {                                              //Vertical lines
             JPanel auxiliar = new JPanel();
-            auxiliar.setBounds(i*65 + 65,0,1,320);
+            auxiliar.setBounds(i*65 + 65,0,1,300);
             auxiliar.setBackground(Color.WHITE);
             auxiliar.setOpaque(true);
-            jLayeredPane.add(auxiliar,Integer.valueOf(2));
+            jLayeredPane.add(auxiliar,Integer.valueOf(1));
         }
 
+        for (int i = 0; i < 100; i++) {                                              //Horitzontal lines
+            JPanel auxiliar = new JPanel();
+            auxiliar.setBounds(i*10,280,5,1);
+            auxiliar.setBackground(Color.WHITE);
+            auxiliar.setOpaque(true);
+            jLayeredPane.add(auxiliar,Integer.valueOf(1));
+        }
         panelBorderLayout.add(jLayeredPane, BorderLayout.CENTER);
         return panelBorderLayout;
     }
@@ -137,6 +153,7 @@ public class PianoTilesUISelector extends Piano {
         profile.addActionListener(listener);
         returnB.addActionListener(listener);
         recordB.addActionListener(listener);
+
         this.addKeyListener(listener.getKeyListener());
         for (Tile tile : keyboard) {
             tile.addMouseListener(listener);
@@ -148,6 +165,27 @@ public class PianoTilesUISelector extends Piano {
         soundType.setText(name);
     }
 
+    private JScrollPane songSelector() {
+
+        try {
+            //We create the available songs for the user to be played in piano tiles
+            ArrayList<String> names = new ArrayList<>(new PianoTilesUISelectorManager().getBusinessSongNames());
+            JList<String> songNames = new JList<>(names.toArray(new String[0]));
+            songNames.addListSelectionListener(new PianoTilesUISelectorManager());
+            songNames.setSelectionMode(0);
+            songNames.setVisibleRowCount(4);
+
+
+            //We create the view of the list in a scroll pane
+            JScrollPane scrollPane = new JScrollPane(songNames);
+            scrollPane.setPreferredSize(new Dimension(250,60));
+            scrollPane.setWheelScrollingEnabled(true);
+
+            return scrollPane;
+        } catch (NullPointerException e){
+            return new JScrollPane();
+        }
+    }
     public JLayeredPane makeKeys(){
         // Create layerPane
         JLayeredPane keyBoard = new JLayeredPane();
@@ -156,6 +194,5 @@ public class PianoTilesUISelector extends Piano {
 
         return makeTiles(keyBoard, 120, 250, 45, keyboard, 20, 210);
     }
-
 
 }

@@ -1,6 +1,7 @@
 package Presentation.Manager;
 
 //Imports needed from the dictionary, events and mainframe
+import Business.BusinessFacadeImp;
 import Presentation.Dictionary_login;
 import Presentation.Ui_Views.FreePianoUI;
 import Presentation.Ui_Views.PianoTilesUISelector;
@@ -10,8 +11,12 @@ import Business.Entities.Translator;
 
 import javax.sound.midi.MidiUnavailableException;
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Objects;
 
 import static Presentation.DictionaryPiano.RECORDING_TIMER;
@@ -30,7 +35,7 @@ import static Presentation.Ui_Views.Tile.*;
  * @version 1.0 21 Apr 2021
  *
  */
-public class PianoTilesUISelectorManager implements ActionListener, MouseListener {
+public class PianoTilesUISelectorManager implements ActionListener, MouseListener, ListSelectionListener {
 
     public static String SOUND_TYPE = "SYNTH";
     public static int SOUND_SYNTHER = 0 ;
@@ -39,7 +44,7 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
     private KeyListener KL;
     private boolean iAmPressed=false;
     private Translator translator = new Translator();
-
+    private int songIndex = 0;
     public static int recordingTime = 0;
     Timer timer  = new Timer(100, this);
 
@@ -170,5 +175,24 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
     @Override
     public void mouseExited(MouseEvent e) {
 
+    }
+
+    public ArrayList<String> getBusinessSongNames() {
+        return new BusinessFacadeImp().getSongName();
+    }
+
+    @Override
+    public void valueChanged(ListSelectionEvent e) {
+        if (!e.getValueIsAdjusting()) {
+            if (e.getFirstIndex() <= e.getLastIndex() && songIndex == e.getLastIndex()) {
+                songIndex = e.getFirstIndex();
+            }
+            else {
+                songIndex = e.getLastIndex();
+            }
+
+            //TODO THIS INDEX OF THE SONG IS THE ONE WE WANT TO PLAY FROM THE GIVEN LIST. songIndex FTW
+
+        }
     }
 }

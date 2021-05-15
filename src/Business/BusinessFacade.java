@@ -44,4 +44,15 @@ public interface BusinessFacade {
      * @param recordedNotes array with the notes
      */
     void recordedNotesSend(ArrayList<RecordingNotes> recordedNotes, String songName, boolean isPrivate, float endtime);
+
+    /**
+     * Obtains and saves the songs of the user logged
+     */
+    void setSongUser();
+
+    /**
+     * Gets the all the songs of the user
+     * @return String with all the name of the songs
+     */
+    ArrayList<String> getSongName();
 }

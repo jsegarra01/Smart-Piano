@@ -47,6 +47,7 @@ public class PreMenuUIManager implements ActionListener {
             case ENTER_AS_GUEST_BUTTON:            //In the case that the Guest button is pressed
                 new BusinessFacadeImp().logIn("guest", "password");
                 setUsernameLogin("guest");
+                new BusinessFacadeImp().setSongUser();
                 card.show(contenedor,PIANO_FRAME);
                 break;
         }

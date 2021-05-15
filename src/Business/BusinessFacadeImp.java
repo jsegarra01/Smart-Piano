@@ -20,7 +20,7 @@ import static Business.Entities.SongToJson.writeMidi;
  */
 public class BusinessFacadeImp implements Business.BusinessFacade {
     private static UserManager loginUserManager = new UserManager();
-    private static SongManager songpanager = new SongManager();
+    private static SongManager songManager = new SongManager();
     private static PlaylistManager playlistManager = new PlaylistManager();
 
     @Override
@@ -49,4 +49,15 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
     public PlaylistManager getPlaylistManager() {
         return playlistManager;
     }
+
+
+    @Override
+    public void setSongUser() {songManager.setSongs();}
+
+    @Override
+    public ArrayList<String> getSongName() {
+        return songManager.getSongNames();
+    }
+
+
 }
