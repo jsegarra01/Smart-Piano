@@ -113,8 +113,6 @@ public class FreePianoUI extends Piano {
         keyBoard.setPreferredSize(new Dimension(1025,600));
         keyBoard.add(Box.createRigidArea(new Dimension(55, 0)));
 
-
-
         JLabel label;
         keyBoard = makeTiles(keyBoard, heightBlack, 330, 60, keyboard, 50, 275);
 
