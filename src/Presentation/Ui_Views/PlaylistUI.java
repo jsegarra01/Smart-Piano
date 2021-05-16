@@ -27,15 +27,9 @@ import static Presentation.Dictionary_login.*;
  *
  */
 public class PlaylistUI extends JPanel {
-    //private static JLabel playlistName = new JLabel(PLAYLIST_NAME);
-    private JLabel logInText = new JLabel(LOG_IN_TEXT);
     private static JTable table;//  = new JTable(new TablePlaylists());
     private Object[][] rows;
     private static JPanel panel = new JPanel(new BorderLayout());
-    private static JTextField usernameTextField = new JTextField();
-    private static JPasswordField password = new JPasswordField();
-    private JButton back = new JButton(BACK_BUTTON);
-    private JButton done = new JButton(DONE_BUTTON);
     private MainFrame mainFrame;
     private static Playlist playlistP;
 
@@ -59,32 +53,8 @@ public class PlaylistUI extends JPanel {
      * The initialize function that creates the card layout for the PlaylistUI
      */
     private void initialize() {
-        configurePanel();
         this.add(panel);
         this.setBackground(Color.black);
-       // setLayout(new BorderLayout());
-    }
-    private void configurePanel() {
-        //JPanel panel = new JPanel(new BorderLayout());
-        panel.setBackground(Color.BLACK);
-        //panel.setBackground(Color.getHSBColor(0,0,0.2f));
-        panel.setOpaque(true);
-        panel.repaint();
-
-        //All information will go inside here
-        //panel.add(Box.createRigidArea(new Dimension(10, 50)));
-        //panel.add(initGeneral(), BorderLayout.NORTH);
-
-        //JPanel songs = songs();
-        //panel.add(songs, BorderLayout.CENTER);
-        /*JScrollPane areaScrollPane = new JScrollPane(songs);
-        areaScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-        areaScrollPane.setPreferredSize(new Dimension(600, 400));
-        panel.add(areaScrollPane, BorderLayout.CENTER);
-        *///setTable();
-        //panel.add(setTable(), BorderLayout.SOUTH);
-        //registerController(new PlaylistManager());
-
     }
     private static void registerController(PlaylistUIManager listener) {
         new ButtonColumn(table, listener, 2);
@@ -92,6 +62,7 @@ public class PlaylistUI extends JPanel {
     }
     private static JPanel initGeneral(String namePlaylist){
         JPanel layout = new JPanel(new BorderLayout());
+        layout.setBackground(Color.black);
         JLabel playlistName = new JLabel(PLAYLIST_NAME);
         playlistName.setOpaque(false);
         playlistName.repaint();
@@ -186,65 +157,6 @@ public class PlaylistUI extends JPanel {
                 ((DefaultTableModel)table.getModel()).removeRow(i);
             }
         }*/
-        JPanel panelSongs = new JPanel();
-        panelSongs.add(Box.createRigidArea(new Dimension(50,10)));
-        BoxLayout boxLayout = new BoxLayout(panelSongs, BoxLayout.Y_AXIS);
-        panelSongs.setLayout(boxLayout);
-        //panelSongs.setPreferredSize(new Dimension(200, 200));
-        //panelSongs.setBorder(new EmptyBorder(new Insets(150, 200, 150, 200)));
-        //panel.setBorder(new EmptyBorder(new Insets(50, 80, 50, 80)));
-
-        // Define new buttons
-        JPanel jPanel = new JPanel();
-        jPanel.add(new JLabel("HOLA"));
-        jPanel.add(new JButton("Button 1"));
-
-        JPanel jPanel2 = new JPanel();
-        jPanel2.add(new JLabel("HOLA2"));
-        jPanel2.add(new JButton("Button 2"));
-
-        JPanel jPanel3 = new JPanel();
-        jPanel3.add(new JLabel("HOLA"));
-        jPanel3.add(new JButton("Button 3"));
-
-        JPanel jPanel4 = new JPanel();
-        jPanel4.add(new JLabel("HOLA"));
-        jPanel4.add(new JButton("Button 1"));
-
-        JPanel jPanel5 = new JPanel();
-        jPanel5.add(new JLabel("HOLA2"));
-        jPanel5.add(new JButton("Button 2"));
-
-        JPanel jPanel6 = new JPanel();
-
-        jPanel6.add(new JLabel("HOLA"));
-        jPanel6.add(new JButton("Button 3"));
-        JPanel panel1;
-        for(int i = 0; i<15; i++){
-            panel1 = new JPanel();
-            panel1.add(new JLabel("HOLA " + i));
-            panel1.add(new JButton("Button " + i));
-            panelSongs.add(panel1);
-        }
-
-        /*JButton jb1 = new JButton("Button 1");
-        JButton jb2 = new JButton("Button 2");
-        JButton jb3 = new JButton("Button 3");*/
-        panelSongs.add(jPanel);
-        panelSongs.add(jPanel2);
-        panelSongs.add(jPanel3);
-        panelSongs.add(jPanel4);
-        panelSongs.add(jPanel5);
-        panelSongs.add(jPanel6);
-        JScrollPane sp = new JScrollPane(panelSongs);
-        sp.setVisible(true);
-        //panel.add(sp, BorderLayout.SOUTH);
-        // Add buttons to the frame (and spaces between buttons)
-        //panel.add(jb1);
-        //panel.add(Box.createRigidArea(new Dimension(0, 60)));
-        //panel.add(jb2);
-        //panel.add(Box.createRigidArea(new Dimension(0, 60)));
-        //panel.add(jb3);
 
        /* PlaylistUI.playlist = playlist;
         playlistName.setText(PlaylistUI.playlist.getPlaylistName());
@@ -281,38 +193,27 @@ public class PlaylistUI extends JPanel {
         playlistP = playlist;
         panel.removeAll();
         panel.repaint();
-        panel.setLayout(new BorderLayout());
+        //panel.setLayout(new BorderLayout());
+        panel.setBackground(Color.black);
         panel.add(Box.createRigidArea(new Dimension(10, 50)));
         panel.add(initGeneral(playlist.getPlaylistName()), BorderLayout.NORTH);
         JPanel panelSongs = new JPanel();
+        panelSongs.setBackground(Color.black);
         panelSongs.add(Box.createRigidArea(new Dimension(50,10)));
         //panelSongs.setPreferredSize(new Dimension(5,400));
 
         BoxLayout boxLayout = new BoxLayout(panelSongs, BoxLayout.Y_AXIS);
         panelSongs.setLayout(boxLayout);
         JPanel panel1;
-        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        JLabel label;
         for(int i = 0; i<playlist.getSongs().size(); i++){
-            panel1 = new JPanel();
-            panel1.setBorder(new LineBorder(Color.white));
-            panel1.add(new JLabel(playlist.getSongs().get(i).getSongName()));
-            panel1.add(Box.createHorizontalStrut(60));
-            panel1.add(new JLabel(playlist.getSongs().get(i).getAuthorName()));
-            panel1.add(Box.createHorizontalStrut(40));
-            panel1.add(new JLabel(String.valueOf(playlist.getSongs().get(i).getDuration())));
-            panel1.add(new JLabel(sdf.format(playlist.getSongs().get(i).getRecordingDate())));
-            JButton button = new JButton(playlist.getSongs().get(i).getSongName());
-            button.setName(playlist.getSongs().get(i).getSongName());
-            button.setActionCommand(SONG_PLAYLIST);
-            button.setText("Delete");
-            button.addActionListener(new PlaylistUIManager());
-            panel1.add(button);
+            panel1 = setPlaylist(playlist, i);
             panelSongs.add(panel1);
         }
 
         JScrollPane areaScrollPane = new JScrollPane(panelSongs);
         areaScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-        areaScrollPane.setPreferredSize(new Dimension(600, 400));
+        areaScrollPane.setPreferredSize(new Dimension(800, 600));
         panelSongs.repaint();
         areaScrollPane.repaint();
 
@@ -320,29 +221,10 @@ public class PlaylistUI extends JPanel {
         panel.revalidate();
         panel.repaint();
 
-
-        //return panelSongs;
     }
 
     public static void deleteFromPanel(String nameSong){
-        /*boolean found = false;
-        int i = 0;
-        while(i<panel.getComponentCount() && !found){
-            if(panel.getComponent(i).getName()!=null){
-                if(panel.getComponent(i).getName().equals(nameSong)){
-                    found = true;
-                }else{
-                    i++;
-                }
-            }else{
-                i++;
-            }
-        }
-        if(found){
-            panel.remove(i);
-        }
-        panel.revalidate();
-        panel.repaint();*/
+
         boolean found = false;
         int i = 0;
         while(i<playlistP.getSongs().size() && !found){
@@ -360,5 +242,43 @@ public class PlaylistUI extends JPanel {
             playlistP.getSongs().remove(i);
         }
 
+    }
+    private static JPanel setPlaylist(Playlist playlist, int i){
+
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        JPanel panel1 = new JPanel();
+        JLabel label;
+
+        panel1.setBorder(new LineBorder(Color.gray));
+        panel1.setPreferredSize(new Dimension(800,50));
+        panel1.setMaximumSize(panel1.getPreferredSize());
+        panel1.setBackground(Color.black);
+
+        label = new JLabel(playlist.getSongs().get(i).getSongName());
+        label.setForeground(Color.WHITE);
+        panel1.add(label);
+        panel1.add(Box.createHorizontalStrut(60));
+
+        label = new JLabel(playlist.getSongs().get(i).getAuthorName());
+        label.setForeground(Color.WHITE);
+        panel1.add(label);
+        panel1.add(Box.createHorizontalStrut(40));
+
+        label = new JLabel(String.valueOf(playlist.getSongs().get(i).getDuration()));
+        label.setForeground(Color.WHITE);
+        panel1.add(label);
+
+        label = new JLabel(sdf.format(playlist.getSongs().get(i).getRecordingDate()));
+        label.setForeground(Color.WHITE);
+        panel1.add(label);
+
+        JButton button = new JButton(playlist.getSongs().get(i).getSongName());
+        button.setName(playlist.getSongs().get(i).getSongName());
+        button.setActionCommand(SONG_PLAYLIST);
+        button.setText("Delete");
+        button.addActionListener(new PlaylistUIManager());
+        panel1.add(Box.createHorizontalStrut(40));
+        panel1.add(button);
+        return panel1;
     }
 }

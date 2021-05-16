@@ -16,9 +16,6 @@ public class PlaylistUIManager extends AbstractAction implements ActionListener,
     @Override
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()){
-            case "Button":
-                System.out.println("funciona hostia");
-                break;
             case SONG_PLAYLIST:
                 JButton button;
                 Object obj = e.getSource();
@@ -29,7 +26,7 @@ public class PlaylistUIManager extends AbstractAction implements ActionListener,
                     PlaylistUI.setSongsPlaylists(PlaylistUI.getPlaylist());
                 }
                 break;
-            default:
+            /*default:
                 JTable table = (JTable)e.getSource();
                 int modelRow = Integer.parseInt(e.getActionCommand());
                 String hola = (String) table.getModel().getValueAt(modelRow, 0);
@@ -37,8 +34,8 @@ public class PlaylistUIManager extends AbstractAction implements ActionListener,
                 new BusinessFacadeImp().deleteSongFromPlaylist(PlaylistUI.getPlaylist().getPlaylistName(),hola);
                 ((DefaultTableModel)table.getModel()).removeRow(modelRow);
                 System.out.println("hola");
-                //((DefaultTableModel)PlaylistUI.getTable().getModel()).removeRow(Integer.parseInt(e.getActionCommand()));
-                }
+                //((DefaultTableModel)PlaylistUI.getTable().getModel()).removeRow(Integer.parseInt(e.getActionCommand()));*/
+        }
     }
 
     @Override
