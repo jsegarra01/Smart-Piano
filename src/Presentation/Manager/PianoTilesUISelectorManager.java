@@ -2,6 +2,8 @@ package Presentation.Manager;
 
 //Imports needed from the dictionary, events and mainframe
 import Business.BusinessFacadeImp;
+import Business.Entities.Keys;
+import Business.Entities.ReadMidi;
 import Presentation.Dictionary_login;
 import Presentation.Ui_Views.PianoTilesUISelector;
 import Presentation.Ui_Views.Tile;
@@ -229,6 +231,15 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
                 songIndex = e.getLastIndex();
             }
             System.out.println(businessFacadeImp.getSong(songIndex).getSongName());
+            try {
+                ArrayList<Keys> keys = ReadMidi.readMidi(businessFacadeImp.getSong(songIndex).getSongFile());
+                for (Keys key: keys) {
+                    System.out.println("number of key; " + key.getKeyCode() + " duration of the key in ticks: " + key.getDuration() + " key pressed at: " + key.getStartTime());
+                }
+            } catch (Exception exception) {
+                System.out.println("Error, suposo que no troba la file.");
+                exception.printStackTrace();
+            }
             timer.start();
             //TODO THIS INDEX OF THE SONG IS THE ONE WE WANT TO PLAY FROM THE GIVEN LIST. songIndex FTW
 
