@@ -60,18 +60,13 @@ public class PianoFrameManager implements ActionListener {
                 freePiano.setBackground(Color.getHSBColor(0,0,80.3f));
                 break;
             case PLAY_A_SONG:
-                refreshPianoTilesUI();
-                cc.show(centralPanel, PIANO_TILES_UI_SELECTOR);
-                centralPanel.repaint();
-                centralPanel.revalidate();
-/*
                 try {
-                    ((Refreshable) centralPanel.getLayout()).refresh();
-                } catch (RefreshFailedException refreshFailedException) {
-                    refreshFailedException.printStackTrace();
-                }*/
-
+                    new PianoTilesUISelectorManager().refreshPianoTilesUI();
+                } catch (NullPointerException h) {
+                }
+                cc.show(centralPanel, PIANO_TILES_UI_SELECTOR);
                 playSong.setBackground(Color.getHSBColor(0,0,80.3f));
+
                 break;
             case MUSIC_PLAYER:
                 cc.show(centralPanel, SPOTI_UI);

@@ -9,10 +9,8 @@ import javax.swing.border.EmptyBorder;
 
 import java.awt.*;
 import java.awt.event.ActionListener;
-import java.net.http.WebSocket;
 
 import static Presentation.DictionaryPiano.*;
-import static Presentation.Ui_Views.Tile.SIZE_MULT_HEIGHT;
 
 /**
  * TempFreePianoUI
@@ -103,12 +101,22 @@ public class PianoFrame extends JPanel {
         this.setVisible(true);
         mainFrame.pack();
     }
-
+    /*
     public static void refreshPianoTilesUI() {
-        PianoTilesUISelector lol = new PianoTilesUISelector(mainFrame);
-        centralPanel.remove(lol);
-        centralPanel.add(lol, PIANO_TILES_UI_SELECTOR);
-    }
+        try {
+            //         centralPanel.remove(pianoTilesUISelector);
+            //   pianoTilesUISelector = new PianoTilesUISelector(mainFrame);
+            //       centralPanel.add(pianoTilesUISelector, PIANO_TILES_UI_SELECTOR);
+            refresh();
+            pianoTilesUISelector.revalidate();
+            pianoTilesUISelector.repaint();
+            centralPanel.revalidate();
+            centralPanel.repaint();
+            centralPanel.updateUI();
+        } catch (NullPointerException e) {
+
+        }
+    }*/
 
     /**
      * Method to add the action listeners to the buttons

@@ -3,7 +3,6 @@ package Presentation.Manager;
 //Imports needed from the dictionary, events and mainframe
 import Business.BusinessFacadeImp;
 import Presentation.Dictionary_login;
-import Presentation.Ui_Views.FreePianoUI;
 import Presentation.Ui_Views.PianoTilesUISelector;
 import Presentation.Ui_Views.Tile;
 import Business.Entities.MidiHelper;
@@ -16,15 +15,14 @@ import javax.swing.event.ListSelectionListener;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Objects;
 
 import static Presentation.DictionaryPiano.RECORDING_TIMER;
 import static Presentation.Dictionary_login.*;
 import static Presentation.Manager.MainFrame.card;
 import static Presentation.Manager.MainFrame.contenedor;
-import static Presentation.Ui_Views.PianoTilesUISelector.setTiles;
-import static Presentation.Ui_Views.Tile.*;
+import static Presentation.Ui_Views.PianoTilesUISelector.refreshSongList;
+import static Presentation.Ui_Views.PianoTilesUISelector.refreshTiles;
 
 
 /**
@@ -46,7 +44,7 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
     private boolean iAmPressed=false;
     private Translator translator = new Translator();
     private int songIndex = 0;
-    Timer timer  = new Timer(1000, this);
+    Timer timer  = new Timer(100, this);
     public static int timePassed = 0;
 
 
@@ -54,8 +52,6 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
      * Parametrized constructor, initializes the recorder and teh different overwrites for when a key is pressed in the keyboard
      */
     public PianoTilesUISelectorManager() {
-
-
         //To play the song
         timer.setActionCommand(RECORDING_TIMER);
         try {
@@ -113,8 +109,8 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
         // We distinguish between our buttons.
         switch (e.getActionCommand()) {
             case RECORDING_TIMER:                                                           //When 1000 milliseconds have passed
-                    timePassed += 1;
-                    setTiles();
+                    timePassed++;
+                    refreshTiles();
                 break;
             case PianoTilesUISelector.BTN_TILE:
                 Tile t = null;
@@ -237,5 +233,10 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
             //TODO THIS INDEX OF THE SONG IS THE ONE WE WANT TO PLAY FROM THE GIVEN LIST. songIndex FTW
 
         }
+    }
+
+    public void refreshPianoTilesUI () {
+        refreshTiles();
+        refreshSongList();
     }
 }
