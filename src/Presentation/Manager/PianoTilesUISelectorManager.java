@@ -23,9 +23,7 @@ import static Presentation.DictionaryPiano.RECORDING_TIMER;
 import static Presentation.Dictionary_login.*;
 import static Presentation.Manager.MainFrame.card;
 import static Presentation.Manager.MainFrame.contenedor;
-import static Presentation.Ui_Views.PianoTilesUISelector.playButtonTiles;
-import static Presentation.Ui_Views.PianoTilesUISelector.refreshSongList;
-import static Presentation.Ui_Views.PianoTilesUISelector.refreshTiles;
+import static Presentation.Ui_Views.PianoTilesUISelector.*;
 import static Presentation.Ui_Views.Tile.resizeIcon;
 
 
@@ -41,8 +39,10 @@ import static Presentation.Ui_Views.Tile.resizeIcon;
 public class PianoTilesUISelectorManager implements ActionListener, MouseListener, ListSelectionListener {
     public static int SOUND_SYNTHER = 0 ;
     public static int timePassed = 0;
-    public static int velocityModifier = 0;
-    private static boolean play = false;
+    public static float velocityModifier = 1;
+    private static boolean play = true;
+    private static boolean songStarted = false;
+    private static int songIndex = 0;
 
     private final ImageIcon playIcon = new ImageIcon("Files/drawable/play-button.png");
     private final ImageIcon pauseIcon = new ImageIcon("Files/drawable/pause-button.png");
@@ -50,7 +50,6 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
     private MidiHelper finalMidiHelper;
     private KeyListener KL;
     private Translator translator = new Translator();
-    private int songIndex = 0;
 
     Timer timer  = new Timer(100, this);
     MidiHelper midiHelper = null;
@@ -116,10 +115,9 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
         // We distinguish between our buttons.
         switch (e.getActionCommand()) {
             case RECORDING_TIMER:                                                           //When 1000 milliseconds have passed
-                if (!play) {
+                if (play && songStarted) {
                     timePassed++;
                     refreshTiles();
-                    System.out.println(play);
                 }
                 break;
             case PianoTilesUISelector.BTN_TILE:
@@ -135,17 +133,34 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
                 card.show(contenedor, PROFILE_UI);
                 break;
             case DictionaryPiano.PLAY_BUTTON:
-                if(!play){
-                    playButtonTiles.setIcon(pauseIcon);
-                    playButtonTiles.setIcon(resizeIcon((ImageIcon) playButtonTiles.getIcon(), (int) Math.round(playButtonTiles.getIcon().getIconWidth()*0.0507),
-                            (int) Math.round(playButtonTiles.getIcon().getIconHeight()*0.0507)));
+                if (songStarted) {
+                    if(play){
+                        playButtonTiles.setIcon(pauseIcon);
+                        playButtonTiles.setIcon(resizeIcon((ImageIcon) playButtonTiles.getIcon(), (int) Math.round(playButtonTiles.getIcon().getIconWidth()*0.0507),
+                                (int) Math.round(playButtonTiles.getIcon().getIconHeight()*0.0507)));
+                    }
+                    else{
+                        playButtonTiles.setIcon(playIcon);
+                        playButtonTiles.setIcon(resizeIcon((ImageIcon) playButtonTiles.getIcon(), (int) Math.round(playButtonTiles.getIcon().getIconWidth()*0.15),
+                                (int) Math.round(playButtonTiles.getIcon().getIconHeight()*0.15)));
+                    }
+                    play = !play;
                 }
-                else{
-                    playButtonTiles.setIcon(playIcon);
-                    playButtonTiles.setIcon(resizeIcon((ImageIcon) playButtonTiles.getIcon(), (int) Math.round(playButtonTiles.getIcon().getIconWidth()*0.15),
-                            (int) Math.round(playButtonTiles.getIcon().getIconHeight()*0.15)));
-                }
-                play = !play;
+                break;
+            case DictionaryPiano.VERY_EASY_MODE:
+                if (!songStarted) { velocityModifier = 0.5f;}
+                break;
+            case DictionaryPiano.EASY_MODE:
+                if (!songStarted) { velocityModifier = 0.75f;}
+                break;
+            case DictionaryPiano.NORMAL_MODE:
+                if (!songStarted) { velocityModifier = 1;}
+                break;
+            case DictionaryPiano.HARD_MODE:
+                if (!songStarted) { velocityModifier = 1.5f;}
+                break;
+            case DictionaryPiano.VERY_HARD_MODE:
+                if (!songStarted) { velocityModifier = 2.0f;}
                 break;
         }
     }
@@ -244,7 +259,7 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
 
     @Override
     public void valueChanged(ListSelectionEvent e) {
-        if (!e.getValueIsAdjusting()) {
+        if (!e.getValueIsAdjusting() && !songStarted) {
             if (e.getFirstIndex() <= e.getLastIndex() && songIndex == e.getLastIndex()) {
                 songIndex = e.getFirstIndex();
             }
@@ -252,13 +267,20 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
                 songIndex = e.getLastIndex();
             }
             System.out.println(new BusinessFacadeImp().getSong(songIndex).getSongName());
-            timer.start();
+            songStarted = true;
+            timer.restart();
             //TODO THIS INDEX OF THE SONG IS THE ONE WE WANT TO PLAY FROM THE GIVEN LIST. songIndex FTW
 
         }
     }
 
     public void refreshPianoTilesUI () {
+        timePassed = 0;
+        songStarted = false;
+        play = true;
+        songIndex = 0;
+        timer.stop();
+        initTileGame();
         refreshTiles();
         refreshSongList();
     }

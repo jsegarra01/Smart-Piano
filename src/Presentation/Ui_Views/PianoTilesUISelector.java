@@ -23,6 +23,7 @@ import java.util.ArrayList;
 import static Presentation.DictionaryPiano.*;
 import static Presentation.Dictionary_login.PROFILE_BUTTON;
 import static Presentation.Manager.PianoTilesUISelectorManager.timePassed;
+import static Presentation.Manager.PianoTilesUISelectorManager.velocityModifier;
 import static Presentation.Ui_Views.Tile.*;
 
 
@@ -114,11 +115,16 @@ public class PianoTilesUISelector extends Piano {
         playButtonTiles.setBorderPainted(false);
 
         menu.add(profile);
-        menu.add(Box.createRigidArea(new Dimension(275,10)), BorderLayout.CENTER);
+        menu.add(Box.createRigidArea(new Dimension(100,10)), BorderLayout.CENTER);
         menu.add(playButtonTiles);
         refreshSongList();
         menu.add(scrollPanel);
-        menu.add(Box.createRigidArea(new Dimension(150,10)), BorderLayout.CENTER);
+        menu.add(Box.createRigidArea(new Dimension(25,10)), BorderLayout.CENTER);
+        menu.add(veryEasy);
+        menu.add(easy);
+        menu.add(normal);
+        menu.add(hard);
+        menu.add(veryHard);
         registerController(new PianoTilesUISelectorManager());
         return menu;
     }
@@ -140,12 +146,7 @@ public class PianoTilesUISelector extends Piano {
 
         //Creates the background for the PianoTiles game
 
-                            //Sets the middle columns, the ones
-        jLayeredPane.setLayout(null);                                               //We care about for the pianoTiles
-        jLayeredPane.setPreferredSize(new Dimension(10,300));           //Through the jLayeredPane settings
-        jLayeredPane.setBackground(Color.black);
-        jLayeredPane.setOpaque(true);
-
+        initTileGame();
         //Example of how to put things in a jLayeredPane, important to notice the set bounds and opaque thingies
         /*
         JPanel panel = new JPanel();
@@ -185,6 +186,11 @@ public class PianoTilesUISelector extends Piano {
         profile.addActionListener(listener);
         recordB.addActionListener(listener);
         playButtonTiles.addActionListener(listener);
+        veryEasy.addActionListener(listener);
+        easy.addActionListener(listener);
+        normal.addActionListener(listener);
+        hard.addActionListener(listener);
+        veryHard.addActionListener(listener);
 
         this.addKeyListener(listener.getKeyListener());
         for (Tile tile : keyboard) {
@@ -207,6 +213,30 @@ public class PianoTilesUISelector extends Piano {
     }
 
 
+    public static void initTileGame () {
+        jLayeredPane.removeAll();
+        //Sets the middle columns, the ones
+        jLayeredPane.setLayout(null);                                               //We care about for the pianoTiles
+        jLayeredPane.setPreferredSize(new Dimension(10,300));           //Through the jLayeredPane settings
+        jLayeredPane.setBackground(Color.black);
+        jLayeredPane.setOpaque(true);
+
+        for (int i = 0; i < 14; i++) {                                              //Vertical lines
+            JPanel auxiliar = new JPanel();
+            auxiliar.setBounds(i*65 + 65,0,1,300);
+            auxiliar.setBackground(Color.WHITE);
+            auxiliar.setOpaque(true);
+            jLayeredPane.add(auxiliar,Integer.valueOf(1));
+        }
+
+        for (int i = 0; i < 100; i++) {                                              //Horitzontal lines
+            JPanel auxiliar = new JPanel();
+            auxiliar.setBounds(i*10,280,5,1);
+            auxiliar.setBackground(Color.WHITE);
+            auxiliar.setOpaque(true);
+            jLayeredPane.add(auxiliar,Integer.valueOf(1));
+        }
+    }
 
     public static void refreshTiles() {
         try {
@@ -214,7 +244,7 @@ public class PianoTilesUISelector extends Piano {
             while (i < 4) {
                 JPanel lala = new JPanel();
                 lala.setBackground(Color.orange);
-                lala.setBounds(100*i, 0, 50, timePassed);
+                lala.setBounds(100*i, 0, 50, (int) (timePassed*velocityModifier));
                 lala.setOpaque(true);
                 lala.revalidate();
                 lala.repaint();
