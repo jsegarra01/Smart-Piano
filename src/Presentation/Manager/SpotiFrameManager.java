@@ -4,6 +4,7 @@ package Presentation.Manager;
 import Business.Entities.*;
 import Business.BusinessFacadeImp;
 import Business.PlaylistManager;
+import Persistence.SQL.Csv.SongCsvDAO;
 import Presentation.Dictionary_login;
 import Presentation.Ui_Views.SpotiUI;
 import Presentation.Ui_Views.Tile;
@@ -48,7 +49,7 @@ public class SpotiFrameManager implements ActionListener {
     private float minPlayed;
     private long startMin=0;
     private long lastMin=0;
-
+    private Stadistics stadistics;
 
 
     //private Timer min  = new Timer(10, this);
@@ -107,9 +108,6 @@ public class SpotiFrameManager implements ActionListener {
                     playButton.setIcon(resizeIcon((ImageIcon) playButton.getIcon(), (int) Math.round(playButton.getIcon().getIconWidth()*0.09),
                             (int) Math.round(playButton.getIcon().getIconHeight()*0.09)));
                     startMin = System.currentTimeMillis();
-                    //minPlayed = System.currentTimeMillis();
-
-                    System.out.println(date.getHours());
                     finalMidiHelper.playSong(new File(new BusinessFacadeImp().getPlaylistManager().getPlaylists().get(0).getSongs().get(0).getSongFile()));
                     play = true;
                 }
@@ -121,8 +119,7 @@ public class SpotiFrameManager implements ActionListener {
                     // String lastSong =
                     minPlayed = (float)(lastMin - startMin)/60000;
                     Stadistics stats = new Stadistics(date.getHours(), 1, minPlayed);
-                    //stats.setHour(date.getHours());
-                    System.out.println("minTotal: " + minPlayed);
+                    new BusinessFacadeImp().getSongManager().addingStadistics(stats);
                     play = false;
                     finalMidiHelper.stopSong();
                 }

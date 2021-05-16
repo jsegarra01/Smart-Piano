@@ -171,27 +171,28 @@ public class SongCsvDAO implements SongDAO {
     public boolean saveStadistics(Stadistics myStats) {
         try {
             if(getStadisticsHour(myStats.getHour()) == null){
-                PreparedStatement st = ConnectSQL.getInstance().prepareStatement("insert into SongStatisticsHourlyT values (" +
-                        myStats.getHour() + ", '" +
-                        myStats.getNumPlayed() + ", '" +
+                PreparedStatement st = ConnectSQL.getInstance().prepareStatement("insert into SongStatisticsHourlyT values ('" +
+                        myStats.getHour() + "', '" +
+                        myStats.getNumPlayed() + "', '" +
                         myStats.getMinPlayed() + "')");
                 st.execute();
                 return true;
 
             }else{
-                PreparedStatement st = ConnectSQL.getInstance().prepareStatement("update SongStatisticsHourlyT SET songsPlayed =" +
-                        myStats.getNumPlayed() + " where hour = " +
+                PreparedStatement st2 = ConnectSQL.getInstance().prepareStatement("update SongStatisticsHourlyT SET numPlayed = numPlayed + 1" /*+
+                        myStats.getNumPlayed()*/ + " where hour = " +
                         myStats.getHour() + ";");
-                st.execute();
-                PreparedStatement st2 = ConnectSQL.getInstance().prepareStatement("update SongStatisticsHourlyT SET minutesListened =" +
+                st2.executeUpdate();
+                PreparedStatement st3 = ConnectSQL.getInstance().prepareStatement("update SongStatisticsHourlyT SET minPlayed = minPlayed + " +
                         myStats.getMinPlayed() + " where hour = " +
                         myStats.getHour() + ";");
-                st2.execute();
+                st3.executeUpdate();
                 return true;
             }
 
 
         } catch (SQLException throwable) {
+            throwable.printStackTrace();
             return false;
         }
     }
@@ -213,6 +214,7 @@ public class SongCsvDAO implements SongDAO {
                 return null;
             }
         } catch (SQLException throwables) {
+            throwables.printStackTrace();
             return null;
         }
     }
