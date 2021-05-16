@@ -43,7 +43,7 @@ public class SongManager {
 
     public void setSongs() {
         //TODO GET ALL THE PUBLIC SONGS + PRIVATE SONGS IF USER != GUEST
-       // songs = songManager.getAllSongs(getUser());
+        //songs = songManager.getAllSongs(getUser());
         songs = songManager.getAllSongs();
         for (Song song : songs) {
             songNames.add(song.getSongName());
