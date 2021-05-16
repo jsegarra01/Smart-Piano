@@ -19,6 +19,9 @@ public class PlaylistManager {
         playlists = playlistCsvDAO.getPlaylistByUser(username);
         System.out.println("hola");
     }
+    public boolean eliminateSongFromPlaylist(String playlistName, String songName){
+        return playlistCsvDAO.deleteSongFromPlaylist(playlistName, songName);
+    }
 
 
     public Playlist getFromName(String name){

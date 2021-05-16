@@ -33,6 +33,13 @@ public class PlaylistUI extends JPanel {
     private JButton back = new JButton(BACK_BUTTON);
     private JButton done = new JButton(DONE_BUTTON);
     private MainFrame mainFrame;
+    private static Playlist playlist;
+
+
+    public static JTable getTable() {
+        return table;
+    }
+
     /**
      * Constructor for the PlaylistUI, you need to send the mainframe context and will create a card layout
      *
@@ -165,12 +172,13 @@ public class PlaylistUI extends JPanel {
                 ((DefaultTableModel)table.getModel()).removeRow(i);
             }
         }*/
-        playlistName.setText(playlist.getPlaylistName());
-        Object[][] data = new Object[playlist.getSongs().size()][3];
+        PlaylistUI.playlist = playlist;
+        playlistName.setText(PlaylistUI.playlist.getPlaylistName());
+        Object[][] data = new Object[PlaylistUI.playlist.getSongs().size()][3];
         String[] columnNames = {"Name Song", "Author's name", ""};
-        for(int i = 0; i< playlist.getSongs().size();i++){
-            data[i][0] = playlist.getSongs().get(i).getSongName();
-            data[i][1] = playlist.getSongs().get(i).getAuthorName();
+        for(int i = 0; i< PlaylistUI.playlist.getSongs().size();i++){
+            data[i][0] = PlaylistUI.playlist.getSongs().get(i).getSongName();
+            data[i][1] = PlaylistUI.playlist.getSongs().get(i).getAuthorName();
             data[i][2]  = "Delete";
         }
         DefaultTableModel model = new DefaultTableModel(data, columnNames){
@@ -184,10 +192,14 @@ public class PlaylistUI extends JPanel {
         table.setGridColor(Color.lightGray);
         table.setForeground(Color.RED);
         table.setRowHeight(30);
-        table.setFont( new Font(table.getFont().getName(),Font.PLAIN, (int) (table.getFont().getSize()*1.5)));
+        //table.setFont( new Font(table.getFont().getName(),Font.PLAIN, (int) (table.getFont().getSize()*1.5)));
         JScrollPane sp = new JScrollPane(table);
         //sp.setBackground(Color.lightGray);
         panel.add(sp, BorderLayout.SOUTH);
         registerController(new PlaylistUIManager());
+    }
+
+    public static Playlist getPlaylist() {
+        return playlist;
     }
 }

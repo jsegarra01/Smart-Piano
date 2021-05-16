@@ -55,4 +55,8 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
     public Playlist getPlaylist(String name){
         return playlistManager.getFromName(name);
     }
+
+    public boolean deleteSongFromPlaylist(String playlistName, String songName){
+        return playlistManager.eliminateSongFromPlaylist(playlistName, songName);
+    }
 }

@@ -1,5 +1,8 @@
 package Presentation.Manager;
 
+        import Business.BusinessFacadeImp;
+        import Presentation.Ui_Views.PlaylistUI;
+
         import javax.swing.*;
         import javax.swing.table.DefaultTableModel;
         import java.awt.event.ActionEvent;
@@ -16,9 +19,14 @@ public class PlaylistUIManager extends AbstractAction implements ActionListener,
                 break;
             default:
                 JTable table = (JTable)e.getSource();
-                int modelRow = Integer.valueOf( e.getActionCommand() );
+                int modelRow = Integer.parseInt( e.getActionCommand() );
+                String hola = (String) table.getModel().getValueAt(modelRow, 0);
+                PlaylistUI.getPlaylist().getSongs().remove(Integer.parseInt(e.getActionCommand() ));
+                new BusinessFacadeImp().deleteSongFromPlaylist(PlaylistUI.getPlaylist().getPlaylistName(),hola);
                 ((DefaultTableModel)table.getModel()).removeRow(modelRow);
-        }
+                System.out.println("hola");
+                //((DefaultTableModel)PlaylistUI.getTable().getModel()).removeRow(Integer.parseInt(e.getActionCommand()));
+                }
     }
 
     @Override
