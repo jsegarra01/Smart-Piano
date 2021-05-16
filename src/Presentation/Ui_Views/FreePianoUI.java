@@ -54,7 +54,9 @@ public class FreePianoUI extends Piano {
         panel.setBackground(Color.getHSBColor(0,0,0.2f));
 
         //All information will go inside here
-        panel.add(Box.createRigidArea(new Dimension(10, 240)), BorderLayout.CENTER);
+        //panel.add(createGamePane(), BorderLayout.CENTER);
+
+        panel.add(Box.createRigidArea(new Dimension(10, 210)), BorderLayout.CENTER);
         layeredPane = makeKeys();
         layeredPane.requestFocus();
         panel.add(layeredPane, BorderLayout.SOUTH);

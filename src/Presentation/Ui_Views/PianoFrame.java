@@ -24,7 +24,7 @@ import static Presentation.Ui_Views.Tile.SIZE_MULT_HEIGHT;
  *
  */
 public class PianoFrame extends JPanel {
-    private MainFrame mainFrame;
+    private static MainFrame mainFrame;
 
     public static JButton freePiano = new JButton(FREE_PIANO);
     public static JButton playSong = new JButton(PLAY_A_SONG);
@@ -33,7 +33,6 @@ public class PianoFrame extends JPanel {
     public static JPanel centralPanel = new JPanel(new CardLayout());
 
     PianoTilesUISelector pianoTilesUISelector;
-    PianoTilesUIGame pianoTilesUIGame;
     SpotiUI spotiUI;
     FreePianoUI freePianoUI;
 
@@ -46,10 +45,9 @@ public class PianoFrame extends JPanel {
      */
     public PianoFrame(final MainFrame mainFrame) {
         super();
-        this.mainFrame=mainFrame;
+        PianoFrame.mainFrame =mainFrame;
 
         pianoTilesUISelector = new PianoTilesUISelector(mainFrame);
-        pianoTilesUIGame = new PianoTilesUIGame(mainFrame);
         spotiUI = new SpotiUI(mainFrame);
         freePianoUI = new FreePianoUI(mainFrame);
         initialize();
@@ -96,7 +94,6 @@ public class PianoFrame extends JPanel {
         this.add(buttonPanel, BorderLayout.WEST);
 
         centralPanel.add(freePianoUI, FREE_PIANO_UI);
-        centralPanel.add(pianoTilesUIGame, PIANO_TILES_UI_GAME);
         centralPanel.add(pianoTilesUISelector, PIANO_TILES_UI_SELECTOR);
         centralPanel.add(spotiUI, SPOTI_UI);
         this.add(centralPanel, BorderLayout.CENTER);
@@ -107,6 +104,11 @@ public class PianoFrame extends JPanel {
         mainFrame.pack();
     }
 
+    public static void refreshPianoTilesUI() {
+        PianoTilesUISelector lol = new PianoTilesUISelector(mainFrame);
+        centralPanel.remove(lol);
+        centralPanel.add(lol, PIANO_TILES_UI_SELECTOR);
+    }
 
     /**
      * Method to add the action listeners to the buttons

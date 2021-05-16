@@ -2,6 +2,7 @@ package Business;
 
 //Imports needed for the managers and arraylists
 import Business.Entities.RecordingNotes;
+import Business.Entities.Song;
 import Business.Entities.SongRecorded;
 
 import java.util.ArrayList;
@@ -19,7 +20,7 @@ import static Business.Entities.SongToMidi.writeMidi;
  */
 public class BusinessFacadeImp implements Business.BusinessFacade {
     private static UserManager loginUserManager = new UserManager();
-    private static SongManager songpanager = new SongManager();
+    private static SongManager songManager = new SongManager();
     private static PlaylistManager playlistManager = new PlaylistManager();
 
     @Override
@@ -49,4 +50,19 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
     public PlaylistManager getPlaylistManager() {
         return playlistManager;
     }
+
+
+    @Override
+    public void setSongUser() {songManager.setSongs();}
+
+    @Override
+    public ArrayList<String> getSongName() {
+        return songManager.getSongNames();
+    }
+
+    public Song getSong(int index) {
+        return songManager.getSong(index);
+    }
+
+
 }

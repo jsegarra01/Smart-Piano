@@ -47,6 +47,7 @@ public class LoginUIManager implements ActionListener {
                     card.show(contenedor, PIANO_FRAME);
                     new BusinessFacadeImp().getPlaylistManager().setPlaylists(UserManager.getUser().getUserName());
                     SpotiFrameManager.addPlaylists(new BusinessFacadeImp().getPlaylistManager().getPlaylists());
+                    new BusinessFacadeImp().setSongUser();
                 }
                 else{JOptionPane.showMessageDialog(contenedor, "Incorrect username or password", "LogIn error" , JOptionPane.ERROR_MESSAGE);}
                 break;

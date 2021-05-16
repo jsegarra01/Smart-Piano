@@ -2,8 +2,10 @@ package Presentation.Ui_Views;
 
 //Imports needed from the dictionary, events and mainframe
 import Presentation.Manager.MainFrame;
+import Presentation.Manager.PianoTilesUISelectorManager;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -12,7 +14,7 @@ import static Presentation.Dictionary_login.PROFILE_BUTTON;
 import static Presentation.Ui_Views.Tile.*;
 
 public abstract class Piano extends JPanel {
-    protected MainFrame mainFrame;
+    protected static MainFrame mainFrame;
 
     public static final String BTN_RECORD = " ";
     public static final String BTN_TILE = "SOUND";

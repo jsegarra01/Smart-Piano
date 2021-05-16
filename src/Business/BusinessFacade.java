@@ -51,4 +51,15 @@ public interface BusinessFacade {
      * @return PlaylistManager returns the manager for the playlist in order to implement its methods
      */
     PlaylistManager getPlaylistManager();
+
+    /**
+     * Obtains and saves the songs of the user logged
+     */
+    void setSongUser();
+
+    /**
+     * Gets the all the songs of the user
+     * @return String with all the name of the songs
+     */
+    ArrayList<String> getSongName();
 }

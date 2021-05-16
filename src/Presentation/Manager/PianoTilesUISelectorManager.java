@@ -1,6 +1,7 @@
 package Presentation.Manager;
 
 //Imports needed from the dictionary, events and mainframe
+import Business.BusinessFacadeImp;
 import Presentation.Dictionary_login;
 import Presentation.Ui_Views.FreePianoUI;
 import Presentation.Ui_Views.PianoTilesUISelector;
@@ -10,13 +11,19 @@ import Business.Entities.Translator;
 
 import javax.sound.midi.MidiUnavailableException;
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Objects;
 
+import static Presentation.DictionaryPiano.RECORDING_TIMER;
 import static Presentation.Dictionary_login.*;
 import static Presentation.Manager.MainFrame.card;
 import static Presentation.Manager.MainFrame.contenedor;
+import static Presentation.Ui_Views.PianoTilesUISelector.setTiles;
 import static Presentation.Ui_Views.Tile.*;
 
 
@@ -29,18 +36,28 @@ import static Presentation.Ui_Views.Tile.*;
  * @version 2.0 8 May 2021
  *
  */
-public class PianoTilesUISelectorManager implements ActionListener, MouseListener {
+public class PianoTilesUISelectorManager implements ActionListener, MouseListener, ListSelectionListener {
+
     public static int SOUND_SYNTHER = 0 ;
     private MidiHelper finalMidiHelper;
     MidiHelper midiHelper = null;
+    BusinessFacadeImp businessFacadeImp = new BusinessFacadeImp();
     private KeyListener KL;
     private boolean iAmPressed=false;
     private Translator translator = new Translator();
+    private int songIndex = 0;
+    Timer timer  = new Timer(1000, this);
+    public static int timePassed = 0;
+
 
     /**
      * Parametrized constructor, initializes the recorder and teh different overwrites for when a key is pressed in the keyboard
      */
     public PianoTilesUISelectorManager() {
+
+
+        //To play the song
+        timer.setActionCommand(RECORDING_TIMER);
         try {
             midiHelper = new MidiHelper();
         } catch (MidiUnavailableException exception) {
@@ -95,8 +112,9 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
     public void actionPerformed(ActionEvent e) {
         // We distinguish between our buttons.
         switch (e.getActionCommand()) {
-            case PianoTilesUISelector.BTN_RECORD:
-                System.out.println("Well... we have already NOT implemented this button!");
+            case RECORDING_TIMER:                                                           //When 1000 milliseconds have passed
+                    timePassed += 1;
+                    setTiles();
                 break;
             case PianoTilesUISelector.BTN_TILE:
                 Tile t = null;
@@ -112,7 +130,6 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
                 break;
         }
     }
-
 
     /**
      * Obtains the listener for the key event
@@ -200,5 +217,25 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
     @Override
     public void mouseExited(MouseEvent e) {
 
+    }
+
+    public ArrayList<String> getBusinessSongNames() {
+        return new BusinessFacadeImp().getSongName();
+    }
+
+    @Override
+    public void valueChanged(ListSelectionEvent e) {
+        if (!e.getValueIsAdjusting()) {
+            if (e.getFirstIndex() <= e.getLastIndex() && songIndex == e.getLastIndex()) {
+                songIndex = e.getFirstIndex();
+            }
+            else {
+                songIndex = e.getLastIndex();
+            }
+            System.out.println(businessFacadeImp.getSong(songIndex).getSongName());
+            timer.start();
+            //TODO THIS INDEX OF THE SONG IS THE ONE WE WANT TO PLAY FROM THE GIVEN LIST. songIndex FTW
+
+        }
     }
 }

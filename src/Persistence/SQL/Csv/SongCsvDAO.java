@@ -108,7 +108,7 @@ public class SongCsvDAO implements SongDAO {
     @Override
     public Song getSongByID(int id) {
         try {
-            ResultSet myRs = ConnectSQL.getInstance().createStatement().executeQuery("select * from SongT as s where s.songId = " + id);
+            ResultSet myRs = ConnectSQL.getInstance().createStatement().executeQuery("select * from SongT as s where s.songId LIKE " + id);
             if(myRs.next()){
                 Song song = new Song(
 
@@ -122,6 +122,7 @@ public class SongCsvDAO implements SongDAO {
                 myRs.close();
                 return song;
             }else{
+                System.out.println("TU PUTA MADRE");
                 return null;
             }
         } catch (SQLException throwables) {
@@ -129,7 +130,6 @@ public class SongCsvDAO implements SongDAO {
         }
 
     }
-
     /**
      * Method that gets all the songs belonging to the user
      * @param myUser Defines the user from which the songs will be got
