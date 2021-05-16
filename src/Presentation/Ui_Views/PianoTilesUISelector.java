@@ -20,6 +20,7 @@ import javax.swing.text.JTextComponent;
 import java.awt.*;
 import java.util.ArrayList;
 
+import static Presentation.DictionaryPiano.*;
 import static Presentation.Dictionary_login.PROFILE_BUTTON;
 import static Presentation.Manager.PianoTilesUISelectorManager.timePassed;
 import static Presentation.Ui_Views.Tile.*;
@@ -42,6 +43,12 @@ public class PianoTilesUISelector extends Piano {
     }
     public static JLayeredPane jLayeredPane = new JLayeredPane();
     public static JPanel scrollPanel = new JPanel();
+    public static JButton playButtonTiles = new JButton(PLAY_BUTTON);
+    public JButton veryEasy = new JButton(VERY_EASY_MODE);
+    public JButton easy = new JButton(EASY_MODE);
+    public JButton normal = new JButton(NORMAL_MODE);
+    public JButton hard = new JButton(HARD_MODE);
+    public JButton veryHard = new JButton(VERY_HARD_MODE);
 
     /**
      * Constructor for the PianoTilesUISelector, you need to send the mainframe context and will create a card layout
@@ -98,12 +105,20 @@ public class PianoTilesUISelector extends Piano {
         profile.setIcon(new ImageIcon("Files/drawable/profile-picture.png"));
         profile.setIcon(resizeIcon((ImageIcon) profile.getIcon(), (int) Math.round(profile.getIcon().getIconWidth()*0.15), (int) Math.round(profile.getIcon().getIconHeight()*0.15)));
 
+        playButtonTiles.setBackground(Color.getHSBColor(0,0,80.3f));
+        playButtonTiles.setIcon(new ImageIcon("Files/drawable/play-button.png"));
+        playButtonTiles.setIcon(resizeIcon((ImageIcon) playButtonTiles.getIcon(), (int) Math.round(playButtonTiles.getIcon().getIconWidth()*0.15), (int) Math.round(playButtonTiles.getIcon().getIconHeight()*0.15)));
+        playButtonTiles.setForeground(Color.getHSBColor(0,0,80.3f));
+        playButtonTiles.setOpaque(false);
+        playButtonTiles.setContentAreaFilled(false);
+        playButtonTiles.setBorderPainted(false);
 
-        menu.add(profile, BorderLayout.WEST);          //400
-        menu.add(Box.createRigidArea(new Dimension(200,10)), BorderLayout.CENTER);
+        menu.add(profile);
+        menu.add(Box.createRigidArea(new Dimension(275,10)), BorderLayout.CENTER);
+        menu.add(playButtonTiles);
         refreshSongList();
-        menu.add(scrollPanel, BorderLayout.CENTER);
-        menu.add(Box.createRigidArea(new Dimension(200,10)), BorderLayout.CENTER);
+        menu.add(scrollPanel);
+        menu.add(Box.createRigidArea(new Dimension(150,10)), BorderLayout.CENTER);
         registerController(new PianoTilesUISelectorManager());
         return menu;
     }
@@ -169,6 +184,7 @@ public class PianoTilesUISelector extends Piano {
     private void registerController(PianoTilesUISelectorManager listener) {
         profile.addActionListener(listener);
         recordB.addActionListener(listener);
+        playButtonTiles.addActionListener(listener);
 
         this.addKeyListener(listener.getKeyListener());
         for (Tile tile : keyboard) {

@@ -2,6 +2,7 @@ package Presentation.Manager;
 
 //Imports needed from the dictionary, events and mainframe
 import Business.BusinessFacadeImp;
+import Presentation.DictionaryPiano;
 import Presentation.Dictionary_login;
 import Presentation.Ui_Views.PianoTilesUISelector;
 import Presentation.Ui_Views.Tile;
@@ -14,6 +15,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -21,8 +23,10 @@ import static Presentation.DictionaryPiano.RECORDING_TIMER;
 import static Presentation.Dictionary_login.*;
 import static Presentation.Manager.MainFrame.card;
 import static Presentation.Manager.MainFrame.contenedor;
+import static Presentation.Ui_Views.PianoTilesUISelector.playButtonTiles;
 import static Presentation.Ui_Views.PianoTilesUISelector.refreshSongList;
 import static Presentation.Ui_Views.PianoTilesUISelector.refreshTiles;
+import static Presentation.Ui_Views.Tile.resizeIcon;
 
 
 /**
@@ -35,18 +39,21 @@ import static Presentation.Ui_Views.PianoTilesUISelector.refreshTiles;
  *
  */
 public class PianoTilesUISelectorManager implements ActionListener, MouseListener, ListSelectionListener {
-
     public static int SOUND_SYNTHER = 0 ;
+    public static int timePassed = 0;
+    public static int velocityModifier = 0;
+    private static boolean play = false;
+
+    private final ImageIcon playIcon = new ImageIcon("Files/drawable/play-button.png");
+    private final ImageIcon pauseIcon = new ImageIcon("Files/drawable/pause-button.png");
+
     private MidiHelper finalMidiHelper;
-    MidiHelper midiHelper = null;
-    BusinessFacadeImp businessFacadeImp = new BusinessFacadeImp();
     private KeyListener KL;
-    private boolean iAmPressed=false;
     private Translator translator = new Translator();
     private int songIndex = 0;
-    Timer timer  = new Timer(100, this);
-    public static int timePassed = 0;
 
+    Timer timer  = new Timer(100, this);
+    MidiHelper midiHelper = null;
 
     /**
      * Parametrized constructor, initializes the recorder and teh different overwrites for when a key is pressed in the keyboard
@@ -109,8 +116,11 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
         // We distinguish between our buttons.
         switch (e.getActionCommand()) {
             case RECORDING_TIMER:                                                           //When 1000 milliseconds have passed
+                if (!play) {
                     timePassed++;
                     refreshTiles();
+                    System.out.println(play);
+                }
                 break;
             case PianoTilesUISelector.BTN_TILE:
                 Tile t = null;
@@ -123,6 +133,19 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
                 break;
             case Dictionary_login.PROFILE_BUTTON:       //In the case that the Profile button is pressed
                 card.show(contenedor, PROFILE_UI);
+                break;
+            case DictionaryPiano.PLAY_BUTTON:
+                if(!play){
+                    playButtonTiles.setIcon(pauseIcon);
+                    playButtonTiles.setIcon(resizeIcon((ImageIcon) playButtonTiles.getIcon(), (int) Math.round(playButtonTiles.getIcon().getIconWidth()*0.0507),
+                            (int) Math.round(playButtonTiles.getIcon().getIconHeight()*0.0507)));
+                }
+                else{
+                    playButtonTiles.setIcon(playIcon);
+                    playButtonTiles.setIcon(resizeIcon((ImageIcon) playButtonTiles.getIcon(), (int) Math.round(playButtonTiles.getIcon().getIconWidth()*0.15),
+                            (int) Math.round(playButtonTiles.getIcon().getIconHeight()*0.15)));
+                }
+                play = !play;
                 break;
         }
     }
@@ -228,7 +251,7 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
             else {
                 songIndex = e.getLastIndex();
             }
-            System.out.println(businessFacadeImp.getSong(songIndex).getSongName());
+            System.out.println(new BusinessFacadeImp().getSong(songIndex).getSongName());
             timer.start();
             //TODO THIS INDEX OF THE SONG IS THE ONE WE WANT TO PLAY FROM THE GIVEN LIST. songIndex FTW
 
