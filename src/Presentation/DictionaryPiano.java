@@ -33,7 +33,8 @@ public class DictionaryPiano {
     public static final String PLAY_BUTTON = "playSong";
     public static final String LOOP_BUTTON = "loopSong";
     public static final String PLAYLIST_LIST = "playlist";
-    public static String PLAYLIST_NAME = "playlistName";
+    public static final String PLAYLIST_NAME = "playlistName";
+    public static final String SONG_PLAYLIST = "songPlaylist";
 
     public static final Integer TB_SIZE = 10;
 }

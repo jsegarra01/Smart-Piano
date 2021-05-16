@@ -10,6 +10,8 @@ package Presentation.Manager;
         import java.awt.event.MouseEvent;
         import java.awt.event.MouseListener;
 
+        import static Presentation.DictionaryPiano.SONG_PLAYLIST;
+
 public class PlaylistUIManager extends AbstractAction implements ActionListener, MouseListener {
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -17,9 +19,19 @@ public class PlaylistUIManager extends AbstractAction implements ActionListener,
             case "Button":
                 System.out.println("funciona hostia");
                 break;
+            case SONG_PLAYLIST:
+                JButton button;
+                Object obj = e.getSource();
+                if (obj instanceof JButton) {
+                    button = (JButton) obj;
+                    PlaylistUI.deleteFromPanel(button.getName());
+                    new BusinessFacadeImp().deleteSongFromPlaylist(PlaylistUI.getPlaylist().getPlaylistName(),button.getName());
+                    PlaylistUI.setSongsPlaylists(PlaylistUI.getPlaylist());
+                }
+                break;
             default:
                 JTable table = (JTable)e.getSource();
-                int modelRow = Integer.parseInt( e.getActionCommand() );
+                int modelRow = Integer.parseInt(e.getActionCommand());
                 String hola = (String) table.getModel().getValueAt(modelRow, 0);
                 PlaylistUI.getPlaylist().getSongs().remove(Integer.parseInt(e.getActionCommand() ));
                 new BusinessFacadeImp().deleteSongFromPlaylist(PlaylistUI.getPlaylist().getPlaylistName(),hola);
