@@ -17,6 +17,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.io.File;
 
@@ -39,7 +41,7 @@ import static Presentation.Ui_Views.Tile.resizeIcon;
  * @version 1.0 21 Apr 2021
  *
  */
-public class SpotiFrameManager implements ActionListener {
+public class SpotiFrameManager implements ActionListener, MouseListener {
 
     private String URLRoute = "https://www.mutopiaproject.org/cgibin/make-table.cgi?Instrument=Piano";
     private String path = "Files";
@@ -113,9 +115,57 @@ public class SpotiFrameManager implements ActionListener {
                     cc.show(spotiPanel, PLAYLIST_UI);
                 }
                 break;
+            case SONG_PLAYLIST:
+                JButton song;
+                Object obj2 = e.getSource();
+                if (obj2 instanceof JButton) {
+                    song = (JButton) obj2;
+                    PlaylistUI.deleteFromPanel(song.getName());
+                    new BusinessFacadeImp().deleteSongFromPlaylist(PlaylistUI.getPlaylist().getPlaylistName(),song.getName());
+                    PlaylistUI.setSongsPlaylists(PlaylistUI.getPlaylist());
+                }
+                break;
         }
     }
     public static void addPlaylists(ArrayList<Playlist> playlists){
         SpotiUI.addPlaylists(playlists);
+    }
+
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+        JPanel song;
+        Object obj = e.getSource();
+        if (obj instanceof JPanel) {
+            if(play){
+                finalMidiHelper.stopSong();
+            }
+            song = (JPanel) obj;
+            playButton.setIcon(pauseIcon);
+            playButton.setIcon(resizeIcon((ImageIcon) playButton.getIcon(), (int) Math.round(playButton.getIcon().getIconWidth()*0.09),
+                    (int) Math.round(playButton.getIcon().getIconHeight()*0.09)));
+            play = true;
+            finalMidiHelper.playSong(new File(song.getName()));
+        }
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+
     }
 }

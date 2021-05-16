@@ -4,7 +4,8 @@ package Presentation.Ui_Views;
 import Business.Entities.ButtonColumn;
 import Business.Entities.Playlist;
 import Presentation.Manager.MainFrame;
-import Presentation.Manager.PlaylistUIManager;
+//import Presentation.Manager.PlaylistUIManager;
+import Presentation.Manager.SpotiFrameManager;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -56,10 +57,10 @@ public class PlaylistUI extends JPanel {
         this.add(panel);
         this.setBackground(Color.black);
     }
-    private static void registerController(PlaylistUIManager listener) {
-        new ButtonColumn(table, listener, 2);
+    //private static void registerController(PlaylistUIManager listener) {
+      //  new ButtonColumn(table, listener, 2);
 
-    }
+    //}
     private static JPanel initGeneral(String namePlaylist){
         JPanel layout = new JPanel(new BorderLayout());
         layout.setBackground(Color.black);
@@ -213,7 +214,7 @@ public class PlaylistUI extends JPanel {
 
         JScrollPane areaScrollPane = new JScrollPane(panelSongs);
         areaScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-        areaScrollPane.setPreferredSize(new Dimension(800, 600));
+        areaScrollPane.setPreferredSize(new Dimension(800, 520));
         panelSongs.repaint();
         areaScrollPane.repaint();
 
@@ -267,6 +268,7 @@ public class PlaylistUI extends JPanel {
         label = new JLabel(String.valueOf(playlist.getSongs().get(i).getDuration()));
         label.setForeground(Color.WHITE);
         panel1.add(label);
+        panel1.add(Box.createHorizontalStrut(40));
 
         label = new JLabel(sdf.format(playlist.getSongs().get(i).getRecordingDate()));
         label.setForeground(Color.WHITE);
@@ -276,9 +278,11 @@ public class PlaylistUI extends JPanel {
         button.setName(playlist.getSongs().get(i).getSongName());
         button.setActionCommand(SONG_PLAYLIST);
         button.setText("Delete");
-        button.addActionListener(new PlaylistUIManager());
+        button.addActionListener(new SpotiFrameManager());
         panel1.add(Box.createHorizontalStrut(40));
         panel1.add(button);
+        panel1.addMouseListener(new SpotiFrameManager());
+        panel1.setName(playlist.getSongs().get(i).getSongFile());
         return panel1;
     }
 }

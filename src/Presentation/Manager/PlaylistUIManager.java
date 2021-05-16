@@ -1,18 +1,31 @@
 package Presentation.Manager;
-
-        import Business.BusinessFacadeImp;
+/*
+import Business.BusinessFacadeImp;
+        import Business.Entities.MidiHelper;
         import Presentation.Ui_Views.PlaylistUI;
 
+        import javax.sound.midi.MidiUnavailableException;
         import javax.swing.*;
         import javax.swing.table.DefaultTableModel;
         import java.awt.event.ActionEvent;
         import java.awt.event.ActionListener;
         import java.awt.event.MouseEvent;
         import java.awt.event.MouseListener;
+        import java.io.File;
 
         import static Presentation.DictionaryPiano.SONG_PLAYLIST;
 
 public class PlaylistUIManager extends AbstractAction implements ActionListener, MouseListener {
+    private MidiHelper midi;
+
+    {
+        try {
+            midi = new MidiHelper();
+        } catch (MidiUnavailableException e) {
+            e.printStackTrace();
+        }
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()){
@@ -35,7 +48,7 @@ public class PlaylistUIManager extends AbstractAction implements ActionListener,
                 ((DefaultTableModel)table.getModel()).removeRow(modelRow);
                 System.out.println("hola");
                 //((DefaultTableModel)PlaylistUI.getTable().getModel()).removeRow(Integer.parseInt(e.getActionCommand()));*/
-        }
+        /*}
     }
 
     @Override
@@ -45,7 +58,12 @@ public class PlaylistUIManager extends AbstractAction implements ActionListener,
 
     @Override
     public void mousePressed(MouseEvent e) {
-        System.out.println("pot ser que aixo funcioni");
+        JPanel song;
+        Object obj = e.getSource();
+        if (obj instanceof JPanel) {
+            song = (JPanel) obj;
+            midi.playSong(new File(song.getName()));
+        }
     }
 
     @Override
@@ -63,4 +81,4 @@ public class PlaylistUIManager extends AbstractAction implements ActionListener,
 
     }
 }
-
+*/
