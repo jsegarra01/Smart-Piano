@@ -5,6 +5,8 @@ public class Keys {
     private String tileKey;
     private String nameKey;
     private boolean pressed = false;
+    private long duration;
+    private long startTime;
 
 
     public Keys(int keyCode, String tileKey, String nameKey){
@@ -12,6 +14,13 @@ public class Keys {
         this.tileKey = tileKey;
         this.nameKey = nameKey;
     }
+
+    public Keys(int keyCode, long duration, long startTime){
+        this.keyCode = keyCode;
+        this.duration = duration;
+        this.startTime = startTime;
+    }
+
     public int getKeyCode() {
         return keyCode;
     }
@@ -38,6 +47,22 @@ public class Keys {
 
     public String getNameKey() {
         return nameKey;
+    }
+
+    public long getDuration() {
+        return duration;
+    }
+
+    public void setDuration(long duration) {
+        this.duration = duration;
+    }
+
+    public long getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(long startTime) {
+        this.startTime = startTime;
     }
 
     public void setNameKey(String nameKey) {

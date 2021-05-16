@@ -110,7 +110,7 @@ public class SongToMidi {
                 t.add(me);
 
                 mm = new ShortMessage();
-                mm.setMessage(0x90,Translator.getNumberNoteFromName(recordingNote.getKey()),0x00);
+                mm.setMessage(0x89,Translator.getNumberNoteFromName(recordingNote.getKey()),0x00);
                 me = new MidiEvent(mm,(long)((recordingNote.getTime() + recordingNote.getDuration())*184));
                 t.add(me);
             }
