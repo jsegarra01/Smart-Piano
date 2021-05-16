@@ -190,13 +190,14 @@ public class PianoTilesUISelector extends Piano {
 
             //We create the view of the list in a scroll pane
             JScrollPane scrollPane = new JScrollPane(songNames);
-            scrollPane.setPreferredSize(new Dimension(250,60));
+            scrollPane.setPreferredSize(new Dimension(250, 60));
             scrollPane.setWheelScrollingEnabled(true);
 
             return scrollPane;
-        } catch (NullPointerException e){
+        } catch (NullPointerException e) {
             return new JScrollPane();
         }
+    }
 
     /**
      * Generates the keys in a JLayeredPane.
