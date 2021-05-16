@@ -41,6 +41,7 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
     public static int SOUND_SYNTHER = 0 ;
     private MidiHelper finalMidiHelper;
     MidiHelper midiHelper = null;
+    BusinessFacadeImp businessFacadeImp = new BusinessFacadeImp();
     private KeyListener KL;
     private boolean iAmPressed=false;
     private Translator translator = new Translator();
@@ -190,7 +191,7 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
             else {
                 songIndex = e.getLastIndex();
             }
-
+            System.out.println(businessFacadeImp.getSong(songIndex).getSongName());
             //TODO THIS INDEX OF THE SONG IS THE ONE WE WANT TO PLAY FROM THE GIVEN LIST. songIndex FTW
 
         }

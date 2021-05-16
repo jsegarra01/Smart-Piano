@@ -23,6 +23,10 @@ public class SongManager {
         return songs;
     }
 
+    public Song getSong(int index) {
+        return songs.get(index);
+    }
+
     public void setSongs() {
         //TODO GET ALL THE PUBLIC SONGS + PRIVATE SONGS IF USER != GUEST
        // songs = songManager.getAllSongs(getUser());

@@ -1,6 +1,7 @@
 package Business;
 
 import Business.Entities.RecordingNotes;
+import Business.Entities.Song;
 import Business.Entities.SongRecorded;
 import Business.Entities.SongToJson;
 
@@ -57,6 +58,10 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
     @Override
     public ArrayList<String> getSongName() {
         return songManager.getSongNames();
+    }
+
+    public Song getSong(int index) {
+        return songManager.getSong(index);
     }
 
 

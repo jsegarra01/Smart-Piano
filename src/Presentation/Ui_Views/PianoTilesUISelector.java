@@ -5,6 +5,7 @@ import Presentation.Manager.MainFrame;
 
 import javax.security.auth.RefreshFailedException;
 import javax.security.auth.Refreshable;
+import javax.sound.midi.Sequence;
 import javax.swing.*;
 import java.awt.*;
 
