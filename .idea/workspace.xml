@@ -25,7 +25,14 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="Now we can move blocks in the PianoTiles. TODO: Get the song, parse the song, put the song there. Button to play or stop needed. Restart button, velocity button are needed?" />
+    <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="Now the user can stop the falling tiles">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/DictionaryPiano.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/DictionaryPiano.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/PianoTilesUISelectorManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/PianoTilesUISelectorManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/PianoTilesUISelector.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/PianoTilesUISelector.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presentation/Manager/PianoTilesUISelectorManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Manager/PianoTilesUISelectorManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presentation/Ui_Views/PianoTilesUISelector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Ui_Views/PianoTilesUISelector.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -166,7 +173,7 @@
       <workItem from="1620641855278" duration="3071000" />
       <workItem from="1620729555579" duration="936000" />
       <workItem from="1620807482423" duration="1303000" />
-      <workItem from="1621168791058" duration="12803000" />
+      <workItem from="1621168791058" duration="21768000" />
     </task>
     <task id="LOCAL-00001" summary="ProfileUi connections done">
       <created>1618916466488</created>
@@ -497,21 +504,21 @@
       <option name="project" value="LOCAL" />
       <updated>1621184262683</updated>
     </task>
-    <task id="LOCAL-00048" summary="Small changes added">
-      <created>1620730531167</created>
+    <task id="LOCAL-00048" summary="Finish feature">
+      <created>1621184290152</created>
       <option name="number" value="00048" />
       <option name="presentableId" value="LOCAL-00048" />
       <option name="project" value="LOCAL" />
-      <updated>1620730531167</updated>
+      <updated>1621184290152</updated>
     </task>
-    <task id="LOCAL-00049" summary="Commentaries for the PianoTilesUISelector and the PianoTilesUISelectorManager">
-      <created>1620808412547</created>
+    <task id="LOCAL-00049" summary="Now the user can stop the falling tiles">
+      <created>1621190310258</created>
       <option name="number" value="00049" />
       <option name="presentableId" value="LOCAL-00049" />
       <option name="project" value="LOCAL" />
-      <updated>1620808412547</updated>
+      <updated>1621190310258</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -541,8 +548,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="IsValidActive" />
-    <MESSAGE value="Small change config" />
     <MESSAGE value="Changes in the piano, fancier" />
     <MESSAGE value="Piano does not keep playing anymore whenever the key is pressed. &#10;The tile changes its color, simulating that has been pressed with the keyboard" />
     <MESSAGE value="Logic for the Enter as Guest changed and adapted to not be deleted and to be a user called guest." />
@@ -587,7 +592,9 @@
     <MESSAGE value="I have added TODO's as there are things we have to see how they look in a windows (as with a mac they are weird)" />
     <MESSAGE value="List of songs available for the user. PianoTilesUISelectorManager gets the correct index of the song selected. Each time PianoTilesUISelector is called, we update again all the songs in the database available to play them" />
     <MESSAGE value="Now we can move blocks in the PianoTiles. TODO: Get the song, parse the song, put the song there. Button to play or stop needed. Restart button, velocity button are needed?" />
-    <option name="LAST_COMMIT_MESSAGE" value="Now we can move blocks in the PianoTiles. TODO: Get the song, parse the song, put the song there. Button to play or stop needed. Restart button, velocity button are needed?" />
+    <MESSAGE value="Finish feature" />
+    <MESSAGE value="Now the user can stop the falling tiles" />
+    <option name="LAST_COMMIT_MESSAGE" value="Now the user can stop the falling tiles" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -596,6 +603,21 @@
           <url>file://$PROJECT_DIR$/src/Presentation/Manager/SpotiFrameManager.java</url>
           <line>111</line>
           <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Presentation/Manager/PianoTilesUISelectorManager.java</url>
+          <line>284</line>
+          <option name="timeStamp" value="65" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Presentation/Manager/PianoTilesUISelectorManager.java</url>
+          <line>261</line>
+          <option name="timeStamp" value="66" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Presentation/Manager/PianoTilesUISelectorManager.java</url>
+          <line>117</line>
+          <option name="timeStamp" value="67" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

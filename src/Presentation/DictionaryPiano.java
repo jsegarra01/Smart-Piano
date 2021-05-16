@@ -12,7 +12,6 @@ package Presentation;
 public class DictionaryPiano {
     public static final String MUSIC_PLAYER = "Music Player";
     public static final String PIANO_TILES_UI_SELECTOR = "PianoTilesUISelector";
-    public static final String PIANO_TILES_UI_GAME = "PianoTilesUIGame";
     public static final String FREE_PIANO_UI = "FreePianoUI";
     public static final String FREE_PIANO = "Free piano";
     public static final String PLAY_A_SONG = "Play a song";
@@ -33,6 +32,11 @@ public class DictionaryPiano {
     public static final String PLAY_BUTTON = "playSong";
     public static final String LOOP_BUTTON = "loopSong";
     public static final String PLAYLIST_LIST = "playlist";
-
+    public static final String PLAY_TILES = "";
+    public static final String VERY_EASY_MODE = "Very Easy";
+    public static final String EASY_MODE = "Easy";
+    public static final String NORMAL_MODE = "Normal";
+    public static final String HARD_MODE = "Hard";
+    public static final String VERY_HARD_MODE = "Very Hard";
     public static final Integer TB_SIZE = 10;
 }
