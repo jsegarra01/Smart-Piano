@@ -4,6 +4,7 @@ package Presentation.Manager;
 import Business.BusinessFacadeImp;
 import Business.Entities.Keys;
 import Business.Entities.ReadMidi;
+import Presentation.DictionaryPiano;
 import Presentation.Dictionary_login;
 import Presentation.Ui_Views.PianoTilesUISelector;
 import Presentation.Ui_Views.Tile;
