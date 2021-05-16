@@ -14,7 +14,7 @@ import static Presentation.Dictionary_login.PROFILE_BUTTON;
 import static Presentation.Ui_Views.Tile.*;
 
 public abstract class Piano extends JPanel {
-    protected MainFrame mainFrame;
+    protected static MainFrame mainFrame;
 
     public static final String BTN_RETURN = "BTN_RETURN";
     public static final String BTN_RECORD = " ";

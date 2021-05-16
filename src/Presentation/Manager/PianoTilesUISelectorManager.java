@@ -23,6 +23,7 @@ import static Presentation.DictionaryPiano.RECORDING_TIMER;
 import static Presentation.Dictionary_login.*;
 import static Presentation.Manager.MainFrame.card;
 import static Presentation.Manager.MainFrame.contenedor;
+import static Presentation.Ui_Views.PianoTilesUISelector.setTiles;
 import static Presentation.Ui_Views.Tile.*;
 
 
@@ -37,7 +38,6 @@ import static Presentation.Ui_Views.Tile.*;
  */
 public class PianoTilesUISelectorManager implements ActionListener, MouseListener, ListSelectionListener {
 
-    public static String SOUND_TYPE = "SYNTH";
     public static int SOUND_SYNTHER = 0 ;
     private MidiHelper finalMidiHelper;
     MidiHelper midiHelper = null;
@@ -45,16 +45,17 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
     private boolean iAmPressed=false;
     private Translator translator = new Translator();
     private int songIndex = 0;
-    public static int recordingTime = 0;
-    Timer timer  = new Timer(100, this);
-
-
+    Timer timer  = new Timer(1000, this);
+    public static int timePassed = 0;
 
 
     /**
      * Parametrized constructor
      */
     public PianoTilesUISelectorManager() {
+
+
+        //To play the song
         timer.setActionCommand(RECORDING_TIMER);
         try {
             midiHelper = new MidiHelper();
@@ -100,14 +101,9 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
     public void actionPerformed(ActionEvent e) {
         // We distinguish between our buttons.
         switch (e.getActionCommand()) {
-            case RECORDING_TIMER:
-                recordingTime += 1;
-                break;
-            case PianoTilesUISelector.BTN_RETURN:
-                System.out.println("Well... we have already NOT implemented this button!");
-                break;
-            case PianoTilesUISelector.BTN_RECORD:
-                System.out.println("Well... we have already NOT implemented this button!");
+            case RECORDING_TIMER:                                                           //When 1000 milliseconds have passed
+                    timePassed += 1;
+                    setTiles();
                 break;
             case PianoTilesUISelector.BTN_TILE:
                 Tile t = null;
@@ -190,7 +186,7 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
             else {
                 songIndex = e.getLastIndex();
             }
-
+            timer.start();
             //TODO THIS INDEX OF THE SONG IS THE ONE WE WANT TO PLAY FROM THE GIVEN LIST. songIndex FTW
 
         }

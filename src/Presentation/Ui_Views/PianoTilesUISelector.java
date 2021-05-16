@@ -23,6 +23,7 @@ import java.util.LinkedList;
 import java.util.Objects;
 
 import static Presentation.Dictionary_login.PROFILE_BUTTON;
+import static Presentation.Manager.PianoTilesUISelectorManager.timePassed;
 import static Presentation.Ui_Views.Tile.*;
 
 
@@ -35,9 +36,10 @@ import static Presentation.Ui_Views.Tile.*;
  * @version 2.0 24 Apr 2021
  *
  */
-public class PianoTilesUISelector extends Piano {
-    private static ArrayList<Tile> keyboard;
 
+public class PianoTilesUISelector extends Piano{
+    private static ArrayList<Tile> keyboard;
+    private static int i = 0;
     public static ArrayList<Tile> getKeyboard() {
         return keyboard;
     }
@@ -49,7 +51,7 @@ public class PianoTilesUISelector extends Piano {
      */
     public PianoTilesUISelector(final MainFrame mainFrame) {
         super();
-        this.mainFrame = mainFrame;
+        Piano.mainFrame = mainFrame;
         keyboard = new ArrayList<>();
         initialize();
     }
@@ -90,8 +92,8 @@ public class PianoTilesUISelector extends Piano {
         profile.setIcon(resizeIcon((ImageIcon) profile.getIcon(), (int) Math.round(profile.getIcon().getIconWidth()*0.15), (int) Math.round(profile.getIcon().getIconHeight()*0.15)));
 
 
-        menu.add(profile, BorderLayout.WEST);
-        menu.add(Box.createRigidArea(new Dimension(400,10)), BorderLayout.CENTER);
+        menu.add(profile, BorderLayout.WEST);          //400
+        menu.add(Box.createRigidArea(new Dimension(200,10)), BorderLayout.CENTER);
         menu.add(songSelector(), BorderLayout.CENTER);
         menu.add(Box.createRigidArea(new Dimension(200,10)), BorderLayout.CENTER);
         registerController(new PianoTilesUISelectorManager());
@@ -145,6 +147,12 @@ public class PianoTilesUISelector extends Piano {
             auxiliar.setOpaque(true);
             jLayeredPane.add(auxiliar,Integer.valueOf(1));
         }
+        try {
+            jLayeredPane.add(setTiles(), Integer.valueOf(2));                        //TODO DON'T TOUCH THIS, IS A TRIAL FOR THE PIANO TILES
+        } catch (Exception e) {
+
+        }
+
         panelBorderLayout.add(jLayeredPane, BorderLayout.CENTER);
         return panelBorderLayout;
     }
@@ -159,10 +167,6 @@ public class PianoTilesUISelector extends Piano {
             tile.addMouseListener(listener);
             tile.addKeyListener(listener.getKeyListener());
         }
-    }
-
-    public static void setTypeName(String name) {
-        soundType.setText(name);
     }
 
     private JScrollPane songSelector() {
@@ -186,6 +190,7 @@ public class PianoTilesUISelector extends Piano {
             return new JScrollPane();
         }
     }
+
     public JLayeredPane makeKeys(){
         // Create layerPane
         JLayeredPane keyBoard = new JLayeredPane();
@@ -195,4 +200,16 @@ public class PianoTilesUISelector extends Piano {
         return makeTiles(keyBoard, 120, 250, 45, keyboard, 20, 210);
     }
 
+
+    public static JPanel setTiles() {       //TODO DON'T TOUCH THIS, IS A TRIAL FOR THE PIANO TILES
+
+        JPanel lala = new JPanel();
+        lala.setBackground(Color.orange);
+        lala.setBounds(0,0, timePassed*10,50);
+        lala.revalidate();
+        lala.repaint();
+        mainFrame.repaint();
+        mainFrame.repaint();
+        return lala;
+    }
 }
