@@ -43,7 +43,7 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
 
     @Override
     public void recordedNotesSend(ArrayList<RecordingNotes> recordedNotes, String songName, boolean isPublic, float endtime) {
-        songpanager.saveRecording(recordedNotes,songName,isPublic,endtime);
+        songManager.saveRecording(recordedNotes,songName,isPublic,endtime);
     }
 
     @Override
