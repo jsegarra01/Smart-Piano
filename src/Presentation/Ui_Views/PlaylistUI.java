@@ -65,6 +65,7 @@ public class PlaylistUI extends JPanel {
         JPanel layout = new JPanel(new BorderLayout());
         layout.setBackground(Color.black);
         JLabel playlistName = new JLabel(PLAYLIST_NAME);
+        playlistName.setBackground(Color.black);
         playlistName.setOpaque(false);
         playlistName.repaint();
         playlistName.setForeground(Color.WHITE);
