@@ -2,8 +2,10 @@ package Presentation.Manager;
 
 //Imports needed from the dictionary, events and mainframe
 import Business.BusinessFacadeImp;
+import Business.Entities.Keys;
+import Business.Entities.ReadMidi;
+import Presentation.DictionaryPiano;
 import Presentation.Dictionary_login;
-import Presentation.Ui_Views.FreePianoUI;
 import Presentation.Ui_Views.PianoTilesUISelector;
 import Presentation.Ui_Views.Tile;
 import Business.Entities.MidiHelper;
@@ -16,15 +18,14 @@ import javax.swing.event.ListSelectionListener;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Objects;
 
 import static Presentation.DictionaryPiano.RECORDING_TIMER;
 import static Presentation.Dictionary_login.*;
 import static Presentation.Manager.MainFrame.card;
 import static Presentation.Manager.MainFrame.contenedor;
-import static Presentation.Ui_Views.PianoTilesUISelector.setTiles;
-import static Presentation.Ui_Views.Tile.*;
+import static Presentation.Ui_Views.PianoTilesUISelector.*;
+import static Presentation.Ui_Views.Tile.resizeIcon;
 
 
 /**
@@ -37,25 +38,27 @@ import static Presentation.Ui_Views.Tile.*;
  *
  */
 public class PianoTilesUISelectorManager implements ActionListener, MouseListener, ListSelectionListener {
-
     public static int SOUND_SYNTHER = 0 ;
-    private MidiHelper finalMidiHelper;
-    MidiHelper midiHelper = null;
-    BusinessFacadeImp businessFacadeImp = new BusinessFacadeImp();
-    private KeyListener KL;
-    private boolean iAmPressed=false;
-    private Translator translator = new Translator();
-    private int songIndex = 0;
-    Timer timer  = new Timer(1000, this);
     public static int timePassed = 0;
+    public static float velocityModifier = 1;
+    private static boolean play = true;
+    private static boolean songStarted = false;
+    private static int songIndex = 0;
 
+    private final ImageIcon playIcon = new ImageIcon("Files/drawable/play-button.png");
+    private final ImageIcon pauseIcon = new ImageIcon("Files/drawable/pause-button.png");
+
+    private MidiHelper finalMidiHelper;
+    private KeyListener KL;
+    private Translator translator = new Translator();
+
+    Timer timer  = new Timer(100, this);
+    MidiHelper midiHelper = null;
 
     /**
      * Parametrized constructor, initializes the recorder and teh different overwrites for when a key is pressed in the keyboard
      */
     public PianoTilesUISelectorManager() {
-
-
         //To play the song
         timer.setActionCommand(RECORDING_TIMER);
         try {
@@ -113,8 +116,10 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
         // We distinguish between our buttons.
         switch (e.getActionCommand()) {
             case RECORDING_TIMER:                                                           //When 1000 milliseconds have passed
-                    timePassed += 1;
-                    setTiles();
+                if (play && songStarted) {
+                    timePassed++;
+                    refreshTiles();
+                }
                 break;
             case PianoTilesUISelector.BTN_TILE:
                 Tile t = null;
@@ -127,6 +132,36 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
                 break;
             case Dictionary_login.PROFILE_BUTTON:       //In the case that the Profile button is pressed
                 card.show(contenedor, PROFILE_UI);
+                break;
+            case DictionaryPiano.PLAY_BUTTON:
+                if (songStarted) {
+                    if(play){
+                        playButtonTiles.setIcon(pauseIcon);
+                        playButtonTiles.setIcon(resizeIcon((ImageIcon) playButtonTiles.getIcon(), (int) Math.round(playButtonTiles.getIcon().getIconWidth()*0.0507),
+                                (int) Math.round(playButtonTiles.getIcon().getIconHeight()*0.0507)));
+                    }
+                    else{
+                        playButtonTiles.setIcon(playIcon);
+                        playButtonTiles.setIcon(resizeIcon((ImageIcon) playButtonTiles.getIcon(), (int) Math.round(playButtonTiles.getIcon().getIconWidth()*0.15),
+                                (int) Math.round(playButtonTiles.getIcon().getIconHeight()*0.15)));
+                    }
+                    play = !play;
+                }
+                break;
+            case DictionaryPiano.VERY_EASY_MODE:
+                if (!songStarted) { velocityModifier = 0.5f;}
+                break;
+            case DictionaryPiano.EASY_MODE:
+                if (!songStarted) { velocityModifier = 0.75f;}
+                break;
+            case DictionaryPiano.NORMAL_MODE:
+                if (!songStarted) { velocityModifier = 1;}
+                break;
+            case DictionaryPiano.HARD_MODE:
+                if (!songStarted) { velocityModifier = 1.5f;}
+                break;
+            case DictionaryPiano.VERY_HARD_MODE:
+                if (!songStarted) { velocityModifier = 2.0f;}
                 break;
         }
     }
@@ -225,17 +260,40 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
 
     @Override
     public void valueChanged(ListSelectionEvent e) {
-        if (!e.getValueIsAdjusting()) {
+        if (!e.getValueIsAdjusting() && !songStarted) {
             if (e.getFirstIndex() <= e.getLastIndex() && songIndex == e.getLastIndex()) {
                 songIndex = e.getFirstIndex();
             }
             else {
                 songIndex = e.getLastIndex();
             }
-            System.out.println(businessFacadeImp.getSong(songIndex).getSongName());
+            System.out.println(new BusinessFacadeImp().getSong(songIndex).getSongName());
+            songStarted = true;
+            timer.restart();
+            System.out.println(new BusinessFacadeImp().getSong(songIndex).getSongName());
+            try {
+                ArrayList<Keys> keys = ReadMidi.readMidi(new BusinessFacadeImp().getSong(songIndex).getSongFile());
+                for (Keys key: keys) {
+                    System.out.println("number of key; " + key.getKeyCode() + " duration of the key in ticks: " + key.getDuration() + " key pressed at: " + key.getStartTime());
+                }
+            } catch (Exception exception) {
+                System.out.println("Error, suposo que no troba la file.");
+                exception.printStackTrace();
+            }
             timer.start();
             //TODO THIS INDEX OF THE SONG IS THE ONE WE WANT TO PLAY FROM THE GIVEN LIST. songIndex FTW
 
         }
+    }
+
+    public void refreshPianoTilesUI () {
+        timePassed = 0;
+        songStarted = false;
+        play = true;
+        songIndex = 0;
+        timer.stop();
+        initTileGame();
+        refreshTiles();
+        refreshSongList();
     }
 }

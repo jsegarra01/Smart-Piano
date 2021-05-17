@@ -1,6 +1,7 @@
 package Business;
 
 import Business.Entities.RecordingNotes;
+import Business.Entities.Song;
 
 import java.util.ArrayList;
 
@@ -62,4 +63,6 @@ public interface BusinessFacade {
      * @return String with all the name of the songs
      */
     ArrayList<String> getSongName();
+
+    Song getSong(int index);
 }
