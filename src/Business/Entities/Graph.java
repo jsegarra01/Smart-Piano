@@ -17,9 +17,9 @@ public class Graph extends JPanel {
     private int pointWidth = 4;
     private int numberYDivisions = 10;
     //private List<Float> xPoints;
-    private List<Integer> yPoints;
+    private List<Float> yPoints;
 
-    public Graph(List<Integer> yPoints) {
+    public Graph(List<Float> yPoints) {
         this.yPoints = yPoints;
     }
 
@@ -109,16 +109,16 @@ public class Graph extends JPanel {
     }
 
     private double getMinY() {
-        Integer minY = Integer.MAX_VALUE;
-        for (Integer myY : yPoints) {
+        Float minY = Float.MAX_VALUE;
+        for (Float myY : yPoints) {
             minY = Math.min(minY, myY);
         }
         return minY;
     }
 
     private double getMaxY() {
-        Integer maxY = Integer.MIN_VALUE;
-        for (Integer myY : yPoints) {
+        Float maxY = Float.MIN_VALUE;
+        for (Float myY : yPoints) {
             maxY = Math.max(maxY, myY);
         }
         return maxY;

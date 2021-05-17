@@ -34,7 +34,8 @@ public class StatisticsUI extends JPanel {
     private MainFrame mainFrame;
 
     private  SpotiFrameManager spotiFrame;
-    private  Graph graph;
+    private  Graph graph1;
+    private Graph graph2;
 /*
     private int width = 800;
     private int height = 400;
@@ -46,9 +47,9 @@ public class StatisticsUI extends JPanel {
     private Color gridColor = new Color(200, 200, 200, 200);
     private static final Stroke GRAPH_STROKE = new BasicStroke(2f); // used to draw shape’s outline
     private int pointWidth = 4;
-    private int numberYDivisions = 10;
-    //private List<Float> xPoints;*/
-    private LinkedList<Integer> yPoints = new LinkedList<Integer>();
+    private int numberYDivisions = 10;*/
+    private LinkedList<Float> numMin = new LinkedList<>();
+    private LinkedList<Float> numSongs = new LinkedList<>();
 
 
 
@@ -57,10 +58,11 @@ public class StatisticsUI extends JPanel {
      *
      * @param mainFrame context necessary to create the card layout
      */
-    public StatisticsUI(final MainFrame mainFrame/*, List<Integer> yPoints*/) {
+    public StatisticsUI(final MainFrame mainFrame, LinkedList<Float> numSongs, LinkedList<Float> numMin) {
         super();
         this.mainFrame = mainFrame;
-        //this.yPoints = yPoints;
+        this.numSongs = numSongs;
+        this.numMin = numMin;
         initialize();
     }
 
@@ -76,8 +78,8 @@ public class StatisticsUI extends JPanel {
     }
 
     private void createAndShowGui() {
-        yPoints = spotiFrame.getNumSongs();
-        graph  = new Graph(spotiFrame.getNumSongs());
+        graph1  = new Graph(numSongs);
+        graph2 = new Graph(numMin);
         //graph.setPreferredSize(new Dimension(900, 800));
         JPanel panel = new JPanel();
         BoxLayout box = new BoxLayout(panel, BoxLayout.X_AXIS);
@@ -87,8 +89,8 @@ public class StatisticsUI extends JPanel {
         //panel.setLayout(new BorderLayout());
         //panel.setLayout(new GridLayout());
         panel.setBackground(Color.BLACK);
-        panel.add(graph);
-        panel.add(graph);
+        panel.add(graph1);
+        panel.add(graph2);
         add(panel, BorderLayout.CENTER);
     }
 

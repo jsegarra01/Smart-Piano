@@ -60,4 +60,6 @@ public interface SongDAO {
     Stadistics getStadisticsHour(int hour);
 
 
+
+
 }

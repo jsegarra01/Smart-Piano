@@ -179,8 +179,8 @@ public class SongCsvDAO implements SongDAO {
                 return true;
 
             }else{
-                PreparedStatement st2 = ConnectSQL.getInstance().prepareStatement("update SongStatisticsHourlyT SET numPlayed = numPlayed + 1" /*+
-                        myStats.getNumPlayed()*/ + " where hour = " +
+                PreparedStatement st2 = ConnectSQL.getInstance().prepareStatement("update SongStatisticsHourlyT SET numPlayed = numPlayed + " +
+                        myStats.getNumPlayed() + " where hour = " +
                         myStats.getHour() + ";");
                 st2.executeUpdate();
                 PreparedStatement st3 = ConnectSQL.getInstance().prepareStatement("update SongStatisticsHourlyT SET minPlayed = minPlayed + " +
@@ -189,7 +189,6 @@ public class SongCsvDAO implements SongDAO {
                 st3.executeUpdate();
                 return true;
             }
-
 
         } catch (SQLException throwable) {
             throwable.printStackTrace();
@@ -206,7 +205,7 @@ public class SongCsvDAO implements SongDAO {
             if(myRs.next()){
                 Stadistics stadistics = new Stadistics(
                         myRs.getInt("hour"),
-                        myRs.getInt("numPlayed"),
+                        myRs.getFloat("numPlayed"),
                         myRs.getFloat("minPlayed"));
                 myRs.close();
                 return stadistics;

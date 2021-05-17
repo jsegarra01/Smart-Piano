@@ -2,10 +2,10 @@ package Business.Entities;
 
 public class Stadistics {
     private int hour;
-    private int numPlayed;
+    private float numPlayed;
     private float minPlayed;
 
-    public Stadistics(int hour, int numPlayed, float minPlayed) {
+    public Stadistics(int hour, float numPlayed, float minPlayed) {
         this.hour = hour;
         this.numPlayed = numPlayed;
         this.minPlayed = minPlayed;
@@ -23,11 +23,11 @@ public class Stadistics {
         this.hour = myHour;
     }
 
-    public int getNumPlayed() {
+    public float getNumPlayed() {
         return numPlayed;
     }
 
-    public void setNumPlayed(int numPlayed) {
+    public void setNumPlayed(float numPlayed) {
         this.numPlayed = numPlayed;
     }
 

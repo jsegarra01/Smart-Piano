@@ -3,29 +3,18 @@ package Presentation.Manager;
 //Imports needed from the dictionary, events and mainframe
 import Business.Entities.*;
 import Business.BusinessFacadeImp;
-import Business.PlaylistManager;
-import Persistence.SQL.Csv.SongCsvDAO;
-import Presentation.Dictionary_login;
 import Presentation.Ui_Views.SpotiUI;
-import Presentation.Ui_Views.Tile;
 
 import javax.sound.midi.MidiUnavailableException;
 import javax.swing.*;
-import javax.xml.crypto.Data;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.*;
 import java.io.File;
-import java.util.List;
 
 import static Presentation.DictionaryPiano.*;
-import static Presentation.Dictionary_login.*;
-import static Presentation.Manager.MainFrame.card;
-import static Presentation.Manager.MainFrame.contenedor;
-import static Presentation.Ui_Views.PianoFrame.*;
-import static Presentation.Ui_Views.SpotiUI.playButton;
-import static Presentation.Ui_Views.SpotiUI.spotiPanel;
+import static Presentation.Ui_Views.SpotiUI.*;
 import static Presentation.Ui_Views.Tile.resizeIcon;
 
 
@@ -89,6 +78,7 @@ public class SpotiFrameManager implements ActionListener {
 
         switch (e.getActionCommand()) {
             case CREATE_STADISTICS:
+                addStadistics(getNumSongs(), getMinPlayed());
                 cc.show(spotiPanel, STATISTICS_UI);
                 break;
             case SHOW_TOP_SONGS:
@@ -117,7 +107,7 @@ public class SpotiFrameManager implements ActionListener {
                     lastMin = System.currentTimeMillis();
                     // String lastSong =
                     minPlayed = (float)(lastMin - startMin)/60000;
-                    Stadistics stats = new Stadistics(date.getHours(), 1, minPlayed);
+                    Stadistics stats = new Stadistics(date.getHours(), (float)1, minPlayed);
                     new BusinessFacadeImp().getSongManager().addingStadistics(stats);
                     play = false;
                     finalMidiHelper.stopSong();
@@ -135,17 +125,17 @@ public class SpotiFrameManager implements ActionListener {
     public static void addPlaylists(ArrayList<Playlist> playlists){
         SpotiUI.addPlaylists(playlists);
     }
-
-    /*public static void addFirstStadistics(List<Integer> numSongs){
+/*
+    public static void addFirstStadistics(List<Integer> numSongs){
         SpotiUI.addStadistics(numSongs);
 
     }*/
 
-    public static LinkedList<Integer> getNumSongs(){
-        LinkedList<Integer> numSongs = new LinkedList<Integer>();
+    public static LinkedList<Float> getNumSongs(){
+        LinkedList<Float> numSongs = new LinkedList<Float>();
         for(int i=0; i<24; i++ ){
             if(new BusinessFacadeImp().getSongManager().gettingStadistics(i) == null){
-                numSongs.add(0);
+                numSongs.add((float) 0);
             } else {
                 numSongs.add(new BusinessFacadeImp().getSongManager().gettingStadistics(i).getNumPlayed());
             }
@@ -153,10 +143,14 @@ public class SpotiFrameManager implements ActionListener {
         return numSongs;
     }
 
-    public List<Float> getMinPlayed(){
-        List<Float> numMin = null;
+    public LinkedList<Float> getMinPlayed(){
+        LinkedList<Float> numMin = new LinkedList<Float>();
         for(int i=0; i<24; i++ ){
-            numMin.add(new BusinessFacadeImp().getSongManager().gettingStadistics(i).getMinPlayed());
+            if(new BusinessFacadeImp().getSongManager().gettingStadistics(i) == null){
+                numMin.add((float)0);
+            } else {
+                numMin.add(new BusinessFacadeImp().getSongManager().gettingStadistics(i).getMinPlayed());
+            }
         }
         return numMin;
     }
