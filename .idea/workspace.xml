@@ -25,10 +25,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="Velocity added (difficulty). &#10;Now is restarted when card changes.">
+    <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="Everything prepared to initiate the falling tiles.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Files/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/Files/config.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presentation/Manager/PianoTilesUISelectorManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Manager/PianoTilesUISelectorManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,17 +122,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
@@ -180,14 +167,7 @@
       <workItem from="1620641855278" duration="3071000" />
       <workItem from="1620729555579" duration="936000" />
       <workItem from="1620807482423" duration="1303000" />
-      <workItem from="1621168791058" duration="22475000" />
-    </task>
-    <task id="LOCAL-00003" summary="ProfileUi connections done, v3">
-      <created>1618916501460</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1618916501460</updated>
+      <workItem from="1621168791058" duration="22996000" />
     </task>
     <task id="LOCAL-00004" summary="Name changed accordingly to our class diagram">
       <created>1618994288052</created>
@@ -525,7 +505,14 @@
       <option name="project" value="LOCAL" />
       <updated>1621193730493</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="Everything prepared to initiate the falling tiles.">
+      <created>1621194379288</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1621194379288</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -555,7 +542,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Logic for the Enter as Guest changed and adapted to not be deleted and to be a user called guest." />
     <MESSAGE value="Basic UI classes created and added to the cardLayout." />
     <MESSAGE value="IsValidActive" />
     <MESSAGE value="Small change config" />
@@ -601,7 +587,8 @@
     <MESSAGE value="Now the user can stop the falling tiles" />
     <MESSAGE value="Velocity added (difficulty). &#10;Now is restarted when card changes." />
     <MESSAGE value="Merge" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merge" />
+    <MESSAGE value="Everything prepared to initiate the falling tiles." />
+    <option name="LAST_COMMIT_MESSAGE" value="Everything prepared to initiate the falling tiles." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
