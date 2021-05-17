@@ -4,10 +4,7 @@ package Presentation.Manager;
 import Business.Entities.*;
 import Business.BusinessFacadeImp;
 import Business.Entities.MidiHelper;
-import Business.Entities.Translator;
 import Business.Entities.webHandler;
-import Business.PlaylistManager;
-import Presentation.Dictionary_login;
 import Presentation.Ui_Views.PlaylistUI;
 import Presentation.Ui_Views.SpotiUI;
 
@@ -38,17 +35,17 @@ import static Presentation.Ui_Views.Tile.resizeIcon;
  */
 public class SpotiFrameManager implements ActionListener, MouseListener {
 
-    private String URLRoute = "https://www.mutopiaproject.org/cgibin/make-table.cgi?Instrument=Piano";
-    private String path = "Files";
+    private static final String URLRoute = "https://www.mutopiaproject.org/cgibin/make-table.cgi?Instrument=Piano";
+    private static final String path = "Files";
     private boolean play=false;
-    private ImageIcon playIcon = new ImageIcon("Files/drawable/playbuttonWhite.png");
-    private ImageIcon pauseIcon = new ImageIcon("Files/drawable/pauseWhite.png");
+    private static final ImageIcon playIcon = new ImageIcon("Files/drawable/playbuttonWhite.png");
+    private static final ImageIcon pauseIcon = new ImageIcon("Files/drawable/pauseWhite.png");
     private float minPlayed;
     private long startMin=0;
     private long lastMin=0;
     private Stadistics stadistics;
 
-    private Date date = new Date();
+    private final Date date = new Date();
 
     private MidiHelper finalMidiHelper;
 
@@ -78,6 +75,9 @@ public class SpotiFrameManager implements ActionListener, MouseListener {
         CardLayout cc = (CardLayout) (spotiPanel.getLayout());
 
         switch (e.getActionCommand()) {
+            case SHOW_ALL_SONGS:
+                cc.show(spotiPanel, SONGS_UI);
+                break;
             case CREATE_STADISTICS:
                 addStadistics(getNumSongs(), getMinPlayed());
                 cc.show(spotiPanel, STATISTICS_UI);
@@ -145,7 +145,7 @@ public class SpotiFrameManager implements ActionListener, MouseListener {
     }*/
 
     public static LinkedList<Float> getNumSongs(){
-        LinkedList<Float> numSongs = new LinkedList<Float>();
+        LinkedList<Float> numSongs = new LinkedList<>();
         for(int i=0; i<24; i++ ){
             if(new BusinessFacadeImp().getSongManager().gettingStadistics(i) == null){
                 numSongs.add((float) 0);
@@ -157,7 +157,7 @@ public class SpotiFrameManager implements ActionListener, MouseListener {
     }
 
     public LinkedList<Float> getMinPlayed(){
-        LinkedList<Float> numMin = new LinkedList<Float>();
+        LinkedList<Float> numMin = new LinkedList<>();
         for(int i=0; i<24; i++ ){
             if(new BusinessFacadeImp().getSongManager().gettingStadistics(i) == null){
                 numMin.add((float)0);

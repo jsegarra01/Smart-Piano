@@ -1,11 +1,7 @@
 package Presentation.Ui_Views;
 
 //Imports needed from the dictionary, events and mainframe
-import Presentation.Manager.MainFrame;
-import Presentation.Manager.PianoTilesUISelectorManager;
-
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -14,55 +10,41 @@ import static Presentation.Dictionary_login.PROFILE_BUTTON;
 import static Presentation.Ui_Views.Tile.*;
 
 public abstract class Piano extends JPanel {
-    protected static MainFrame mainFrame;
-
     public static final String BTN_RECORD = " ";
     public static final String BTN_TILE = "SOUND";
     protected static final String JLAB_SYNTH_TYPE = "Classic Piano";
     public static final String MODIFY = "MODIFY_KEYS";
     protected static Label soundType;
 
-
-    protected ImageIcon iconRec = new ImageIcon("Files/drawable/recIcon.png");
-    protected JButton recordB = new JButton(BTN_RECORD, iconRec);
-    protected JButton profile = new JButton(PROFILE_BUTTON);
-    //protected JButton modifyKeys = new JButton();
-    protected JToggleButton modifyKeys = new JToggleButton(MODIFY);
+    protected static final ImageIcon iconRec = new ImageIcon("Files/drawable/recIcon.png");
+    protected static final JButton recordB = new JButton(BTN_RECORD, iconRec);
+    protected static final JButton profile = new JButton(PROFILE_BUTTON);
+    protected static final JToggleButton modifyKeys = new JToggleButton(MODIFY);
 
     /**
      * private JTextField hey;
      */
 
-    public static ArrayList<Tile> keyboard;
-    public static String whiteTileLoc = "Files/drawable/white-key.png";
-    public static String blackTileLoc = "Files/drawable/black-key.png";
-    /*
-    private String[] whiteKeys =
-            { "C", "D", "E", "F", "G", "A", "B"};
-    private String[] blackKeys =
-            { "C#", "D#", "F#", "G#", "A#"};*/
+    protected static ArrayList<Tile> keyboard;
+    private final static String whiteTileLoc = "Files/drawable/white-key.png";
+    private final static String blackTileLoc = "Files/drawable/black-key.png";
     protected static final int numWhiteKeys = 14;
     protected static final int numBlackKeys = 10;
     protected static final String[] whiteNotes =
             {"2c", "2d", "2e", "2f", "2g", "2a", "2b", "3c", "3d", "3e", "3f", "3g", "3a", "3b"};
     protected static final String[] blackNotes =
             {"2c#", "2d#", "2f#", "2g#", "2a#", "3c#", "3d#", "3f#", "3g#", "3a#"};
-    protected Color[] colors =
-            {Color.red, Color.orange, Color.yellow, Color.green, Color.blue, Color.magenta, Color.pink};
     protected static final String[] whiteLabels ={
             "Do", "Re", "Mi","Fa", "Sol", "La", "Si","Do", "Re", "Mi","Fa", "Sol", "La", "Si"
     };
     protected static final String[] blackLabels = {
             "Do#", "Re#", "Fa#", "Sol#", "La#", "Do#", "Re#", "Fa#", "Sol#", "La#"
     };
-    protected static final String[] keyWhite = {"Q","W","E","R","T","Y","U","Z","X","C","V","B","N","M"};
-    protected static final String[] keyBlack = {"2","3","5","6","7","S","D","G","H","J"};
-
     protected static JLayeredPane layeredPane;
-    protected static ImageIcon iconPressed = new ImageIcon("Files/drawable/selected.png");
-    protected static ImageIcon iconResetWhite = new ImageIcon(whiteTileLoc);
-    protected static ImageIcon iconResetBlack  = new ImageIcon(blackTileLoc);
-    protected static ImageIcon iconPressedDown = new ImageIcon("Files/drawable/white-key-down.png");
+    protected final static ImageIcon iconPressed = new ImageIcon("Files/drawable/selected.png");
+    protected final static ImageIcon iconResetWhite = new ImageIcon(whiteTileLoc);
+    protected final static ImageIcon iconResetBlack  = new ImageIcon(blackTileLoc);
+    protected final static ImageIcon iconPressedDown = new ImageIcon("Files/drawable/white-key-down.png");
 
 
     /**
@@ -90,7 +72,6 @@ public abstract class Piano extends JPanel {
         int separationBlack = 455;
         Tile tile;
         JLabel label;
-        //keyboard = new ArrayList<>();
         for (int i = 0; i < numWhiteKeys; i++) {
             tile = new Tile(whiteNotes[i], Color.WHITE, whiteTileLoc);
             tile.setActionCommand(BTN_TILE);

@@ -1,21 +1,17 @@
 package Presentation.Manager;
 
 //Imports needed from the dictionary, events and mainframe
-import Business.Entities.Keys;
+
 import Business.BusinessFacadeImp;
 import Business.Entities.RecordingNotes;
 import Presentation.Dictionary_login;
 import Presentation.Ui_Views.FreePianoUI;
-import Presentation.Ui_Views.PianoTilesUISelector;
 import Presentation.Ui_Views.Tile;
 import Business.Entities.MidiHelper;
 import Business.Entities.Translator;
 
-import javax.sound.midi.*;
 
 import javax.sound.midi.MidiUnavailableException;
-import javax.swing.*;
-import javax.sound.midi.spi.MidiFileWriter;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -43,7 +39,7 @@ import static Presentation.Manager.MainFrame.contenedor;
  */
 public class FreePianoUIManager implements ActionListener, MouseListener {
     public static int SOUND_SYNTHER = 0 ;
-    public ArrayList<RecordingNotes> recordingNotes = new ArrayList<RecordingNotes>();
+    public ArrayList<RecordingNotes> recordingNotes = new ArrayList<>();
 
     private MidiHelper finalMidiHelper;
     private KeyListener KL;
@@ -128,7 +124,6 @@ public class FreePianoUIManager implements ActionListener, MouseListener {
                         for (int i = 0; recordingNotes.size() != i; i++) {
                             if (recordingNotes.get(i).getKey().equals(Translator.getFromKey(e.getKeyCode())) && recordingNotes.get(i).getDuration() == 0) {
                                 recordingNotes.get(i).setDuration(recordingTime - recordingNotes.get(i).getTime());
-                                System.out.println( recordingNotes.get(i).getDuration());
                             }
                         }
                     }
@@ -160,7 +155,7 @@ public class FreePianoUIManager implements ActionListener, MouseListener {
                     JCheckBox box = new JCheckBox("is public?");
                     myPanel.add(box);
 
-                    JOptionPane.showMessageDialog(null, myPanel, "Enter a title for the song", 1);
+                    JOptionPane.showMessageDialog(null, myPanel, "Enter a title for the song", JOptionPane.INFORMATION_MESSAGE);
 
                     businessFacadeImp.recordedNotesSend(recordingNotes, titleField.getText(), box.isSelected(), recordingTime);
                 }
@@ -270,9 +265,8 @@ public class FreePianoUIManager implements ActionListener, MouseListener {
         finalMidiHelper.stopPlaying(Translator.getNumberNoteFromName(e.getComponent().getName()),SOUND_SYNTHER);
         if (recording) {
             for (int i = 0; recordingNotes.size() != i; i++) {
-                if (recordingNotes.get(i).getKey() == e.getComponent().getName() && recordingNotes.get(i).getDuration() == 0) {
+                if (recordingNotes.get(i).getKey().equals(e.getComponent().getName())  && recordingNotes.get(i).getDuration() == 0) {
                     recordingNotes.get(i).setDuration(recordingTime - recordingNotes.get(i).getTime());
-                    System.out.println( recordingNotes.get(i).getDuration());
                 }
             }
         }

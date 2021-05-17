@@ -16,7 +16,6 @@ public class Graph extends JPanel {
     private static final Stroke GRAPH_STROKE = new BasicStroke(2f); // used to draw shape’s outline
     private int pointWidth = 4;
     private int numberYDivisions = 10;
-    //private List<Float> xPoints;
     private List<Float> yPoints;
 
     public Graph(List<Float> yPoints) {

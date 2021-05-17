@@ -25,15 +25,11 @@ public class PreMenuUI extends JPanel{
     private JButton logIn = new JButton(LOG_IN_BUTTON);
     private JButton signUp = new JButton(SIGN_UP_BUTTON);
     private JButton guest = new JButton(ENTER_AS_GUEST_BUTTON);
-    private MainFrame mainFrame;
 
     /**
      * Constructor for the PreMenuUI, you need to send the mainframe context and will create a card layout
-     * @param mainFrame context necessary to create the card layout
      */
-    public PreMenuUI(final MainFrame mainFrame) {
-        super();
-        this.mainFrame=mainFrame;
+    public PreMenuUI() {
         initialize();
     }
 

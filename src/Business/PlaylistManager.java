@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class PlaylistManager {
     private ArrayList<Playlist> playlists;
-    private PlaylistCsvDAO playlistCsvDAO = new PlaylistCsvDAO();
+    private final PlaylistCsvDAO playlistCsvDAO = new PlaylistCsvDAO();
 
 
     public ArrayList<Playlist> getPlaylists() {
@@ -17,7 +17,6 @@ public class PlaylistManager {
 
     public void setPlaylists(String username) {
         playlists = playlistCsvDAO.getPlaylistByUser(username);
-        System.out.println("hola");
     }
     public boolean eliminateSongFromPlaylist(String playlistName, String songName){
         return playlistCsvDAO.deleteSongFromPlaylist(playlistName, songName);

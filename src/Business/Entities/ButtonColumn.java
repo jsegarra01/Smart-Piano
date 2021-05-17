@@ -22,7 +22,7 @@ public class ButtonColumn extends AbstractCellEditor
         implements TableCellRenderer, TableCellEditor, ActionListener
 {
     private JTable table;
-    private Action action;
+    private ActionListener action;
     private int mnemonic;
     private Border originalBorder;
     private Border focusBorder;
@@ -41,14 +41,16 @@ public class ButtonColumn extends AbstractCellEditor
      *  @param action the Action to be invoked when the button is invoked
      *  @param column the column to which the button renderer/editor is added
      */
-    public ButtonColumn(JTable table, Action action, int column)
+    public ButtonColumn(JTable table, ActionListener action, int column)
     {
         this.table = table;
 
         this.action = action;
 
         renderButton = new JButton();
+        renderButton.setForeground(Color.red);
         editButton = new JButton();
+        editButton.setForeground(Color.red);
         editButton.setFocusPainted( false );
         editButton.addActionListener( this );
         originalBorder = editButton.getBorder();
@@ -138,12 +140,15 @@ public class ButtonColumn extends AbstractCellEditor
         if (isSelected)
         {
             renderButton.setForeground(table.getSelectionForeground());
-            renderButton.setBackground(table.getSelectionBackground());
+            renderButton.setForeground(Color.blue);
+            renderButton.setBackground(UIManager.getColor("Button.background"));
         }
         else
         {
-            renderButton.setForeground(table.getForeground());
+            //renderButton.setForeground(table.getForeground());
             renderButton.setBackground(UIManager.getColor("Button.background"));
+            renderButton.setForeground(Color.black);
+            //renderButton.setBackground(Color.red);
         }
 
         if (hasFocus)

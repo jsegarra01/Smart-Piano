@@ -1,26 +1,19 @@
 package Presentation.Ui_Views;
 
-import Presentation.Manager.MainFrame;
-
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class TopSongsUI extends JPanel {
-    private MainFrame mainFrame;
-    private LinkedList<Float> numPlayed = new LinkedList<Float>();
+    private final LinkedList<Float> numPlayed = new LinkedList<Float>();
 
-    public TopSongsUI(final MainFrame mainFrame/*, LinkedList<Float> numPlayed*/) {
-        super();
-        this.mainFrame = mainFrame;
-        //this.numPlayed = numPlayed;
+    public TopSongsUI() {
         initialize();
     }
 
     private void initialize() {
         setLayout(new BorderLayout());
-        setBackground(Color.black);
+        setBackground(Color.white);
     }
 
     private LinkedList<Float> getTopSongs(LinkedList<Float> numPlayed){

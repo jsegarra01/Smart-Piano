@@ -32,15 +32,11 @@ public class SignUpUI extends JPanel {
     private static JPasswordField passwordConfirmation = new JPasswordField();
     private JButton back = new JButton(BACK_BUTTON);
     private JButton done = new JButton(DONE_BUTTON);
-    private MainFrame mainFrame;
 
     /**
      * Constructor for the SignUpUI, you need to send the mainframe context and will create a card layout
-     * @param mainFrame context necessary to create the card layout
      */
-    public SignUpUI(final MainFrame mainFrame) {
-        super();
-        this.mainFrame=mainFrame;
+    public SignUpUI() {
         initialize();
     }
 

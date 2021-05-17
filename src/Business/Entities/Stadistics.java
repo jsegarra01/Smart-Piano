@@ -11,9 +11,6 @@ public class Stadistics {
         this.minPlayed = minPlayed;
     }
 
-    public Stadistics (){
-
-    }
 
     public int getHour() {
         return hour;

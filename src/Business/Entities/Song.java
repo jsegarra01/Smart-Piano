@@ -5,12 +5,12 @@ import java.util.Date;
 
 public class Song {
     private String songName;
-    private String authorName;
-    private float duration;
+    private final String authorName;
+    private final float duration;
     private Date recordingDate;
-    private boolean publicBoolean;
-    private String songFile;
-    private String creator;
+    private final boolean publicBoolean;
+    private final String songFile;
+    private final String creator;
     private float minPlayed;
     private int timesPlayed;
 

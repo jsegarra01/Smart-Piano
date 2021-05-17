@@ -1,14 +1,10 @@
 package Presentation.Ui_Views;
 
 //import data from the different libraries
-import Business.Entities.ButtonColumn;
 import Business.Entities.Playlist;
-import Presentation.Manager.MainFrame;
-//import Presentation.Manager.PlaylistUIManager;
 import Presentation.Manager.SpotiFrameManager;
 
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
@@ -16,7 +12,6 @@ import java.text.SimpleDateFormat;
 
 import static Presentation.DictionaryPiano.PLAYLIST_NAME;
 import static Presentation.DictionaryPiano.SONG_PLAYLIST;
-import static Presentation.Dictionary_login.*;
 
 /**
  * PlaylistUI
@@ -31,7 +26,6 @@ public class PlaylistUI extends JPanel {
     private static JTable table;//  = new JTable(new TablePlaylists());
     private Object[][] rows;
     private static JPanel panel = new JPanel(new BorderLayout());
-    private MainFrame mainFrame;
     private static Playlist playlistP;
 
 
@@ -42,11 +36,9 @@ public class PlaylistUI extends JPanel {
     /**
      * Constructor for the PlaylistUI, you need to send the mainframe context and will create a card layout
      *
-     * @param mainFrame context necessary to create the card layout
+    // * @param mainFrame context necessary to create the card layout
      */
-    public PlaylistUI(final MainFrame mainFrame) {
-        super();
-        this.mainFrame = mainFrame;
+    public PlaylistUI() {
         initialize();
     }
 

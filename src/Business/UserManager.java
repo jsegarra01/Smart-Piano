@@ -16,7 +16,7 @@ import java.util.regex.Pattern;
  *
  */
 public class UserManager {
-    private LoginUserCsvDAO loginUserManager = new LoginUserCsvDAO();
+    private final LoginUserCsvDAO loginUserManager = new LoginUserCsvDAO();
     private static User user;
 
     public static User getUser() {

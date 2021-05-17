@@ -2,7 +2,6 @@ package Presentation.Ui_Views;
 
 //import data from the different libraries
 import Presentation.Manager.LoginUIManager;
-import Presentation.Manager.MainFrame;
 import Presentation.TextPrompt;
 
 import javax.swing.*;
@@ -21,22 +20,18 @@ import static Presentation.Dictionary_login.*;
  *
  */
 public class LoginUI extends JPanel{
-    private JLabel pianoText = new JLabel(SMART_PIANO_TEXT);
-    private JLabel logInText = new JLabel(LOG_IN_TEXT);
+    private final JLabel pianoText = new JLabel(SMART_PIANO_TEXT);
+    private final JLabel logInText = new JLabel(LOG_IN_TEXT);
 
-    private static JTextField usernameTextField = new JTextField();
-    private static JPasswordField password = new JPasswordField();
-    private JButton back = new JButton(BACK_BUTTON);
-    private JButton done = new JButton(DONE_BUTTON);
-    private MainFrame mainFrame;
+    private static final JTextField usernameTextField = new JTextField();
+    private static final JPasswordField password = new JPasswordField();
+    private final JButton back = new JButton(BACK_BUTTON);
+    private final JButton done = new JButton(DONE_BUTTON);
 
     /**
      * Constructor for the LoginUI, you need to send the mainframe context and will create a card layout
-     * @param mainFrame context necessary to create the card layout
      */
-    public LoginUI(final MainFrame mainFrame) {
-        super();
-        this.mainFrame=mainFrame;
+    public LoginUI() {
         initialize();
     }
 

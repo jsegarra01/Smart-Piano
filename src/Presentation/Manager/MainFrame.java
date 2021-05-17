@@ -31,11 +31,11 @@ public class MainFrame extends JFrame {
      */
     public MainFrame() {
         contenedor = this.getContentPane();
-        preMenuUI=  new PreMenuUI(this);
-        profileUI = new ProfileUI(this);
-        signUpUI = new SignUpUI(this);
+        preMenuUI=  new PreMenuUI();
+        profileUI = new ProfileUI();
+        signUpUI = new SignUpUI();
         pianoFrame = new PianoFrame(this);
-        loginUI = new LoginUI(this);
+        loginUI = new LoginUI();
 
         card.addLayoutComponent(preMenuUI, PRE_MENU_UI);
         card.addLayoutComponent(profileUI, PROFILE_UI);

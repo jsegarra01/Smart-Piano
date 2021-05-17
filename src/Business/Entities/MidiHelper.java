@@ -172,15 +172,13 @@ import java.io.IOException;
  * */
 
 public class MidiHelper {
-    private static Synthesizer synth;
     private final MidiChannel[] midiChannels;
     private final Instrument[] instruments;
     private int whatInstrumentIsPlayed;
     private final Sequencer sequencer = MidiSystem.getSequencer();
-    private Sequence sequence;
     private boolean donePlaying;
     public MidiHelper() throws MidiUnavailableException {
-        synth = MidiSystem.getSynthesizer();
+        Synthesizer synth = MidiSystem.getSynthesizer();
         long startTime = System.nanoTime();
         synth.open();
         long estimatedTime = System.nanoTime() - startTime;
@@ -212,7 +210,7 @@ public class MidiHelper {
         try {
              // Open device
             // Create sequence, the File must contain MIDI file data.
-            sequence = MidiSystem.getSequence(file);
+            Sequence sequence = MidiSystem.getSequence(file);
             sequencer.setSequence(sequence); // load it into sequencer
             sequencer.start();  // start the playback
         } catch (InvalidMidiDataException | IOException ex) {
