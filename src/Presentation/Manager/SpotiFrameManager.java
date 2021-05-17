@@ -15,10 +15,9 @@ import javax.xml.crypto.Data;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
+import java.util.*;
 import java.io.File;
-import java.util.Date;
-import java.util.HashMap;
+import java.util.List;
 
 import static Presentation.DictionaryPiano.*;
 import static Presentation.Dictionary_login.*;
@@ -135,5 +134,30 @@ public class SpotiFrameManager implements ActionListener {
     }
     public static void addPlaylists(ArrayList<Playlist> playlists){
         SpotiUI.addPlaylists(playlists);
+    }
+
+    /*public static void addFirstStadistics(List<Integer> numSongs){
+        SpotiUI.addStadistics(numSongs);
+
+    }*/
+
+    public static LinkedList<Integer> getNumSongs(){
+        LinkedList<Integer> numSongs = new LinkedList<Integer>();
+        for(int i=0; i<24; i++ ){
+            if(new BusinessFacadeImp().getSongManager().gettingStadistics(i) == null){
+                numSongs.add(0);
+            } else {
+                numSongs.add(new BusinessFacadeImp().getSongManager().gettingStadistics(i).getNumPlayed());
+            }
+        }
+        return numSongs;
+    }
+
+    public List<Float> getMinPlayed(){
+        List<Float> numMin = null;
+        for(int i=0; i<24; i++ ){
+            numMin.add(new BusinessFacadeImp().getSongManager().gettingStadistics(i).getMinPlayed());
+        }
+        return numMin;
     }
 }

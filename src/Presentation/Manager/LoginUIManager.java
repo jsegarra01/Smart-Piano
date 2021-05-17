@@ -9,6 +9,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.List;
 
 import static Presentation.Dictionary_login.*;
 import static Presentation.Manager.MainFrame.card;
@@ -25,6 +26,7 @@ import static Presentation.Manager.MainFrame.contenedor;
  *
  */
 public class LoginUIManager implements ActionListener {
+    private List<Integer> initialize = null;
     /**
      * Parametrized constructor
      */
@@ -46,7 +48,17 @@ public class LoginUIManager implements ActionListener {
                 if(new BusinessFacadeImp().logIn(LoginUI.getUsernameLogin(), LoginUI.getPasswordLogin())){
                     card.show(contenedor, PIANO_FRAME);
                     new BusinessFacadeImp().getPlaylistManager().setPlaylists(UserManager.getUser().getUserName());
-                    SpotiFrameManager.addPlaylists(new BusinessFacadeImp().getPlaylistManager().getPlaylists());
+                    SpotiFrameManager.addPlaylists(new BusinessFacadeImp().getPlaylistManager().getPlaylists());/*
+                    for(int i=0; i<24;i++){
+                        new BusinessFacadeImp().getSongManager().gettingStadistics(i);
+                        if(new BusinessFacadeImp().getSongManager().gettingStadistics(i) == null){
+                            initialize.add(0);
+                        }
+                        else {
+                            initialize.add(new BusinessFacadeImp().getSongManager().gettingStadistics(i).getNumPlayed());
+                        }
+                    }
+                    SpotiFrameManager.addFirstStadistics(initialize);*/
                 }
                 else{JOptionPane.showMessageDialog(contenedor, "Incorrect username or password", "LogIn error" , JOptionPane.ERROR_MESSAGE);}
                 break;

@@ -1,113 +1,65 @@
+/*
+
+
+
 package Presentation.Ui_Views;
 
-//import data from the different libraries
-import Business.Entities.Graph;
-import Presentation.Manager.MainFrame;
-import Presentation.Manager.SpotiFrameManager;
-
-import javax.swing.*;
-import java.awt.*;
+import java.awt.BasicStroke;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FontMetrics;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Point;
+import java.awt.RenderingHints;
+import java.awt.Stroke;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
-
-import static Presentation.Dictionary_login.*;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 
 /**
- * StatisticsUI
  *
- * The "StatisticsUI" class will contain the different methods to create the view class card layout "StatisticsUI" and login interface
+ * @author "Hovercraft Full of Eels", "Rodrigo Azevedo"
  *
- * @author OOPD 20-21 ICE5
- * @version 2.0 24 Apr 2021
+ * This is an improved version of Hovercraft Full of Eels (https://stackoverflow.com/users/522444/hovercraft-full-of-eels)
+ * answer on StackOverflow: https://stackoverflow.com/a/8693635/753012
  *
- */
-public class StatisticsUI extends JPanel {
-    private JLabel pianoText = new JLabel(SMART_PIANO_TEXT);
-    private JLabel logInText = new JLabel(LOG_IN_TEXT);
+ * GitHub user @maritaria has made some performance improvements which can be found in the comment section of this Gist.
 
-    private static JTextField usernameTextField = new JTextField();
-    private static JPasswordField password = new JPasswordField();
-    private JButton back = new JButton(BACK_BUTTON);
-    private JButton done = new JButton(DONE_BUTTON);
-    private MainFrame mainFrame;
-
-    private  SpotiFrameManager spotiFrame;
-    private  Graph graph;
-/*
+public class probatinas extends JPanel {
     private int width = 800;
     private int height = 400;
-
     private int padding = 25;
     private int labelPadding = 25;
-    private Color lineColor = new Color(44, 10, 230, 180);
+    private Color lineColor = new Color(44, 102, 230, 180);
     private Color pointColor = new Color(100, 100, 100, 180);
     private Color gridColor = new Color(200, 200, 200, 200);
     private static final Stroke GRAPH_STROKE = new BasicStroke(2f); // used to draw shape’s outline
     private int pointWidth = 4;
     private int numberYDivisions = 10;
-    //private List<Float> xPoints;*/
-    private LinkedList<Integer> yPoints = new LinkedList<Integer>();
+    private List<Integer> xPoints;
+    private List<Integer> yPoints;
 
-
-
-    /**
-     * Constructor for the StatisticsUI, you need to send the mainframe context and will create a card layout
-     *
-     * @param mainFrame context necessary to create the card layout
-     */
-    public StatisticsUI(final MainFrame mainFrame/*, List<Integer> yPoints*/) {
-        super();
-        this.mainFrame = mainFrame;
-        //this.yPoints = yPoints;
-        initialize();
+    public probatinas(List<Integer> scores) {
+        this.scores = scores;
     }
 
-
-    /**
-     * The initialize function that creates the card layout for the StatisticsUI
-     */
-    private void initialize() {
-        setLayout(new BorderLayout());
-
-        createAndShowGui();
-        //setBackground(Color.red);
-    }
-
-    private void createAndShowGui() {
-        yPoints = spotiFrame.getNumSongs();
-        graph  = new Graph(spotiFrame.getNumSongs());
-        //graph.setPreferredSize(new Dimension(900, 800));
-        JPanel panel = new JPanel();
-        BoxLayout box = new BoxLayout(panel, BoxLayout.X_AXIS);
-        panel.setLayout(box);
-        panel.setPreferredSize(new Dimension(800, 500));
-        panel.setMaximumSize(panel.getPreferredSize());
-        //panel.setLayout(new BorderLayout());
-        //panel.setLayout(new GridLayout());
-        panel.setBackground(Color.BLACK);
-        panel.add(graph);
-        panel.add(graph);
-        add(panel, BorderLayout.CENTER);
-    }
-
-
-
-/*
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
-        double xScale = ((double) getWidth() - (2 * padding) - labelPadding) / (yPoints.size() - 1);
-        double yScale = ((double) getHeight() - 2 * padding - labelPadding) / (getMaxY() - getMinY());
+        double xScale = ((double) getWidth() - (2 * padding) - labelPadding) / (scores.size() - 1);
+        double yScale = ((double) getHeight() - 2 * padding - labelPadding) / (getMaxScore() - getMinScore());
 
         List<Point> graphPoints = new ArrayList<>();
-        for (int i = 0; i < yPoints.size(); i++) {
+        for (int i = 0; i < scores.size(); i++) {
             int x1 = (int) (i * xScale + padding + labelPadding);
-            int y1 = (int) ((getMaxY() - yPoints.get(i)) * yScale + padding);
+            int y1 = (int) ((getMaxScore() - scores.get(i)) * yScale + padding);
             graphPoints.add(new Point(x1, y1));
         }
 
@@ -122,11 +74,11 @@ public class StatisticsUI extends JPanel {
             int x1 = pointWidth + padding + labelPadding;
             int y0 = getHeight() - ((i * (getHeight() - padding * 2 - labelPadding)) / numberYDivisions + padding + labelPadding);
             int y1 = y0;
-            if (yPoints.size() > 0) {
+            if (scores.size() > 0) {
                 g2.setColor(gridColor);
                 g2.drawLine(padding + labelPadding + 1 + pointWidth, y0, getWidth() - padding, y1);
                 g2.setColor(Color.BLACK);
-                String yLabel = ((int) ((getMinY() + (getMaxY() - getMinY()) * ((i * 1.0) / numberYDivisions)) * 100)) / 100.0 + "";
+                String yLabel = ((int) ((getMinScore() + (getMaxScore() - getMinScore()) * ((i * 1.0) / numberYDivisions)) * 100)) / 100.0 + "";
                 FontMetrics metrics = g2.getFontMetrics();
                 int labelWidth = metrics.stringWidth(yLabel);
                 g2.drawString(yLabel, x0 - labelWidth - 5, y0 + (metrics.getHeight() / 2) - 3);
@@ -135,13 +87,13 @@ public class StatisticsUI extends JPanel {
         }
 
         // and for x axis
-        for (int i = 0; i < yPoints.size(); i++) {
-            if (yPoints.size() > 1) {
-                int x0 = i * (getWidth() - padding * 2 - labelPadding) / (yPoints.size() - 1) + padding + labelPadding;
+        for (int i = 0; i < scores.size(); i++) {
+            if (scores.size() > 1) {
+                int x0 = i * (getWidth() - padding * 2 - labelPadding) / (scores.size() - 1) + padding + labelPadding;
                 int x1 = x0;
                 int y0 = getHeight() - padding - labelPadding;
                 int y1 = y0 - pointWidth;
-                if ((i % ((int) ((yPoints.size() / 20.0)) + 1)) == 0) {
+                if ((i % ((int) ((scores.size() / 20.0)) + 1)) == 0) {
                     g2.setColor(gridColor);
                     g2.drawLine(x0, getHeight() - padding - labelPadding - 1 - pointWidth, x1, padding);
                     g2.setColor(Color.BLACK);
@@ -154,7 +106,7 @@ public class StatisticsUI extends JPanel {
             }
         }
 
-        // create x and y axes
+        // create x and y axes 
         g2.drawLine(padding + labelPadding, getHeight() - padding - labelPadding, padding + labelPadding, padding);
         g2.drawLine(padding + labelPadding, getHeight() - padding - labelPadding, getWidth() - padding, getHeight() - padding - labelPadding);
 
@@ -180,20 +132,61 @@ public class StatisticsUI extends JPanel {
         }
     }
 
-    private double getMinY() {
-        Integer minY = Integer.MAX_VALUE;
-        for (Integer myY : yPoints) {
-            minY = Math.min(minY, myY);
+//    @Override
+//    public Dimension getPreferredSize() {
+//        return new Dimension(width, height);
+//    }
+
+    private double getMinScore() {
+        double minScore = Double.MAX_VALUE;
+        for (Double score : scores) {
+            minScore = Math.min(minScore, score);
         }
-        return minY;
+        return minScore;
     }
 
-    private double getMaxY() {
-        Integer maxY = Integer.MIN_VALUE;
-        for (Integer myY : yPoints) {
-            maxY = Math.max(maxY, myY);
+    private double getMaxScore() {
+        double maxScore = Double.MIN_VALUE;
+        for (Double score : scores) {
+            maxScore = Math.max(maxScore, score);
         }
-        return maxY;
-    }*/
+        return maxScore;
+    }
 
-}
+    public void setScores(List<Double> scores) {
+        this.scores = scores;
+        invalidate();
+        this.repaint();
+    }
+
+    public List<Double> getScores() {
+        return scores;
+    }
+
+    private static void createAndShowGui() {
+        List<Double> scores = new ArrayList<>();
+        Random random = new Random();
+        int maxDataPoints = 40;
+        int maxScore = 10;
+        for (int i = 0; i < maxDataPoints; i++) {
+            scores.add((double) random.nextDouble() * maxScore);
+//            scores.add((double) i);
+        }
+        probatinas mainPanel = new probatinas(scores);
+        mainPanel.setPreferredSize(new Dimension(800, 600));
+        JFrame frame = new JFrame("DrawGraph");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.getContentPane().add(mainPanel);
+        frame.pack();
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                createAndShowGui();
+            }
+        });
+    }
+}*/

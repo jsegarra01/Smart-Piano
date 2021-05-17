@@ -25,15 +25,17 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="I have added the methods to save into the db the Stadistics (SongCsvDao)">
+    <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="Finally all the data is taken correctly! :)">
+      <change afterPath="$PROJECT_DIR$/src/Business/Entities/Graph.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Presentation/Ui_Views/probatinas.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/BusinessFacadeImp.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/BusinessFacadeImp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/SongManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/SongManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Persistence/SongDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Persistence/SongDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Business/BusinessFacadeImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/BusinessFacadeImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Business/SongManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/SongManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Persistence/SQL/Csv/SongCsvDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Persistence/SQL/Csv/SongCsvDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Persistence/SQL/Csv/SongCsvDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Persistence/SQL/Csv/SongCsvDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/SpotiFrameManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/SpotiFrameManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/StatisticsUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/StatisticsUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presentation/Manager/LoginUIManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Manager/LoginUIManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Presentation/Manager/SpotiFrameManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Manager/SpotiFrameManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presentation/Ui_Views/SpotiUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Ui_Views/SpotiUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presentation/Ui_Views/StatisticsUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Ui_Views/StatisticsUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -485,7 +487,14 @@
       <option name="project" value="LOCAL" />
       <updated>1620861005949</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="Finally all the data is taken correctly! :)">
+      <created>1621178148699</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1621178148699</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -514,7 +523,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Changing colors while changing through the CardLayout" />
     <MESSAGE value="Name of the tile appears now. The recording button is no longer an unreadable text, is an icon" />
     <MESSAGE value="piano finished" />
     <MESSAGE value="Small UI views in Free Piano and Play a Song, UI logic for Music also done" />
@@ -541,47 +549,48 @@
     <MESSAGE value="I have added TODO's as there are things we have to see how they look in a windows (as with a mac they are weird)" />
     <MESSAGE value="recording the time each song has been played" />
     <MESSAGE value="I have added the methods to save into the db the Stadistics (SongCsvDao)" />
-    <option name="LAST_COMMIT_MESSAGE" value="I have added the methods to save into the db the Stadistics (SongCsvDao)" />
+    <MESSAGE value="Finally all the data is taken correctly! :)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Finally all the data is taken correctly! :)" />
   </component>
   <component name="WindowStateProjectService">
     <state x="709" y="258" key="#com.intellij.ide.util.MemberChooser" timestamp="1620858233451">
       <screen x="0" y="23" width="1792" height="1049" />
     </state>
     <state x="709" y="258" key="#com.intellij.ide.util.MemberChooser/0.23.1792.1049@0.23.1792.1049" timestamp="1620858233451" />
-    <state width="1587" height="296" key="GridCell.Tab.0.bottom" timestamp="1621177705792">
-      <screen x="0" y="23" width="1792" height="1044" />
+    <state width="1586" height="296" key="GridCell.Tab.0.bottom" timestamp="1621190930693">
+      <screen x="0" y="23" width="1792" height="1045" />
     </state>
     <state width="875" height="318" key="GridCell.Tab.0.bottom/0.0.1792.1120@0.0.1792.1120" timestamp="1620595451867" />
     <state width="875" height="318" key="GridCell.Tab.0.bottom/0.23.1792.1042@0.23.1792.1042" timestamp="1620570473679" />
     <state width="1587" height="296" key="GridCell.Tab.0.bottom/0.23.1792.1044@0.23.1792.1044" timestamp="1621177705792" />
-    <state width="875" height="185" key="GridCell.Tab.0.bottom/0.23.1792.1045@0.23.1792.1045" timestamp="1621175558942" />
+    <state width="1586" height="296" key="GridCell.Tab.0.bottom/0.23.1792.1045@0.23.1792.1045" timestamp="1621190930693" />
     <state width="875" height="296" key="GridCell.Tab.0.bottom/0.23.1792.1046@0.23.1792.1046" timestamp="1620811262260" />
     <state width="875" height="296" key="GridCell.Tab.0.bottom/0.23.1792.1050@0.23.1792.1050" timestamp="1620856773994" />
-    <state width="1587" height="296" key="GridCell.Tab.0.center" timestamp="1621177705792">
-      <screen x="0" y="23" width="1792" height="1044" />
+    <state width="1586" height="296" key="GridCell.Tab.0.center" timestamp="1621190930692">
+      <screen x="0" y="23" width="1792" height="1045" />
     </state>
     <state width="875" height="318" key="GridCell.Tab.0.center/0.0.1792.1120@0.0.1792.1120" timestamp="1620595451866" />
     <state width="875" height="318" key="GridCell.Tab.0.center/0.23.1792.1042@0.23.1792.1042" timestamp="1620570473678" />
     <state width="1587" height="296" key="GridCell.Tab.0.center/0.23.1792.1044@0.23.1792.1044" timestamp="1621177705792" />
-    <state width="875" height="185" key="GridCell.Tab.0.center/0.23.1792.1045@0.23.1792.1045" timestamp="1621175558942" />
+    <state width="1586" height="296" key="GridCell.Tab.0.center/0.23.1792.1045@0.23.1792.1045" timestamp="1621190930692" />
     <state width="875" height="296" key="GridCell.Tab.0.center/0.23.1792.1046@0.23.1792.1046" timestamp="1620811262260" />
     <state width="875" height="296" key="GridCell.Tab.0.center/0.23.1792.1050@0.23.1792.1050" timestamp="1620856773993" />
-    <state width="1587" height="296" key="GridCell.Tab.0.left" timestamp="1621177705792">
-      <screen x="0" y="23" width="1792" height="1044" />
+    <state width="1586" height="296" key="GridCell.Tab.0.left" timestamp="1621190930692">
+      <screen x="0" y="23" width="1792" height="1045" />
     </state>
     <state width="875" height="318" key="GridCell.Tab.0.left/0.0.1792.1120@0.0.1792.1120" timestamp="1620595451865" />
     <state width="875" height="318" key="GridCell.Tab.0.left/0.23.1792.1042@0.23.1792.1042" timestamp="1620570473678" />
     <state width="1587" height="296" key="GridCell.Tab.0.left/0.23.1792.1044@0.23.1792.1044" timestamp="1621177705792" />
-    <state width="875" height="185" key="GridCell.Tab.0.left/0.23.1792.1045@0.23.1792.1045" timestamp="1621175558941" />
+    <state width="1586" height="296" key="GridCell.Tab.0.left/0.23.1792.1045@0.23.1792.1045" timestamp="1621190930692" />
     <state width="875" height="296" key="GridCell.Tab.0.left/0.23.1792.1046@0.23.1792.1046" timestamp="1620811262260" />
     <state width="875" height="296" key="GridCell.Tab.0.left/0.23.1792.1050@0.23.1792.1050" timestamp="1620856773993" />
-    <state width="1587" height="296" key="GridCell.Tab.0.right" timestamp="1621177705792">
-      <screen x="0" y="23" width="1792" height="1044" />
+    <state width="1586" height="296" key="GridCell.Tab.0.right" timestamp="1621190930692">
+      <screen x="0" y="23" width="1792" height="1045" />
     </state>
     <state width="875" height="318" key="GridCell.Tab.0.right/0.0.1792.1120@0.0.1792.1120" timestamp="1620595451866" />
     <state width="875" height="318" key="GridCell.Tab.0.right/0.23.1792.1042@0.23.1792.1042" timestamp="1620570473678" />
     <state width="1587" height="296" key="GridCell.Tab.0.right/0.23.1792.1044@0.23.1792.1044" timestamp="1621177705792" />
-    <state width="875" height="185" key="GridCell.Tab.0.right/0.23.1792.1045@0.23.1792.1045" timestamp="1621175558942" />
+    <state width="1586" height="296" key="GridCell.Tab.0.right/0.23.1792.1045@0.23.1792.1045" timestamp="1621190930692" />
     <state width="875" height="296" key="GridCell.Tab.0.right/0.23.1792.1046@0.23.1792.1046" timestamp="1620811262260" />
     <state width="875" height="296" key="GridCell.Tab.0.right/0.23.1792.1050@0.23.1792.1050" timestamp="1620856773993" />
     <state width="875" height="185" key="GridCell.Tab.1.bottom" timestamp="1621176297872">
@@ -612,11 +621,11 @@
     <state width="875" height="392" key="GridCell.Tab.1.right/0.23.1792.1043@0.23.1792.1043" timestamp="1620553012946" />
     <state width="875" height="185" key="GridCell.Tab.1.right/0.23.1792.1044@0.23.1792.1044" timestamp="1621176297872" />
     <state width="875" height="185" key="GridCell.Tab.1.right/0.23.1792.1045@0.23.1792.1045" timestamp="1621176106369" />
-    <state x="496" y="304" key="Vcs.Push.Dialog.v2" timestamp="1620861042571">
-      <screen x="0" y="23" width="1792" height="1049" />
+    <state x="496" y="303" key="Vcs.Push.Dialog.v2" timestamp="1621178173298">
+      <screen x="0" y="23" width="1792" height="1045" />
     </state>
     <state x="496" y="300" key="Vcs.Push.Dialog.v2/0.0.1792.1120@0.0.1792.1120" timestamp="1620569546214" />
-    <state x="496" y="303" key="Vcs.Push.Dialog.v2/0.23.1792.1045@0.23.1792.1045" timestamp="1620816236402" />
+    <state x="496" y="303" key="Vcs.Push.Dialog.v2/0.23.1792.1045@0.23.1792.1045" timestamp="1621178173298" />
     <state x="496" y="304" key="Vcs.Push.Dialog.v2/0.23.1792.1049@0.23.1792.1049" timestamp="1620861042571" />
     <state x="694" y="481" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1620388441922">
       <screen x="0" y="0" width="1792" height="1120" />
