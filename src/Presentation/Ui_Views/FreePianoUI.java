@@ -251,9 +251,8 @@ public class FreePianoUI extends Piano {
 
         }
         if (found){
-            layeredPane.getComponent(i).setName(KeyEvent.getKeyText(keyEvent.getKeyCode()));
-            //TODO: Check with Edu if we need to control if Java does not know our char
             if(layeredPane.getComponent(i) instanceof JLabel){
+                layeredPane.getComponent(i).setName(KeyEvent.getKeyText(keyEvent.getKeyCode()));
                 ((JLabel)layeredPane.getComponent(i)).setText(KeyEvent.getKeyText(keyEvent.getKeyCode()));
             }
 

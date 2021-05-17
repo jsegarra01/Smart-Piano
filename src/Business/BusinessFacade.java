@@ -1,5 +1,6 @@
 package Business;
 
+import Business.Entities.Playlist;
 import Business.Entities.RecordingNotes;
 import Business.Entities.Song;
 
@@ -65,4 +66,6 @@ public interface BusinessFacade {
     ArrayList<String> getSongName();
 
     Song getSong(int index);
+
+    Playlist getPlaylist(String name);
 }

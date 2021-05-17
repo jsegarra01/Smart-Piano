@@ -40,6 +40,8 @@ public class DictionaryPiano {
     public static final String HARD_MODE = "Hard";
     public static final String VERY_HARD_MODE = "Very Hard";
     public static final String PLAYLIST_INFO = "playlist_INFO";
+    public static final String PLAYLIST_NAME = "playlistName";
+    public static final String SONG_PLAYLIST = "songPlaylist";
 
     public static final Integer TB_SIZE = 10;
 }

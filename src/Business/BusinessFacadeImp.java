@@ -1,6 +1,6 @@
 package Business;
 
-//Imports needed for the managers and arraylists
+import Business.Entities.Playlist;
 import Business.Entities.RecordingNotes;
 import Business.Entities.Song;
 import Business.Entities.SongRecorded;
@@ -49,6 +49,15 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
     @Override
     public PlaylistManager getPlaylistManager() {
         return playlistManager;
+    }
+
+    @Override
+    public Playlist getPlaylist(String name){
+        return playlistManager.getFromName(name);
+    }
+
+    public boolean deleteSongFromPlaylist(String playlistName, String songName){
+        return playlistManager.eliminateSongFromPlaylist(playlistName, songName);
     }
 
 

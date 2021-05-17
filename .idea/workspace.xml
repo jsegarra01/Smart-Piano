@@ -32,6 +32,7 @@
       <change afterPath="$PROJECT_DIR$/Songs/putacaca.mid" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Songs/putosAmos.mid" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Songs/siaixofuncionasocunabestia.mid" afterDir="false" />
+    <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="Music can now be played from playlists. It needs to be rechecked the midiplayer as it may overlap, tomorrow is a new day">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Persistence/SQL/Csv/SongCsvDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Persistence/SQL/Csv/SongCsvDAO.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/LoginUIManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/LoginUIManager.class" afterDir="false" />
@@ -94,6 +95,7 @@
       <change beforePath="$PROJECT_DIR$/src/Presentation/Manager/PianoTilesUISelectorManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Manager/PianoTilesUISelectorManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Presentation/Ui_Views/PianoFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Ui_Views/PianoFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Presentation/Ui_Views/PianoTilesUISelector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Ui_Views/PianoTilesUISelector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/Entities/MidiHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/Entities/MidiHelper.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -140,6 +142,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Songs" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
@@ -147,14 +150,28 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Songs" />
+      <recent name="$PROJECT_DIR$/Files/drawable" />
+    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="Business" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/Files/drawable" />
-    </key>
   </component>
   <component name="RunManager" selected="Application.Main">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="dpoo-2021-smartpiano-ice5" />
@@ -219,6 +236,29 @@
       <workItem from="1619874429359" duration="2292000" />
       <workItem from="1620117586134" duration="205000" />
       <workItem from="1620123828666" duration="2400000" />
+      <workItem from="1620920227219" duration="1597000" />
+      <workItem from="1620985941297" duration="4684000" />
+    </task>
+    <task id="LOCAL-00002" summary="ProfileUi connections done, v2">
+      <created>1618916489874</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1618916489874</updated>
+    </task>
+    <task id="LOCAL-00003" summary="ProfileUi connections done, v3">
+      <created>1618916501460</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1618916501460</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Name changed accordingly to our class diagram">
+      <created>1618994288052</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1618994288052</updated>
       <workItem from="1620203041978" duration="5676000" />
       <workItem from="1620224858293" duration="3882000" />
       <workItem from="1620592401621" duration="2084000" />
@@ -609,6 +649,42 @@
       <option name="project" value="LOCAL" />
       <updated>1621236144626</updated>
     </task>
+    <task id="LOCAL-00046" summary="Greatest commit I've done so far. Whenever a playlist is clicked a table with its songs appear, showing their name and their author. Furthermore, when we click the button it is erased (not yet from the db). All listeners already implemented, only the actions are missing.&#10;It must be checked how to differentiate between different playlists">
+      <created>1620862132397</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1620862132397</updated>
+    </task>
+    <task id="LOCAL-00047" summary="Table is no longer editable">
+      <created>1620922437613</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1620922437614</updated>
+    </task>
+    <task id="LOCAL-00048" summary="I have not done a commit in the whole day. The table containing the songs of the playlist has been erased, JTable is worse than Covid-19, got bugged all the time.">
+      <created>1621187038741</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1621187038741</updated>
+    </task>
+    <task id="LOCAL-00049" summary="Still changes need ot be done, but songs inside playlists can now be erased, and without bugs, different from what happened with the JTable">
+      <created>1621191098277</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1621191098277</updated>
+    </task>
+    <task id="LOCAL-00050" summary="Music can now be played from playlists. It needs to be rechecked the midiplayer as it may overlap, tomorrow is a new day">
+      <created>1621208831822</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1621208831823</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <option name="localTasksCounter" value="50" />
     <servers />
   </component>
@@ -677,6 +753,12 @@
     <MESSAGE value="Commentaries for the PianoTilesUISelector and the PianoTilesUISelectorManager" />
     <MESSAGE value="resizing positions (this still needs some fixing in the x-axis)" />
     <MESSAGE value="I have added TODO's as there are things we have to see how they look in a windows (as with a mac they are weird)" />
+    <MESSAGE value="Greatest commit I've done so far. Whenever a playlist is clicked a table with its songs appear, showing their name and their author. Furthermore, when we click the button it is erased (not yet from the db). All listeners already implemented, only the actions are missing.&#10;It must be checked how to differentiate between different playlists" />
+    <MESSAGE value="Table is no longer editable" />
+    <MESSAGE value="I have not done a commit in the whole day. The table containing the songs of the playlist has been erased, JTable is worse than Covid-19, got bugged all the time." />
+    <MESSAGE value="Still changes need ot be done, but songs inside playlists can now be erased, and without bugs, different from what happened with the JTable" />
+    <MESSAGE value="Music can now be played from playlists. It needs to be rechecked the midiplayer as it may overlap, tomorrow is a new day" />
+    <option name="LAST_COMMIT_MESSAGE" value="Music can now be played from playlists. It needs to be rechecked the midiplayer as it may overlap, tomorrow is a new day" />
     <MESSAGE value="recording the time each song has been played" />
     <MESSAGE value="I have added the methods to save into the db the Stadistics (SongCsvDao)" />
     <MESSAGE value="Finally all the data is taken correctly! :)" />
@@ -788,6 +870,9 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Presentation/Manager/PlaylistUIManager.java</url>
+          <line>48</line>
+          <option name="timeStamp" value="31" />
           <url>file://$PROJECT_DIR$/src/Presentation/Manager/SpotiFrameManager.java</url>
           <line>111</line>
           <option name="timeStamp" value="17" />

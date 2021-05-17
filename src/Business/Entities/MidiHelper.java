@@ -173,11 +173,12 @@ import java.io.IOException;
 
 public class MidiHelper {
     private static Synthesizer synth;
-    private MidiChannel[] midiChannels;
-    private Instrument[] instruments;
+    private final MidiChannel[] midiChannels;
+    private final Instrument[] instruments;
     private int whatInstrumentIsPlayed;
-    private Sequencer sequencer = MidiSystem.getSequencer();
+    private final Sequencer sequencer = MidiSystem.getSequencer();
     private Sequence sequence;
+    private boolean donePlaying;
     public MidiHelper() throws MidiUnavailableException {
         synth = MidiSystem.getSynthesizer();
         long startTime = System.nanoTime();
@@ -186,6 +187,16 @@ public class MidiHelper {
         midiChannels = synth.getChannels();
         instruments = synth.getDefaultSoundbank().getInstruments();
         sequencer.open();
+        sequencer.addMetaEventListener(new MetaEventListener() {
+            @Override
+            public void meta(MetaMessage meta) {
+                if(meta.getType()==47){
+                    donePlaying = true;
+                }else{
+                    donePlaying = false;
+                }
+            }
+        });
     }
     public void playSomething(int noteValueToPlay, int whatInstrumentToPlay){
         this.whatInstrumentIsPlayed = whatInstrumentToPlay;
@@ -214,5 +225,13 @@ public class MidiHelper {
     }
     public void stopSong(){
         sequencer.stop();
+    }
+
+    public boolean isDonePlaying() {
+        return donePlaying;
+    }
+
+    public void setDonePlaying(boolean donePlaying) {
+        this.donePlaying = donePlaying;
     }
 }

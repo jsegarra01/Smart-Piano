@@ -109,4 +109,16 @@ public class PlaylistCsvDAO implements PlaylistDAO {
 
     }
 
+    public boolean deleteSongFromPlaylist(String playlistName, String songName){
+        try {
+            PreparedStatement st = ConnectSQL.getInstance().prepareStatement("delete SongPlaylistsT from SongPlaylistsT inner join PlaylistT PT on SongPlaylistsT.playlistId = PT.playlistId inner join SongT ST on SongPlaylistsT.songId = ST.songId " +
+                    "where songName like '" + songName+"' and  PT.playlistName like '" + playlistName +"';");
+            st.execute();
+            return true;
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+            return false;
+        }
+    }
+
 }
