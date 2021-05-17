@@ -6,6 +6,7 @@ import Business.BusinessFacadeImp;
 import Business.Entities.MidiHelper;
 import Business.Entities.webHandler;
 import Presentation.Ui_Views.PlaylistUI;
+import Presentation.Ui_Views.SongsUI;
 import Presentation.Ui_Views.SpotiUI;
 
 import javax.sound.midi.MidiUnavailableException;
@@ -46,6 +47,7 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
     private long startMin=0;
     private long lastMin=0;
     private Stadistics stadistics;
+    private static boolean addSong = false;
 
     private final Date date = new Date();
 
@@ -75,9 +77,10 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
     public void actionPerformed(ActionEvent e) {
         // We distinguish between our buttons.
         CardLayout cc = (CardLayout) (spotiPanel.getLayout());
-
+        Object obj = e.getSource();
         switch (e.getActionCommand()) {
             case SHOW_ALL_SONGS:
+                addSongsAll(new BusinessFacadeImp().getSongManager().getSongs());
                 cc.show(spotiPanel, SONGS_UI);
                 break;
             case CREATE_STADISTICS:
@@ -118,7 +121,6 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
                 break;
             case PLAYLIST_INFO:
                 JButton button;
-                Object obj = e.getSource();
                 if (obj instanceof JButton) {
                     button = (JButton) obj;
                     PlaylistUI.setSongsPlaylists(new BusinessFacadeImp().getPlaylist(button.getName()));
@@ -127,19 +129,38 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
                 break;
             case SONG_PLAYLIST:
                 JButton song;
-                Object obj2 = e.getSource();
-                if (obj2 instanceof JButton) {
-                    song = (JButton) obj2;
+                if (obj instanceof JButton) {
+                    song = (JButton) obj;
                     PlaylistUI.deleteFromPanel(song.getName());
-                    new BusinessFacadeImp().deleteSongFromPlaylist(PlaylistUI.getPlaylist().getPlaylistName(),song.getName());
+                    boolean errorDeleting = new BusinessFacadeImp().deleteSongFromPlaylist(
+                            PlaylistUI.getPlaylist().getPlaylistName(),song.getName());
                     PlaylistUI.setSongsPlaylists(PlaylistUI.getPlaylist());
                 }
                 break;
-
+            case ADD_SONG_COMM:
+                addSongsToPlaylist(new BusinessFacadeImp().getSongManager().getSongs());
+                cc.show(spotiPanel, SONGS_UI);
+                addSong = true;
+                break;
             default:
-                JTable table = (JTable)e.getSource();
-                int modelRow = Integer.parseInt( e.getActionCommand() );
-                ((DefaultTableModel)table.getModel()).removeRow(modelRow);
+                if(obj instanceof JTable){
+
+                    JTable table = (JTable)e.getSource();
+                    int modelRow = Integer.parseInt( e.getActionCommand() );
+                    if(addSong){
+                        boolean updatingSong = new BusinessFacadeImp().addSongToPlaylist(
+                                PlaylistUI.getPlaylist().getPlaylistName(),
+                                new BusinessFacadeImp().getSong(modelRow).getSongName());
+                        PlaylistUI.setSongsPlaylists(PlaylistUI.getPlaylist());
+                        cc.show(spotiPanel, PLAYLIST_UI);
+                        addSong = false;
+                    }else{
+                        ((DefaultTableModel)table.getModel()).removeRow(modelRow);
+                        //TODO Delete from db
+                    }
+                    break;
+                }
+
         }
     }
     public static void addPlaylists(ArrayList<Playlist> playlists){
@@ -200,7 +221,7 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
         }else if(obj instanceof  JTable){
             table = (JTable) obj;
             if(table.getEditorComponent() == null){
-                System.out.println("holi");
+                //TODO PLAY MUSIC
             }
 
         }

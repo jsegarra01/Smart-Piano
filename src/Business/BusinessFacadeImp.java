@@ -60,6 +60,9 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
     public boolean deleteSongFromPlaylist(String playlistName, String songName){
         return playlistManager.eliminateSongFromPlaylist(playlistName, songName);
     }
+    public boolean addSongToPlaylist(String playlistName, String songName){
+        return playlistManager.addSongToPlaylist(playlistName, songName);
+    }
 
     @Override
     public void setSongUser() {songManager.setSongs();}

@@ -21,7 +21,9 @@ public class PlaylistManager {
     public boolean eliminateSongFromPlaylist(String playlistName, String songName){
         return playlistCsvDAO.deleteSongFromPlaylist(playlistName, songName);
     }
-
+    public boolean addSongToPlaylist(String playlistName, String songName){
+        return playlistCsvDAO.addSongToPlaylist(playlistName, songName);
+    }
 
     public Playlist getFromName(String name){
         int i = 0;

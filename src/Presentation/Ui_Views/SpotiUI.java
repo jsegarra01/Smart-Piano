@@ -2,6 +2,7 @@ package Presentation.Ui_Views;
 
 import Business.BusinessFacadeImp;
 import Business.Entities.Playlist;
+import Business.Entities.Song;
 import Business.PlaylistManager;
 import Presentation.DictionaryPiano;
 import Presentation.Manager.MainFrame;
@@ -34,7 +35,7 @@ public class SpotiUI extends JPanel {
     private StatisticsUI statisticsUI;
     private final PlaylistUI playlistUI;
     private final TopSongsUI topSongsUI;
-    private final SongsUI songsUI;
+    //private final SongsUI songsUI;
 
 
     public static JPanel spotiPanel = new JPanel(new CardLayout());
@@ -63,7 +64,7 @@ public class SpotiUI extends JPanel {
         playlistUI = new PlaylistUI();
         //statisticsUI = new StatisticsUI(mainFrame);
         topSongsUI = new TopSongsUI();
-        songsUI = new SongsUI();
+        //songsUI = new SongsUI();
 
         initialize();
     }
@@ -77,7 +78,7 @@ public class SpotiUI extends JPanel {
         //spotiPanel.add(statisticsUI, STATISTICS_UI);
         spotiPanel.add(topSongsUI, TOPSONGS_UI);
         spotiPanel.add(playlistUI, PLAYLIST_UI);
-        spotiPanel.add(songsUI, SONGS_UI);
+        //spotiPanel.add(songsUI, SONGS_UI);
         add(spotiPanel, BorderLayout.CENTER);
 
         //left buttons
@@ -211,6 +212,12 @@ public class SpotiUI extends JPanel {
 
     public static void addStadistics(LinkedList<Float> numSongs, LinkedList<Float> minSongs){
         spotiPanel.add(new StatisticsUI(numSongs, minSongs), STATISTICS_UI);
+    }
+    public static void addSongsAll(ArrayList<Song> songs){
+        spotiPanel.add(new SongsUI(songs, "Delete"), SONGS_UI);
+    }
+    public static void addSongsToPlaylist(ArrayList<Song> songs){
+        spotiPanel.add(new SongsUI(songs, "Add"), SONGS_UI);
     }
 
     //TODO poner bn las boxes (size lateral)

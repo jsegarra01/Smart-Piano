@@ -10,8 +10,7 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.text.SimpleDateFormat;
 
-import static Presentation.DictionaryPiano.PLAYLIST_NAME;
-import static Presentation.DictionaryPiano.SONG_PLAYLIST;
+import static Presentation.DictionaryPiano.*;
 
 /**
  * PlaylistUI
@@ -63,119 +62,10 @@ public class PlaylistUI extends JPanel {
         playlistName.setFont(playlistName.getFont().deriveFont(playlistName.getFont().getSize() * 3.0F));
         playlistName.setText(namePlaylist);
         layout.add(playlistName, BorderLayout.LINE_START);
+        layout.add(addSong(), BorderLayout.EAST);
 
 
         return layout;
-    }
-
-    public JScrollPane setTable(){
-        String[] columnNames = {"Name Song", "Author's name", ""};
-        Object[][] data =
-                {
-                        {"Homer", "Simpson", "delete Homer"},
-                        {"Madge", "Simpson", "delete Madge"},
-                        {"Bart",  "Simpson", "delete Bart"},
-                        {"Lisa",  "Simpson", "delete Lisa"},
-                        {"Homer", "Simpson", "delete Homer"},
-                        {"Madge", "Simpson", "delete Madge"},
-                        {"Bart",  "Simpson", "delete Bart"},
-                        {"Lisa",  "Simpson", "delete Lisa"},
-                        {"Homer", "Simpson", "delete Homer"},
-                        {"Madge", "Simpson", "delete Madge"},
-                        {"Bart",  "Simpson", "delete Bart"},
-                        {"Lisa",  "Simpson", "delete Lisa"},
-                        {"Homer", "Simpson", "delete Homer"},
-                        {"Madge", "Simpson", "delete Madge"},
-                        {"Bart",  "Simpson", "delete Bart"},
-                        {"Lisa",  "Simpson", "delete Lisa"},
-                        {"Homer", "Simpson", "delete Homer"},
-                        {"Madge", "Simpson", "delete Madge"},
-                        {"Bart",  "Simpson", "delete Bart"},
-                        {"Lisa",  "Simpson", "delete Lisa"},
-                        {"Homer", "Simpson", "delete Homer"},
-                        {"Madge", "Simpson", "delete Madge"},
-                        {"Bart",  "Simpson", "delete Bart"},
-                        {"Lisa",  "Simpson", "delete Lisa"},
-                        {"Homer", "Simpson", "delete Homer"},
-                        {"Madge", "Simpson", "delete Madge"},
-                        {"Bart",  "Simpson", "delete Bart"},
-                        {"Lisa",  "Simpson", "delete Lisa"},
-                        {"Homer", "Simpson", "delete Homer"},
-                        {"Madge", "Simpson", "delete Madge"},
-                        {"Bart",  "Simpson", "delete Bart"},
-                        {"Lisa",  "Simpson", "delete Lisa"},
-                        {"Homer", "Simpson", "delete Homer"},
-                        {"Madge", "Simpson", "delete Madge"},
-                        {"Bart",  "Simpson", "delete Bart"},
-                        {"Lisa",  "Simpson", "delete Lisa"},
-                        {"Homer", "Simpson", "delete Homer"},
-                        {"Madge", "Simpson", "delete Madge"},
-                        {"Bart",  "Simpson", "delete Bart"},
-                        {"Lisa",  "Simpson", "delete Lisa"},
-                        {"Homer", "Simpson", "delete Homer"},
-                        {"Madge", "Simpson", "delete Madge"},
-                        {"Bart",  "Simpson", "delete Bart"},
-                        {"Lisa",  "Simpson", "delete Lisa"},
-                        {"Homer", "Simpson", "delete Homer"},
-                        {"Madge", "Simpson", "delete Madge"},
-                        {"Bart",  "Simpson", "delete Bart"},
-                        {"Lisa",  "Simpson", "delete Lisa"},
-                };
-
-        DefaultTableModel model = new DefaultTableModel(data, columnNames);
-         table = new JTable(model);
-         table.removeEditor();
-         table.enableInputMethods(false);
-
-        //ButtonColumn buttonColumn = new ButtonColumn(table, playlistManager, 2);
-        //buttonColumn.setMnemonic(KeyEvent.VK_D);
-        //TableCellRenderer tableRenderer;
-        //table = new JTable(new JTableButtonModel());
-        //((JButton)(table.getValueAt(0,1))).addActionListener(new PlaylistManager());
-        //tableRenderer = table.getDefaultRenderer(JButton.class);
-        //table.setDefaultRenderer(JButton.class, new JTableButtonRenderer(tableRenderer));
-        JScrollPane sp = new JScrollPane(table);
-        //sp.setBackground(Color.LIGHT_GRAY);
-        //table.setFillsViewportHeight(true);
-/*
-        TableCellRenderer buttonRenderer = new JTableButtonRenderer();
-        table.getColumn("Button1").setCellRenderer(buttonRenderer);
-        table.getColumn("Button2").setCellRenderer(buttonRenderer);*/
-        return sp;
-    }
-
-    public static void setInfo(Playlist playlist){
-        /*if(table !=null){
-            for(int i = 0; i<table.getRowCount();i++){
-                ((DefaultTableModel)table.getModel()).removeRow(i);
-            }
-        }*/
-
-       /* PlaylistUI.playlist = playlist;
-        playlistName.setText(PlaylistUI.playlist.getPlaylistName());
-        Object[][] data = new Object[PlaylistUI.playlist.getSongs().size()][3];
-        String[] columnNames = {"Name Song", "Author's name", ""};
-        for(int i = 0; i< PlaylistUI.playlist.getSongs().size();i++){
-            data[i][0] = PlaylistUI.playlist.getSongs().get(i).getSongName();
-            data[i][1] = PlaylistUI.playlist.getSongs().get(i).getAuthorName();
-            data[i][2]  = "Delete";
-        }
-        DefaultTableModel model = new DefaultTableModel(data, columnNames){
-            @Override
-            public boolean isCellEditable(int row, int column) {
-                return column == 2;
-            }
-        };
-        table = new JTable(model);
-        table.setBackground(Color.LIGHT_GRAY);
-        table.setGridColor(Color.lightGray);
-        table.setForeground(Color.RED);
-        table.setRowHeight(30);
-        //table.setFont( new Font(table.getFont().getName(),Font.PLAIN, (int) (table.getFont().getSize()*1.5)));
-        JScrollPane sp = new JScrollPane(table);
-        //sp.setBackground(Color.lightGray);
-        panel.add(sp, BorderLayout.SOUTH);
-        registerController(new PlaylistUIManager());*/
     }
 
     public static Playlist getPlaylist() {
@@ -186,7 +76,6 @@ public class PlaylistUI extends JPanel {
         playlistP = playlist;
         panel.removeAll();
         panel.repaint();
-        //panel.setLayout(new BorderLayout());
         panel.setBackground(Color.black);
         panel.add(Box.createRigidArea(new Dimension(10, 50)));
         panel.add(initGeneral(playlist.getPlaylistName()), BorderLayout.NORTH);
@@ -211,6 +100,7 @@ public class PlaylistUI extends JPanel {
         areaScrollPane.repaint();
 
         panel.add(areaScrollPane, BorderLayout.CENTER);
+        //panel.add(addSong(), BorderLayout.SOUTH);
         panel.revalidate();
         panel.repaint();
 
@@ -276,5 +166,13 @@ public class PlaylistUI extends JPanel {
         panel1.addMouseListener(new SpotiFrameManager());
         panel1.setName(playlist.getSongs().get(i).getSongFile());
         return panel1;
+    }
+
+    private static JButton addSong(){
+        JButton add = new JButton(ADD_SONG);
+        add.setActionCommand(ADD_SONG_COMM);
+        add.addActionListener(new SpotiFrameManager());
+        add.setText("+");
+        return add;
     }
 }

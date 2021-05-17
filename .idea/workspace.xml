@@ -25,15 +25,24 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="table for the songs has been implemented, although still not filled with the correct information.">
+    <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="Songs can be erased and we differentiate from when we click the table or the button">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/BusinessFacadeImp.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/BusinessFacadeImp.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/Entities/ButtonColumn.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/Entities/ButtonColumn.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/PlaylistManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/PlaylistManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Persistence/SQL/Csv/PlaylistCsvDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Persistence/SQL/Csv/PlaylistCsvDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/DictionaryPiano.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/DictionaryPiano.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/SpotiFrameManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/SpotiFrameManager.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/PlaylistUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/PlaylistUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Business/Entities/ButtonColumn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/Entities/ButtonColumn.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/SpotiUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/SpotiUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Business/BusinessFacadeImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/BusinessFacadeImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Business/PlaylistManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/PlaylistManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Persistence/SQL/Csv/PlaylistCsvDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Persistence/SQL/Csv/PlaylistCsvDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presentation/DictionaryPiano.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/DictionaryPiano.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Presentation/Manager/SpotiFrameManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Manager/SpotiFrameManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Presentation/Ui_Views/PlaylistUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Ui_Views/PlaylistUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Presentation/Ui_Views/SongsUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Ui_Views/SongsUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presentation/Ui_Views/SpotiUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Ui_Views/SpotiUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -497,12 +506,12 @@
       <option name="project" value="LOCAL" />
       <updated>1621270267953</updated>
     </task>
-    <task id="LOCAL-00051" summary="Merge">
-      <created>1621193730493</created>
+    <task id="LOCAL-00051" summary="Songs can be erased and we differentiate from when we click the table or the button">
+      <created>1621277250185</created>
       <option name="number" value="00051" />
       <option name="presentableId" value="LOCAL-00051" />
       <option name="project" value="LOCAL" />
-      <updated>1621193730493</updated>
+      <updated>1621277250185</updated>
     </task>
     <task id="LOCAL-00052" summary="Everything prepared to initiate the falling tiles.">
       <created>1621194379288</created>
@@ -518,7 +527,7 @@
       <option name="project" value="LOCAL" />
       <updated>1621239884255</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -548,8 +557,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Piano works perfectly fine. Checked that everything worked as it should." />
-    <MESSAGE value="I am not allowed to do finish feature :'(" />
     <MESSAGE value="Changing colors while changing through the CardLayout" />
     <MESSAGE value="Name of the tile appears now. The recording button is no longer an unreadable text, is an icon" />
     <MESSAGE value="piano finished" />
@@ -593,7 +600,8 @@
     <MESSAGE value="first graph done (is not the final yet)" />
     <MESSAGE value="Develop updated" />
     <MESSAGE value="table for the songs has been implemented, although still not filled with the correct information." />
-    <option name="LAST_COMMIT_MESSAGE" value="table for the songs has been implemented, although still not filled with the correct information." />
+    <MESSAGE value="Songs can be erased and we differentiate from when we click the table or the button" />
+    <option name="LAST_COMMIT_MESSAGE" value="Songs can be erased and we differentiate from when we click the table or the button" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -602,16 +610,6 @@
           <url>file://$PROJECT_DIR$/src/Presentation/Manager/PianoTilesUISelectorManager.java</url>
           <line>262</line>
           <option name="timeStamp" value="66" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Presentation/Manager/SpotiFrameManager.java</url>
-          <line>141</line>
-          <option name="timeStamp" value="83" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Presentation/Manager/SpotiFrameManager.java</url>
-          <line>202</line>
-          <option name="timeStamp" value="84" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
