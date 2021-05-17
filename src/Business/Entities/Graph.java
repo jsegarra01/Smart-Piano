@@ -1,102 +1,28 @@
-package Presentation.Ui_Views;
-
-//import data from the different libraries
-import Business.Entities.Graph;
-import Presentation.Manager.MainFrame;
-import Presentation.Manager.SpotiFrameManager;
+package Business.Entities;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Random;
 
-import static Presentation.Dictionary_login.*;
-
-/**
- * StatisticsUI
- *
- * The "StatisticsUI" class will contain the different methods to create the view class card layout "StatisticsUI" and login interface
- *
- * @author OOPD 20-21 ICE5
- * @version 2.0 24 Apr 2021
- *
- */
-public class StatisticsUI extends JPanel {
-    private JLabel pianoText = new JLabel(SMART_PIANO_TEXT);
-    private JLabel logInText = new JLabel(LOG_IN_TEXT);
-
-    private static JTextField usernameTextField = new JTextField();
-    private static JPasswordField password = new JPasswordField();
-    private JButton back = new JButton(BACK_BUTTON);
-    private JButton done = new JButton(DONE_BUTTON);
-    private MainFrame mainFrame;
-
-    private  SpotiFrameManager spotiFrame;
-    private  Graph graph1;
-    private Graph graph2;
-/*
-    private int width = 800;
-    private int height = 400;
-
+public class Graph extends JPanel {
+    private int width = 400;
+    private int height = 350;
     private int padding = 25;
     private int labelPadding = 25;
-    private Color lineColor = new Color(44, 10, 230, 180);
-    private Color pointColor = new Color(100, 100, 100, 180);
-    private Color gridColor = new Color(200, 200, 200, 200);
+    private Color lineColor = Color.BLUE;
+    private Color pointColor = Color.DARK_GRAY;
+    private Color gridColor = Color.GRAY;
     private static final Stroke GRAPH_STROKE = new BasicStroke(2f); // used to draw shape’s outline
     private int pointWidth = 4;
-    private int numberYDivisions = 10;*/
-    private LinkedList<Float> numMin = new LinkedList<>();
-    private LinkedList<Float> numSongs = new LinkedList<>();
+    private int numberYDivisions = 10;
+    //private List<Float> xPoints;
+    private List<Float> yPoints;
 
-
-
-    /**
-     * Constructor for the StatisticsUI, you need to send the mainframe context and will create a card layout
-     *
-     * @param mainFrame context necessary to create the card layout
-     */
-    public StatisticsUI(final MainFrame mainFrame, LinkedList<Float> numSongs, LinkedList<Float> numMin) {
-        super();
-        this.mainFrame = mainFrame;
-        this.numSongs = numSongs;
-        this.numMin = numMin;
-        initialize();
+    public Graph(List<Float> yPoints) {
+        this.yPoints = yPoints;
     }
 
-
-    /**
-     * The initialize function that creates the card layout for the StatisticsUI
-     */
-    private void initialize() {
-        setLayout(new BorderLayout());
-
-        createAndShowGui();
-        //setBackground(Color.red);
-    }
-
-    private void createAndShowGui() {
-        graph1  = new Graph(numSongs);
-        graph2 = new Graph(numMin);
-        //graph.setPreferredSize(new Dimension(900, 800));
-        JPanel panel = new JPanel();
-        BoxLayout box = new BoxLayout(panel, BoxLayout.X_AXIS);
-        panel.setLayout(box);
-        panel.setPreferredSize(new Dimension(800, 500));
-        panel.setMaximumSize(panel.getPreferredSize());
-        //panel.setLayout(new BorderLayout());
-        //panel.setLayout(new GridLayout());
-        panel.setBackground(Color.BLACK);
-        panel.add(graph1);
-        panel.add(graph2);
-        add(panel, BorderLayout.CENTER);
-    }
-
-
-
-/*
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -183,19 +109,30 @@ public class StatisticsUI extends JPanel {
     }
 
     private double getMinY() {
-        Integer minY = Integer.MAX_VALUE;
-        for (Integer myY : yPoints) {
+        Float minY = Float.MAX_VALUE;
+        for (Float myY : yPoints) {
             minY = Math.min(minY, myY);
         }
         return minY;
     }
 
     private double getMaxY() {
-        Integer maxY = Integer.MIN_VALUE;
-        for (Integer myY : yPoints) {
+        Float maxY = Float.MIN_VALUE;
+        for (Float myY : yPoints) {
             maxY = Math.max(maxY, myY);
         }
         return maxY;
-    }*/
+    }
 
+    public int getWidth() {
+        return width;
+    }
+
+    public void setWidth(int width) {
+        this.width = width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
 }

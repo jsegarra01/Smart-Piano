@@ -9,6 +9,8 @@ import Business.Entities.User;
 import Persistence.SQL.Csv.LoginUserCsvDAO;
 import Persistence.SQL.Csv.SongCsvDAO;
 import Persistence.SongDAO;
+import Business.Entities.Stadistics;
+import Persistence.SQL.Csv.SongCsvDAO;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -48,5 +50,12 @@ public class SongManager {
         for (Song song : songs) {
             songNames.add(song.getSongName());
         }
+    }
+    public void addingStadistics(Stadistics myStats){
+        songManager.saveStadistics(myStats);
+    }
+
+    public Stadistics gettingStadistics(int hour){
+        return songManager.getStadisticsHour(hour);
     }
 }

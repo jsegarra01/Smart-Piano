@@ -1,6 +1,7 @@
 package Persistence.SQL.Csv;
 
 import Business.Entities.Song;
+import Business.Entities.Stadistics;
 import Business.Entities.User;
 import Persistence.SQL.ConnectSQL;
 import Persistence.SongDAO;
@@ -161,6 +162,58 @@ public class SongCsvDAO implements SongDAO {
             myRs.close();
             return songs;
         } catch (SQLException throwables) {
+            return null;
+        }
+    }
+
+
+    @Override
+    public boolean saveStadistics(Stadistics myStats) {
+        try {
+            if(getStadisticsHour(myStats.getHour()) == null){
+                PreparedStatement st = ConnectSQL.getInstance().prepareStatement("insert into SongStatisticsHourlyT values ('" +
+                        myStats.getHour() + "', '" +
+                        myStats.getNumPlayed() + "', '" +
+                        myStats.getMinPlayed() + "')");
+                st.execute();
+                return true;
+
+            }else{
+                PreparedStatement st2 = ConnectSQL.getInstance().prepareStatement("update SongStatisticsHourlyT SET numPlayed = numPlayed + " +
+                        myStats.getNumPlayed() + " where hour = " +
+                        myStats.getHour() + ";");
+                st2.executeUpdate();
+                PreparedStatement st3 = ConnectSQL.getInstance().prepareStatement("update SongStatisticsHourlyT SET minPlayed = minPlayed + " +
+                        myStats.getMinPlayed() + " where hour = " +
+                        myStats.getHour() + ";");
+                st3.executeUpdate();
+                return true;
+            }
+
+        } catch (SQLException throwable) {
+            throwable.printStackTrace();
+            return false;
+        }
+    }
+
+
+
+    @Override
+    public Stadistics getStadisticsHour(int hour) {
+        try {
+            ResultSet myRs = ConnectSQL.getInstance().createStatement().executeQuery("select * from SongStatisticsHourlyT as st where st.hour = " + hour);
+            if(myRs.next()){
+                Stadistics stadistics = new Stadistics(
+                        myRs.getInt("hour"),
+                        myRs.getFloat("numPlayed"),
+                        myRs.getFloat("minPlayed"));
+                myRs.close();
+                return stadistics;
+            }else{
+                return null;
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
             return null;
         }
     }

@@ -1,31 +1,20 @@
 package Presentation.Manager;
 
 //Imports needed from the dictionary, events and mainframe
-import Business.Entities.Playlist;
+import Business.Entities.*;
 import Business.BusinessFacadeImp;
-import Business.Entities.MidiHelper;
-import Business.Entities.Translator;
-import Business.Entities.webHandler;
-import Business.PlaylistManager;
-import Presentation.Dictionary_login;
 import Presentation.Ui_Views.SpotiUI;
-import Presentation.Ui_Views.Tile;
 
 import javax.sound.midi.MidiUnavailableException;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
+import java.util.*;
 import java.io.File;
 
 import static Presentation.DictionaryPiano.*;
-import static Presentation.Dictionary_login.*;
-import static Presentation.Manager.MainFrame.card;
-import static Presentation.Manager.MainFrame.contenedor;
-import static Presentation.Ui_Views.PianoFrame.*;
-import static Presentation.Ui_Views.SpotiUI.playButton;
-import static Presentation.Ui_Views.SpotiUI.spotiPanel;
+import static Presentation.Ui_Views.SpotiUI.*;
 import static Presentation.Ui_Views.Tile.resizeIcon;
 
 
@@ -45,6 +34,12 @@ public class SpotiFrameManager implements ActionListener {
     private boolean play=false;
     private ImageIcon playIcon = new ImageIcon("Files/drawable/playbuttonWhite.png");
     private ImageIcon pauseIcon = new ImageIcon("Files/drawable/pauseWhite.png");
+    private float minPlayed;
+    private long startMin=0;
+    private long lastMin=0;
+    private Stadistics stadistics;
+
+    private Date date = new Date();
 
     private MidiHelper finalMidiHelper;
 
@@ -75,6 +70,7 @@ public class SpotiFrameManager implements ActionListener {
 
         switch (e.getActionCommand()) {
             case CREATE_STADISTICS:
+                addStadistics(getNumSongs(), getMinPlayed());
                 cc.show(spotiPanel, STATISTICS_UI);
                 break;
             case SHOW_TOP_SONGS:
@@ -92,6 +88,7 @@ public class SpotiFrameManager implements ActionListener {
                     playButton.setIcon(pauseIcon);
                     playButton.setIcon(resizeIcon((ImageIcon) playButton.getIcon(), (int) Math.round(playButton.getIcon().getIconWidth()*0.09),
                             (int) Math.round(playButton.getIcon().getIconHeight()*0.09)));
+                    startMin = System.currentTimeMillis();
                     finalMidiHelper.playSong(new File(new BusinessFacadeImp().getPlaylistManager().getPlaylists().get(0).getSongs().get(0).getSongFile()));
                     play = true;
                 }
@@ -99,21 +96,54 @@ public class SpotiFrameManager implements ActionListener {
                     playButton.setIcon(playIcon);
                     playButton.setIcon(resizeIcon((ImageIcon) playButton.getIcon(), (int) Math.round(playButton.getIcon().getIconWidth()*0.09),
                             (int) Math.round(playButton.getIcon().getIconHeight()*0.09)));
+                    lastMin = System.currentTimeMillis();
+                    // String lastSong =
+                    minPlayed = (float)(lastMin - startMin)/60000;
+                    Stadistics stats = new Stadistics(date.getHours(), (float)1, minPlayed);
+                    new BusinessFacadeImp().getSongManager().addingStadistics(stats);
                     play = false;
                     finalMidiHelper.stopSong();
                 }
                 break;
-           /* case PLAYLIST_LIST:
+            case PLAYLIST_INFO:
                 JButton button;
                 Object obj = e.getSource();
                 if (obj instanceof JButton) {
                     button = (JButton) obj;
                 }
-                System.out.println("hola julio");
-                break;*/
+                break;
         }
     }
     public static void addPlaylists(ArrayList<Playlist> playlists){
         SpotiUI.addPlaylists(playlists);
+    }
+/*
+    public static void addFirstStadistics(List<Integer> numSongs){
+        SpotiUI.addStadistics(numSongs);
+
+    }*/
+
+    public static LinkedList<Float> getNumSongs(){
+        LinkedList<Float> numSongs = new LinkedList<Float>();
+        for(int i=0; i<24; i++ ){
+            if(new BusinessFacadeImp().getSongManager().gettingStadistics(i) == null){
+                numSongs.add((float) 0);
+            } else {
+                numSongs.add(new BusinessFacadeImp().getSongManager().gettingStadistics(i).getNumPlayed());
+            }
+        }
+        return numSongs;
+    }
+
+    public LinkedList<Float> getMinPlayed(){
+        LinkedList<Float> numMin = new LinkedList<Float>();
+        for(int i=0; i<24; i++ ){
+            if(new BusinessFacadeImp().getSongManager().gettingStadistics(i) == null){
+                numMin.add((float)0);
+            } else {
+                numMin.add(new BusinessFacadeImp().getSongManager().gettingStadistics(i).getMinPlayed());
+            }
+        }
+        return numMin;
     }
 }
