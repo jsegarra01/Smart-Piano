@@ -18,6 +18,7 @@ public class SongsUI extends JPanel {
         setLayout(new BorderLayout());
         setBackground(Color.green);
         add(initTable());
+        registerController(new SpotiFrameManager());
 
     }
     private JScrollPane initTable(){
@@ -76,7 +77,7 @@ public class SongsUI extends JPanel {
         DefaultTableModel model = new DefaultTableModel(data, columnNames){
             @Override
             public boolean isCellEditable(int row, int column) {
-                return column == 2;
+                return column == 4;
             }
         };
         table = new JTable(model);
@@ -86,7 +87,6 @@ public class SongsUI extends JPanel {
         table.setRowHeight(30);
         table.setFont( new Font(table.getFont().getName(),Font.PLAIN, (int) (table.getFont().getSize()*1.5)));
 
-        registerController(new SpotiFrameManager());
         return new JScrollPane(table);
     }
 

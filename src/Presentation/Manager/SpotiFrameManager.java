@@ -10,6 +10,7 @@ import Presentation.Ui_Views.SpotiUI;
 
 import javax.sound.midi.MidiUnavailableException;
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,6 +19,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.io.File;
+import java.util.logging.Handler;
 
 import static Presentation.DictionaryPiano.*;
 import static Presentation.Ui_Views.SpotiUI.*;
@@ -33,7 +35,7 @@ import static Presentation.Ui_Views.Tile.resizeIcon;
  * @version 1.0 21 Apr 2021
  *
  */
-public class SpotiFrameManager implements ActionListener, MouseListener {
+public class SpotiFrameManager extends AbstractAction implements ActionListener, MouseListener {
 
     private static final String URLRoute = "https://www.mutopiaproject.org/cgibin/make-table.cgi?Instrument=Piano";
     private static final String path = "Files";
@@ -133,6 +135,11 @@ public class SpotiFrameManager implements ActionListener, MouseListener {
                     PlaylistUI.setSongsPlaylists(PlaylistUI.getPlaylist());
                 }
                 break;
+
+            default:
+                JTable table = (JTable)e.getSource();
+                int modelRow = Integer.parseInt( e.getActionCommand() );
+                ((DefaultTableModel)table.getModel()).removeRow(modelRow);
         }
     }
     public static void addPlaylists(ArrayList<Playlist> playlists){
@@ -177,7 +184,9 @@ public class SpotiFrameManager implements ActionListener, MouseListener {
     @Override
     public void mousePressed(MouseEvent e) {
         JPanel song;
+        JTable table;
         Object obj = e.getSource();
+        int button = e.getButton();
         if (obj instanceof JPanel) {
             if(play){
                 finalMidiHelper.stopSong();
@@ -188,6 +197,12 @@ public class SpotiFrameManager implements ActionListener, MouseListener {
                     (int) Math.round(playButton.getIcon().getIconHeight()*0.09)));
             play = true;
             finalMidiHelper.playSong(new File(song.getName()));
+        }else if(obj instanceof  JTable){
+            table = (JTable) obj;
+            if(table.getEditorComponent() == null){
+                System.out.println("holi");
+            }
+
         }
     }
 
