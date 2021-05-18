@@ -9,6 +9,8 @@ import javax.swing.*;
 import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
 
 import static Presentation.DictionaryPiano.*;
@@ -69,28 +71,50 @@ public class PlaylistUI extends JPanel {
         //panel.repaint();
         panel.setBackground(Color.black);
         panel.add(Box.createRigidArea(new Dimension(10, 50)));
-        panel.add(initGeneral(playlist.getPlaylistName()), BorderLayout.NORTH);
         JPanel panelSongs = new JPanel();
-        panelSongs.setBackground(Color.black);
-        panelSongs.add(Box.createRigidArea(new Dimension(50,10)));
-        //panelSongs.setPreferredSize(new Dimension(5,400));
+        if(playlist==null){
+            JButton button = new JButton("Click Me!");
+            final JLabel label = new JLabel();
+            label.setForeground(Color.red);
+            String result = (String)JOptionPane.showInputDialog(
+                    null,
+                    "Select one of the color",
+                    "Swing Tester",
+                    JOptionPane.PLAIN_MESSAGE,
+                    null,
+                    null,
+                    "Red"
+            );
+            if(result != null && result.length() > 0){
+                label.setText("You selected:" + result);
+            }else {
+                label.setText("None selected");
+            }
+            panel.add(button);
+            panel.add(label);
+        }else{
+            panel.add(initGeneral(playlist.getPlaylistName()), BorderLayout.NORTH);
 
-        BoxLayout boxLayout = new BoxLayout(panelSongs, BoxLayout.Y_AXIS);
-        panelSongs.setLayout(boxLayout);
-        JPanel panel1;
-        JLabel label;
-        for(int i = 0; i<playlist.getSongs().size(); i++){
-            panel1 = setPlaylist(playlist, i);
-            panelSongs.add(panel1);
+            panelSongs.setBackground(Color.black);
+            panelSongs.add(Box.createRigidArea(new Dimension(50,10)));
+            //panelSongs.setPreferredSize(new Dimension(5,400));
+
+            BoxLayout boxLayout = new BoxLayout(panelSongs, BoxLayout.Y_AXIS);
+            panelSongs.setLayout(boxLayout);
+            JPanel panel1;
+            for(int i = 0; i<playlist.getSongs().size(); i++){
+                panel1 = setPlaylist(playlist, i);
+                panelSongs.add(panel1);
+            }
+
+            JScrollPane areaScrollPane = new JScrollPane(panelSongs);
+            areaScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+            areaScrollPane.setPreferredSize(new Dimension(800, 510));
+
+            panel.add(areaScrollPane, BorderLayout.CENTER);
         }
 
-        JScrollPane areaScrollPane = new JScrollPane(panelSongs);
-        areaScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-        areaScrollPane.setPreferredSize(new Dimension(800, 510));
-        panelSongs.repaint();
-        areaScrollPane.repaint();
 
-        panel.add(areaScrollPane, BorderLayout.CENTER);
         panel.revalidate();
         panel.repaint();
 

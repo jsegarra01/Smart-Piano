@@ -26,15 +26,16 @@ public class PlaylistCsvDAO implements PlaylistDAO {
      * @param playlist
      */
     @Override
-    public boolean savePlaylist(Playlist playlist) {
+    public boolean savePlaylist(String playlist, String username) {
         try {
-            PreparedStatement st2 = ConnectSQL.getInstance().prepareStatement("insert into PlaylistT values (" + ")");
-            st2.execute();
-            PreparedStatement st = ConnectSQL.getInstance().prepareStatement("insert into SongPlaylistsT ");
+            PreparedStatement st = ConnectSQL.getInstance().prepareStatement("insert into PlaylistT (playlistName, username) values ('" +playlist + "', '" + username + "')");
             st.execute();
+            //PreparedStatement st = ConnectSQL.getInstance().prepareStatement("insert into SongPlaylistsT ");
+            //st.execute();
 
             return true;
         } catch (SQLException e) {
+            e.printStackTrace();
             return false;
         }
     }

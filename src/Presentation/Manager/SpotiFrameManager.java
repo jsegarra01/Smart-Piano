@@ -25,6 +25,7 @@ import java.io.File;
 import java.util.logging.Handler;
 
 import static Presentation.DictionaryPiano.*;
+import static Presentation.Manager.MainFrame.contenedor;
 import static Presentation.Ui_Views.SpotiUI.*;
 import static Presentation.Ui_Views.StatisticsUI.letsInitializeGraphs;
 import static Presentation.Ui_Views.Tile.resizeIcon;
@@ -103,7 +104,27 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
                 //cc.show(spotiPanel, TOPSONGS_UI);
                 break;
             case CREATE_PLAYLIST:
-                cc.show(spotiPanel, PLAYLIST_UI);
+                String result = (String)JOptionPane.showInputDialog(
+                        null,
+                        "Which name is your playlist going to have?",
+                        "Playlist Creator",
+                        JOptionPane.PLAIN_MESSAGE,
+                        null,
+                        null,
+                        "New Playlist"
+                );
+                if(result != null && result.length() > 0){
+                    new BusinessFacadeImp().newPlaylist(result);
+                    new BusinessFacadeImp().getPlaylistManager().setPlaylists(UserManager.getUser().getUserName());
+                    playlist = new BusinessFacadeImp().getPlaylist(result);
+                    PlaylistUI.setSongsPlaylists(playlist);
+                    cc.show(spotiPanel, PLAYLIST_UI);
+                }else {
+                    JOptionPane.showMessageDialog(null,
+                            "You have to input something!", "Create Playlist Error" ,
+                            JOptionPane.ERROR_MESSAGE);
+                }
+
                 break;
             case SEARCH_SONG:
                 this.myWebHandlingTool.doStuff(SpotiUI.getInputedSongName(), "by");
@@ -167,18 +188,32 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
                     JTable table = (JTable)e.getSource();
                     int modelRow = Integer.parseInt( e.getActionCommand() );
                     if(addSong){
-                        boolean updatingSong = new BusinessFacadeImp().addSongToPlaylist(playlist.getPlaylistName(),new BusinessFacadeImp().getSong(modelRow).getSongName());
-                        new BusinessFacadeImp().getPlaylistManager().setPlaylists(UserManager.getUser().getUserName());
-                        //playlist =
-                        //PlaylistUI.addSongToPanel(new BusinessFacadeImp().getSong(modelRow));
-                        playlist = new BusinessFacadeImp().getPlaylist(playlist.getPlaylistName());
-                        PlaylistUI.setSongsPlaylists(playlist);
-                        cc.show(spotiPanel, PLAYLIST_UI);
-                        addSong = false;
+                        if (isAlreadyInPlaylist(new BusinessFacadeImp().getSong(modelRow).getSongName())) {
+                            JOptionPane.showMessageDialog(null,
+                                    "This song already exists in the playlist!", "Song adding Error" ,
+                                    JOptionPane.ERROR_MESSAGE);
+                        }else{
+                            boolean updatingSong = new BusinessFacadeImp().addSongToPlaylist(playlist.getPlaylistName(),new BusinessFacadeImp().getSong(modelRow).getSongName());
+                            new BusinessFacadeImp().getPlaylistManager().setPlaylists(UserManager.getUser().getUserName());
+                            //playlist =
+                            //PlaylistUI.addSongToPanel(new BusinessFacadeImp().getSong(modelRow));
+                            playlist = new BusinessFacadeImp().getPlaylist(playlist.getPlaylistName());
+                            PlaylistUI.setSongsPlaylists(playlist);
+                            cc.show(spotiPanel, PLAYLIST_UI);
+                            addSong = false;
+                        }
+
                     }else{
-                        ((DefaultTableModel)table.getModel()).removeRow(modelRow);
-                        new BusinessFacadeImp().deleteSong(modelRow);
-                        new BusinessFacadeImp().setSongUser();
+                        int input = JOptionPane.showConfirmDialog(null,
+                                "Are you sure you want to delete " +
+                                        new BusinessFacadeImp().getSong(modelRow).getSongName() +"?",
+                                "Select an option", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+                        // 0=yes, 1=no, 2=cancel
+                        if(input == JOptionPane.YES_OPTION){
+                            ((DefaultTableModel)table.getModel()).removeRow(modelRow);
+                            new BusinessFacadeImp().deleteSong(modelRow);
+                            new BusinessFacadeImp().setSongUser();
+                        }
 
                     }
                     break;
@@ -288,4 +323,17 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
     public void mouseExited(MouseEvent e) {
 
     }
+    private boolean isAlreadyInPlaylist(String song){
+        int i = 0;
+        boolean found = false;
+        while(i<playlist.getSongs().size() && !found){
+            if(playlist.getSongs().get(i).getSongName().equals(song)){
+                found = true;
+            }else{
+                i++;
+            }
+        }
+        return found;
+    }
+
 }

@@ -85,4 +85,8 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
     public boolean deleteSong(int i){
         return songManager.deleteSong(getSong(i));
     }
+
+    public boolean newPlaylist(String playlist){
+        return playlistManager.newPlaylist(playlist, UserManager.getUser().getUserName());
+    }
 }

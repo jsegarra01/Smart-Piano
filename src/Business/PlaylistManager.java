@@ -41,4 +41,8 @@ public class PlaylistManager {
             return null;
         }
     }
+
+    public boolean newPlaylist(String playlist, String username){
+        return playlistCsvDAO.savePlaylist( playlist, username);
+    }
 }
