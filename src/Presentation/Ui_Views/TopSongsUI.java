@@ -1,7 +1,13 @@
 package Presentation.Ui_Views;
 
+import Business.Entities.ButtonColumn;
+import Business.Entities.Song;
+import Presentation.Manager.SpotiFrameManager;
+
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class TopSongsUI extends JPanel {
@@ -21,12 +27,4 @@ public class TopSongsUI extends JPanel {
         //aux.sort();
         return aux;
     }
-
-    /*
-    * Float maxY = Float.MIN_VALUE;
-        for (Float myY : yPoints) {
-            maxY = Math.max(maxY, myY);
-        }
-        return maxY;
-    * */
 }

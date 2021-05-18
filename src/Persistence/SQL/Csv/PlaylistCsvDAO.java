@@ -78,7 +78,8 @@ public class PlaylistCsvDAO implements PlaylistDAO {
                     myRs2.getDate("recordingDate"),
                     myRs2.getBoolean("publicBoolean"),
                     myRs2.getString("songFile"),
-                    myRs2.getString("username")));
+                    myRs2.getString("username"),
+                    myRs2.getInt("numTimesPlayed")));
         }
         myRs2.close();
         return songs;
@@ -102,6 +103,7 @@ public class PlaylistCsvDAO implements PlaylistDAO {
                         myRs.getString("username")));
             }
             myRs.close();
+
             return playlists;
         } catch (SQLException throwables) {
             return null;

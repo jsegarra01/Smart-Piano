@@ -77,7 +77,7 @@ public class SpotiUI extends JPanel {
         setLayout(new BorderLayout());
 
         spotiPanel.add(statisticsUI, STATISTICS_UI);
-        spotiPanel.add(topSongsUI, TOPSONGS_UI);
+        spotiPanel.add(topSongsUI, /*TOPSONGS_UI*/SONGS_UI);
         spotiPanel.add(playlistUI, PLAYLIST_UI);
         spotiPanel.add(songsUI, SONGS_UI);
         add(spotiPanel, BorderLayout.CENTER);

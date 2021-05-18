@@ -1,21 +1,13 @@
 package Business;
 
 import Business.Entities.*;
-import Persistence.SQL.Csv.LoginUserCsvDAO;
-import Persistence.SQL.Csv.SongCsvDAO;
-import Persistence.SQL.Csv.LoginUserCsvDAO;
-import Persistence.SQL.Csv.SongCsvDAO;
-import Persistence.SongDAO;
 import Persistence.SQL.Csv.SongCsvDAO;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Date;
+import java.util.Collections;
 
 import static Business.Entities.SongToMidi.writeMidi;
-
-import static Business.UserManager.getUser;
 
 public class SongManager {
     private Song song;
@@ -51,6 +43,30 @@ public class SongManager {
             songNames.add(song.getSongName());
         }
     }
+
+    public ArrayList getTopFive(){
+        ArrayList<Song> aux = songs;
+        aux.sort(this::compare);
+        ArrayList<Song> topFive = new ArrayList<Song>();
+        for(int i=0; i<5; i++){
+            topFive.add((Song)aux.get(i));
+        }
+        return topFive;
+    }
+
+
+    public int compare(Song song1, Song song2) {
+        if(song1.getTimesPlayed() < song2.getTimesPlayed()){
+            return 1;
+        } else {
+            return -1;
+        }
+    }
+
+    public void updateSongPlayed(Song song){
+        songManager.updateTimesPlayed(song);
+    }
+
     public void addingStadistics(Stadistics myStats){
         songManager.saveStadistics(myStats);
     }
@@ -58,10 +74,10 @@ public class SongManager {
     public Stadistics gettingStadistics(int hour){
         return songManager.getStadisticsHour(hour);
     }
-
+/*
     public void addingInfoSongPlayed(TopSongs songs){
         songManager.saveListenedSongs(songs);
-    }
+    }*/
 
     public boolean deleteSong(Song song){
         return songManager.deleteSong(song);
