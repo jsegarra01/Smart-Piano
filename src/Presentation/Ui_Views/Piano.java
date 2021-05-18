@@ -16,10 +16,10 @@ public abstract class Piano extends JPanel {
     public static final String MODIFY = "MODIFY_KEYS";
     protected static Label soundType;
 
-    protected static final ImageIcon iconRec = new ImageIcon("Files/drawable/recIcon.png");
-    protected static final JButton recordB = new JButton(BTN_RECORD, iconRec);
-    protected static final JButton profile = new JButton(PROFILE_BUTTON);
-    protected static final JToggleButton modifyKeys = new JToggleButton(MODIFY);
+    protected final ImageIcon iconRec = new ImageIcon("Files/drawable/recIcon.png");
+    protected  JButton recordB = new JButton(BTN_RECORD, iconRec);
+    protected  JButton profile = new JButton(PROFILE_BUTTON);
+    protected  JToggleButton modifyKeys = new JToggleButton(MODIFY);
 
     /**
      * private JTextField hey;

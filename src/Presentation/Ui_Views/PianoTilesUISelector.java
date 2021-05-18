@@ -1,12 +1,27 @@
 package Presentation.Ui_Views;
 
 //imports needed for the piano tiles
+import Business.Entities.Translator;
+import Presentation.Manager.MainFrame;
+
+import javax.security.auth.RefreshFailedException;
+import javax.security.auth.Refreshable;
+import javax.sound.midi.Sequence;
 import javax.swing.*;
 import java.awt.*;
 import Presentation.Manager.PianoTilesUISelectorManager;
+import Presentation.Manager.MainFrame;
+import Presentation.Manager.PianoFrameManager;
+
+import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.text.JTextComponent;
+import java.awt.*;
 import java.util.ArrayList;
 
 import static Presentation.DictionaryPiano.*;
+import static Presentation.Dictionary_login.PROFILE_BUTTON;
 import static Presentation.Manager.PianoTilesUISelectorManager.timePassed;
 import static Presentation.Manager.PianoTilesUISelectorManager.velocityModifier;
 import static Presentation.Ui_Views.Tile.*;
@@ -22,7 +37,9 @@ import static Presentation.Ui_Views.Tile.*;
  *
  */
 public class PianoTilesUISelector extends Piano {
+    private  static MainFrame mainFrame;
     private static ArrayList<Tile> keyboard;
+    private static int i = 0;
     public static ArrayList<Tile> getKeyboard() {
         return keyboard;
     }
@@ -37,9 +54,12 @@ public class PianoTilesUISelector extends Piano {
 
     /**
      * Constructor for the PianoTilesUISelector, you need to send the mainframe context and will create a card layout
-
+     *
+     * @param mainFrame context necessary to create the card layout
      */
-    public PianoTilesUISelector() {
+    public PianoTilesUISelector(final MainFrame mainFrame) {
+        super();
+        this.mainFrame = mainFrame;
         keyboard = new ArrayList<>();
         initialize();
     }
@@ -62,7 +82,7 @@ public class PianoTilesUISelector extends Piano {
         panel.setBackground(Color.getHSBColor(0,0,0.2f));
 
         //This will be another card layout, which we will have to divide between the free piano or the song piano in order use the same piano for both
-       // panel.add(Box.createRigidArea(new Dimension(10, 320)), BorderLayout.CENTER);
+        // panel.add(Box.createRigidArea(new Dimension(10, 320)), BorderLayout.CENTER);
         panel.add(createGamePane(), BorderLayout.CENTER);
 
         layeredPane = makeKeys();

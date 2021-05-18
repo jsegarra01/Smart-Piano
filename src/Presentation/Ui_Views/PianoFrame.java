@@ -22,7 +22,7 @@ import static Presentation.DictionaryPiano.*;
  *
  */
 public class PianoFrame extends JPanel {
-    private static MainFrame mainFrame;
+    public static MainFrame mainFrame;
 
     public static JButton freePiano = new JButton(FREE_PIANO);
     public static JButton playSong = new JButton(PLAY_A_SONG);
@@ -45,7 +45,7 @@ public class PianoFrame extends JPanel {
         super();
         PianoFrame.mainFrame =mainFrame;
 
-        pianoTilesUISelector = new PianoTilesUISelector();
+        pianoTilesUISelector = new PianoTilesUISelector(mainFrame);
         spotiUI = new SpotiUI();
         freePianoUI = new FreePianoUI();
         initialize();
