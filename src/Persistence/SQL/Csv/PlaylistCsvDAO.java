@@ -124,10 +124,10 @@ public class PlaylistCsvDAO implements PlaylistDAO {
             PreparedStatement st = ConnectSQL.getInstance().prepareStatement("INSERT INTO SongPlaylistsT VALUES((" +
                     " SELECT s.songId " +
                     " FROM SongT s " +
-                    " WHERE s.songName = 'Cantina'),(" +
+                    " WHERE s.songName = '" + songName + "'),(" +
                     " SELECT p.playlistId " +
                     " FROM PlaylistT p " +
-                    " WHERE p.playlistName = 'Blayaiais Playlist'));");
+                    " WHERE p.playlistName = '" + playlistName +"'));");
             st.execute();
             return true;
         } catch (SQLException throwables) {

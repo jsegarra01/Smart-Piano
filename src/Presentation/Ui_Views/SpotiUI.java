@@ -205,7 +205,6 @@ public class SpotiUI extends JPanel {
         searchButton.addActionListener(listener);
     }
 
-
     public static String getInputedSongName() {
         return songNameInputText.getText();
     }
@@ -219,6 +218,7 @@ public class SpotiUI extends JPanel {
     public static void addSongsToPlaylist(ArrayList<Song> songs){
         spotiPanel.add(new SongsUI(songs, "Add"), SONGS_UI);
     }
+
 
     //TODO poner bn las boxes (size lateral)
     public static void addPlaylists(ArrayList<Playlist> playlists){

@@ -48,6 +48,7 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
     private long lastMin=0;
     private Stadistics stadistics;
     private static boolean addSong = false;
+    private static Playlist playlist;
 
     private final Date date = new Date();
 
@@ -123,7 +124,8 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
                 JButton button;
                 if (obj instanceof JButton) {
                     button = (JButton) obj;
-                    PlaylistUI.setSongsPlaylists(new BusinessFacadeImp().getPlaylist(button.getName()));
+                    playlist = new BusinessFacadeImp().getPlaylist(button.getName());
+                    PlaylistUI.setSongsPlaylists(playlist);
                     cc.show(spotiPanel, PLAYLIST_UI);
                 }
                 break;
@@ -132,9 +134,8 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
                 if (obj instanceof JButton) {
                     song = (JButton) obj;
                     PlaylistUI.deleteFromPanel(song.getName());
-                    boolean errorDeleting = new BusinessFacadeImp().deleteSongFromPlaylist(
-                            PlaylistUI.getPlaylist().getPlaylistName(),song.getName());
-                    PlaylistUI.setSongsPlaylists(PlaylistUI.getPlaylist());
+                    boolean errorDeleting = new BusinessFacadeImp().deleteSongFromPlaylist(playlist.getPlaylistName(),song.getName());
+                    PlaylistUI.setSongsPlaylists(playlist);
                 }
                 break;
             case ADD_SONG_COMM:
@@ -148,12 +149,11 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
                     JTable table = (JTable)e.getSource();
                     int modelRow = Integer.parseInt( e.getActionCommand() );
                     if(addSong){
-                        boolean updatingSong = new BusinessFacadeImp().addSongToPlaylist(
-                                PlaylistUI.getPlaylist().getPlaylistName(),
-                                new BusinessFacadeImp().getSong(modelRow).getSongName());
-                        PlaylistUI.setSongsPlaylists(PlaylistUI.getPlaylist());
+                        boolean updatingSong = new BusinessFacadeImp().addSongToPlaylist(playlist.getPlaylistName(),new BusinessFacadeImp().getSong(modelRow).getSongName());
+                        playlist = new BusinessFacadeImp().getPlaylist(playlist.getPlaylistName());
+                        PlaylistUI.addSongToPanel(new BusinessFacadeImp().getSong(modelRow));
+                        PlaylistUI.setSongsPlaylists(playlist);
                         cc.show(spotiPanel, PLAYLIST_UI);
-                        addSong = false;
                     }else{
                         ((DefaultTableModel)table.getModel()).removeRow(modelRow);
                         //TODO Delete from db

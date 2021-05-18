@@ -2,6 +2,7 @@ package Presentation.Ui_Views;
 
 //import data from the different libraries
 import Business.Entities.Playlist;
+import Business.Entities.Song;
 import Presentation.Manager.SpotiFrameManager;
 
 import javax.swing.*;
@@ -126,6 +127,12 @@ public class PlaylistUI extends JPanel {
         }
 
     }
+
+    public static void addSongToPanel(Song song){
+        playlistP.getSongs().add(song);
+    }
+
+
     private static JPanel setPlaylist(Playlist playlist, int i){
 
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
