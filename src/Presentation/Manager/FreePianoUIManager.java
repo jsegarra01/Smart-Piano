@@ -241,6 +241,7 @@ public class FreePianoUIManager implements ActionListener, MouseListener {
         if (obj instanceof Tile) {
             t = (Tile) obj;
         }
+        System.out.println(Translator.getNumberNoteFromName(e.getComponent().getName()));
         if(modifying){
             if(!selected){
                 FreePianoUI.setTileColor(t);
