@@ -45,11 +45,10 @@ public class StatisticsUI extends JPanel {
     /**
      * Constructor for the StatisticsUI, you need to send the mainframe context and will create a card layout
      *
-     * @param mainFrame context necessary to create the card layout
      */
-    public StatisticsUI(final MainFrame mainFrame/*, LinkedList<Float> numSongs, LinkedList<Float> numMin*/) {
+    public StatisticsUI(/*, LinkedList<Float> numSongs, LinkedList<Float> numMin*/) {
         super();
-        this.mainFrame = mainFrame;
+        //this.mainFrame = mainFrame;
         this.add(panel);
         //his.add(panelGraphs);
         //this.numSongs = numSongs;

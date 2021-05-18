@@ -237,8 +237,8 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
                 //TODO PLAY MUSIC
             }
 
-            TopSongs top = new TopSongs(new File(song.getName()).toString(), (float)1);
-            new BusinessFacadeImp().getSongManager().addingInfoSongPlayed(top);
+            //TopSongs top = new TopSongs(new File(song.getName()).toString(), (float)1);
+            //new BusinessFacadeImp().getSongManager().addingInfoSongPlayed(top);
         }
     }
 

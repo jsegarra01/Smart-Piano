@@ -38,7 +38,6 @@ public class SpotiUI extends JPanel {
     private final PlaylistUI playlistUI;
     private final TopSongsUI topSongsUI;
     //private final SongsUI songsUI;
-    private static StatisticsUI statisticsUI;
 
     public static JPanel spotiPanel = new JPanel(new CardLayout());
     private static final JButton createPlaylist = new JButton(CREATE_PLAYLIST);
@@ -64,7 +63,7 @@ public class SpotiUI extends JPanel {
      */
     public SpotiUI() {
         playlistUI = new PlaylistUI();
-        statisticsUI = new StatisticsUI(mainFrame);
+        statisticsUI = new StatisticsUI();
         topSongsUI = new TopSongsUI();
         //songsUI = new SongsUI();
 
