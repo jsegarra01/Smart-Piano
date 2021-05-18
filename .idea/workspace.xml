@@ -25,14 +25,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="Start feature commit">
-      <change afterPath="$PROJECT_DIR$/Songs/dsadsaddd.mid" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="Commit after finishing features soc en blay i no se fer commits">
       <change beforePath="$PROJECT_DIR$/Files/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/Files/config.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/SongManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/SongManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Business/SongManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/SongManager.java" afterDir="false" />
     </list>
-    <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="Commit to checkout el blay no sap fer commits" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -466,29 +461,26 @@
       <option name="project" value="LOCAL" />
       <updated>1621191098277</updated>
     </task>
-    <task id="LOCAL-00050" summary="table for the songs has been implemented, although still not filled with the correct information."></task>
-      <created>1621270267953</created>
     <task id="LOCAL-00050" summary="Start feature commit">
       <created>1621260694356</created>
       <option name="number" value="00050" />
       <option name="presentableId" value="LOCAL-00050" />
       <option name="project" value="LOCAL" />
-      <updated>1621260694356</updated>
       <updated>1621270267953</updated>
     </task>
-    <task id="LOCAL-00051" summary="Songs can be erased and we differentiate from when we click the table or the button">
-      <created>1621277250185</created>
+    <task id="LOCAL-00051" summary="Commit after finishing features">
+      <created>1621355259476</created>
       <option name="number" value="00051" />
       <option name="presentableId" value="LOCAL-00051" />
       <option name="project" value="LOCAL" />
-      <updated>1621277250185</updated>
+      <updated>1621355259476</updated>
     </task>
-    <task id="LOCAL-00052" summary="Songs can be added to a playlist. However, the views are not updated">
-      <created>1621290644074</created>
+    <task id="LOCAL-00052" summary="Commit after finishing features soc en blay i no se fer commits">
+      <created>1621355286518</created>
       <option name="number" value="00052" />
       <option name="presentableId" value="LOCAL-00052" />
       <option name="project" value="LOCAL" />
-      <updated>1621290644074</updated>
+      <updated>1621355286518</updated>
     </task>
     <task id="LOCAL-00053" summary="Playlists get updated when adding a new song, it may not be the best way but after a few hours doing this shit thing I did my best :)">
       <created>1621296986033</created>
@@ -511,8 +503,7 @@
       <option name="project" value="LOCAL" />
       <updated>1621354584881</updated>
     </task>
-    <option name="localTasksCounter" value="56" />
-    <option name="localTasksCounter" value="51" />
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -542,9 +533,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Piano does not keep playing anymore whenever the key is pressed. &#10;The tile changes its color, simulating that has been pressed with the keyboard" />
-    <MESSAGE value="Piano works perfectly fine. Checked that everything worked as it should." />
-    <MESSAGE value="I am not allowed to do finish feature :'(" />
     <MESSAGE value="Changing colors while changing through the CardLayout" />
     <MESSAGE value="Name of the tile appears now. The recording button is no longer an unreadable text, is an icon" />
     <MESSAGE value="piano finished" />
@@ -588,14 +576,15 @@
     <MESSAGE value="first graph done (is not the final yet)" />
     <MESSAGE value="Develop updated" />
     <MESSAGE value="Start feature commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Start feature commit" />
     <MESSAGE value="table for the songs has been implemented, although still not filled with the correct information." />
     <MESSAGE value="Songs can be erased and we differentiate from when we click the table or the button" />
     <MESSAGE value="Songs can be added to a playlist. However, the views are not updated" />
     <MESSAGE value="Playlists get updated when adding a new song, it may not be the best way but after a few hours doing this shit thing I did my best :)" />
     <MESSAGE value="Commit to checkout" />
     <MESSAGE value="Commit to checkout el blay no sap fer commits" />
-    <option name="LAST_COMMIT_MESSAGE" value="Commit to checkout el blay no sap fer commits" />
+    <MESSAGE value="Commit after finishing features" />
+    <MESSAGE value="Commit after finishing features soc en blay i no se fer commits" />
+    <option name="LAST_COMMIT_MESSAGE" value="Commit after finishing features soc en blay i no se fer commits" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
