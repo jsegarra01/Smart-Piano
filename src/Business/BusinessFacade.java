@@ -1,9 +1,11 @@
 package Business;
 
+import Business.Entities.Keys;
 import Business.Entities.Playlist;
 import Business.Entities.RecordingNotes;
 import Business.Entities.Song;
 
+import java.awt.image.Kernel;
 import java.util.ArrayList;
 
 /**
@@ -70,5 +72,16 @@ public interface BusinessFacade {
     Playlist getPlaylist(String name);
 
     boolean deleteSongFromPlaylist(String playlistName, String songName);
+
     SongManager getSongManager();
+
+    boolean addSongToPlaylist(String playlistName, String songName);
+
+    boolean deleteSong(int i);
+
+    void setTileArray(int songIndex);
+
+    ArrayList<Keys> getTiles();
+
+    void resetTilesKeys();
 }

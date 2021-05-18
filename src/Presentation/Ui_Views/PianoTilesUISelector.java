@@ -1,10 +1,13 @@
 package Presentation.Ui_Views;
 
 //imports needed for the piano tiles
+import Business.Entities.Keys;
 import Presentation.Manager.MainFrame;
 import javax.swing.*;
 import java.awt.*;
 import Presentation.Manager.PianoTilesUISelectorManager;
+
+import java.security.Key;
 import java.util.ArrayList;
 
 import static Presentation.DictionaryPiano.*;
@@ -32,6 +35,8 @@ public class PianoTilesUISelector extends Piano {
     public static JLayeredPane jLayeredPane = new JLayeredPane();
     public static JPanel scrollPanel = new JPanel();
     public static JButton playButtonTiles = new JButton(PLAY_BUTTON);
+    public static ArrayList<Keys> keys = new ArrayList<>();
+
     public JButton veryEasy = new JButton(VERY_EASY_MODE);
     public JButton easy = new JButton(EASY_MODE);
     public JButton normal = new JButton(NORMAL_MODE);
@@ -226,49 +231,38 @@ public class PianoTilesUISelector extends Piano {
     }
 
     public static void refreshTiles() {
-        int i = 0;
         float tile_position = 0;
 
         while (114 < jLayeredPane.getComponentCount()) {
             jLayeredPane.remove(0);
         }
-        while (i < 4) {
-            /*
-            switch (keyFromSong%24) {                           //gets the Key that needs to be played
-                /*
-                case 0:
-                    break;
-                case 1:
-                    break;
-                case 2:
-                    break;
-                case 3:
-                    break;
-                case 4:
-                    break;
-                case 5:
-                    break;
-                case 6:
-                    break;
 
+        for (Keys key: keys) {
+            float time = key.getStartTime()/160.5f * 4;
+            float duration = key.getDuration()/160.5f *4;
+            if ((int) ((timePassed - time + duration) * velocityModifier) >= 0 && ((timePassed - time + duration) * velocityModifier) < 400) {
+                tile_position = (key.getKeyCode() % 24) * 32.5f + 12;
+                if (key.getKeyCode()%24 > 4) {
+                    tile_position += 32.5f;
+                    if (key.getKeyCode()%24 > 11) {
+                        tile_position += 32.5f;
+                        if (key.getKeyCode()%24 > 16) {
+                            tile_position += 32.5f;
+                        }
+                    }
+                }
 
+                System.out.println(key.getKeyCode() + "With a duration of " + key.getDuration());
+
+                JPanel lala = new JPanel();                         //Every 50 pixels = 1 sec
+                lala.setBackground(Color.orange);           //initial time                                              //final - initial time
+                lala.setBounds((int) tile_position, (int) ((timePassed - time) * velocityModifier), 40, (int) (duration * velocityModifier));
+                lala.setVisible(true);
+                lala.setOpaque(true);
+                lala.revalidate();
+                lala.repaint();
+                jLayeredPane.add(lala, Integer.valueOf(2));
             }
-              */
-
-           //tile_position = getKeyToSound % 24 * 32.5f + 12;
-            tile_position = i % 24 * 65f + 12;
-
-            int finaltime = 200;
-
-            JPanel lala = new JPanel();                         //Every 50 pixels = 1 sec
-            lala.setBackground(Color.orange);           //initial time                                              //final - initial time
-            lala.setBounds((int) tile_position, (int) ((timePassed) * velocityModifier), 40, (int) ((60)*velocityModifier));
-            lala.setVisible(true);
-            lala.setOpaque(true);
-            lala.revalidate();
-            lala.repaint();
-            i++;
-            jLayeredPane.add(lala, Integer.valueOf(2));
         }
 
         jLayeredPane.revalidate();
@@ -296,4 +290,10 @@ public class PianoTilesUISelector extends Piano {
         scrollPanel.repaint();
         scrollPanel.updateUI();
     }
+
+    public static void setKeys(ArrayList<Keys> newKeys) {
+        keys.clear();
+        keys = newKeys;
+    }
+
 }

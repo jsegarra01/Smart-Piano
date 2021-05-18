@@ -117,7 +117,7 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
         switch (e.getActionCommand()) {
             case RECORDING_TIMER:                                                           //When 1000 milliseconds have passed
                 if (play && songStarted) {
-                    timePassed++;
+                    timePassed += 100;
                     refreshTiles();
                 }
                 break;
@@ -267,22 +267,14 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
             else {
                 songIndex = e.getLastIndex();
             }
-            System.out.println(new BusinessFacadeImp().getSong(songIndex).getSongName());
             songStarted = true;
             timer.restart();
-            System.out.println(new BusinessFacadeImp().getSong(songIndex).getSongName());
-            try {
-                ArrayList<Keys> keys = ReadMidi.readMidi(new BusinessFacadeImp().getSong(songIndex).getSongFile());
-                for (Keys key: keys) {
-                    System.out.println("number of key; " + key.getKeyCode() + " duration of the key in ticks: " + key.getDuration() + " key pressed at: " + key.getStartTime());
-                }
-            } catch (Exception exception) {
-                System.out.println("Error, suposo que no troba la file.");
-                exception.printStackTrace();
-            }
-            timer.start();
-            //TODO THIS INDEX OF THE SONG IS THE ONE WE WANT TO PLAY FROM THE GIVEN LIST. songIndex FTW
 
+            new BusinessFacadeImp().setTileArray(songIndex);                //Sets the tiles to play
+            setKeys(new BusinessFacadeImp().getTiles());                    //Gets the tiles to play.
+                                                                            //Is this necessary or it
+                                                                            //can be in presentation?
+            timer.start();
         }
     }
 
@@ -292,6 +284,7 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
         play = true;
         songIndex = 0;
         timer.stop();
+        new BusinessFacadeImp().resetTilesKeys();
         initTileGame();
         refreshTiles();
         refreshSongList();
