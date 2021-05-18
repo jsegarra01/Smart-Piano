@@ -81,4 +81,8 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
     public SongManager getSongManager() {
         return songManager;
     }
+
+    public boolean deleteSong(int i){
+        return songManager.deleteSong(getSong(i));
+    }
 }

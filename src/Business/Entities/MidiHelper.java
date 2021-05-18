@@ -206,13 +206,15 @@ public class MidiHelper {
         this.whatInstrumentIsPlayed = whatInstrumentToPlay;
         midiChannels[0].noteOff(noteValueToPlay,15);
     }
+
     public void playSong(File file){
         try {
              // Open device
             // Create sequence, the File must contain MIDI file data.
             Sequence sequence = MidiSystem.getSequence(file);
             sequencer.setSequence(sequence); // load it into sequencer
-            sequencer.start();  // start the playback
+            sequencer.start();               // start the playback
+
         } catch (InvalidMidiDataException | IOException ex) {
             ex.printStackTrace();
         }

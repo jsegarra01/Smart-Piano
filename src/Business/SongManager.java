@@ -57,4 +57,7 @@ public class SongManager {
     public Stadistics gettingStadistics(int hour){
         return songManager.getStadisticsHour(hour);
     }
+    public boolean deleteSong(Song song){
+        return songManager.deleteSong(song);
+    }
 }

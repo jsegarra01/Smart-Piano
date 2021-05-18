@@ -74,9 +74,10 @@ public class PlaylistUI extends JPanel {
     }
 
     public static void setSongsPlaylists(Playlist playlist){
+
         playlistP = playlist;
         panel.removeAll();
-        panel.repaint();
+        //panel.repaint();
         panel.setBackground(Color.black);
         panel.add(Box.createRigidArea(new Dimension(10, 50)));
         panel.add(initGeneral(playlist.getPlaylistName()), BorderLayout.NORTH);
@@ -136,7 +137,7 @@ public class PlaylistUI extends JPanel {
     private static JPanel setPlaylist(Playlist playlist, int i){
 
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-        JPanel panel1 = new JPanel();
+        JPanel panel1 = new JPanel(new GridLayout());
         JLabel label;
 
         panel1.setBorder(new LineBorder(Color.gray));
@@ -144,23 +145,31 @@ public class PlaylistUI extends JPanel {
         panel1.setMaximumSize(panel1.getPreferredSize());
         panel1.setBackground(Color.black);
 
+
+        //panel1.add(Box.createHorizontalStrut(20));
         label = new JLabel(playlist.getSongs().get(i).getSongName());
         label.setForeground(Color.WHITE);
+        label.add(Box.createRigidArea(new Dimension(250,50)));
+        label.add(Box.createHorizontalStrut(60));
         panel1.add(label);
-        panel1.add(Box.createHorizontalStrut(60));
+        //panel1.add(Box.createHorizontalStrut(60));
 
         label = new JLabel(playlist.getSongs().get(i).getAuthorName());
         label.setForeground(Color.WHITE);
+        label.add(Box.createRigidArea(new Dimension(160,50)));
+        label.add(Box.createHorizontalStrut(60));
         panel1.add(label);
-        panel1.add(Box.createHorizontalStrut(40));
+        //panel1.add(Box.createHorizontalStrut(40));
 
         label = new JLabel(String.valueOf(playlist.getSongs().get(i).getDuration()));
         label.setForeground(Color.WHITE);
+        label.add(Box.createRigidArea(new Dimension(50,50)));
         panel1.add(label);
-        panel1.add(Box.createHorizontalStrut(40));
+        //panel1.add(Box.createHorizontalStrut(40));
 
         label = new JLabel(sdf.format(playlist.getSongs().get(i).getRecordingDate()));
         label.setForeground(Color.WHITE);
+        label.add(Box.createRigidArea(new Dimension(200,50)));
         panel1.add(label);
 
         JButton button = new JButton(playlist.getSongs().get(i).getSongName());
