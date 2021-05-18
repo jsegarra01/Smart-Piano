@@ -28,11 +28,9 @@ public class FreePianoUI extends Piano {
     /**
      * Constructor for the FreePianoUI, you need to send the mainframe context and will create a card layout
      *
-     * @param mainFrame context necessary to create the card layout
+     //* @param mainFrame context necessary to create the card layout
      */
-    public FreePianoUI(final MainFrame mainFrame) {
-        super();
-        this.mainFrame = mainFrame;
+    public FreePianoUI() {
         keyboard = new ArrayList<>();
         initialize();
     }

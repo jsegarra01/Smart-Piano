@@ -25,6 +25,8 @@ public class DictionaryPiano {
     public static final String PLAYLIST_UI = "CreatePlaylistUI";
     public static final String RECORDING_TIMER = "recording timer";
     public static final String TOPSONGS_UI = "TopSongsUI";
+    public static final String SONGS_UI = "AllSongsUI";
+    public static final String SHOW_ALL_SONGS = "Songs";
     public static final String PLAYLIST_LABEL = "Playlists";
     public static final String SEARCH_SONG = "webHelperSongSearch";
     public static final String SHUFFLE_BUTTON = "shuffleSongs";
@@ -42,6 +44,9 @@ public class DictionaryPiano {
     public static final String PLAYLIST_INFO = "playlist_INFO";
     public static final String PLAYLIST_NAME = "playlistName";
     public static final String SONG_PLAYLIST = "songPlaylist";
+    public static final String DELETE_SONG = "deleteSong";
+    public static final String ADD_SONG = "addSongPlaylist";
+    public static final String ADD_SONG_COMM = "addToPlaylist";
 
     public static final Integer TB_SIZE = 10;
 }

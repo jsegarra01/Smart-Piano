@@ -56,10 +56,13 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
         return playlistManager.getFromName(name);
     }
 
+    @Override
     public boolean deleteSongFromPlaylist(String playlistName, String songName){
         return playlistManager.eliminateSongFromPlaylist(playlistName, songName);
     }
-
+    public boolean addSongToPlaylist(String playlistName, String songName){
+        return playlistManager.addSongToPlaylist(playlistName, songName);
+    }
 
     @Override
     public void setSongUser() {songManager.setSongs();}
@@ -74,9 +77,12 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
         return songManager.getSong(index);
     }
 
-
-
+    @Override
     public SongManager getSongManager() {
         return songManager;
+    }
+
+    public boolean deleteSong(int i){
+        return songManager.deleteSong(getSong(i));
     }
 }

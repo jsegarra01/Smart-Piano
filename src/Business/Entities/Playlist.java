@@ -4,10 +4,10 @@ import java.util.ArrayList;
 
 public class Playlist {
 
-    private int playlistId;
-    private String playlistName;
-    private ArrayList<Song> songs;
-    private String user;
+    private final int playlistId;
+    private final String playlistName;
+    private final ArrayList<Song> songs;
+    private final String user;
 
     public Playlist(int playlistId, String playlistName, ArrayList<Song> songs, String user) {
         this.playlistId = playlistId;

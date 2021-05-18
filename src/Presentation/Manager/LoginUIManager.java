@@ -8,7 +8,6 @@ import Presentation.Ui_Views.LoginUI;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 import static Presentation.Dictionary_login.*;
 import static Presentation.Manager.MainFrame.card;

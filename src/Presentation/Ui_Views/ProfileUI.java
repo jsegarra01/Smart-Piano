@@ -26,15 +26,12 @@ public class ProfileUI extends JPanel{
     private JButton logOut = new JButton(LOGOUT_BUTTON);
     private JButton deleteAccount = new JButton(DELETE_BUTTON);
     private JButton back = new JButton(BACK_BUTTON);
-    private MainFrame mainFrame;
+
 
     /**
      * Constructor for the ProfileUI, you need to send the mainframe context and will create a card layout
-     * @param mainFrame context necessary to create the card layout
      */
-    public ProfileUI(final MainFrame mainFrame) {
-        super();
-        this.mainFrame=mainFrame;
+    public ProfileUI() {
         initialize();
     }
 

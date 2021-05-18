@@ -78,8 +78,6 @@ public class SongCsvDAO implements SongDAO {
             return true;
 
         } catch (SQLException throwable) {
-            throwable.printStackTrace();
-            System.out.println("tu puta madre");
             return false;
         }
     }
@@ -112,7 +110,6 @@ public class SongCsvDAO implements SongDAO {
             ResultSet myRs = ConnectSQL.getInstance().createStatement().executeQuery("select * from SongT as s where s.songId LIKE " + id);
             if(myRs.next()){
                 Song song = new Song(
-
                         myRs.getString("songName"),
                         myRs.getString("authorsName"),
                         myRs.getFloat("duration"),
@@ -123,7 +120,6 @@ public class SongCsvDAO implements SongDAO {
                 myRs.close();
                 return song;
             }else{
-                System.out.println("TU PUTA MADRE");
                 return null;
             }
         } catch (SQLException throwables) {

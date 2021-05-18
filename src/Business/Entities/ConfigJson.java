@@ -16,16 +16,8 @@ public class ConfigJson {
         return port;
     }
 
-    public void setPort(int port) {
-        this.port = port;
-    }
-
     public String getIpAddress() {
         return ipAddress;
-    }
-
-    public void setIpAddress(String ipAddress) {
-        this.ipAddress = ipAddress;
     }
 
     public String getName() {
@@ -50,13 +42,5 @@ public class ConfigJson {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public int getScrappingTime() {
-        return scrappingTime;
-    }
-
-    public void setScrappingTime(int scrappingTime) {
-        this.scrappingTime = scrappingTime;
     }
 }

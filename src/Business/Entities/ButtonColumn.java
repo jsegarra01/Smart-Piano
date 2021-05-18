@@ -5,6 +5,8 @@ import javax.swing.*;
 import javax.swing.border.*;
 import javax.swing.table.*;
 
+import static Presentation.DictionaryPiano.DELETE_SONG;
+
 /**
  *  The ButtonColumn class provides a renderer and an editor that looks like a
  *  JButton. The renderer and editor will then be used for a specified column
@@ -48,9 +50,13 @@ public class ButtonColumn extends AbstractCellEditor
         this.action = action;
 
         renderButton = new JButton();
+        renderButton.setForeground(Color.red);
+        //renderButton.addActionListener(action);
         editButton = new JButton();
+        editButton.setForeground(Color.red);
         editButton.setFocusPainted( false );
         editButton.addActionListener( this );
+        editButton.setActionCommand(DELETE_SONG);
         originalBorder = editButton.getBorder();
         setFocusBorder( new LineBorder(Color.BLUE) );
 
@@ -135,15 +141,19 @@ public class ButtonColumn extends AbstractCellEditor
     public Component getTableCellRendererComponent(
             JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column)
     {
+        //renderButton.addActionListener(action);
         if (isSelected)
         {
             renderButton.setForeground(table.getSelectionForeground());
-            renderButton.setBackground(table.getSelectionBackground());
+            renderButton.setForeground(Color.blue);
+            renderButton.setBackground(UIManager.getColor("Button.background"));
         }
         else
         {
-            renderButton.setForeground(table.getForeground());
+            //renderButton.setForeground(table.getForeground());
             renderButton.setBackground(UIManager.getColor("Button.background"));
+            renderButton.setForeground(Color.black);
+            //renderButton.setBackground(Color.red);
         }
 
         if (hasFocus)

@@ -37,6 +37,7 @@ import static Presentation.Ui_Views.Tile.*;
  *
  */
 public class PianoTilesUISelector extends Piano {
+    private  static MainFrame mainFrame;
     private static ArrayList<Tile> keyboard;
     private static int i = 0;
     public static ArrayList<Tile> getKeyboard() {
@@ -58,7 +59,7 @@ public class PianoTilesUISelector extends Piano {
      */
     public PianoTilesUISelector(final MainFrame mainFrame) {
         super();
-        Piano.mainFrame = mainFrame;
+        this.mainFrame = mainFrame;
         keyboard = new ArrayList<>();
         initialize();
     }
@@ -81,7 +82,7 @@ public class PianoTilesUISelector extends Piano {
         panel.setBackground(Color.getHSBColor(0,0,0.2f));
 
         //This will be another card layout, which we will have to divide between the free piano or the song piano in order use the same piano for both
-       // panel.add(Box.createRigidArea(new Dimension(10, 320)), BorderLayout.CENTER);
+        // panel.add(Box.createRigidArea(new Dimension(10, 320)), BorderLayout.CENTER);
         panel.add(createGamePane(), BorderLayout.CENTER);
 
         layeredPane = makeKeys();

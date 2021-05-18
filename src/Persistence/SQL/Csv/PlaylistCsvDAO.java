@@ -116,6 +116,21 @@ public class PlaylistCsvDAO implements PlaylistDAO {
             st.execute();
             return true;
         } catch (SQLException throwables) {
+            return false;
+        }
+    }
+    public boolean addSongToPlaylist(String playlistName, String songName){
+        try {
+            PreparedStatement st = ConnectSQL.getInstance().prepareStatement("INSERT INTO SongPlaylistsT VALUES((" +
+                    " SELECT s.songId " +
+                    " FROM SongT s " +
+                    " WHERE s.songName = '" + songName + "'),(" +
+                    " SELECT p.playlistId " +
+                    " FROM PlaylistT p " +
+                    " WHERE p.playlistName = '" + playlistName +"'));");
+            st.execute();
+            return true;
+        } catch (SQLException throwables) {
             throwables.printStackTrace();
             return false;
         }

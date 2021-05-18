@@ -4,15 +4,16 @@ package Presentation.Manager;
 import Business.Entities.*;
 import Business.BusinessFacadeImp;
 import Business.Entities.MidiHelper;
-import Business.Entities.Translator;
 import Business.Entities.webHandler;
-import Business.PlaylistManager;
-import Presentation.Dictionary_login;
+import Business.UserManager;
 import Presentation.Ui_Views.PlaylistUI;
+import Presentation.Ui_Views.SongsUI;
 import Presentation.Ui_Views.SpotiUI;
 
+import javax.sound.midi.MidiChannel;
 import javax.sound.midi.MidiUnavailableException;
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -21,6 +22,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.io.File;
+import java.util.logging.Handler;
 
 import static Presentation.DictionaryPiano.*;
 import static Presentation.Ui_Views.SpotiUI.*;
@@ -36,22 +38,23 @@ import static Presentation.Ui_Views.Tile.resizeIcon;
  * @version 1.0 21 Apr 2021
  *
  */
-public class SpotiFrameManager implements ActionListener, MouseListener {
+public class SpotiFrameManager extends AbstractAction implements ActionListener, MouseListener {
 
-    private String URLRoute = "https://www.mutopiaproject.org/cgibin/make-table.cgi?Instrument=Piano";
-    private String path = "Files";
+    private static final String URLRoute = "https://www.mutopiaproject.org/cgibin/make-table.cgi?Instrument=Piano";
+    private static final String path = "Files";
     private boolean play=false;
-    private ImageIcon playIcon = new ImageIcon("Files/drawable/playbuttonWhite.png");
-    private ImageIcon pauseIcon = new ImageIcon("Files/drawable/pauseWhite.png");
+    private static final ImageIcon playIcon = new ImageIcon("Files/drawable/playbuttonWhite.png");
+    private static final ImageIcon pauseIcon = new ImageIcon("Files/drawable/pauseWhite.png");
     private float minPlayed;
     private long startMin=0;
     private long lastMin=0;
     private Stadistics stadistics;
+    private static boolean addSong = false;
+    private static Playlist playlist;
 
-    private Date date = new Date();
+    private final Date date = new Date();
 
     private MidiHelper finalMidiHelper;
-
     {
         try {
             finalMidiHelper = new MidiHelper();
@@ -76,8 +79,13 @@ public class SpotiFrameManager implements ActionListener, MouseListener {
     public void actionPerformed(ActionEvent e) {
         // We distinguish between our buttons.
         CardLayout cc = (CardLayout) (spotiPanel.getLayout());
-
+        Object obj = e.getSource();
         switch (e.getActionCommand()) {
+            case SHOW_ALL_SONGS:
+                addSong = false;
+                addSongsAll(new BusinessFacadeImp().getSongManager().getSongs());
+                cc.show(spotiPanel, SONGS_UI);
+                break;
             case CREATE_STADISTICS:
                 addStadistics(getNumSongs(), getMinPlayed());
                 cc.show(spotiPanel, STATISTICS_UI);
@@ -116,23 +124,53 @@ public class SpotiFrameManager implements ActionListener, MouseListener {
                 break;
             case PLAYLIST_INFO:
                 JButton button;
-                Object obj = e.getSource();
                 if (obj instanceof JButton) {
                     button = (JButton) obj;
-                    PlaylistUI.setSongsPlaylists(new BusinessFacadeImp().getPlaylist(button.getName()));
+                    new BusinessFacadeImp().getPlaylistManager().setPlaylists(UserManager.getUser().getUserName());
+                    playlist = new BusinessFacadeImp().getPlaylist(button.getName());
+                    PlaylistUI.setSongsPlaylists(playlist);
                     cc.show(spotiPanel, PLAYLIST_UI);
                 }
                 break;
             case SONG_PLAYLIST:
                 JButton song;
-                Object obj2 = e.getSource();
-                if (obj2 instanceof JButton) {
-                    song = (JButton) obj2;
-                    PlaylistUI.deleteFromPanel(song.getName());
-                    new BusinessFacadeImp().deleteSongFromPlaylist(PlaylistUI.getPlaylist().getPlaylistName(),song.getName());
-                    PlaylistUI.setSongsPlaylists(PlaylistUI.getPlaylist());
+                addSong = false;
+                if (obj instanceof JButton) {
+                    song = (JButton) obj;
+                    //PlaylistUI.deleteFromPanel(song.getName());
+                    boolean errorDeleting = new BusinessFacadeImp().deleteSongFromPlaylist(playlist.getPlaylistName(),song.getName());
+                    new BusinessFacadeImp().getPlaylistManager().setPlaylists(UserManager.getUser().getUserName());
+                    playlist = new BusinessFacadeImp().getPlaylist(playlist.getPlaylistName());
+                    PlaylistUI.setSongsPlaylists(playlist);
                 }
                 break;
+            case ADD_SONG_COMM:
+                addSongsToPlaylist(new BusinessFacadeImp().getSongManager().getSongs());
+                cc.show(spotiPanel, SONGS_UI);
+                addSong = true;
+                break;
+            default:
+                if(obj instanceof JTable){
+                    JTable table = (JTable)e.getSource();
+                    int modelRow = Integer.parseInt( e.getActionCommand() );
+                    if(addSong){
+                        boolean updatingSong = new BusinessFacadeImp().addSongToPlaylist(playlist.getPlaylistName(),new BusinessFacadeImp().getSong(modelRow).getSongName());
+                        new BusinessFacadeImp().getPlaylistManager().setPlaylists(UserManager.getUser().getUserName());
+                        //playlist =
+                        //PlaylistUI.addSongToPanel(new BusinessFacadeImp().getSong(modelRow));
+                        playlist = new BusinessFacadeImp().getPlaylist(playlist.getPlaylistName());
+                        PlaylistUI.setSongsPlaylists(playlist);
+                        cc.show(spotiPanel, PLAYLIST_UI);
+                        addSong = false;
+                    }else{
+                        ((DefaultTableModel)table.getModel()).removeRow(modelRow);
+                        new BusinessFacadeImp().deleteSong(modelRow);
+                        new BusinessFacadeImp().setSongUser();
+
+                    }
+                    break;
+                }
+
         }
     }
     public static void addPlaylists(ArrayList<Playlist> playlists){
@@ -145,7 +183,7 @@ public class SpotiFrameManager implements ActionListener, MouseListener {
     }*/
 
     public static LinkedList<Float> getNumSongs(){
-        LinkedList<Float> numSongs = new LinkedList<Float>();
+        LinkedList<Float> numSongs = new LinkedList<>();
         for(int i=0; i<24; i++ ){
             if(new BusinessFacadeImp().getSongManager().gettingStadistics(i) == null){
                 numSongs.add((float) 0);
@@ -157,7 +195,7 @@ public class SpotiFrameManager implements ActionListener, MouseListener {
     }
 
     public LinkedList<Float> getMinPlayed(){
-        LinkedList<Float> numMin = new LinkedList<Float>();
+        LinkedList<Float> numMin = new LinkedList<>();
         for(int i=0; i<24; i++ ){
             if(new BusinessFacadeImp().getSongManager().gettingStadistics(i) == null){
                 numMin.add((float)0);
@@ -177,7 +215,9 @@ public class SpotiFrameManager implements ActionListener, MouseListener {
     @Override
     public void mousePressed(MouseEvent e) {
         JPanel song;
+        JTable table;
         Object obj = e.getSource();
+        int button = e.getButton();
         if (obj instanceof JPanel) {
             if(play){
                 finalMidiHelper.stopSong();
@@ -188,6 +228,12 @@ public class SpotiFrameManager implements ActionListener, MouseListener {
                     (int) Math.round(playButton.getIcon().getIconHeight()*0.09)));
             play = true;
             finalMidiHelper.playSong(new File(song.getName()));
+        }else if(obj instanceof  JTable){
+            table = (JTable) obj;
+            if(table.getEditorComponent() == null){
+                //TODO PLAY MUSIC
+            }
+
         }
     }
 

@@ -26,7 +26,7 @@ public class SignUpUiManager  implements ActionListener {
      * Parametrized constructor
      */
     public SignUpUiManager() {
-        }
+    }
 
     /**
      * Method that will be called every time a button is pressed, overriden from the interface to provide an implementation.

@@ -22,10 +22,9 @@ import static Business.UserManager.getUser;
 
 public class SongManager {
     private Song song;
-    private SongCsvDAO songManager = new SongCsvDAO();
-    LoginUserCsvDAO loginUserCsvDAO = new LoginUserCsvDAO();
+    private final SongCsvDAO songManager = new SongCsvDAO();
     private static ArrayList<Song> songs;
-    private static ArrayList<String> songNames = new ArrayList<>();
+    private static final ArrayList<String> songNames = new ArrayList<>();
 
     public ArrayList<String> getSongNames() {
         return songNames;
@@ -61,5 +60,8 @@ public class SongManager {
 
     public Stadistics gettingStadistics(int hour){
         return songManager.getStadisticsHour(hour);
+    }
+    public boolean deleteSong(Song song){
+        return songManager.deleteSong(song);
     }
 }
