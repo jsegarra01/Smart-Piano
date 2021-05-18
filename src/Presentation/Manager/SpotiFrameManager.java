@@ -85,7 +85,8 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
         switch (e.getActionCommand()) {
             case SHOW_ALL_SONGS:
                 addSong = false;
-                addSongsAll(new BusinessFacadeImp().getSongManager().getSongs());
+                //addSongsAll(new BusinessFacadeImp().getSongManager().getSongs());
+                SongsUI.initTable(new BusinessFacadeImp().getSongManager().getSongs(), "Delete");
                 cc.show(spotiPanel, SONGS_UI);
                 break;
             case CREATE_STADISTICS:
@@ -148,7 +149,8 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
                 }
                 break;
             case ADD_SONG_COMM:
-                addSongsToPlaylist(new BusinessFacadeImp().getSongManager().getSongs());
+                //addSongsToPlaylist(new BusinessFacadeImp().getSongManager().getSongs());
+                SongsUI.initTable(new BusinessFacadeImp().getSongManager().getSongs(), "Add");
                 cc.show(spotiPanel, SONGS_UI);
                 addSong = true;
                 break;

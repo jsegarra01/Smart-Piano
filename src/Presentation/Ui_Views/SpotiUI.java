@@ -34,10 +34,10 @@ import static Presentation.Ui_Views.Tile.resizeIcon;
  *
  */
 public class SpotiUI extends JPanel {
-    private StatisticsUI statisticsUI;
+    private final StatisticsUI statisticsUI;
     private final PlaylistUI playlistUI;
     private final TopSongsUI topSongsUI;
-    //private final SongsUI songsUI;
+    private final SongsUI songsUI;
 
     public static JPanel spotiPanel = new JPanel(new CardLayout());
     private static final JButton createPlaylist = new JButton(CREATE_PLAYLIST);
@@ -65,7 +65,7 @@ public class SpotiUI extends JPanel {
         playlistUI = new PlaylistUI();
         statisticsUI = new StatisticsUI();
         topSongsUI = new TopSongsUI();
-        //songsUI = new SongsUI();
+        songsUI = new SongsUI();
 
         initialize();
     }
@@ -79,6 +79,7 @@ public class SpotiUI extends JPanel {
         spotiPanel.add(statisticsUI, STATISTICS_UI);
         spotiPanel.add(topSongsUI, TOPSONGS_UI);
         spotiPanel.add(playlistUI, PLAYLIST_UI);
+        spotiPanel.add(songsUI, SONGS_UI);
         add(spotiPanel, BorderLayout.CENTER);
 
         //left buttons
@@ -101,6 +102,19 @@ public class SpotiUI extends JPanel {
 
 
 
+
+        showStadistics.setPreferredSize(new Dimension(200,30));
+        showStadistics.setMaximumSize(songNameInputText.getPreferredSize());
+
+        topSongs.setPreferredSize(new Dimension(200,30));
+        topSongs.setMaximumSize(songNameInputText.getPreferredSize());
+
+        songsList.setPreferredSize(new Dimension(200,30));
+        songsList.setMaximumSize(songNameInputText.getPreferredSize());
+
+        playlistLabel.setPreferredSize(new Dimension(200,30));
+        playlistLabel.setMaximumSize(songNameInputText.getPreferredSize());
+
         showStadistics.setActionCommand(CREATE_STADISTICS);
         confButtonLeft(showStadistics, 0, 115);
 
@@ -122,11 +136,13 @@ public class SpotiUI extends JPanel {
 
         //JScrollPane scroll = new JScrollPane();
         registerController(new SpotiFrameManager());
+        leftList.add(Box.createRigidArea(new Dimension(210, 10)));
+        leftList.setPreferredSize(new Dimension(200, 200));
+        leftList.setMaximumSize(getPreferredSize());
         leftList.add(songNameInputText);
         leftList.add(searchButton);
         leftList.add(showStadistics);
         leftList.add(songsList);
-        leftList.add(Box.createRigidArea(new Dimension(210, 10)));
         leftList.add(topSongs);
         leftList.add(playlistLabel);
         leftList.add(createPlaylist);
@@ -208,13 +224,13 @@ public class SpotiUI extends JPanel {
         return songNameInputText.getText();
     }
 
-    public static void addSongsAll(ArrayList<Song> songs){
+    /*public static void addSongsAll(ArrayList<Song> songs){
         spotiPanel.add(new SongsUI(songs, "Delete"), SONGS_UI);
     }
     public static void addSongsToPlaylist(ArrayList<Song> songs){
         spotiPanel.add(new SongsUI(songs, "Add"), SONGS_UI);
     }
-
+*/
 
     //TODO poner bn las boxes (size lateral)
     public static void addPlaylists(ArrayList<Playlist> playlists){

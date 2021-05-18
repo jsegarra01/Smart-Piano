@@ -58,7 +58,7 @@ public class ButtonColumn extends AbstractCellEditor
         editButton.addActionListener( this );
         editButton.setActionCommand(DELETE_SONG);
         originalBorder = editButton.getBorder();
-        setFocusBorder( new LineBorder(Color.BLUE) );
+        //setFocusBorder( new LineBorder(Color.BLUE) );
 
         TableColumnModel columnModel = table.getColumnModel();
         columnModel.getColumn(column).setCellRenderer( this );
