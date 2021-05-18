@@ -13,6 +13,7 @@ import Business.Entities.Stadistics;
 import Persistence.SQL.Csv.SongCsvDAO;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 
 import static Business.Entities.SongToMidi.writeMidi;
@@ -34,6 +35,8 @@ public class SongManager {
         writeMidi(songName, new SongRecorded(recordedNotes,songName, isPublic).getRecordingNotes(), endtime);
         song = new Song(songName, UserManager.getUser().getUserName(), endtime, isPublic, "Songs/" + songName + ".mid", UserManager.getUser().getUserName());
         songManager.saveSong(song);
+        songs.removeAll(songs);
+        setSongs();
     }
     public ArrayList<Song> getSongs() {
         return songs;
@@ -46,6 +49,7 @@ public class SongManager {
     public void setSongs() {
         //TODO GET ALL THE PUBLIC SONGS + PRIVATE SONGS IF USER != GUEST
         //songs = songManager.getAllSongs(getUser());
+        songNames.removeAll(songNames);
         songs = songManager.getAllSongs();
         for (Song song : songs) {
             songNames.add(song.getSongName());
