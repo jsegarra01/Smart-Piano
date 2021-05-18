@@ -24,6 +24,7 @@ import java.io.File;
 
 import static Presentation.DictionaryPiano.*;
 import static Presentation.Ui_Views.SpotiUI.*;
+import static Presentation.Ui_Views.StatisticsUI.letsInitializeGraphs;
 import static Presentation.Ui_Views.Tile.resizeIcon;
 
 
@@ -79,7 +80,7 @@ public class SpotiFrameManager implements ActionListener, MouseListener {
 
         switch (e.getActionCommand()) {
             case CREATE_STADISTICS:
-                addStadistics(getNumSongs(), getMinPlayed());
+                letsInitializeGraphs(getMinPlayed(), getNumSongs());
                 cc.show(spotiPanel, STATISTICS_UI);
                 break;
             case SHOW_TOP_SONGS:
@@ -108,8 +109,9 @@ public class SpotiFrameManager implements ActionListener, MouseListener {
                     lastMin = System.currentTimeMillis();
                     // String lastSong =
                     minPlayed = (float)(lastMin - startMin)/60000;
-                    Stadistics stats = new Stadistics(date.getHours(), (float)1, minPlayed);
-                    new BusinessFacadeImp().getSongManager().addingStadistics(stats);
+                    //Stadistics stats = new Stadistics(date.getHours(), (float)1, minPlayed);
+                    new BusinessFacadeImp().getSongManager().addingStadistics(new Stadistics(date.getHours(), (float)1, minPlayed));
+                    //new BusinessFacadeImp().getSongManager().
                     play = false;
                     finalMidiHelper.stopSong();
                 }

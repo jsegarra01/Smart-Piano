@@ -16,6 +16,8 @@ import java.util.LinkedList;
 import java.util.List;
 
 import static Presentation.DictionaryPiano.*;
+import static Presentation.Ui_Views.StatisticsUI.setNumMin;
+import static Presentation.Ui_Views.StatisticsUI.setNumSongs;
 import static Presentation.Ui_Views.Tile.resizeIcon;
 
 
@@ -32,7 +34,7 @@ import static Presentation.Ui_Views.Tile.resizeIcon;
  */
 public class SpotiUI extends JPanel {
     private static MainFrame mainFrame;
-    private StatisticsUI statisticsUI;
+    private static StatisticsUI statisticsUI;
     private PlaylistUI playlistUI;
     private TopSongsUI topSongsUI;
 
@@ -63,7 +65,7 @@ public class SpotiUI extends JPanel {
         super();
         this.mainFrame=mainFrame;
         playlistUI = new PlaylistUI(mainFrame);
-        //statisticsUI = new StatisticsUI(mainFrame);
+        statisticsUI = new StatisticsUI(mainFrame);
         topSongsUI = new TopSongsUI(mainFrame);
 
         initialize();
@@ -75,7 +77,7 @@ public class SpotiUI extends JPanel {
     private void initialize() {
         setLayout(new BorderLayout());
 
-        //spotiPanel.add(statisticsUI, STATISTICS_UI);
+        spotiPanel.add(statisticsUI, STATISTICS_UI);
         spotiPanel.add(topSongsUI, TOPSONGS_UI);
         spotiPanel.add(playlistUI, PLAYLIST_UI);
         add(spotiPanel, BorderLayout.CENTER);
@@ -203,9 +205,10 @@ public class SpotiUI extends JPanel {
         return songNameInputText.getText();
     }
 
-    public static void addStadistics(LinkedList<Float> numSongs, LinkedList<Float> minSongs){
+   /* public static void addStadistics(LinkedList<Float> numSongs, LinkedList<Float> minSongs){
         spotiPanel.add(new StatisticsUI(mainFrame, numSongs, minSongs), STATISTICS_UI);
-    }
+    }*/
+
 
     //TODO poner bn las boxes (size lateral)
     public static void addPlaylists(ArrayList<Playlist> playlists){
