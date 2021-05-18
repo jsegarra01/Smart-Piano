@@ -26,7 +26,9 @@ import java.util.logging.Handler;
 
 import static Presentation.DictionaryPiano.*;
 import static Presentation.Ui_Views.SpotiUI.*;
+import static Presentation.Ui_Views.StatisticsUI.letsInitializeGraphs;
 import static Presentation.Ui_Views.Tile.resizeIcon;
+import static javax.swing.SwingConstants.TOP;
 
 
 /**
@@ -87,7 +89,7 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
                 cc.show(spotiPanel, SONGS_UI);
                 break;
             case CREATE_STADISTICS:
-                addStadistics(getNumSongs(), getMinPlayed());
+                letsInitializeGraphs(getMinPlayed(), getNumSongs());
                 cc.show(spotiPanel, STATISTICS_UI);
                 break;
             case SHOW_TOP_SONGS:
@@ -116,8 +118,9 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
                     lastMin = System.currentTimeMillis();
                     // String lastSong =
                     minPlayed = (float)(lastMin - startMin)/60000;
-                    Stadistics stats = new Stadistics(date.getHours(), (float)1, minPlayed);
-                    new BusinessFacadeImp().getSongManager().addingStadistics(stats);
+                    //Stadistics stats = new Stadistics(date.getHours(), (float)1, minPlayed);
+                    new BusinessFacadeImp().getSongManager().addingStadistics(new Stadistics(date.getHours(), (float)1, minPlayed));
+
                     play = false;
                     finalMidiHelper.stopSong();
                 }
@@ -234,6 +237,8 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
                 //TODO PLAY MUSIC
             }
 
+            TopSongs top = new TopSongs(new File(song.getName()).toString(), (float)1);
+            new BusinessFacadeImp().getSongManager().addingInfoSongPlayed(top);
         }
     }
 

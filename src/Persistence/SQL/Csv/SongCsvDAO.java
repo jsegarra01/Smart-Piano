@@ -2,6 +2,7 @@ package Persistence.SQL.Csv;
 
 import Business.Entities.Song;
 import Business.Entities.Stadistics;
+import Business.Entities.TopSongs;
 import Business.Entities.User;
 import Persistence.SQL.ConnectSQL;
 import Persistence.SongDAO;
@@ -147,6 +148,7 @@ public class SongCsvDAO implements SongDAO {
         return songFromCsv("%");
     }
 
+
     @Override
     public ArrayList<Song> getPopularSongs() {
         try {
@@ -162,10 +164,15 @@ public class SongCsvDAO implements SongDAO {
         }
     }
 
-
+    /**
+     * Method that saves the stadistics into the databases
+     * @param myStats defines the stadistics of the song (the hour, how many songs have been played and for how much)
+     * @return boolean that indicates if the information has been saved correctly
+     */
     @Override
     public boolean saveStadistics(Stadistics myStats) {
         try {
+            //First we check if there is already information for that particular hour in the databases
             if(getStadisticsHour(myStats.getHour()) == null){
                 PreparedStatement st = ConnectSQL.getInstance().prepareStatement("insert into SongStatisticsHourlyT values ('" +
                         myStats.getHour() + "', '" +
@@ -173,7 +180,7 @@ public class SongCsvDAO implements SongDAO {
                         myStats.getMinPlayed() + "')");
                 st.execute();
                 return true;
-
+            //If there is already information we do an update instead than an insert
             }else{
                 PreparedStatement st2 = ConnectSQL.getInstance().prepareStatement("update SongStatisticsHourlyT SET numPlayed = numPlayed + " +
                         myStats.getNumPlayed() + " where hour = " +
@@ -192,8 +199,11 @@ public class SongCsvDAO implements SongDAO {
         }
     }
 
-
-
+    /**
+     * Method that gets from the databases the stadistics for a specific hour
+     * @param hour integer that indicates the hour
+     * @return Stadistics for that hour
+     */
     @Override
     public Stadistics getStadisticsHour(int hour) {
         try {
@@ -205,6 +215,52 @@ public class SongCsvDAO implements SongDAO {
                         myRs.getFloat("minPlayed"));
                 myRs.close();
                 return stadistics;
+            }else{
+                return null;
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+            return null;
+        }
+    }
+
+    /**
+     * Method that saves into the databases the songs that have been listened
+     * @param topSongs song
+     * @return Stadistics for that hour
+     */
+    @Override
+    public boolean saveListenedSongs(TopSongs topSongs) {
+        try {
+            if(getListenedSongs(topSongs.getNameSong()) == null){
+                PreparedStatement st = ConnectSQL.getInstance().prepareStatement("insert into TopSongsT values ('" +
+                        topSongs.getNameSong() + "', '1')");
+                st.execute();
+                return true;
+
+            }else{
+                PreparedStatement st2 = ConnectSQL.getInstance().prepareStatement("update TopSongsT SET numPlayed = numPlayed + 1 where songName = " +
+                        topSongs.getNameSong() + ";");
+                st2.executeUpdate();
+                return true;
+            }
+
+        } catch (SQLException throwable) {
+            throwable.printStackTrace();
+            return false;
+        }
+    }
+
+    @Override
+    public TopSongs getListenedSongs(String name) {
+        try {
+            ResultSet myRs = ConnectSQL.getInstance().createStatement().executeQuery("select * from TopSongsT as s where s.songName like '" + name + "'");
+            if(myRs.next()){
+                TopSongs topSongs = new TopSongs(
+                        myRs.getString("songName"),
+                        myRs.getFloat("numPlayed"));
+                myRs.close();
+                return topSongs;
             }else{
                 return null;
             }

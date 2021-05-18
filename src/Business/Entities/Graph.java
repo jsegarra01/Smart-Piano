@@ -8,23 +8,29 @@ import java.util.List;
 public class Graph extends JPanel {
     private int width = 400;
     private int height = 350;
-    private int padding = 25;
+    private int padding = 30;
     private int labelPadding = 25;
-    private Color lineColor = Color.BLUE;
+    private Color lineColor1 = Color.BLUE;
+    private Color lineColor2 = Color.RED;
     private Color pointColor = Color.DARK_GRAY;
     private Color gridColor = Color.GRAY;
     private static final Stroke GRAPH_STROKE = new BasicStroke(2f); // used to draw shape’s outline
     private int pointWidth = 4;
     private int numberYDivisions = 10;
     private List<Float> yPoints;
+    private String yAxis = "";
+    private boolean graph1 = true;
 
-    public Graph(List<Float> yPoints) {
+    public Graph(List<Float> yPoints, String yAxis, boolean graph1) {
         this.yPoints = yPoints;
+        this.yAxis = yAxis;
+        this.graph1 = graph1;
     }
 
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
+
         Graphics2D g2 = (Graphics2D) g;
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
@@ -86,7 +92,11 @@ public class Graph extends JPanel {
         g2.drawLine(padding + labelPadding, getHeight() - padding - labelPadding, getWidth() - padding, getHeight() - padding - labelPadding);
 
         Stroke oldStroke = g2.getStroke();
-        g2.setColor(lineColor);
+        if(graph1){
+            g2.setColor(lineColor1);
+        } else{
+            g2.setColor(lineColor2);
+        }
         g2.setStroke(GRAPH_STROKE);
         for (int i = 0; i < graphPoints.size() - 1; i++) {
             int x1 = graphPoints.get(i).x;
@@ -105,6 +115,13 @@ public class Graph extends JPanel {
             int ovalH = pointWidth;
             g2.fillOval(x, y, ovalW, ovalH);
         }
+        g.setColor(Color.black);
+
+        //to write y and x axis
+        g.drawString("Hours", width/2, height - 10);
+        g2.rotate(-Math.toRadians(90), width/2, height/2);
+        g.drawString(yAxis, height/2 - yAxis.length(), -10);
+        g2.rotate(Math.toRadians(90), width/2, height/2);
     }
 
     private double getMinY() {

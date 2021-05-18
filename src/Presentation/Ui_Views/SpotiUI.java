@@ -17,6 +17,8 @@ import java.util.LinkedList;
 import java.util.List;
 
 import static Presentation.DictionaryPiano.*;
+import static Presentation.Ui_Views.StatisticsUI.setNumMin;
+import static Presentation.Ui_Views.StatisticsUI.setNumSongs;
 import static Presentation.Ui_Views.Tile.resizeIcon;
 
 
@@ -36,7 +38,7 @@ public class SpotiUI extends JPanel {
     private final PlaylistUI playlistUI;
     private final TopSongsUI topSongsUI;
     //private final SongsUI songsUI;
-
+    private static StatisticsUI statisticsUI;
 
     public static JPanel spotiPanel = new JPanel(new CardLayout());
     private static final JButton createPlaylist = new JButton(CREATE_PLAYLIST);
@@ -62,7 +64,7 @@ public class SpotiUI extends JPanel {
      */
     public SpotiUI() {
         playlistUI = new PlaylistUI();
-        //statisticsUI = new StatisticsUI(mainFrame);
+        statisticsUI = new StatisticsUI(mainFrame);
         topSongsUI = new TopSongsUI();
         //songsUI = new SongsUI();
 
@@ -75,10 +77,9 @@ public class SpotiUI extends JPanel {
     private void initialize() {
         setLayout(new BorderLayout());
 
-        //spotiPanel.add(statisticsUI, STATISTICS_UI);
+        spotiPanel.add(statisticsUI, STATISTICS_UI);
         spotiPanel.add(topSongsUI, TOPSONGS_UI);
         spotiPanel.add(playlistUI, PLAYLIST_UI);
-        //spotiPanel.add(songsUI, SONGS_UI);
         add(spotiPanel, BorderLayout.CENTER);
 
         //left buttons
@@ -117,7 +118,6 @@ public class SpotiUI extends JPanel {
 
         createPlaylist.setActionCommand(CREATE_PLAYLIST);
         confButtonLeft(createPlaylist, 12, 90);
-
 
         JSeparator separator = new JSeparator();
 
@@ -209,9 +209,6 @@ public class SpotiUI extends JPanel {
         return songNameInputText.getText();
     }
 
-    public static void addStadistics(LinkedList<Float> numSongs, LinkedList<Float> minSongs){
-        spotiPanel.add(new StatisticsUI(numSongs, minSongs), STATISTICS_UI);
-    }
     public static void addSongsAll(ArrayList<Song> songs){
         spotiPanel.add(new SongsUI(songs, "Delete"), SONGS_UI);
     }
