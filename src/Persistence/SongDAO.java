@@ -54,7 +54,10 @@ public interface SongDAO {
      *
      * @return
      */
-    ArrayList<Song> getPopularSongs();
+    boolean updateTimesPlayed(Song song);
+
+    /*
+    ArrayList<Song> getPopularSongs();*/
 
     boolean saveStadistics(Stadistics myStats);
 

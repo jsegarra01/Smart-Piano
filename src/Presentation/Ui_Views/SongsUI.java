@@ -26,7 +26,7 @@ public class SongsUI extends JPanel {
 
 
     }
-    public JScrollPane initTable(ArrayList<Song> songs, String action){
+    public static JScrollPane initTable(ArrayList<Song> songs, String action){
         Object[][] data = new Object[songs.size()][5];
         for(int i = 0; i< songs.size();i++){
             data[i][0] = songs.get(i).getSongName();

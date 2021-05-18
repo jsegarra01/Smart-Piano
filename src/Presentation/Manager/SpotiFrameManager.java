@@ -44,7 +44,7 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
 
     private static final String URLRoute = "https://www.mutopiaproject.org/cgibin/make-table.cgi?Instrument=Piano";
     private static final String path = "Files";
-    private boolean play=false;
+    private static boolean play=false;
     private static final ImageIcon playIcon = new ImageIcon("Files/drawable/playbuttonWhite.png");
     private static final ImageIcon pauseIcon = new ImageIcon("Files/drawable/pauseWhite.png");
     private float minPlayed;
@@ -53,10 +53,11 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
     private Stadistics stadistics;
     private static boolean addSong = false;
     private static Playlist playlist;
+    private static ArrayList<Song> topFive = new ArrayList<Song>();
 
     private final Date date = new Date();
 
-    private MidiHelper finalMidiHelper;
+    private static MidiHelper finalMidiHelper;
     {
         try {
             finalMidiHelper = new MidiHelper();
@@ -85,7 +86,7 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
         switch (e.getActionCommand()) {
             case SHOW_ALL_SONGS:
                 addSong = false;
-                addSongsAll(new BusinessFacadeImp().getSongManager().getSongs());
+                addSongsAll(/*new BusinessFacadeImp().getSongManager().getSongs()*/ topFive);
                 cc.show(spotiPanel, SONGS_UI);
                 break;
             case CREATE_STADISTICS:
@@ -93,7 +94,9 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
                 cc.show(spotiPanel, STATISTICS_UI);
                 break;
             case SHOW_TOP_SONGS:
-                cc.show(spotiPanel, TOPSONGS_UI);
+                SongsUI.initTable(topFive, "delete");
+                cc.show(spotiPanel, SONGS_UI);
+                //cc.show(spotiPanel, TOPSONGS_UI);
                 break;
             case CREATE_PLAYLIST:
                 cc.show(spotiPanel, PLAYLIST_UI);
@@ -120,9 +123,11 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
                     minPlayed = (float)(lastMin - startMin)/60000;
                     //Stadistics stats = new Stadistics(date.getHours(), (float)1, minPlayed);
                     new BusinessFacadeImp().getSongManager().addingStadistics(new Stadistics(date.getHours(), (float)1, minPlayed));
+                    //new BusinessFacadeImp().getSongManager().getSongs().stream().findAny().equals(new Song())
 
                     play = false;
                     finalMidiHelper.stopSong();
+
                 }
                 break;
             case PLAYLIST_INFO:
@@ -222,15 +227,19 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
         Object obj = e.getSource();
         int button = e.getButton();
         if (obj instanceof JPanel) {
-            if(play){
+            /*if(play){
                 finalMidiHelper.stopSong();
-            }
+            }*/
             song = (JPanel) obj;
             playButton.setIcon(pauseIcon);
             playButton.setIcon(resizeIcon((ImageIcon) playButton.getIcon(), (int) Math.round(playButton.getIcon().getIconWidth()*0.09),
                     (int) Math.round(playButton.getIcon().getIconHeight()*0.09)));
             play = true;
             finalMidiHelper.playSong(new File(song.getName()));
+            new BusinessFacadeImp().getSongManager().updateSongPlayed(findSong(new File(song.getName())));
+            new BusinessFacadeImp().setSongUser();
+            topFive = new BusinessFacadeImp().getSongManager().getTopFive();
+            System.out.println("holi");
         }else if(obj instanceof  JTable){
             table = (JTable) obj;
             if(table.getEditorComponent() == null){
@@ -239,6 +248,27 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
 
             //TopSongs top = new TopSongs(new File(song.getName()).toString(), (float)1);
             //new BusinessFacadeImp().getSongManager().addingInfoSongPlayed(top);
+        }
+    }
+
+    private Song findSong(File file){
+        ArrayList<Song> arraySong = new BusinessFacadeImp().getSongManager().getSongs();
+        int i=0;
+        boolean found = false;
+        while(!found && i<file.length()){
+            System.out.println("songname: " + arraySong.get(i).getSongFile());
+            //System.out.println(file.getName());
+            if(arraySong.get(i).getSongFile().equals("Songs/"+file.getName())){
+                found=true;
+            }
+            else {
+                i++;
+            }
+        }
+        if(found){
+            return arraySong.get(i);
+        } else{
+            return null;
         }
     }
 

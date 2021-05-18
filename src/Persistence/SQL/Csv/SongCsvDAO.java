@@ -54,7 +54,8 @@ public class SongCsvDAO implements SongDAO {
                     myRs.getDate("recordingDate"),
                     myRs.getBoolean("publicBoolean"),
                     myRs.getString("songFile"),
-                    myRs.getString("username")));
+                    myRs.getString("username"),
+                    myRs.getInt("numTimesPlayed")));
         }
         return songs;
     }
@@ -117,7 +118,8 @@ public class SongCsvDAO implements SongDAO {
                         myRs.getDate("recordingDate"),
                         myRs.getBoolean("publicBoolean"),
                         myRs.getString("songFile"),
-                        myRs.getString("username"));
+                        myRs.getString("username"),
+                        myRs.getInt("numTimesPlayed"));
                 myRs.close();
                 return song;
             }else{
@@ -148,7 +150,21 @@ public class SongCsvDAO implements SongDAO {
         return songFromCsv("%");
     }
 
+    @Override
+    public boolean updateTimesPlayed(Song song) {
+        try {
+                PreparedStatement st = ConnectSQL.getInstance().prepareStatement("update SongT SET numTimesPlayed = numTimesPlayed + 1 where songName like '" +
+                        song.getSongName() + "';");
+                st.executeUpdate();
+                return true;
+        } catch (SQLException throwable) {
+            throwable.printStackTrace();
+            return false;
+        }
+    }
 
+
+/*
     @Override
     public ArrayList<Song> getPopularSongs() {
         try {
@@ -162,7 +178,7 @@ public class SongCsvDAO implements SongDAO {
         } catch (SQLException throwables) {
             return null;
         }
-    }
+    }*/
 
     /**
      * Method that saves the stadistics into the databases

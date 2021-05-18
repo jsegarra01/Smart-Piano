@@ -11,10 +11,9 @@ public class Song {
     private final boolean publicBoolean;
     private final String songFile;
     private final String creator;
-    private float minPlayed;
     private int timesPlayed;
 
-    public Song(String songName, String authorName, float duration, Date recordingDate, boolean publicBoolean, String songFile, String creator){
+    public Song(String songName, String authorName, float duration, Date recordingDate, boolean publicBoolean, String songFile, String creator, Integer timesPlayed){
         this.songName = songName;
         this.authorName = authorName;
         this.duration = duration;
@@ -22,6 +21,7 @@ public class Song {
         this.publicBoolean = publicBoolean;
         this.songFile = songFile;
         this.creator = creator;
+        this.timesPlayed = timesPlayed;
     }
 
     public Song(String songName, String authorName, float duration, boolean publicBoolean, String songFile, String creator){
@@ -64,5 +64,13 @@ public class Song {
 
     public String getCreator() {
         return creator;
+    }
+
+    public int getTimesPlayed() {
+        return timesPlayed;
+    }
+
+    public void setTimesPlayed(int timesPlayed) {
+        this.timesPlayed = timesPlayed;
     }
 }
