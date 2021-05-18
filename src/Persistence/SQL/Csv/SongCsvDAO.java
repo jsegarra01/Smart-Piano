@@ -2,7 +2,7 @@ package Persistence.SQL.Csv;
 
 import Business.Entities.Song;
 import Business.Entities.Stadistics;
-import Business.Entities.TopSongs;
+//import Business.Entities.TopSongs;
 import Business.Entities.User;
 import Persistence.SQL.ConnectSQL;
 import Persistence.SongDAO;
@@ -245,6 +245,7 @@ public class SongCsvDAO implements SongDAO {
      * @param topSongs song
      * @return Stadistics for that hour
      */
+    /*
     @Override
     public boolean saveListenedSongs(TopSongs topSongs) {
         try {
@@ -284,5 +285,5 @@ public class SongCsvDAO implements SongDAO {
             throwables.printStackTrace();
             return null;
         }
-    }
+    }*/
 }

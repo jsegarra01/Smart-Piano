@@ -53,7 +53,7 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
     private Stadistics stadistics;
     private static boolean addSong = false;
     private static Playlist playlist;
-    private static ArrayList<Song> topFive = new ArrayList<Song>();
+    private static ArrayList topFive = new ArrayList<Song>();
 
     private final Date date = new Date();
 
@@ -241,7 +241,6 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
             new BusinessFacadeImp().getSongManager().updateSongPlayed(findSong(new File(song.getName())));
             new BusinessFacadeImp().setSongUser();
             topFive = new BusinessFacadeImp().getSongManager().getTopFive();
-            System.out.println("holi");
         }else if(obj instanceof  JTable){
             table = (JTable) obj;
             if(table.getEditorComponent() == null){
@@ -258,8 +257,6 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
         int i=0;
         boolean found = false;
         while(!found && i<file.length()){
-            System.out.println("songname: " + arraySong.get(i).getSongFile());
-            //System.out.println(file.getName());
             if(arraySong.get(i).getSongFile().equals("Songs/"+file.getName())){
                 found=true;
             }
