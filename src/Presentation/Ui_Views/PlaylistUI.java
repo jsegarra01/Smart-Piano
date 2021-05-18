@@ -23,15 +23,8 @@ import static Presentation.DictionaryPiano.*;
  *
  */
 public class PlaylistUI extends JPanel {
-    private static JTable table;//  = new JTable(new TablePlaylists());
-    private Object[][] rows;
     private static JPanel panel = new JPanel(new BorderLayout());
-    private static Playlist playlistP;
 
-
-    public static JTable getTable() {
-        return table;
-    }
 
     /**
      * Constructor for the PlaylistUI, you need to send the mainframe context and will create a card layout
@@ -69,13 +62,8 @@ public class PlaylistUI extends JPanel {
         return layout;
     }
 
-    public static Playlist getPlaylist() {
-        return playlistP;
-    }
-
     public static void setSongsPlaylists(Playlist playlist){
 
-        playlistP = playlist;
         panel.removeAll();
         //panel.repaint();
         panel.setBackground(Color.black);
@@ -102,37 +90,10 @@ public class PlaylistUI extends JPanel {
         areaScrollPane.repaint();
 
         panel.add(areaScrollPane, BorderLayout.CENTER);
-        //panel.add(addSong(), BorderLayout.SOUTH);
         panel.revalidate();
         panel.repaint();
 
     }
-
-    public static void deleteFromPanel(String nameSong){
-
-        boolean found = false;
-        int i = 0;
-        while(i<playlistP.getSongs().size() && !found){
-            if(playlistP.getSongs().get(i).getSongName()!=null){
-                if(playlistP.getSongs().get(i).getSongName().equals(nameSong)){
-                    found = true;
-                }else{
-                    i++;
-                }
-            }else{
-                i++;
-            }
-        }
-        if(found){
-            playlistP.getSongs().remove(i);
-        }
-
-    }
-
-    public static void addSongToPanel(Song song){
-        playlistP.getSongs().add(song);
-    }
-
 
     private static JPanel setPlaylist(Playlist playlist, int i){
 
@@ -141,7 +102,7 @@ public class PlaylistUI extends JPanel {
         JLabel label;
 
         panel1.setBorder(new LineBorder(Color.gray));
-        panel1.setPreferredSize(new Dimension(800,50));
+        panel1.setPreferredSize(new Dimension(780,50));
         panel1.setMaximumSize(panel1.getPreferredSize());
         panel1.setBackground(Color.black);
 
@@ -149,10 +110,11 @@ public class PlaylistUI extends JPanel {
         //panel1.add(Box.createHorizontalStrut(20));
         label = new JLabel(playlist.getSongs().get(i).getSongName());
         label.setForeground(Color.WHITE);
-        label.add(Box.createRigidArea(new Dimension(250,50)));
+        label.add(Box.createRigidArea(new Dimension(450,50)));
         label.add(Box.createHorizontalStrut(60));
+        label.setMinimumSize(new Dimension(350, 50));
         panel1.add(label);
-        //panel1.add(Box.createHorizontalStrut(60));
+        panel1.add(Box.createHorizontalStrut(60));
 
         label = new JLabel(playlist.getSongs().get(i).getAuthorName());
         label.setForeground(Color.WHITE);
