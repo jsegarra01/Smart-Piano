@@ -1,17 +1,14 @@
 package Business;
 
-import Business.Entities.RecordingNotes;
-import Business.Entities.Song;
-import Business.Entities.SongRecorded;
+import Business.Entities.*;
 import Persistence.SQL.Csv.LoginUserCsvDAO;
 import Persistence.SQL.Csv.SongCsvDAO;
-import Business.Entities.User;
 import Persistence.SQL.Csv.LoginUserCsvDAO;
 import Persistence.SQL.Csv.SongCsvDAO;
 import Persistence.SongDAO;
-import Business.Entities.Stadistics;
 import Persistence.SQL.Csv.SongCsvDAO;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -58,4 +55,9 @@ public class SongManager {
     public Stadistics gettingStadistics(int hour){
         return songManager.getStadisticsHour(hour);
     }
+
+    public void addingInfoSongPlayed(TopSongs songs){
+        songManager.saveListenedSongs(songs);
+    }
+
 }

@@ -26,6 +26,7 @@ import static Presentation.DictionaryPiano.*;
 import static Presentation.Ui_Views.SpotiUI.*;
 import static Presentation.Ui_Views.StatisticsUI.letsInitializeGraphs;
 import static Presentation.Ui_Views.Tile.resizeIcon;
+import static javax.swing.SwingConstants.TOP;
 
 
 /**
@@ -111,7 +112,7 @@ public class SpotiFrameManager implements ActionListener, MouseListener {
                     minPlayed = (float)(lastMin - startMin)/60000;
                     //Stadistics stats = new Stadistics(date.getHours(), (float)1, minPlayed);
                     new BusinessFacadeImp().getSongManager().addingStadistics(new Stadistics(date.getHours(), (float)1, minPlayed));
-                    //new BusinessFacadeImp().getSongManager().
+
                     play = false;
                     finalMidiHelper.stopSong();
                 }
@@ -190,6 +191,8 @@ public class SpotiFrameManager implements ActionListener, MouseListener {
                     (int) Math.round(playButton.getIcon().getIconHeight()*0.09)));
             play = true;
             finalMidiHelper.playSong(new File(song.getName()));
+            TopSongs top = new TopSongs(new File(song.getName()).toString(), (float)1);
+            new BusinessFacadeImp().getSongManager().addingInfoSongPlayed(top);
         }
     }
 
