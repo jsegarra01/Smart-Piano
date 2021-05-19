@@ -20,6 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="">
+    <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="topFive songs table is done" />
+    <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="">
+    <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="The fucking menu did not put itself to the left. There are 3 thousand comments">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/Entities/TopSongs.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/SongManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/SongManager.class" afterDir="false" />
@@ -39,6 +42,9 @@
       <change beforePath="$PROJECT_DIR$/src/Persistence/SongDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Persistence/SongDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Presentation/Manager/SpotiFrameManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Manager/SpotiFrameManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Presentation/Ui_Views/PlaylistUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Ui_Views/PlaylistUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Files/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/Files/config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/SpotiUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/SpotiUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presentation/Ui_Views/SpotiUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Ui_Views/SpotiUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -501,20 +507,25 @@
       <option name="project" value="LOCAL" />
       <updated>1621376772767</updated>
     </task>
-    <task id="LOCAL-00054" summary="Commit to finish feature">
-      <created>1621377817072</created>
+    <task id="LOCAL-00054" summary="topFive songs table is done">
+      <created>1621416367811</created>
+    <task id="LOCAL-00054" summary="When creating a playlists it gets added to the view. Plus, a scrollPane has been implemented">
+      <created>1621383260296</created>
       <option name="number" value="00054" />
       <option name="presentableId" value="LOCAL-00054" />
       <option name="project" value="LOCAL" />
-      <updated>1621377817072</updated>
+      <updated>1621383260296</updated>
+      <updated>1621416367812</updated>
     </task>
-    <task id="LOCAL-00055" summary="Commit to checkout el blay no sap fer commits">
-      <created>1621354584881</created>
+    <task id="LOCAL-00055" summary="The fucking menu did not put itself to the left. There are 3 thousand comments">
+      <created>1621419233931</created>
       <option name="number" value="00055" />
       <option name="presentableId" value="LOCAL-00055" />
       <option name="project" value="LOCAL" />
-      <updated>1621354584881</updated>
+      <updated>1621419233931</updated>
     </task>
+    <option name="localTasksCounter" value="56" />
+    <option name="localTasksCounter" value="55" />
     <option name="localTasksCounter" value="54" />
     <servers />
   </component>
@@ -545,7 +556,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="I am not allowed to do finish feature :'(" />
     <MESSAGE value="Changing colors while changing through the CardLayout" />
     <MESSAGE value="Name of the tile appears now. The recording button is no longer an unreadable text, is an icon" />
     <MESSAGE value="piano finished" />
@@ -593,6 +603,142 @@
     <MESSAGE value="commit to start feature" />
     <MESSAGE value="Now I have all the information for the top5 songs gathered (solo falta que la tabla decida aparecer, is in process)" />
     <MESSAGE value="Commit to finish feature" />
+    <MESSAGE value="topFive songs table is done" />
+    <option name="LAST_COMMIT_MESSAGE" value="topFive songs table is done" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="709" y="257" key="#com.intellij.ide.util.MemberChooser" timestamp="1621377959629">
+      <screen x="0" y="23" width="1792" height="1044" />
+    </state>
+    <state x="709" y="257" key="#com.intellij.ide.util.MemberChooser/0.23.1792.1044@0.23.1792.1044" timestamp="1621377959629" />
+    <state x="709" y="258" key="#com.intellij.ide.util.MemberChooser/0.23.1792.1048@0.23.1792.1048" timestamp="1621298627917" />
+    <state x="709" y="258" key="#com.intellij.ide.util.MemberChooser/0.23.1792.1049@0.23.1792.1049" timestamp="1620858233451" />
+    <state width="1569" height="242" key="GridCell.Tab.0.bottom" timestamp="1621416569087">
+      <screen x="0" y="23" width="1792" height="1043" />
+    </state>
+    <state width="875" height="318" key="GridCell.Tab.0.bottom/0.0.1792.1120@0.0.1792.1120" timestamp="1620595451867" />
+    <state width="875" height="318" key="GridCell.Tab.0.bottom/0.23.1792.1042@0.23.1792.1042" timestamp="1620570473679" />
+    <state width="875" height="279" key="GridCell.Tab.0.bottom/0.23.1792.1043@0.0.1792.1120" timestamp="1621374552060" />
+    <state width="1569" height="242" key="GridCell.Tab.0.bottom/0.23.1792.1043@0.23.1792.1043" timestamp="1621416569087" />
+    <state width="1569" height="242" key="GridCell.Tab.0.bottom/0.23.1792.1044@0.23.1792.1044" timestamp="1621414200327" />
+    <state width="1570" height="242" key="GridCell.Tab.0.bottom/0.23.1792.1045@0.23.1792.1045" timestamp="1621414068264" />
+    <state width="1750" height="4" key="GridCell.Tab.0.bottom/0.23.1792.1046@0.23.1792.1046" timestamp="1621275000005" />
+    <state width="1750" height="280" key="GridCell.Tab.0.bottom/0.23.1792.1047@0.23.1792.1047" timestamp="1621353102509" />
+    <state width="1750" height="257" key="GridCell.Tab.0.bottom/0.23.1792.1048@0.23.1792.1048" timestamp="1621298360095" />
+    <state width="875" height="296" key="GridCell.Tab.0.bottom/0.23.1792.1050@0.23.1792.1050" timestamp="1620856773994" />
+    <state width="1575" height="242" key="GridCell.Tab.0.bottom/0.23.1792.1097@0.23.1792.1097" timestamp="1621375335918" />
+    <state width="1569" height="242" key="GridCell.Tab.0.center" timestamp="1621416569086">
+      <screen x="0" y="23" width="1792" height="1043" />
+    </state>
+    <state width="875" height="318" key="GridCell.Tab.0.center/0.0.1792.1120@0.0.1792.1120" timestamp="1620595451866" />
+    <state width="875" height="318" key="GridCell.Tab.0.center/0.23.1792.1042@0.23.1792.1042" timestamp="1620570473678" />
+    <state width="875" height="279" key="GridCell.Tab.0.center/0.23.1792.1043@0.0.1792.1120" timestamp="1621369311360" />
+    <state width="1569" height="242" key="GridCell.Tab.0.center/0.23.1792.1043@0.23.1792.1043" timestamp="1621416569086" />
+    <state width="875" height="279" key="GridCell.Tab.0.center/0.23.1792.1044@0.0.1792.1120" timestamp="1621374552007" />
+    <state width="1569" height="242" key="GridCell.Tab.0.center/0.23.1792.1044@0.23.1792.1044" timestamp="1621414200326" />
+    <state width="1570" height="242" key="GridCell.Tab.0.center/0.23.1792.1045@0.23.1792.1045" timestamp="1621414068263" />
+    <state width="1750" height="4" key="GridCell.Tab.0.center/0.23.1792.1046@0.23.1792.1046" timestamp="1621275000004" />
+    <state width="1750" height="280" key="GridCell.Tab.0.center/0.23.1792.1047@0.23.1792.1047" timestamp="1621353102508" />
+    <state width="1750" height="257" key="GridCell.Tab.0.center/0.23.1792.1048@0.23.1792.1048" timestamp="1621298360095" />
+    <state width="875" height="296" key="GridCell.Tab.0.center/0.23.1792.1050@0.23.1792.1050" timestamp="1620856773993" />
+    <state width="1575" height="242" key="GridCell.Tab.0.center/0.23.1792.1097@0.23.1792.1097" timestamp="1621375335917" />
+    <state width="1569" height="242" key="GridCell.Tab.0.left" timestamp="1621416569086">
+      <screen x="0" y="23" width="1792" height="1043" />
+    </state>
+    <state width="875" height="318" key="GridCell.Tab.0.left/0.0.1792.1120@0.0.1792.1120" timestamp="1620595451865" />
+    <state width="875" height="318" key="GridCell.Tab.0.left/0.23.1792.1042@0.23.1792.1042" timestamp="1620570473678" />
+    <state width="1569" height="242" key="GridCell.Tab.0.left/0.23.1792.1043@0.23.1792.1043" timestamp="1621416569086" />
+    <state width="875" height="279" key="GridCell.Tab.0.left/0.23.1792.1044@0.0.1792.1120" timestamp="1621374551988" />
+    <state width="1569" height="242" key="GridCell.Tab.0.left/0.23.1792.1044@0.23.1792.1044" timestamp="1621414200326" />
+    <state width="1570" height="242" key="GridCell.Tab.0.left/0.23.1792.1045@0.23.1792.1045" timestamp="1621414068263" />
+    <state width="1750" height="4" key="GridCell.Tab.0.left/0.23.1792.1046@0.23.1792.1046" timestamp="1621275000004" />
+    <state width="1750" height="280" key="GridCell.Tab.0.left/0.23.1792.1047@0.23.1792.1047" timestamp="1621353102507" />
+    <state width="1750" height="257" key="GridCell.Tab.0.left/0.23.1792.1048@0.23.1792.1048" timestamp="1621298360094" />
+    <state width="875" height="296" key="GridCell.Tab.0.left/0.23.1792.1050@0.23.1792.1050" timestamp="1620856773993" />
+    <state width="1575" height="242" key="GridCell.Tab.0.left/0.23.1792.1097@0.23.1792.1097" timestamp="1621375335916" />
+    <state width="1569" height="242" key="GridCell.Tab.0.right" timestamp="1621416569086">
+      <screen x="0" y="23" width="1792" height="1043" />
+    </state>
+    <state width="875" height="279" key="GridCell.Tab.0.right/0.0.1792.1120@0.0.1792.1120" timestamp="1621369386581" />
+    <state width="875" height="318" key="GridCell.Tab.0.right/0.23.1792.1042@0.23.1792.1042" timestamp="1620570473678" />
+    <state width="875" height="279" key="GridCell.Tab.0.right/0.23.1792.1043@0.0.1792.1120" timestamp="1621374552057" />
+    <state width="1569" height="242" key="GridCell.Tab.0.right/0.23.1792.1043@0.23.1792.1043" timestamp="1621416569086" />
+    <state width="1569" height="242" key="GridCell.Tab.0.right/0.23.1792.1044@0.23.1792.1044" timestamp="1621414200327" />
+    <state width="1570" height="242" key="GridCell.Tab.0.right/0.23.1792.1045@0.23.1792.1045" timestamp="1621414068263" />
+    <state width="1750" height="4" key="GridCell.Tab.0.right/0.23.1792.1046@0.23.1792.1046" timestamp="1621275000004" />
+    <state width="1750" height="280" key="GridCell.Tab.0.right/0.23.1792.1047@0.23.1792.1047" timestamp="1621353102509" />
+    <state width="1750" height="257" key="GridCell.Tab.0.right/0.23.1792.1048@0.23.1792.1048" timestamp="1621298360095" />
+    <state width="875" height="296" key="GridCell.Tab.0.right/0.23.1792.1050@0.23.1792.1050" timestamp="1620856773993" />
+    <state width="1575" height="242" key="GridCell.Tab.0.right/0.23.1792.1097@0.23.1792.1097" timestamp="1621375335917" />
+    <state width="875" height="279" key="GridCell.Tab.1.bottom" timestamp="1621377510526">
+      <screen x="0" y="23" width="1792" height="1043" />
+    </state>
+    <state width="875" height="207" key="GridCell.Tab.1.bottom/0.0.1792.1120@0.0.1792.1120" timestamp="1620593722622" />
+    <state width="875" height="279" key="GridCell.Tab.1.bottom/0.23.1792.1043@0.0.1792.1120" timestamp="1621374552067" />
+    <state width="875" height="279" key="GridCell.Tab.1.bottom/0.23.1792.1043@0.23.1792.1043" timestamp="1621377510526" />
+    <state width="875" height="279" key="GridCell.Tab.1.bottom/0.23.1792.1044@0.23.1792.1044" timestamp="1621369414033" />
+    <state width="875" height="279" key="GridCell.Tab.1.bottom/0.23.1792.1045@0.23.1792.1045" timestamp="1621360338945" />
+    <state width="1750" height="280" key="GridCell.Tab.1.bottom/0.23.1792.1046@0.23.1792.1046" timestamp="1621271765241" />
+    <state width="1750" height="280" key="GridCell.Tab.1.bottom/0.23.1792.1047@0.23.1792.1047" timestamp="1621353102515" />
+    <state width="1750" height="280" key="GridCell.Tab.1.bottom/0.23.1792.1048@0.23.1792.1048" timestamp="1621334289400" />
+    <state width="875" height="279" key="GridCell.Tab.1.center" timestamp="1621377510525">
+      <screen x="0" y="23" width="1792" height="1043" />
+    </state>
+    <state width="875" height="207" key="GridCell.Tab.1.center/0.0.1792.1120@0.0.1792.1120" timestamp="1620593722621" />
+    <state width="875" height="279" key="GridCell.Tab.1.center/0.23.1792.1043@0.0.1792.1120" timestamp="1621374552064" />
+    <state width="875" height="279" key="GridCell.Tab.1.center/0.23.1792.1043@0.23.1792.1043" timestamp="1621377510525" />
+    <state width="875" height="279" key="GridCell.Tab.1.center/0.23.1792.1044@0.23.1792.1044" timestamp="1621369414032" />
+    <state width="875" height="279" key="GridCell.Tab.1.center/0.23.1792.1045@0.23.1792.1045" timestamp="1621360338945" />
+    <state width="1750" height="280" key="GridCell.Tab.1.center/0.23.1792.1046@0.23.1792.1046" timestamp="1621271765241" />
+    <state width="1750" height="280" key="GridCell.Tab.1.center/0.23.1792.1047@0.23.1792.1047" timestamp="1621353102513" />
+    <state width="1750" height="280" key="GridCell.Tab.1.center/0.23.1792.1048@0.23.1792.1048" timestamp="1621334289399" />
+    <state width="875" height="279" key="GridCell.Tab.1.left" timestamp="1621377510525">
+      <screen x="0" y="23" width="1792" height="1043" />
+    </state>
+    <state width="875" height="207" key="GridCell.Tab.1.left/0.0.1792.1120@0.0.1792.1120" timestamp="1620593722621" />
+    <state width="875" height="279" key="GridCell.Tab.1.left/0.23.1792.1043@0.0.1792.1120" timestamp="1621374552062" />
+    <state width="875" height="279" key="GridCell.Tab.1.left/0.23.1792.1043@0.23.1792.1043" timestamp="1621377510525" />
+    <state width="875" height="279" key="GridCell.Tab.1.left/0.23.1792.1044@0.23.1792.1044" timestamp="1621369414031" />
+    <state width="875" height="279" key="GridCell.Tab.1.left/0.23.1792.1045@0.23.1792.1045" timestamp="1621360338945" />
+    <state width="1750" height="280" key="GridCell.Tab.1.left/0.23.1792.1046@0.23.1792.1046" timestamp="1621271765241" />
+    <state width="1750" height="280" key="GridCell.Tab.1.left/0.23.1792.1047@0.23.1792.1047" timestamp="1621353102512" />
+    <state width="1750" height="280" key="GridCell.Tab.1.left/0.23.1792.1048@0.23.1792.1048" timestamp="1621334289399" />
+    <state width="875" height="279" key="GridCell.Tab.1.right" timestamp="1621377510525">
+      <screen x="0" y="23" width="1792" height="1043" />
+    </state>
+    <state width="875" height="207" key="GridCell.Tab.1.right/0.0.1792.1120@0.0.1792.1120" timestamp="1620593722622" />
+    <state width="875" height="279" key="GridCell.Tab.1.right/0.23.1792.1043@0.0.1792.1120" timestamp="1621374552066" />
+    <state width="875" height="279" key="GridCell.Tab.1.right/0.23.1792.1043@0.23.1792.1043" timestamp="1621377510525" />
+    <state width="875" height="279" key="GridCell.Tab.1.right/0.23.1792.1044@0.23.1792.1044" timestamp="1621369414032" />
+    <state width="875" height="279" key="GridCell.Tab.1.right/0.23.1792.1045@0.23.1792.1045" timestamp="1621360338945" />
+    <state width="1750" height="280" key="GridCell.Tab.1.right/0.23.1792.1046@0.23.1792.1046" timestamp="1621271765241" />
+    <state width="1750" height="280" key="GridCell.Tab.1.right/0.23.1792.1047@0.23.1792.1047" timestamp="1621353102515" />
+    <state width="1750" height="280" key="GridCell.Tab.1.right/0.23.1792.1048@0.23.1792.1048" timestamp="1621334289399" />
+    <state x="179" y="116" key="MergeDialog" timestamp="1621260455174">
+      <screen x="0" y="23" width="1792" height="1046" />
+    </state>
+    <state x="179" y="116" key="MergeDialog/0.23.1792.1046@0.23.1792.1046" timestamp="1621260455174" />
+    <state x="496" y="303" key="Vcs.Push.Dialog.v2" timestamp="1621416376816">
+      <screen x="0" y="23" width="1792" height="1044" />
+    </state>
+    <state x="496" y="300" key="Vcs.Push.Dialog.v2/0.0.1792.1120@0.0.1792.1120" timestamp="1620569546214" />
+    <state x="496" y="303" key="Vcs.Push.Dialog.v2/0.23.1792.1044@0.23.1792.1044" timestamp="1621416376816" />
+    <state x="496" y="303" key="Vcs.Push.Dialog.v2/0.23.1792.1045@0.23.1792.1045" timestamp="1621178173298" />
+    <state x="496" y="303" key="Vcs.Push.Dialog.v2/0.23.1792.1046@0.23.1792.1046" timestamp="1621248123616" />
+    <state x="496" y="304" key="Vcs.Push.Dialog.v2/0.23.1792.1048@0.23.1792.1048" timestamp="1621335645288" />
+    <state x="496" y="304" key="Vcs.Push.Dialog.v2/0.23.1792.1049@0.23.1792.1049" timestamp="1620861042571" />
+    <state x="694" y="472" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1621250013918">
+      <screen x="0" y="23" width="1792" height="1046" />
+    </state>
+    <state x="694" y="481" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1792.1120@0.0.1792.1120" timestamp="1620388441922" />
+    <state x="694" y="472" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1792.1046@0.23.1792.1046" timestamp="1621250013918" />
+    <state x="507" y="280" key="git4idea.branch.GitSmartOperationDialog" timestamp="1620388423589">
+      <screen x="0" y="0" width="1792" height="1120" />
+    </state>
+    <state x="507" y="280" key="git4idea.branch.GitSmartOperationDialog/0.0.1792.1120@0.0.1792.1120" timestamp="1620388423589" />
+    <MESSAGE value="When creating a playlists it gets added to the view. Plus, a scrollPane has been implemented" />
+    <MESSAGE value="The fucking menu did not put itself to the left. There are 3 thousand comments" />
+    <option name="LAST_COMMIT_MESSAGE" value="The fucking menu did not put itself to the left. There are 3 thousand comments" />
     <option name="LAST_COMMIT_MESSAGE" value="Commit to finish feature" />
   </component>
   <component name="XDebuggerManager">
@@ -607,11 +753,6 @@
           <url>file://$PROJECT_DIR$/src/Presentation/Manager/PianoFrameManager.java</url>
           <line>63</line>
           <option name="timeStamp" value="68" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Presentation/Manager/SpotiFrameManager.java</url>
-          <line>113</line>
-          <option name="timeStamp" value="106" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -72,48 +72,26 @@ public class PlaylistUI extends JPanel {
         panel.setBackground(Color.black);
         panel.add(Box.createRigidArea(new Dimension(10, 50)));
         JPanel panelSongs = new JPanel();
-        if(playlist==null){
-            JButton button = new JButton("Click Me!");
-            final JLabel label = new JLabel();
-            label.setForeground(Color.red);
-            String result = (String)JOptionPane.showInputDialog(
-                    null,
-                    "Select one of the color",
-                    "Swing Tester",
-                    JOptionPane.PLAIN_MESSAGE,
-                    null,
-                    null,
-                    "Red"
-            );
-            if(result != null && result.length() > 0){
-                label.setText("You selected:" + result);
-            }else {
-                label.setText("None selected");
-            }
-            panel.add(button);
-            panel.add(label);
-        }else{
-            panel.add(initGeneral(playlist.getPlaylistName()), BorderLayout.NORTH);
 
-            panelSongs.setBackground(Color.black);
-            panelSongs.add(Box.createRigidArea(new Dimension(50,10)));
-            //panelSongs.setPreferredSize(new Dimension(5,400));
+        panel.add(initGeneral(playlist.getPlaylistName()), BorderLayout.NORTH);
 
-            BoxLayout boxLayout = new BoxLayout(panelSongs, BoxLayout.Y_AXIS);
-            panelSongs.setLayout(boxLayout);
-            JPanel panel1;
-            for(int i = 0; i<playlist.getSongs().size(); i++){
-                panel1 = setPlaylist(playlist, i);
-                panelSongs.add(panel1);
-            }
+        panelSongs.setBackground(Color.black);
+        panelSongs.add(Box.createRigidArea(new Dimension(50,10)));
+        //panelSongs.setPreferredSize(new Dimension(5,400));
 
-            JScrollPane areaScrollPane = new JScrollPane(panelSongs);
-            areaScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-            areaScrollPane.setPreferredSize(new Dimension(800, 510));
-
-            panel.add(areaScrollPane, BorderLayout.CENTER);
+        BoxLayout boxLayout = new BoxLayout(panelSongs, BoxLayout.Y_AXIS);
+        panelSongs.setLayout(boxLayout);
+        JPanel panel1;
+        for(int i = 0; i<playlist.getSongs().size(); i++){
+            panel1 = setPlaylist(playlist, i);
+            panelSongs.add(panel1);
         }
 
+        JScrollPane areaScrollPane = new JScrollPane(panelSongs);
+        areaScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        areaScrollPane.setPreferredSize(new Dimension(860, 510));
+        areaScrollPane.setBorder(BorderFactory.createEmptyBorder());
+        panel.add(areaScrollPane, BorderLayout.CENTER);
 
         panel.revalidate();
         panel.repaint();
@@ -127,7 +105,7 @@ public class PlaylistUI extends JPanel {
         JLabel label;
 
         panel1.setBorder(new LineBorder(Color.gray));
-        panel1.setPreferredSize(new Dimension(780,50));
+        panel1.setPreferredSize(new Dimension(840,50));
         panel1.setMaximumSize(panel1.getPreferredSize());
         panel1.setBackground(Color.black);
 
@@ -136,10 +114,10 @@ public class PlaylistUI extends JPanel {
         label = new JLabel(playlist.getSongs().get(i).getSongName());
         label.setForeground(Color.WHITE);
         label.add(Box.createRigidArea(new Dimension(450,50)));
-        label.add(Box.createHorizontalStrut(60));
+        //label.add(Box.createHorizontalStrut(60));
         label.setMinimumSize(new Dimension(350, 50));
         panel1.add(label);
-        panel1.add(Box.createHorizontalStrut(60));
+        //panel1.add(Box.createHorizontalStrut(60));
 
         label = new JLabel(playlist.getSongs().get(i).getAuthorName());
         label.setForeground(Color.WHITE);

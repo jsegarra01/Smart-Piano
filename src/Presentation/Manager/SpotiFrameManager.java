@@ -9,6 +9,7 @@ import Business.UserManager;
 import Presentation.Ui_Views.PlaylistUI;
 import Presentation.Ui_Views.SongsUI;
 import Presentation.Ui_Views.SpotiUI;
+import Presentation.Ui_Views.TopSongsUI;
 
 import javax.sound.midi.MidiChannel;
 import javax.sound.midi.MidiUnavailableException;
@@ -96,11 +97,11 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
                 cc.show(spotiPanel, STATISTICS_UI);
                 break;
             case SHOW_TOP_SONGS:
-                //SongsUI.initTable(topFive, "Delete");
+                SongsUI.initTable(new BusinessFacadeImp().getSongManager().getTopFive(), "topFive");
                 //addSongsAll(new BusinessFacadeImp().getSongManager().getTopFive());
                // System.out.println(topFive.get(0).getSongName() + "    " + topFive.get(4).getSongName());
                 //SongsUI.initTable(topFive, "delete");
-                cc.show(spotiPanel, SONGS_UI);
+                cc.show(spotiPanel, /*TOPSONGS_UI*/ SONGS_UI);
                 //cc.show(spotiPanel, TOPSONGS_UI);
                 break;
             case CREATE_PLAYLIST:
@@ -119,6 +120,7 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
                     playlist = new BusinessFacadeImp().getPlaylist(result);
                     PlaylistUI.setSongsPlaylists(playlist);
                     cc.show(spotiPanel, PLAYLIST_UI);
+                    addPlaylists(new BusinessFacadeImp().getPlaylistManager().getPlaylists());
                 }else {
                     JOptionPane.showMessageDialog(null,
                             "You have to input something!", "Create Playlist Error" ,

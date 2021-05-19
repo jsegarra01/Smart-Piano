@@ -10,6 +10,7 @@ import Presentation.Manager.PianoFrameManager;
 import Presentation.Manager.SpotiFrameManager;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.util.ArrayList;
@@ -20,6 +21,8 @@ import static Presentation.DictionaryPiano.*;
 import static Presentation.Ui_Views.StatisticsUI.setNumMin;
 import static Presentation.Ui_Views.StatisticsUI.setNumSongs;
 import static Presentation.Ui_Views.Tile.resizeIcon;
+import static javax.swing.SwingConstants.LEFT;
+import static javax.swing.SwingConstants.WEST;
 
 
 //import static Presentation.DictionaryPiano.*;
@@ -50,11 +53,13 @@ public class SpotiUI extends JPanel {
     public static JButton playButton = new JButton();
     public static JButton nextButton = new JButton();
     public static JButton loopButton = new JButton();
+
     //public static JButton pauseButton = new JButton();
 
 
     public static JPanel leftList = new JPanel();
-
+    private static JPanel playlistsPanel = new JPanel();
+    private static JScrollPane scroll = new JScrollPane();
 
     private static final JTextField songNameInputText = new JTextField();
     public static JButton searchButton = new JButton();
@@ -86,7 +91,7 @@ public class SpotiUI extends JPanel {
         //JPanel leftList = new JPanel();
         leftList.setLayout(new BoxLayout(leftList, BoxLayout.Y_AXIS));
 
-        leftList.add(Box.createRigidArea(new Dimension(210, 50)));
+        //leftList.add(Box.createRigidArea(new Dimension(210, 50)));
 
 
         songNameInputText.setAlignmentX(0.5f);
@@ -99,9 +104,7 @@ public class SpotiUI extends JPanel {
                 (int) Math.round(searchButton.getIcon().getIconHeight()*0.05)));
         confButtonsBar(searchButton, 0, 60);
         searchButton.setActionCommand(SEARCH_SONG);
-
-
-
+/*
 
         showStadistics.setPreferredSize(new Dimension(200,30));
         showStadistics.setMaximumSize(songNameInputText.getPreferredSize());
@@ -114,39 +117,86 @@ public class SpotiUI extends JPanel {
 
         playlistLabel.setPreferredSize(new Dimension(200,30));
         playlistLabel.setMaximumSize(songNameInputText.getPreferredSize());
-
+*/
         showStadistics.setActionCommand(CREATE_STADISTICS);
-        confButtonLeft(showStadistics, 0, 115);
+
+        //showStadistics.setBorder(new EmptyBorder(10,0,10,0));
+        //showStadistics.setAlignmentX(Component.LEFT_ALIGNMENT);
+
+        //showStadistics.setBackground(Color.getHSBColor(0,0,0.8f));
+        //showStadistics.setBackground((Color.green));
+        //showStadistics.setForeground(Color.black);
 
         topSongs.setActionCommand(SHOW_TOP_SONGS);
-        confButtonLeft(topSongs, 18, 115);
+        //topSongs.setBorder(new EmptyBorder(10,0,10,100));
+        //showStadistics.setAlignmentX(Component.RIGHT_ALIGNMENT);
+        //topSongs.setBorder(new EmptyBorder(10,0,10,140));
+        //topSongs.setBackground(Color.getHSBColor(0,0,0.8f));
+        //topSongs.setForeground(Color.black);
 
         songsList.setActionCommand(SHOW_ALL_SONGS);
-        confButtonLeft(songsList, 18, 115);
+        //songsList.setBorder(new EmptyBorder(10,0,10,0));
+        //songsList.setAlignmentX(Component.RIGHT_ALIGNMENT);
+        //songsList.setBorder(new EmptyBorder(10,0,10,140));
+        //songsList.setBackground(Color.getHSBColor(0,0,0.8f));
+        //songsList.setForeground(Color.black);
+        //confButtonLeft(songsList, 18, 115);
+        //songsList.setAlignmentX(Component.LEFT_ALIGNMENT);
 
-        playlistLabel.setAlignmentX(0.5f);
-        playlistLabel.setBorder(new EmptyBorder(10,0,10,140));
+
+        //playlistLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        playlistLabel.setBorder(new EmptyBorder(0,20,0,0));
         playlistLabel.setBackground(Color.getHSBColor(0,0,0.8f));
         playlistLabel.setForeground(Color.white);
+        playlistLabel.setText("");
 
         createPlaylist.setActionCommand(CREATE_PLAYLIST);
-        confButtonLeft(createPlaylist, 12, 90);
-
+        /*confButtonLeft(createPlaylist, 12, 90);
+        createPlaylist.setAlignmentX(Component.CENTER_ALIGNMENT);*/
         JSeparator separator = new JSeparator();
 
         //JScrollPane scroll = new JScrollPane();
         registerController(new SpotiFrameManager());
         leftList.add(Box.createRigidArea(new Dimension(210, 10)));
-        leftList.setPreferredSize(new Dimension(200, 200));
+        leftList.setPreferredSize(new Dimension(210, 200));
         leftList.setMaximumSize(getPreferredSize());
-        leftList.add(songNameInputText);
+
+        JPanel panelButtonsSpoti = new JPanel(new GridLayout(5,0));
+        //BoxLayout boxLayout = new BoxLayout(panelButtonsSpoti, BoxLayout.Y_AXIS);
+        //panelButtonsSpoti.setLayout(boxLayout);
+        //BoxLayout boxLayout = new BoxLayout(panelButtonsSpoti, BoxLayout.Y_AXIS);
+        //panelButtonsSpoti.setLayout(new BoxLayout(panelButtonsSpoti, BoxLayout.Y_AXIS));
+        /*JPanel panelSearch = new JPanel(new BorderLayout());
+        panelSearch.add(songNameInputText);
+        panelSearch.add(searchButton,BorderLayout.EAST);
+        panelButtonsSpoti.add(panelSearch);*/
+        //panelButtonsSpoti.setAlignmentX(LEFT_ALIGNMENT);
+        //panelButtonsSpoti.add(showStadistics);
+        //panelButtonsSpoti.add(songsList);
+        //panelButtonsSpoti.add(topSongs);
+        panelButtonsSpoti.add(setButton(showStadistics));
+        panelButtonsSpoti.add(setButton(songsList));
+        panelButtonsSpoti.add(setButton(topSongs));
+        //panelButtonsSpoti.add(Box.createVerticalStrut(40));
+        //panelButtonsSpoti.add(Box.createRigidArea(new Dimension(200, 10)));
+        panelButtonsSpoti.add(playlistLabel);
+        panelButtonsSpoti.add(setButton(createPlaylist));
+        //panelButtonsSpoti.setBackground((Color.red));
+        panelButtonsSpoti.setBorder(BorderFactory.createEmptyBorder());
+        panelButtonsSpoti.setBackground((Color.getHSBColor(10,0,0.2f)));
+        //panelButtonsSpoti.setPreferredSize(new Dimension(170, 250));
+        //panelButtonsSpoti.setMaximumSize(panelButtonsSpoti.getPreferredSize());
+        //panelButtonsSpoti.setAlignmentX(Component.LEFT_ALIGNMENT);
+        /*leftList.add(songNameInputText);
         leftList.add(searchButton);
         leftList.add(showStadistics);
         leftList.add(songsList);
         leftList.add(topSongs);
-        leftList.add(playlistLabel);
-        leftList.add(createPlaylist);
+        leftList.add(playlistLabel);*/
+        leftList.add(panelButtonsSpoti);
+        //leftList.add(createPlaylist);
         leftList.add(separator);
+        leftList.add(scroll);
 
         leftList.setBackground(Color.getHSBColor(10,0,0.2f));
         add(leftList, BorderLayout.WEST);
@@ -161,7 +211,7 @@ public class SpotiUI extends JPanel {
         playButton.setIcon(resizeIcon((ImageIcon) playButton.getIcon(), (int) Math.round(playButton.getIcon().getIconWidth()*0.09),
                 (int) Math.round(playButton.getIcon().getIconHeight()*0.09)));
         confButtonsBar(playButton, 0, 60);
-        playButton .setActionCommand(PLAY_BUTTON);
+        playButton.setActionCommand(PLAY_BUTTON);
 
 
 
@@ -191,9 +241,12 @@ public class SpotiUI extends JPanel {
     }
 
     private static void confButtonLeft(JButton button, int left, int right){
-        button.setAlignmentX(0.5f);
-        button.setBorder(new EmptyBorder(TB_SIZE,left,TB_SIZE,right));
-        button.setBackground(Color.getHSBColor(0,0,0.8f));
+        //button.setAlignmentX(0.5f);
+        button.setAlignmentX(Component.CENTER_ALIGNMENT);
+        //button.setAlignmentX(Component.LEFT_ALIGNMENT);
+        button.setBorder(new EmptyBorder(10, 5, 10, 0));
+        //button.setBorder(new EmptyBorder(TB_SIZE,left,TB_SIZE,right));
+        button.setBackground(Color.getHSBColor(0,0,0.2f));
         button.setForeground(Color.white);
     }
 
@@ -234,29 +287,53 @@ public class SpotiUI extends JPanel {
 
     //TODO poner bn las boxes (size lateral)
     public static void addPlaylists(ArrayList<Playlist> playlists){
-        Playlist myPlaylist;
-        String aux;
-        if(!playlists.isEmpty()){
-            for(int i=0; i<playlists.size(); i++){
-                myPlaylist = playlists.get(i);
-                JButton buttonAux = new JButton(playlists.get(i).getPlaylistName());
-                buttonAux.setName(playlists.get(i).getPlaylistName());
+        playlistsPanel.removeAll();
+        leftList.remove(scroll);
+        BoxLayout boxLayout = new BoxLayout(playlistsPanel, BoxLayout.Y_AXIS);
+        playlistsPanel.setLayout(boxLayout);
+        playlistsPanel.setBackground(Color.getHSBColor(10,0,0.2f));
+        if(playlists!=null && !playlists.isEmpty()){
+            for (Playlist playlist : playlists) {
+                JButton buttonAux = new JButton(playlist.getPlaylistName());
+                buttonAux.setName(playlist.getPlaylistName());
                 buttonAux.setActionCommand(DictionaryPiano.PLAYLIST_INFO);
                 buttonAux.setAlignmentX(0.5f);
-                if(playlists.size() - i == 1){
-                    buttonAux.setBorder(new EmptyBorder(10,0, spotiPanel.getHeight(),0));
-                }else{
-                    buttonAux.setBorder(new EmptyBorder(10,18,10,115));
-                }
-                buttonAux.setBackground(Color.getHSBColor(0,0,0.8f));
+                buttonAux.setBorder(new EmptyBorder(10, 5, 10, 0));
+                buttonAux.setBackground(Color.getHSBColor(10,0,0.2f));
                 buttonAux.setForeground(Color.white);
-                leftList.add(buttonAux);
+                playlistsPanel.add(buttonAux);
+                buttonAux.setAlignmentX(Component.LEFT_ALIGNMENT);
                 buttonAux.addActionListener(new SpotiFrameManager());
             }
-            //JScrollPane scroll = new JScrollPane(leftList);
+            scroll = new JScrollPane(playlistsPanel);
+            scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+            //scroll.setBackground(Color.getHSBColor(0,0,0.8f));
+            scroll.setOpaque(false);
+            scroll.setPreferredSize(new Dimension(70, 330));
+            scroll.setBorder(BorderFactory.createEmptyBorder());
+            leftList.add(scroll);
 
-         //   leftList.add(scroll);
+            //   leftList.add(scroll);
         }
     }
 
+    private JButton setButton(JButton button){
+        //Button.setActionCommand(DictionaryPiano.PLAYLIST_INFO);
+        //button.setAlignmentX(0.5f);
+        //button.setAlignmentX(0.5f);
+        //button.setBorder(new EmptyBorder(10, 5, 10, 0));
+        button.setFocusPainted(false);
+        button.setMargin(new Insets(10, 0, 10, 0));
+        button.setContentAreaFilled(false);
+        button.setBorderPainted(false);
+        setOpaque(false);
+        button.setBackground(Color.getHSBColor(10,0,0.2f));
+        button.setFont(new Font(button.getFont().getName(), Font.PLAIN, (int)(button.getFont().getSize()*1.5)));
+        button.setForeground(Color.white);
+        //button.setAlignmentX(LEFT_ALIGNMENT);
+        button.setHorizontalAlignment(SwingConstants.LEFT);
+        //playlistsPanel.add(buttonAux);
+        return button;
+
+    }
 }

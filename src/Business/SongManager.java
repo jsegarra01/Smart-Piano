@@ -54,7 +54,6 @@ public class SongManager {
         return topFive;
     }
 
-
     public int compare(Song song1, Song song2) {
         if(song1.getTimesPlayed() < song2.getTimesPlayed()){
             return 1;
