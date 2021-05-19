@@ -2,10 +2,9 @@ package Presentation.Manager;
 
 //Imports needed from the dictionary, events and mainframe
 import Business.BusinessFacadeImp;
-import Business.Entities.Keys;
-import Business.Entities.ReadMidi;
 import Presentation.DictionaryPiano;
 import Presentation.Dictionary_login;
+import Presentation.Ui_Views.PianoFrame;
 import Presentation.Ui_Views.PianoTilesUISelector;
 import Presentation.Ui_Views.Tile;
 import Business.Entities.MidiHelper;
@@ -47,12 +46,10 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
 
     private final ImageIcon playIcon = new ImageIcon("Files/drawable/play-button.png");
     private final ImageIcon pauseIcon = new ImageIcon("Files/drawable/pause-button.png");
-
     private MidiHelper finalMidiHelper;
     private KeyListener KL;
     private Translator translator = new Translator();
 
-    Timer timer  = new Timer(100, this);
     MidiHelper midiHelper = null;
 
     /**
@@ -60,7 +57,7 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
      */
     public PianoTilesUISelectorManager() {
         //To play the song
-        timer.setActionCommand(RECORDING_TIMER);
+        //timer.setActionCommand(RECORDING_TIMER);
         try {
             midiHelper = new MidiHelper();
         } catch (MidiUnavailableException exception) {
@@ -115,12 +112,6 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
     public void actionPerformed(ActionEvent e) {
         // We distinguish between our buttons.
         switch (e.getActionCommand()) {
-            case RECORDING_TIMER:                                                           //When 1000 milliseconds have passed
-                if (play && songStarted) {
-                    timePassed += 100;
-                    refreshTiles();
-                }
-                break;
             case PianoTilesUISelector.BTN_TILE:
                 Tile t = null;
                 Object obj = e.getSource();
@@ -139,11 +130,13 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
                         playButtonTiles.setIcon(pauseIcon);
                         playButtonTiles.setIcon(resizeIcon((ImageIcon) playButtonTiles.getIcon(), (int) Math.round(playButtonTiles.getIcon().getIconWidth()*0.0507),
                                 (int) Math.round(playButtonTiles.getIcon().getIconHeight()*0.0507)));
+                        new PianoFrame(0);
                     }
                     else{
                         playButtonTiles.setIcon(playIcon);
                         playButtonTiles.setIcon(resizeIcon((ImageIcon) playButtonTiles.getIcon(), (int) Math.round(playButtonTiles.getIcon().getIconWidth()*0.15),
                                 (int) Math.round(playButtonTiles.getIcon().getIconHeight()*0.15)));
+                        new PianoFrame(1);
                     }
                     play = !play;
                 }
@@ -268,13 +261,14 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
                 songIndex = e.getLastIndex();
             }
             songStarted = true;
-            timer.restart();
 
             new BusinessFacadeImp().setTileArray(songIndex);                //Sets the tiles to play
             setKeys(new BusinessFacadeImp().getTiles());                    //Gets the tiles to play.
                                                                             //Is this necessary or it
                                                                             //can be in presentation?
-            timer.start();
+
+            new PianoFrame(2);
+            System.out.println("sasa");
         }
     }
 
@@ -282,11 +276,19 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
         timePassed = 0;
         songStarted = false;
         play = true;
+        velocityModifier = 1;
         songIndex = 0;
-        timer.stop();
+        new PianoFrame(0);
         new BusinessFacadeImp().resetTilesKeys();
         initTileGame();
         refreshTiles();
         refreshSongList();
+    }
+
+    public static void addTime() {                                                        //When 1000 milliseconds have passed
+        if (play && songStarted) {
+            timePassed++;
+            refreshTiles();
+        }
     }
 }

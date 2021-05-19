@@ -33,7 +33,7 @@ public class ReadMidi {
                 if (message instanceof ShortMessage) {
                     ShortMessage sm = (ShortMessage) message;
                     //System.out.print("Channel: " + sm.getChannel() + " ");
-                    if (sm.getCommand() == NOTE_ON) {
+                    if (sm.getCommand() == NOTE_ON ){//&& sm.getChannel( ) == 0) {
                         int key = sm.getData1();
                         int octave = (key / 12)-1;
                         int note = key % 12;
@@ -41,7 +41,7 @@ public class ReadMidi {
                         int velocity = sm.getData2();
                         playedOn = event.getTick();
                         //System.out.println("Note on, " + noteName + octave + " key=" + key + "duration " + playedOn  + " velocity: " + velocity);
-                    } else if (sm.getCommand() == NOTE_OFF) {
+                    } else if (sm.getCommand() == NOTE_OFF ){//&& sm.getChannel( ) == 0) {
                         int key = sm.getData1();
                         int octave = (key / 12)-1;
                         int note = key % 12;

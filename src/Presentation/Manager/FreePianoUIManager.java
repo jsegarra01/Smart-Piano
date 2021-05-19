@@ -268,6 +268,7 @@ public class FreePianoUIManager implements ActionListener, MouseListener {
             for (int i = 0; recordingNotes.size() != i; i++) {
                 if (recordingNotes.get(i).getKey().equals(e.getComponent().getName())  && recordingNotes.get(i).getDuration() == 0) {
                     recordingNotes.get(i).setDuration(recordingTime - recordingNotes.get(i).getTime());
+                    System.out.println(recordingNotes.get(i).getDuration());
                 }
             }
         }
