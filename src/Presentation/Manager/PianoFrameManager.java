@@ -1,8 +1,13 @@
 package Presentation.Manager;
 
 //Imports needed from the dictionary, events and mainframe
+import Business.Entities.ChangeTime;
+import Business.Entities.Observer;
+import Business.TimerManager;
 import Presentation.Dictionary_login;
+import Presentation.Ui_Views.PianoFrame;
 
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -30,6 +35,7 @@ public class PianoFrameManager implements ActionListener {
      * Parametrized constructor
      */
     public PianoFrameManager() {
+        new ChangeTime();
     }
 
     /**
@@ -44,7 +50,7 @@ public class PianoFrameManager implements ActionListener {
         freePiano.setBackground(Color.GRAY);
         playSong.setBackground(Color.GRAY);
         musicPlayer.setBackground(Color.GRAY);
-
+        new ChangeTime(0);
 
         switch (e.getActionCommand()) {
             case Dictionary_login.PROFILE_BUTTON:       //In the case that the Profile button is pressed
@@ -62,7 +68,6 @@ public class PianoFrameManager implements ActionListener {
                 }
                 cc.show(centralPanel, PIANO_TILES_UI_SELECTOR);
                 playSong.setBackground(Color.getHSBColor(0,0,80.3f));
-
                 break;
             case MUSIC_PLAYER:
                 cc.show(centralPanel, SPOTI_UI);
@@ -70,4 +75,5 @@ public class PianoFrameManager implements ActionListener {
                 break;
         }
     }
+
 }

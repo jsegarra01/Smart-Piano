@@ -3,6 +3,7 @@ package Business;
 import Business.Entities.Playlist;
 import Business.Entities.RecordingNotes;
 import Business.Entities.Song;
+import Business.Entities.*;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -27,6 +28,7 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
     private static UserManager loginUserManager = new UserManager();
     private static SongManager songManager = new SongManager();
     private static PlaylistManager playlistManager = new PlaylistManager();
+    private static TilesManager tilesManager = new TilesManager();
 
     public void singUpStartup(){
         resetUISignUpUI();
@@ -97,6 +99,8 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
     public boolean deleteSongFromPlaylist(String playlistName, String songName){
         return playlistManager.eliminateSongFromPlaylist(playlistName, songName);
     }
+
+    @Override
     public boolean addSongToPlaylist(String playlistName, String songName){
         return playlistManager.addSongToPlaylist(playlistName, songName);
     }
@@ -119,11 +123,27 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
         return songManager;
     }
 
+    @Override
     public boolean deleteSong(int i){
         return songManager.deleteSong(getSong(i));
     }
 
     public boolean newPlaylist(String playlist){
         return playlistManager.newPlaylist(playlist, UserManager.getUser().getUserName());
+    }
+
+    @Override
+    public void setTileArray(int songIndex) {
+        tilesManager.setListTiles(songIndex);
+    }
+
+    @Override
+    public ArrayList<Keys> getTiles() {
+        return tilesManager.getListTiles();
+    }
+
+    @Override
+    public void resetTilesKeys(){
+        tilesManager.resetKeys();
     }
 }

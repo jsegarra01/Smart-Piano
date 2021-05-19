@@ -47,6 +47,7 @@ public class DictionaryPiano {
     public static final String DELETE_SONG = "deleteSong";
     public static final String ADD_SONG = "addSongPlaylist";
     public static final String ADD_SONG_COMM = "addToPlaylist";
+    public static final String PIANO_TILES_TIMER = "pianoTilesTimer";
 
     public static final Integer TB_SIZE = 10;
 }

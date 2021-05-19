@@ -24,6 +24,31 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/SpotiUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/SpotiUI.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Presentation/Ui_Views/SpotiUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Ui_Views/SpotiUI.java" afterDir="false" />
+    <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="Now tiles don't accelerate themselves 24/7 with infinite timers. We need to check how this is done, now is ugly af in PianoFrame and PianoFrameManager with the observer">
+      <change afterPath="$PROJECT_DIR$/Songs/dsa.mid" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Songs/oooo.mid" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Songs/ssda.mid" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Business/Entities/ChangeTime.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Business/TimerManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Files/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/Files/config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Songs/ewew.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/Entities/ReadMidi.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/Entities/ReadMidi.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/Entities/SongToMidi.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/Entities/SongToMidi.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/TilesManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/TilesManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/DictionaryPiano.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/DictionaryPiano.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/PianoFrameManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/PianoFrameManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/PianoTilesUISelectorManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/PianoTilesUISelectorManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/PianoFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/PianoFrame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/PianoTilesUISelector.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/PianoTilesUISelector.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Business/Entities/Observer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/Entities/Observer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Business/Entities/ReadMidi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/Entities/ReadMidi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Business/Entities/SongToMidi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/Entities/SongToMidi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Business/TilesManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/TilesManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presentation/Manager/PianoFrameManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Manager/PianoFrameManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presentation/Manager/PianoTilesUISelectorManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Manager/PianoTilesUISelectorManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presentation/Ui_Views/PianoFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Ui_Views/PianoFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presentation/Ui_Views/PianoTilesUISelector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Ui_Views/PianoTilesUISelector.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,7 +67,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="develop" />
+        <entry key="$PROJECT_DIR$" value="feature/Song_management" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -124,10 +149,23 @@
       <module name="dpoo-2021-smartpiano-ice5" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Business.Entities.*" />
+          <option name="PATTERN" value="Business.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -167,6 +205,8 @@
       <workItem from="1621249296068" duration="109000" />
       <workItem from="1621260608920" duration="199000" />
       <workItem from="1621333075928" duration="619000" />
+      <workItem from="1621411993228" duration="13370000" />
+      <workItem from="1621434489032" duration="6506000" />
     </task>
     <task id="LOCAL-00007" summary="main changes">
       <created>1619007559834</created>
@@ -492,17 +532,23 @@
     </task>
     <task id="LOCAL-00053" summary="I forgot to make a feature :(">
       <created>1621363309903</created>
+    <task id="LOCAL-00053" summary="Tiles fall correctly (Hopefully), but the time/space is not correctly done.">
+      <created>1621375673394</created>
       <option name="number" value="00053" />
       <option name="presentableId" value="LOCAL-00053" />
       <option name="project" value="LOCAL" />
       <updated>1621376772767</updated>
+      <updated>1621375673394</updated>
     </task>
     <task id="LOCAL-00054" summary="Errors during merge solved">
       <created>1621425086756</created>
+    <task id="LOCAL-00054" summary="Now tiles don't accelerate themselves 24/7 with infinite timers. We need to check how this is done, now is ugly af in PianoFrame and PianoFrameManager with the observer">
+      <created>1621425338753</created>
       <option name="number" value="00054" />
       <option name="presentableId" value="LOCAL-00054" />
       <option name="project" value="LOCAL" />
       <updated>1621425086756</updated>
+      <updated>1621425338753</updated>
     </task>
     <task id="LOCAL-00055" summary="The fucking menu did not put itself to the left. There are 3 thousand comments">
       <created>1621419233931</created>
@@ -590,19 +636,26 @@
     <MESSAGE value="topFive songs table is done" />
     <MESSAGE value="Errors during merge solved" />
     <option name="LAST_COMMIT_MESSAGE" value="Errors during merge solved" />
+    <MESSAGE value="Start feature commit" />
+    <MESSAGE value="table for the songs has been implemented, although still not filled with the correct information." />
+    <MESSAGE value="Songs can be erased and we differentiate from when we click the table or the button" />
+    <MESSAGE value="Songs can be added to a playlist. However, the views are not updated" />
+    <MESSAGE value="Playlists get updated when adding a new song, it may not be the best way but after a few hours doing this shit thing I did my best :)" />
+    <MESSAGE value="Commit to checkout" />
+    <MESSAGE value="Commit to checkout el blay no sap fer commits" />
+    <MESSAGE value="Commit after finishing features" />
+    <MESSAGE value="Commit after finishing features soc en blay i no se fer commits" />
+    <MESSAGE value="Tiles fall correctly (Hopefully), but the time/space is not correctly done." />
+    <MESSAGE value="Now tiles don't accelerate themselves 24/7 with infinite timers. We need to check how this is done, now is ugly af in PianoFrame and PianoFrameManager with the observer" />
+    <option name="LAST_COMMIT_MESSAGE" value="Now tiles don't accelerate themselves 24/7 with infinite timers. We need to check how this is done, now is ugly af in PianoFrame and PianoFrameManager with the observer" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Presentation/Manager/PianoTilesUISelectorManager.java</url>
-          <line>262</line>
-          <option name="timeStamp" value="66" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Presentation/Manager/PianoFrameManager.java</url>
-          <line>63</line>
-          <option name="timeStamp" value="68" />
+          <url>file://$PROJECT_DIR$/src/Presentation/Manager/SpotiFrameManager.java</url>
+          <line>111</line>
+          <option name="timeStamp" value="17" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

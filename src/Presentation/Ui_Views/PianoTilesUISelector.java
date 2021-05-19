@@ -1,27 +1,16 @@
 package Presentation.Ui_Views;
 
 //imports needed for the piano tiles
-import Business.Entities.Translator;
+import Business.Entities.Keys;
 import Presentation.Manager.MainFrame;
-
-import javax.security.auth.RefreshFailedException;
-import javax.security.auth.Refreshable;
-import javax.sound.midi.Sequence;
 import javax.swing.*;
 import java.awt.*;
 import Presentation.Manager.PianoTilesUISelectorManager;
-import Presentation.Manager.MainFrame;
-import Presentation.Manager.PianoFrameManager;
 
-import javax.swing.*;
-import javax.swing.border.EmptyBorder;
-import javax.swing.event.ListSelectionListener;
-import javax.swing.text.JTextComponent;
-import java.awt.*;
+import java.security.Key;
 import java.util.ArrayList;
 
 import static Presentation.DictionaryPiano.*;
-import static Presentation.Dictionary_login.PROFILE_BUTTON;
 import static Presentation.Manager.PianoTilesUISelectorManager.timePassed;
 import static Presentation.Manager.PianoTilesUISelectorManager.velocityModifier;
 import static Presentation.Ui_Views.Tile.*;
@@ -46,6 +35,8 @@ public class PianoTilesUISelector extends Piano {
     public static JLayeredPane jLayeredPane = new JLayeredPane();
     public static JPanel scrollPanel = new JPanel();
     public static JButton playButtonTiles = new JButton(PLAY_BUTTON);
+    public static ArrayList<Keys> keys = new ArrayList<>();
+
     public JButton veryEasy = new JButton(VERY_EASY_MODE);
     public JButton easy = new JButton(EASY_MODE);
     public JButton normal = new JButton(NORMAL_MODE);
@@ -240,20 +231,38 @@ public class PianoTilesUISelector extends Piano {
     }
 
     public static void refreshTiles() {
-        try {
-            int i = 0;
-            while (i < 4) {
-                JPanel lala = new JPanel();
-                lala.setBackground(Color.orange);
-                lala.setBounds(100*i, 0, 50, (int) (timePassed*velocityModifier));
+        float tile_position = 0;
+
+        while (114 < jLayeredPane.getComponentCount()) {
+            jLayeredPane.remove(0);
+        }
+
+        for (Keys key: keys) {
+            float time = key.getStartTime()/18.38f;
+            float duration = key.getDuration()/18.38f;
+            if ((int) ((timePassed - time + duration) * velocityModifier) >= 0 && ((timePassed - time) * velocityModifier) < 400 && key.getKeyCode() >= 48 && key.getKeyCode() < 72) {
+                tile_position = (key.getKeyCode() % 24) * 32.5f + 12;
+                if (key.getKeyCode()%24 > 4) {
+                    tile_position += 32.5f;
+                    if (key.getKeyCode()%24 > 11) {
+                        tile_position += 32.5f;
+                        if (key.getKeyCode()%24 > 16) {
+                            tile_position += 32.5f;
+                        }
+                    }
+                }
+
+
+
+                JPanel lala = new JPanel();                 //Every 50 pixels = 1 sec if possible
+                lala.setBackground(Color.orange);           //initial time                                              //final - initial time
+                lala.setBounds((int) tile_position, (int) (((timePassed - time) * velocityModifier) * 7.5), 40, (int) ((duration * velocityModifier) *7.5));
+                lala.setVisible(true);
                 lala.setOpaque(true);
                 lala.revalidate();
                 lala.repaint();
                 jLayeredPane.add(lala, Integer.valueOf(2));
-                i++;
             }
-        } catch (Exception e) {
-
         }
 
         jLayeredPane.revalidate();
@@ -261,29 +270,30 @@ public class PianoTilesUISelector extends Piano {
         jLayeredPane.updateUI();
     }
 
-
-
     public static void refreshSongList() {
         scrollPanel.removeAll();
 
-        try {
-            //We create the available songs for the user to be played in piano tiles
-            ArrayList<String> names = new ArrayList<>(new PianoTilesUISelectorManager().getBusinessSongNames());
-            JList<String> songNames = new JList<>(names.toArray(new String[0]));
-            songNames.addListSelectionListener(new PianoTilesUISelectorManager());
-            songNames.setSelectionMode(0);
-            songNames.setVisibleRowCount(4);
+        //We create the available songs for the user to be played in piano tiles
+        ArrayList<String> names = new ArrayList<>(new PianoTilesUISelectorManager().getBusinessSongNames());
+        JList<String> songNames = new JList<>(names.toArray(new String[0]));
+        songNames.addListSelectionListener(new PianoTilesUISelectorManager());
+        songNames.setSelectionMode(0);
+        songNames.setVisibleRowCount(4);
 
-            //We create the view of the list in a scroll pane
-            JScrollPane scrollPane = new JScrollPane(songNames);
-            scrollPane.setPreferredSize(new Dimension(250, 60));
-            scrollPane.setWheelScrollingEnabled(true);
+        //We create the view of the list in a scroll pane
+        JScrollPane scrollPane = new JScrollPane(songNames);
+        scrollPane.setPreferredSize(new Dimension(250, 60));
+        scrollPane.setWheelScrollingEnabled(true);
 
-            scrollPanel.add(scrollPane);
-            scrollPanel.revalidate();
-            scrollPanel.repaint();
-            scrollPanel.updateUI();
-        } catch (NullPointerException e) {
-        }
+        scrollPanel.add(scrollPane);
+        scrollPanel.revalidate();
+        scrollPanel.repaint();
+        scrollPanel.updateUI();
     }
+
+    public static void setKeys(ArrayList<Keys> newKeys) {
+        keys.clear();
+        keys = newKeys;
+    }
+
 }
