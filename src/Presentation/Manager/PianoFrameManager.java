@@ -1,7 +1,9 @@
 package Presentation.Manager;
 
 //Imports needed from the dictionary, events and mainframe
+import Business.Entities.ChangeTime;
 import Business.Entities.Observer;
+import Business.TimerManager;
 import Presentation.Dictionary_login;
 import Presentation.Ui_Views.PianoFrame;
 
@@ -14,7 +16,6 @@ import static Presentation.DictionaryPiano.*;
 import static Presentation.Dictionary_login.*;
 import static Presentation.Manager.MainFrame.card;
 import static Presentation.Manager.MainFrame.contenedor;
-import static Presentation.Manager.PianoTilesUISelectorManager.addTime;
 import static Presentation.Ui_Views.PianoFrame.*;
 
 
@@ -27,16 +28,14 @@ import static Presentation.Ui_Views.PianoFrame.*;
  * @version 1.0 21 Apr 2021
  *
  */
-public class PianoFrameManager extends Observer implements ActionListener {
-    protected Timer timer = new Timer(100, this);
+public class PianoFrameManager implements ActionListener {
+
 
     /**
      * Parametrized constructor
      */
-    public PianoFrameManager(PianoFrame pianoFrame) {
-        timer.setActionCommand(PIANO_TILES_TIMER);
-        this.subject = pianoFrame;
-        this.subject.attach(this);
+    public PianoFrameManager() {
+        new ChangeTime();
     }
 
     /**
@@ -51,22 +50,17 @@ public class PianoFrameManager extends Observer implements ActionListener {
         freePiano.setBackground(Color.GRAY);
         playSong.setBackground(Color.GRAY);
         musicPlayer.setBackground(Color.GRAY);
-
+        new ChangeTime(0);
 
         switch (e.getActionCommand()) {
-            case PIANO_TILES_TIMER:
-                addTime();
-                break;
             case Dictionary_login.PROFILE_BUTTON:       //In the case that the Profile button is pressed
                 card.show(contenedor, PROFILE_UI);
             case FREE_PIANO:
-                timer.stop();
                 cc.show(centralPanel, FREE_PIANO_UI);
                 freePiano.setBackground(Color.getHSBColor(0,0,80.3f));
                 break;
             case PLAY_A_SONG:
                 try {
-                    timer.stop();
                     new PianoTilesUISelectorManager().refreshPianoTilesUI();
                 } catch (NullPointerException h) {
                     //TODO WE NEED TO CATCH THE EXCEPTION :) Sergi i Josep no se que esteu fent porfa controleu les
@@ -76,25 +70,10 @@ public class PianoFrameManager extends Observer implements ActionListener {
                 playSong.setBackground(Color.getHSBColor(0,0,80.3f));
                 break;
             case MUSIC_PLAYER:
-                timer.stop();
                 cc.show(centralPanel, SPOTI_UI);
                 musicPlayer.setBackground(Color.getHSBColor(0,0,80.3f));
                 break;
         }
     }
 
-    @Override
-    public void update() {
-        switch (actionTimer) {
-            case 0:
-                timer.stop();
-            break;
-            case 1:
-                timer.start();
-                break;
-            case 2:
-                timer.restart();
-                break;
-        }
-    }
 }

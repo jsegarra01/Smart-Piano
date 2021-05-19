@@ -2,9 +2,9 @@ package Presentation.Manager;
 
 //Imports needed from the dictionary, events and mainframe
 import Business.BusinessFacadeImp;
+import Business.Entities.ChangeTime;
 import Presentation.DictionaryPiano;
 import Presentation.Dictionary_login;
-import Presentation.Ui_Views.PianoFrame;
 import Presentation.Ui_Views.PianoTilesUISelector;
 import Presentation.Ui_Views.Tile;
 import Business.Entities.MidiHelper;
@@ -130,13 +130,13 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
                         playButtonTiles.setIcon(pauseIcon);
                         playButtonTiles.setIcon(resizeIcon((ImageIcon) playButtonTiles.getIcon(), (int) Math.round(playButtonTiles.getIcon().getIconWidth()*0.0507),
                                 (int) Math.round(playButtonTiles.getIcon().getIconHeight()*0.0507)));
-                        new PianoFrame(0);
+                        new ChangeTime(0);
                     }
                     else{
                         playButtonTiles.setIcon(playIcon);
                         playButtonTiles.setIcon(resizeIcon((ImageIcon) playButtonTiles.getIcon(), (int) Math.round(playButtonTiles.getIcon().getIconWidth()*0.15),
                                 (int) Math.round(playButtonTiles.getIcon().getIconHeight()*0.15)));
-                        new PianoFrame(1);
+                        new ChangeTime(1);
                     }
                     play = !play;
                 }
@@ -267,7 +267,7 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
                                                                             //Is this necessary or it
                                                                             //can be in presentation?
 
-            new PianoFrame(2);
+            new ChangeTime(2);
             System.out.println("sasa");
         }
     }
@@ -278,7 +278,7 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
         play = true;
         velocityModifier = 1;
         songIndex = 0;
-        new PianoFrame(0);
+        new ChangeTime(0);
         new BusinessFacadeImp().resetTilesKeys();
         initTileGame();
         refreshTiles();

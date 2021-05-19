@@ -1,8 +1,8 @@
 package Business.Entities;
 
-import Presentation.Ui_Views.PianoFrame;
+import Presentation.Manager.PianoFrameManager;
 
 public abstract class Observer {
-    protected PianoFrame subject;
+    protected ChangeTime subject;
     public abstract void update();
 }

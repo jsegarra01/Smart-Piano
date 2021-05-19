@@ -240,7 +240,7 @@ public class PianoTilesUISelector extends Piano {
         for (Keys key: keys) {
             float time = key.getStartTime()/18.38f;
             float duration = key.getDuration()/18.38f;
-           // if ((int) ((timePassed - time + duration) * velocityModifier) >= 0 && ((timePassed - time) * velocityModifier) < 400 && key.getKeyCode() >= 48 && key.getKeyCode() < 72) {
+            if ((int) ((timePassed - time + duration) * velocityModifier) >= 0 && ((timePassed - time) * velocityModifier) < 400 && key.getKeyCode() >= 48 && key.getKeyCode() < 72) {
                 tile_position = (key.getKeyCode() % 24) * 32.5f + 12;
                 if (key.getKeyCode()%24 > 4) {
                     tile_position += 32.5f;
@@ -256,13 +256,13 @@ public class PianoTilesUISelector extends Piano {
 
                 JPanel lala = new JPanel();                 //Every 50 pixels = 1 sec if possible
                 lala.setBackground(Color.orange);           //initial time                                              //final - initial time
-                lala.setBounds((int) tile_position, (int) ((timePassed - time) * velocityModifier), 40, (int) (duration * velocityModifier));
+                lala.setBounds((int) tile_position, (int) (((timePassed - time) * velocityModifier) * 7.5), 40, (int) ((duration * velocityModifier) *7.5));
                 lala.setVisible(true);
                 lala.setOpaque(true);
                 lala.revalidate();
                 lala.repaint();
                 jLayeredPane.add(lala, Integer.valueOf(2));
-            //}
+            }
         }
 
         jLayeredPane.revalidate();

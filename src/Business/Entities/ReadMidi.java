@@ -16,7 +16,7 @@ public class ReadMidi {
     public static final String[] NOTE_NAMES = {"C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"};
 
     public static ArrayList<Keys> readMidi(String fileName) throws Exception {
-        ArrayList<Keys> keys = new ArrayList<Keys>();
+        ArrayList<Keys> keys = new ArrayList<>();
         long playedOn = 0;
         long playedOff = 0;
         Sequence sequence = MidiSystem.getSequence(new File(fileName));
@@ -32,16 +32,16 @@ public class ReadMidi {
                 MidiMessage message = event.getMessage();
                 if (message instanceof ShortMessage) {
                     ShortMessage sm = (ShortMessage) message;
-                    //System.out.print("Channel: " + sm.getChannel() + " ");
-                    if (sm.getCommand() == NOTE_ON ){//&& sm.getChannel( ) == 0) {
+                  //  System.out.print("Channel: " + sm.getChannel() + " ");
+                    if (sm.getCommand() == NOTE_ON && sm.getChannel() == 0 && sm.getData2() > 0) {
                         int key = sm.getData1();
                         int octave = (key / 12)-1;
                         int note = key % 12;
                         String noteName = NOTE_NAMES[note];
                         int velocity = sm.getData2();
                         playedOn = event.getTick();
-                        //System.out.println("Note on, " + noteName + octave + " key=" + key + "duration " + playedOn  + " velocity: " + velocity);
-                    } else if (sm.getCommand() == NOTE_OFF ){//&& sm.getChannel( ) == 0) {
+                       // System.out.println("Note on, " + noteName + octave + " key=" + key + "duration " + playedOn  + " velocity: " + velocity);
+                    } else if (sm.getCommand() == NOTE_ON && sm.getData2() == 0 && sm.getChannel() == 0) {
                         int key = sm.getData1();
                         int octave = (key / 12)-1;
                         int note = key % 12;
@@ -49,7 +49,7 @@ public class ReadMidi {
                         int velocity = sm.getData2();
                         playedOff = event.getTick();
                         keys.add(new Keys(key, (playedOff - playedOn), playedOn));
-                        //System.out.println("Note off, " + noteName + octave + " key=" + key + " duration " + playedOff + " velocity: " + velocity);
+                      //  System.out.println("Note off, " + noteName + octave + " key=" + key + " duration " + playedOff + " velocity: " + velocity);
                     } else {
                         //System.out.println("Command:" + sm.getCommand());
                     }

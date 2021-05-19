@@ -1,7 +1,6 @@
 package Presentation.Ui_Views;
 
 //Imports all necessary libraries
-import Business.Entities.Observer;
 import Presentation.Manager.MainFrame;
 import Presentation.Manager.PianoFrameManager;
 
@@ -10,8 +9,6 @@ import javax.swing.border.EmptyBorder;
 
 import java.awt.*;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.List;
 
 import static Presentation.DictionaryPiano.*;
 
@@ -30,8 +27,6 @@ public class PianoFrame extends JPanel {
     public static JButton freePiano = new JButton(FREE_PIANO);
     public static JButton playSong = new JButton(PLAY_A_SONG);
     public static JButton musicPlayer = new JButton(MUSIC_PLAYER);
-    public static int actionTimer = 0;
-    private static List<Observer> observers = new ArrayList<Observer>();
 
     public static JPanel centralPanel = new JPanel(new CardLayout());
 
@@ -39,9 +34,6 @@ public class PianoFrame extends JPanel {
     SpotiUI spotiUI;
     FreePianoUI freePianoUI;
 
-
-
-    public PianoFrame(){}
     /**
      * Constructor for the TempFreePianoUI, you need to send the mainframe context and will create a card layout
      * @param mainFrame context necessary to create the card layout
@@ -56,11 +48,6 @@ public class PianoFrame extends JPanel {
         initialize();
     }
 
-    public PianoFrame(int state) {
-        actionTimer = state;
-        notifyAllObservers();
-        System.out.println("ds");
-    }
 
     /**
      * The initialize function that creates the card layout for the TempFreePianoUI
@@ -89,7 +76,7 @@ public class PianoFrame extends JPanel {
         musicPlayer.setBorder(new EmptyBorder(80,33,80,33));
         musicPlayer.setBackground(Color.GRAY);
 
-        registerController(new PianoFrameManager(new PianoFrame()));
+        registerController(new PianoFrameManager());
 
         buttonPanel.add(Box.createRigidArea(new Dimension(150, 17)));
         buttonPanel.add(freePiano);
@@ -137,16 +124,5 @@ public class PianoFrame extends JPanel {
         freePiano.addActionListener(listener);
         playSong.addActionListener(listener);
         musicPlayer.addActionListener(listener);
-    }
-
-    public void attach(Observer observer){
-        observers.add(observer);
-        System.out.println("fd");
-    }
-
-    public void notifyAllObservers(){
-        for (Observer observer : observers) {
-            observer.update();
-        }
     }
 }
