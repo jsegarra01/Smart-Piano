@@ -19,30 +19,67 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="">
+    <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="When creating a playlists it gets added to the view. Plus, a scrollPane has been implemented">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/Entities/TopSongs.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/SongManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/SongManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Files/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/Files/config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/BusinessFacade.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/BusinessFacade.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/BusinessFacadeImp.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/BusinessFacadeImp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/Entities/ButtonColumn.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/Entities/ButtonColumn.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/Entities/ConfigJson.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/Entities/ConfigJson.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/Entities/Graph.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/Entities/Graph.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/Entities/Keys.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/Entities/Keys.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/Entities/MidiHelper$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/Entities/MidiHelper$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/Entities/MidiHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/Entities/MidiHelper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/Entities/Playlist.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/Entities/Playlist.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/Entities/ReadMidi.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/Entities/ReadMidi.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/Entities/RecordingNotes.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/Entities/RecordingNotes.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/Entities/Song.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/Entities/Song.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/Entities/SongRecorded.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/Entities/SongRecorded.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/Entities/SongToMidi.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/Entities/SongToMidi.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/Entities/Stadistics.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/Entities/Stadistics.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/Entities/Translator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/Entities/Translator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/Entities/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/Entities/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/Entities/songDownloader.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/Entities/songDownloader.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/Entities/webHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/Entities/webHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/PlaylistManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/PlaylistManager.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/UserManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/UserManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Persistence/Json/ReadConfigJson.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Persistence/Json/ReadConfigJson.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Persistence/LoginUserDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Persistence/LoginUserDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Persistence/PlaylistDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Persistence/PlaylistDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Persistence/SQL/ConnectSQL.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Persistence/SQL/ConnectSQL.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Persistence/SQL/Csv/LoginUserCsvDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Persistence/SQL/Csv/LoginUserCsvDAO.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Persistence/SQL/Csv/PlaylistCsvDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Persistence/SQL/Csv/PlaylistCsvDAO.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Persistence/SQL/Csv/SongCsvDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Persistence/SQL/Csv/SongCsvDAO.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Persistence/SongDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Persistence/SongDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/SpotiFrameManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/SpotiFrameManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/DictionaryPiano.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/DictionaryPiano.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Dictionary_login.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Dictionary_login.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/FreePianoUIManager$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/FreePianoUIManager$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/FreePianoUIManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/FreePianoUIManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/LoginUIManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/LoginUIManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/MainFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/MainFrame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/PianoFrameManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/PianoFrameManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/PianoTilesUISelectorManager$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/PianoTilesUISelectorManager$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/PianoTilesUISelectorManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/PianoTilesUISelectorManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/PreMenuUIManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/PreMenuUIManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/ProfileUIManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/ProfileUIManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/SignUpUiManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/SignUpUiManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/TextPrompt$Show.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/TextPrompt$Show.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/TextPrompt.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/TextPrompt.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/FreePianoUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/FreePianoUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/LoginUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/LoginUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/Piano.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/Piano.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/PianoFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/PianoFrame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/PianoTilesUISelector.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/PianoTilesUISelector.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/PlaylistUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/PlaylistUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/SongsUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/SongsUI$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/SongsUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/SongsUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/PreMenuUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/PreMenuUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/ProfileUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/ProfileUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/SignUpUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/SignUpUI.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/SpotiUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/SpotiUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Business/BusinessFacadeImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/BusinessFacadeImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Business/Entities/TopSongs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/Entities/TopSongs.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Business/PlaylistManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/PlaylistManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Business/SongManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/SongManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Persistence/PlaylistDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Persistence/PlaylistDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Persistence/SQL/Csv/PlaylistCsvDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Persistence/SQL/Csv/PlaylistCsvDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Persistence/SQL/Csv/SongCsvDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Persistence/SQL/Csv/SongCsvDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Persistence/SongDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Persistence/SongDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presentation/Manager/SpotiFrameManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Manager/SpotiFrameManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/StatisticsUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/StatisticsUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/Tile.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/Tile.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/TopSongsUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/TopSongsUI.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Presentation/Ui_Views/PlaylistUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Ui_Views/PlaylistUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presentation/Ui_Views/SongsUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Ui_Views/SongsUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Presentation/Ui_Views/SpotiUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Ui_Views/SpotiUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -506,12 +543,12 @@
       <option name="project" value="LOCAL" />
       <updated>1621376772767</updated>
     </task>
-    <task id="LOCAL-00054" summary="Commit to finish feature">
-      <created>1621377817072</created>
+    <task id="LOCAL-00054" summary="When creating a playlists it gets added to the view. Plus, a scrollPane has been implemented">
+      <created>1621383260296</created>
       <option name="number" value="00054" />
       <option name="presentableId" value="LOCAL-00054" />
       <option name="project" value="LOCAL" />
-      <updated>1621377817072</updated>
+      <updated>1621383260296</updated>
     </task>
     <task id="LOCAL-00055" summary="Commit to checkout el blay no sap fer commits">
       <created>1621354584881</created>
@@ -520,7 +557,7 @@
       <option name="project" value="LOCAL" />
       <updated>1621354584881</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -550,7 +587,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="I am not allowed to do finish feature :'(" />
     <MESSAGE value="Changing colors while changing through the CardLayout" />
     <MESSAGE value="Name of the tile appears now. The recording button is no longer an unreadable text, is an icon" />
     <MESSAGE value="piano finished" />
@@ -598,7 +634,8 @@
     <MESSAGE value="commit to start feature" />
     <MESSAGE value="Now I have all the information for the top5 songs gathered (solo falta que la tabla decida aparecer, is in process)" />
     <MESSAGE value="Commit to finish feature" />
-    <option name="LAST_COMMIT_MESSAGE" value="Commit to finish feature" />
+    <MESSAGE value="When creating a playlists it gets added to the view. Plus, a scrollPane has been implemented" />
+    <option name="LAST_COMMIT_MESSAGE" value="When creating a playlists it gets added to the view. Plus, a scrollPane has been implemented" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
