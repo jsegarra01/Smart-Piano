@@ -145,9 +145,10 @@ public class SpotiUI extends JPanel {
 
 
         //playlistLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-        playlistLabel.setBorder(new EmptyBorder(10,20,10,0));
+        playlistLabel.setBorder(new EmptyBorder(0,20,0,0));
         playlistLabel.setBackground(Color.getHSBColor(0,0,0.8f));
         playlistLabel.setForeground(Color.white);
+        playlistLabel.setText("");
 
         createPlaylist.setActionCommand(CREATE_PLAYLIST);
         /*confButtonLeft(createPlaylist, 12, 90);
@@ -157,7 +158,7 @@ public class SpotiUI extends JPanel {
         //JScrollPane scroll = new JScrollPane();
         registerController(new SpotiFrameManager());
         leftList.add(Box.createRigidArea(new Dimension(210, 10)));
-        leftList.setPreferredSize(new Dimension(200, 200));
+        leftList.setPreferredSize(new Dimension(210, 200));
         leftList.setMaximumSize(getPreferredSize());
 
         JPanel panelButtonsSpoti = new JPanel(new GridLayout(5,0));
@@ -176,6 +177,8 @@ public class SpotiUI extends JPanel {
         panelButtonsSpoti.add(setButton(showStadistics));
         panelButtonsSpoti.add(setButton(songsList));
         panelButtonsSpoti.add(setButton(topSongs));
+        //panelButtonsSpoti.add(Box.createVerticalStrut(40));
+        //panelButtonsSpoti.add(Box.createRigidArea(new Dimension(200, 10)));
         panelButtonsSpoti.add(playlistLabel);
         panelButtonsSpoti.add(setButton(createPlaylist));
         //panelButtonsSpoti.setBackground((Color.red));
@@ -306,7 +309,7 @@ public class SpotiUI extends JPanel {
             scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
             //scroll.setBackground(Color.getHSBColor(0,0,0.8f));
             scroll.setOpaque(false);
-            scroll.setPreferredSize(new Dimension(70, 250));
+            scroll.setPreferredSize(new Dimension(70, 330));
             scroll.setBorder(BorderFactory.createEmptyBorder());
             leftList.add(scroll);
 
@@ -320,11 +323,12 @@ public class SpotiUI extends JPanel {
         //button.setAlignmentX(0.5f);
         //button.setBorder(new EmptyBorder(10, 5, 10, 0));
         button.setFocusPainted(false);
-        button.setMargin(new Insets(0, 0, 0, 0));
+        button.setMargin(new Insets(10, 0, 10, 0));
         button.setContentAreaFilled(false);
         button.setBorderPainted(false);
         setOpaque(false);
         button.setBackground(Color.getHSBColor(10,0,0.2f));
+        button.setFont(new Font(button.getFont().getName(), Font.PLAIN, (int)(button.getFont().getSize()*1.5)));
         button.setForeground(Color.white);
         //button.setAlignmentX(LEFT_ALIGNMENT);
         button.setHorizontalAlignment(SwingConstants.LEFT);
