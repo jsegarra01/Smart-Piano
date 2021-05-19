@@ -12,7 +12,7 @@ import java.util.LinkedList;
 
 public class SongsUI extends JPanel {
     private static JTable table;
-    private final static String[] columnNames = {"Name Song", "Author's name", "Duration","Recording Date", ""};
+    private static String[] columnNames; /*{"Name Song", "Author's name", "Duration","Recording Date", ""};*/
     private static JPanel panel = new JPanel();
     public SongsUI(){
         initialize();
@@ -34,7 +34,14 @@ public class SongsUI extends JPanel {
             data[i][1] = songs.get(i).getAuthorName();
             data[i][2] = songs.get(i).getDuration();
             data[i][3] = songs.get(i).getRecordingDate();
-            data[i][4]  = action;
+            if(!action.equals("topFive")){
+                data[i][4] = action;
+                columnNames= new String[]{"Name Song", "Author's name", "Duration", "Recording Date", ""};
+                //data[i][4]  = songs.get(i).getTimesPlayed();
+            }else {
+                data[i][4]  = songs.get(i).getTimesPlayed();
+                columnNames= new String[]{"Name Song", "Author's name", "Duration", "Recording Date", "Times Played"};
+            }
         }
         DefaultTableModel model = new DefaultTableModel(data, columnNames){
             @Override
@@ -54,7 +61,9 @@ public class SongsUI extends JPanel {
         sp.setBackground(Color.black);
         sp.setPreferredSize(new Dimension(800, 550));
         sp.setMaximumSize(new Dimension(800, 550));
-        registerController(new SpotiFrameManager());
+        if(!action.equals("topFive")){
+            registerController(new SpotiFrameManager());
+        }
         panel.add(sp);
         panel.revalidate();
         panel.repaint();
