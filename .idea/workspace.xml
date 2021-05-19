@@ -19,12 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="Errors during merge solved">
-      <change afterPath="$PROJECT_DIR$/Files/drawable/searchIcon.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/SpotiUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/SpotiUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presentation/Ui_Views/SpotiUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Ui_Views/SpotiUI.java" afterDir="false" />
-    <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="Now tiles don't accelerate themselves 24/7 with infinite timers. We need to check how this is done, now is ugly af in PianoFrame and PianoFrameManager with the observer">
+    <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="">
       <change afterPath="$PROJECT_DIR$/Songs/dsa.mid" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Songs/oooo.mid" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Songs/ssda.mid" afterDir="false" />
@@ -36,6 +31,7 @@
       <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/Entities/ReadMidi.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/Entities/ReadMidi.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/Entities/SongToMidi.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/Entities/SongToMidi.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/TilesManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/TilesManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Persistence/SQL/Csv/SongCsvDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Persistence/SQL/Csv/SongCsvDAO.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/DictionaryPiano.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/DictionaryPiano.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/PianoFrameManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/PianoFrameManager.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/PianoTilesUISelectorManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/PianoTilesUISelectorManager.class" afterDir="false" />
@@ -112,17 +108,6 @@
     </key>
   </component>
   <component name="RunManager" selected="Application.Main">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="dpoo-2021-smartpiano-ice5" />
@@ -531,23 +516,10 @@
       <updated>1621355286518</updated>
     </task>
     <task id="LOCAL-00053" summary="I forgot to make a feature :(">
-      <created>1621363309903</created>
-    <task id="LOCAL-00053" summary="Tiles fall correctly (Hopefully), but the time/space is not correctly done.">
-      <created>1621375673394</created>
-      <option name="number" value="00053" />
-      <option name="presentableId" value="LOCAL-00053" />
-      <option name="project" value="LOCAL" />
-      <updated>1621376772767</updated>
-      <updated>1621375673394</updated>
-    </task>
-    <task id="LOCAL-00054" summary="Errors during merge solved">
-      <created>1621425086756</created>
-    <task id="LOCAL-00054" summary="Now tiles don't accelerate themselves 24/7 with infinite timers. We need to check how this is done, now is ugly af in PianoFrame and PianoFrameManager with the observer">
       <created>1621425338753</created>
       <option name="number" value="00054" />
       <option name="presentableId" value="LOCAL-00054" />
       <option name="project" value="LOCAL" />
-      <updated>1621425086756</updated>
       <updated>1621425338753</updated>
     </task>
     <task id="LOCAL-00055" summary="The fucking menu did not put itself to the left. There are 3 thousand comments">
@@ -635,7 +607,6 @@
     <MESSAGE value="Commit to finish feature" />
     <MESSAGE value="topFive songs table is done" />
     <MESSAGE value="Errors during merge solved" />
-    <option name="LAST_COMMIT_MESSAGE" value="Errors during merge solved" />
     <MESSAGE value="Start feature commit" />
     <MESSAGE value="table for the songs has been implemented, although still not filled with the correct information." />
     <MESSAGE value="Songs can be erased and we differentiate from when we click the table or the button" />
@@ -656,6 +627,16 @@
           <url>file://$PROJECT_DIR$/src/Presentation/Manager/SpotiFrameManager.java</url>
           <line>111</line>
           <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Persistence/SQL/Csv/SongCsvDAO.java</url>
+          <line>147</line>
+          <option name="timeStamp" value="39" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Business/SongManager.java</url>
+          <line>40</line>
+          <option name="timeStamp" value="40" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
