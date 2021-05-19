@@ -1,6 +1,8 @@
 package Presentation.Ui_Views;
 
 //import data from the different libraries
+import Business.BusinessFacade;
+import Business.BusinessFacadeImp;
 import Presentation.Manager.LoginUIManager;
 import Presentation.TextPrompt;
 
@@ -27,11 +29,13 @@ public class LoginUI extends JPanel{
     private static final JPasswordField password = new JPasswordField();
     private final JButton back = new JButton(BACK_BUTTON);
     private final JButton done = new JButton(DONE_BUTTON);
+    private BusinessFacadeImp myFacade;
 
     /**
      * Constructor for the LoginUI, you need to send the mainframe context and will create a card layout
      */
-    public LoginUI() {
+    public LoginUI(BusinessFacadeImp myFacade) {
+        this.myFacade = myFacade;
         initialize();
     }
 

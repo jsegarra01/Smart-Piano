@@ -185,15 +185,8 @@ public class MidiHelper {
         midiChannels = synth.getChannels();
         instruments = synth.getDefaultSoundbank().getInstruments();
         sequencer.open();
-        sequencer.addMetaEventListener(new MetaEventListener() {
-            @Override
-            public void meta(MetaMessage meta) {
-                if(meta.getType()==47){
-                    donePlaying = true;
-                }else{
-                    donePlaying = false;
-                }
-            }
+        sequencer.addMetaEventListener(meta -> {
+            donePlaying = meta.getType() == 47;
         });
     }
     public void playSomething(int noteValueToPlay, int whatInstrumentToPlay){

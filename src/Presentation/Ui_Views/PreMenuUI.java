@@ -1,6 +1,8 @@
 package Presentation.Ui_Views;
 
 //Imports all the libraries needed to create the card layout
+import Business.BusinessFacade;
+import Business.BusinessFacadeImp;
 import Presentation.Manager.MainFrame;
 import Presentation.Manager.PreMenuUIManager;
 
@@ -25,11 +27,12 @@ public class PreMenuUI extends JPanel{
     private JButton logIn = new JButton(LOG_IN_BUTTON);
     private JButton signUp = new JButton(SIGN_UP_BUTTON);
     private JButton guest = new JButton(ENTER_AS_GUEST_BUTTON);
-
+    private BusinessFacadeImp myFacade;
     /**
      * Constructor for the PreMenuUI, you need to send the mainframe context and will create a card layout
      */
-    public PreMenuUI() {
+    public PreMenuUI(BusinessFacadeImp myFacade) {
+        this.myFacade = myFacade;
         initialize();
     }
 
@@ -104,7 +107,7 @@ public class PreMenuUI extends JPanel{
         guest.setAlignmentX(0.5f);
         guest.setBorder(new EmptyBorder(12,88,12,88));
 
-        registerController(new PreMenuUIManager());
+        registerController(new PreMenuUIManager(this.myFacade));
 
         userButtons.add(logIn);
         userButtons.add(Box.createRigidArea(new Dimension(10, 25)));

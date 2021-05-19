@@ -1,6 +1,8 @@
 package Presentation.Ui_Views;
 
 //Imports all necessary libraries
+import Business.BusinessFacade;
+import Business.BusinessFacadeImp;
 import Presentation.Manager.MainFrame;
 import Presentation.Manager.PianoFrameManager;
 
@@ -33,7 +35,7 @@ public class PianoFrame extends JPanel {
     PianoTilesUISelector pianoTilesUISelector;
     SpotiUI spotiUI;
     FreePianoUI freePianoUI;
-
+    private BusinessFacadeImp myFacade;
 
 
 
@@ -41,8 +43,9 @@ public class PianoFrame extends JPanel {
      * Constructor for the TempFreePianoUI, you need to send the mainframe context and will create a card layout
      * @param mainFrame context necessary to create the card layout
      */
-    public PianoFrame(final MainFrame mainFrame) {
+    public PianoFrame(final MainFrame mainFrame, BusinessFacadeImp myFacade) {
         super();
+        this.myFacade = myFacade;
         PianoFrame.mainFrame =mainFrame;
 
         pianoTilesUISelector = new PianoTilesUISelector(mainFrame);

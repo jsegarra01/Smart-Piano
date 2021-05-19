@@ -23,7 +23,7 @@ public class SongManager {
         writeMidi(songName, new SongRecorded(recordedNotes,songName, isPublic).getRecordingNotes(), endtime);
         song = new Song(songName, UserManager.getUser().getUserName(), endtime, isPublic, "Songs/" + songName + ".mid", UserManager.getUser().getUserName());
         songManager.saveSong(song);
-        songs.removeAll(songs);
+        songs.clear();
         setSongs();
     }
     public ArrayList<Song> getSongs() {
@@ -37,7 +37,7 @@ public class SongManager {
     public void setSongs() {
         //TODO GET ALL THE PUBLIC SONGS + PRIVATE SONGS IF USER != GUEST
         //songs = songManager.getAllSongs(getUser());
-        songNames.removeAll(songNames);
+        songNames.clear();
         songs = songManager.getAllSongs();
         for (Song song : songs) {
             songNames.add(song.getSongName());
@@ -49,13 +49,14 @@ public class SongManager {
         aux.sort(this::compare);
         ArrayList<Song> topFive = new ArrayList<>();
         for(int i=0; i<5; i++){
-            topFive.add((Song)aux.get(i));
+            topFive.add(aux.get(i));
         }
         return topFive;
     }
 
+
     public int compare(Song song1, Song song2) {
-        if(song1.getTimesPlayed() <= song2.getTimesPlayed()){
+        if(song1.getTimesPlayed() < song2.getTimesPlayed()){
             return 1;
         } else {
             return -1;

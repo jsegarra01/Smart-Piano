@@ -18,8 +18,8 @@ public class Graph extends JPanel {
     private int pointWidth = 4;
     private int numberYDivisions = 10;
     private List<Float> yPoints;
-    private String yAxis = "";
-    private boolean graph1 = true;
+    private String yAxis;
+    private boolean graph1;
 
     public Graph(List<Float> yPoints, String yAxis, boolean graph1) {
         this.yPoints = yPoints;
@@ -108,9 +108,9 @@ public class Graph extends JPanel {
 
         g2.setStroke(oldStroke);
         g2.setColor(pointColor);
-        for (int i = 0; i < graphPoints.size(); i++) {
-            int x = graphPoints.get(i).x - pointWidth / 2;
-            int y = graphPoints.get(i).y - pointWidth / 2;
+        for (Point graphPoint : graphPoints) {
+            int x = graphPoint.x - pointWidth / 2;
+            int y = graphPoint.y - pointWidth / 2;
             int ovalW = pointWidth;
             int ovalH = pointWidth;
             g2.fillOval(x, y, ovalW, ovalH);
@@ -119,22 +119,22 @@ public class Graph extends JPanel {
 
         //to write y and x axis
         g.drawString("Hours", width/2, height - 10);
-        g2.rotate(-Math.toRadians(90), width/2, height/2);
+        g2.rotate(-Math.toRadians(90), (float) width/2, (float) height/2);
         g.drawString(yAxis, height/2 - yAxis.length(), -10);
-        g2.rotate(Math.toRadians(90), width/2, height/2);
+        g2.rotate(Math.toRadians(90), (float) width/2, (float) height/2);
     }
 
     private double getMinY() {
-        Float minY = Float.MAX_VALUE;
-        for (Float myY : yPoints) {
+        float minY = Float.MAX_VALUE;
+        for (float myY : yPoints) {
             minY = Math.min(minY, myY);
         }
         return minY;
     }
 
     private double getMaxY() {
-        Float maxY = Float.MIN_VALUE;
-        for (Float myY : yPoints) {
+        float maxY = Float.MIN_VALUE;
+        for (float myY : yPoints) {
             maxY = Math.max(maxY, myY);
         }
         return maxY;

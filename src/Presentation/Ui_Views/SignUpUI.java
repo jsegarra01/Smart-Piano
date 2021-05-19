@@ -1,6 +1,8 @@
 package Presentation.Ui_Views;
 
 //Imports all the necessary libraries
+import Business.BusinessFacade;
+import Business.BusinessFacadeImp;
 import Presentation.Manager.MainFrame;
 import Presentation.Manager.SignUpUiManager;
 import Presentation.TextPrompt;
@@ -32,11 +34,13 @@ public class SignUpUI extends JPanel {
     private static JPasswordField passwordConfirmation = new JPasswordField();
     private JButton back = new JButton(BACK_BUTTON);
     private JButton done = new JButton(DONE_BUTTON);
+    private BusinessFacadeImp myFacade;
 
     /**
      * Constructor for the SignUpUI, you need to send the mainframe context and will create a card layout
      */
-    public SignUpUI() {
+    public SignUpUI(BusinessFacadeImp myFacade) {
+        this.myFacade = myFacade;
         initialize();
     }
 
@@ -141,7 +145,7 @@ public class SignUpUI extends JPanel {
         done.setAlignmentX(0.5f);
         done.setActionCommand(DONE_BUTTON);
 
-        registerController(new SignUpUiManager());
+        registerController(new SignUpUiManager(this.myFacade));
 
         buttons.add(back);
         buttons.add(Box.createRigidArea(new Dimension(400, 15)));
@@ -212,6 +216,7 @@ public class SignUpUI extends JPanel {
      */
     public static String getPasswordSignUp() {
         return password.getText();
+        //return password.getToolTipText();
     }
 
     /**
