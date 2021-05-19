@@ -59,8 +59,6 @@ public class SongsUI extends JPanel {
         sp.setPreferredSize(new Dimension(860, 550));
 
         registerController(new SpotiFrameManager());
-        sp.setPreferredSize(new Dimension(800, 550));
-        sp.setMaximumSize(new Dimension(800, 550));
         if(!action.equals("topFive")){
             registerController(new SpotiFrameManager());
         }

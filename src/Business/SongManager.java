@@ -44,10 +44,10 @@ public class SongManager {
         }
     }
 
-    public ArrayList getTopFive(){
+    public ArrayList<Song> getTopFive(){
         ArrayList<Song> aux = songs;
         aux.sort(this::compare);
-        ArrayList<Song> topFive = new ArrayList<Song>();
+        ArrayList<Song> topFive = new ArrayList<>();
         for(int i=0; i<5; i++){
             topFive.add((Song)aux.get(i));
         }
@@ -55,7 +55,7 @@ public class SongManager {
     }
 
     public int compare(Song song1, Song song2) {
-        if(song1.getTimesPlayed() < song2.getTimesPlayed()){
+        if(song1.getTimesPlayed() <= song2.getTimesPlayed()){
             return 1;
         } else {
             return -1;
