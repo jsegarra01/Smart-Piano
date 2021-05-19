@@ -119,6 +119,7 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
                     playlist = new BusinessFacadeImp().getPlaylist(result);
                     PlaylistUI.setSongsPlaylists(playlist);
                     cc.show(spotiPanel, PLAYLIST_UI);
+                    addPlaylists(new BusinessFacadeImp().getPlaylistManager().getPlaylists());
                 }else {
                     JOptionPane.showMessageDialog(null,
                             "You have to input something!", "Create Playlist Error" ,

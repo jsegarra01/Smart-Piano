@@ -20,6 +20,7 @@ import static Presentation.DictionaryPiano.*;
 import static Presentation.Ui_Views.StatisticsUI.setNumMin;
 import static Presentation.Ui_Views.StatisticsUI.setNumSongs;
 import static Presentation.Ui_Views.Tile.resizeIcon;
+import static javax.swing.SwingConstants.WEST;
 
 
 //import static Presentation.DictionaryPiano.*;
@@ -50,11 +51,13 @@ public class SpotiUI extends JPanel {
     public static JButton playButton = new JButton();
     public static JButton nextButton = new JButton();
     public static JButton loopButton = new JButton();
+
     //public static JButton pauseButton = new JButton();
 
 
     public static JPanel leftList = new JPanel();
-
+    private static JPanel playlistsPanel = new JPanel();
+    private static JScrollPane scroll = new JScrollPane();
 
     private static final JTextField songNameInputText = new JTextField();
     public static JButton searchButton = new JButton();
@@ -147,6 +150,7 @@ public class SpotiUI extends JPanel {
         leftList.add(playlistLabel);
         leftList.add(createPlaylist);
         leftList.add(separator);
+        leftList.add(scroll);
 
         leftList.setBackground(Color.getHSBColor(10,0,0.2f));
         add(leftList, BorderLayout.WEST);
@@ -234,28 +238,38 @@ public class SpotiUI extends JPanel {
 
     //TODO poner bn las boxes (size lateral)
     public static void addPlaylists(ArrayList<Playlist> playlists){
-        Playlist myPlaylist;
-        String aux;
-        if(!playlists.isEmpty()){
-            for(int i=0; i<playlists.size(); i++){
-                myPlaylist = playlists.get(i);
-                JButton buttonAux = new JButton(playlists.get(i).getPlaylistName());
-                buttonAux.setName(playlists.get(i).getPlaylistName());
+        playlistsPanel.removeAll();
+        leftList.remove(scroll);
+        BoxLayout boxLayout = new BoxLayout(playlistsPanel, BoxLayout.Y_AXIS);
+        playlistsPanel.setLayout(boxLayout);
+        playlistsPanel.setBackground(Color.getHSBColor(0,0,0.8f));
+        //playlistsPanel.setBackground(Color.RED);
+        if(playlists!=null && !playlists.isEmpty()){
+            for (Playlist playlist : playlists) {
+                JButton buttonAux = new JButton(playlist.getPlaylistName());
+                buttonAux.setName(playlist.getPlaylistName());
                 buttonAux.setActionCommand(DictionaryPiano.PLAYLIST_INFO);
                 buttonAux.setAlignmentX(0.5f);
-                if(playlists.size() - i == 1){
+                /*if(playlists.size() - i == 1){
                     buttonAux.setBorder(new EmptyBorder(10,0, spotiPanel.getHeight(),0));
                 }else{
                     buttonAux.setBorder(new EmptyBorder(10,18,10,115));
-                }
-                buttonAux.setBackground(Color.getHSBColor(0,0,0.8f));
+                }*/
+                buttonAux.setBorder(new EmptyBorder(10, 5, 10, 50));
+                buttonAux.setBackground(Color.getHSBColor(0, 0, 0.8f));
                 buttonAux.setForeground(Color.white);
-                leftList.add(buttonAux);
+                playlistsPanel.add(buttonAux);
+                buttonAux.setAlignmentX(Component.LEFT_ALIGNMENT);
                 buttonAux.addActionListener(new SpotiFrameManager());
             }
-            //JScrollPane scroll = new JScrollPane(leftList);
+            scroll = new JScrollPane(playlistsPanel);
+            scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+            //scroll.setBackground(Color.getHSBColor(0,0,0.8f));
+            scroll.setOpaque(false);
+            scroll.setPreferredSize(new Dimension(70, 250));
+            leftList.add(scroll);
 
-         //   leftList.add(scroll);
+            //   leftList.add(scroll);
         }
     }
 

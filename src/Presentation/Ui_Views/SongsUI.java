@@ -16,13 +16,11 @@ public class SongsUI extends JPanel {
     private static JPanel panel = new JPanel();
     public SongsUI(){
         initialize();
-        panel.setPreferredSize(new Dimension(800, 550));
-        panel.setMaximumSize(getPreferredSize());
+        panel.setPreferredSize(new Dimension(860, 550));
         add(panel);
     }
 
     private void initialize() {
-        //setLayout(new BorderLayout());
         setBackground(Color.black);
 
     }
@@ -43,8 +41,7 @@ public class SongsUI extends JPanel {
             }
         };
         table = new JTable(model);
-        table.setPreferredSize(new Dimension(800, 530));
-        table.setMaximumSize(new Dimension(800, 530));
+        table.setPreferredSize(new Dimension(840, 530));
         table.setBackground(Color.darkGray);
         table.setGridColor(Color.lightGray);
         table.setForeground(Color.white);
@@ -52,13 +49,12 @@ public class SongsUI extends JPanel {
         table.setFont( new Font(table.getFont().getName(),Font.PLAIN, (int) (table.getFont().getSize()*1.5)));
         JScrollPane sp = new JScrollPane(table);
         sp.setBackground(Color.black);
-        sp.setPreferredSize(new Dimension(800, 550));
-        sp.setMaximumSize(new Dimension(800, 550));
+        sp.setPreferredSize(new Dimension(860, 550));
+
         registerController(new SpotiFrameManager());
         panel.add(sp);
         panel.revalidate();
         panel.repaint();
-        //return sp;
     }
 
     private static void registerController(Action listener) {
