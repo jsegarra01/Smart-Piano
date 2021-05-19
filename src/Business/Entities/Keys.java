@@ -33,10 +33,6 @@ public class Keys {
         return tileKey;
     }
 
-    public void setTileKey(String tileKey) {
-        this.tileKey = tileKey;
-    }
-
     public boolean isPressed() {
         return pressed;
     }
@@ -53,16 +49,8 @@ public class Keys {
         return duration;
     }
 
-    public void setDuration(long duration) {
-        this.duration = duration;
-    }
-
     public long getStartTime() {
         return startTime;
-    }
-
-    public void setStartTime(long startTime) {
-        this.startTime = startTime;
     }
 
     public void setNameKey(String nameKey) {

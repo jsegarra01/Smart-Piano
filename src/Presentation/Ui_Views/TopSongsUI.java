@@ -1,39 +1,30 @@
 package Presentation.Ui_Views;
 
-import Presentation.Manager.MainFrame;
+import Business.Entities.ButtonColumn;
+import Business.Entities.Song;
+import Presentation.Manager.SpotiFrameManager;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class TopSongsUI extends JPanel {
-    private MainFrame mainFrame;
-    private LinkedList<Float> numPlayed = new LinkedList<Float>();
+    private final LinkedList<Float> numPlayed = new LinkedList<>();
 
-    public TopSongsUI(final MainFrame mainFrame/*, LinkedList<Float> numPlayed*/) {
-        super();
-        this.mainFrame = mainFrame;
-        //this.numPlayed = numPlayed;
+    public TopSongsUI() {
         initialize();
     }
 
     private void initialize() {
         setLayout(new BorderLayout());
-        setBackground(Color.black);
+        setBackground(Color.white);
     }
 
     private LinkedList<Float> getTopSongs(LinkedList<Float> numPlayed){
-        LinkedList<Float> aux = numPlayed;
+        //LinkedList<Float> aux = numPlayed;
         //aux.sort();
-        return aux;
+        return numPlayed;
     }
-
-    /*
-    * Float maxY = Float.MIN_VALUE;
-        for (Float myY : yPoints) {
-            maxY = Math.max(maxY, myY);
-        }
-        return maxY;
-    * */
 }

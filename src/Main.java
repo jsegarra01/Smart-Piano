@@ -1,3 +1,4 @@
+import Business.BusinessFacadeImp;
 import Presentation.Manager.MainFrame;
 
 import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
@@ -11,12 +12,8 @@ import Business.Entities.webHandler;
 public class Main {
 
     public static void main(String[] args) {
-        /*String URLRoute = "https://www.mutopiaproject.org/cgibin/make-table.cgi?Instrument=Piano";
-        String path = "Files";
-        webHandler myWebHandlingTool = new webHandler(path, URLRoute, "result%s.txt", "?startat=%s&");
-        myWebHandlingTool.doStuff("a", "Bach"); //page 10 :D
-        */MainFrame mainframe = new MainFrame();
-
+        BusinessFacadeImp myFacade = new BusinessFacadeImp();
+        MainFrame mainframe = new MainFrame(myFacade);
         mainframe.setSize(1225, 675);
         mainframe.setVisible(true);
         mainframe.setDefaultCloseOperation(EXIT_ON_CLOSE);

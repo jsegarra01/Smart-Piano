@@ -1,6 +1,7 @@
 package Presentation.Manager;
 
 //Imports needed from the dictionary and events
+import Business.BusinessFacadeImp;
 import Presentation.Ui_Views.*;
 
 import javax.swing.*;
@@ -24,18 +25,20 @@ public class MainFrame extends JFrame {
     SignUpUI signUpUI;
     ProfileUI profileUI;
     PianoFrame pianoFrame;
+    BusinessFacadeImp myFacade;
 
 
     /**
      * Parametrized constructor, creates the content pane plus the different card layouts available for the user interface
      */
-    public MainFrame() {
+    public MainFrame(BusinessFacadeImp myFacade) {
+        this.myFacade = myFacade;
         contenedor = this.getContentPane();
-        preMenuUI=  new PreMenuUI(this);
-        profileUI = new ProfileUI(this);
-        signUpUI = new SignUpUI(this);
-        pianoFrame = new PianoFrame(this);
-        loginUI = new LoginUI(this);
+        preMenuUI=  new PreMenuUI(myFacade);
+        profileUI = new ProfileUI(myFacade);
+        signUpUI = new SignUpUI(myFacade);
+        pianoFrame = new PianoFrame(this, myFacade);
+        loginUI = new LoginUI(myFacade);
 
         card.addLayoutComponent(preMenuUI, PRE_MENU_UI);
         card.addLayoutComponent(profileUI, PROFILE_UI);

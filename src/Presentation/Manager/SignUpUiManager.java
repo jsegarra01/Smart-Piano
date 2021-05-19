@@ -1,6 +1,7 @@
 package Presentation.Manager;
 
 //Imports needed from the dictionary, events and mainframe
+import Business.BusinessFacade;
 import Business.BusinessFacadeImp;
 
 import javax.swing.*;
@@ -22,11 +23,13 @@ import static Presentation.Ui_Views.SignUpUI.*;
  *
  */
 public class SignUpUiManager  implements ActionListener {
+    BusinessFacadeImp myFacade;
     /**
      * Parametrized constructor
      */
-    public SignUpUiManager() {
-        }
+    public SignUpUiManager(BusinessFacadeImp myFacade) {
+        this.myFacade = myFacade;
+    }
 
     /**
      * Method that will be called every time a button is pressed, overriden from the interface to provide an implementation.
@@ -36,20 +39,11 @@ public class SignUpUiManager  implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         // We distinguish between our buttons.
         switch (e.getActionCommand()) {
-            case BACK_BUTTON:              //In the case that the Back button is pressed
-                card.show(contenedor, PRE_MENU_UI);
-                break;
-            case DONE_BUTTON:              //In the case that the Done button is pressed
-                if (new BusinessFacadeImp().SignUp(getUsernameSignUp(), getMailSignUp(), getPasswordSignUp(), getPasswordConfirmSignUp())) {
-                    setUsernameLogin(getUsernameSignUp());
-                    new BusinessFacadeImp().setSongUser();
-                    card.show(contenedor, PIANO_FRAME);
-                }
-                else{
-                    JOptionPane.showMessageDialog(contenedor, "Values introduced were not accepted", "SignUp error" , JOptionPane.ERROR_MESSAGE);
-                }
-                break;
-            }
+                //In the case that the Back button is pressed
+            case BACK_BUTTON -> card.show(contenedor, PRE_MENU_UI);
+                //In the case that the Done button is pressed
+            case DONE_BUTTON -> myFacade.finalSignUp(getUsernameSignUp(), getMailSignUp(), getPasswordSignUp(), getPasswordConfirmSignUp());
         }
+    }
 }
 

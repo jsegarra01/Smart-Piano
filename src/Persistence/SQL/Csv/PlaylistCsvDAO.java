@@ -26,15 +26,16 @@ public class PlaylistCsvDAO implements PlaylistDAO {
      * @param playlist
      */
     @Override
-    public boolean savePlaylist(Playlist playlist) {
+    public boolean savePlaylist(String playlist, String username) {
         try {
-            PreparedStatement st2 = ConnectSQL.getInstance().prepareStatement("insert into PlaylistT values (" + ")");
-            st2.execute();
-            PreparedStatement st = ConnectSQL.getInstance().prepareStatement("insert into SongPlaylistsT ");
+            PreparedStatement st = ConnectSQL.getInstance().prepareStatement("insert into PlaylistT (playlistName, username) values ('" +playlist + "', '" + username + "')");
             st.execute();
+            //PreparedStatement st = ConnectSQL.getInstance().prepareStatement("insert into SongPlaylistsT ");
+            //st.execute();
 
             return true;
         } catch (SQLException e) {
+            e.printStackTrace();
             return false;
         }
     }
@@ -78,7 +79,8 @@ public class PlaylistCsvDAO implements PlaylistDAO {
                     myRs2.getDate("recordingDate"),
                     myRs2.getBoolean("publicBoolean"),
                     myRs2.getString("songFile"),
-                    myRs2.getString("username")));
+                    myRs2.getString("username"),
+                    myRs2.getInt("numTimesPlayed")));
         }
         myRs2.close();
         return songs;
@@ -102,6 +104,7 @@ public class PlaylistCsvDAO implements PlaylistDAO {
                         myRs.getString("username")));
             }
             myRs.close();
+
             return playlists;
         } catch (SQLException throwables) {
             return null;
@@ -113,6 +116,21 @@ public class PlaylistCsvDAO implements PlaylistDAO {
         try {
             PreparedStatement st = ConnectSQL.getInstance().prepareStatement("delete SongPlaylistsT from SongPlaylistsT inner join PlaylistT PT on SongPlaylistsT.playlistId = PT.playlistId inner join SongT ST on SongPlaylistsT.songId = ST.songId " +
                     "where songName like '" + songName+"' and  PT.playlistName like '" + playlistName +"';");
+            st.execute();
+            return true;
+        } catch (SQLException throwables) {
+            return false;
+        }
+    }
+    public boolean addSongToPlaylist(String playlistName, String songName){
+        try {
+            PreparedStatement st = ConnectSQL.getInstance().prepareStatement("INSERT INTO SongPlaylistsT VALUES((" +
+                    " SELECT s.songId " +
+                    " FROM SongT s " +
+                    " WHERE s.songName = '" + songName + "'),(" +
+                    " SELECT p.playlistId " +
+                    " FROM PlaylistT p " +
+                    " WHERE p.playlistName = '" + playlistName +"'));");
             st.execute();
             return true;
         } catch (SQLException throwables) {

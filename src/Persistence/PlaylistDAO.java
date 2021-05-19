@@ -18,7 +18,7 @@ public interface PlaylistDAO {
      *
      * @param playlist
      */
-    boolean savePlaylist(Playlist playlist);
+    boolean savePlaylist(String playlist, String username);
 
     /**
      *

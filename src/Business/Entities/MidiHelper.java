@@ -172,30 +172,21 @@ import java.io.IOException;
  * */
 
 public class MidiHelper {
-    private static Synthesizer synth;
     private final MidiChannel[] midiChannels;
     private final Instrument[] instruments;
     private int whatInstrumentIsPlayed;
     private final Sequencer sequencer = MidiSystem.getSequencer();
-    private Sequence sequence;
     private boolean donePlaying;
     public MidiHelper() throws MidiUnavailableException {
-        synth = MidiSystem.getSynthesizer();
+        Synthesizer synth = MidiSystem.getSynthesizer();
         long startTime = System.nanoTime();
         synth.open();
         long estimatedTime = System.nanoTime() - startTime;
         midiChannels = synth.getChannels();
         instruments = synth.getDefaultSoundbank().getInstruments();
         sequencer.open();
-        sequencer.addMetaEventListener(new MetaEventListener() {
-            @Override
-            public void meta(MetaMessage meta) {
-                if(meta.getType()==47){
-                    donePlaying = true;
-                }else{
-                    donePlaying = false;
-                }
-            }
+        sequencer.addMetaEventListener(meta -> {
+            donePlaying = meta.getType() == 47;
         });
     }
     public void playSomething(int noteValueToPlay, int whatInstrumentToPlay){
@@ -208,13 +199,15 @@ public class MidiHelper {
         this.whatInstrumentIsPlayed = whatInstrumentToPlay;
         midiChannels[0].noteOff(noteValueToPlay,15);
     }
+
     public void playSong(File file){
         try {
              // Open device
             // Create sequence, the File must contain MIDI file data.
-            sequence = MidiSystem.getSequence(file);
+            Sequence sequence = MidiSystem.getSequence(file);
             sequencer.setSequence(sequence); // load it into sequencer
-            sequencer.start();  // start the playback
+            sequencer.start();               // start the playback
+
         } catch (InvalidMidiDataException | IOException ex) {
             ex.printStackTrace();
         }

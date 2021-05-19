@@ -3,15 +3,9 @@ package Presentation.Manager;
 //Imports needed from the dictionary, events and mainframe
 import Presentation.Dictionary_login;
 
-import javax.security.auth.RefreshFailedException;
-import javax.security.auth.Refreshable;
-import javax.swing.*;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Arrays;
 
 import static Presentation.DictionaryPiano.*;
 import static Presentation.Dictionary_login.*;
@@ -63,6 +57,8 @@ public class PianoFrameManager implements ActionListener {
                 try {
                     new PianoTilesUISelectorManager().refreshPianoTilesUI();
                 } catch (NullPointerException h) {
+                    //TODO WE NEED TO CATCH THE EXCEPTION :) Sergi i Josep no se que esteu fent porfa controleu les
+                    // excepcions que sino el edu ens plora, visca el barça i visca catalunya
                 }
                 cc.show(centralPanel, PIANO_TILES_UI_SELECTOR);
                 playSong.setBackground(Color.getHSBColor(0,0,80.3f));

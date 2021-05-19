@@ -68,4 +68,7 @@ public interface BusinessFacade {
     Song getSong(int index);
 
     Playlist getPlaylist(String name);
+
+    boolean deleteSongFromPlaylist(String playlistName, String songName);
+    SongManager getSongManager();
 }

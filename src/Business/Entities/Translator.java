@@ -81,8 +81,6 @@ public class Translator {
         };
     }
 
-
-
     public static String getFromKey(int key){
         boolean found = false;
         int i = 0;
@@ -109,7 +107,6 @@ public class Translator {
             else{
                 i++;
             }
-
         }
         if(found){
             return keys.get(i);

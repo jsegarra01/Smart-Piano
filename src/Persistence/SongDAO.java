@@ -1,6 +1,7 @@
 package Persistence;
 import Business.Entities.Song;
 import Business.Entities.Stadistics;
+//import Business.Entities.TopSongs;
 import Business.Entities.User;
 import java.util.ArrayList;
 
@@ -53,13 +54,16 @@ public interface SongDAO {
      *
      * @return
      */
-    ArrayList<Song> getPopularSongs();
+    boolean updateTimesPlayed(Song song);
+
+    /*
+    ArrayList<Song> getPopularSongs();*/
 
     boolean saveStadistics(Stadistics myStats);
 
     Stadistics getStadisticsHour(int hour);
 
+    //boolean saveListenedSongs(TopSongs topSongs);
 
-
-
+    //TopSongs getListenedSongs(String name);
 }

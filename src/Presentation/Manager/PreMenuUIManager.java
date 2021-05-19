@@ -1,6 +1,7 @@
 package Presentation.Manager;
 
 //Imports needed from the dictionary, events and mainframe
+import Business.BusinessFacade;
 import Business.BusinessFacadeImp;
 
 import java.awt.event.ActionEvent;
@@ -22,10 +23,12 @@ import static Presentation.Ui_Views.SignUpUI.resetUISignUpUI;
  *
  */
 public class PreMenuUIManager implements ActionListener {
+    BusinessFacadeImp myFacade;
     /**
      * Parametrized constructor
      */
-    public PreMenuUIManager() {
+    public PreMenuUIManager(BusinessFacadeImp myFacade) {
+        this.myFacade = myFacade;
     }
 
     /**
@@ -36,20 +39,9 @@ public class PreMenuUIManager implements ActionListener {
     public void actionPerformed(ActionEvent e) {
        // We distinguish between our buttons.
         switch (e.getActionCommand()) {
-            case LOG_IN_BUTTON:                    //In the case that the LogIn button is pressed
-                resetUILogin();
-                card.show(contenedor, LOGIN_UI);
-                break;
-            case SIGN_UP_BUTTON:                   //In the case that the SignUp button is pressed
-                resetUISignUpUI();
-                card.show(contenedor, SIGN_UP_UI);
-                break;
-            case ENTER_AS_GUEST_BUTTON:            //In the case that the Guest button is pressed
-                new BusinessFacadeImp().logIn("guest", "password");
-                setUsernameLogin("guest");
-                new BusinessFacadeImp().setSongUser();
-                card.show(contenedor,PIANO_FRAME);
-                break;
+            case LOG_IN_BUTTON -> myFacade.logInStartup();//In the case that the LogIn button is pressed
+            case SIGN_UP_BUTTON -> myFacade.singUpStartup();//In the case that the SignUp button is pressed
+            case ENTER_AS_GUEST_BUTTON -> myFacade.enterAsAGuest("guest", "password");//In the case that the Guest button is pressed
         }
     }
 }
