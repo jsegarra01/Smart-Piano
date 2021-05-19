@@ -21,8 +21,7 @@ import static Presentation.DictionaryPiano.*;
 import static Presentation.Ui_Views.StatisticsUI.setNumMin;
 import static Presentation.Ui_Views.StatisticsUI.setNumSongs;
 import static Presentation.Ui_Views.Tile.resizeIcon;
-import static javax.swing.SwingConstants.LEFT;
-import static javax.swing.SwingConstants.WEST;
+import static javax.swing.SwingConstants.*;
 
 
 //import static Presentation.DictionaryPiano.*;
@@ -97,62 +96,27 @@ public class SpotiUI extends JPanel {
         songNameInputText.setAlignmentX(0.5f);
         songNameInputText.setPreferredSize(new Dimension(200,30));
         songNameInputText.setMaximumSize(songNameInputText.getPreferredSize());
+        //songNameInputText.setMinimumSize(new Dimension(70, 30));
         songNameInputText.setBackground(Color.WHITE);
 //This two guys should be inside their own damn JPanel with BorderLayout.WEST/CENTER, not going to bother for now, functionality comes first!
-        searchButton.setIcon(new ImageIcon("Files/drawable/playbuttonWhite.png"));
-        searchButton.setIcon(resizeIcon((ImageIcon) searchButton.getIcon(), (int) Math.round(searchButton.getIcon().getIconWidth()*0.05),
-                (int) Math.round(searchButton.getIcon().getIconHeight()*0.05)));
-        confButtonsBar(searchButton, 0, 60);
+        searchButton.setIcon(new ImageIcon("Files/drawable/searchIcon.png"));
+        searchButton.setIcon(resizeIcon((ImageIcon) searchButton.getIcon(), (int) Math.round(searchButton.getIcon().getIconWidth()),
+                (int) Math.round(searchButton.getIcon().getIconHeight())));
+        searchButton.setOpaque(false);
+        searchButton.setContentAreaFilled(false);
+        searchButton.setBorderPainted(false);
         searchButton.setActionCommand(SEARCH_SONG);
-/*
-
-        showStadistics.setPreferredSize(new Dimension(200,30));
-        showStadistics.setMaximumSize(songNameInputText.getPreferredSize());
-
-        topSongs.setPreferredSize(new Dimension(200,30));
-        topSongs.setMaximumSize(songNameInputText.getPreferredSize());
-
-        songsList.setPreferredSize(new Dimension(200,30));
-        songsList.setMaximumSize(songNameInputText.getPreferredSize());
-
-        playlistLabel.setPreferredSize(new Dimension(200,30));
-        playlistLabel.setMaximumSize(songNameInputText.getPreferredSize());
-*/
         showStadistics.setActionCommand(CREATE_STADISTICS);
-
-        //showStadistics.setBorder(new EmptyBorder(10,0,10,0));
-        //showStadistics.setAlignmentX(Component.LEFT_ALIGNMENT);
-
-        //showStadistics.setBackground(Color.getHSBColor(0,0,0.8f));
-        //showStadistics.setBackground((Color.green));
-        //showStadistics.setForeground(Color.black);
-
         topSongs.setActionCommand(SHOW_TOP_SONGS);
-        //topSongs.setBorder(new EmptyBorder(10,0,10,100));
-        //showStadistics.setAlignmentX(Component.RIGHT_ALIGNMENT);
-        //topSongs.setBorder(new EmptyBorder(10,0,10,140));
-        //topSongs.setBackground(Color.getHSBColor(0,0,0.8f));
-        //topSongs.setForeground(Color.black);
-
         songsList.setActionCommand(SHOW_ALL_SONGS);
-        //songsList.setBorder(new EmptyBorder(10,0,10,0));
-        //songsList.setAlignmentX(Component.RIGHT_ALIGNMENT);
-        //songsList.setBorder(new EmptyBorder(10,0,10,140));
-        //songsList.setBackground(Color.getHSBColor(0,0,0.8f));
-        //songsList.setForeground(Color.black);
-        //confButtonLeft(songsList, 18, 115);
-        //songsList.setAlignmentX(Component.LEFT_ALIGNMENT);
 
 
-        //playlistLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         playlistLabel.setBorder(new EmptyBorder(0,20,0,0));
         playlistLabel.setBackground(Color.getHSBColor(0,0,0.8f));
         playlistLabel.setForeground(Color.white);
         playlistLabel.setText("");
 
         createPlaylist.setActionCommand(CREATE_PLAYLIST);
-        /*confButtonLeft(createPlaylist, 12, 90);
-        createPlaylist.setAlignmentX(Component.CENTER_ALIGNMENT);*/
         JSeparator separator = new JSeparator();
 
         //JScrollPane scroll = new JScrollPane();
@@ -161,26 +125,29 @@ public class SpotiUI extends JPanel {
         leftList.setPreferredSize(new Dimension(210, 200));
         leftList.setMaximumSize(getPreferredSize());
 
-        JPanel panelButtonsSpoti = new JPanel(new GridLayout(5,0));
-        //BoxLayout boxLayout = new BoxLayout(panelButtonsSpoti, BoxLayout.Y_AXIS);
-        //panelButtonsSpoti.setLayout(boxLayout);
-        //BoxLayout boxLayout = new BoxLayout(panelButtonsSpoti, BoxLayout.Y_AXIS);
-        //panelButtonsSpoti.setLayout(new BoxLayout(panelButtonsSpoti, BoxLayout.Y_AXIS));
-        /*JPanel panelSearch = new JPanel(new BorderLayout());
+        JPanel panelButtonsSpoti = new JPanel(new GridLayout(6,0));
+
+        JPanel panelSearch = new JPanel();
+        BoxLayout boxLayout = new BoxLayout(panelSearch, BoxLayout.X_AXIS);
+        panelSearch.setLayout(boxLayout);
+        panelSearch.setPreferredSize(new Dimension(210,30));
+        panelSearch.setMaximumSize(panelSearch.getPreferredSize());
+        panelSearch.setBorder(BorderFactory.createEmptyBorder());
+        panelSearch.setOpaque(false);
         panelSearch.add(songNameInputText);
-        panelSearch.add(searchButton,BorderLayout.EAST);
-        panelButtonsSpoti.add(panelSearch);*/
+        panelSearch.add(searchButton);
+        panelButtonsSpoti.add(panelSearch);
         //panelButtonsSpoti.setAlignmentX(LEFT_ALIGNMENT);
         //panelButtonsSpoti.add(showStadistics);
         //panelButtonsSpoti.add(songsList);
         //panelButtonsSpoti.add(topSongs);
-        panelButtonsSpoti.add(setButton(showStadistics));
-        panelButtonsSpoti.add(setButton(songsList));
-        panelButtonsSpoti.add(setButton(topSongs));
+        panelButtonsSpoti.add(setButton(showStadistics, 10));
+        panelButtonsSpoti.add(setButton(songsList, 10));
+        panelButtonsSpoti.add(setButton(topSongs, 10));
         //panelButtonsSpoti.add(Box.createVerticalStrut(40));
         //panelButtonsSpoti.add(Box.createRigidArea(new Dimension(200, 10)));
         panelButtonsSpoti.add(playlistLabel);
-        panelButtonsSpoti.add(setButton(createPlaylist));
+        panelButtonsSpoti.add(setButton(createPlaylist, 0));
         //panelButtonsSpoti.setBackground((Color.red));
         panelButtonsSpoti.setBorder(BorderFactory.createEmptyBorder());
         panelButtonsSpoti.setBackground((Color.getHSBColor(10,0,0.2f)));
@@ -317,13 +284,13 @@ public class SpotiUI extends JPanel {
         }
     }
 
-    private JButton setButton(JButton button){
+    private JButton setButton(JButton button, int diff){
         //Button.setActionCommand(DictionaryPiano.PLAYLIST_INFO);
         //button.setAlignmentX(0.5f);
         //button.setAlignmentX(0.5f);
         //button.setBorder(new EmptyBorder(10, 5, 10, 0));
         button.setFocusPainted(false);
-        button.setMargin(new Insets(10, 0, 10, 0));
+        button.setMargin(new Insets(diff, 0, diff, 0));
         button.setContentAreaFilled(false);
         button.setBorderPainted(false);
         setOpaque(false);
