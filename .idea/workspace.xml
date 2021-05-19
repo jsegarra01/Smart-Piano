@@ -21,29 +21,10 @@
   <component name="ChangeListManager">
     <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="topFive songs table is done" />
     <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="">
+    <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="The fucking menu did not put itself to the left. There are 3 thousand comments">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/Entities/TopSongs.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/SongManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/SongManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/UserManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/UserManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Persistence/SQL/Csv/PlaylistCsvDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Persistence/SQL/Csv/PlaylistCsvDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Persistence/SQL/Csv/SongCsvDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Persistence/SQL/Csv/SongCsvDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Persistence/SongDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Persistence/SongDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/SpotiFrameManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/SpotiFrameManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/PlaylistUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/PlaylistUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/SongsUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/SongsUI$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/SongsUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/SongsUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Files/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/Files/config.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/SpotiUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/SpotiUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Business/BusinessFacadeImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/BusinessFacadeImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Business/Entities/TopSongs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/Entities/TopSongs.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Business/PlaylistManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/PlaylistManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Business/SongManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/SongManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Persistence/PlaylistDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Persistence/PlaylistDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Persistence/SQL/Csv/PlaylistCsvDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Persistence/SQL/Csv/PlaylistCsvDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Persistence/SQL/Csv/SongCsvDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Persistence/SQL/Csv/SongCsvDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Persistence/SongDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Persistence/SongDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presentation/Manager/SpotiFrameManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Manager/SpotiFrameManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presentation/Ui_Views/PlaylistUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Ui_Views/PlaylistUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presentation/Ui_Views/SongsUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Ui_Views/SongsUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Presentation/Ui_Views/SpotiUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Ui_Views/SpotiUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -509,18 +490,22 @@
     </task>
     <task id="LOCAL-00054" summary="topFive songs table is done">
       <created>1621416367811</created>
+    <task id="LOCAL-00054" summary="When creating a playlists it gets added to the view. Plus, a scrollPane has been implemented">
+      <created>1621383260296</created>
       <option name="number" value="00054" />
       <option name="presentableId" value="LOCAL-00054" />
       <option name="project" value="LOCAL" />
+      <updated>1621383260296</updated>
       <updated>1621416367812</updated>
     </task>
-    <task id="LOCAL-00055" summary="Commit to checkout el blay no sap fer commits">
-      <created>1621354584881</created>
+    <task id="LOCAL-00055" summary="The fucking menu did not put itself to the left. There are 3 thousand comments">
+      <created>1621419233931</created>
       <option name="number" value="00055" />
       <option name="presentableId" value="LOCAL-00055" />
       <option name="project" value="LOCAL" />
-      <updated>1621354584881</updated>
+      <updated>1621419233931</updated>
     </task>
+    <option name="localTasksCounter" value="56" />
     <option name="localTasksCounter" value="55" />
     <option name="localTasksCounter" value="54" />
     <servers />
@@ -732,6 +717,9 @@
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
     <state x="507" y="280" key="git4idea.branch.GitSmartOperationDialog/0.0.1792.1120@0.0.1792.1120" timestamp="1620388423589" />
+    <MESSAGE value="When creating a playlists it gets added to the view. Plus, a scrollPane has been implemented" />
+    <MESSAGE value="The fucking menu did not put itself to the left. There are 3 thousand comments" />
+    <option name="LAST_COMMIT_MESSAGE" value="The fucking menu did not put itself to the left. There are 3 thousand comments" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

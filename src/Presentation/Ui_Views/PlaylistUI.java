@@ -90,7 +90,7 @@ public class PlaylistUI extends JPanel {
         JScrollPane areaScrollPane = new JScrollPane(panelSongs);
         areaScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
         areaScrollPane.setPreferredSize(new Dimension(860, 510));
-
+        areaScrollPane.setBorder(BorderFactory.createEmptyBorder());
         panel.add(areaScrollPane, BorderLayout.CENTER);
 
         panel.revalidate();
@@ -114,10 +114,10 @@ public class PlaylistUI extends JPanel {
         label = new JLabel(playlist.getSongs().get(i).getSongName());
         label.setForeground(Color.WHITE);
         label.add(Box.createRigidArea(new Dimension(450,50)));
-        label.add(Box.createHorizontalStrut(60));
+        //label.add(Box.createHorizontalStrut(60));
         label.setMinimumSize(new Dimension(350, 50));
         panel1.add(label);
-        panel1.add(Box.createHorizontalStrut(60));
+        //panel1.add(Box.createHorizontalStrut(60));
 
         label = new JLabel(playlist.getSongs().get(i).getAuthorName());
         label.setForeground(Color.WHITE);
