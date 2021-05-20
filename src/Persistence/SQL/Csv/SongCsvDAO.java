@@ -249,4 +249,30 @@ public class SongCsvDAO implements SongDAO {
             return null;
         }
     }
+
+    @Override
+    public Song getSongByName(String name) {
+
+        try {
+            ResultSet myRs = ConnectSQL.getInstance().createStatement().executeQuery("select * from SongT as s where s.songName LIKE '" + name + "'");
+            if (myRs.next()) {
+                Song song = new Song(
+                        myRs.getString("songName"),
+                        myRs.getString("authorsName"),
+                        myRs.getFloat("duration"),
+                        myRs.getDate("recordingDate"),
+                        myRs.getBoolean("publicBoolean"),
+                        myRs.getString("songFile"),
+                        myRs.getString("username"),
+                        myRs.getInt("numTimesPlayed"));
+                myRs.close();
+                return song;
+            } else {
+                return null;
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+            return null;
+        }
+    }
 }

@@ -66,4 +66,5 @@ public interface SongDAO {
     //boolean saveListenedSongs(TopSongs topSongs);
 
     //TopSongs getListenedSongs(String name);
+    Song getSongByName(String name);
 }

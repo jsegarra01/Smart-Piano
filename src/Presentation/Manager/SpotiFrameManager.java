@@ -108,7 +108,7 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
                 String result = createPanelPlaylist();
                 if(result != null && result.length() > 0 && result.indexOf('\'') == -1){
                     new BusinessFacadeImp().newPlaylist(result);
-                    new BusinessFacadeImp().getPlaylistManager().setPlaylists(UserManager.getUser().getUserName());
+                    //new BusinessFacadeImp().getPlaylistManager().setPlaylists(UserManager.getUser().getUserName());
                     playlist = new BusinessFacadeImp().getPlaylist(result);
                     PlaylistUI.setSongsPlaylists(playlist);
                     cc.show(spotiPanel, PLAYLIST_UI);
@@ -153,7 +153,7 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
                 JButton button;
                 if (obj instanceof JButton) {
                     button = (JButton) obj;
-                    new BusinessFacadeImp().getPlaylistManager().setPlaylists(UserManager.getUser().getUserName());
+                    //new BusinessFacadeImp().getPlaylistManager().setPlaylists(UserManager.getUser().getUserName());
                     playlist = new BusinessFacadeImp().getPlaylist(button.getName());
                     PlaylistUI.setSongsPlaylists(playlist);
                     cc.show(spotiPanel, PLAYLIST_UI);
@@ -164,9 +164,7 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
                 addSong = false;
                 if (obj instanceof JButton) {
                     song = (JButton) obj;
-                    //PlaylistUI.deleteFromPanel(song.getName());
                     boolean errorDeleting = new BusinessFacadeImp().deleteSongFromPlaylist(playlist.getPlaylistName(),song.getName());
-                    new BusinessFacadeImp().getPlaylistManager().setPlaylists(UserManager.getUser().getUserName());
                     playlist = new BusinessFacadeImp().getPlaylist(playlist.getPlaylistName());
                     PlaylistUI.setSongsPlaylists(playlist);
                 }
@@ -188,7 +186,7 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
                                     JOptionPane.ERROR_MESSAGE);
                         }else{
                             boolean updatingSong = new BusinessFacadeImp().addSongToPlaylist(playlist.getPlaylistName(),new BusinessFacadeImp().getSong(modelRow).getSongName());
-                            new BusinessFacadeImp().getPlaylistManager().setPlaylists(UserManager.getUser().getUserName());
+                            //new BusinessFacadeImp().getPlaylistManager().setPlaylists(UserManager.getUser().getUserName());
                             //playlist =
                             //PlaylistUI.addSongToPanel(new BusinessFacadeImp().getSong(modelRow));
                             playlist = new BusinessFacadeImp().getPlaylist(playlist.getPlaylistName());

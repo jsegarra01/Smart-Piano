@@ -24,14 +24,6 @@ import static Presentation.Dictionary_login.*;
  *
  */
 public class StatisticsUI extends JPanel {
-    private JLabel pianoText = new JLabel(SMART_PIANO_TEXT);
-    private JLabel logInText = new JLabel(LOG_IN_TEXT);
-
-    private static JTextField usernameTextField = new JTextField();
-    private static JPasswordField password = new JPasswordField();
-    private JButton back = new JButton(BACK_BUTTON);
-    private JButton done = new JButton(DONE_BUTTON);
-    private MainFrame mainFrame;
 
     private static Graph graph1;
     private static Graph graph2;
