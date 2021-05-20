@@ -255,7 +255,7 @@ public class FreePianoUIManager implements ActionListener, MouseListener {
             }
             finalMidiHelper.playSomething(Translator.getNumberNoteFromName(e.getComponent().getName()), SOUND_SYNTHER);
         }
-    }
+    } 
 
     /** Event that happens when the mouse has release something. It stops to make it sound and
      * if it is recording, stops the recording
