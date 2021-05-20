@@ -39,10 +39,10 @@ public interface SongDAO {
 
     /**
      *
-     * @param myUser
+     * @param username
      * @return
      */
-    ArrayList<Song> getAllSongs(User myUser);
+    ArrayList<Song> getAllSongs(String username);
 
     /**
      *
@@ -66,4 +66,5 @@ public interface SongDAO {
     //boolean saveListenedSongs(TopSongs topSongs);
 
     //TopSongs getListenedSongs(String name);
+    Song getSongByName(String name);
 }

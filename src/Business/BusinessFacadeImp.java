@@ -45,7 +45,7 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
             setUsernameLogin("guest");
         }
         card.show(contenedor,PIANO_FRAME);
-        setSongUser();
+        setSong();
     }
 
     @Override
@@ -106,7 +106,12 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
     }
 
     @Override
-    public void setSongUser() {songManager.setSongs();}
+    public void setSongUser() {songManager.setSongs(UserManager.getUser().getUserName());}
+
+    @Override
+    public void setSong(){
+        songManager.setSongs();
+    }
 
     @Override
     public ArrayList<String> getSongName() {

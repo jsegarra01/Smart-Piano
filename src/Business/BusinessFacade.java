@@ -61,6 +61,8 @@ public interface BusinessFacade {
      */
     void setSongUser();
 
+    void setSong();
+
     /**
      * Gets the all the songs of the user
      * @return String with all the name of the songs
