@@ -153,7 +153,6 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
                 JButton button;
                 if (obj instanceof JButton) {
                     button = (JButton) obj;
-                    //new BusinessFacadeImp().getPlaylistManager().setPlaylists(UserManager.getUser().getUserName());
                     playlist = new BusinessFacadeImp().getPlaylist(button.getName());
                     PlaylistUI.setSongsPlaylists(playlist);
                     cc.show(spotiPanel, PLAYLIST_UI);
@@ -202,6 +201,7 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
                             ((DefaultTableModel)table.getModel()).removeRow(modelRow);
                             new BusinessFacadeImp().deleteSong(modelRow);
                             new BusinessFacadeImp().setSongUser();
+                            new BusinessFacadeImp().getPlaylistManager().setPlaylists(UserManager.getUser().getUserName());
                         }
 
                     }

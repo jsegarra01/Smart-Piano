@@ -97,8 +97,8 @@ public class PlaylistUI extends JPanel {
                                             }
                                         }
                                     }
-                                    int i = 0;
-                                    boolean foundSong = false;
+                                    int i;
+                                    boolean foundSong;
                                     for(int k = 0; k< playlist.getSongs().size();k++){
                                         i=0;
                                         foundSong = false;
