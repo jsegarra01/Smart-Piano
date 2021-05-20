@@ -14,6 +14,7 @@ public class SongsUI extends JPanel {
     private static JTable table;
     private static String[] columnNames; /*{"Name Song", "Author's name", "Duration","Recording Date", ""};*/
     private static JPanel panel = new JPanel();
+
     public SongsUI(){
         initialize();
         panel.setPreferredSize(new Dimension(860, 550));

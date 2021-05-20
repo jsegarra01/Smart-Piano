@@ -105,16 +105,8 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
                 //cc.show(spotiPanel, TOPSONGS_UI);
                 break;
             case CREATE_PLAYLIST:
-                String result = (String)JOptionPane.showInputDialog(
-                        null,
-                        "Which name is your playlist going to have?",
-                        "Playlist Creator",
-                        JOptionPane.PLAIN_MESSAGE,
-                        null,
-                        null,
-                        "New Playlist"
-                );
-                if(result != null && result.length() > 0){
+                String result = createPanelPlaylist();
+                if(result != null && result.length() > 0 && result.indexOf('\'') == -1){
                     new BusinessFacadeImp().newPlaylist(result);
                     new BusinessFacadeImp().getPlaylistManager().setPlaylists(UserManager.getUser().getUserName());
                     playlist = new BusinessFacadeImp().getPlaylist(result);
@@ -123,7 +115,7 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
                     addPlaylists(new BusinessFacadeImp().getPlaylistManager().getPlaylists());
                 }else {
                     JOptionPane.showMessageDialog(null,
-                            "You have to input something!", "Create Playlist Error" ,
+                            "The input is not correct!", "Create Playlist Error" ,
                             JOptionPane.ERROR_MESSAGE);
                 }
 
@@ -338,4 +330,15 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
         return found;
     }
 
+    private String createPanelPlaylist(){
+        return (String)JOptionPane.showInputDialog(
+                null,
+                "Which name is your playlist going to have?",
+                "Playlist Creator",
+                JOptionPane.PLAIN_MESSAGE,
+                null,
+                null,
+                "New Playlist"
+        );
+    }
 }
