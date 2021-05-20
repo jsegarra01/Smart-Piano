@@ -247,10 +247,18 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
 
     }
 
+    /**
+     * Gets the names of the songs
+     * @return A list with all the song names
+     */
     public ArrayList<String> getBusinessSongNames() {
         return new BusinessFacadeImp().getSongName();
     }
 
+    /**
+     * Gets the correct song when clicking or scrolling the list of songs
+     * @param e The event made by the user when using the scroll
+     */
     @Override
     public void valueChanged(ListSelectionEvent e) {
         if (!e.getValueIsAdjusting() && !songStarted) {
@@ -272,6 +280,9 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
         }
     }
 
+    /**
+     * Refreshes the Piano Tiles UI in order to make the keys fall correctly
+     */
     public void refreshPianoTilesUI () {
         timePassed = 0;
         songStarted = false;
@@ -285,6 +296,9 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
         refreshSongList();
     }
 
+    /**
+     * Tells the system that some time has passed and the keys must be refreshed
+     */
     public static void addTime() {                                                        //When 1000 milliseconds have passed
         if (play && songStarted) {
             timePassed++;

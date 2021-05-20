@@ -49,6 +49,12 @@ public class PlaylistUI extends JPanel {
       //  new ButtonColumn(table, listener, 2);
 
     //}
+
+    /**
+     *
+     * @param namePlaylist
+     * @return
+     */
     private static JPanel initGeneral(String namePlaylist){
         JPanel layout = new JPanel(new BorderLayout());
         layout.setBackground(Color.black);
