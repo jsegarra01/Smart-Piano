@@ -35,7 +35,6 @@ public class SongManager {
     }
 
     public void setSongs() {
-        //TODO GET ALL THE PUBLIC SONGS + PRIVATE SONGS IF USER != GUEST
         //songs = songManager.getAllSongs(getUser());
         songNames.clear();
         songs = songManager.getAllSongs();
@@ -43,7 +42,14 @@ public class SongManager {
             songNames.add(song.getSongName());
         }
     }
-
+    public void setSongs(String username) {
+        //songs = songManager.getAllSongs(getUser());
+        songNames.clear();
+        songs = songManager.getAllSongs(username);
+        for (Song song : songs) {
+            songNames.add(song.getSongName());
+        }
+    }
     public ArrayList<Song> getTopFive(){
         ArrayList<Song> aux = songs;
         aux.sort(this::compare);

@@ -6,6 +6,7 @@ import Business.BusinessFacadeImp;
 import Business.Entities.MidiHelper;
 import Business.Entities.webHandler;
 import Business.UserManager;
+import Presentation.Dictionary_login;
 import Presentation.Ui_Views.PlaylistUI;
 import Presentation.Ui_Views.SongsUI;
 import Presentation.Ui_Views.SpotiUI;
@@ -26,6 +27,8 @@ import java.io.File;
 import java.util.logging.Handler;
 
 import static Presentation.DictionaryPiano.*;
+import static Presentation.Dictionary_login.PROFILE_UI;
+import static Presentation.Manager.MainFrame.card;
 import static Presentation.Manager.MainFrame.contenedor;
 import static Presentation.Ui_Views.SpotiUI.*;
 import static Presentation.Ui_Views.StatisticsUI.letsInitializeGraphs;
@@ -123,6 +126,9 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
             case SEARCH_SONG:
                 this.myWebHandlingTool.doStuff(SpotiUI.getInputedSongName(), "by");
                 cc.show(spotiPanel, PLAYLIST_UI);
+                break;
+            case Dictionary_login.PROFILE_BUTTON:           //In the case that the Profile button is pressed
+                card.show(contenedor, PROFILE_UI);
                 break;
             case PLAY_BUTTON:
                 if(!play){

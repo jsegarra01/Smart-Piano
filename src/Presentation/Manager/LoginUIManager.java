@@ -6,12 +6,15 @@ import Business.UserManager;
 import Presentation.Ui_Views.LoginUI;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import static Presentation.DictionaryPiano.FREE_PIANO_UI;
 import static Presentation.Dictionary_login.*;
 import static Presentation.Manager.MainFrame.card;
 import static Presentation.Manager.MainFrame.contenedor;
+import static Presentation.Ui_Views.PianoFrame.centralPanel;
 
 
 /**
@@ -36,6 +39,8 @@ public class LoginUIManager implements ActionListener {
      */
     @Override
     public void actionPerformed(ActionEvent e) {
+
+        CardLayout cc = (CardLayout) (centralPanel.getLayout());
         // We distinguish between our buttons.
         switch (e.getActionCommand()) {
             case BACK_BUTTON:                          //In the case that the Back button is pressed
@@ -44,6 +49,7 @@ public class LoginUIManager implements ActionListener {
             case DONE_BUTTON:                          //In the case that the Done button is pressed
                 if(new BusinessFacadeImp().logIn(LoginUI.getUsernameLogin(), LoginUI.getPasswordLogin())){
                     card.show(contenedor, PIANO_FRAME);
+                    cc.show(centralPanel, FREE_PIANO_UI);
                     new BusinessFacadeImp().getPlaylistManager().setPlaylists(UserManager.getUser().getUserName());
                     SpotiFrameManager.addPlaylists(new BusinessFacadeImp().getPlaylistManager().getPlaylists());
                     new BusinessFacadeImp().setSongUser();

@@ -27,8 +27,8 @@ public class SongCsvDAO implements SongDAO {
      */
     private ArrayList<Song> songFromCsv(String myUserString) {
         try {
-            ResultSet myRs = ConnectSQL.getInstance().createStatement().executeQuery("select * from SongT as s where s.username " +
-                    "like '" + myUserString + "'");
+            ResultSet myRs = ConnectSQL.getInstance().createStatement().executeQuery("select * from SongT as s where (s.username " +
+                    "                    like '"+ myUserString+"' and publicBoolean = false) or publicBoolean = true;");
             ArrayList<Song> songs = myRsToSongs(myRs);
             myRs.close();
             return songs;
@@ -139,13 +139,13 @@ public class SongCsvDAO implements SongDAO {
     /**
      * Method that gets all the songs belonging to the user
      *
-     * @param myUser Defines the user from which the songs will be got
+     * @param username Defines the user from which the songs will be got
      * @return List of songs that have been created by the user
      */
     @Override
-    public ArrayList<Song> getAllSongs(User myUser) {
+    public ArrayList<Song> getAllSongs(String username) {
 
-        return songFromCsv(myUser.getUserName());
+        return songFromCsv(username);
     }
 
     /**

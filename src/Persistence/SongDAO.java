@@ -39,10 +39,10 @@ public interface SongDAO {
 
     /**
      *
-     * @param myUser
+     * @param username
      * @return
      */
-    ArrayList<Song> getAllSongs(User myUser);
+    ArrayList<Song> getAllSongs(String username);
 
     /**
      *

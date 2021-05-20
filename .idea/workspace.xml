@@ -19,10 +19,24 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="Songs are added correctly and technically it does not take forever to add them">
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/PlaylistUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/PlaylistUI.class" afterDir="false" />
+    <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="there was a small mistake, now everything is great.&#10;When songs were eliminated, they were not from the playlists">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/BusinessFacade.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/BusinessFacade.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/BusinessFacadeImp.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/BusinessFacadeImp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/SongManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/SongManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Persistence/SQL/Csv/SongCsvDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Persistence/SQL/Csv/SongCsvDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Persistence/SongDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Persistence/SongDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/LoginUIManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/LoginUIManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/SpotiFrameManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/SpotiFrameManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/SpotiUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/SpotiUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Business/BusinessFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/BusinessFacade.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Business/BusinessFacadeImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/BusinessFacadeImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Business/SongManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/SongManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Persistence/SQL/Csv/SongCsvDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Persistence/SQL/Csv/SongCsvDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Persistence/SongDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Persistence/SongDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presentation/Manager/LoginUIManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Manager/LoginUIManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Presentation/Manager/SpotiFrameManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Manager/SpotiFrameManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presentation/Ui_Views/PlaylistUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Ui_Views/PlaylistUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presentation/Ui_Views/SpotiUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Ui_Views/SpotiUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -170,13 +184,6 @@
       <workItem from="1621333075928" duration="619000" />
       <workItem from="1621411993228" duration="13370000" />
       <workItem from="1621434489032" duration="6506000" />
-    </task>
-    <task id="LOCAL-00008" summary="Pretty positioning">
-      <created>1619072825806</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1619072825806</updated>
     </task>
     <task id="LOCAL-00009" summary="Deleting files">
       <created>1619073500064</created>
@@ -514,21 +521,18 @@
       <option name="project" value="LOCAL" />
       <updated>1621531563465</updated>
     </task>
-    <option name="localTasksCounter" value="58" />
+    <task id="LOCAL-00058" summary="there was a small mistake, now everything is great.&#10;When songs were eliminated, they were not from the playlists">
+      <created>1621531905306</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1621531905306</updated>
+    </task>
+    <option name="localTasksCounter" value="59" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="Vcs.Log.History.Properties">
-    <option name="COLUMN_ID_ORDER">
-      <list>
-        <option value="Default.Root" />
-        <option value="Default.Author" />
-        <option value="Default.Date" />
-        <option value="Default.Subject" />
-      </list>
-    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -544,7 +548,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="publish feature yikes" />
     <MESSAGE value="Stop Playing when key released" />
     <MESSAGE value="play music menu" />
     <MESSAGE value="improvement of the display a song menu" />
@@ -603,33 +606,38 @@
     <MESSAGE value="We may have reduced lag" />
     <MESSAGE value="removing does not take 30000 years" />
     <MESSAGE value="Songs are added correctly and technically it does not take forever to add them" />
-    <option name="LAST_COMMIT_MESSAGE" value="Songs are added correctly and technically it does not take forever to add them" />
+    <MESSAGE value="there was a small mistake, now everything is great.&#10;When songs were eliminated, they were not from the playlists" />
+    <option name="LAST_COMMIT_MESSAGE" value="there was a small mistake, now everything is great.&#10;When songs were eliminated, they were not from the playlists" />
   </component>
   <component name="WindowStateProjectService">
     <state x="709" y="258" key="#com.intellij.ide.util.MemberChooser" timestamp="1621520611679">
       <screen x="0" y="23" width="1792" height="1045" />
     </state>
     <state x="709" y="258" key="#com.intellij.ide.util.MemberChooser/0.23.1792.1045@0.23.1792.1045" timestamp="1621520611679" />
-    <state width="1561" height="242" key="GridCell.Tab.0.bottom" timestamp="1621531619989">
-      <screen x="0" y="23" width="1792" height="1044" />
+    <state width="1559" height="242" key="GridCell.Tab.0.bottom" timestamp="1621536576587">
+      <screen x="0" y="23" width="1792" height="1046" />
     </state>
-    <state width="1561" height="242" key="GridCell.Tab.0.bottom/0.23.1792.1044@0.23.1792.1044" timestamp="1621531619989" />
-    <state width="875" height="279" key="GridCell.Tab.0.bottom/0.23.1792.1045@0.23.1792.1045" timestamp="1621530618214" />
-    <state width="1561" height="242" key="GridCell.Tab.0.center" timestamp="1621531619989">
-      <screen x="0" y="23" width="1792" height="1044" />
+    <state width="1559" height="242" key="GridCell.Tab.0.bottom/0.23.1792.1044@0.23.1792.1044" timestamp="1621536480201" />
+    <state width="1559" height="242" key="GridCell.Tab.0.bottom/0.23.1792.1045@0.23.1792.1045" timestamp="1621535563213" />
+    <state width="1559" height="242" key="GridCell.Tab.0.bottom/0.23.1792.1046@0.23.1792.1046" timestamp="1621536576587" />
+    <state width="1559" height="242" key="GridCell.Tab.0.center" timestamp="1621536576586">
+      <screen x="0" y="23" width="1792" height="1046" />
     </state>
-    <state width="1561" height="242" key="GridCell.Tab.0.center/0.23.1792.1044@0.23.1792.1044" timestamp="1621531619989" />
-    <state width="875" height="279" key="GridCell.Tab.0.center/0.23.1792.1045@0.23.1792.1045" timestamp="1621530618213" />
-    <state width="1561" height="242" key="GridCell.Tab.0.left" timestamp="1621531619989">
-      <screen x="0" y="23" width="1792" height="1044" />
+    <state width="1559" height="242" key="GridCell.Tab.0.center/0.23.1792.1044@0.23.1792.1044" timestamp="1621536480201" />
+    <state width="1559" height="242" key="GridCell.Tab.0.center/0.23.1792.1045@0.23.1792.1045" timestamp="1621535563213" />
+    <state width="1559" height="242" key="GridCell.Tab.0.center/0.23.1792.1046@0.23.1792.1046" timestamp="1621536576586" />
+    <state width="1559" height="242" key="GridCell.Tab.0.left" timestamp="1621536576586">
+      <screen x="0" y="23" width="1792" height="1046" />
     </state>
-    <state width="1561" height="242" key="GridCell.Tab.0.left/0.23.1792.1044@0.23.1792.1044" timestamp="1621531619989" />
-    <state width="875" height="279" key="GridCell.Tab.0.left/0.23.1792.1045@0.23.1792.1045" timestamp="1621530618213" />
-    <state width="1561" height="242" key="GridCell.Tab.0.right" timestamp="1621531619989">
-      <screen x="0" y="23" width="1792" height="1044" />
+    <state width="1559" height="242" key="GridCell.Tab.0.left/0.23.1792.1044@0.23.1792.1044" timestamp="1621536480200" />
+    <state width="1559" height="242" key="GridCell.Tab.0.left/0.23.1792.1045@0.23.1792.1045" timestamp="1621535563212" />
+    <state width="1559" height="242" key="GridCell.Tab.0.left/0.23.1792.1046@0.23.1792.1046" timestamp="1621536576586" />
+    <state width="1559" height="242" key="GridCell.Tab.0.right" timestamp="1621536576587">
+      <screen x="0" y="23" width="1792" height="1046" />
     </state>
-    <state width="1561" height="242" key="GridCell.Tab.0.right/0.23.1792.1044@0.23.1792.1044" timestamp="1621531619989" />
-    <state width="875" height="279" key="GridCell.Tab.0.right/0.23.1792.1045@0.23.1792.1045" timestamp="1621530618214" />
+    <state width="1559" height="242" key="GridCell.Tab.0.right/0.23.1792.1044@0.23.1792.1044" timestamp="1621536480201" />
+    <state width="1559" height="242" key="GridCell.Tab.0.right/0.23.1792.1045@0.23.1792.1045" timestamp="1621535563213" />
+    <state width="1559" height="242" key="GridCell.Tab.0.right/0.23.1792.1046@0.23.1792.1046" timestamp="1621536576587" />
     <state width="875" height="279" key="GridCell.Tab.1.bottom" timestamp="1621531496194">
       <screen x="0" y="23" width="1792" height="1044" />
     </state>
@@ -650,9 +658,13 @@
     </state>
     <state width="875" height="279" key="GridCell.Tab.1.right/0.23.1792.1044@0.23.1792.1044" timestamp="1621531496193" />
     <state width="875" height="279" key="GridCell.Tab.1.right/0.23.1792.1045@0.23.1792.1045" timestamp="1621530617950" />
-    <state x="496" y="284" key="Vcs.Push.Dialog.v2" timestamp="1621525962697">
+    <state x="496" y="284" key="Vcs.Push.Dialog.v2" timestamp="1621533980044">
       <screen x="0" y="23" width="1792" height="1045" />
     </state>
-    <state x="496" y="284" key="Vcs.Push.Dialog.v2/0.23.1792.1045@0.23.1792.1045" timestamp="1621525962697" />
+    <state x="496" y="284" key="Vcs.Push.Dialog.v2/0.23.1792.1045@0.23.1792.1045" timestamp="1621533980044" />
+    <state x="561" y="252" key="run.anything.popup" timestamp="1621534436502">
+      <screen x="0" y="23" width="1792" height="1045" />
+    </state>
+    <state x="561" y="252" key="run.anything.popup/0.23.1792.1045@0.23.1792.1045" timestamp="1621534436502" />
   </component>
 </project>
