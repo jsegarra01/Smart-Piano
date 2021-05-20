@@ -26,6 +26,7 @@ import static Presentation.DictionaryPiano.*;
  */
 public class PlaylistUI extends JPanel {
     private static JPanel panel = new JPanel(new BorderLayout());
+    private static Playlist playlistGeneral;
 
 
     /**
@@ -67,32 +68,78 @@ public class PlaylistUI extends JPanel {
 
     public static void setSongsPlaylists(Playlist playlist){
 
-        panel.removeAll();
-        //panel.repaint();
-        panel.setBackground(Color.black);
-        panel.add(Box.createRigidArea(new Dimension(10, 50)));
-        JPanel panelSongs = new JPanel();
+        if(playlist.equals(playlistGeneral)) {
+            for (Component jc : panel.getComponents()) {
+                if (jc instanceof JScrollPane) {
+                    JScrollPane scrollPane = (JScrollPane) jc;
+                    for (Component jc2 : scrollPane.getComponents()) {
+                        if (jc2 instanceof JViewport) {
+                            JViewport viewport = (JViewport) jc2;
+                            for (Component jc3 : viewport.getComponents()) {
+                                if (jc3 instanceof JPanel) {
+                                    JPanel panelSongs = (JPanel) jc3;
 
-        panel.add(initGeneral(playlist.getPlaylistName()), BorderLayout.NORTH);
+                                    for(int j = 0; j< panelSongs.getComponentCount();j++){
+                                        //panelSongs.getComponent(j)
+                                    //}
+                                    //for (Component jc4 : panelSongs.getComponents()) {
+                                        if (panelSongs.getComponent(j) instanceof JPanel) {
+                                            JPanel song = (JPanel) panelSongs.getComponent(j) ;
+                                            int i = 0;
+                                            boolean foundSong = false;
+                                            while (i < playlist.getSongs().size() && !foundSong) {
+                                                if(song.getName().equals(playlist.getSongs().get(i).getSongFile())){
+                                                    foundSong = true;
+                                                }else{
+                                                    i++;
+                                                }
+                                            }
+                                            if(!foundSong){
+                                                panelSongs.remove(j);
+                                                foundSong = false;
+                                            }
 
-        panelSongs.setBackground(Color.black);
-        panelSongs.add(Box.createRigidArea(new Dimension(50,10)));
-        //panelSongs.setPreferredSize(new Dimension(5,400));
+                                        }
 
-        BoxLayout boxLayout = new BoxLayout(panelSongs, BoxLayout.Y_AXIS);
-        panelSongs.setLayout(boxLayout);
-        JPanel panel1;
-        for(int i = 0; i<playlist.getSongs().size(); i++){
-            panel1 = setPlaylist(playlist, i);
-            panelSongs.add(panel1);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }else {
+            //panel.removeAll();
+            playlistGeneral = playlist;
+
+            System.out.println("hola");
+            panel.removeAll();
+            System.out.println("holiiii");
+            //panel.repaint();
+            panel.setBackground(Color.black);
+            panel.add(Box.createRigidArea(new Dimension(10, 50)));
+            JPanel panelSongs = new JPanel();
+
+            panel.add(initGeneral(playlist.getPlaylistName()), BorderLayout.NORTH);
+
+            panelSongs.setBackground(Color.black);
+            panelSongs.add(Box.createRigidArea(new Dimension(50, 10)));
+            //panelSongs.setPreferredSize(new Dimension(5,400));
+
+            BoxLayout boxLayout = new BoxLayout(panelSongs, BoxLayout.Y_AXIS);
+            panelSongs.setLayout(boxLayout);
+            JPanel panel1;
+            for (int i = 0; i < playlist.getSongs().size(); i++) {
+                panel1 = setPlaylist(playlist, i);
+                panelSongs.add(panel1);
+            }
+
+            JScrollPane areaScrollPane = new JScrollPane(panelSongs);
+            areaScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+            areaScrollPane.setPreferredSize(new Dimension(860, 510));
+            areaScrollPane.setBorder(BorderFactory.createEmptyBorder());
+            panel.add(areaScrollPane, BorderLayout.CENTER);
         }
-
-        JScrollPane areaScrollPane = new JScrollPane(panelSongs);
-        areaScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-        areaScrollPane.setPreferredSize(new Dimension(860, 510));
-        areaScrollPane.setBorder(BorderFactory.createEmptyBorder());
-        panel.add(areaScrollPane, BorderLayout.CENTER);
-
         panel.revalidate();
         panel.repaint();
 

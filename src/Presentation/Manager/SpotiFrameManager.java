@@ -186,9 +186,6 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
                                     JOptionPane.ERROR_MESSAGE);
                         }else{
                             boolean updatingSong = new BusinessFacadeImp().addSongToPlaylist(playlist.getPlaylistName(),new BusinessFacadeImp().getSong(modelRow).getSongName());
-                            //new BusinessFacadeImp().getPlaylistManager().setPlaylists(UserManager.getUser().getUserName());
-                            //playlist =
-                            //PlaylistUI.addSongToPanel(new BusinessFacadeImp().getSong(modelRow));
                             playlist = new BusinessFacadeImp().getPlaylist(playlist.getPlaylistName());
                             PlaylistUI.setSongsPlaylists(playlist);
                             cc.show(spotiPanel, PLAYLIST_UI);
