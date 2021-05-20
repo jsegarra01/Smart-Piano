@@ -193,7 +193,14 @@ public class SpotiUI extends JPanel {
         add(lowPanel, BorderLayout.SOUTH);
     }
 
-
+    /**
+     * Creates a button with the desired configurations
+     * @param imagePath Path of the icon of the button
+     * @param index1 Left margin of the empty border of the button
+     * @param index2 Right margin of the empty border of the button
+     * @param label label of the action command of the button
+     * @return The created button
+     */
     private JButton createConfButtons(String imagePath, int index1, int index2, String label){
         JButton toReturnButton;
         toReturnButton = new JButton();
@@ -205,6 +212,12 @@ public class SpotiUI extends JPanel {
         return toReturnButton;
     }
 
+    /**
+     * Makes some basic button configurations
+     * @param button Button to configurate
+     * @param left Left margin for the empty border
+     * @param right Right margin for the empty border
+     */
     private static void confButtonLeft(JButton button, int left, int right){
         //button.setAlignmentX(0.5f);
         button.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -215,6 +228,12 @@ public class SpotiUI extends JPanel {
         button.setForeground(Color.white);
     }
 
+    /**
+     * Makes some basic button configurations
+     * @param button Button to configurate
+     * @param left Left margin for the empty border
+     * @param right Right margin for the empty border
+     */
     private void confButtonsBar(JButton button, int left, int right){
         button.add(Box.createRigidArea(new Dimension(button.getIcon().getIconWidth(), button.getIcon().getIconHeight())));
         button.setOpaque(false);
@@ -223,6 +242,10 @@ public class SpotiUI extends JPanel {
         button.setBorder(new EmptyBorder(TB_SIZE,left,TB_SIZE,right));
     }
 
+    /**
+     * Adds the action listener for the different buttons of the UI
+     * @param listener The listener to be added
+     */
     private void registerController(SpotiFrameManager listener) {
         showStadistics.addActionListener(listener);
         topSongs.addActionListener(listener);
@@ -239,6 +262,10 @@ public class SpotiUI extends JPanel {
         searchButton.addActionListener(listener);
     }
 
+    /**
+     * Gets the inputted song name
+     * @return The song name
+     */
     public static String getInputedSongName() {
         return songNameInputText.getText();
     }
@@ -252,6 +279,11 @@ public class SpotiUI extends JPanel {
 */
 
     //TODO poner bn las boxes (size lateral)
+
+    /**
+     * Adds the playlist to a scroll pane where you will be able to select which playlist do you want to play or modify
+     * @param playlists The list of playlists to be added to the scroll
+     */
     public static void addPlaylists(ArrayList<Playlist> playlists){
         playlistsPanel.removeAll();
         leftList.remove(scroll);
@@ -283,6 +315,12 @@ public class SpotiUI extends JPanel {
         }
     }
 
+    /**
+     * Sets a button with the desired configurations
+     * @param button The button to be modified
+     * @param diff Margins for the button
+     * @return The modified button
+     */
     private JButton setButton(JButton button, int diff){
         //Button.setActionCommand(DictionaryPiano.PLAYLIST_INFO);
         //button.setAlignmentX(0.5f);

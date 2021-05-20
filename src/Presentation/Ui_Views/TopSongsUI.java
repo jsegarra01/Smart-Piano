@@ -10,23 +10,31 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
+/**
+ * TopSongsUI
+ *
+ * The "TopSongsUI" class will create the panel where the top songs will be shown
+ *
+ * @author OOPD 20-21 ICE5
+ * @version 2.0 24 Apr 2021
+ *
+ */
 public class TopSongsUI extends JPanel {
     private static JTable table;
     private final static String[] columnNames = {"Name Song", "Author's name", "Duration","Recording Date", "Times Played"};
     private static JPanel panel = new JPanel();
+
+    /**
+     * Constructor for the TopSongsUI, creates the panel of the top 5 songs
+     */
     public TopSongsUI(){
-        initialize();
+        setBackground(Color.black);
         panel.setPreferredSize(new Dimension(800, 550));
         panel.setMaximumSize(getPreferredSize());
         add(panel);
     }
 
-    private void initialize() {
-        //setLayout(new BorderLayout());
-        setBackground(Color.black);
-
-    }
-    public static void initTopTable(ArrayList<Song> songs){
+    /*public static void initTopTable(ArrayList<Song> songs){
         panel.removeAll();
         Object[][] data = new Object[songs.size()][5];
         for(int i = 0; i< songs.size();i++){
@@ -63,25 +71,5 @@ public class TopSongsUI extends JPanel {
 
     private static void registerController(Action listener) {
         new ButtonColumn(table, listener, 4);
-    }
-
-
-
-    /*
-    private final LinkedList<Float> numPlayed = new LinkedList<Float>();
-
-    public TopSongsUI() {
-        initialize();
-    }
-
-    private void initialize() {
-        setLayout(new BorderLayout());
-        setBackground(Color.white);
-    }
-
-    private LinkedList<Float> getTopSongs(LinkedList<Float> numPlayed){
-        LinkedList<Float> aux = numPlayed;
-        //aux.sort();
-        return aux;
     }*/
 }

@@ -10,21 +10,34 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
+/**
+ * SongsUI
+ *
+ * The "SongsUI" class will generates the tables with the different songs
+ *
+ * @author OOPD 20-21 ICE5
+ * @version 2.0 24 Apr 2021
+ *
+ */
 public class SongsUI extends JPanel {
     private static JTable table;
     private static String[] columnNames; /*{"Name Song", "Author's name", "Duration","Recording Date", ""};*/
     private static JPanel panel = new JPanel();
 
+    /**
+     * Constructor for the SongsUI
+     */
     public SongsUI(){
-        initialize();
+        setBackground(Color.black);
         panel.setPreferredSize(new Dimension(860, 550));
         add(panel);
     }
 
-    private void initialize() {
-        setBackground(Color.black);
-
-    }
+    /**
+     * Creates a table of songs depending on the action
+     * @param songs List of songs to be added to the table
+     * @param action Whether if we want the table for the top 5 songs or the table with all the songs available for the user
+     */
     public static void initTable(ArrayList<Song> songs, String action){
         panel.removeAll();
         Object[][] data = new Object[songs.size()][5];
@@ -43,6 +56,12 @@ public class SongsUI extends JPanel {
             }
         }
         DefaultTableModel model = new DefaultTableModel(data, columnNames){
+            /**
+             * TODO: ALEX WUTUFUK IS THIS
+             * @param row
+             * @param column
+             * @return
+             */
             @Override
             public boolean isCellEditable(int row, int column) {
                 return column == 4;
@@ -68,6 +87,10 @@ public class SongsUI extends JPanel {
         panel.repaint();
     }
 
+    /**
+     *
+     * @param listener
+     */
     private static void registerController(Action listener) {
           new ButtonColumn(table, listener, 4);
     }
