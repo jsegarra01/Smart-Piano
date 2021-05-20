@@ -78,11 +78,8 @@ public class PlaylistUI extends JPanel {
                             for (Component jc3 : viewport.getComponents()) {
                                 if (jc3 instanceof JPanel) {
                                     JPanel panelSongs = (JPanel) jc3;
-
                                     for(int j = 0; j< panelSongs.getComponentCount();j++){
-                                        //panelSongs.getComponent(j)
-                                    //}
-                                    //for (Component jc4 : panelSongs.getComponents()) {
+
                                         if (panelSongs.getComponent(j) instanceof JPanel) {
                                             JPanel song = (JPanel) panelSongs.getComponent(j) ;
                                             int i = 0;
@@ -98,9 +95,28 @@ public class PlaylistUI extends JPanel {
                                                 panelSongs.remove(j);
                                                 foundSong = false;
                                             }
-
                                         }
-
+                                    }
+                                    int i = 0;
+                                    boolean foundSong = false;
+                                    for(int k = 0; k< playlist.getSongs().size();k++){
+                                        i=0;
+                                        foundSong = false;
+                                        while (i < panelSongs.getComponentCount() && !foundSong){
+                                            if (panelSongs.getComponent(i) instanceof JPanel) {
+                                                JPanel song = (JPanel) panelSongs.getComponent(i) ;
+                                                if(song.getName().equals(playlist.getSongs().get(k).getSongFile())){
+                                                    foundSong = true;
+                                                }else{
+                                                    i++;
+                                                }
+                                            }else{
+                                                i++;
+                                            }
+                                        }
+                                        if(!foundSong){
+                                            panelSongs.add(setPlaylist(playlist, k));
+                                        }
                                     }
                                 }
                             }
@@ -109,12 +125,9 @@ public class PlaylistUI extends JPanel {
                 }
             }
         }else {
-            //panel.removeAll();
             playlistGeneral = playlist;
 
-            System.out.println("hola");
             panel.removeAll();
-            System.out.println("holiiii");
             //panel.repaint();
             panel.setBackground(Color.black);
             panel.add(Box.createRigidArea(new Dimension(10, 50)));
