@@ -145,27 +145,32 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
                 setIconShuffleActive(shuffle);
                 break;
             case LAST_BUTTON:
-                if(!loop){
-                    if(!shuffle){
-                        if(wherePlay){
-                            previousSongFromPlaylist();
+                if(songPlay!=null){
+                    if(!loop){
+                        if(!shuffle){
+                            if(wherePlay){
+                                previousSongFromPlaylist();
+                            }else{
+                                previousSongFromSong();
+                            }
                         }else{
-                            previousSongFromSong();
+                            if(wherePlay){
+                                randomFromPlaylist();
+                            }else{
+                                randomFromSongs();
+                            }
                         }
                     }else{
-                        if(wherePlay){
-                            randomFromPlaylist();
-                        }else{
-                            randomFromSongs();
-                        }
+                        finalMidiHelper.restartSong(songPlay.getSongFile());
+                        finalMidiHelper.playSong(songPlay.getSongFile());
                     }
-                }else{
-                    finalMidiHelper.restartSong(songPlay.getSongFile());
-                    finalMidiHelper.playSong(songPlay.getSongFile());
                 }
+
                 break;
             case NEXT_BUTTON:
-                playSongTime();
+                if(songPlay!=null){
+                    playSongTime();
+                }
                 break;
             case LOOP_BUTTON:
                 loop = !loop;

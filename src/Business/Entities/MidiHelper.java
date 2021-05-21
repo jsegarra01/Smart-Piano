@@ -180,7 +180,7 @@ public class MidiHelper {
     private final Sequencer sequencer = MidiSystem.getSequencer();
     private boolean donePlaying;
     private static String fileSong = "";
-    private Sequence sequencePlay;
+    private static Sequence sequencePlay;
 
     public MidiHelper() throws MidiUnavailableException {
         Synthesizer synth = MidiSystem.getSynthesizer();
