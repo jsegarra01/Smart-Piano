@@ -12,6 +12,8 @@ import Presentation.Ui_Views.SongsUI;
 import Presentation.Ui_Views.SpotiUI;
 import Presentation.Ui_Views.TopSongsUI;
 
+import javax.sound.midi.MetaEventListener;
+import javax.sound.midi.MetaMessage;
 import javax.sound.midi.MidiChannel;
 import javax.sound.midi.MidiUnavailableException;
 import javax.swing.*;
@@ -45,7 +47,7 @@ import static javax.swing.SwingConstants.TOP;
  * @version 1.0 21 Apr 2021
  *
  */
-public class SpotiFrameManager extends AbstractAction implements ActionListener, MouseListener {
+public class SpotiFrameManager extends AbstractAction implements ActionListener, MouseListener, MetaEventListener {
 
     private static final String URLRoute = "https://www.mutopiaproject.org/cgibin/make-table.cgi?Instrument=Piano";
     private static final String path = "Files";
@@ -59,6 +61,8 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
     private static Playlist playlist;
     private static ArrayList topFive = new ArrayList<Song>();
     private static Song songPlay;
+    private static boolean loop =false;
+    private static boolean shuffle =false;
 
     private final Date date = new Date();
 
@@ -130,29 +134,26 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
             case Dictionary_login.PROFILE_BUTTON:           //In the case that the Profile button is pressed
                 card.show(contenedor, PROFILE_UI);
                 break;
+
+            case SHUFFLE_BUTTON:
+                shuffle = !shuffle;
+                break;
+            case LAST_BUTTON:
+                System.out.println("holas");
+                break;
+            case NEXT_BUTTON:
+                System.out.println("holi");
+                break;
+            case LOOP_BUTTON:
+                loop = !loop;
+                System.out.println("hola");
+                break;
             case PLAY_BUTTON:
                 if(!play){
-                    playButton.setIcon(pauseIcon);
-                    playButton.setIcon(resizeIcon((ImageIcon) playButton.getIcon(), (int) Math.round(playButton.getIcon().getIconWidth()*0.09),
-                            (int) Math.round(playButton.getIcon().getIconHeight()*0.09)));
-                    startMin = System.currentTimeMillis();
-                    finalMidiHelper.playSong(songPlay.getSongFile());
-                    play = true;
+                    playMusic();
                 }
                 else{
-                    playButton.setIcon(playIcon);
-                    playButton.setIcon(resizeIcon((ImageIcon) playButton.getIcon(), (int) Math.round(playButton.getIcon().getIconWidth()*0.09),
-                            (int) Math.round(playButton.getIcon().getIconHeight()*0.09)));
-                    lastMin = System.currentTimeMillis();
-                    // String lastSong =
-                    minPlayed = (float)(lastMin - startMin)/60000;
-                    //Stadistics stats = new Stadistics(date.getHours(), (float)1, minPlayed);
-                    new BusinessFacadeImp().getSongManager().addingStadistics(new Stadistics(date.getHours(), (float)1, minPlayed));
-                    //new BusinessFacadeImp().getSongManager().getSongs().stream().findAny().equals(new Song())
-                    //finalMidiHelper.playSong();
-                    play = false;
-                    finalMidiHelper.stopSong();
-
+                    stopMusic();
                 }
 
                 break;
@@ -267,12 +268,13 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
                 finalMidiHelper.stopSong();
             }*/
             song = (JPanel) obj;
-            playButton.setIcon(pauseIcon);
+            songPlay = findSong(song.getName());
+            playMusic();
+            /*playButton.setIcon(pauseIcon);
             playButton.setIcon(resizeIcon((ImageIcon) playButton.getIcon(), (int) Math.round(playButton.getIcon().getIconWidth()*0.09),
                     (int) Math.round(playButton.getIcon().getIconHeight()*0.09)));
             play = true;
-            songPlay = findSong(song.getName());
-            finalMidiHelper.playSong(Objects.requireNonNull(songPlay).getSongFile());
+            finalMidiHelper.playSong(Objects.requireNonNull(songPlay).getSongFile());*/
             SpotiUI.setSong(songPlay.getSongName(), songPlay.getAuthorName());
             new BusinessFacadeImp().getSongManager().updateSongPlayed(songPlay);
             new BusinessFacadeImp().setSongUser();
@@ -285,7 +287,7 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
         }
     }
 
-    private Song findSong(/*File file*/ String file){
+    private Song findSong(String file){
         ArrayList<Song> arraySong = new BusinessFacadeImp().getSongManager().getSongs();
         int i=0;
         boolean found = false;
@@ -344,5 +346,36 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
     }
     public static void resetSongs(){
         SongsUI.initTable(new BusinessFacadeImp().getSongManager().getSongs(), "Delete");
+    }
+
+    private void playMusic(){
+        playButton.setIcon(pauseIcon);
+        playButton.setIcon(resizeIcon((ImageIcon) playButton.getIcon(), (int) Math.round(playButton.getIcon().getIconWidth()*0.09),
+                (int) Math.round(playButton.getIcon().getIconHeight()*0.09)));
+        startMin = System.currentTimeMillis();
+        finalMidiHelper.playSong(songPlay.getSongFile());
+        play = true;
+    }
+
+    private void stopMusic(){
+        playButton.setIcon(playIcon);
+        playButton.setIcon(resizeIcon((ImageIcon) playButton.getIcon(), (int) Math.round(playButton.getIcon().getIconWidth()*0.09),
+                (int) Math.round(playButton.getIcon().getIconHeight()*0.09)));
+        lastMin = System.currentTimeMillis();
+        minPlayed = (float)(lastMin - startMin)/60000;
+        new BusinessFacadeImp().getSongManager().addingStadistics(new Stadistics(date.getHours(), (float)1, minPlayed));
+        play = false;
+        finalMidiHelper.stopSong();
+    }
+
+    @Override
+    public void meta(MetaMessage meta) {
+        if (meta.getType() == 47) {
+            if(!loop){
+                if(!shuffle){
+
+                }
+            }
+        }
     }
 }

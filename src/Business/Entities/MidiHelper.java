@@ -1,4 +1,6 @@
 package Business.Entities;
+import Presentation.Manager.SpotiFrameManager;
+
 import javax.sound.midi.*;
 import javax.sound.midi.MidiSystem;
 import javax.sound.midi.MidiUnavailableException;
@@ -188,9 +190,7 @@ public class MidiHelper {
         midiChannels = synth.getChannels();
         instruments = synth.getDefaultSoundbank().getInstruments();
         sequencer.open();
-        sequencer.addMetaEventListener(meta -> {
-            donePlaying = meta.getType() == 47;
-        });
+        sequencer.addMetaEventListener(new SpotiFrameManager());
     }
     public void playSomething(int noteValueToPlay, int whatInstrumentToPlay){
         this.whatInstrumentIsPlayed = whatInstrumentToPlay;

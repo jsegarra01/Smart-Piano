@@ -125,7 +125,6 @@ public class SpotiUI extends JPanel {
         JSeparator separator = new JSeparator();
 
         //JScrollPane scroll = new JScrollPane();
-        registerController(new SpotiFrameManager());
         leftList.add(Box.createRigidArea(new Dimension(210, 10)));
         leftList.setPreferredSize(new Dimension(210, 200));
         leftList.setMaximumSize(getPreferredSize());
@@ -204,6 +203,8 @@ public class SpotiUI extends JPanel {
         //lowPanel.add(Box.createRigidArea(new Dimension(30,10)), BorderLayout.WEST);
         lowPanel.add(songPanel, BorderLayout.WEST);
         add(lowPanel, BorderLayout.SOUTH);
+
+        registerController(new SpotiFrameManager());
     }
 
     private JButton createConfButtons(String imagePath, int index1, int index2, String label){
