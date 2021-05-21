@@ -48,11 +48,11 @@ public class SpotiUI extends JPanel {
     private static final JButton topSongs = new JButton(SHOW_TOP_SONGS);
     public static final JButton songsList = new JButton(SHOW_ALL_SONGS);
     public static JLabel playlistLabel = new JLabel(PLAYLIST_LABEL);
-    private static JButton shuffleButton = new JButton();
+    public static JButton shuffleButton = new JButton();
     private static JButton backButton = new JButton();
     public static JButton playButton = new JButton();
     private static JButton nextButton = new JButton();
-    private static JButton loopButton = new JButton();
+    public static JButton loopButton = new JButton();
     private static JButton profile = new JButton(PROFILE_BUTTON);
     private static JPanel songPanel = new JPanel(new GridLayout(2,0));
     private static JLabel songLabel = new JLabel(SONG_PLAYING);

@@ -190,7 +190,19 @@ public class MidiHelper {
         midiChannels = synth.getChannels();
         instruments = synth.getDefaultSoundbank().getInstruments();
         sequencer.open();
-        sequencer.addMetaEventListener(new SpotiFrameManager());
+        //sequencer.addMetaEventListener(new SpotiFrameManager());
+    }
+
+    public MidiHelper(MetaEventListener listener) throws MidiUnavailableException {
+        Synthesizer synth = MidiSystem.getSynthesizer();
+        long startTime = System.nanoTime();
+        synth.open();
+        long estimatedTime = System.nanoTime() - startTime;
+        midiChannels = synth.getChannels();
+        instruments = synth.getDefaultSoundbank().getInstruments();
+        sequencer.addMetaEventListener(listener);
+        sequencer.open();
+        //sequencer.addMetaEventListener(new SpotiFrameManager());
     }
     public void playSomething(int noteValueToPlay, int whatInstrumentToPlay){
         this.whatInstrumentIsPlayed = whatInstrumentToPlay;
@@ -206,17 +218,24 @@ public class MidiHelper {
     public void playSong(String filename){
         try {
             if(!(filename.equals(fileSong))){
-                sequencePlay = MidiSystem.getSequence(new File(filename));
-                fileSong = filename;
+                restartSong(filename);
             }
              // Open device
             // Create sequence, the File must contain MIDI file data.
             sequencer.setSequence(sequencePlay); // load it into sequencer
             sequencer.start();               // start the playback
 
-        } catch (InvalidMidiDataException | IOException ex) {
-            ex.printStackTrace();
+        } catch (InvalidMidiDataException e) {
+            e.printStackTrace();
         }
+    }
+    public void restartSong(String filename){
+        try {
+            sequencePlay = MidiSystem.getSequence(new File(filename));
+        } catch (InvalidMidiDataException | IOException e) {
+            e.printStackTrace();
+        }
+        fileSong = filename;
     }
 
     public String getInstrument(){
