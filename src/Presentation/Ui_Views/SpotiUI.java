@@ -54,6 +54,9 @@ public class SpotiUI extends JPanel {
     private static JButton nextButton = new JButton();
     private static JButton loopButton = new JButton();
     private static JButton profile = new JButton(PROFILE_BUTTON);
+    private static JPanel songPanel = new JPanel(new GridLayout(2,0));
+    private static JLabel songLabel = new JLabel(SONG_PLAYING);
+    private static JLabel authorLabel = new JLabel(AUTHOR_SONG);
 
     //public static JButton pauseButton = new JButton();
 
@@ -180,6 +183,10 @@ public class SpotiUI extends JPanel {
         JPanel lowPanel = new JPanel(new BorderLayout());
 
         //lowPanel.setPreferredSize(new Dimension(10,90));
+        songPanel.setBackground(Color.getHSBColor(10,0,0.3f));
+        songPanel.add(songLabel);
+        songPanel.add(authorLabel);
+
         lowPanel.setBackground(Color.getHSBColor(10,0,0.3f));
         musicPlayer.setPreferredSize(new Dimension(10,90));
         musicPlayer.setBackground(Color.getHSBColor(10,0,0.3f));

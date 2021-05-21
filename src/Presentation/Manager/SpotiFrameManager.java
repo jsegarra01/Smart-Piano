@@ -58,7 +58,7 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
     private static boolean addSong = false;
     private static Playlist playlist;
     private static ArrayList topFive = new ArrayList<Song>();
-    private static String songFile;
+    private static Song songPlay;
 
     private final Date date = new Date();
 
@@ -136,7 +136,7 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
                     playButton.setIcon(resizeIcon((ImageIcon) playButton.getIcon(), (int) Math.round(playButton.getIcon().getIconWidth()*0.09),
                             (int) Math.round(playButton.getIcon().getIconHeight()*0.09)));
                     startMin = System.currentTimeMillis();
-                    finalMidiHelper.playSong(songFile);
+                    finalMidiHelper.playSong(songPlay.getSongFile());
                     play = true;
                 }
                 else{
@@ -270,9 +270,9 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
             playButton.setIcon(resizeIcon((ImageIcon) playButton.getIcon(), (int) Math.round(playButton.getIcon().getIconWidth()*0.09),
                     (int) Math.round(playButton.getIcon().getIconHeight()*0.09)));
             play = true;
-            songFile = song.getName();
-            finalMidiHelper.playSong(songFile);
-            new BusinessFacadeImp().getSongManager().updateSongPlayed(findSong(new File(song.getName())));
+            songPlay = findSong(song.getName());
+            finalMidiHelper.playSong(Objects.requireNonNull(songPlay).getSongFile());
+            new BusinessFacadeImp().getSongManager().updateSongPlayed(songPlay);
             new BusinessFacadeImp().setSongUser();
             topFive = new BusinessFacadeImp().getSongManager().getTopFive();
         }else if(obj instanceof  JTable){
@@ -283,12 +283,12 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
         }
     }
 
-    private Song findSong(File file){
+    private Song findSong(/*File file*/ String file){
         ArrayList<Song> arraySong = new BusinessFacadeImp().getSongManager().getSongs();
         int i=0;
         boolean found = false;
         while(!found && i<arraySong.size()){
-            if(arraySong.get(i).getSongFile().equals("Songs/"+file.getName())){
+            if(arraySong.get(i).getSongFile().equals(file)){
                 found=true;
             }
             else {
