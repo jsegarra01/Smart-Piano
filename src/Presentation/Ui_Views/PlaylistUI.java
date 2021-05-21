@@ -163,6 +163,7 @@ public class PlaylistUI extends JPanel {
             JScrollPane areaScrollPane = new JScrollPane(panelSongs);
             areaScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
             areaScrollPane.setPreferredSize(new Dimension(860, 510));
+            areaScrollPane.getVerticalScrollBar().setPreferredSize(new Dimension(0,0));
             areaScrollPane.setBorder(BorderFactory.createEmptyBorder());
             panel.add(areaScrollPane, BorderLayout.CENTER);
         }

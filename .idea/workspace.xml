@@ -19,26 +19,14 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="It was not perfect, sad... Now I think it is!!!">
+    <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="It got bugged when changing the view, now it works perfectly.&#10;Alex: &quot;I love static things&quot;">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Files/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/Files/config.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/Entities/MidiHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/Entities/MidiHelper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/FreePianoUIManager$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/FreePianoUIManager$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/FreePianoUIManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/FreePianoUIManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/PianoTilesUISelectorManager$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/PianoTilesUISelectorManager$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/PianoTilesUISelectorManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/PianoTilesUISelectorManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/SpotiFrameManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/SpotiFrameManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/PianoTilesUISelector.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/PianoTilesUISelector.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/PianoFrameManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/PianoFrameManager.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/PlaylistUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/PlaylistUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/SongsUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/SongsUI$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/SongsUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/SongsUI.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/SpotiUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/SpotiUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/StatisticsUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/StatisticsUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/Tile.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/Tile.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Business/Entities/MidiHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/Entities/MidiHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presentation/DictionaryPiano.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/DictionaryPiano.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presentation/Manager/SpotiFrameManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Manager/SpotiFrameManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presentation/Ui_Views/TopSongsUI.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presentation/Manager/PianoFrameManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Manager/PianoFrameManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presentation/Ui_Views/PlaylistUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Ui_Views/PlaylistUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presentation/Ui_Views/SpotiUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Ui_Views/SpotiUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -185,13 +173,6 @@
       <workItem from="1621333075928" duration="619000" />
       <workItem from="1621411993228" duration="13370000" />
       <workItem from="1621434489032" duration="6506000" />
-    </task>
-    <task id="LOCAL-00007" summary="main changes">
-      <created>1619007559834</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1619007559834</updated>
     </task>
     <task id="LOCAL-00008" summary="Pretty positioning">
       <created>1619072825806</created>
@@ -529,7 +510,14 @@
       <option name="project" value="LOCAL" />
       <updated>1621618216843</updated>
     </task>
-    <option name="localTasksCounter" value="57" />
+    <task id="LOCAL-00057" summary="It got bugged when changing the view, now it works perfectly.&#10;Alex: &quot;I love static things&quot;">
+      <created>1621625680743</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1621625680743</updated>
+    </task>
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -549,7 +537,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Small UI views in Free Piano and Play a Song, UI logic for Music also done" />
     <MESSAGE value="publish feature yikes" />
     <MESSAGE value="Stop Playing when key released" />
     <MESSAGE value="play music menu" />
@@ -608,44 +595,49 @@
     <MESSAGE value="Now tiles don't accelerate themselves 24/7 with infinite timers. We need to check how this is done, now is ugly af in PianoFrame and PianoFrameManager with the observer" />
     <MESSAGE value="All the buttons in the music player work perfectly" />
     <MESSAGE value="It was not perfect, sad... Now I think it is!!!" />
-    <option name="LAST_COMMIT_MESSAGE" value="It was not perfect, sad... Now I think it is!!!" />
+    <MESSAGE value="It got bugged when changing the view, now it works perfectly.&#10;Alex: &quot;I love static things&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="It got bugged when changing the view, now it works perfectly.&#10;Alex: &quot;I love static things&quot;" />
   </component>
   <component name="WindowStateProjectService">
     <state x="709" y="258" key="#com.intellij.ide.util.MemberChooser" timestamp="1621606423158">
       <screen x="0" y="23" width="1792" height="1043" />
     </state>
     <state x="709" y="258" key="#com.intellij.ide.util.MemberChooser/0.23.1792.1043@0.23.1792.1043" timestamp="1621606423158" />
-    <state width="1750" height="242" key="GridCell.Tab.0.bottom" timestamp="1621625467765">
+    <state width="1750" height="242" key="GridCell.Tab.0.bottom" timestamp="1621626142142">
       <screen x="0" y="23" width="1792" height="1045" />
     </state>
     <state width="1554" height="242" key="GridCell.Tab.0.bottom/0.23.1792.1043@0.0.1792.1120" timestamp="1621607114662" />
     <state width="1750" height="242" key="GridCell.Tab.0.bottom/0.23.1792.1043@0.23.1792.1043" timestamp="1621611866160" />
     <state width="1750" height="242" key="GridCell.Tab.0.bottom/0.23.1792.1044@0.0.1792.1120" timestamp="1621607114247" />
     <state width="1750" height="242" key="GridCell.Tab.0.bottom/0.23.1792.1044@0.23.1792.1044" timestamp="1621622423590" />
-    <state width="1750" height="242" key="GridCell.Tab.0.bottom/0.23.1792.1045@0.23.1792.1045" timestamp="1621625467765" />
-    <state width="1750" height="242" key="GridCell.Tab.0.center" timestamp="1621625467764">
+    <state width="1750" height="242" key="GridCell.Tab.0.bottom/0.23.1792.1045@0.23.1792.1045" timestamp="1621626142142" />
+    <state width="1750" height="242" key="GridCell.Tab.0.bottom/0.23.1792.1046@0.23.1792.1046" timestamp="1621625705077" />
+    <state width="1750" height="242" key="GridCell.Tab.0.center" timestamp="1621626142141">
       <screen x="0" y="23" width="1792" height="1045" />
     </state>
     <state width="1554" height="242" key="GridCell.Tab.0.center/0.23.1792.1043@0.0.1792.1120" timestamp="1621607114661" />
     <state width="1750" height="242" key="GridCell.Tab.0.center/0.23.1792.1043@0.23.1792.1043" timestamp="1621611866159" />
     <state width="1750" height="242" key="GridCell.Tab.0.center/0.23.1792.1044@0.0.1792.1120" timestamp="1621607114629" />
     <state width="1750" height="242" key="GridCell.Tab.0.center/0.23.1792.1044@0.23.1792.1044" timestamp="1621622423589" />
-    <state width="1750" height="242" key="GridCell.Tab.0.center/0.23.1792.1045@0.23.1792.1045" timestamp="1621625467764" />
-    <state width="1750" height="242" key="GridCell.Tab.0.left" timestamp="1621625467764">
+    <state width="1750" height="242" key="GridCell.Tab.0.center/0.23.1792.1045@0.23.1792.1045" timestamp="1621626142141" />
+    <state width="1750" height="242" key="GridCell.Tab.0.center/0.23.1792.1046@0.23.1792.1046" timestamp="1621625705077" />
+    <state width="1750" height="242" key="GridCell.Tab.0.left" timestamp="1621626142141">
       <screen x="0" y="23" width="1792" height="1045" />
     </state>
     <state width="1554" height="242" key="GridCell.Tab.0.left/0.23.1792.1043@0.0.1792.1120" timestamp="1621607114661" />
     <state width="1750" height="242" key="GridCell.Tab.0.left/0.23.1792.1043@0.23.1792.1043" timestamp="1621611866159" />
     <state width="1750" height="242" key="GridCell.Tab.0.left/0.23.1792.1044@0.0.1792.1120" timestamp="1621607114623" />
     <state width="1750" height="242" key="GridCell.Tab.0.left/0.23.1792.1044@0.23.1792.1044" timestamp="1621622423588" />
-    <state width="1750" height="242" key="GridCell.Tab.0.left/0.23.1792.1045@0.23.1792.1045" timestamp="1621625467764" />
-    <state width="1750" height="242" key="GridCell.Tab.0.right" timestamp="1621625467765">
+    <state width="1750" height="242" key="GridCell.Tab.0.left/0.23.1792.1045@0.23.1792.1045" timestamp="1621626142141" />
+    <state width="1750" height="242" key="GridCell.Tab.0.left/0.23.1792.1046@0.23.1792.1046" timestamp="1621625705077" />
+    <state width="1750" height="242" key="GridCell.Tab.0.right" timestamp="1621626142141">
       <screen x="0" y="23" width="1792" height="1045" />
     </state>
     <state width="1554" height="242" key="GridCell.Tab.0.right/0.23.1792.1043@0.0.1792.1120" timestamp="1621607114661" />
     <state width="1750" height="242" key="GridCell.Tab.0.right/0.23.1792.1043@0.23.1792.1043" timestamp="1621611866159" />
     <state width="1750" height="242" key="GridCell.Tab.0.right/0.23.1792.1044@0.23.1792.1044" timestamp="1621622423589" />
-    <state width="1750" height="242" key="GridCell.Tab.0.right/0.23.1792.1045@0.23.1792.1045" timestamp="1621625467765" />
+    <state width="1750" height="242" key="GridCell.Tab.0.right/0.23.1792.1045@0.23.1792.1045" timestamp="1621626142141" />
+    <state width="1750" height="242" key="GridCell.Tab.0.right/0.23.1792.1046@0.23.1792.1046" timestamp="1621625705077" />
     <state width="1750" height="279" key="GridCell.Tab.1.bottom" timestamp="1621615841542">
       <screen x="0" y="23" width="1792" height="1044" />
     </state>
@@ -672,11 +664,11 @@
     <state width="1750" height="279" key="GridCell.Tab.1.right/0.23.1792.1043@0.23.1792.1043" timestamp="1621606136466" />
     <state width="1750" height="279" key="GridCell.Tab.1.right/0.23.1792.1044@0.23.1792.1044" timestamp="1621615841541" />
     <state width="1750" height="279" key="GridCell.Tab.1.right/0.23.1792.1045@0.23.1792.1045" timestamp="1621615392109" />
-    <state x="496" y="284" key="Vcs.Push.Dialog.v2" timestamp="1621623033471">
+    <state x="496" y="284" key="Vcs.Push.Dialog.v2" timestamp="1621625684773">
       <screen x="0" y="23" width="1792" height="1046" />
     </state>
     <state x="496" y="284" key="Vcs.Push.Dialog.v2/0.23.1792.1045@0.23.1792.1045" timestamp="1621618287875" />
-    <state x="496" y="284" key="Vcs.Push.Dialog.v2/0.23.1792.1046@0.23.1792.1046" timestamp="1621623033471" />
+    <state x="496" y="284" key="Vcs.Push.Dialog.v2/0.23.1792.1046@0.23.1792.1046" timestamp="1621625684773" />
     <state width="896" height="521" key="XDebugger.FullValuePopup" timestamp="1621614924487">
       <screen x="0" y="23" width="1792" height="1045" />
     </state>

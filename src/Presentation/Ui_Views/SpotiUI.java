@@ -289,6 +289,9 @@ public class SpotiUI extends JPanel {
             scroll.setOpaque(false);
             scroll.setPreferredSize(new Dimension(70, 330));
             scroll.setBorder(BorderFactory.createEmptyBorder());
+            scroll.getVerticalScrollBar().setPreferredSize(new Dimension(0,0));
+            scroll.getHorizontalScrollBar().setPreferredSize(new Dimension(0,0));
+
             leftList.add(scroll);
 
             //   leftList.add(scroll);

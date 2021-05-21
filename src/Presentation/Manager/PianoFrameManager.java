@@ -17,6 +17,7 @@ import static Presentation.Dictionary_login.*;
 import static Presentation.Manager.MainFrame.card;
 import static Presentation.Manager.MainFrame.contenedor;
 import static Presentation.Ui_Views.PianoFrame.*;
+import static Presentation.Ui_Views.SpotiUI.spotiPanel;
 
 
 /**
@@ -46,6 +47,7 @@ public class PianoFrameManager implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         // We distinguish between our buttons.
         CardLayout cc = (CardLayout) (centralPanel.getLayout());
+        CardLayout cc2 = (CardLayout) (spotiPanel.getLayout());
 
         freePiano.setBackground(Color.GRAY);
         playSong.setBackground(Color.GRAY);
@@ -72,6 +74,7 @@ public class PianoFrameManager implements ActionListener {
             case MUSIC_PLAYER:
                 SpotiFrameManager.resetSongs();
                 cc.show(centralPanel, SPOTI_UI);
+                cc2.show(spotiPanel, SONGS_UI);
                 musicPlayer.setBackground(Color.getHSBColor(0,0,80.3f));
                 break;
         }
