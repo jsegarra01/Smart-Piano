@@ -177,7 +177,16 @@ public class MidiHelper {
     private final MidiChannel[] midiChannels;
     private final Instrument[] instruments;
     private int whatInstrumentIsPlayed;
-    private final Sequencer sequencer = MidiSystem.getSequencer();
+    private static Sequencer sequencer;
+
+    static {
+        try {
+            sequencer = MidiSystem.getSequencer();
+        } catch (MidiUnavailableException e) {
+            e.printStackTrace();
+        }
+    }
+
     private boolean donePlaying;
     private static String fileSong = "";
     private static Sequence sequencePlay;

@@ -49,23 +49,23 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
     private static boolean play=false;
     private static final ImageIcon playIcon = new ImageIcon("Files/drawable/playbuttonWhite.png");
     private static final ImageIcon pauseIcon = new ImageIcon("Files/drawable/pauseWhite.png");
-    private float minPlayed;
-    private long startMin=0;
-    private long lastMin=0;
+    private static float minPlayed;
+    private static long startMin=0;
+    private static long lastMin=0;
     private static boolean addSong = false;
     private static Playlist playlist;
-    private static ArrayList topFive = new ArrayList<Song>();
+    private static ArrayList<Song> topFive = new ArrayList<>();
     private static Song songPlay;
     private static boolean loop =false;
     private static boolean shuffle =false;
     private static boolean wherePlay = false; // if false, from songs, if true, from playlists
-    private final MetaEventListener listener = meta -> {
+    private static final MetaEventListener listener = meta -> {
         if (meta.getType() == 47) {
             playSongTime();
         }
     };
 
-    private final Date date = new Date();
+    private static final Date date = new Date();
 
     private static MidiHelper finalMidiHelper;
     {
@@ -347,7 +347,7 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
     }
 
 
-    private Song nextSongSongs(String file){
+    private static Song nextSongSongs(String file){
         ArrayList<Song> arraySong = new BusinessFacadeImp().getSongManager().getSongs();
         int i=0;
         boolean found = false;
@@ -393,7 +393,7 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
         }
     }
 
-    private Song nextSongPlaylist(String file){
+    private static Song nextSongPlaylist(String file){
         int i=0;
         boolean found = false;
         while(!found && i<playlist.getSongs().size()){
@@ -489,7 +489,7 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
         SongsUI.initTable(new BusinessFacadeImp().getSongManager().getSongs(), "Delete");
     }
 
-    private void playMusic(){
+    private static void playMusic(){
         playButton.setIcon(pauseIcon);
         playButton.setIcon(resizeIcon((ImageIcon) playButton.getIcon(), (int) Math.round(playButton.getIcon().getIconWidth()*0.09),
                 (int) Math.round(playButton.getIcon().getIconHeight()*0.09)));
@@ -498,14 +498,14 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
         play = true;
     }
 
-    private void stopMusic(){
+    private static void stopMusic(){
         playButton.setIcon(playIcon);
         playButton.setIcon(resizeIcon((ImageIcon) playButton.getIcon(), (int) Math.round(playButton.getIcon().getIconWidth()*0.09),
                 (int) Math.round(playButton.getIcon().getIconHeight()*0.09)));
+        play = false;
         lastMin = System.currentTimeMillis();
         minPlayed = (float)(lastMin - startMin)/60000;
         new BusinessFacadeImp().getSongManager().addingStadistics(new Stadistics(date.getHours(), (float)1, minPlayed));
-        play = false;
         finalMidiHelper.stopSong();
     }
 
@@ -529,7 +529,7 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
                 (int) Math.round(loopButton.getIcon().getIconHeight()*0.05)));
     }
 
-    private void nextSongFromSong(){
+    private static  void nextSongFromSong(){
         songPlay = nextSongSongs(songPlay.getSongFile());
         playMusicSetLabel();
     }
@@ -538,7 +538,7 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
         playMusicSetLabel();
     }
 
-    private void nextSongFromPlaylist(){
+    private static void nextSongFromPlaylist(){
         songPlay = nextSongPlaylist(songPlay.getSongFile());
         playMusicSetLabel();
     }
@@ -548,21 +548,21 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
         playMusicSetLabel();
 
     }
-    private void playMusicSetLabel(){
+    private static void playMusicSetLabel(){
         playMusic();
         SpotiUI.setSong(songPlay.getSongName(), songPlay.getAuthorName());
     }
 
-    private void randomFromPlaylist(){
+    private static void randomFromPlaylist(){
         songPlay = playlist.getSongs().get(new Random().nextInt(playlist.getSongs().size()));
         playMusicSetLabel();
     }
-    private void randomFromSongs(){
+    private static void randomFromSongs(){
         songPlay = new BusinessFacadeImp().getSongManager().getSongs().get(new Random().nextInt(new BusinessFacadeImp().getSongManager().getSongs().size()));
         playMusicSetLabel();
     }
 
-    private void playSongTime(){
+    private static void playSongTime(){
         if(!loop){
             if(!shuffle){
                 if(wherePlay){
