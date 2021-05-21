@@ -55,10 +55,10 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
     private float minPlayed;
     private long startMin=0;
     private long lastMin=0;
-    private Stadistics stadistics;
     private static boolean addSong = false;
     private static Playlist playlist;
     private static ArrayList topFive = new ArrayList<Song>();
+    private static String songFile;
 
     private final Date date = new Date();
 
@@ -136,7 +136,7 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
                     playButton.setIcon(resizeIcon((ImageIcon) playButton.getIcon(), (int) Math.round(playButton.getIcon().getIconWidth()*0.09),
                             (int) Math.round(playButton.getIcon().getIconHeight()*0.09)));
                     startMin = System.currentTimeMillis();
-                    finalMidiHelper.playSong(new File(new BusinessFacadeImp().getPlaylistManager().getPlaylists().get(0).getSongs().get(0).getSongFile()));
+                    finalMidiHelper.playSong(songFile);
                     play = true;
                 }
                 else{
@@ -149,7 +149,7 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
                     //Stadistics stats = new Stadistics(date.getHours(), (float)1, minPlayed);
                     new BusinessFacadeImp().getSongManager().addingStadistics(new Stadistics(date.getHours(), (float)1, minPlayed));
                     //new BusinessFacadeImp().getSongManager().getSongs().stream().findAny().equals(new Song())
-
+                    //finalMidiHelper.playSong();
                     play = false;
                     finalMidiHelper.stopSong();
 
@@ -270,7 +270,8 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
             playButton.setIcon(resizeIcon((ImageIcon) playButton.getIcon(), (int) Math.round(playButton.getIcon().getIconWidth()*0.09),
                     (int) Math.round(playButton.getIcon().getIconHeight()*0.09)));
             play = true;
-            finalMidiHelper.playSong(new File(song.getName()));
+            songFile = song.getName();
+            finalMidiHelper.playSong(songFile);
             new BusinessFacadeImp().getSongManager().updateSongPlayed(findSong(new File(song.getName())));
             new BusinessFacadeImp().setSongUser();
             topFive = new BusinessFacadeImp().getSongManager().getTopFive();
@@ -279,9 +280,6 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
             if(table.getEditorComponent() == null){
                 //TODO PLAY MUSIC
             }
-
-            //TopSongs top = new TopSongs(new File(song.getName()).toString(), (float)1);
-            //new BusinessFacadeImp().getSongManager().addingInfoSongPlayed(top);
         }
     }
 
@@ -289,7 +287,7 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
         ArrayList<Song> arraySong = new BusinessFacadeImp().getSongManager().getSongs();
         int i=0;
         boolean found = false;
-        while(!found && i<file.length()){
+        while(!found && i<arraySong.size()){
             if(arraySong.get(i).getSongFile().equals("Songs/"+file.getName())){
                 found=true;
             }
@@ -341,5 +339,8 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
                 null,
                 "New Playlist"
         );
+    }
+    public static void resetSongs(){
+        SongsUI.initTable(new BusinessFacadeImp().getSongManager().getSongs(), "Delete");
     }
 }

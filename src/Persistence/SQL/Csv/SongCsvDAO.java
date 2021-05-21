@@ -38,6 +38,20 @@ public class SongCsvDAO implements SongDAO {
         }
     }
 
+
+    private ArrayList<Song> songFromCsv() {
+        try {
+            ResultSet myRs = ConnectSQL.getInstance().createStatement().executeQuery("select * from SongT as s where" +
+                    " publicBoolean = true;");
+            ArrayList<Song> songs = myRsToSongs(myRs);
+            myRs.close();
+            return songs;
+
+        } catch (SQLException throwable) {
+            return null;
+        }
+    }
+
     /**
      * Method that parses the result got from the query and stores it in the list
      *
@@ -155,7 +169,7 @@ public class SongCsvDAO implements SongDAO {
      */
     @Override
     public ArrayList<Song> getAllSongs() {
-        return songFromCsv("%");
+        return songFromCsv();
     }
 
     @Override

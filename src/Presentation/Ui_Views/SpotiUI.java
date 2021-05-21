@@ -39,7 +39,7 @@ import static javax.swing.SwingConstants.*;
 public class SpotiUI extends JPanel {
     private final StatisticsUI statisticsUI;
     private final PlaylistUI playlistUI;
-    private final TopSongsUI topSongsUI;
+    //private final TopSongsUI topSongsUI;
     private final SongsUI songsUI;
 
     public static JPanel spotiPanel = new JPanel(new CardLayout());
@@ -70,7 +70,7 @@ public class SpotiUI extends JPanel {
     public SpotiUI() {
         playlistUI = new PlaylistUI();
         statisticsUI = new StatisticsUI();
-        topSongsUI = new TopSongsUI();
+        //topSongsUI = new TopSongsUI();
         songsUI = new SongsUI();
 
         initialize();
@@ -83,7 +83,7 @@ public class SpotiUI extends JPanel {
         setLayout(new BorderLayout());
 
         spotiPanel.add(statisticsUI, STATISTICS_UI);
-        spotiPanel.add(topSongsUI, /*TOPSONGS_UI*/SONGS_UI);
+        //spotiPanel.add(topSongsUI, /*TOPSONGS_UI*/SONGS_UI);
         spotiPanel.add(playlistUI, PLAYLIST_UI);
         spotiPanel.add(songsUI, SONGS_UI);
         add(spotiPanel, BorderLayout.CENTER);

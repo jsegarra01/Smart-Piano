@@ -177,6 +177,9 @@ public class MidiHelper {
     private int whatInstrumentIsPlayed;
     private final Sequencer sequencer = MidiSystem.getSequencer();
     private boolean donePlaying;
+    private static String fileSong = "";
+    private Sequence sequencePlay;
+
     public MidiHelper() throws MidiUnavailableException {
         Synthesizer synth = MidiSystem.getSynthesizer();
         long startTime = System.nanoTime();
@@ -200,12 +203,15 @@ public class MidiHelper {
         midiChannels[0].noteOff(noteValueToPlay,15);
     }
 
-    public void playSong(File file){
+    public void playSong(String filename){
         try {
+            if(!(filename.equals(fileSong))){
+                sequencePlay = MidiSystem.getSequence(new File(filename));
+                fileSong = filename;
+            }
              // Open device
             // Create sequence, the File must contain MIDI file data.
-            Sequence sequence = MidiSystem.getSequence(file);
-            sequencer.setSequence(sequence); // load it into sequencer
+            sequencer.setSequence(sequencePlay); // load it into sequencer
             sequencer.start();               // start the playback
 
         } catch (InvalidMidiDataException | IOException ex) {

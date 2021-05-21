@@ -7,6 +7,7 @@ import Presentation.Manager.SpotiFrameManager;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
@@ -14,6 +15,8 @@ public class SongsUI extends JPanel {
     private static JTable table;
     private static String[] columnNames; /*{"Name Song", "Author's name", "Duration","Recording Date", ""};*/
     private static JPanel panel = new JPanel();
+
+    private static DecimalFormat df = new DecimalFormat("###.##");
 
     public SongsUI(){
         initialize();
@@ -31,7 +34,7 @@ public class SongsUI extends JPanel {
         for(int i = 0; i< songs.size();i++){
             data[i][0] = songs.get(i).getSongName();
             data[i][1] = songs.get(i).getAuthorName();
-            data[i][2] = songs.get(i).getDuration();
+            data[i][2] = df.format(songs.get(i).getDuration());
             data[i][3] = songs.get(i).getRecordingDate();
             if(!action.equals("topFive")){
                 data[i][4] = action;

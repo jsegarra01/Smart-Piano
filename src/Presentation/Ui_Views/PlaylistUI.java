@@ -11,6 +11,7 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 
 import static Presentation.DictionaryPiano.*;
@@ -27,6 +28,8 @@ import static Presentation.DictionaryPiano.*;
 public class PlaylistUI extends JPanel {
     private static JPanel panel = new JPanel(new BorderLayout());
     private static Playlist playlistGeneral;
+    private static DecimalFormat df = new DecimalFormat("###.##");
+
 
 
     /**
@@ -184,7 +187,7 @@ public class PlaylistUI extends JPanel {
         panel1.add(label);
         //panel1.add(Box.createHorizontalStrut(40));
 
-        label = new JLabel(String.valueOf(playlist.getSongs().get(i).getDuration()));
+        label = new JLabel(String.valueOf(df.format(playlist.getSongs().get(i).getDuration())));
         label.setForeground(Color.WHITE);
         label.add(Box.createRigidArea(new Dimension(50,50)));
         panel1.add(label);
