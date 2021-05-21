@@ -1,4 +1,6 @@
 package Business.Entities;
+import Presentation.Manager.SpotiFrameManager;
+
 import javax.sound.midi.*;
 import javax.sound.midi.MidiSystem;
 import javax.sound.midi.MidiUnavailableException;
@@ -177,6 +179,9 @@ public class MidiHelper {
     private int whatInstrumentIsPlayed;
     private final Sequencer sequencer = MidiSystem.getSequencer();
     private boolean donePlaying;
+    private static String fileSong = "";
+    private static Sequence sequencePlay;
+
     public MidiHelper() throws MidiUnavailableException {
         Synthesizer synth = MidiSystem.getSynthesizer();
         long startTime = System.nanoTime();
@@ -185,9 +190,19 @@ public class MidiHelper {
         midiChannels = synth.getChannels();
         instruments = synth.getDefaultSoundbank().getInstruments();
         sequencer.open();
-        sequencer.addMetaEventListener(meta -> {
-            donePlaying = meta.getType() == 47;
-        });
+        //sequencer.addMetaEventListener(new SpotiFrameManager());
+    }
+
+    public MidiHelper(MetaEventListener listener) throws MidiUnavailableException {
+        Synthesizer synth = MidiSystem.getSynthesizer();
+        long startTime = System.nanoTime();
+        synth.open();
+        long estimatedTime = System.nanoTime() - startTime;
+        midiChannels = synth.getChannels();
+        instruments = synth.getDefaultSoundbank().getInstruments();
+        sequencer.addMetaEventListener(listener);
+        sequencer.open();
+        //sequencer.addMetaEventListener(new SpotiFrameManager());
     }
     public void playSomething(int noteValueToPlay, int whatInstrumentToPlay){
         this.whatInstrumentIsPlayed = whatInstrumentToPlay;
@@ -200,17 +215,27 @@ public class MidiHelper {
         midiChannels[0].noteOff(noteValueToPlay,15);
     }
 
-    public void playSong(File file){
+    public void playSong(String filename){
         try {
+            if(!(filename.equals(fileSong))){
+                restartSong(filename);
+            }
              // Open device
             // Create sequence, the File must contain MIDI file data.
-            Sequence sequence = MidiSystem.getSequence(file);
-            sequencer.setSequence(sequence); // load it into sequencer
+            sequencer.setSequence(sequencePlay); // load it into sequencer
             sequencer.start();               // start the playback
 
-        } catch (InvalidMidiDataException | IOException ex) {
-            ex.printStackTrace();
+        } catch (InvalidMidiDataException e) {
+            e.printStackTrace();
         }
+    }
+    public void restartSong(String filename){
+        try {
+            sequencePlay = MidiSystem.getSequence(new File(filename));
+        } catch (InvalidMidiDataException | IOException e) {
+            e.printStackTrace();
+        }
+        fileSong = filename;
     }
 
     public String getInstrument(){

@@ -24,7 +24,7 @@ public class SongManager {
         song = new Song(songName, UserManager.getUser().getUserName(), endtime, isPublic, "Songs/" + songName + ".mid", UserManager.getUser().getUserName());
         songManager.saveSong(song);
         songs.clear();
-        setSongs();
+        setSongs(UserManager.getUser().getUserName());
     }
     public ArrayList<Song> getSongs() {
         return songs;

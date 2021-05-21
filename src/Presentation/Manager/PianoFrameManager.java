@@ -70,6 +70,7 @@ public class PianoFrameManager implements ActionListener {
                 playSong.setBackground(Color.getHSBColor(0,0,80.3f));
                 break;
             case MUSIC_PLAYER:
+                SpotiFrameManager.resetSongs();
                 cc.show(centralPanel, SPOTI_UI);
                 musicPlayer.setBackground(Color.getHSBColor(0,0,80.3f));
                 break;
