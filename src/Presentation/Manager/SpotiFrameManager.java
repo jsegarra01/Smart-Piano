@@ -10,11 +10,8 @@ import Presentation.Dictionary_login;
 import Presentation.Ui_Views.PlaylistUI;
 import Presentation.Ui_Views.SongsUI;
 import Presentation.Ui_Views.SpotiUI;
-import Presentation.Ui_Views.TopSongsUI;
 
 import javax.sound.midi.MetaEventListener;
-import javax.sound.midi.MetaMessage;
-import javax.sound.midi.MidiChannel;
 import javax.sound.midi.MidiUnavailableException;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -25,8 +22,6 @@ import java.util.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
-import java.io.File;
-import java.util.logging.Handler;
 
 import static Presentation.DictionaryPiano.*;
 import static Presentation.Dictionary_login.PROFILE_UI;
@@ -35,7 +30,6 @@ import static Presentation.Manager.MainFrame.contenedor;
 import static Presentation.Ui_Views.SpotiUI.*;
 import static Presentation.Ui_Views.StatisticsUI.letsInitializeGraphs;
 import static Presentation.Ui_Views.Tile.resizeIcon;
-import static javax.swing.SwingConstants.TOP;
 
 
 /**
