@@ -52,6 +52,12 @@ public class PlaylistUI extends JPanel {
       //  new ButtonColumn(table, listener, 2);
 
     //}
+
+    /**
+     * Creates the panel for the playlist with its basic configurations
+     * @param namePlaylist The name of the playlist we want to create the panel for
+     * @return The panel of the playlist created
+     */
     private static JPanel initGeneral(String namePlaylist){
         JPanel layout = new JPanel(new BorderLayout());
         layout.setBackground(Color.black);
@@ -69,6 +75,10 @@ public class PlaylistUI extends JPanel {
         return layout;
     }
 
+    /**
+     * TODO: ALEX EXPLICA QUE CONY ES AIXO JAJAJA
+     * @param playlist
+     */
     public static void setSongsPlaylists(Playlist playlist){
 
         if(playlist.equals(playlistGeneral)) {
@@ -161,6 +171,12 @@ public class PlaylistUI extends JPanel {
 
     }
 
+    /**
+     * TODO: TAMPOC ACABO D'ENTENDRE QUE FA AQUESTA
+     * @param playlist
+     * @param i
+     * @return
+     */
     private static JPanel setPlaylist(Playlist playlist, int i){
 
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
@@ -213,6 +229,10 @@ public class PlaylistUI extends JPanel {
         return panel1;
     }
 
+    /**
+     * Creates a button to add a song to a playlist
+     * @return The add button
+     */
     private static JButton addSong(){
         JButton add = new JButton(ADD_SONG);
         add.setActionCommand(ADD_SONG_COMM);

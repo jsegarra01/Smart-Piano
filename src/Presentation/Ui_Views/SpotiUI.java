@@ -39,7 +39,6 @@ import static javax.swing.SwingConstants.*;
 public class SpotiUI extends JPanel {
     private final StatisticsUI statisticsUI;
     private final PlaylistUI playlistUI;
-    //private final TopSongsUI topSongsUI;
     private final SongsUI songsUI;
 
     public static JPanel spotiPanel = new JPanel(new CardLayout());
@@ -73,7 +72,6 @@ public class SpotiUI extends JPanel {
     public SpotiUI() {
         playlistUI = new PlaylistUI();
         statisticsUI = new StatisticsUI();
-        //topSongsUI = new TopSongsUI();
         songsUI = new SongsUI();
 
         initialize();
@@ -86,7 +84,6 @@ public class SpotiUI extends JPanel {
         setLayout(new BorderLayout());
 
         spotiPanel.add(statisticsUI, STATISTICS_UI);
-        //spotiPanel.add(topSongsUI, /*TOPSONGS_UI*/SONGS_UI);
         spotiPanel.add(playlistUI, PLAYLIST_UI);
         spotiPanel.add(songsUI, SONGS_UI);
         add(spotiPanel, BorderLayout.CENTER);
@@ -207,6 +204,14 @@ public class SpotiUI extends JPanel {
         registerController(new SpotiFrameManager());
     }
 
+    /**
+     * Creates a button with the desired configurations
+     * @param imagePath Path of the icon of the button
+     * @param index1 Left margin of the empty border of the button
+     * @param index2 Right margin of the empty border of the button
+     * @param label label of the action command of the button
+     * @return The created button
+     */
     private JButton createConfButtons(String imagePath, int index1, int index2, String label){
         JButton toReturnButton;
         toReturnButton = new JButton();
@@ -226,6 +231,10 @@ public class SpotiUI extends JPanel {
         button.setBorder(new EmptyBorder(TB_SIZE,left,TB_SIZE,right));
     }
 
+    /**
+     * Adds the action listener for the different buttons of the UI
+     * @param listener The listener to be added
+     */
     private void registerController(SpotiFrameManager listener) {
         showStadistics.addActionListener(listener);
         topSongs.addActionListener(listener);
@@ -242,19 +251,19 @@ public class SpotiUI extends JPanel {
         searchButton.addActionListener(listener);
     }
 
+    /**
+     * Gets the inputted song name
+     * @return The song name
+     */
     public static String getInputedSongName() {
         return songNameInputText.getText();
     }
 
-    /*public static void addSongsAll(ArrayList<Song> songs){
-        spotiPanel.add(new SongsUI(songs, "Delete"), SONGS_UI);
-    }
-    public static void addSongsToPlaylist(ArrayList<Song> songs){
-        spotiPanel.add(new SongsUI(songs, "Add"), SONGS_UI);
-    }
-*/
 
-    //TODO poner bn las boxes (size lateral)
+    /**
+     * Adds the playlist to a scroll pane where you will be able to select which playlist do you want to play or modify
+     * @param playlists The list of playlists to be added to the scroll
+     */
     public static void addPlaylists(ArrayList<Playlist> playlists){
         playlistsPanel.removeAll();
         leftList.remove(scroll);
@@ -286,12 +295,14 @@ public class SpotiUI extends JPanel {
         }
     }
 
+    /**
+     * Sets a button with the desired configurations
+     * @param button The button to be modified
+     * @param diff Margins for the button
+     * @return The modified button
+     */
     private JButton setButton(JButton button, int diff){
-        //Button.setActionCommand(DictionaryPiano.PLAYLIST_INFO);
-        //button.setAlignmentX(0.5f);
-        //button.setAlignmentX(0.5f);
-        //button.setBorder(new EmptyBorder(10, 5, 10, 0));
-        button.setFocusPainted(false);
+       button.setFocusPainted(false);
         button.setMargin(new Insets(diff, 0, diff, 0));
         button.setContentAreaFilled(false);
         button.setBorderPainted(false);
@@ -299,9 +310,7 @@ public class SpotiUI extends JPanel {
         button.setBackground(Color.getHSBColor(10,0,0.2f));
         button.setFont(new Font(button.getFont().getName(), Font.PLAIN, (int)(button.getFont().getSize()*1.5)));
         button.setForeground(Color.white);
-        //button.setAlignmentX(LEFT_ALIGNMENT);
         button.setHorizontalAlignment(SwingConstants.LEFT);
-        //playlistsPanel.add(buttonAux);
         return button;
 
     }

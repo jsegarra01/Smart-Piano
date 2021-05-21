@@ -68,6 +68,9 @@ public class StatisticsUI extends JPanel {
         createAndShowGui();
     }
 
+    /**
+     * Creates the graphs with the statistics recolected and displays them
+     */
     private static void createAndShowGui() {
         graph1  = new Graph(numSongs, "Number of times played", true);
         JLabel title1 = new JLabel("# Songs");
@@ -100,14 +103,27 @@ public class StatisticsUI extends JPanel {
         panel.repaint();
     }
 
+    /**
+     * Sets the number of minutes played by hour
+     * @param min List of floats where each number in the list is the amount of minutes played in that hour
+     */
     public static void setNumMin(LinkedList<Float> min){
         numMin=min;
     }
 
+    /**
+     * Sets the number of songs played by hour
+     * @param songs List of floats where each number in the list is the amount of songs played in that hour
+     */
     public static void setNumSongs(LinkedList<Float> songs){
         numSongs=songs;
     }
 
+    /**
+     * Initializates the graphs depending on the number of minutes and songs played per hour
+     * @param numMin Minutes played per hour
+     * @param numSongs Songs played per hour
+     */
     public static void letsInitializeGraphs(LinkedList<Float> numMin, LinkedList<Float> numSongs){
         setNumMin(numMin);
         setNumSongs(numSongs);

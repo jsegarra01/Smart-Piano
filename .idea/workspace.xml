@@ -20,6 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="It was not perfect, sad... Now I think it is!!!">
+    <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Presentation/Manager/SpotiFrameManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Manager/SpotiFrameManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Presentation/Ui_Views/TopSongsUI.java" beforeDir="false" />
@@ -78,6 +79,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="Business" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Songs" />
       <recent name="$PROJECT_DIR$/Files/drawable" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
@@ -636,8 +642,10 @@
     <state width="1750" height="279" key="GridCell.Tab.1.bottom/0.23.1792.1044@0.23.1792.1044" timestamp="1621615841542" />
     <state width="1750" height="279" key="GridCell.Tab.1.bottom/0.23.1792.1045@0.23.1792.1045" timestamp="1621615392109" />
     <state width="1750" height="279" key="GridCell.Tab.1.center" timestamp="1621615841541">
+    <state x="694" y="465" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1621621590999">
       <screen x="0" y="23" width="1792" height="1044" />
     </state>
+    <state x="694" y="465" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1792.1044@0.23.1792.1044" timestamp="1621621590999" />
     <state width="1750" height="279" key="GridCell.Tab.1.center/0.23.1792.1043@0.0.1792.1120" timestamp="1621607114655" />
     <state width="1750" height="279" key="GridCell.Tab.1.center/0.23.1792.1043@0.23.1792.1043" timestamp="1621606136466" />
     <state width="1750" height="279" key="GridCell.Tab.1.center/0.23.1792.1044@0.23.1792.1044" timestamp="1621615841541" />

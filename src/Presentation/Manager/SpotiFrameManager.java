@@ -22,6 +22,7 @@ import java.util.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
+import java.io.File;
 
 import static Presentation.DictionaryPiano.*;
 import static Presentation.Dictionary_login.PROFILE_UI;
@@ -179,8 +180,8 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
                         stopMusic();
                     }
                 }
-
                 break;
+
             case PLAYLIST_INFO:
                 JButton button;
                 if (obj instanceof JButton) {
@@ -241,10 +242,19 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
 
         }
     }
+
+    /**
+     * Gets the playlists and add them to the SpotUI
+     * @param playlists List of playlists from the database
+     */
     public static void addPlaylists(ArrayList<Playlist> playlists){
         SpotiUI.addPlaylists(playlists);
     }
 
+    /**
+     * Gets the amount of songs played in order to make the statistics
+     * @return Amount of songs that have been played for each hour
+     */
     public static LinkedList<Float> getNumSongs(){
         LinkedList<Float> numSongs = new LinkedList<>();
         for(int i=0; i<24; i++ ){
@@ -257,6 +267,10 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
         return numSongs;
     }
 
+    /**
+     * Gets the amount of minutes songs have been played in order to make the statistics
+     * @return Amount of minutes that have been played for each hour
+     */
     public LinkedList<Float> getMinPlayed(){
         LinkedList<Float> numMin = new LinkedList<>();
         for(int i=0; i<24; i++ ){
@@ -275,6 +289,10 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
 
     }
 
+    /**
+     * Detects which song or functionality has been pressed by the user
+     * @param e Event performed by the user
+     */
     @Override
     public void mousePressed(MouseEvent e) {
         JPanel song;
@@ -304,6 +322,11 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
         }
     }
 
+    /**
+     * Gets the desired song
+     * @param file String where the song is stored
+     * @return The song with all its information
+     */
     private Song findSong(String file){
         ArrayList<Song> arraySong = new BusinessFacadeImp().getSongManager().getSongs();
         int i=0;
@@ -322,6 +345,7 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
             return null;
         }
     }
+
 
     private Song nextSongSongs(String file){
         ArrayList<Song> arraySong = new BusinessFacadeImp().getSongManager().getSongs();
@@ -427,6 +451,12 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
     public void mouseExited(MouseEvent e) {
 
     }
+
+    /**
+     * Checks if a song is already in a playlist
+     * @param song The song we want to check
+     * @return True if the song is in the playlist, false if not
+     */
     private boolean isAlreadyInPlaylist(String song){
         int i = 0;
         boolean found = false;
@@ -440,6 +470,10 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
         return found;
     }
 
+    /**
+     * Creates a dialog to introduce the name of a new playlist
+     * @return
+     */
     private String createPanelPlaylist(){
         return (String)JOptionPane.showInputDialog(
                 null,

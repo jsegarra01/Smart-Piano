@@ -121,6 +121,10 @@ public class PianoTilesUISelector extends Piano {
         return menu;
     }
 
+    /**
+     * Sets the panel where the tiles will fall
+     * @return The panel created
+     */
     private JPanel createGamePane() {
         JPanel panelBorderLayout = new JPanel(new BorderLayout());//Sets the lateral borders
         panelBorderLayout.setBackground(Color.getHSBColor(0,0,0.2f));
@@ -204,7 +208,10 @@ public class PianoTilesUISelector extends Piano {
         return makeTiles(keyBoard, 120, 250, 45, keyboard, 20, 210);
     }
 
-
+    /**
+     * Init of the piano tiles functionality creating all the vertical and horizontal tiles that will
+     * indicate where will the keys fall from
+     */
     public static void initTileGame () {
         jLayeredPane.removeAll();
         //Sets the middle columns, the ones
@@ -230,6 +237,9 @@ public class PianoTilesUISelector extends Piano {
         }
     }
 
+    /**
+     * Refresh the position and size of th falling keys depending on the song and difficulty selected
+     */
     public static void refreshTiles() {
         float tile_position = 0;
 
@@ -270,6 +280,9 @@ public class PianoTilesUISelector extends Piano {
         jLayeredPane.updateUI();
     }
 
+    /**
+     * Repaints the scroll panel depending on the new songs that should appear after the user scrolls
+     */
     public static void refreshSongList() {
         scrollPanel.removeAll();
 
@@ -291,6 +304,10 @@ public class PianoTilesUISelector extends Piano {
         scrollPanel.updateUI();
     }
 
+    /**
+     * Sets the keys that will fall for the piano tiles functionality
+     * @param newKeys Array of keys we get from the songs we want to play
+     */
     public static void setKeys(ArrayList<Keys> newKeys) {
         keys.clear();
         keys = newKeys;
