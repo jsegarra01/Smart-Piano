@@ -154,6 +154,7 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
                     finalMidiHelper.stopSong();
 
                 }
+
                 break;
             case PLAYLIST_INFO:
                 JButton button;
@@ -272,6 +273,7 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
             play = true;
             songPlay = findSong(song.getName());
             finalMidiHelper.playSong(Objects.requireNonNull(songPlay).getSongFile());
+            SpotiUI.setSong(songPlay.getSongName(), songPlay.getAuthorName());
             new BusinessFacadeImp().getSongManager().updateSongPlayed(songPlay);
             new BusinessFacadeImp().setSongUser();
             topFive = new BusinessFacadeImp().getSongManager().getTopFive();

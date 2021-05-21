@@ -184,6 +184,10 @@ public class SpotiUI extends JPanel {
 
         //lowPanel.setPreferredSize(new Dimension(10,90));
         songPanel.setBackground(Color.getHSBColor(10,0,0.3f));
+        songPanel.setPreferredSize(new Dimension(200,10));
+        songPanel.setMaximumSize(songPanel.getPreferredSize());
+        songLabel.setForeground(Color.white);
+        authorLabel.setForeground(Color.white);
         songPanel.add(songLabel);
         songPanel.add(authorLabel);
 
@@ -197,9 +201,10 @@ public class SpotiUI extends JPanel {
         musicPlayer.add(loopButton);
         lowPanel.add(musicPlayer, BorderLayout.CENTER);
         lowPanel.add(profile, BorderLayout.EAST);
+        //lowPanel.add(Box.createRigidArea(new Dimension(30,10)), BorderLayout.WEST);
+        lowPanel.add(songPanel, BorderLayout.WEST);
         add(lowPanel, BorderLayout.SOUTH);
     }
-
 
     private JButton createConfButtons(String imagePath, int index1, int index2, String label){
         JButton toReturnButton;
@@ -210,16 +215,6 @@ public class SpotiUI extends JPanel {
         confButtonsBar(toReturnButton, index1, index2);
         toReturnButton.setActionCommand(label);
         return toReturnButton;
-    }
-
-    private static void confButtonLeft(JButton button, int left, int right){
-        //button.setAlignmentX(0.5f);
-        button.setAlignmentX(Component.CENTER_ALIGNMENT);
-        //button.setAlignmentX(Component.LEFT_ALIGNMENT);
-        button.setBorder(new EmptyBorder(10, 5, 10, 0));
-        //button.setBorder(new EmptyBorder(TB_SIZE,left,TB_SIZE,right));
-        button.setBackground(Color.getHSBColor(0,0,0.2f));
-        button.setForeground(Color.white);
     }
 
     private void confButtonsBar(JButton button, int left, int right){
@@ -308,5 +303,9 @@ public class SpotiUI extends JPanel {
         //playlistsPanel.add(buttonAux);
         return button;
 
+    }
+    public static void setSong(String song, String author){
+        songLabel.setText(song);
+        authorLabel.setText(author);
     }
 }

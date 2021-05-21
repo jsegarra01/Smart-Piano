@@ -172,12 +172,15 @@ public class PlaylistUI extends JPanel {
         panel1.setMaximumSize(panel1.getPreferredSize());
         panel1.setBackground(Color.black);
 
-
+        //JPanel panelSong = new JPanel();
         //panel1.add(Box.createHorizontalStrut(20));
         label = new JLabel(playlist.getSongs().get(i).getSongName());
         label.setForeground(Color.WHITE);
-        label.add(Box.createRigidArea(new Dimension(450,50)));
-        label.setMinimumSize(new Dimension(350, 50));
+        label.setPreferredSize(new Dimension(200, 10));
+        label.setMaximumSize(label.getPreferredSize());
+        label.setMinimumSize(new Dimension(180,10));
+        //label.add(Box.createRigidArea(new Dimension(450,50)));
+        //label.setMinimumSize(new Dimension(350, 50));
         panel1.add(label);
 
         label = new JLabel(playlist.getSongs().get(i).getAuthorName());
