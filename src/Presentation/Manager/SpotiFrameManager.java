@@ -491,8 +491,6 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
 
     private static void playMusic(){
         playButton.setIcon(pauseIcon);
-        playButton.setIcon(resizeIcon((ImageIcon) playButton.getIcon(), (int) Math.round(playButton.getIcon().getIconWidth()*0.09),
-                (int) Math.round(playButton.getIcon().getIconHeight()*0.09)));
         startMin = System.currentTimeMillis();
         finalMidiHelper.playSong(songPlay.getSongFile());
         play = true;
@@ -500,8 +498,6 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
 
     private static void stopMusic(){
         playButton.setIcon(playIcon);
-        playButton.setIcon(resizeIcon((ImageIcon) playButton.getIcon(), (int) Math.round(playButton.getIcon().getIconWidth()*0.09),
-                (int) Math.round(playButton.getIcon().getIconHeight()*0.09)));
         play = false;
         lastMin = System.currentTimeMillis();
         minPlayed = (float)(lastMin - startMin)/60000;
@@ -515,8 +511,6 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
         }else{
             shuffleButton.setIcon(new ImageIcon("Files/drawable/shuffleWhite.png"));
         }
-        shuffleButton.setIcon(resizeIcon((ImageIcon) shuffleButton.getIcon(), (int) Math.round(shuffleButton.getIcon().getIconWidth()*0.05),
-                (int) Math.round(shuffleButton.getIcon().getIconHeight()*0.05)));
     }
 
     private void setIconLoopActive(boolean active){
@@ -525,8 +519,6 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
         }else{
             loopButton.setIcon(new ImageIcon("Files/drawable/exchangeWhite.png"));
         }
-        loopButton.setIcon(resizeIcon((ImageIcon) loopButton.getIcon(), (int) Math.round(loopButton.getIcon().getIconWidth()*0.05),
-                (int) Math.round(loopButton.getIcon().getIconHeight()*0.05)));
     }
 
     private static  void nextSongFromSong(){

@@ -19,13 +19,42 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="It got bugged when changing the view, now it works perfectly.&#10;Alex: &quot;I love static things&quot;">
+    <list default="true" id="5acb40aa-b29e-4e9d-857c-def6690bd9cf" name="Default Changelist" comment="Comments for the presentation layer completed, there are still some todo's alex plis miratels quan puguis">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Files/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/Files/config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Files/drawable/backwardtrackWhite.png" beforeDir="false" afterPath="$PROJECT_DIR$/Files/drawable/backwardtrackWhite.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Files/drawable/exchange.png" beforeDir="false" afterPath="$PROJECT_DIR$/Files/drawable/exchange.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Files/drawable/exchangeWhite.png" beforeDir="false" afterPath="$PROJECT_DIR$/Files/drawable/exchangeWhite.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Files/drawable/fordwardtrackWhite.png" beforeDir="false" afterPath="$PROJECT_DIR$/Files/drawable/fordwardtrackWhite.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Files/drawable/pauseWhite.png" beforeDir="false" afterPath="$PROJECT_DIR$/Files/drawable/pauseWhite.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Files/drawable/play-button.png" beforeDir="false" afterPath="$PROJECT_DIR$/Files/drawable/play-button.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Files/drawable/playbuttonWhite.png" beforeDir="false" afterPath="$PROJECT_DIR$/Files/drawable/playbuttonWhite.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Files/drawable/shuffleAcive.png" beforeDir="false" afterPath="$PROJECT_DIR$/Files/drawable/shuffleAcive.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Files/drawable/shuffleWhite.png" beforeDir="false" afterPath="$PROJECT_DIR$/Files/drawable/shuffleWhite.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/Entities/MidiHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/Entities/MidiHelper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/PlaylistManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/PlaylistManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/SongManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/SongManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/TimerManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/TimerManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Persistence/SQL/Csv/SongCsvDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Persistence/SQL/Csv/SongCsvDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/DictionaryPiano.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/DictionaryPiano.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/FreePianoUIManager$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/FreePianoUIManager$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/FreePianoUIManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/FreePianoUIManager.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/PianoFrameManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/PianoFrameManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/PianoTilesUISelectorManager$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/PianoTilesUISelectorManager$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/PianoTilesUISelectorManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/PianoTilesUISelectorManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/PreMenuUIManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/PreMenuUIManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/SpotiFrameManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/SpotiFrameManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/PianoTilesUISelector.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/PianoTilesUISelector.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/PlaylistUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/PlaylistUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/SongsUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/SongsUI$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/SongsUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/SongsUI.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/SpotiUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/SpotiUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presentation/Manager/PianoFrameManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Manager/PianoFrameManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presentation/Ui_Views/PlaylistUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Ui_Views/PlaylistUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/StatisticsUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/StatisticsUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/Tile.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/Tile.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Business/PlaylistManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/PlaylistManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Business/SongManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/SongManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Business/TimerManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/TimerManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presentation/Manager/SpotiFrameManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Manager/SpotiFrameManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Presentation/Ui_Views/SpotiUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Ui_Views/SpotiUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -91,17 +120,6 @@
     <key name="MoveFile.RECENT_KEYS" />
   </component>
   <component name="RunManager" selected="Application.Main">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="dpoo-2021-smartpiano-ice5" />
@@ -132,6 +150,19 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -597,104 +628,5 @@
     <MESSAGE value="It was not perfect, sad... Now I think it is!!!" />
     <MESSAGE value="It got bugged when changing the view, now it works perfectly.&#10;Alex: &quot;I love static things&quot;" />
     <option name="LAST_COMMIT_MESSAGE" value="It got bugged when changing the view, now it works perfectly.&#10;Alex: &quot;I love static things&quot;" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="709" y="258" key="#com.intellij.ide.util.MemberChooser" timestamp="1621606423158">
-      <screen x="0" y="23" width="1792" height="1043" />
-    </state>
-    <state x="709" y="258" key="#com.intellij.ide.util.MemberChooser/0.23.1792.1043@0.23.1792.1043" timestamp="1621606423158" />
-    <state width="1750" height="242" key="GridCell.Tab.0.bottom" timestamp="1621626142142">
-      <screen x="0" y="23" width="1792" height="1045" />
-    </state>
-    <state width="1554" height="242" key="GridCell.Tab.0.bottom/0.23.1792.1043@0.0.1792.1120" timestamp="1621607114662" />
-    <state width="1750" height="242" key="GridCell.Tab.0.bottom/0.23.1792.1043@0.23.1792.1043" timestamp="1621611866160" />
-    <state width="1750" height="242" key="GridCell.Tab.0.bottom/0.23.1792.1044@0.0.1792.1120" timestamp="1621607114247" />
-    <state width="1750" height="242" key="GridCell.Tab.0.bottom/0.23.1792.1044@0.23.1792.1044" timestamp="1621622423590" />
-    <state width="1750" height="242" key="GridCell.Tab.0.bottom/0.23.1792.1045@0.23.1792.1045" timestamp="1621626142142" />
-    <state width="1750" height="242" key="GridCell.Tab.0.bottom/0.23.1792.1046@0.23.1792.1046" timestamp="1621625705077" />
-    <state width="1750" height="242" key="GridCell.Tab.0.center" timestamp="1621626142141">
-      <screen x="0" y="23" width="1792" height="1045" />
-    </state>
-    <state width="1554" height="242" key="GridCell.Tab.0.center/0.23.1792.1043@0.0.1792.1120" timestamp="1621607114661" />
-    <state width="1750" height="242" key="GridCell.Tab.0.center/0.23.1792.1043@0.23.1792.1043" timestamp="1621611866159" />
-    <state width="1750" height="242" key="GridCell.Tab.0.center/0.23.1792.1044@0.0.1792.1120" timestamp="1621607114629" />
-    <state width="1750" height="242" key="GridCell.Tab.0.center/0.23.1792.1044@0.23.1792.1044" timestamp="1621622423589" />
-    <state width="1750" height="242" key="GridCell.Tab.0.center/0.23.1792.1045@0.23.1792.1045" timestamp="1621626142141" />
-    <state width="1750" height="242" key="GridCell.Tab.0.center/0.23.1792.1046@0.23.1792.1046" timestamp="1621625705077" />
-    <state width="1750" height="242" key="GridCell.Tab.0.left" timestamp="1621626142141">
-      <screen x="0" y="23" width="1792" height="1045" />
-    </state>
-    <state width="1554" height="242" key="GridCell.Tab.0.left/0.23.1792.1043@0.0.1792.1120" timestamp="1621607114661" />
-    <state width="1750" height="242" key="GridCell.Tab.0.left/0.23.1792.1043@0.23.1792.1043" timestamp="1621611866159" />
-    <state width="1750" height="242" key="GridCell.Tab.0.left/0.23.1792.1044@0.0.1792.1120" timestamp="1621607114623" />
-    <state width="1750" height="242" key="GridCell.Tab.0.left/0.23.1792.1044@0.23.1792.1044" timestamp="1621622423588" />
-    <state width="1750" height="242" key="GridCell.Tab.0.left/0.23.1792.1045@0.23.1792.1045" timestamp="1621626142141" />
-    <state width="1750" height="242" key="GridCell.Tab.0.left/0.23.1792.1046@0.23.1792.1046" timestamp="1621625705077" />
-    <state width="1750" height="242" key="GridCell.Tab.0.right" timestamp="1621626142141">
-      <screen x="0" y="23" width="1792" height="1045" />
-    </state>
-    <state width="1554" height="242" key="GridCell.Tab.0.right/0.23.1792.1043@0.0.1792.1120" timestamp="1621607114661" />
-    <state width="1750" height="242" key="GridCell.Tab.0.right/0.23.1792.1043@0.23.1792.1043" timestamp="1621611866159" />
-    <state width="1750" height="242" key="GridCell.Tab.0.right/0.23.1792.1044@0.23.1792.1044" timestamp="1621622423589" />
-    <state width="1750" height="242" key="GridCell.Tab.0.right/0.23.1792.1045@0.23.1792.1045" timestamp="1621626142141" />
-    <state width="1750" height="242" key="GridCell.Tab.0.right/0.23.1792.1046@0.23.1792.1046" timestamp="1621625705077" />
-    <state width="1750" height="279" key="GridCell.Tab.1.bottom" timestamp="1621615841542">
-      <screen x="0" y="23" width="1792" height="1044" />
-    </state>
-    <state width="1750" height="279" key="GridCell.Tab.1.bottom/0.23.1792.1043@0.0.1792.1120" timestamp="1621607114656" />
-    <state width="1750" height="279" key="GridCell.Tab.1.bottom/0.23.1792.1043@0.23.1792.1043" timestamp="1621606136466" />
-    <state width="1750" height="279" key="GridCell.Tab.1.bottom/0.23.1792.1044@0.23.1792.1044" timestamp="1621615841542" />
-    <state width="1750" height="279" key="GridCell.Tab.1.bottom/0.23.1792.1045@0.23.1792.1045" timestamp="1621615392109" />
-    <state width="1750" height="279" key="GridCell.Tab.1.center" timestamp="1621615841541" />
-    <state width="1750" height="279" key="GridCell.Tab.1.center/0.23.1792.1043@0.0.1792.1120" timestamp="1621607114655" />
-    <state width="1750" height="279" key="GridCell.Tab.1.center/0.23.1792.1043@0.23.1792.1043" timestamp="1621606136466" />
-    <state width="1750" height="279" key="GridCell.Tab.1.center/0.23.1792.1044@0.23.1792.1044" timestamp="1621615841541" />
-    <state width="1750" height="279" key="GridCell.Tab.1.center/0.23.1792.1045@0.23.1792.1045" timestamp="1621615392108" />
-    <state width="1750" height="279" key="GridCell.Tab.1.left" timestamp="1621615841541">
-      <screen x="0" y="23" width="1792" height="1044" />
-    </state>
-    <state width="1750" height="279" key="GridCell.Tab.1.left/0.23.1792.1043@0.0.1792.1120" timestamp="1621607114655" />
-    <state width="1750" height="279" key="GridCell.Tab.1.left/0.23.1792.1043@0.23.1792.1043" timestamp="1621606136465" />
-    <state width="1750" height="279" key="GridCell.Tab.1.left/0.23.1792.1044@0.23.1792.1044" timestamp="1621615841541" />
-    <state width="1750" height="279" key="GridCell.Tab.1.left/0.23.1792.1045@0.23.1792.1045" timestamp="1621615392108" />
-    <state width="1750" height="279" key="GridCell.Tab.1.right" timestamp="1621615841541">
-      <screen x="0" y="23" width="1792" height="1044" />
-    </state>
-    <state width="1750" height="279" key="GridCell.Tab.1.right/0.23.1792.1043@0.0.1792.1120" timestamp="1621607114655" />
-    <state width="1750" height="279" key="GridCell.Tab.1.right/0.23.1792.1043@0.23.1792.1043" timestamp="1621606136466" />
-    <state width="1750" height="279" key="GridCell.Tab.1.right/0.23.1792.1044@0.23.1792.1044" timestamp="1621615841541" />
-    <state width="1750" height="279" key="GridCell.Tab.1.right/0.23.1792.1045@0.23.1792.1045" timestamp="1621615392109" />
-    <state x="496" y="284" key="Vcs.Push.Dialog.v2" timestamp="1621625684773">
-      <screen x="0" y="23" width="1792" height="1046" />
-    </state>
-    <state x="496" y="284" key="Vcs.Push.Dialog.v2/0.23.1792.1045@0.23.1792.1045" timestamp="1621618287875" />
-    <state x="496" y="284" key="Vcs.Push.Dialog.v2/0.23.1792.1046@0.23.1792.1046" timestamp="1621625684773" />
-    <state width="896" height="521" key="XDebugger.FullValuePopup" timestamp="1621614924487">
-      <screen x="0" y="23" width="1792" height="1045" />
-    </state>
-    <state width="896" height="521" key="XDebugger.FullValuePopup/0.23.1792.1045@0.23.1792.1045" timestamp="1621614924487" />
-    <state x="694" y="465" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1621621590999">
-      <screen x="0" y="23" width="1792" height="1044" />
-    </state>
-    <state x="694" y="465" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1792.1044@0.23.1792.1044" timestamp="1621621590999" />
-    <state x="561" y="252" key="run.anything.popup" timestamp="1621605798852">
-      <screen x="0" y="23" width="1792" height="1045" />
-    </state>
-    <state x="561" y="252" key="run.anything.popup/0.23.1792.1045@0.23.1792.1045" timestamp="1621605798852" />
-    <state x="561" y="254" width="670" height="676" key="search.everywhere.popup" timestamp="1621617047915">
-      <screen x="0" y="23" width="1792" height="1045" />
-    </state>
-    <state x="561" y="254" width="670" height="676" key="search.everywhere.popup/0.23.1792.1045@0.23.1792.1045" timestamp="1621617047915" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Business/SongManager.java</url>
-          <line>40</line>
-          <option name="timeStamp" value="40" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
