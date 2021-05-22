@@ -250,6 +250,7 @@ public class MidiHelper {
     public String getInstrument(){
         return this.instruments[whatInstrumentIsPlayed].getName();
     }
+
     public void stopSong(){
         sequencer.stop();
     }
