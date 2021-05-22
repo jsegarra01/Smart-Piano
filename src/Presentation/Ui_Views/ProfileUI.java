@@ -82,7 +82,7 @@ public class ProfileUI extends JPanel{
         JPanel backBoxLayoutPanel = new JPanel();
         backBoxLayoutPanel.setLayout(new BoxLayout(backBoxLayoutPanel, BoxLayout.Y_AXIS));
 
-        registerController(new ProfileUIManager());
+        registerController(new ProfileUIManager(myFacade));
 
         userButtons.add(logOut);
         userButtons.add(Box.createRigidArea(new Dimension(10, 20)));
