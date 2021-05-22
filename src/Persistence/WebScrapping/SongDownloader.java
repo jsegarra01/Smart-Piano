@@ -1,4 +1,6 @@
-package Business.Entities;
+package Persistence.WebScrapping;
+import Persistence.SongDownloaderDAO;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -25,8 +27,7 @@ import java.net.URL;
  * 6) Close the input stream, the output stream and the connection.
  * For the purpose of specificity and reusability, we will create a general class:
  */
-public class songDownloader {
-    private static final int BUFFER_SIZE = 100000;
+public class SongDownloader implements SongDownloaderDAO {
 
     /**
      * Downloads a file from a specified URL ONLY FOR HTTP servers.
@@ -34,15 +35,14 @@ public class songDownloader {
      * @param saveDir path of the directory to save the file
      * @throws IOException
      */
-    public static void downloadFile(String fileURL, String saveDir) throws IOException {
+    @Override
+    public void downloadFile(String fileURL, String saveDir) throws IOException {
             URL url = new URL(fileURL);
             HttpURLConnection httpConn = (HttpURLConnection) url.openConnection();
             int responseCode = httpConn.getResponseCode();
             if (responseCode == HttpURLConnection.HTTP_OK) { //200 is OK
                 String fileName = "";
-                String disposition = httpConn.getHeaderField("Content-Disposition");/*
-                String contentType = httpConn.getContentType();
-                int contentLength = httpConn.getContentLength();*/
+                String disposition = httpConn.getHeaderField("Content-Disposition");
 
                 if (disposition != null) {
                     // extracts file name from header field
@@ -50,15 +50,11 @@ public class songDownloader {
                     if (index > 0) {
                         fileName = disposition.substring(index + 10, disposition.length() - 1);
                     }
-                } else {
+                }
+                else {
                     // extracts file name from URL
                     fileName = fileURL.substring(fileURL.lastIndexOf("/") + 1);
-                }/*
-
-                System.out.println("Content-Type = " + contentType);
-                System.out.println("Content-Disposition = " + disposition);
-                System.out.println("Content-Length = " + contentLength);
-                System.out.println("fileName = " + fileName);*/
+                }
 
                 // opens input stream from the HTTP connection
                 InputStream inputStream = httpConn.getInputStream();
@@ -68,6 +64,7 @@ public class songDownloader {
                 FileOutputStream outputStream = new FileOutputStream(saveFilePath);
 
                 int bytesRead = -1;
+                int BUFFER_SIZE = 100000;
                 byte[] buffer = new byte[BUFFER_SIZE];
                 while ((bytesRead = inputStream.read(buffer)) != -1) {
                     outputStream.write(buffer, 0, bytesRead);
@@ -75,11 +72,8 @@ public class songDownloader {
 
                 outputStream.close();
                 inputStream.close();
-
-                System.out.println("File downloaded");
-            } else {
-                System.out.println("No file to download. Server replied HTTP code: " + responseCode);
             }
+
             httpConn.disconnect();
         }
     }

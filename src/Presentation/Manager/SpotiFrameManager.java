@@ -4,7 +4,6 @@ package Presentation.Manager;
 import Business.Entities.*;
 import Business.BusinessFacadeImp;
 import Business.Entities.MidiHelper;
-import Business.Entities.webHandler;
 import Business.UserManager;
 import Presentation.Dictionary_login;
 import Presentation.Ui_Views.PlaylistUI;
@@ -22,7 +21,6 @@ import java.util.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
-import java.io.File;
 
 import static Presentation.DictionaryPiano.*;
 import static Presentation.Dictionary_login.PROFILE_UI;
@@ -45,7 +43,7 @@ import static Presentation.Ui_Views.Tile.resizeIcon;
 public class SpotiFrameManager extends AbstractAction implements ActionListener, MouseListener {
 
     private static final String URLRoute = "https://www.mutopiaproject.org/cgibin/make-table.cgi?Instrument=Piano";
-    private static final String path = "Files";
+    private static final String path = "Songs";
     private static boolean play=false;
     private static final ImageIcon playIcon = new ImageIcon("Files/drawable/playbuttonWhite.png");
     private static final ImageIcon pauseIcon = new ImageIcon("Files/drawable/pauseWhite.png");
@@ -76,7 +74,7 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
         }
     }
 
-    webHandler myWebHandlingTool = new webHandler(path, URLRoute, "result%s.txt", "?startat=%s&");
+    WebHandler myWebHandlingTool = new WebHandler(path, URLRoute, "result%s.txt", "?startat=%s&");
 
     /**
      * Parametrized constructor
@@ -107,7 +105,7 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
             case SHOW_TOP_SONGS:
                 SongsUI.initTable(new BusinessFacadeImp().getSongManager().getTopFive(), "topFive");
                 //addSongsAll(new BusinessFacadeImp().getSongManager().getTopFive());
-               // System.out.println(topFive.get(0).getSongName() + "    " + topFive.get(4).getSongName());
+                // System.out.println(topFive.get(0).getSongName() + "    " + topFive.get(4).getSongName());
                 //SongsUI.initTable(topFive, "delete");
                 cc.show(spotiPanel, /*TOPSONGS_UI*/ SONGS_UI);
                 //cc.show(spotiPanel, TOPSONGS_UI);

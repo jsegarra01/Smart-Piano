@@ -3,8 +3,6 @@ import Presentation.Manager.MainFrame;
 
 import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 
-import Business.Entities.webHandler;
-
 
 /**
  * The "Main" class will run the program
