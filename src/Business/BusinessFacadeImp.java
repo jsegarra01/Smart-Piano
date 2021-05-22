@@ -30,16 +30,27 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
     private static PlaylistManager playlistManager = new PlaylistManager();
     private static TilesManager tilesManager = new TilesManager();
 
+    /**
+     * Shows the Sign up UI layout from the card layout
+     */
     public void singUpStartup(){
         resetUISignUpUI();
         card.show(contenedor, SIGN_UP_UI);
     }
 
+    /**
+     * Shows the Log in UI layout from the card layout
+     */
     public void logInStartup(){
         resetUILogin();
         card.show(contenedor, LOGIN_UI);
     }
 
+    /**
+     * Logs in to the user "guest" and shows the piano UI layout from the card layout
+     * @param name not used
+     * @param psw not used
+     */
     public void enterAsAGuest(String name, String psw){
         if(logIn("guest", "password")){
             setUsernameLogin("guest");
@@ -48,11 +59,25 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
         setSong();
     }
 
+    /**
+     * Calls the method to log in
+     * @param username Username string which the user has inputted while logging in
+     * @param password Password string which the user has inputted while logging in
+     * @return True if logged in, false if not
+     */
     @Override
     public boolean logIn(String username, String password) {
         return loginUserManager.checkUser(username, password);
     }
 
+    /**
+     * Calls the method to sign up
+     * @param username Username string which the user has inputted while signing up
+     * @param mail Mail string which the user has inputted while signing up
+     * @param password Password string which the user has inputted while signing up
+     * @param passwordConfirm PasswordConfirmation string which the user has inputted while signing up
+     * @return True if correctly signed up, false if not
+     */
     @Override
     public boolean SignUp(String username, String mail, String password, String passwordConfirm) {
         if (!password.equals(passwordConfirm)) {
@@ -61,6 +86,14 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
         return loginUserManager.signUser(username,mail,password);
     }
 
+    /**
+     * Calls the method to sign up
+     * @param username Username string which the user has inputted while signing up
+     * @param mail Mail string which the user has inputted while signing up
+     * @param password Password string which the user has inputted while signing up
+     * @param passwordConfirm PasswordConfirmation string which the user has inputted while signing up
+     * @return True if correctly signed up, false if not
+     */
     public void finalSignUp(String username, String mail, String password, String passwordConfirm){
         if (!password.equals(passwordConfirm)) {
             JOptionPane.showMessageDialog(contenedor, "Values introduced were not accepted", "SignUp error", JOptionPane.ERROR_MESSAGE);
@@ -75,16 +108,31 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
         }
     }
 
+    /**
+     * Calls the method to delete a user
+     * @return True if deleted, false if not
+     */
     @Override
     public boolean deleteAccount() {
         return loginUserManager.deleteUser();
     }
 
+    /**
+     * Saves a song created by the user to a midi file
+     * @param recordedNotes List of notes played
+     * @param songName Name of the song
+     * @param isPublic True if public, false if private
+     * @param endtime Duration of the song
+     */
     @Override
     public void recordedNotesSend(ArrayList<RecordingNotes> recordedNotes, String songName, boolean isPublic, float endtime) {
         songManager.saveRecording(recordedNotes,songName,isPublic,endtime);
     }
 
+    /**
+     * Gets the playlist manager
+     * @return The playlist manager
+     */
     @Override
     public PlaylistManager getPlaylistManager() {
         return playlistManager;

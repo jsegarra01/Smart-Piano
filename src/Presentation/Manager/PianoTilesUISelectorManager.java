@@ -128,14 +128,10 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
                 if (songStarted) {
                     if(play){
                         playButtonTiles.setIcon(pauseIcon);
-                        playButtonTiles.setIcon(resizeIcon((ImageIcon) playButtonTiles.getIcon(), (int) Math.round(playButtonTiles.getIcon().getIconWidth()*0.0507),
-                                (int) Math.round(playButtonTiles.getIcon().getIconHeight()*0.0507)));
                         new ChangeTime(0);
                     }
                     else{
                         playButtonTiles.setIcon(playIcon);
-                        playButtonTiles.setIcon(resizeIcon((ImageIcon) playButtonTiles.getIcon(), (int) Math.round(playButtonTiles.getIcon().getIconWidth()*0.15),
-                                (int) Math.round(playButtonTiles.getIcon().getIconHeight()*0.15)));
                         new ChangeTime(1);
                     }
                     play = !play;
@@ -185,8 +181,8 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
     }
 
     /**
-     *
-     * @param string
+     * Sets the icon of a key back to its original one
+     * @param string The name of the key that must change its the icon
      */
     private void setIconBack(String string){
         int i = 0;

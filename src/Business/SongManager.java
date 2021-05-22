@@ -125,18 +125,33 @@ public class SongManager {
         songManager.updateTimesPlayed(song);
     }
 
+    /**
+     * Saves the desired stadistics
+     * @param myStats Stadistics we want to save
+     */
     public void addingStadistics(Stadistics myStats){
         songManager.saveStadistics(myStats);
     }
 
+    /**
+     * Gets all the stadistics from a given hour
+     * @param hour The hour we want the stadistics from
+     * @return The desired stadistics
+     */
     public Stadistics gettingStadistics(int hour){
         return songManager.getStadisticsHour(hour);
     }
-/*
+
+    /*
     public void addingInfoSongPlayed(TopSongs songs){
         songManager.saveListenedSongs(songs);
     }*/
 
+    /**
+     * Calls the method to delete a song
+     * @param song The song we want to delete
+     * @return True if deleted, false if not
+     */
     public boolean deleteSong(Song song){
         return songManager.deleteSong(song);
     }
