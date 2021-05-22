@@ -16,8 +16,8 @@ public class Translator {
     private static final ArrayList<Keys> keys = new ArrayList<>();
 
     /**
-     *
-     * @return
+     * Fills the list of keys with all the usable keys
+     * @return The list of keys filled
      */
     public static ArrayList<Keys> getInstance(){
         if(keys.isEmpty()){
@@ -50,6 +50,11 @@ public class Translator {
         return keys;
     }
 
+    /**
+     * Gets the number of a note from its name
+     * @param input Name of the note
+     * @return The number of the note
+     */
     public static int getNumberNoteFromName(String input){
         return switch (input) {
             case "2c" -> 48;
@@ -81,6 +86,11 @@ public class Translator {
         };
     }
 
+    /**
+     * Gets the name of a key from its keycode
+     * @param key The keycode of the key we want to know its name
+     * @return The name of the desired key
+     */
     public static String getFromKey(int key){
         boolean found = false;
         int i = 0;
@@ -97,6 +107,12 @@ public class Translator {
         }
         return null;
     }
+
+    /**
+     * Gets the key from its keycode
+     * @param key The keycode of the key we want to know its name
+     * @return The desired key
+     */
     public static Keys getPressedFromKey(int key){
         boolean found = false;
         int i = 0;
@@ -113,6 +129,13 @@ public class Translator {
         }
         return null;
     }
+
+    /**
+     * TODO: Que fa exactament aixo
+     * @param tile
+     * @param keyCode
+     * @return
+     */
     public static int setNewKey(String tile, int keyCode){
         boolean found = false;
         boolean foundKey = false;
@@ -140,6 +163,11 @@ public class Translator {
         }
     }
 
+    /**
+     * Gets a key from its tile key
+     * @param tileKey tile key from the key we want to get
+     * @return The desired key
+     */
     public static Keys getFromTile(String tileKey){
         boolean found = false;
         int i = 0;
@@ -157,6 +185,12 @@ public class Translator {
         }
         return null;
     }
+
+    /**
+     * Sets the name and code from a desired key
+     * @param i Index of the key we want to set
+     * @param keyCode New key code
+     */
     public static void setKeys(int i, int keyCode){
         keys.get(i).setKeyCode(keyCode);
         keys.get(i).setNameKey(KeyEvent.getKeyText(keyCode));
