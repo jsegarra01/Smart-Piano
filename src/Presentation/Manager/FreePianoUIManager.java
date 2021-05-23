@@ -2,6 +2,7 @@ package Presentation.Manager;
 
 //Imports needed from the dictionary, events and mainframe
 
+import Business.BusinessFacade;
 import Business.BusinessFacadeImp;
 import Business.Entities.RecordingNotes;
 import Presentation.Dictionary_login;
@@ -45,7 +46,7 @@ public class FreePianoUIManager implements ActionListener, MouseListener {
     private KeyListener KL;
     private boolean recording = false;
     private float recordingTime = 0;
-    BusinessFacadeImp businessFacadeImp = new BusinessFacadeImp();
+    BusinessFacadeImp myFacade;
 
     MidiHelper midiHelper = null;
     Timer timer  = new Timer(10, this);
@@ -56,7 +57,8 @@ public class FreePianoUIManager implements ActionListener, MouseListener {
     /**
      * Parametrized constructor, initializes the recorder and teh different overwrites for when a key is pressed in the keyboard
      */
-    public FreePianoUIManager() {
+    public FreePianoUIManager(BusinessFacadeImp myFacade) {
+        this.myFacade = myFacade;
         timer.setActionCommand(RECORDING_TIMER);
         try {
             midiHelper = new MidiHelper();
@@ -65,7 +67,6 @@ public class FreePianoUIManager implements ActionListener, MouseListener {
         }
         this.finalMidiHelper = midiHelper;
         this.KL = new KeyListener() {
-
             /**
              * When a key has been typed by the user
              * @param e Key that has been pressed
@@ -83,20 +84,13 @@ public class FreePianoUIManager implements ActionListener, MouseListener {
             public void keyPressed(KeyEvent e) {
                 if(modifying){
                     if(selected){
-                        int checkKeyExisted =Translator.setNewKey(tileSelected,e.getExtendedKeyCode());
-                        if(checkKeyExisted == -1){
-                            JOptionPane.showMessageDialog(contenedor,
-                                    "This key is already assigned!", "Modify keys error" , JOptionPane.ERROR_MESSAGE);
-                        }else{
-                            FreePianoUI.modifyKey(Translator.getFromTile(tileSelected), e);
-                            Translator.setKeys(checkKeyExisted, e.getExtendedKeyCode());
-                            selected = false;
-                        }
+                        // Will only return true if the key was already assigned to which the user s trying to give,
+                        // if the user gives a new one, then it will just swap them and return false.
+                        selected = myFacade.modifyKey(tileSelected, e, Translator.setNewKey(tileSelected,e.getExtendedKeyCode()));
                     }
                 }else{
                     if(Translator.getPressedFromKey(e.getExtendedKeyCode()) !=null){
                         if(!Objects.requireNonNull(Translator.getPressedFromKey(e.getExtendedKeyCode())).isPressed()){
-                            //finalMidiHelper.playSomething(Translator.getNumberNoteFromName(Translator.getCodeFromKey(e)), SOUND_SYNTHER);
                             finalMidiHelper.playSomething(Translator.getNumberNoteFromName(Translator.getFromKey(e.getExtendedKeyCode())),SOUND_SYNTHER);
                             Objects.requireNonNull(Translator.getPressedFromKey(e.getExtendedKeyCode())).setPressed(true);
                             //This gets the initial timer and key pressed for the first time it is clicked
@@ -145,24 +139,14 @@ public class FreePianoUIManager implements ActionListener, MouseListener {
                     recordingTime += 0.01;
                 break;
             case FreePianoUI.BTN_RECORD:                    //In the case that the Record button is pressed
-                if (recording) {                            //If we were recording and we want to stop
-                    recording = false;
+                if (recording) {//If we were recording and we want to stop
                     timer.stop();
-
-                    JPanel myPanel = new JPanel();
-                    JTextField titleField = new JTextField( 20);
-                    myPanel.add(titleField);
-                    JCheckBox box = new JCheckBox("is public?");
-                    myPanel.add(box);
-
-                    JOptionPane.showMessageDialog(null, myPanel, "Enter a title for the song", JOptionPane.INFORMATION_MESSAGE);
-
-                    businessFacadeImp.recordedNotesSend(recordingNotes, titleField.getText(), box.isSelected(), recordingTime);
+                    recording = myFacade.noteRecordingUpdate(recordingNotes, recordingTime);
                 }
                 else {                                      //If we want to start recording
+                    recording = myFacade.startRecordingNote();
                     recordingTime = 0;
                     timer.restart();
-                    recording = true;
                 }
                 break;
             case Dictionary_login.PROFILE_BUTTON:           //In the case that the Profile button is pressed
@@ -241,7 +225,7 @@ public class FreePianoUIManager implements ActionListener, MouseListener {
         if (obj instanceof Tile) {
             t = (Tile) obj;
         }
-        System.out.println(Translator.getNumberNoteFromName(e.getComponent().getName()));
+        //System.out.println(Translator.getNumberNoteFromName(e.getComponent().getName()));
         if(modifying){
             if(!selected){
                 FreePianoUI.setTileColor(t);

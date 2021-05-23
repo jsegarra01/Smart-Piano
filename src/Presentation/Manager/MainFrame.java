@@ -59,4 +59,5 @@ public class MainFrame extends JFrame {
 
         myFacade.initializeWebScrapping();
     }
+    public BusinessFacadeImp getMyFacade(){return myFacade;}
 }

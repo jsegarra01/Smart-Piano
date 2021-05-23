@@ -1,6 +1,7 @@
 package Presentation.Manager;
 
 //Imports needed from the dictionary, events and mainframe
+import Business.BusinessFacade;
 import Business.BusinessFacadeImp;
 import Business.Entities.ChangeTime;
 import Presentation.DictionaryPiano;
@@ -44,20 +45,22 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
     private static boolean songStarted = false;
     private static int songIndex = 0;
 
+    private BusinessFacadeImp myFacade;
+
     private final ImageIcon playIcon = new ImageIcon("Files/drawable/play-button.png");
     private final ImageIcon pauseIcon = new ImageIcon("Files/drawable/pause-button.png");
     private MidiHelper finalMidiHelper;
     private KeyListener KL;
-    private Translator translator = new Translator();
 
     MidiHelper midiHelper = null;
 
     /**
      * Parametrized constructor, initializes the recorder and teh different overwrites for when a key is pressed in the keyboard
      */
-    public PianoTilesUISelectorManager() {
+    public PianoTilesUISelectorManager(BusinessFacadeImp myFacade) {
         //To play the song
         //timer.setActionCommand(RECORDING_TIMER);
+        this.myFacade = myFacade;
         try {
             midiHelper = new MidiHelper();
         } catch (MidiUnavailableException exception) {
@@ -80,13 +83,13 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
              */
             @Override
             public void keyPressed(KeyEvent e) {
-                if(translator.getPressedFromKey(e.getExtendedKeyCode()) !=null){
-                    if(!translator.getPressedFromKey(e.getExtendedKeyCode()).isPressed()){
+                if(Translator.getPressedFromKey(e.getExtendedKeyCode()) !=null){
+                    if(!Translator.getPressedFromKey(e.getExtendedKeyCode()).isPressed()){
                         //finalMidiHelper.playSomething(Translator.getNumberNoteFromName(Translator.getCodeFromKey(e)), SOUND_SYNTHER);
-                        finalMidiHelper.playSomething(Translator.getNumberNoteFromName(translator.getFromKey(e.getExtendedKeyCode())),SOUND_SYNTHER);
-                        translator.getPressedFromKey(e.getExtendedKeyCode()).setPressed(true);
+                        finalMidiHelper.playSomething(Translator.getNumberNoteFromName(Translator.getFromKey(e.getExtendedKeyCode())),SOUND_SYNTHER);
+                        Translator.getPressedFromKey(e.getExtendedKeyCode()).setPressed(true);
                     }
-                    setIconKey(translator.getFromKey(e.getExtendedKeyCode()));
+                    setIconKey(Translator.getFromKey(e.getExtendedKeyCode()));
                 }
             }
             /**
@@ -95,10 +98,10 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
              */
             @Override
             public void keyReleased(KeyEvent e) {
-                if (translator.getPressedFromKey(e.getExtendedKeyCode()) != null) {
-                    setIconBack(translator.getFromKey(e.getExtendedKeyCode()));
-                    translator.getPressedFromKey(e.getExtendedKeyCode()).setPressed(false);
-                    finalMidiHelper.stopPlaying(Translator.getNumberNoteFromName(translator.getFromKey(e.getExtendedKeyCode())),SOUND_SYNTHER);
+                if (Translator.getPressedFromKey(e.getExtendedKeyCode()) != null) {
+                    setIconBack(Translator.getFromKey(e.getExtendedKeyCode()));
+                    Translator.getPressedFromKey(e.getExtendedKeyCode()).setPressed(false);
+                    finalMidiHelper.stopPlaying(Translator.getNumberNoteFromName(Translator.getFromKey(e.getExtendedKeyCode())),SOUND_SYNTHER);
                 }
             }
         };
@@ -271,7 +274,11 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
             songStarted = true;
 
             new BusinessFacadeImp().setTileArray(songIndex);                //Sets the tiles to play
-            setKeys(new BusinessFacadeImp().getTiles());                    //Gets the tiles to play.
+                            //Sets the tiles to play
+            //myFacade.readingMidiFiles(songIndex);
+
+            myFacade.setAllKeys();
+            //setKeys(new BusinessFacadeImp().getTiles());                    //Gets the tiles to play.
                                                                             //Is this necessary or it
                                                                             //can be in presentation?
 

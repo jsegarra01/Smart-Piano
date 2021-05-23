@@ -104,11 +104,7 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
                 break;
             case SHOW_TOP_SONGS:
                 SongsUI.initTable(new BusinessFacadeImp().getSongManager().getTopFive(), "topFive");
-                //addSongsAll(new BusinessFacadeImp().getSongManager().getTopFive());
-                //System.out.println(topFive.get(0).getSongName() + "    " + topFive.get(4).getSongName());
-                //SongsUI.initTable(topFive, "delete");
                 cc.show(spotiPanel, /*TOPSONGS_UI*/ SONGS_UI);
-                //cc.show(spotiPanel, TOPSONGS_UI);
                 break;
             case CREATE_PLAYLIST:
                 String result = createPanelPlaylist();

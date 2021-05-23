@@ -127,9 +127,8 @@ public class WebHandler {
                     }
                 }
                 catch (IOException e) {
-
+                    JOptionPane.showMessageDialog(new JFrame(), "There was an error whilst scrapping the web, try later...");
                 }
-                //Extract the divs that have products inside of the previous general Div.
 
                 i++;
             }
@@ -153,8 +152,11 @@ public class WebHandler {
      * @return Status Code in an integer type
      */
     private int getStatusConnectionCode(String url) throws IOException{
-        Connection.Response response = null;
-        response = Jsoup.connect(url).userAgent("Mozilla/5.0").timeout(100000).ignoreHttpErrors(true).execute();
+        Connection.Response response = Jsoup.connect(url).
+                                            userAgent("Mozilla/5.0").
+                                                timeout(100000).
+                                                    ignoreHttpErrors(true).
+                                                        execute();
         return response.statusCode();
     }
 

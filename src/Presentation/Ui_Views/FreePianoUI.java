@@ -1,6 +1,8 @@
 package Presentation.Ui_Views;
 
 //Imports needed from the dictionary, events and mainframe
+import Business.BusinessFacade;
+import Business.BusinessFacadeImp;
 import Business.Entities.Keys;
 import Business.Entities.Translator;
 import Presentation.Manager.FreePianoUIManager;
@@ -9,6 +11,7 @@ import Presentation.Manager.MainFrame;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.io.BufferedInputStream;
 import java.util.ArrayList;
 
 import static Presentation.Ui_Views.Tile.*;
@@ -24,13 +27,14 @@ import static Presentation.Ui_Views.Tile.*;
  *
  */
 public class FreePianoUI extends Piano {
-
+    private BusinessFacadeImp myFacade;
     /**
      * Constructor for the FreePianoUI, you need to send the mainframe context and will create a card layout
      *
      //* @param mainFrame context necessary to create the card layout
      */
-    public FreePianoUI() {
+    public FreePianoUI(BusinessFacadeImp myFacade) {
+        this.myFacade = myFacade;
         keyboard = new ArrayList<>();
         initialize();
     }
@@ -93,7 +97,7 @@ public class FreePianoUI extends Piano {
         menu.add(modifyKeys);
         menu.setBackground(Color.getHSBColor(0,0,0.2f));
 
-        registerController(new FreePianoUIManager());
+        registerController(new FreePianoUIManager(myFacade));
         layout.add(menu, BorderLayout.NORTH);
         layout.setBackground(Color.getHSBColor(0,0,0.2f));
         return layout;
