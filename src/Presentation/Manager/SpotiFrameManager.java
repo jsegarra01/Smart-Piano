@@ -71,14 +71,7 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
             playSongTime();
         }
     };
-/*
-    TimerTask task = new TimerTask() {
-        @Override
-        public void run()
-        {
-            letsInitializeGraphs(getMinPlayed(), getNumSongs());
-        }
-    };*/
+
     private static final Date date = new Date();
 
     private static MidiHelper finalMidiHelper;
@@ -89,7 +82,6 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
             e.printStackTrace();
         }
     }
-    //myTimer.schedule(task, 10, 1000);
 
     WebHandler myWebHandlingTool = new WebHandler(path, URLRoute, "result%s.txt", "?startat=%s&");
 
@@ -98,8 +90,6 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
      */
     public SpotiFrameManager(BusinessFacadeImp myFacade) {
         this.myFacade = myFacade;
-        //myTimer.setActionCommand(TIME_GRAPH);
-        //myTimer.start();
         System.out.println("hello");
     }
 
@@ -113,20 +103,6 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
         CardLayout cc = (CardLayout) (spotiPanel.getLayout());
         Object obj = e.getSource();
         switch (e.getActionCommand()) {
-            /*case TIME_GRAPH:
-                if(play){
-                    lastMin = System.currentTimeMillis();
-                    minPlayed = (float)(lastMin - startMin)/60000;
-                    startMin = System.currentTimeMillis();
-                    new BusinessFacadeImp().getSongManager().addingStadistics(new Stadistics(date.getHours(), last_song, 0.01667f));
-                    if(last_song==1) {
-                        last_song=0;
-                    }
-                    System.out.println("time: " + minPlayed);
-                    System.out.println("REEAL time:" + System.currentTimeMillis());
-                }
-                letsInitializeGraphs(getMinPlayed(), getNumSongs());
-            break;*/
             case SHOW_ALL_SONGS:
                 addSong = false;
                 //addSongsAll(new BusinessFacadeImp().getSongManager().getSongs());

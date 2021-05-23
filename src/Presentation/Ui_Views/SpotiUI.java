@@ -54,7 +54,6 @@ public class SpotiUI extends JPanel {
 
     public static BusinessFacadeImp myFacade;
 
-    private Timer auxTimer= new Timer(1000,new SpotiFrameManager(myFacade));
 
     public static JPanel leftList = new JPanel();
     private static JPanel playlistsPanel = new JPanel();
@@ -70,7 +69,6 @@ public class SpotiUI extends JPanel {
         playlistUI = new PlaylistUI();
         statisticsUI = new StatisticsUI();
         songsUI = new SongsUI();
-        //auxTimer.start();
 
         initialize();
     }

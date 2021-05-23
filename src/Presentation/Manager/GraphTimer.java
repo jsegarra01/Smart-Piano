@@ -17,6 +17,7 @@ import static Presentation.Ui_Views.StatisticsUI.letsInitializeGraphs;
 public class GraphTimer implements ActionListener {
     private Timer myTimer = new Timer(1000, this); //  = new Timer(1000, this);
     private static final Date date = new Date();
+    private float sec = 0.01667f;
 
 
     public GraphTimer() {
@@ -29,10 +30,7 @@ public class GraphTimer implements ActionListener {
         switch (e.getActionCommand()) {
             case TIME_GRAPH:
                 if (play) {
-                    lastMin = System.currentTimeMillis();
-                    minPlayed = (float)(lastMin - startMin)/60000;
-                    startMin = System.currentTimeMillis();
-                    new BusinessFacadeImp().getSongManager().addingStadistics(new Stadistics(date.getHours(), count_song, 0.01667f));
+                    new BusinessFacadeImp().getSongManager().addingStadistics(new Stadistics(date.getHours(), count_song, sec));
                     if (count_song == 1) {
                         count_song = 0;
                     }
