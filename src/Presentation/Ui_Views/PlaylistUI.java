@@ -189,13 +189,17 @@ public class PlaylistUI extends JPanel {
      */
     private static void updatePanel(Playlist playlist){
         for (Component jc : panel.getComponents()) {
-            if (jc instanceof JScrollPane scrollPane) {
+            if (jc instanceof JScrollPane ) {
+                JScrollPane scrollPane = new JScrollPane();
                 for (Component jc2 : scrollPane.getComponents()) {
-                    if (jc2 instanceof JViewport viewport) {
+                    if (jc2 instanceof JViewport) {
+                        JViewport viewport = new JViewport();
                         for (Component jc3 : viewport.getComponents()) {
-                            if (jc3 instanceof JPanel panelSongs) {
+                            if (jc3 instanceof JPanel) {
+                                JPanel panelSongs = new JPanel();
                                 for(int j = 0; j< panelSongs.getComponentCount();j++){
-                                    if (panelSongs.getComponent(j) instanceof JPanel song) {
+                                    if (panelSongs.getComponent(j) instanceof JPanel) {
+                                        JPanel song = new JPanel();
                                         int i = 0;
                                         boolean foundSong = false;
                                         while (i < playlist.getSongs().size() && !foundSong) {
@@ -216,7 +220,8 @@ public class PlaylistUI extends JPanel {
                                     i=0;
                                     foundSong = false;
                                     while (i < panelSongs.getComponentCount() && !foundSong){
-                                        if (panelSongs.getComponent(i) instanceof JPanel song) {
+                                        if (panelSongs.getComponent(i) instanceof JPanel) {
+                                            JPanel song = new JPanel();
                                             if(song.getName().equals(playlist.getSongs().get(k).getSongFile())){
                                                 foundSong = true;
                                             }else{

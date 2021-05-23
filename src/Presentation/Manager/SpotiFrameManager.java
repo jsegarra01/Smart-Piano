@@ -49,7 +49,7 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
 
     public static final String URLRoute = "https://www.mutopiaproject.org/cgibin/make-table.cgi?Instrument=Piano";
     private static final String path = "Files/WebScrappingResults";
-    private static boolean play=false;
+    public static boolean play=false;
     private static final ImageIcon playIcon = new ImageIcon("Files/drawable/playbuttonWhite.png");
     private static final ImageIcon pauseIcon = new ImageIcon("Files/drawable/pauseWhite.png");
     public static float minPlayed;
@@ -150,7 +150,6 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
                         finalMidiHelper.playSong(songPlay.getSongFile());
                     }
                 }
-
                 break;
             case NEXT_BUTTON:
                 if(songPlay!=null){
