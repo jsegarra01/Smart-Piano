@@ -128,6 +128,15 @@ public class MidiHelper {
     }
 
     /**
+     * Mutes the song
+     * @return True if muted, false if not
+     */
+    public void muteSong() {
+        sequencer.setTrackMute(0, !sequencer.getTrackMute(0));
+        //return sequencer.getTrackMute(0);
+    }
+
+    /**
      * Stops playing whatever is playing
      */
     public void stopSong(){

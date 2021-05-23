@@ -507,6 +507,10 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
         finalMidiHelper.stopSong();
     }
 
+    private static void muteSong() {
+        finalMidiHelper.muteSong();
+    }
+
     /**
      * Sets the corresponent shuffle button depending if the shuffle option is activated
      * @param active True if active, false if not
