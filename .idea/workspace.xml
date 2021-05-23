@@ -22,6 +22,7 @@
     <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="WebScrapping fixed, moved song downloader to persistance layer, now saves the song to the database (before didn't), now picks up the author (before didn't)">
       <change afterPath="$PROJECT_DIR$/Files/WebScrappingResults/Download.html" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/Business/Threads/WebScrapping.java" afterDir="false" />
+    <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="Fixing things, delete erased the file too">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Files/webScrapingResults/result0001" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Files/webScrapingResults/result0001result%s.txt" beforeDir="false" />
@@ -41,6 +42,9 @@
       <change beforePath="$PROJECT_DIR$/src/Persistence/WebScrapping/SongDownloader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Persistence/WebScrapping/SongDownloader.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Presentation/Manager/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Manager/MainFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Presentation/Manager/SpotiFrameManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Manager/SpotiFrameManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/SpotiFrameManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/SpotiFrameManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presentation/Manager/SpotiFrameManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Manager/SpotiFrameManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presentation/Ui_Views/SpotiUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Ui_Views/SpotiUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,7 +63,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="develop" />
+        <entry key="$PROJECT_DIR$" value="feature/last_fixes_v2" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -152,10 +156,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main" />
         <item itemvalue="Application.ReadMidi" />
+        <item itemvalue="Application.Main" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.ReadMidi" />
         <item itemvalue="Application.Main" />
@@ -526,6 +541,14 @@
       <option name="project" value="LOCAL" />
       <updated>1621625680743</updated>
     </task>
+    <task id="LOCAL-00058" summary="Fixing things, delete erased the file too">
+      <created>1621720886159</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1621720886160</updated>
+    </task>
+    <option name="localTasksCounter" value="59" />
     <task id="LOCAL-00058" summary="WebScrapping fixed, moved song downloader to persistance layer, now saves the song to the database (before didn't), now picks up the author (before didn't)">
       <created>1621722429729</created>
       <option name="number" value="00058" />
@@ -621,6 +644,8 @@
     <MESSAGE value="All the buttons in the music player work perfectly" />
     <MESSAGE value="It was not perfect, sad... Now I think it is!!!" />
     <MESSAGE value="It got bugged when changing the view, now it works perfectly.&#10;Alex: &quot;I love static things&quot;" />
+    <MESSAGE value="Fixing things, delete erased the file too" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixing things, delete erased the file too" />
     <MESSAGE value="WebScrapping fixed, moved song downloader to persistance layer, now saves the song to the database (before didn't), now picks up the author (before didn't)" />
     <option name="LAST_COMMIT_MESSAGE" value="WebScrapping fixed, moved song downloader to persistance layer, now saves the song to the database (before didn't), now picks up the author (before didn't)" />
   </component>
@@ -631,6 +656,9 @@
           <url>file://$PROJECT_DIR$/src/Persistence/WebScrapping/SongDownloader.java</url>
           <line>70</line>
           <option name="timeStamp" value="43" />
+          <url>file://$PROJECT_DIR$/src/Persistence/SQL/Csv/SongCsvDAO.java</url>
+          <line>147</line>
+          <option name="timeStamp" value="39" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

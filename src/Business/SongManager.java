@@ -55,7 +55,7 @@ public class SongManager {
         ArrayList<Song> aux = songs;
         aux.sort(this::compare);
         ArrayList<Song> topFive = new ArrayList<>();
-        for(int i=0; i<5; i++){
+        for(int i=0; i<5 && i<aux.size(); i++){
             topFive.add(aux.get(i));
         }
         return topFive;

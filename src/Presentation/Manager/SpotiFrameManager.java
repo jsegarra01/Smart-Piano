@@ -127,9 +127,11 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
                 break;
 
             case SEARCH_SONG:
-                this.myWebHandlingTool.doStuff(SpotiUI.getInputedSongName(), "by");
-                SongsUI.initTable(new BusinessFacadeImp().getSongManager().getSongs(), "Delete");
-                cc.show(spotiPanel, SONGS_UI);
+                //TODO CHECK
+               // searchSong(getInputedSongName());
+               // this.myWebHandlingTool.doStuff(SpotiUI.getInputedSongName(), "by");
+               // SongsUI.initTable(new BusinessFacadeImp().getSongManager().getSongs(), "Delete");
+               // cc.show(spotiPanel, SONGS_UI);
                 break;
             case Dictionary_login.PROFILE_BUTTON:           //In the case that the Profile button is pressed
                 card.show(contenedor, PROFILE_UI);
@@ -580,5 +582,17 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
             finalMidiHelper.restartSong(songPlay.getSongFile());
             finalMidiHelper.playSong(songPlay.getSongFile());
         }
+    }
+
+    private void searchSong(String songName){
+        ArrayList<Song> songs = new BusinessFacadeImp().getSongManager().getSongs();
+        ArrayList<Song> songsSearched = new ArrayList<>();
+        for (Song song : songs) {
+            if (song.getSongName().toLowerCase().contains(songName.toLowerCase())
+                    || song.getAuthorName().toLowerCase().contains(songName.toLowerCase())) {
+                songsSearched.add(song);
+            }
+        }
+        SongsUI.initTable(songsSearched, "Delete");
     }
 }

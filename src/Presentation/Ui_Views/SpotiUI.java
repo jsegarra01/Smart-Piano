@@ -321,4 +321,5 @@ public class SpotiUI extends JPanel {
         songLabel.setText(song);
         authorLabel.setText(author);
     }
+
 }

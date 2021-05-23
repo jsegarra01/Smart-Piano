@@ -13,7 +13,7 @@ public class Song {
     private final String creator;
     private int timesPlayed;
 
-    public Song(String songName, String authorName, float duration, Date recordingDate, boolean publicBoolean, String songFile, String creator, Integer timesPlayed){
+    public Song(String songName, String authorName, float duration, Date recordingDate, boolean publicBoolean, String songFile, String creator, int timesPlayed){
         this.songName = songName;
         this.authorName = authorName;
         this.duration = duration;

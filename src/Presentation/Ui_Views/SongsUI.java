@@ -7,6 +7,8 @@ import Presentation.Manager.SpotiFrameManager;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -58,6 +60,7 @@ public class SongsUI extends JPanel {
                 columnNames= new String[]{"Name Song", "Author's name", "Duration", "Recording Date", "Times Played"};
             }
         }
+
         DefaultTableModel model = new DefaultTableModel(data, columnNames){
             /**
              * TODO: ALEX WUTUFUK IS THIS
@@ -71,15 +74,21 @@ public class SongsUI extends JPanel {
             }
         };
         table = new JTable(model);
-      //  table.setPreferredSize(new Dimension(840, 530));
         table.setBackground(Color.darkGray);
         table.setGridColor(Color.lightGray);
         table.setForeground(Color.white);
         table.setRowHeight(30);
         table.setFont( new Font(table.getFont().getName(),Font.PLAIN, (int) (table.getFont().getSize()*1.5)));
+
         JScrollPane sp = new JScrollPane(table);
         sp.setBackground(Color.black);
-        sp.setPreferredSize(new Dimension(860, 550));
+        sp.setPreferredSize(new Dimension(860, 540));
+        sp.setWheelScrollingEnabled(true);
+       /* sp.addComponentListener(new ComponentAdapter() {
+            public void componentResized(ComponentEvent e) {
+                table.scrollRectToVisible(table.getCellRect(table.getRowCount()-1, 0, true));
+            }
+        });*/
 
         registerController(new SpotiFrameManager());
         if(!action.equals("topFive")){

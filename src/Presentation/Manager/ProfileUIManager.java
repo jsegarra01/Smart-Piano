@@ -38,7 +38,7 @@ public class ProfileUIManager implements ActionListener {
         // We distinguish between our buttons.
         switch (e.getActionCommand()) {
             case LOGOUT_BUTTON:                                //In the case that the Logout button is pressed
-                //TODO: check if we need to do something else
+
                 card.show(contenedor, PRE_MENU_UI);
                 break;
             case DELETE_BUTTON:                                //In the case that the Delete button is pressed

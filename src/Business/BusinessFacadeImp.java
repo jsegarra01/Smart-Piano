@@ -7,6 +7,7 @@ import Business.Entities.*;
 import Business.Threads.WebScrapping;
 
 import javax.swing.*;
+import java.io.File;
 import java.util.ArrayList;
 
 import static Presentation.Dictionary_login.*;
@@ -78,7 +79,14 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
 
     @Override
     public boolean deleteAccount() {
+        for(int i = 0; i< songManager.getSongs().size();i++){
+           if(songManager.getSongs().get(i).getCreator().equals(UserManager.getUser().getUserName()) ||
+                   songManager.getSongs().get(i).getAuthorName().equals(UserManager.getUser().getUserName())){
+               new File(songManager.getSongs().get(i).getSongFile()).delete();
+           }
+        }
         return loginUserManager.deleteUser();
+
     }
 
     @Override
