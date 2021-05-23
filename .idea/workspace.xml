@@ -20,6 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="commit to checkout">
+    <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="commit:)">
+      <change afterPath="$PROJECT_DIR$/Files/drawable/muteWhite.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Files/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/Files/config.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/BusinessFacade.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/BusinessFacade.class" afterDir="false" />
@@ -57,6 +59,8 @@
       <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/PianoTilesUISelectorManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/PianoTilesUISelectorManager.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/PreMenuUIManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/PreMenuUIManager.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/ProfileUIManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/ProfileUIManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/DictionaryPiano.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/DictionaryPiano.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/GraphTimer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/GraphTimer.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/SpotiFrameManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/SpotiFrameManager.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/FreePianoUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/FreePianoUI.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/PianoFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/PianoFrame.class" afterDir="false" />
@@ -66,10 +70,13 @@
       <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/SongsUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/SongsUI$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/SongsUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/SongsUI.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/SpotiUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/SpotiUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presentation/DictionaryPiano.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/DictionaryPiano.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presentation/Manager/GraphTimer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Manager/GraphTimer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/StatisticsUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/StatisticsUI.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/TopSongsUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/TopSongsUI.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Business/Entities/MidiHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/Entities/MidiHelper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Presentation/Manager/SpotiFrameManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Manager/SpotiFrameManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presentation/Ui_Views/SpotiUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Ui_Views/SpotiUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,7 +124,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Files/drawable" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.1345895" />
@@ -125,15 +132,15 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\svive\Desktop\Universitat\2n Carrera\Eng Informàtica\Object Oriented Programming Design\dpoo-2021-smartpiano-ice5\Files\WebScrappingResults" />
-    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="Business" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/Songs" />
       <recent name="$PROJECT_DIR$/Files/drawable" />
+      <recent name="$PROJECT_DIR$/Songs" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\svive\Desktop\Universitat\2n Carrera\Eng Informàtica\Object Oriented Programming Design\dpoo-2021-smartpiano-ice5\Files\WebScrappingResults" />
     </key>
   </component>
   <component name="RunManager" selected="Application.Main">
@@ -221,13 +228,6 @@
       <workItem from="1621333075928" duration="619000" />
       <workItem from="1621411993228" duration="13370000" />
       <workItem from="1621434489032" duration="6506000" />
-    </task>
-    <task id="LOCAL-00011" summary="Basic UI classes created and added to the cardLayout.">
-      <created>1619688112323</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1619688112323</updated>
     </task>
     <task id="LOCAL-00012" summary="Small change config">
       <created>1619904423795</created>
@@ -565,7 +565,14 @@
       <option name="project" value="LOCAL" />
       <updated>1621789063341</updated>
     </task>
-    <option name="localTasksCounter" value="61" />
+    <task id="LOCAL-00061" summary="commit:)">
+      <created>1621791290413</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1621791290413</updated>
+    </task>
+    <option name="localTasksCounter" value="62" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -607,7 +614,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="play music menu" />
     <MESSAGE value="improvement of the display a song menu" />
     <MESSAGE value="player bar" />
     <MESSAGE value="buttons player bar finished" />
@@ -685,5 +691,64 @@
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <MESSAGE value="commit:)" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit:)" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="714" y="261" key="#com.intellij.ide.util.MemberChooser" timestamp="1621787399230">
+      <screen x="0" y="23" width="1792" height="1045" />
+    </state>
+    <state x="765" y="246" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1621775908082" />
+    <state x="714" y="261" key="#com.intellij.ide.util.MemberChooser/0.23.1792.1045@0.23.1792.1045" timestamp="1621787399230" />
+    <state x="92" y="92" width="1736" height="896" key="DiffContextDialog" timestamp="1621769567384">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="92" y="92" width="1736" height="896" key="DiffContextDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1621769567384" />
+    <state width="1750" height="242" key="GridCell.Tab.0.bottom" timestamp="1621793737127">
+      <screen x="0" y="23" width="1792" height="1044" />
+    </state>
+    <state width="938" height="220" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1621774858537" />
+    <state width="1750" height="242" key="GridCell.Tab.0.bottom/0.23.1792.1044@0.23.1792.1044" timestamp="1621793737127" />
+    <state width="1750" height="242" key="GridCell.Tab.0.bottom/0.23.1792.1045@0.23.1792.1045" timestamp="1621787773128" />
+    <state width="1750" height="242" key="GridCell.Tab.0.bottom/0.23.1792.1046@0.23.1792.1046" timestamp="1621791705545" />
+    <state width="1750" height="242" key="GridCell.Tab.0.center" timestamp="1621793737123">
+      <screen x="0" y="23" width="1792" height="1044" />
+    </state>
+    <state width="938" height="220" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1621774858537" />
+    <state width="1750" height="242" key="GridCell.Tab.0.center/0.23.1792.1044@0.23.1792.1044" timestamp="1621793737123" />
+    <state width="1750" height="242" key="GridCell.Tab.0.center/0.23.1792.1045@0.23.1792.1045" timestamp="1621787773127" />
+    <state width="1750" height="242" key="GridCell.Tab.0.center/0.23.1792.1046@0.23.1792.1046" timestamp="1621791705545" />
+    <state width="1750" height="242" key="GridCell.Tab.0.left" timestamp="1621793737121">
+      <screen x="0" y="23" width="1792" height="1044" />
+    </state>
+    <state width="938" height="220" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1621774858537" />
+    <state width="1750" height="242" key="GridCell.Tab.0.left/0.23.1792.1044@0.23.1792.1044" timestamp="1621793737121" />
+    <state width="1750" height="242" key="GridCell.Tab.0.left/0.23.1792.1045@0.23.1792.1045" timestamp="1621787773127" />
+    <state width="1750" height="242" key="GridCell.Tab.0.left/0.23.1792.1046@0.23.1792.1046" timestamp="1621791705544" />
+    <state width="1750" height="242" key="GridCell.Tab.0.right" timestamp="1621793737125">
+      <screen x="0" y="23" width="1792" height="1044" />
+    </state>
+    <state width="938" height="220" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1621774858537" />
+    <state width="1750" height="242" key="GridCell.Tab.0.right/0.23.1792.1044@0.23.1792.1044" timestamp="1621793737125" />
+    <state width="1750" height="242" key="GridCell.Tab.0.right/0.23.1792.1045@0.23.1792.1045" timestamp="1621787773127" />
+    <state width="1750" height="242" key="GridCell.Tab.0.right/0.23.1792.1046@0.23.1792.1046" timestamp="1621791705545" />
+    <state x="515" y="287" key="Vcs.Push.Dialog.v2" timestamp="1621791301599">
+      <screen x="0" y="23" width="1792" height="1047" />
+    </state>
+    <state x="552" y="272" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1621769648389" />
+    <state x="515" y="286" key="Vcs.Push.Dialog.v2/0.23.1792.1045@0.23.1792.1045" timestamp="1621789081697" />
+    <state x="515" y="287" key="Vcs.Push.Dialog.v2/0.23.1792.1047@0.23.1792.1047" timestamp="1621791301599" />
+    <state x="777" y="453" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1621769586304">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="777" y="453" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1080@0.0.1920.1080" timestamp="1621769586304" />
+    <state x="507" y="264" key="git4idea.branch.GitSmartOperationDialog" timestamp="1621790659588">
+      <screen x="0" y="23" width="1792" height="1046" />
+    </state>
+    <state x="507" y="264" key="git4idea.branch.GitSmartOperationDialog/0.23.1792.1046@0.23.1792.1046" timestamp="1621790659588" />
+    <state x="616" y="250" key="run.anything.popup" timestamp="1621773962858">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="616" y="250" key="run.anything.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1621773962858" />
   </component>
 </project>

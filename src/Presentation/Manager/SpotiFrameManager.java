@@ -58,7 +58,7 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
     private static boolean addSong = false;
     private static Playlist playlist;
     private static ArrayList<Song> topFive = new ArrayList<>();
-    private static Song songPlay;
+    public static Song songPlay;
     private static boolean loop = false;
     private static boolean shuffle = false;
     private static boolean wherePlay = false;

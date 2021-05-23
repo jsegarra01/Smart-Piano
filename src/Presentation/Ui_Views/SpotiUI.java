@@ -48,6 +48,8 @@ public class SpotiUI extends JPanel {
     private static JLabel songLabel = new JLabel(SONG_PLAYING);
     private static JLabel authorLabel = new JLabel(AUTHOR_SONG);
 
+    private static final JButton mute = new JButton(MUTE_BUTTON);
+
     private GraphTimer timer = new GraphTimer();
 
     //public static JButton pauseButton = new JButton();
@@ -171,8 +173,16 @@ public class SpotiUI extends JPanel {
         profile.setBorderPainted(false);
         profile.setActionCommand(PROFILE_BUTTON);
 
+        mute.setIcon(new ImageIcon("Files/drawable/muteWhite.png"));
+        mute.setIcon(resizeIcon((ImageIcon) mute.getIcon(), (int) Math.round(mute.getIcon().getIconWidth()*0.10), (int) Math.round(mute.getIcon().getIconHeight()*0.10)));
+        mute.setOpaque(false);
+        mute.setContentAreaFilled(false);
+        mute.setBorderPainted(false);
+        mute.setActionCommand(MUTE_BUTTON);
+
         JPanel musicPlayer = new JPanel(new GridBagLayout());
         JPanel lowPanel = new JPanel(new BorderLayout());
+        JPanel panelButton = new JPanel(new GridBagLayout());
 
         //lowPanel.setPreferredSize(new Dimension(10,90));
         songPanel.setBackground(Color.getHSBColor(10,0,0.3f));
@@ -186,13 +196,18 @@ public class SpotiUI extends JPanel {
         lowPanel.setBackground(Color.getHSBColor(10,0,0.3f));
         musicPlayer.setPreferredSize(new Dimension(10,90));
         musicPlayer.setBackground(Color.getHSBColor(10,0,0.3f));
+        panelButton.setBackground(Color.getHSBColor(10,0,0.3f));
         musicPlayer.add(shuffleButton);
         musicPlayer.add(backButton);
         musicPlayer.add(playButton);
         musicPlayer.add(nextButton);
         musicPlayer.add(loopButton);
+        panelButton.add(profile);
+        panelButton.add(mute);
         lowPanel.add(musicPlayer, BorderLayout.CENTER);
-        lowPanel.add(profile, BorderLayout.EAST);
+        lowPanel.add(panelButton, BorderLayout.EAST);
+        //lowPanel.add(profile, BorderLayout.EAST);
+        //lowPanel.add(mute, BorderLayout.WEST);
         lowPanel.add(songPanel, BorderLayout.WEST);
         add(lowPanel, BorderLayout.SOUTH);
 
