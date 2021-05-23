@@ -3,6 +3,7 @@ package Presentation.Manager;
 import Business.BusinessFacadeImp;
 import Business.Entities.Stadistics;
 import Presentation.Manager.SpotiFrameManager;
+import Presentation.Ui_Views.SongsUI;
 
 import javax.swing.*;
 
@@ -36,6 +37,9 @@ public class GraphTimer implements ActionListener {
                     }
                 }
                 letsInitializeGraphs(getMinPlayed(), getNumSongs());
+                /*new BusinessFacadeImp().getSongManager().updateSongPlayed(songPlay);
+                new BusinessFacadeImp().setSongUser();
+                new BusinessFacadeImp().getSongManager().getTopFive();*/
                 break;
         }
 
