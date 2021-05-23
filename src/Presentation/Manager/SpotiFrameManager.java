@@ -90,7 +90,6 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
      */
     public SpotiFrameManager(BusinessFacadeImp myFacade) {
         this.myFacade = myFacade;
-        System.out.println("hello");
     }
 
     /**
