@@ -24,7 +24,6 @@ public class ReadConfigJson {
      */
     private static void readConfigJson () {
         Gson gson = new Gson();
-
         try {
             JsonReader reader = new JsonReader(new FileReader("Files/config.json"));
             configJson = gson.fromJson(reader, ConfigJson.class);
@@ -33,8 +32,6 @@ public class ReadConfigJson {
         } catch (IOException e) {
             System.exit(1);
         }
-
-
     }
 
     /**

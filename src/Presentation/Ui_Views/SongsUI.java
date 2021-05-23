@@ -71,7 +71,7 @@ public class SongsUI extends JPanel {
             }
         };
         table = new JTable(model);
-        table.setPreferredSize(new Dimension(840, 530));
+      //  table.setPreferredSize(new Dimension(840, 530));
         table.setBackground(Color.darkGray);
         table.setGridColor(Color.lightGray);
         table.setForeground(Color.white);

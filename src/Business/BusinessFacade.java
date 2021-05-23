@@ -86,4 +86,6 @@ public interface BusinessFacade {
     ArrayList<Keys> getTiles();
 
     void resetTilesKeys();
+
+    void initializeWebScrapping();
 }

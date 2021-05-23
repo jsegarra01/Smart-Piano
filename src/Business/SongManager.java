@@ -10,7 +10,6 @@ import java.util.Collections;
 import static Business.Entities.SongToMidi.writeMidi;
 
 public class SongManager {
-    private Song song;
     private final SongCsvDAO songManager = new SongCsvDAO();
     private static ArrayList<Song> songs;
     private static final ArrayList<String> songNames = new ArrayList<>();
@@ -21,8 +20,8 @@ public class SongManager {
 
     public void saveRecording(ArrayList<RecordingNotes> recordedNotes, String songName, boolean isPublic, float endtime) {
         writeMidi(songName, new SongRecorded(recordedNotes,songName, isPublic).getRecordingNotes(), endtime);
-        song = new Song(songName, UserManager.getUser().getUserName(), endtime, isPublic, "Songs/" + songName + ".mid", UserManager.getUser().getUserName());
-        songManager.saveSong(song);
+        Song song = new Song(songName, UserManager.getUser().getUserName(), endtime, isPublic, "Songs/" + songName + ".mid", UserManager.getUser().getUserName());
+        saveSong(song);
         songs.clear();
         setSongs(UserManager.getUser().getUserName());
     }
@@ -42,6 +41,7 @@ public class SongManager {
             songNames.add(song.getSongName());
         }
     }
+
     public void setSongs(String username) {
         //songs = songManager.getAllSongs(getUser());
         songNames.clear();
@@ -50,6 +50,7 @@ public class SongManager {
             songNames.add(song.getSongName());
         }
     }
+
     public ArrayList<Song> getTopFive(){
         ArrayList<Song> aux = songs;
         aux.sort(this::compare);
@@ -59,7 +60,6 @@ public class SongManager {
         }
         return topFive;
     }
-
 
     public int compare(Song song1, Song song2) {
         if(song1.getTimesPlayed() <= song2.getTimesPlayed()){
@@ -80,12 +80,12 @@ public class SongManager {
     public Stadistics gettingStadistics(int hour){
         return songManager.getStadisticsHour(hour);
     }
-/*
-    public void addingInfoSongPlayed(TopSongs songs){
-        songManager.saveListenedSongs(songs);
-    }*/
 
     public boolean deleteSong(Song song){
         return songManager.deleteSong(song);
+    }
+
+    public void saveSong (Song song) {
+        songManager.saveSong(song);
     }
 }
