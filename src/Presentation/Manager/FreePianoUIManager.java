@@ -170,10 +170,9 @@ public class FreePianoUIManager implements ActionListener, MouseListener {
     }
 
 
-    //TODO I DON'T UNDERSTAND THESE METHODS, ALEX EXPLICA QUE CONY SON :p (LA SEGUENT TMB PORFAPLIS)
     /**
-     *
-     * @param string
+     * Method that sets the key as pressed
+     * @param string Defines the string that stores the tile which has been pressed
      */
     private void setIconKey(String string){
         int i = 0;

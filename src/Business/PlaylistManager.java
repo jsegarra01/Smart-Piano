@@ -8,19 +8,42 @@ import Persistence.SQL.Csv.SongCsvDAO;
 
 import java.util.ArrayList;
 
+/**
+ * PlaylistManager
+ *
+ * The "PlaylistManager" class will contain the different methods that are needed to control the playlists
+ *
+ * @author OOPD 20-21 ICE5
+ * @version 1.0 21 Apr 2021
+ *
+ */
 public class PlaylistManager {
     private ArrayList<Playlist> playlists;
     private final PlaylistCsvDAO playlistCsvDAO = new PlaylistCsvDAO();
     private final SongCsvDAO songCsvDAO = new SongCsvDAO();
 
-
+    /**
+     * Gets all the playlists
+     * @return List of playlists
+     */
     public ArrayList<Playlist> getPlaylists() {
         return playlists;
     }
 
+    /**
+     * Gets all the playlists of a user
+     * @param username The user from whom we will get the playlists
+     */
     public void setPlaylists(String username) {
         playlists = playlistCsvDAO.getPlaylistByUser(username);
     }
+
+    /**
+     * Deletes a song from a playlist
+     * @param playlistName The playlist to delete from
+     * @param songName The song to delete
+     * @return True if delete, false if not
+     */
     public boolean eliminateSongFromPlaylist(String playlistName, String songName){
         boolean check = deleteFromPlaylist(playlistName, songName);
         if(check){
@@ -28,6 +51,13 @@ public class PlaylistManager {
         }
         return false;
     }
+
+    /**
+     * Adds a song to a playlist
+     * @param playlistName The playlist where we will add the song
+     * @param songName The song to add
+     * @return True if added, false if not
+     */
     public boolean addSongToPlaylist(String playlistName, String songName){
         boolean check = addToPlaylist(playlistName, songName);
         if(check){
@@ -38,6 +68,11 @@ public class PlaylistManager {
 
     }
 
+    /**
+     * Gets a playlist from the list of playlists
+     * @param name Name of the playlist we want to get
+     * @return The playlist
+     */
     public Playlist getFromName(String name){
         int i = 0;
         boolean found = false;
@@ -55,11 +90,23 @@ public class PlaylistManager {
         }
     }
 
+    /**
+     * Creates a new playlist
+     * @param playlist Name of the playlist
+     * @param username Name of the creator
+     * @return True if created, false if not
+     */
     public boolean newPlaylist(String playlist, String username){
         playlists.add(new Playlist(playlist, username));
         return playlistCsvDAO.savePlaylist( playlist, username);
     }
 
+    /**
+     * TODO: quina es la diferencia entre aquesta i la de 3 funcions amunt
+     * @param playlist
+     * @param songName
+     * @return
+     */
     private boolean addToPlaylist(String playlist, String songName){
         int i = 0;
         boolean found = false;
@@ -82,6 +129,12 @@ public class PlaylistManager {
         return false;
     }
 
+    /**
+     * TODO: quina es la diferencia entre aquesta i la de 3 funcions amunt
+     * @param playlist
+     * @param songName
+     * @return
+     */
     private boolean deleteFromPlaylist(String playlist, String songName){
         int i = 0;
         int j = 0;

@@ -472,23 +472,29 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
                 "New Playlist"
         );
     }
+
+    /**
+     * Initializes the table of songs
+     */
     public static void resetSongs(){
         SongsUI.initTable(new BusinessFacadeImp().getSongManager().getSongs(), "Delete");
     }
 
+    /**
+     * Plays a song and changes the icon to the pause one
+     */
     private static void playMusic(){
         playButton.setIcon(pauseIcon);
-        playButton.setIcon(resizeIcon((ImageIcon) playButton.getIcon(), (int) Math.round(playButton.getIcon().getIconWidth()*0.09),
-                (int) Math.round(playButton.getIcon().getIconHeight()*0.09)));
         startMin = System.currentTimeMillis();
         finalMidiHelper.playSong(songPlay.getSongFile());
         play = true;
     }
 
+    /**
+     * Stops playing a song, gets the minutes that has been played and sets the icon back to the play one
+     */
     private static void stopMusic(){
         playButton.setIcon(playIcon);
-        playButton.setIcon(resizeIcon((ImageIcon) playButton.getIcon(), (int) Math.round(playButton.getIcon().getIconWidth()*0.09),
-                (int) Math.round(playButton.getIcon().getIconHeight()*0.09)));
         play = false;
         lastMin = System.currentTimeMillis();
         minPlayed = (float)(lastMin - startMin)/60000;
@@ -496,59 +502,89 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
         finalMidiHelper.stopSong();
     }
 
+    /**
+     * Sets the corresponent shuffle button depending if the shuffle option is activated
+     * @param active True if active, false if not
+     */
     private void setIconShuffleActive(boolean active){
         if(active){
             shuffleButton.setIcon(new ImageIcon("Files/drawable/shuffleAcive.png"));
         }else{
             shuffleButton.setIcon(new ImageIcon("Files/drawable/shuffleWhite.png"));
         }
-        shuffleButton.setIcon(resizeIcon((ImageIcon) shuffleButton.getIcon(), (int) Math.round(shuffleButton.getIcon().getIconWidth()*0.05),
-                (int) Math.round(shuffleButton.getIcon().getIconHeight()*0.05)));
     }
 
+    /**
+     * Sets the corresponent loop button depending if the loop option is activated
+     * @param active True if active, false if not
+     */
     private void setIconLoopActive(boolean active){
         if(active){
             loopButton.setIcon(new ImageIcon("Files/drawable/exchange.png"));
         }else{
             loopButton.setIcon(new ImageIcon("Files/drawable/exchangeWhite.png"));
         }
-        loopButton.setIcon(resizeIcon((ImageIcon) loopButton.getIcon(), (int) Math.round(loopButton.getIcon().getIconWidth()*0.05),
-                (int) Math.round(loopButton.getIcon().getIconHeight()*0.05)));
     }
 
+    /**
+     * Gets the next song to play and plays it
+     */
     private static  void nextSongFromSong(){
         songPlay = nextSongSongs(songPlay.getSongFile());
         playMusicSetLabel();
     }
+
+    /**
+     * Gets the previous song to play and plays it
+     */
     private void previousSongFromSong(){
         songPlay = previousSongSongs(songPlay.getSongFile());
         playMusicSetLabel();
     }
 
+    /**
+     * Gets the next song to play from a playlist and plays it
+     */
     private static void nextSongFromPlaylist(){
         songPlay = nextSongPlaylist(songPlay.getSongFile());
         playMusicSetLabel();
     }
 
+    /**
+     * Gets the previous song to play from a playlist and plays it
+     */
     private void previousSongFromPlaylist(){
         songPlay = previousSongPlaylist(songPlay.getSongFile());
         playMusicSetLabel();
-
     }
+
+    /**
+     * Calls the method to play music adn sets the labels for the song
+     */
     private static void playMusicSetLabel(){
         playMusic();
         SpotiUI.setSong(songPlay.getSongName(), songPlay.getAuthorName());
     }
 
+    /**
+     * Gets a random song from a playlist and plays it
+     */
     private static void randomFromPlaylist(){
         songPlay = playlist.getSongs().get(new Random().nextInt(playlist.getSongs().size()));
         playMusicSetLabel();
     }
+
+    /**
+     * Gets a random song from all available songs and plays it
+     */
     private static void randomFromSongs(){
         songPlay = new BusinessFacadeImp().getSongManager().getSongs().get(new Random().nextInt(new BusinessFacadeImp().getSongManager().getSongs().size()));
         playMusicSetLabel();
     }
 
+    /**
+     * Decides which method to call depending on which option the user has selected
+     */
     private static void playSongTime(){
         if(!loop){
             if(!shuffle){

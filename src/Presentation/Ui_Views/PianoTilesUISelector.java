@@ -102,7 +102,6 @@ public class PianoTilesUISelector extends Piano {
 
         playButtonTiles.setBackground(Color.getHSBColor(0,0,80.3f));
         playButtonTiles.setIcon(new ImageIcon("Files/drawable/play-button.png"));
-        playButtonTiles.setIcon(resizeIcon((ImageIcon) playButtonTiles.getIcon(), (int) Math.round(playButtonTiles.getIcon().getIconWidth()*0.15), (int) Math.round(playButtonTiles.getIcon().getIconHeight()*0.15)));
         playButtonTiles.setForeground(Color.getHSBColor(0,0,80.3f));
         playButtonTiles.setOpaque(false);
         playButtonTiles.setContentAreaFilled(false);

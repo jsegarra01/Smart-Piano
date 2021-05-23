@@ -165,8 +165,7 @@ public class SpotiUI extends JPanel {
         nextButton    = createConfButtons("Files/drawable/fordwardtrackWhite.png", 0, 60, NEXT_BUTTON);
         loopButton    = createConfButtons("Files/drawable/exchangeWhite.png", 0, 10, LOOP_BUTTON);
         playButton.setIcon(new ImageIcon("Files/drawable/playbuttonWhite.png"));
-        playButton.setIcon(resizeIcon((ImageIcon) playButton.getIcon(), (int) Math.round(playButton.getIcon().getIconWidth()*0.09),
-                (int) Math.round(playButton.getIcon().getIconHeight()*0.09)));
+
         confButtonsBar(playButton, 0, 60);
         playButton.setActionCommand(PLAY_BUTTON);
 
@@ -200,7 +199,6 @@ public class SpotiUI extends JPanel {
         musicPlayer.add(loopButton);
         lowPanel.add(musicPlayer, BorderLayout.CENTER);
         lowPanel.add(profile, BorderLayout.EAST);
-        //lowPanel.add(Box.createRigidArea(new Dimension(30,10)), BorderLayout.WEST);
         lowPanel.add(songPanel, BorderLayout.WEST);
         add(lowPanel, BorderLayout.SOUTH);
 
@@ -219,8 +217,6 @@ public class SpotiUI extends JPanel {
         JButton toReturnButton;
         toReturnButton = new JButton();
         toReturnButton.setIcon(new ImageIcon(imagePath));
-        toReturnButton.setIcon(resizeIcon((ImageIcon) toReturnButton.getIcon(), (int) Math.round(toReturnButton.getIcon().getIconWidth()*0.05),
-                (int) Math.round(toReturnButton.getIcon().getIconHeight()*0.05)));
         confButtonsBar(toReturnButton, index1, index2);
         toReturnButton.setActionCommand(label);
         return toReturnButton;
@@ -324,5 +320,4 @@ public class SpotiUI extends JPanel {
         songLabel.setText(song);
         authorLabel.setText(author);
     }
-
 }
