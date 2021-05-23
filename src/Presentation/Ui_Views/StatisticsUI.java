@@ -53,7 +53,7 @@ public class StatisticsUI extends JPanel {
     /**
      * The initialize function that creates the card layout for the StatisticsUI
      */
-    private static void initialize() {
+    public static void initialize() {
         panel.removeAll();
         JPanel layout = new JPanel(new BorderLayout());
         layout.setBackground(Color.black);
@@ -71,7 +71,7 @@ public class StatisticsUI extends JPanel {
     /**
      * Creates the graphs with the statistics recolected and displays them
      */
-    private static void createAndShowGui() {
+    public static void createAndShowGui() {
         graph1  = new Graph(numSongs, "Number of times played", true);
         JLabel title1 = new JLabel("# Songs");
         title1.setHorizontalAlignment(JLabel.CENTER);

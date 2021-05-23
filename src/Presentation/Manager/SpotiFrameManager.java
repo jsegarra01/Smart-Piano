@@ -1,6 +1,7 @@
 package Presentation.Manager;
 
 //Imports needed from the dictionary, events and mainframe
+import Business.BusinessFacade;
 import Business.Entities.*;
 import Business.BusinessFacadeImp;
 import Business.Entities.MidiHelper;
@@ -27,7 +28,7 @@ import static Presentation.Dictionary_login.PROFILE_UI;
 import static Presentation.Manager.MainFrame.card;
 import static Presentation.Manager.MainFrame.contenedor;
 import static Presentation.Ui_Views.SpotiUI.*;
-import static Presentation.Ui_Views.StatisticsUI.letsInitializeGraphs;
+import static Presentation.Ui_Views.StatisticsUI.*;
 import static Presentation.Ui_Views.Tile.resizeIcon;
 
 
@@ -41,6 +42,8 @@ import static Presentation.Ui_Views.Tile.resizeIcon;
  *
  */
 public class SpotiFrameManager extends AbstractAction implements ActionListener, MouseListener {
+
+    private BusinessFacadeImp myFacade;
 
     public static final String URLRoute = "https://www.mutopiaproject.org/cgibin/make-table.cgi?Instrument=Piano";
     private static final String path = "Songs";
@@ -79,7 +82,8 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
     /**
      * Parametrized constructor
      */
-    public SpotiFrameManager() {
+    public SpotiFrameManager(BusinessFacadeImp myFacade) {
+        this.myFacade = myFacade;
     }
 
     /**
@@ -107,19 +111,7 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
                 cc.show(spotiPanel, /*TOPSONGS_UI*/ SONGS_UI);
                 break;
             case CREATE_PLAYLIST:
-                String result = createPanelPlaylist();
-                if(result != null && result.length() > 0 && result.indexOf('\'') == -1){
-                    new BusinessFacadeImp().newPlaylist(result);
-                    playlist = new BusinessFacadeImp().getPlaylist(result);
-                    PlaylistUI.setSongsPlaylists(playlist);
-                    cc.show(spotiPanel, PLAYLIST_UI);
-                    addPlaylists(new BusinessFacadeImp().getPlaylistManager().getPlaylists());
-                }
-                else {
-                    JOptionPane.showMessageDialog(null,
-                            "The input is not correct!", "Create Playlist Error" ,
-                            JOptionPane.ERROR_MESSAGE);
-                }
+                playlist = myFacade.createPlaylist();
                 break;
 
             case SEARCH_SONG:
@@ -154,10 +146,9 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
                         }
                     }else{
                         finalMidiHelper.restartSong(songPlay.getSongFile());
-                        finalMidiHelper.playSong(songPlay.getSongFile());
+                        //finalMidiHelper.playSong(songPlay.getSongFile());
                     }
                 }
-
                 break;
             case NEXT_BUTTON:
                 if(songPlay!=null){
@@ -169,6 +160,7 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
                 setIconLoopActive(loop);
                 break;
             case PLAY_BUTTON:
+                letsInitializeGraphs(getMinPlayed(), getNumSongs());
                 if(songPlay!=null){
                     if(!play){
                         playMusic();
@@ -268,7 +260,7 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
      * Gets the amount of minutes songs have been played in order to make the statistics
      * @return Amount of minutes that have been played for each hour
      */
-    public LinkedList<Float> getMinPlayed(){
+    public static LinkedList<Float> getMinPlayed(){
         LinkedList<Float> numMin = new LinkedList<>();
         for(int i=0; i<24; i++ ){
             if(new BusinessFacadeImp().getSongManager().gettingStadistics(i) == null){
@@ -578,6 +570,9 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
             finalMidiHelper.restartSong(songPlay.getSongFile());
             finalMidiHelper.playSong(songPlay.getSongFile());
         }
+        setNumSongs(getNumSongs());
+        setNumMin(getMinPlayed());
+        initialize();
     }
 
     private void searchSong(String songName){

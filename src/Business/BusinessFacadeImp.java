@@ -7,13 +7,17 @@ import Business.Entities.*;
 import Business.Threads.WebScrapping;
 import Presentation.Manager.SpotiFrameManager;
 import Presentation.Ui_Views.FreePianoUI;
+import Presentation.Ui_Views.PlaylistUI;
+import Presentation.Ui_Views.SpotiUI;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.io.File;
 import java.util.ArrayList;
 
 import static Presentation.DictionaryPiano.FREE_PIANO_UI;
+import static Presentation.DictionaryPiano.PLAYLIST_UI;
 import static Presentation.Dictionary_login.*;
 import static Presentation.Manager.MainFrame.card;
 import static Presentation.Manager.MainFrame.contenedor;
@@ -23,6 +27,7 @@ import static Presentation.Ui_Views.PianoFrame.centralPanel;
 import static Presentation.Ui_Views.PianoFrame.mainFrame;
 import static Presentation.Ui_Views.PianoTilesUISelector.setKeys;
 import static Presentation.Ui_Views.SignUpUI.*;
+import static Presentation.Ui_Views.SpotiUI.spotiPanel;
 
 /**
  * BusinessFacade
@@ -134,6 +139,28 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public Playlist createPlaylist(){
+        Playlist myPlayList = null;
+
+        String myStr = (String)JOptionPane.showInputDialog(
+                null, "Which name is your playlist going to have?",
+                "Playlist Creator", JOptionPane.PLAIN_MESSAGE, null, null, "New Playlist");
+
+        if(myStr != null && myStr.length() > 0 && myStr.indexOf('\'') == -1){
+            new BusinessFacadeImp().newPlaylist(myStr);
+            myPlayList = playlistManager.getFromName(myStr);
+            PlaylistUI.setSongsPlaylists(myPlayList);
+            CardLayout myCard = (CardLayout)spotiPanel.getLayout();
+            myCard.show(spotiPanel, PLAYLIST_UI);
+            SpotiUI.addPlaylists(playlistManager.getPlaylists());
+        } else {
+            JOptionPane.showMessageDialog(null,
+                    "The input is not correct!", "Create Playlist Error" ,
+                    JOptionPane.ERROR_MESSAGE);
+        }
+        return myPlayList;
     }
 
     public void setAllKeys(){

@@ -1,5 +1,7 @@
 package Presentation.Ui_Views;
 
+import Business.BusinessFacade;
+import Business.BusinessFacadeImp;
 import Business.Entities.ButtonColumn;
 import Business.Entities.Song;
 import Presentation.Manager.SpotiFrameManager;
@@ -89,10 +91,10 @@ public class SongsUI extends JPanel {
                 table.scrollRectToVisible(table.getCellRect(table.getRowCount()-1, 0, true));
             }
         });*/
-
-        registerController(new SpotiFrameManager());
+        SpotiFrameManager myManager = new SpotiFrameManager(SpotiUI.myFacade);
+        registerController(myManager);
         if(!action.equals("topFive")){
-            registerController(new SpotiFrameManager());
+            registerController(myManager);
         }
         panel.add(sp);
         panel.revalidate();

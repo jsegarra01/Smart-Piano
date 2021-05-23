@@ -1,6 +1,8 @@
 package Presentation.Ui_Views;
 
 //import data from the different libraries
+import Business.BusinessFacade;
+import Business.BusinessFacadeImp;
 import Business.Entities.Playlist;
 import Business.Entities.Song;
 import Presentation.Manager.SpotiFrameManager;
@@ -106,7 +108,6 @@ public class PlaylistUI extends JPanel {
                                             }
                                             if(!foundSong){
                                                 panelSongs.remove(j);
-                                                foundSong = false;
                                             }
                                         }
                                     }
@@ -222,10 +223,10 @@ public class PlaylistUI extends JPanel {
         button.setName(playlist.getSongs().get(i).getSongName());
         button.setActionCommand(SONG_PLAYLIST);
         button.setText("Delete");
-        button.addActionListener(new SpotiFrameManager());
+        button.addActionListener(new SpotiFrameManager(SpotiUI.myFacade));
         panel1.add(Box.createHorizontalStrut(40));
         panel1.add(button);
-        panel1.addMouseListener(new SpotiFrameManager());
+        panel1.addMouseListener(new SpotiFrameManager(SpotiUI.myFacade));
         panel1.setName(playlist.getSongs().get(i).getSongFile());
         return panel1;
     }
@@ -237,7 +238,7 @@ public class PlaylistUI extends JPanel {
     private static JButton addSong(){
         JButton add = new JButton(ADD_SONG);
         add.setActionCommand(ADD_SONG_COMM);
-        add.addActionListener(new SpotiFrameManager());
+        add.addActionListener(new SpotiFrameManager(SpotiUI.myFacade));
         add.setText("+");
         return add;
     }
