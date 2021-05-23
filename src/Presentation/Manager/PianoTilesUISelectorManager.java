@@ -164,10 +164,9 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
     }
 
 
-    //TODO I DON'T UNDERSTAND THESE METHODS, ALEX EXPLICA QUE CONY SON :p (LA SEGUENT TMB PORFAPLIS)
     /**
-     *
-     * @param string
+     * Method that sets the tile to be pressed
+     * @param string Defines the tile that has been pressed
      */
     private void setIconKey(String string){
         int i = 0;

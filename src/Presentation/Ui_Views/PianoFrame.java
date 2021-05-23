@@ -72,16 +72,19 @@ public class PianoFrame extends JPanel {
         freePiano.setAlignmentX(0.5f);
         freePiano.setBorder(new EmptyBorder(80,40,80,40));
         freePiano.setBackground(Color.getHSBColor(0,0,80.3f));
+        freePiano.setOpaque(true);
 
         playSong.setActionCommand(PLAY_A_SONG);
         playSong.setAlignmentX(0.5f);
         playSong.setBorder(new EmptyBorder(80,37,80,37));
         playSong.setBackground(Color.GRAY);
+        playSong.setOpaque(true);
 
         musicPlayer.setActionCommand(MUSIC_PLAYER);
         musicPlayer.setAlignmentX(0.5f);
         musicPlayer.setBorder(new EmptyBorder(80,33,80,33));
         musicPlayer.setBackground(Color.GRAY);
+        musicPlayer.setOpaque(true);
 
         registerController(new PianoFrameManager());
 

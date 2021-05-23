@@ -27,29 +27,38 @@ public class SongCsvDAO implements SongDAO {
      */
     private ArrayList<Song> songFromCsv(String myUserString) {
         try {
-            ResultSet myRs = ConnectSQL.getInstance().createStatement().executeQuery("select * from SongT as s where (s.username " +
-                    "                    like '"+ myUserString+"' and publicBoolean = false) or publicBoolean = true;");
-            ArrayList<Song> songs = myRsToSongs(myRs);
-            myRs.close();
-            return songs;
+            if(ConnectSQL.getInstance()!=null){
+                ResultSet myRs = ConnectSQL.getInstance().createStatement().executeQuery("select * from SongT as s where (s.username " +
+                        " like '"+ myUserString+"' and publicBoolean = false) or publicBoolean = true;");
+                ArrayList<Song> songs = myRsToSongs(myRs);
+                myRs.close();
+                return songs;
+            }
+
 
         } catch (SQLException throwable) {
             return null;
         }
+        return null;
     }
 
-
+    /**
+     * Method that gets all the songs from the database that are public
+     * @return ArrayList of songs
+     */
     private ArrayList<Song> songFromCsv() {
         try {
-            ResultSet myRs = ConnectSQL.getInstance().createStatement().executeQuery("select * from SongT as s where" +
-                    " publicBoolean = true;");
-            ArrayList<Song> songs = myRsToSongs(myRs);
-            myRs.close();
-            return songs;
-
+            if(ConnectSQL.getInstance()!=null){
+                ResultSet myRs = ConnectSQL.getInstance().createStatement().executeQuery("select * from SongT as s where" +
+                        " publicBoolean = true;");
+                ArrayList<Song> songs = myRsToSongs(myRs);
+                myRs.close();
+                return songs;
+            }
         } catch (SQLException throwable) {
             return null;
         }
+        return null;
     }
 
     /**
@@ -78,45 +87,47 @@ public class SongCsvDAO implements SongDAO {
 
     /**
      * Method that stores the song in the database
-     *
      * @param mySaveSong Defines the song to be stored
      */
     @Override
     public boolean saveSong(Song mySaveSong) {
         try {
-            PreparedStatement st = ConnectSQL.getInstance().prepareStatement(
-                    "insert into SongT (songName, authorsName, duration, recordingDate, publicBoolean, songFile, username) values ('" +
-                            mySaveSong.getSongName() + "', '" +
-                            mySaveSong.getAuthorName() + "', '" +
-                            mySaveSong.getDuration() + "', " +
-                            "current_date, " +
-                            mySaveSong.isPublicBoolean() + ", '" +
-                            mySaveSong.getSongFile() + "', '" +
-                            mySaveSong.getCreator() + "')");
-            st.execute();
-            return true;
-
+            if(ConnectSQL.getInstance()!=null){
+                PreparedStatement st = ConnectSQL.getInstance().prepareStatement(
+                        "insert into SongT (songName, authorsName, duration, recordingDate, publicBoolean, songFile, username) values ('" +
+                                mySaveSong.getSongName() + "', '" +
+                                mySaveSong.getAuthorName() + "', '" +
+                                mySaveSong.getDuration() + "', " +
+                                "current_date, " +
+                                mySaveSong.isPublicBoolean() + ", '" +
+                                mySaveSong.getSongFile() + "', '" +
+                                mySaveSong.getCreator() + "')");
+                st.execute();
+                return true;
+            }
         } catch (SQLException throwable) {
             return false;
         }
+        return false;
     }
-
 
     /**
      * Method that deletes the song depending on the id from the database
-     *
      * @param mySong Defines the song to be deleted from the database
      */
     @Override
     public boolean deleteSong(Song mySong) {
         try {
-            PreparedStatement st = ConnectSQL.getInstance().prepareStatement("delete from SongT where songName = '" +
-                    mySong.getSongName() + "'");
-            st.execute();
-            return true;
+            if(ConnectSQL.getInstance()!=null){
+                PreparedStatement st = ConnectSQL.getInstance().prepareStatement("delete from SongT where songName = '" +
+                        mySong.getSongName() + "'");
+                st.execute();
+                return true;
+            }
         } catch (SQLException e) {
             return false;
         }
+        return false;
     }
 
     /**
@@ -128,25 +139,27 @@ public class SongCsvDAO implements SongDAO {
     @Override
     public Song getSongByID(int id) {
         try {
-            ResultSet myRs = ConnectSQL.getInstance().createStatement().executeQuery("select * from SongT as s where s.songId LIKE " + id);
-            if (myRs.next()) {
-                Song song = new Song(
-                        myRs.getString("songName"),
-                        myRs.getString("authorsName"),
-                        myRs.getFloat("duration"),
-                        myRs.getDate("recordingDate"),
-                        myRs.getBoolean("publicBoolean"),
-                        myRs.getString("songFile"),
-                        myRs.getString("username"),
-                        myRs.getInt("numTimesPlayed"));
-                myRs.close();
-                return song;
-            } else {
-                return null;
+            if(ConnectSQL.getInstance()!=null){
+
+                ResultSet myRs = ConnectSQL.getInstance().createStatement().executeQuery("select * from SongT as s where s.songId LIKE " + id);
+                if (myRs.next()) {
+                    Song song = new Song(
+                            myRs.getString("songName"),
+                            myRs.getString("authorsName"),
+                            myRs.getFloat("duration"),
+                            myRs.getDate("recordingDate"),
+                            myRs.getBoolean("publicBoolean"),
+                            myRs.getString("songFile"),
+                            myRs.getString("username"),
+                            myRs.getInt("numTimesPlayed"));
+                    myRs.close();
+                    return song;
+                }
             }
         } catch (SQLException throwables) {
             return null;
         }
+        return null;
 
     }
 
