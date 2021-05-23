@@ -15,22 +15,39 @@ import java.util.ArrayList;
 public interface PlaylistDAO {
 
     /**
-     *
-     * @param playlist
+     * Method that inserts a new playlist into the database
+     * @param playlist Defines the name of the playlist to be inserted
+     * @param username Defines the name of the username that has created the playlist
      */
     boolean savePlaylist(String playlist, String username);
 
     /**
-     *
-     * @param playlist
+     * Method that deletes a playlist
+     * @param playlist Defines the playlist to be deleted
      */
     boolean deletePlaylist(Playlist playlist);
 
     /**
-     *
-     * @param username
-     * @return
+     * Method that gets the array of playlists from a user
+     * @param username Defines the username of the playlist
+     * @return ArrayList of playlists whose author is the user defined in the parameter
      */
     ArrayList<Playlist> getPlaylistByUser(String username);
+
+    /**
+     * Method that deletes a song from a playlist from the database
+     * @param playlistName Defines the name of the playlist
+     * @param songName Defines the name of the song to be deleted
+     * @return True if there has been no error, false if there has been
+     */
+    boolean deleteSongFromPlaylist(String playlistName, String songName);
+
+    /**
+     * Method that adds a song into a playlist
+     * @param playlistName Defines the name of the playlist
+     * @param songName Defines the name of the song to be added
+     * @return True if there has been no error, false if there has been
+     */
+    boolean addSongToPlaylist(String playlistName, String songName);
 
 }

@@ -1,7 +1,6 @@
 package Presentation.Ui_Views;
 
 //Imports all necessary libraries
-import Business.BusinessFacade;
 import Business.BusinessFacadeImp;
 import Presentation.Manager.MainFrame;
 import Presentation.Manager.PianoFrameManager;
@@ -15,12 +14,13 @@ import java.awt.event.ActionListener;
 import static Presentation.DictionaryPiano.*;
 
 /**
- * TempFreePianoUI
+ * PianoFrame
  *
- * The "TempFreePianoUI" class will contain the different methods to create the view class card layout "TempFreePianoUI" and TempFreePiano interface
+ * The "PianoFrame" class will contains the main panel of the whole project, which will have inside the
+ * different card layouts.
  *
  * @author OOPD 20-21 ICE5
- * @version 1.5 1 May 2021
+ * @version 1.5 23 May 2021
  *
  */
 public class PianoFrame extends JPanel {
@@ -35,9 +35,6 @@ public class PianoFrame extends JPanel {
     PianoTilesUISelector pianoTilesUISelector;
     SpotiUI spotiUI;
     FreePianoUI freePianoUI;
-    private BusinessFacadeImp myFacade;
-
-
 
 
     /**
@@ -46,7 +43,6 @@ public class PianoFrame extends JPanel {
      */
     public PianoFrame(final MainFrame mainFrame, BusinessFacadeImp myFacade) {
         super();
-        this.myFacade = myFacade;
         PianoFrame.mainFrame =mainFrame;
 
         pianoTilesUISelector = new PianoTilesUISelector(mainFrame);
@@ -109,22 +105,6 @@ public class PianoFrame extends JPanel {
         this.setVisible(true);
         mainFrame.pack();
     }
-    /*
-    public static void refreshPianoTilesUI() {
-        try {
-            //         centralPanel.remove(pianoTilesUISelector);
-            //   pianoTilesUISelector = new PianoTilesUISelector(mainFrame);
-            //       centralPanel.add(pianoTilesUISelector, PIANO_TILES_UI_SELECTOR);
-            refresh();
-            pianoTilesUISelector.revalidate();
-            pianoTilesUISelector.repaint();
-            centralPanel.revalidate();
-            centralPanel.repaint();
-            centralPanel.updateUI();
-        } catch (NullPointerException e) {
-
-        }
-    }*/
 
     /**
      * Method to add the action listeners to the buttons

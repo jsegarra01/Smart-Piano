@@ -11,30 +11,30 @@ import java.util.List;
  * The "Graph" class will contain the different methods needed to set, get and manage a Graph
  *
  * @author OOPD 20-21 ICE5
- * @version 1.0 21 Apr 2021
+ * @version 1.0 23 May 2021
  *
  */
 public class Graph extends JPanel {
     private int width = 400;
-    private int height = 350;
-    private int padding = 30;
-    private int labelPadding = 25;
-    private Color lineColor1 = Color.BLUE;
-    private Color lineColor2 = Color.RED;
-    private Color pointColor = Color.DARK_GRAY;
-    private Color gridColor = Color.GRAY;
+    private final int height = 350;
+    private final int padding = 30;
+    private final int labelPadding = 25;
+    private final Color lineColor1 = Color.BLUE;
+    private final Color lineColor2 = Color.RED;
+    private final Color pointColor = Color.DARK_GRAY;
+    private final Color gridColor = Color.GRAY;
     private static final Stroke GRAPH_STROKE = new BasicStroke(2f); // used to draw shape’s outline
-    private int pointWidth = 4;
-    private int numberYDivisions = 10;
-    private List<Float> yPoints;
-    private String yAxis;
-    private boolean graph1;
+    private final int pointWidth = 4;
+    private final int numberYDivisions = 10;
+    private final List<Float> yPoints;
+    private final String yAxis;
+    private final boolean graph1;
 
     /**
-     * TODO
-     * @param yPoints
-     * @param yAxis
-     * @param graph1
+     * Constructor of the class Graph
+     * @param yPoints Defines the y points
+     * @param yAxis Defines the Y axis
+     * @param graph1 Defines if it is the graph1 or 2
      */
     public Graph(List<Float> yPoints, String yAxis, boolean graph1) {
         this.yPoints = yPoints;
@@ -43,8 +43,17 @@ public class Graph extends JPanel {
     }
 
     /**
-     * TODO
-     * @param g
+     * Calls the UI delegate's paint method, if the UI delegate is non-null. We pass the delegate a copy of the Graphics
+     * object to protect the rest of the paint code from irrevocable changes (for example, Graphics.translate).
+     * If you override this in a subclass you should not make permanent changes to the passed in Graphics. For example,
+     * you should not alter the clip Rectangle or modify the transform. If you need to do these operations you may find
+     * it easier to create a new Graphics from the passed in Graphics and manipulate it. Further, if you do not invoke
+     * super's implementation you must honor the opaque property, that is if this component is opaque, you must
+     * completely fill in the background in an opaque color. If you do not honor the opaque property you will likely see
+     * visual artifacts.
+     * The passed in Graphics object might have a transform other than the identify transform installed on it. In this
+     * case, you might get unexpected results if you cumulatively apply another transform.
+     * @param g the Graphics object to protect
      */
     @Override
     protected void paintComponent(Graphics g) {

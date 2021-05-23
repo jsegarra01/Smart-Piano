@@ -16,28 +16,41 @@ import javax.swing.text.*;
  *  of the parent text component. You are free to change the properties after
  *  class construction.
  */
-public class TextPrompt extends JLabel
-        implements FocusListener, DocumentListener
-{
-    public enum Show
-    {
+public class TextPrompt extends JLabel implements FocusListener, DocumentListener {
+    public enum Show {
         ALWAYS,
         FOCUS_GAINED,
         FOCUS_LOST
     }
 
-    private JTextComponent component;
-    private Document document;
+    /*
+    Component of the TextPrompt
+     */
+    private final JTextComponent component;
 
+    /*
+    Document of the TextPrompt
+     */
+    private final Document document;
+
+    /*
+    Attribute that defines if shown or not
+     */
     private Show show;
+
     private boolean showPromptOnce;
+
+    /*
+    int defining if the focus is lost or not
+     */
     private int focusLost;
 
-    public TextPrompt(String text, JTextComponent component)
-    {
-        this(text, component, Show.ALWAYS);
-    }
-
+    /**
+     * Constructor of the class TextPrompt
+     * @param text Defines the text to be written
+     * @param component Defines the component where the text is
+     * @param show Defines the attribute show
+     */
     public TextPrompt(String text, JTextComponent component, Show show)
     {
         this.component = component;
@@ -77,7 +90,7 @@ public class TextPrompt extends JLabel
      */
     public void changeAlpha(int alpha)
     {
-        alpha = alpha > 255 ? 255 : alpha < 0 ? 0 : alpha;
+        alpha = alpha > 255 ? 255 : Math.max(alpha, 0);
 
         Color foreground = getForeground();
         int red = foreground.getRed();
@@ -176,29 +189,38 @@ public class TextPrompt extends JLabel
 
         if (component.hasFocus())
         {
-            if (show == Show.ALWAYS
-                    ||  show ==	Show.FOCUS_GAINED)
-                setVisible( true );
-            else
-                setVisible( false );
+            setVisible(show == Show.ALWAYS
+                    || show == Show.FOCUS_GAINED);
         }
         else
         {
-            if (show == Show.ALWAYS
-                    ||  show ==	Show.FOCUS_LOST)
-                setVisible( true );
-            else
-                setVisible( false );
+            setVisible(show == Show.ALWAYS
+                    || show == Show.FOCUS_LOST);
         }
     }
 
 //  Implement FocusListener
 
+    /**
+     * Called when the component containing the caret gains
+     * focus.  This is implemented to repaint the component
+     * so the focus rectangle will be re-rendered, as well
+     * as providing the superclass behavior.
+     *
+     * @param e the focus event
+     */
     public void focusGained(FocusEvent e)
     {
         checkForPrompt();
     }
 
+    /**
+     * Called when the component containing the caret loses
+     * focus.  This is implemented to set the caret to visibility
+     * to false.
+     *
+     * @param e the focus event
+     */
     public void focusLost(FocusEvent e)
     {
         focusLost++;
@@ -207,15 +229,32 @@ public class TextPrompt extends JLabel
 
 //  Implement DocumentListener
 
-    public void insertUpdate(DocumentEvent e)
-    {
-        checkForPrompt();
-    }
+    /**
+     * Gives notification that there was an insert into the document. The range given by the DocumentEvent bounds the freshly inserted region.
+     *
+     * @param e the document event
+     */
+    public void insertUpdate(DocumentEvent e) { checkForPrompt(); }
 
-    public void removeUpdate(DocumentEvent e)
-    {
-        checkForPrompt();
-    }
+    /**
+     * The remove notification.  Gets sent to the root of the view structure
+     * that represents the portion of the model being represented by the
+     * editor.  The factory is added as an argument to the update so that
+     * the views can update themselves in a dynamic (not hardcoded) way.
+     *
+     * @param e  The change notification from the currently associated
+     *  document.
+     */
+    public void removeUpdate(DocumentEvent e) { checkForPrompt(); }
 
+    /**
+     * The change notification.  Gets sent to the root of the view structure
+     * that represents the portion of the model being represented by the
+     * editor.  The factory is added as an argument to the update so that
+     * the views can update themselves in a dynamic (not hardcoded) way.
+     *
+     * @param e  The change notification from the currently associated
+     *  document.
+     */
     public void changedUpdate(DocumentEvent e) {}
 }

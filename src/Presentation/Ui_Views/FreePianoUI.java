@@ -1,17 +1,14 @@
 package Presentation.Ui_Views;
 
 //Imports needed from the dictionary, events and mainframe
-import Business.BusinessFacade;
 import Business.BusinessFacadeImp;
 import Business.Entities.Keys;
 import Business.Entities.Translator;
 import Presentation.Manager.FreePianoUIManager;
-import Presentation.Manager.MainFrame;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
-import java.io.BufferedInputStream;
 import java.util.ArrayList;
 
 import static Presentation.Ui_Views.Tile.*;
@@ -23,11 +20,11 @@ import static Presentation.Ui_Views.Tile.*;
  * The "FreePianoUI" class will different views for the PianoUI
  *
  * @author OOPD 20-21 ICE5
- * @version 2.0 9 May 2021
+ * @version 2.0 23 May 2021
  *
  */
 public class FreePianoUI extends Piano {
-    private BusinessFacadeImp myFacade;
+    private final BusinessFacadeImp myFacade;
     /**
      * Constructor for the FreePianoUI, you need to send the mainframe context and will create a card layout
      *
@@ -55,8 +52,6 @@ public class FreePianoUI extends Piano {
         JPanel panel = new JPanel(new BorderLayout());
         panel.setBackground(Color.getHSBColor(0,0,0.2f));
 
-        //All information will go inside here
-        //panel.add(createGamePane(), BorderLayout.CENTER);
 
         panel.add(Box.createRigidArea(new Dimension(10, 210)), BorderLayout.CENTER);
         layeredPane = makeKeys();
@@ -80,7 +75,6 @@ public class FreePianoUI extends Piano {
 
         menu.add(Box.createRigidArea(new Dimension(50,10)));
 
-
         soundType = new Label(JLAB_SYNTH_TYPE);
         soundType.setBackground(Color.WHITE);
 
@@ -90,7 +84,6 @@ public class FreePianoUI extends Piano {
         recordB.setPreferredSize(new Dimension((int) Math.round(iconRec.getIconWidth()*1.15),
                 (int) Math.round(iconRec.getIconHeight()*1.2)));
 
-        //recordB.setName(BTN_RECORD);
         menu.add(profile);
         menu.add(Box.createRigidArea(new Dimension(350,10)));
         menu.add(recordB);

@@ -131,10 +131,10 @@ public class Translator {
     }
 
     /**
-     * TODO: Que fa exactament aixo
-     * @param tile
-     * @param keyCode
-     * @return
+     * Method that sets a new key to the tile
+     * @param tile Tile that will be changed the key
+     * @param keyCode keycode that will be put to the tile
+     * @return int defining the position of the added key, if it is a -1, it is an error
      */
     public static int setNewKey(String tile, int keyCode){
         boolean found = false;

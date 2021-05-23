@@ -35,8 +35,8 @@ public class MidiHelper {
     private static Sequence sequencePlay;
 
     /**
-     * TODO
-     * @throws MidiUnavailableException
+     * Constructor of the MidiHelper class
+     * @throws MidiUnavailableException exception that will be thrown in case there has been an exception in the midi
      */
     public MidiHelper() throws MidiUnavailableException {
         Synthesizer synth = MidiSystem.getSynthesizer();
@@ -46,13 +46,12 @@ public class MidiHelper {
         midiChannels = synth.getChannels();
         instruments = synth.getDefaultSoundbank().getInstruments();
         sequencer.open();
-        //sequencer.addMetaEventListener(new SpotiFrameManager());
     }
 
     /**
-     * TODO
-     * @param listener
-     * @throws MidiUnavailableException
+     * Constructor of the MidiHelper class that sets in the parameter the listener
+     * @param listener Defines a listener of the class
+     * @throws MidiUnavailableException exception that will be thrown in case there has been an exception in the midi
      */
     public MidiHelper(MetaEventListener listener) throws MidiUnavailableException {
         Synthesizer synth = MidiSystem.getSynthesizer();
@@ -63,7 +62,6 @@ public class MidiHelper {
         instruments = synth.getDefaultSoundbank().getInstruments();
         sequencer.addMetaEventListener(listener);
         sequencer.open();
-        //sequencer.addMetaEventListener(new SpotiFrameManager());
     }
 
     /**

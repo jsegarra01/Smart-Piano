@@ -1,7 +1,5 @@
 package Presentation.Ui_Views;
 
-import Business.BusinessFacade;
-import Business.BusinessFacadeImp;
 import Business.Entities.ButtonColumn;
 import Business.Entities.Song;
 import Presentation.Manager.SpotiFrameManager;
@@ -9,11 +7,7 @@ import Presentation.Manager.SpotiFrameManager;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.LinkedList;
 
 /**
  * SongsUI
@@ -21,15 +15,14 @@ import java.util.LinkedList;
  * The "SongsUI" class will generates the tables with the different songs
  *
  * @author OOPD 20-21 ICE5
- * @version 2.0 24 Apr 2021
+ * @version 2.0 23 May 2021
  *
  */
 public class SongsUI extends JPanel {
     private static JTable table;
-    private static String[] columnNames; /*{"Name Song", "Author's name", "Duration","Recording Date", ""};*/
-    private static JPanel panel = new JPanel();
+    private static String[] columnNames;
+    private static final JPanel panel = new JPanel();
 
-    private static DecimalFormat df = new DecimalFormat("###.##");
 
     /**
      * Constructor for the SongsUI
@@ -51,7 +44,7 @@ public class SongsUI extends JPanel {
         for(int i = 0; i< songs.size();i++){
             data[i][0] = songs.get(i).getSongName();
             data[i][1] = songs.get(i).getAuthorName();
-            data[i][2] = df.format(songs.get(i).getDuration());
+            data[i][2] = ((((int)(songs.get(i).getDuration()/60))) + ":" + (Math.round(((songs.get(i).getDuration())) -(int)(songs.get(i).getDuration()/60))));
             data[i][3] = songs.get(i).getRecordingDate();
             if(!action.equals("topFive")){
                 data[i][4] = action;
@@ -65,10 +58,11 @@ public class SongsUI extends JPanel {
 
         DefaultTableModel model = new DefaultTableModel(data, columnNames){
             /**
-             * TODO: ALEX WUTUFUK IS THIS
-             * @param row
-             * @param column
-             * @return
+             * Makes only 1 cell editable, column = 4, as it needs to edit it as it is the button.
+             * The other cells are not editable, because we do not want them to be edited
+             * @param row Defines the rows in the table
+             * @param column Defines the columns in the table
+             * @return Boolean that returns a true if it is editable, false if not
              */
             @Override
             public boolean isCellEditable(int row, int column) {
@@ -79,18 +73,13 @@ public class SongsUI extends JPanel {
         table.setBackground(Color.darkGray);
         table.setGridColor(Color.lightGray);
         table.setForeground(Color.white);
-        table.setRowHeight(30);
-        table.setFont( new Font(table.getFont().getName(),Font.PLAIN, (int) (table.getFont().getSize()*1.5)));
+        table.setRowHeight(25);
+        table.setFont( new Font(table.getFont().getName(),Font.PLAIN, (int) (table.getFont().getSize()*1.25)));
 
         JScrollPane sp = new JScrollPane(table);
         sp.setBackground(Color.black);
         sp.setPreferredSize(new Dimension(860, 540));
         sp.setWheelScrollingEnabled(true);
-       /* sp.addComponentListener(new ComponentAdapter() {
-            public void componentResized(ComponentEvent e) {
-                table.scrollRectToVisible(table.getCellRect(table.getRowCount()-1, 0, true));
-            }
-        });*/
         SpotiFrameManager myManager = new SpotiFrameManager(SpotiUI.myFacade);
         registerController(myManager);
         if(!action.equals("topFive")){
@@ -102,8 +91,8 @@ public class SongsUI extends JPanel {
     }
 
     /**
-     *
-     * @param listener
+     * Method that calls the class button column, which determines which is the button in the column
+     * @param listener Defines the listener that the button will activate
      */
     private static void registerController(Action listener) {
           new ButtonColumn(table, listener, 4);

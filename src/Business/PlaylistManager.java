@@ -2,7 +2,6 @@ package Business;
 
 import Business.Entities.Playlist;
 import Business.Entities.Song;
-import Business.Entities.User;
 import Persistence.SQL.Csv.PlaylistCsvDAO;
 import Persistence.SQL.Csv.SongCsvDAO;
 
@@ -14,7 +13,7 @@ import java.util.ArrayList;
  * The "PlaylistManager" class will contain the different methods that are needed to control the playlists
  *
  * @author OOPD 20-21 ICE5
- * @version 1.0 21 Apr 2021
+ * @version 1.0 23 May 2021
  *
  */
 public class PlaylistManager {
@@ -102,10 +101,10 @@ public class PlaylistManager {
     }
 
     /**
-     * TODO: quina es la diferencia entre aquesta i la de 3 funcions amunt
-     * @param playlist
-     * @param songName
-     * @return
+     * Method that adds a song to the playlist
+     * @param playlist Defines the name of the playlist to be added a song
+     * @param songName Defines the song to be added
+     * @return boolean that returns true if it has been erased, false if not
      */
     private boolean addToPlaylist(String playlist, String songName){
         int i = 0;
@@ -130,10 +129,10 @@ public class PlaylistManager {
     }
 
     /**
-     * TODO: quina es la diferencia entre aquesta i la de 3 funcions amunt
-     * @param playlist
-     * @param songName
-     * @return
+     * Method that deletes a song from a playlist
+     * @param playlist Defines the playlist which the song will be deleted
+     * @param songName Defines the song that will be erased
+     * @return boolean that returns true if it has been erased, false if not
      */
     private boolean deleteFromPlaylist(String playlist, String songName){
         int i = 0;
@@ -154,10 +153,10 @@ public class PlaylistManager {
                 }else{
                     j++;
                 }
-                if(found2){
-                    playlists.get(i).getSongs().remove(j);
-                    return true;
-                }
+            }
+            if(found2){
+                playlists.get(i).getSongs().remove(j);
+                return true;
             }
         }
         return false;

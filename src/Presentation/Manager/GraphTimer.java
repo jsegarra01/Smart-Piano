@@ -16,16 +16,26 @@ import static Presentation.Manager.SpotiFrameManager.*;
 import static Presentation.Ui_Views.StatisticsUI.letsInitializeGraphs;
 
 public class GraphTimer implements ActionListener {
-    private Timer myTimer = new Timer(1000, this); //  = new Timer(1000, this);
+    /*
+    Defines the timer that will control the update of the graph
+     */
+    private final Timer myTimer = new Timer(1000, this);
+
     private static final Date date = new Date();
-    private float sec = 0.01667f;
+    private final float sec = 0.01667f;
 
-
+    /**
+     * Constructor of the class GraphTimer
+     */
     public GraphTimer() {
         myTimer.setActionCommand(TIME_GRAPH);
         myTimer.start();
     }
 
+    /**
+     * Listener that will be activated whenever there is an action event
+     * @param e Defines the action event that has activated the listener
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()) {

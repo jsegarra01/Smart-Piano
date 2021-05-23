@@ -18,15 +18,12 @@ import java.io.File;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import static Presentation.DictionaryPiano.FREE_PIANO_UI;
 import static Presentation.DictionaryPiano.PLAYLIST_UI;
 import static Presentation.Dictionary_login.*;
 import static Presentation.Manager.MainFrame.card;
 import static Presentation.Manager.MainFrame.contenedor;
 import static Presentation.Ui_Views.LoginUI.resetUILogin;
 import static Presentation.Ui_Views.LoginUI.setUsernameLogin;
-import static Presentation.Ui_Views.PianoFrame.centralPanel;
-import static Presentation.Ui_Views.PianoFrame.mainFrame;
 import static Presentation.Ui_Views.PianoTilesUISelector.setKeys;
 import static Presentation.Ui_Views.SignUpUI.*;
 import static Presentation.Ui_Views.SpotiUI.spotiPanel;
@@ -37,7 +34,7 @@ import static Presentation.Ui_Views.SpotiUI.spotiPanel;
  * The "BusinessFacade" class will contain the implementation of the BusinessFacade interface to connect the views with the logic and the database
  *
  * @author OOPD 20-21 ICE5
- * @version 1.0 24 Apr 2021
+ * @version 1.0 23 May 2021
  *
  */
 public class BusinessFacadeImp implements Business.BusinessFacade {
@@ -51,6 +48,7 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
     /**
      * Shows the Sign up UI layout from the card layout
      */
+    @Override
     public void singUpStartup(){
         resetUISignUpUI();
         card.show(contenedor, SIGN_UP_UI);
@@ -59,6 +57,7 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
     /**
      * Shows the Log in UI layout from the card layout
      */
+    @Override
     public void logInStartup(){
         resetUILogin();
         card.show(contenedor, LOGIN_UI);
@@ -69,6 +68,7 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
      * @param name not used
      * @param psw not used
      */
+    @Override
     public void enterAsAGuest(String name, String psw){
         if(logIn(name, psw)){
             setUsernameLogin("guest");
@@ -123,8 +123,8 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
      * @param mail Mail string which the user has inputted while signing up
      * @param password Password string which the user has inputted while signing up
      * @param passwordConfirm PasswordConfirmation string which the user has inputted while signing up
-     * @return True if correctly signed up, false if not
      */
+    @Override
     public void finalSignUp(String username, String mail, String password, String passwordConfirm){
         try {
             if (!password.equals(passwordConfirm) || password.equals("")) {
@@ -164,6 +164,7 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
         }
     }
 
+    @Override
     public boolean noteRecordingUpdate(ArrayList<RecordingNotes> recordingNotes, float recordingTime){
             JPanel myPanel = new JPanel();
             JTextField titleField = new JTextField(20);
@@ -181,6 +182,7 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
         return true;
     }
 
+    @Override
     public boolean modifyKey(String tileSelected, KeyEvent e, int KeyExisted){
         if(KeyExisted == -1) {
             JOptionPane.showMessageDialog(contenedor,
@@ -193,15 +195,7 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
         }
     }
 
-    public void readingMidiFiles(int index){
-        setKeys(tilesManager.getListTiles());
-        try {
-            setKeys(ReadMidi.readMidi(songManager.getSong(index).getSongName()));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
+    @Override
     public Playlist createPlaylist(){
         Playlist myPlayList = null;
 
@@ -224,6 +218,7 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
         return myPlayList;
     }
 
+    @Override
     public void setAllKeys(){
         setKeys(tilesManager.getListTiles());
     }
@@ -298,10 +293,6 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
         songManager.setSongs();
     }
 
-    /**
-     *
-     * @return
-     */
     @Override
     public ArrayList<String> getSongName() {
         return songManager.getSongNames();
@@ -322,6 +313,7 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
         return songManager.deleteSong(getSong(i));
     }
 
+    @Override
     public boolean newPlaylist(String playlist){
         return playlistManager.newPlaylist(playlist, UserManager.getUser().getUserName());
     }
@@ -350,6 +342,25 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
     public void setError(int errorFound) {
         errorManager.errorFound(errorFound);
     }
+
+    @Override
+    public ArrayList<Song> getSongs(){
+        return songManager.getSongs();
+    }
+
+    @Override
+    public Stadistics getStats(int i){
+        return songManager.gettingStadistics(i);
+    }
+
+    @Override
+    public void updateSong(Song song){
+        songManager.updateSongPlayed(song);
+    }
+
+    @Override
+    public ArrayList<Song> getTopFive(){ return songManager.getTopFive(); }
+
 
 
 

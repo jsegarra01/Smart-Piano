@@ -14,7 +14,7 @@ import static Presentation.Dictionary_login.*;
  * The "MainFrame" class will contain the different methods that are needed for the views of the login, including a card layout
  *
  * @author OOPD 20-21 ICE5
- * @version 2.0 21 Apr 2021
+ * @version 2.0 23 May 2021
  *
  */
 public class MainFrame extends JFrame {
@@ -38,7 +38,7 @@ public class MainFrame extends JFrame {
         profileUI = new ProfileUI(myFacade);
         signUpUI = new SignUpUI(myFacade);
         pianoFrame = new PianoFrame(this, myFacade);
-        loginUI = new LoginUI(myFacade);
+        loginUI = new LoginUI();
 
         card.addLayoutComponent(preMenuUI, PRE_MENU_UI);
         card.addLayoutComponent(profileUI, PROFILE_UI);
