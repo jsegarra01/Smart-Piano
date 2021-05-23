@@ -50,8 +50,8 @@ public class PianoFrame extends JPanel {
         PianoFrame.mainFrame =mainFrame;
 
         pianoTilesUISelector = new PianoTilesUISelector(mainFrame);
-        spotiUI = new SpotiUI();
-        freePianoUI = new FreePianoUI();
+        spotiUI = new SpotiUI(myFacade);
+        freePianoUI = new FreePianoUI(myFacade);
         initialize();
     }
 

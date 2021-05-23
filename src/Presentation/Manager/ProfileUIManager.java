@@ -40,16 +40,9 @@ public class ProfileUIManager implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         // We distinguish between our buttons.
         switch (e.getActionCommand()) {
-            case LOGOUT_BUTTON:                                //In the case that the Logout button is pressed
-
-                card.show(contenedor, PRE_MENU_UI);
-                break;
-            case DELETE_BUTTON:                                //In the case that the Delete button is pressed
-                myFacade.deletingAccount();
-                break;
-            case BACK_BUTTON:                                  //In the case that the Back button is pressed
-                card.show(contenedor, PIANO_FRAME);
-                break;
+            case LOGOUT_BUTTON -> card.show(contenedor, PRE_MENU_UI);//In the case that the Logout button is pressed
+            case DELETE_BUTTON -> myFacade.deleteAccount();//In the case that the Delete button is pressed
+            case BACK_BUTTON -> card.show(contenedor, PIANO_FRAME);//In the case that the Back button is pressed
         }
     }
 }

@@ -1,5 +1,6 @@
 package Presentation.Ui_Views;
 
+import Business.BusinessFacade;
 import Business.BusinessFacadeImp;
 import Business.Entities.Playlist;
 import Business.Entities.Song;
@@ -59,6 +60,7 @@ public class SpotiUI extends JPanel {
 
     //public static JButton pauseButton = new JButton();
 
+    public static BusinessFacadeImp myFacade;
 
     public static JPanel leftList = new JPanel();
     private static JPanel playlistsPanel = new JPanel();
@@ -69,7 +71,8 @@ public class SpotiUI extends JPanel {
     /**
      * Constructor for the SpotiUI, you need to send the mainframe context and will create a card layout
      */
-    public SpotiUI() {
+    public SpotiUI(BusinessFacadeImp myFacade) {
+        SpotiUI.myFacade = myFacade;
         playlistUI = new PlaylistUI();
         statisticsUI = new StatisticsUI();
         songsUI = new SongsUI();
@@ -102,8 +105,8 @@ public class SpotiUI extends JPanel {
         songNameInputText.setBackground(Color.WHITE);
 //This two guys should be inside their own damn JPanel with BorderLayout.WEST/CENTER, not going to bother for now, functionality comes first!
         searchButton.setIcon(new ImageIcon("Files/drawable/searchIcon.png"));
-        searchButton.setIcon(resizeIcon((ImageIcon) searchButton.getIcon(), (int) Math.round(searchButton.getIcon().getIconWidth()),
-                (int) Math.round(searchButton.getIcon().getIconHeight())));
+        searchButton.setIcon(resizeIcon((ImageIcon) searchButton.getIcon(), Math.round(searchButton.getIcon().getIconWidth()),
+                Math.round(searchButton.getIcon().getIconHeight())));
         searchButton.setOpaque(false);
         searchButton.setContentAreaFilled(false);
         searchButton.setBorderPainted(false);
@@ -201,7 +204,7 @@ public class SpotiUI extends JPanel {
         lowPanel.add(songPanel, BorderLayout.WEST);
         add(lowPanel, BorderLayout.SOUTH);
 
-        registerController(new SpotiFrameManager());
+        registerController(new SpotiFrameManager(myFacade));
     }
 
     /**
@@ -281,7 +284,7 @@ public class SpotiUI extends JPanel {
                 buttonAux.setForeground(Color.white);
                 playlistsPanel.add(buttonAux);
                 buttonAux.setAlignmentX(Component.LEFT_ALIGNMENT);
-                buttonAux.addActionListener(new SpotiFrameManager());
+                buttonAux.addActionListener(new SpotiFrameManager(myFacade));
             }
             scroll = new JScrollPane(playlistsPanel);
             scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);

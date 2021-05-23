@@ -5,17 +5,29 @@ import Business.Entities.RecordingNotes;
 import Business.Entities.Song;
 import Business.Entities.*;
 import Business.Threads.WebScrapping;
+import Presentation.Manager.SpotiFrameManager;
+import Presentation.Ui_Views.FreePianoUI;
+import Presentation.Ui_Views.PlaylistUI;
+import Presentation.Ui_Views.SpotiUI;
 
 import javax.swing.*;
+import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.io.File;
 import java.util.ArrayList;
 
+import static Presentation.DictionaryPiano.FREE_PIANO_UI;
+import static Presentation.DictionaryPiano.PLAYLIST_UI;
 import static Presentation.Dictionary_login.*;
 import static Presentation.Manager.MainFrame.card;
 import static Presentation.Manager.MainFrame.contenedor;
 import static Presentation.Ui_Views.LoginUI.resetUILogin;
 import static Presentation.Ui_Views.LoginUI.setUsernameLogin;
+import static Presentation.Ui_Views.PianoFrame.centralPanel;
+import static Presentation.Ui_Views.PianoFrame.mainFrame;
+import static Presentation.Ui_Views.PianoTilesUISelector.setKeys;
 import static Presentation.Ui_Views.SignUpUI.*;
+import static Presentation.Ui_Views.SpotiUI.spotiPanel;
 
 /**
  * BusinessFacade
@@ -27,10 +39,11 @@ import static Presentation.Ui_Views.SignUpUI.*;
  *
  */
 public class BusinessFacadeImp implements Business.BusinessFacade {
-    private static UserManager loginUserManager = new UserManager();
-    private static SongManager songManager = new SongManager();
-    private static PlaylistManager playlistManager = new PlaylistManager();
-    private static TilesManager tilesManager = new TilesManager();
+    private static final UserManager loginUserManager = new UserManager();
+    private static final SongManager songManager = new SongManager();
+    private static final PlaylistManager playlistManager = new PlaylistManager();
+    private static final TilesManager tilesManager = new TilesManager();
+
 
     public void singUpStartup(){
         resetUISignUpUI();
@@ -43,11 +56,13 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
     }
 
     public void enterAsAGuest(String name, String psw){
-        if(logIn("guest", "password")){
+        if(logIn(name, psw)){
             setUsernameLogin("guest");
+            playlistManager.setPlaylists(UserManager.getUser().getUserName());
+            SpotiFrameManager.addPlaylists(new BusinessFacadeImp().getPlaylistManager().getPlaylists());
+            setSong();
+            card.show(contenedor, PIANO_FRAME);
         }
-        card.show(contenedor,PIANO_FRAME);
-        setSong();
     }
 
     @Override
@@ -77,7 +92,6 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
         }
     }
 
-    @Override
     public boolean deleteAccount() {
         for(int i = 0; i< songManager.getSongs().size();i++){
            if(songManager.getSongs().get(i).getCreator().equals(UserManager.getUser().getUserName()) ||
@@ -89,6 +103,69 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
 
     }
 
+    public boolean noteRecordingUpdate(ArrayList<RecordingNotes> recordingNotes, float recordingTime){
+            JPanel myPanel = new JPanel();
+            JTextField titleField = new JTextField(20);
+            myPanel.add(titleField);
+            JCheckBox box = new JCheckBox("is public?");
+            myPanel.add(box);
+
+            JOptionPane.showMessageDialog(null, myPanel, "Enter a title for the song", JOptionPane.INFORMATION_MESSAGE);
+
+            recordedNotesSend(recordingNotes, titleField.getText(), box.isSelected(), recordingTime);
+        return false;
+    }
+
+    public boolean startRecordingNote(){
+        return true;
+    }
+
+    public boolean modifyKey(String tileSelected, KeyEvent e, int KeyExisted){
+        if(KeyExisted == -1) {
+            JOptionPane.showMessageDialog(contenedor,
+                    "This key is already assigned!", "Modify keys error" , JOptionPane.ERROR_MESSAGE);
+            return true;
+        }else{
+            FreePianoUI.modifyKey(Translator.getFromTile(tileSelected), e);
+            Translator.setKeys(KeyExisted, e.getExtendedKeyCode());
+            return false;
+        }
+    }
+
+    public void readingMidiFiles(int index){
+        setKeys(tilesManager.getListTiles());
+        try {
+            setKeys(ReadMidi.readMidi(songManager.getSong(index).getSongName()));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public Playlist createPlaylist(){
+        Playlist myPlayList = null;
+
+        String myStr = (String)JOptionPane.showInputDialog(
+                null, "Which name is your playlist going to have?",
+                "Playlist Creator", JOptionPane.PLAIN_MESSAGE, null, null, "New Playlist");
+
+        if(myStr != null && myStr.length() > 0 && myStr.indexOf('\'') == -1){
+            new BusinessFacadeImp().newPlaylist(myStr);
+            myPlayList = playlistManager.getFromName(myStr);
+            PlaylistUI.setSongsPlaylists(myPlayList);
+            CardLayout myCard = (CardLayout)spotiPanel.getLayout();
+            myCard.show(spotiPanel, PLAYLIST_UI);
+            SpotiUI.addPlaylists(playlistManager.getPlaylists());
+        } else {
+            JOptionPane.showMessageDialog(null,
+                    "The input is not correct!", "Create Playlist Error" ,
+                    JOptionPane.ERROR_MESSAGE);
+        }
+        return myPlayList;
+    }
+
+    public void setAllKeys(){
+        setKeys(tilesManager.getListTiles());
+    }
     @Override
     public void recordedNotesSend(ArrayList<RecordingNotes> recordedNotes, String songName, boolean isPublic, float endtime) {
         songManager.saveRecording(recordedNotes,songName,isPublic,endtime);
@@ -165,4 +242,7 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
     public void initializeWebScrapping(){
         new WebScrapping();
     }
+
+
+
 }

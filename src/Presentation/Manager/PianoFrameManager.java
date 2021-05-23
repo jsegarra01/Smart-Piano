@@ -63,7 +63,7 @@ public class PianoFrameManager implements ActionListener {
                 break;
             case PLAY_A_SONG:
                 try {
-                    new PianoTilesUISelectorManager().refreshPianoTilesUI();
+                    new PianoTilesUISelectorManager(mainFrame.getMyFacade()).refreshPianoTilesUI();
                 } catch (NullPointerException h) {
                     //TODO WE NEED TO CATCH THE EXCEPTION :) Sergi i Josep no se que esteu fent porfa controleu les
                     // excepcions que sino el edu ens plora, visca el barça i visca catalunya

@@ -41,18 +41,12 @@ public class PreMenuUIManager implements ActionListener {
      */
     @Override
     public void actionPerformed(ActionEvent e) {
-
-        CardLayout cc = (CardLayout) (centralPanel.getLayout());
-       // We distinguish between our buttons.
+        //CardLayout cc = (CardLayout) (centralPanel.getLayout());
+        // We distinguish between our buttons.
         switch (e.getActionCommand()) {
             case LOG_IN_BUTTON -> myFacade.logInStartup();//In the case that the LogIn button is pressed
             case SIGN_UP_BUTTON -> myFacade.singUpStartup();//In the case that the SignUp button is pressed
-            case ENTER_AS_GUEST_BUTTON -> {
-                myFacade.enterAsAGuest("guest", "password");//In the case that the Guest button is pressed
-                new BusinessFacadeImp().getPlaylistManager().setPlaylists(UserManager.getUser().getUserName());
-                SpotiFrameManager.addPlaylists(new BusinessFacadeImp().getPlaylistManager().getPlaylists());
-                cc.show(centralPanel, FREE_PIANO_UI);
-            }
+            case ENTER_AS_GUEST_BUTTON -> myFacade.enterAsAGuest("guest", "password");//In the case that the Guest button is pressed
         }
     }
 }

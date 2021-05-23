@@ -12,7 +12,6 @@ public class WebScrapping {
     public static SongDownloader songDownloader = new SongDownloader();
     Timer timer = new Timer("MyTimer");
     TimerTask timerTask = new TimerTask() {
-
         @Override
         public void run() {
             songDownloader.downloadWebPage(URLRoute);
