@@ -13,6 +13,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 
 import static Presentation.DictionaryPiano.*;
 
@@ -48,10 +49,6 @@ public class PlaylistUI extends JPanel {
         this.add(panel);
         this.setBackground(Color.black);
     }
-    //private static void registerController(PlaylistUIManager listener) {
-      //  new ButtonColumn(table, listener, 2);
-
-    //}
 
     /**
      * Creates the panel for the playlist with its basic configurations
@@ -75,68 +72,15 @@ public class PlaylistUI extends JPanel {
         return layout;
     }
 
+
     /**
-     * TODO: ALEX EXPLICA QUE CONY ES AIXO JAJAJA
+     *
      * @param playlist
      */
     public static void setSongsPlaylists(Playlist playlist){
 
         if(playlist.equals(playlistGeneral)) {
-            for (Component jc : panel.getComponents()) {
-                if (jc instanceof JScrollPane) {
-                    JScrollPane scrollPane = (JScrollPane) jc;
-                    for (Component jc2 : scrollPane.getComponents()) {
-                        if (jc2 instanceof JViewport) {
-                            JViewport viewport = (JViewport) jc2;
-                            for (Component jc3 : viewport.getComponents()) {
-                                if (jc3 instanceof JPanel) {
-                                    JPanel panelSongs = (JPanel) jc3;
-                                    for(int j = 0; j< panelSongs.getComponentCount();j++){
-
-                                        if (panelSongs.getComponent(j) instanceof JPanel) {
-                                            JPanel song = (JPanel) panelSongs.getComponent(j) ;
-                                            int i = 0;
-                                            boolean foundSong = false;
-                                            while (i < playlist.getSongs().size() && !foundSong) {
-                                                if(song.getName().equals(playlist.getSongs().get(i).getSongFile())){
-                                                    foundSong = true;
-                                                }else{
-                                                    i++;
-                                                }
-                                            }
-                                            if(!foundSong){
-                                                panelSongs.remove(j);
-                                                foundSong = false;
-                                            }
-                                        }
-                                    }
-                                    int i;
-                                    boolean foundSong;
-                                    for(int k = 0; k< playlist.getSongs().size();k++){
-                                        i=0;
-                                        foundSong = false;
-                                        while (i < panelSongs.getComponentCount() && !foundSong){
-                                            if (panelSongs.getComponent(i) instanceof JPanel) {
-                                                JPanel song = (JPanel) panelSongs.getComponent(i) ;
-                                                if(song.getName().equals(playlist.getSongs().get(k).getSongFile())){
-                                                    foundSong = true;
-                                                }else{
-                                                    i++;
-                                                }
-                                            }else{
-                                                i++;
-                                            }
-                                        }
-                                        if(!foundSong){
-                                            panelSongs.add(setPlaylist(playlist, k));
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
+            updatePanel(playlist);
         }else {
             playlistGeneral = playlist;
 
@@ -156,7 +100,7 @@ public class PlaylistUI extends JPanel {
             panelSongs.setLayout(boxLayout);
             JPanel panel1;
             for (int i = 0; i < playlist.getSongs().size(); i++) {
-                panel1 = setPlaylist(playlist, i);
+                panel1 = setPlaylist(playlist.getSongs().get(i));
                 panelSongs.add(panel1);
             }
 
@@ -173,15 +117,16 @@ public class PlaylistUI extends JPanel {
     }
 
     /**
-     * TODO: TAMPOC ACABO D'ENTENDRE QUE FA AQUESTA
-     * @param playlist
-     * @param i
-     * @return
+     * Method that creates a JPanel for the song
+     * @param song Defines the song to appear in the JPanel
+     * @return JPanel that stores the information about the song
      */
-    private static JPanel setPlaylist(Playlist playlist, int i){
+    private static JPanel setPlaylist(Song song){
 
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-        JPanel panel1 = new JPanel(new GridLayout());
+        JPanel panel1 = new JPanel();
+        BoxLayout boxLayout = new BoxLayout(panel1, BoxLayout.X_AXIS);
+        panel1.setLayout(boxLayout);
         JLabel label;
 
         panel1.setBorder(new LineBorder(Color.gray));
@@ -189,44 +134,39 @@ public class PlaylistUI extends JPanel {
         panel1.setMaximumSize(panel1.getPreferredSize());
         panel1.setBackground(Color.black);
 
-        //JPanel panelSong = new JPanel();
-        //panel1.add(Box.createHorizontalStrut(20));
-        label = new JLabel(playlist.getSongs().get(i).getSongName());
+        label = new JLabel(song.getSongName());
         label.setForeground(Color.WHITE);
-        label.setPreferredSize(new Dimension(200, 10));
+        label.setPreferredSize(new Dimension(200, 20));
         label.setMaximumSize(label.getPreferredSize());
         label.setMinimumSize(new Dimension(180,10));
-        //label.add(Box.createRigidArea(new Dimension(450,50)));
-        //label.setMinimumSize(new Dimension(350, 50));
         panel1.add(label);
 
-        label = new JLabel(playlist.getSongs().get(i).getAuthorName());
+        label = new JLabel(song.getAuthorName());
         label.setForeground(Color.WHITE);
-        label.add(Box.createRigidArea(new Dimension(160,50)));
-        label.add(Box.createHorizontalStrut(60));
+        label.setPreferredSize(new Dimension(160,50));
+        label.setMaximumSize(label.getPreferredSize());
         panel1.add(label);
-        //panel1.add(Box.createHorizontalStrut(40));
 
-        label = new JLabel(String.valueOf(df.format(playlist.getSongs().get(i).getDuration())));
+        label = new JLabel(String.valueOf(df.format(song.getDuration())));
         label.setForeground(Color.WHITE);
-        label.add(Box.createRigidArea(new Dimension(50,50)));
+        label.setPreferredSize(new Dimension(140,50));
+        label.setMaximumSize(label.getPreferredSize());
         panel1.add(label);
-        //panel1.add(Box.createHorizontalStrut(40));
 
-        label = new JLabel(sdf.format(playlist.getSongs().get(i).getRecordingDate()));
+        label = new JLabel(sdf.format(song.getRecordingDate()));
         label.setForeground(Color.WHITE);
-        label.add(Box.createRigidArea(new Dimension(200,50)));
+        label.setPreferredSize(new Dimension(260,50));
+        label.setMaximumSize(label.getPreferredSize());
         panel1.add(label);
 
-        JButton button = new JButton(playlist.getSongs().get(i).getSongName());
-        button.setName(playlist.getSongs().get(i).getSongName());
+        JButton button = new JButton(song.getSongName());
+        button.setName(song.getSongName());
         button.setActionCommand(SONG_PLAYLIST);
         button.setText("Delete");
         button.addActionListener(new SpotiFrameManager());
-        panel1.add(Box.createHorizontalStrut(40));
         panel1.add(button);
         panel1.addMouseListener(new SpotiFrameManager());
-        panel1.setName(playlist.getSongs().get(i).getSongFile());
+        panel1.setName(song.getSongFile());
         return panel1;
     }
 
@@ -240,5 +180,59 @@ public class PlaylistUI extends JPanel {
         add.addActionListener(new SpotiFrameManager());
         add.setText("+");
         return add;
+    }
+    /**
+     * Method that updates the panel, checking the things that already existed
+     * @param playlist Defines the playlist to be checked
+     */
+    private static void updatePanel(Playlist playlist){
+        for (Component jc : panel.getComponents()) {
+            if (jc instanceof JScrollPane scrollPane) {
+                for (Component jc2 : scrollPane.getComponents()) {
+                    if (jc2 instanceof JViewport viewport) {
+                        for (Component jc3 : viewport.getComponents()) {
+                            if (jc3 instanceof JPanel panelSongs) {
+                                for(int j = 0; j< panelSongs.getComponentCount();j++){
+                                    if (panelSongs.getComponent(j) instanceof JPanel song) {
+                                        int i = 0;
+                                        boolean foundSong = false;
+                                        while (i < playlist.getSongs().size() && !foundSong) {
+                                            if(song.getName().equals(playlist.getSongs().get(i).getSongFile())){
+                                                foundSong = true;
+                                            }else{
+                                                i++;
+                                            }
+                                        }
+                                        if(!foundSong){
+                                            panelSongs.remove(j);
+                                        }
+                                    }
+                                }
+                                int i;
+                                boolean foundSong;
+                                for(int k = 0; k< playlist.getSongs().size();k++){
+                                    i=0;
+                                    foundSong = false;
+                                    while (i < panelSongs.getComponentCount() && !foundSong){
+                                        if (panelSongs.getComponent(i) instanceof JPanel song) {
+                                            if(song.getName().equals(playlist.getSongs().get(k).getSongFile())){
+                                                foundSong = true;
+                                            }else{
+                                                i++;
+                                            }
+                                        }else{
+                                            i++;
+                                        }
+                                    }
+                                    if(!foundSong){
+                                        panelSongs.add(setPlaylist(playlist.getSongs().get(k)));
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 }

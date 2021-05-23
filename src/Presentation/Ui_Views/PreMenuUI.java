@@ -98,14 +98,17 @@ public class PreMenuUI extends JPanel{
         logIn.setActionCommand(LOG_IN_BUTTON);
         logIn.setAlignmentX(0.5f);
         logIn.setBorder(new EmptyBorder(12,120,12,120));
+        logIn.setOpaque(true);
 
         signUp.setActionCommand(SIGN_UP_BUTTON);
         signUp.setAlignmentX(0.5f);
         signUp.setBorder(new EmptyBorder(12,116,12,116));
+        signUp.setOpaque(true);
 
         guest.setActionCommand(ENTER_AS_GUEST_BUTTON);
         guest.setAlignmentX(0.5f);
         guest.setBorder(new EmptyBorder(12,88,12,88));
+        guest.setOpaque(true);
 
         registerController(new PreMenuUIManager(this.myFacade));
 

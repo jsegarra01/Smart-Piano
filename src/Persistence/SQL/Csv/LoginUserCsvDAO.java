@@ -20,7 +20,6 @@ public class LoginUserCsvDAO implements LoginUserDAO{
     access to the users in the database by their username or their email. This feature is implemented so that the login
     can be checked. It is checked depending on what the user has written the email or the username and returns a boolean.
     This class is also used to modify the tables, by deleting a user or by inserting a new user.
-
      */
 
 
@@ -38,9 +37,6 @@ public class LoginUserCsvDAO implements LoginUserDAO{
         }else{
             return null;
         }
-
-
-
     }
 
     /**
@@ -100,11 +96,6 @@ public class LoginUserCsvDAO implements LoginUserDAO{
             return false;
         }
     }
-/*
-    @Override
-    public void update(User myUser) {
-
-    }*/
 
     /**
      * Method that is in charge of deleting the user passed in the parameter

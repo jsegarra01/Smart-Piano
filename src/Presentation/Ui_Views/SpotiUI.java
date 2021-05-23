@@ -196,10 +196,8 @@ public class SpotiUI extends JPanel {
         musicPlayer.add(loopButton);
         lowPanel.add(musicPlayer, BorderLayout.CENTER);
         lowPanel.add(profile, BorderLayout.EAST);
-        //lowPanel.add(Box.createRigidArea(new Dimension(30,10)), BorderLayout.WEST);
         lowPanel.add(songPanel, BorderLayout.WEST);
         add(lowPanel, BorderLayout.SOUTH);
-
         registerController(new SpotiFrameManager());
     }
 
