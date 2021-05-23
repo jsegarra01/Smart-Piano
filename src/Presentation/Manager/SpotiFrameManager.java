@@ -18,11 +18,13 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.http.WebSocket;
 import java.util.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
+import static Business.Entities.ChangeTime.actionTimer;
 import static Presentation.DictionaryPiano.*;
 import static Presentation.Dictionary_login.PROFILE_UI;
 import static Presentation.Manager.MainFrame.card;
@@ -50,16 +52,18 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
     private static boolean play=false;
     private static final ImageIcon playIcon = new ImageIcon("Files/drawable/playbuttonWhite.png");
     private static final ImageIcon pauseIcon = new ImageIcon("Files/drawable/pauseWhite.png");
-    private static float minPlayed;
-    private static long startMin=0;
-    private static long lastMin=0;
+    public static float minPlayed;
+    public static long startMin=0;
+    public static long lastMin=0;
     private static boolean addSong = false;
     private static Playlist playlist;
     private static ArrayList<Song> topFive = new ArrayList<>();
     private static Song songPlay;
     private static boolean loop = false;
     private static boolean shuffle = false;
-    private static boolean wherePlay = false; // if false, from songs, if true, from playlists
+    private static boolean wherePlay = false;
+
+    public static Integer count_song = 0;
     private static final MetaEventListener listener = meta -> {
         if (meta.getType() == 47) {
             playSongTime();
@@ -484,6 +488,7 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
      * Plays a song and changes the icon to the pause one
      */
     private static void playMusic(){
+        count_song = 1;
         playButton.setIcon(pauseIcon);
         startMin = System.currentTimeMillis();
         finalMidiHelper.playSong(songPlay.getSongFile());
@@ -498,7 +503,7 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
         play = false;
         lastMin = System.currentTimeMillis();
         minPlayed = (float)(lastMin - startMin)/60000;
-        new BusinessFacadeImp().getSongManager().addingStadistics(new Stadistics(date.getHours(), (float)1, minPlayed));
+        //new BusinessFacadeImp().getSongManager().addingStadistics(new Stadistics(date.getHours(), (float)1, minPlayed));
         finalMidiHelper.stopSong();
     }
 
@@ -586,6 +591,7 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
      * Decides which method to call depending on which option the user has selected
      */
     private static void playSongTime(){
+        count_song = 1;
         if(!loop){
             if(!shuffle){
                 if(wherePlay){
