@@ -510,6 +510,9 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
         finalMidiHelper.stopSong();
     }
 
+    /**
+     * Calls the method to mute a song
+     */
     private static void muteSong() {
        finalMidiHelper.muteSong();
     }

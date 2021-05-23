@@ -147,6 +147,9 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
             case DictionaryPiano.VERY_EASY_MODE:
                 if (!songStarted) { velocityModifier = 0.5f;}
                 break;
+            case DictionaryPiano.MUTE_BUTTON:
+                finalMidiHelper.muteSong();
+                break;
             case DictionaryPiano.EASY_MODE:
                 if (!songStarted) { velocityModifier = 0.75f;}
                 break;

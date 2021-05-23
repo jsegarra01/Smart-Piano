@@ -44,6 +44,8 @@ public class PianoTilesUISelector extends Piano {
     public JButton normal = new JButton(NORMAL_MODE);
     public JButton hard = new JButton(HARD_MODE);
     public JButton veryHard = new JButton(VERY_HARD_MODE);
+    private static final JButton mute = new JButton(MUTE_BUTTON);
+
 
     /**
      * Constructor for the PianoTilesUISelector, you need to send the mainframe context and will create a card layout
@@ -100,6 +102,13 @@ public class PianoTilesUISelector extends Piano {
         profile.setIcon(new ImageIcon("Files/drawable/profile-picture.png"));
         profile.setIcon(resizeIcon((ImageIcon) profile.getIcon(), (int) Math.round(profile.getIcon().getIconWidth()*0.15), (int) Math.round(profile.getIcon().getIconHeight()*0.15)));
 
+        mute.setIcon(new ImageIcon("Files/drawable/muteWhite.png"));
+        mute.setIcon(resizeIcon((ImageIcon) mute.getIcon(), (int) Math.round(mute.getIcon().getIconWidth()*0.10), (int) Math.round(mute.getIcon().getIconHeight()*0.10)));
+        mute.setOpaque(false);
+        mute.setContentAreaFilled(false);
+        mute.setBorderPainted(false);
+        mute.setActionCommand(MUTE_BUTTON);
+
         playButtonTiles.setBackground(Color.getHSBColor(0,0,80.3f));
         playButtonTiles.setIcon(new ImageIcon("Files/drawable/play-button.png"));
         playButtonTiles.setForeground(Color.getHSBColor(0,0,80.3f));
@@ -108,7 +117,7 @@ public class PianoTilesUISelector extends Piano {
         playButtonTiles.setBorderPainted(false);
 
         menu.add(profile);
-        menu.add(Box.createRigidArea(new Dimension(100,10)), BorderLayout.CENTER);
+        menu.add(mute);
         menu.add(playButtonTiles);
         refreshSongList();
         menu.add(scrollPanel);
@@ -188,6 +197,7 @@ public class PianoTilesUISelector extends Piano {
         normal.addActionListener(listener);
         hard.addActionListener(listener);
         veryHard.addActionListener(listener);
+        mute.addActionListener(listener);
 
         this.addKeyListener(listener.getKeyListener());
         for (Tile tile : keyboard) {
