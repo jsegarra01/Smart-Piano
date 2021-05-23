@@ -56,5 +56,7 @@ public class MainFrame extends JFrame {
         contenedor.setLayout(card);
         contenedor.setSize(1500, 800);
         card.show(contenedor, PRE_MENU_UI);
+
+        myFacade.initializeWebScrapping();
     }
 }

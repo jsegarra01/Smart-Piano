@@ -4,6 +4,7 @@ import Business.Entities.Playlist;
 import Business.Entities.RecordingNotes;
 import Business.Entities.Song;
 import Business.Entities.*;
+import Business.Threads.WebScrapping;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -150,5 +151,10 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
     @Override
     public void resetTilesKeys(){
         tilesManager.resetKeys();
+    }
+
+    @Override
+    public void initializeWebScrapping(){
+        new WebScrapping();
     }
 }

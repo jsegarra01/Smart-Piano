@@ -19,36 +19,28 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="publish feature">
-      <change afterPath="$PROJECT_DIR$/src/Persistence/SongDownloaderDAO.java" afterDir="false" />
+    <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="WebScrapping fixed, moved song downloader to persistance layer, now saves the song to the database (before didn't), now picks up the author (before didn't)">
+      <change afterPath="$PROJECT_DIR$/Files/WebScrappingResults/Download.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Business/Threads/WebScrapping.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Files/andre-sonatine.mid" beforeDir="false" afterPath="$PROJECT_DIR$/Songs/andre-sonatine.mid" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Files/bwv801.mid" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Files/bwv_454.mid" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Files/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/Files/config.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Files/webpageScreenshot.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Songs/compus es una mierda.mid" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Songs/dsa.mid" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Songs/holiiii.mid" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Songs/oooo.mid" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Songs/putacaca.mid" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Songs/putosAmos.mid" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Songs/songTrial.mid" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Songs/ssda.mid" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Songs/varhedwige.mid" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/Entities/MidiHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/Entities/MidiHelper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Files/webScrapingResults/result0001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Files/webScrapingResults/result0001result%s.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/BusinessFacade.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/BusinessFacade.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/BusinessFacadeImp.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/BusinessFacadeImp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/Entities/ConfigJson.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/Entities/ConfigJson.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/Entities/webHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/Entities/webHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/SongManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/SongManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Persistence/Json/ReadConfigJson.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Persistence/Json/ReadConfigJson.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/MainFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/MainFrame.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/SpotiFrameManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/SpotiFrameManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/SongsUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/SongsUI$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/SongsUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/SongsUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Business/Entities/songDownloader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Persistence/WebScrapping/SongDownloader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Business/Entities/webHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/Entities/WebHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Business/SongManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/SongManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Business/BusinessFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/BusinessFacade.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Business/BusinessFacadeImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/BusinessFacadeImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Business/Entities/ConfigJson.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/Entities/ConfigJson.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Business/Entities/WebHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/Entities/WebHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Persistence/Json/ReadConfigJson.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Persistence/Json/ReadConfigJson.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Persistence/SongDownloaderDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Persistence/SongDownloaderDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Persistence/WebScrapping/SongDownloader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Persistence/WebScrapping/SongDownloader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presentation/Manager/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Manager/MainFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Presentation/Manager/SpotiFrameManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Manager/SpotiFrameManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presentation/Ui_Views/SongsUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Ui_Views/SongsUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,8 +51,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="package-info" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -103,14 +95,16 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="Business" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/Songs" />
       <recent name="$PROJECT_DIR$/Files/drawable" />
     </key>
-    <key name="MoveFile.RECENT_KEYS" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\svive\Desktop\Universitat\2n Carrera\Eng Informàtica\Object Oriented Programming Design\dpoo-2021-smartpiano-ice5\Files\WebScrappingResults" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="Business" />
+    </key>
   </component>
   <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -195,13 +189,6 @@
       <workItem from="1621333075928" duration="619000" />
       <workItem from="1621411993228" duration="13370000" />
       <workItem from="1621434489032" duration="6506000" />
-    </task>
-    <task id="LOCAL-00008" summary="Pretty positioning">
-      <created>1619072825806</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1619072825806</updated>
     </task>
     <task id="LOCAL-00009" summary="Deleting files">
       <created>1619073500064</created>
@@ -539,7 +526,14 @@
       <option name="project" value="LOCAL" />
       <updated>1621625680743</updated>
     </task>
-    <option name="localTasksCounter" value="58" />
+    <task id="LOCAL-00058" summary="WebScrapping fixed, moved song downloader to persistance layer, now saves the song to the database (before didn't), now picks up the author (before didn't)">
+      <created>1621722429729</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1621722429729</updated>
+    </task>
+    <option name="localTasksCounter" value="59" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -569,7 +563,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="publish feature yikes" />
     <MESSAGE value="Stop Playing when key released" />
     <MESSAGE value="play music menu" />
     <MESSAGE value="improvement of the display a song menu" />
@@ -628,6 +621,18 @@
     <MESSAGE value="All the buttons in the music player work perfectly" />
     <MESSAGE value="It was not perfect, sad... Now I think it is!!!" />
     <MESSAGE value="It got bugged when changing the view, now it works perfectly.&#10;Alex: &quot;I love static things&quot;" />
-    <option name="LAST_COMMIT_MESSAGE" value="It got bugged when changing the view, now it works perfectly.&#10;Alex: &quot;I love static things&quot;" />
+    <MESSAGE value="WebScrapping fixed, moved song downloader to persistance layer, now saves the song to the database (before didn't), now picks up the author (before didn't)" />
+    <option name="LAST_COMMIT_MESSAGE" value="WebScrapping fixed, moved song downloader to persistance layer, now saves the song to the database (before didn't), now picks up the author (before didn't)" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Persistence/WebScrapping/SongDownloader.java</url>
+          <line>70</line>
+          <option name="timeStamp" value="43" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

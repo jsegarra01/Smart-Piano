@@ -155,7 +155,6 @@ public class WebHandler {
     private int getStatusConnectionCode(String url) throws IOException{
         Connection.Response response = null;
         response = Jsoup.connect(url).userAgent("Mozilla/5.0").timeout(100000).ignoreHttpErrors(true).execute();
-
         return response.statusCode();
     }
 
@@ -165,7 +164,7 @@ public class WebHandler {
      * @param url the internet path be used
      * @return complete HTML document
      */
-    private Document getHtmlDocument(String url) throws IOException{
+    public static Document getHtmlDocument(String url) throws IOException{
         Document htmlDoc = new Document(url);
         htmlDoc = Jsoup.connect(url).userAgent("Mozilla/5.0").timeout(100000).get();
 

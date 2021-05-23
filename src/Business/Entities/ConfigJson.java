@@ -43,4 +43,8 @@ public class ConfigJson {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public int getScrappingTime() {
+        return scrappingTime;
+    }
 }

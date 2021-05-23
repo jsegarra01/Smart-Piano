@@ -1,12 +1,19 @@
 package Persistence.WebScrapping;
+import Business.Entities.Song;
+import Business.SongManager;
 import Persistence.SongDownloaderDAO;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
+
+import static Business.Entities.WebHandler.getHtmlDocument;
+import static Business.Threads.WebScrapping.songDownloader;
+import static Presentation.Manager.SpotiFrameManager.URLRoute;
 
 /**
  * The following Helper directly downloads any file from the internet only needing the URL. Creates a connection, downloads
@@ -28,7 +35,7 @@ import java.net.URL;
  * For the purpose of specificity and reusability, we will create a general class:
  */
 public class SongDownloader implements SongDownloaderDAO {
-
+    private String nameSong = "";
     /**
      * Downloads a file from a specified URL ONLY FOR HTTP servers.
      * @param fileURL HTTP URL of the file to be downloaded
@@ -76,4 +83,67 @@ public class SongDownloader implements SongDownloaderDAO {
 
             httpConn.disconnect();
         }
+
+    @Override
+    public void downloadWebPage(String webpage) {
+        try {
+            // Create URL object
+            URL url = new URL(webpage);
+            BufferedReader readr = new BufferedReader(new InputStreamReader(url.openStream()));
+            BufferedWriter writer = new BufferedWriter(new FileWriter(new File("Files/WebScrappingResults/", "Download.html")));
+            String line;
+            while ((line = readr.readLine()) != null) {writer.write(line);}
+            readr.close();
+            writer.close();
+        }
+
+        // Exceptions
+        catch (MalformedURLException mue) {
+            System.out.println("Malformed URL Exception raised");
+        }
+        catch (IOException ie) {
+            System.out.println("IOException raised");
+        }
     }
+
+    @Override
+    public void downloadAllSongsScrapping(String webpage) {
+        String URL = "";
+        int i = 0;
+        while (i < 50) {
+            if (i == 1) {
+                URL = URLRoute;
+            }
+            else {
+                URL = String.format(URLRoute.replace("?", "?startat=%s&"), i);
+            }
+            try {
+                Document doc = getHtmlDocument(URL);
+                Elements greatDivs = doc.getElementsByClass("table-bordered result-table");
+
+                for (Element song : greatDivs) {//Elements has inside all the possible divs
+                    //The selector span:nth-child(x) looks for the parent of span and chooses the child element in the i position.
+                    Elements myEles = song.getAllElements();
+                    Element myEle = myEles.get(0);
+                    Elements miniEles = myEle.getAllElements();
+                    String author2 = miniEles.get(4).text();
+                    String piece = miniEles.get(3).text();
+                    String downloadURL= miniEles.get(19).getAllElements().get(3).html()
+                            .substring(9,miniEles.get(19).getAllElements().get(3).html().length()-15);
+
+                    try {
+                        songDownloader.downloadFile(downloadURL, "Files/WebScrappingResults");
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+            catch (IOException e) {
+
+            }
+            //Extract the divs that have products inside of the previous general Div.
+            i++;
+        }
+
+    }
+}
