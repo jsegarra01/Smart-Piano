@@ -19,10 +19,27 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5acb40aa-b29e-4e9d-857c-def6690bd9cf" name="Default Changelist" comment="Some comments and sizes changed.">
+    <list default="true" id="5acb40aa-b29e-4e9d-857c-def6690bd9cf" name="Default Changelist" comment="Some more comments.">
+      <change afterPath="$PROJECT_DIR$/Songs/.mid" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Business/BusinessFacadeImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/BusinessFacadeImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Business/Entities/Translator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/Entities/Translator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Files/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/Files/config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/BusinessFacadeImp.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/BusinessFacadeImp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/Entities/Song.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/Entities/Song.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/Entities/SongRecorded.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/Entities/SongRecorded.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/Entities/Stadistics.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/Entities/Stadistics.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/Entities/Translator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/Entities/Translator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/Entities/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/Entities/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/SongManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/SongManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/TilesManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/TilesManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/ProfileUIManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/ProfileUIManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/SpotiFrameManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/SpotiFrameManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Business/Entities/ChangeTime.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/Entities/ChangeTime.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Business/Entities/Observer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/Entities/Observer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Business/Entities/Playlist.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/Entities/Playlist.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Business/Entities/ReadMidi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/Entities/ReadMidi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Business/Entities/RecordingNotes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/Entities/RecordingNotes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Business/Entities/SongRecorded.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/Entities/SongRecorded.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Business/Entities/Stadistics.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/Entities/Stadistics.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Business/Entities/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/Entities/User.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -137,8 +154,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.ReadMidi" />
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.ReadMidi" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.ReadMidi" />
         <item itemvalue="Application.Main" />
@@ -172,13 +189,6 @@
       <workItem from="1621333075928" duration="619000" />
       <workItem from="1621411993228" duration="13370000" />
       <workItem from="1621434489032" duration="6506000" />
-    </task>
-    <task id="LOCAL-00009" summary="Deleting files">
-      <created>1619073500064</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1619073500064</updated>
     </task>
     <task id="LOCAL-00010" summary="Logic for the Enter as Guest changed and adapted to not be deleted and to be a user called guest.">
       <created>1619685666055</created>
@@ -516,7 +526,14 @@
       <option name="project" value="LOCAL" />
       <updated>1621718514338</updated>
     </task>
-    <option name="localTasksCounter" value="59" />
+    <task id="LOCAL-00059" summary="Some more comments.">
+      <created>1621727006610</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1621727006610</updated>
+    </task>
+    <option name="localTasksCounter" value="60" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -536,7 +553,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Stop Playing when key released" />
     <MESSAGE value="play music menu" />
     <MESSAGE value="improvement of the display a song menu" />
     <MESSAGE value="player bar" />
@@ -595,6 +611,7 @@
     <MESSAGE value="It was not perfect, sad... Now I think it is!!!" />
     <MESSAGE value="It got bugged when changing the view, now it works perfectly.&#10;Alex: &quot;I love static things&quot;" />
     <MESSAGE value="Some comments and sizes changed." />
-    <option name="LAST_COMMIT_MESSAGE" value="Some comments and sizes changed." />
+    <MESSAGE value="Some more comments." />
+    <option name="LAST_COMMIT_MESSAGE" value="Some more comments." />
   </component>
 </project>

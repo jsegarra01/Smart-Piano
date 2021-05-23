@@ -16,9 +16,9 @@ public class User {
 
     /**
      * Constructor of a user
-     * @param userName
-     * @param mail
-     * @param password
+     * @param userName User's name
+     * @param mail User's mail
+     * @param password User's password
      */
     public User(String userName, String mail, String password){
         this.userName = userName;
