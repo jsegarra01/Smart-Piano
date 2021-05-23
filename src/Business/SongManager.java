@@ -3,9 +3,8 @@ package Business;
 import Business.Entities.*;
 import Persistence.SQL.Csv.SongCsvDAO;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 
 import static Business.Entities.SongToMidi.writeMidi;
 
@@ -13,6 +12,7 @@ public class SongManager {
     private final SongCsvDAO songManager = new SongCsvDAO();
     private static ArrayList<Song> songs;
     private static final ArrayList<String> songNames = new ArrayList<>();
+    private static final BusinessFacadeImp businessFacade = new BusinessFacadeImp();
 
     public ArrayList<String> getSongNames() {
         return songNames;
@@ -35,19 +35,27 @@ public class SongManager {
 
     public void setSongs() {
         //songs = songManager.getAllSongs(getUser());
-        songNames.clear();
-        songs = songManager.getAllSongs();
-        for (Song song : songs) {
-            songNames.add(song.getSongName());
+        try {
+            songNames.clear();
+            songs = songManager.getAllSongs();
+            for (Song song : songs) {
+                songNames.add(song.getSongName());
+            }
+        } catch (SQLException e) {
+            businessFacade.setError(0);
         }
     }
 
-    public void setSongs(String username) {
+    public void setSongs(String username){
         //songs = songManager.getAllSongs(getUser());
-        songNames.clear();
-        songs = songManager.getAllSongs(username);
-        for (Song song : songs) {
-            songNames.add(song.getSongName());
+        try {
+            songNames.clear();
+            songs = songManager.getAllSongs(username);
+            for (Song song : songs) {
+                songNames.add(song.getSongName());
+            }
+        } catch (SQLException e) {
+            businessFacade.setError(0);
         }
     }
 

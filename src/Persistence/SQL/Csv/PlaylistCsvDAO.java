@@ -35,7 +35,6 @@ public class PlaylistCsvDAO implements PlaylistDAO {
 
             return true;
         } catch (SQLException e) {
-            e.printStackTrace();
             return false;
         }
     }
@@ -134,7 +133,6 @@ public class PlaylistCsvDAO implements PlaylistDAO {
             st.execute();
             return true;
         } catch (SQLException throwables) {
-            throwables.printStackTrace();
             return false;
         }
     }

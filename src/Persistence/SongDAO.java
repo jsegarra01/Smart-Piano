@@ -3,6 +3,8 @@ import Business.Entities.Song;
 import Business.Entities.Stadistics;
 //import Business.Entities.TopSongs;
 import Business.Entities.User;
+
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -42,13 +44,13 @@ public interface SongDAO {
      * @param username
      * @return
      */
-    ArrayList<Song> getAllSongs(String username);
+    ArrayList<Song> getAllSongs(String username) throws SQLException;
 
     /**
      *
      * @return
      */
-    ArrayList<Song> getAllSongs();
+    ArrayList<Song> getAllSongs() throws SQLException;
 
     /**
      *

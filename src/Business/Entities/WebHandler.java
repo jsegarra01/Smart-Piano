@@ -4,10 +4,12 @@ package Business.Entities;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
+import java.sql.SQLException;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+import Business.BusinessFacadeImp;
 import Business.SongManager;
 import Persistence.WebScrapping.SongDownloader;
 import org.jsoup.Connection;
@@ -15,6 +17,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import static Presentation.Manager.ErrorsManager.endTime;
 
 public class WebHandler {
 
@@ -22,6 +25,7 @@ public class WebHandler {
     private  String filePath;
     private  String route;
     private  String OfferFile;
+    private static BusinessFacadeImp businessFacadeImp = new BusinessFacadeImp();
     //This suffix will be used to change the pages of the web and go through all of them. To do this, we leave a space
     //for a parameter.
     /*
@@ -67,13 +71,13 @@ public class WebHandler {
                 manager.saveSong(new Song(songName,author.substring(3),5,true,filePath + "/" + songName, "Guest"));
                 manager.setSongs();
             } catch (IOException e) {
-                e.printStackTrace();
+                businessFacadeImp.setError(4);
             }
 
         }
         else{
-            long endTime = System.currentTimeMillis() - initTime;
-            JOptionPane.showMessageDialog(new JFrame(), " No song with that Name or Author! Took " + endTime/1000 + "s.");
+            endTime = System.currentTimeMillis() - initTime;
+            businessFacadeImp.setError(5);
         }
     }
 

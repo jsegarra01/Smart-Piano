@@ -17,13 +17,9 @@ public class ConnectSQL {
      *
      * @return
      */
-    public static Connection getInstance(){
+    public static Connection getInstance() throws SQLException{
         if(connection == null){
-            try {
-                makeConnection();
-            } catch (SQLException throwables) {
-                System.out.println("The connection was not possible, please configure the config.json file");
-            }
+            makeConnection();
         }
 
         return connection;
@@ -32,12 +28,8 @@ public class ConnectSQL {
     /**
      *
      */
-    private ConnectSQL(){
-        try {
-            makeConnection();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
+    private ConnectSQL() throws SQLException{
+        makeConnection();
     }
 
     /**

@@ -16,7 +16,6 @@ public class Main {
         mainframe.setVisible(true);
         mainframe.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-        //TODO Close the connection to the database
     }
 }
  

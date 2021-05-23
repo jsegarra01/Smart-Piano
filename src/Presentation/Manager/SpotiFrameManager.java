@@ -117,9 +117,9 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
             case SEARCH_SONG:
                 //TODO CHECK this lmao lol superguay
                // searchSong(getInputedSongName());
-               // this.myWebHandlingTool.doStuff(SpotiUI.getInputedSongName(), "by");
-               // SongsUI.initTable(new BusinessFacadeImp().getSongManager().getSongs(), "Delete");
-               // cc.show(spotiPanel, SONGS_UI);
+                //this.myWebHandlingTool.doStuff(SpotiUI.getInputedSongName(), "by");
+                //SongsUI.initTable(new BusinessFacadeImp().getSongManager().getSongs(), "Delete");
+                //cc.show(spotiPanel, SONGS_UI);
                 break;
             case Dictionary_login.PROFILE_BUTTON:           //In the case that the Profile button is pressed
                 card.show(contenedor, PROFILE_UI);

@@ -65,8 +65,7 @@ public class PianoFrameManager implements ActionListener {
                 try {
                     new PianoTilesUISelectorManager(mainFrame.getMyFacade()).refreshPianoTilesUI();
                 } catch (NullPointerException h) {
-                    //TODO WE NEED TO CATCH THE EXCEPTION :) Sergi i Josep no se que esteu fent porfa controleu les
-                    // excepcions que sino el edu ens plora, visca el barça i visca catalunya
+                    playSong.setBackground(Color.getHSBColor(0,0,80.3f));
                 }
                 cc.show(centralPanel, PIANO_TILES_UI_SELECTOR);
                 playSong.setBackground(Color.getHSBColor(0,0,80.3f));

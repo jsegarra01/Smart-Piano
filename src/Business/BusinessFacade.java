@@ -102,4 +102,10 @@ public interface BusinessFacade {
     void resetTilesKeys();
 
     void initializeWebScrapping();
+
+    /**
+     * If an exception throws an error, sends the message directly to the errorManager
+     * @param errorFound int. type of error found
+     */
+    void setError(int errorFound);
 }

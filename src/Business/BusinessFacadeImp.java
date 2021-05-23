@@ -5,6 +5,7 @@ import Business.Entities.RecordingNotes;
 import Business.Entities.Song;
 import Business.Entities.*;
 import Business.Threads.WebScrapping;
+import Presentation.Manager.ErrorsManager;
 import Presentation.Manager.SpotiFrameManager;
 import Presentation.Ui_Views.FreePianoUI;
 import Presentation.Ui_Views.PlaylistUI;
@@ -14,6 +15,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.io.File;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import static Presentation.DictionaryPiano.FREE_PIANO_UI;
@@ -43,6 +45,7 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
     private static final SongManager songManager = new SongManager();
     private static final PlaylistManager playlistManager = new PlaylistManager();
     private static final TilesManager tilesManager = new TilesManager();
+    private static final ErrorsManager errorManager = new ErrorsManager();
 
 
     public void singUpStartup(){
@@ -75,20 +78,36 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
         if (!password.equals(passwordConfirm)) {
             return false;
         }
-        return loginUserManager.signUser(username,mail,password);
+        try {
+            if (loginUserManager.signUser(username,mail,password)) {
+                return true;
+            }
+            else {
+                setError(1);
+                return false;
+            }
+        } catch (SQLException e) {
+            setError(0);
+            return false;
+        }
     }
 
     public void finalSignUp(String username, String mail, String password, String passwordConfirm){
-        if (!password.equals(passwordConfirm)) {
-            JOptionPane.showMessageDialog(contenedor, "Values introduced were not accepted", "SignUp error", JOptionPane.ERROR_MESSAGE);
-        }else {
-            if(loginUserManager.signUser(username,mail,password)){
-                setUsernameLogin(getUsernameSignUp());
-                setSongUser();
-                card.show(contenedor, PIANO_FRAME);
-            } else {
-                JOptionPane.showMessageDialog(contenedor, "Values introduced were not accepted", "SignUp error", JOptionPane.ERROR_MESSAGE);
+        try {
+            if (!password.equals(passwordConfirm) || password.equals("")) {
+                setError(1);
             }
+            else {
+                if (loginUserManager.signUser(username, mail, password)) {
+                    setUsernameLogin(getUsernameSignUp());
+                    setSongUser();
+                    card.show(contenedor, PIANO_FRAME);
+                } else {
+                    setError(1);
+                }
+            }
+        } catch (SQLException e) {
+            setError(0);
         }
     }
 
@@ -99,8 +118,12 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
                new File(songManager.getSongs().get(i).getSongFile()).delete();
            }
         }
-        return loginUserManager.deleteUser();
-
+        try {
+            return loginUserManager.deleteUser();
+        } catch (SQLException e) {
+            setError(0);
+            return false;
+        }
     }
 
     public boolean noteRecordingUpdate(ArrayList<RecordingNotes> recordingNotes, float recordingTime){
@@ -192,10 +215,13 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
     }
 
     @Override
-    public void setSongUser() {songManager.setSongs(UserManager.getUser().getUserName());}
+    public void setSongUser() {
+        songManager.setSongs(UserManager.getUser().getUserName());
+    }
 
     @Override
     public void setSong(){
+
         songManager.setSongs();
     }
 
@@ -241,6 +267,11 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
     @Override
     public void initializeWebScrapping(){
         new WebScrapping();
+    }
+
+    @Override
+    public void setError(int errorFound) {
+        errorManager.errorFound(errorFound);
     }
 
 

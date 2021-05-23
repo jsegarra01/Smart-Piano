@@ -4,6 +4,7 @@ package Business;
 import Business.Entities.User;
 import Persistence.SQL.Csv.LoginUserCsvDAO;
 
+import java.sql.SQLException;
 import java.util.regex.Pattern;
 
 /**
@@ -18,7 +19,7 @@ import java.util.regex.Pattern;
 public class UserManager {
     private final LoginUserCsvDAO loginUserManager = new LoginUserCsvDAO();
     private static User user;
-
+    private static BusinessFacadeImp businessFacadeImp = new BusinessFacadeImp();
     public static User getUser() {
         return user;
     }
@@ -31,24 +32,32 @@ public class UserManager {
      */
     public boolean checkUser(String username, String password) {
         user = loginUserManager.getByUsername(username);
-
+        boolean returned = false;
         if (user == null) {
             if (username.equals("guest")) {
-                signUser(username, "WeLoveChallenge@lasal.com", password);
-                return true;
-            }
-            else {
-                return false;
+                try {
+                    signUser(username, "WeLoveChallenge@lasal.com", password);
+                    return true;
+                } catch (SQLException e) {
+                    businessFacadeImp.setError(0);
+                    return false;
+                }
             }
         }
+        else {
+            returned = user.getPassword().equals(password);
+        }
 
-        return user.getPassword().equals(password);
+        if (!returned) {
+            businessFacadeImp.setError(2);
+        }
+        return returned;
     }
 
     /**
      * Deletes the user inserted
       */
-    public boolean deleteUser() {
+    public boolean deleteUser() throws SQLException {
         if (!user.getUserName().equals("guest")) {
             return loginUserManager.delete(user);
         }
@@ -64,11 +73,11 @@ public class UserManager {
      * @param password Password string which the user has inputted while signing up
      * @return Boolean. If it can create a new user, returns 1. Else, returns 0
      */
-    public boolean signUser(String username, String mail, String password) {
+    public boolean signUser(String username, String mail, String password) throws SQLException {
         if (isValid(mail)) {
-            user = new User(username,mail,password);
+            user = new User(username, mail, password);
             return loginUserManager.save(user);
-    }
+        }
         return false;
     }
 

@@ -69,18 +69,14 @@ public class LoginUserCsvDAO implements LoginUserDAO{
      * Method that writes into the database the user that is being passed as a parameter
      * @param myUser Defines the user that will be stored in the db
      */
-    private boolean userToCsv(User myUser){
+    private boolean userToCsv(User myUser) throws SQLException{
         if(ConnectSQL.getInstance()!=null){
-            try {
                 PreparedStatement st = ConnectSQL.getInstance().prepareStatement("insert into UserT values ('" + myUser.getUserName() +
                         "', '" + myUser.getMail() + "', '" + myUser.getPassword() + "')");
                 st.execute();
                 return true;
-
-            } catch (SQLException e) {
-                return false;
-            }
-        }else{
+        }
+        else{
             return false;
         }
 
@@ -92,7 +88,7 @@ public class LoginUserCsvDAO implements LoginUserDAO{
      * @return Boolean that returns a true if it has stored a user and a false if it has not
      */
     @Override
-    public boolean save(User myUser) {
+    public boolean save(User myUser) throws SQLException{
         if(getByUsername(myUser.getUserName()) == null && getByMail(myUser.getMail()) == null){
             return userToCsv(myUser);
         }
@@ -112,16 +108,13 @@ public class LoginUserCsvDAO implements LoginUserDAO{
      * @return boolean: In case the user exists, returns 1, if it doesn't, returns 0
      */
     @Override
-    public boolean delete(User myUser) {
+    public boolean delete(User myUser) throws SQLException{
         if(ConnectSQL.getInstance()!=null){
-            try {
                 PreparedStatement st = ConnectSQL.getInstance().prepareStatement("delete from UserT where username = '" + myUser.getUserName()+"'");
                 st.execute();
                 return true;
-            } catch (SQLException e) {
-                return false;
-            }
-        }else{
+        }
+        else{
             return false;
         }
 

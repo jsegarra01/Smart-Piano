@@ -2,6 +2,8 @@ package Persistence;
 
 import Business.Entities.User;
 
+import java.sql.SQLException;
+
 /**
  * Interface that abstracts the persistence of groups from upper layers.
  *
@@ -18,7 +20,7 @@ public interface LoginUserDAO {
      * @param myUser
      * @return
      */
-    boolean save(User myUser);
+    boolean save(User myUser) throws SQLException;
     //void update (User myUser);
 
     /**
@@ -26,7 +28,7 @@ public interface LoginUserDAO {
      * @param myUser
      * @return
      */
-    boolean delete (User myUser);
+    boolean delete (User myUser) throws SQLException;
 
     /**
      *

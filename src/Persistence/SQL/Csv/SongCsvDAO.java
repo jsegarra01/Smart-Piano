@@ -3,7 +3,6 @@ package Persistence.SQL.Csv;
 import Business.Entities.Song;
 import Business.Entities.Stadistics;
 //import Business.Entities.TopSongs;
-import Business.Entities.User;
 import Persistence.SQL.ConnectSQL;
 import Persistence.SongDAO;
 
@@ -25,31 +24,22 @@ public class SongCsvDAO implements SongDAO {
      * @param myUserString Defines the username of the user who we want to get their songs
      * @return List of the class Song that stores the songs created by that User
      */
-    private ArrayList<Song> songFromCsv(String myUserString) {
-        try {
+    private ArrayList<Song> songFromCsv(String myUserString) throws SQLException{
             ResultSet myRs = ConnectSQL.getInstance().createStatement().executeQuery("select * from SongT as s where (s.username " +
                     "                    like '"+ myUserString+"' and publicBoolean = false) or publicBoolean = true;");
             ArrayList<Song> songs = myRsToSongs(myRs);
             myRs.close();
             return songs;
 
-        } catch (SQLException throwable) {
-            return null;
-        }
     }
 
 
-    private ArrayList<Song> songFromCsv() {
-        try {
+    private ArrayList<Song> songFromCsv() throws SQLException{
             ResultSet myRs = ConnectSQL.getInstance().createStatement().executeQuery("select * from SongT as s where" +
                     " publicBoolean = true;");
             ArrayList<Song> songs = myRsToSongs(myRs);
             myRs.close();
             return songs;
-
-        } catch (SQLException throwable) {
-            return null;
-        }
     }
 
     /**
@@ -157,8 +147,7 @@ public class SongCsvDAO implements SongDAO {
      * @return List of songs that have been created by the user
      */
     @Override
-    public ArrayList<Song> getAllSongs(String username) {
-
+    public ArrayList<Song> getAllSongs(String username) throws SQLException{
         return songFromCsv(username);
     }
 
@@ -168,7 +157,7 @@ public class SongCsvDAO implements SongDAO {
      * @return List of songs from the database
      */
     @Override
-    public ArrayList<Song> getAllSongs() {
+    public ArrayList<Song> getAllSongs() throws SQLException {
         return songFromCsv();
     }
 
@@ -180,7 +169,6 @@ public class SongCsvDAO implements SongDAO {
             st.executeUpdate();
             return true;
         } catch (SQLException throwable) {
-            throwable.printStackTrace();
             return false;
         }
     }
@@ -233,7 +221,6 @@ public class SongCsvDAO implements SongDAO {
             }
 
         } catch (SQLException throwable) {
-            throwable.printStackTrace();
             return false;
         }
     }
@@ -259,14 +246,12 @@ public class SongCsvDAO implements SongDAO {
                 return null;
             }
         } catch (SQLException throwables) {
-            throwables.printStackTrace();
             return null;
         }
     }
 
     @Override
     public Song getSongByName(String name) {
-
         try {
             ResultSet myRs = ConnectSQL.getInstance().createStatement().executeQuery("select * from SongT as s where s.songName LIKE '" + name + "'");
             if (myRs.next()) {
@@ -285,7 +270,6 @@ public class SongCsvDAO implements SongDAO {
                 return null;
             }
         } catch (SQLException throwables) {
-            throwables.printStackTrace();
             return null;
         }
     }
