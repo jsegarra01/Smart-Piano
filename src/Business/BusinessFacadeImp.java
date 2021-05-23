@@ -138,29 +138,56 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
         return playlistManager;
     }
 
+    /**
+     * Gets a playlist based on its name
+     * @param name name of the playlist we want to get
+     * @return The desired playlist
+     */
     @Override
     public Playlist getPlaylist(String name){
         return playlistManager.getFromName(name);
     }
 
+    /**
+     * Deletes a song from a playlist
+     * @param playlistName Name of the playlist we want to delete the song from
+     * @param songName Song we want to delete
+     * @return True if deleted, false if not
+     */
     @Override
     public boolean deleteSongFromPlaylist(String playlistName, String songName){
         return playlistManager.eliminateSongFromPlaylist(playlistName, songName);
     }
 
+    /**
+     * Adds a song to a playlist
+     * @param playlistName Name of the playlist we want to add the song to
+     * @param songName Name of the song we want to add
+     * @return True if added, false if not
+     */
     @Override
     public boolean addSongToPlaylist(String playlistName, String songName){
         return playlistManager.addSongToPlaylist(playlistName, songName);
     }
 
+    /**
+     * Sets the songs from the song manager depending on the user
+     */
     @Override
     public void setSongUser() {songManager.setSongs(UserManager.getUser().getUserName());}
 
+    /**
+     * Sets the songs from the song manager
+     */
     @Override
     public void setSong(){
         songManager.setSongs();
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public ArrayList<String> getSongName() {
         return songManager.getSongNames();

@@ -5,6 +5,9 @@ import Business.TimerManager;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * TODO: SEGUEIXO SENSE SABER QUE FA UN OBSERVER
+ */
 public class ChangeTime {
     private static List<Observer> observers = new ArrayList<Observer>();
     public static int actionTimer = 0;

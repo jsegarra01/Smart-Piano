@@ -5,6 +5,15 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Graph
+ *
+ * The "Graph" class will contain the different methods needed to set, get and manage a Graph
+ *
+ * @author OOPD 20-21 ICE5
+ * @version 1.0 21 Apr 2021
+ *
+ */
 public class Graph extends JPanel {
     private int width = 400;
     private int height = 350;
@@ -21,12 +30,22 @@ public class Graph extends JPanel {
     private String yAxis;
     private boolean graph1;
 
+    /**
+     * TODO
+     * @param yPoints
+     * @param yAxis
+     * @param graph1
+     */
     public Graph(List<Float> yPoints, String yAxis, boolean graph1) {
         this.yPoints = yPoints;
         this.yAxis = yAxis;
         this.graph1 = graph1;
     }
 
+    /**
+     * TODO
+     * @param g
+     */
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -124,6 +143,10 @@ public class Graph extends JPanel {
         g2.rotate(Math.toRadians(90), (float) width/2, (float) height/2);
     }
 
+    /**
+     * Gets the minimum Y
+     * @return The minimum Y
+     */
     private double getMinY() {
         float minY = Float.MAX_VALUE;
         for (float myY : yPoints) {
@@ -132,6 +155,10 @@ public class Graph extends JPanel {
         return minY;
     }
 
+    /**
+     * Gets the maximum Y
+     * @return The maximum Y
+     */
     private double getMaxY() {
         float maxY = Float.MIN_VALUE;
         for (float myY : yPoints) {
@@ -140,14 +167,26 @@ public class Graph extends JPanel {
         return maxY;
     }
 
+    /**
+     * Gets the width
+     * @return The width
+     */
     public int getWidth() {
         return width;
     }
 
+    /**
+     * Sets the width
+     * @param width The desired width
+     */
     public void setWidth(int width) {
         this.width = width;
     }
 
+    /**
+     * Gets the height
+     * @return The height
+     */
     public int getHeight() {
         return height;
     }

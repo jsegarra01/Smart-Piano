@@ -19,20 +19,14 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5acb40aa-b29e-4e9d-857c-def6690bd9cf" name="Default Changelist" comment="Some comments and sizes changed.">
+    <list default="true" id="5acb40aa-b29e-4e9d-857c-def6690bd9cf" name="Default Changelist" comment="Some more comments.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Files/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/Files/config.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Files/drawable/pause-button.png" beforeDir="false" afterPath="$PROJECT_DIR$/Files/drawable/pause-button.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/PianoTilesUISelectorManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/PianoTilesUISelectorManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/SpotiFrameManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/SpotiFrameManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/PianoTilesUISelector.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/PianoTilesUISelector.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Business/BusinessFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/BusinessFacade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Business/BusinessFacadeImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/BusinessFacadeImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Business/SongManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/SongManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Business/TilesManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/TilesManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presentation/Manager/PianoTilesUISelectorManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Manager/PianoTilesUISelectorManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presentation/Manager/SpotiFrameManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Manager/SpotiFrameManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presentation/Ui_Views/PianoTilesUISelector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Ui_Views/PianoTilesUISelector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Business/Entities/ConfigJson.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/Entities/ConfigJson.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Business/Entities/Graph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/Entities/Graph.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Business/Entities/Keys.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/Entities/Keys.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Business/Entities/MidiHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/Entities/MidiHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Business/Entities/Song.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/Entities/Song.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +45,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="develop" />
+        <entry key="$PROJECT_DIR$" value="feature/commentsV2" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -181,20 +175,6 @@
       <workItem from="1621333075928" duration="619000" />
       <workItem from="1621411993228" duration="13370000" />
       <workItem from="1621434489032" duration="6506000" />
-    </task>
-    <task id="LOCAL-00009" summary="Deleting files">
-      <created>1619073500064</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1619073500064</updated>
-    </task>
-    <task id="LOCAL-00010" summary="Logic for the Enter as Guest changed and adapted to not be deleted and to be a user called guest.">
-      <created>1619685666055</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1619685666055</updated>
     </task>
     <task id="LOCAL-00011" summary="Basic UI classes created and added to the cardLayout.">
       <created>1619688112323</created>
@@ -525,7 +505,21 @@
       <option name="project" value="LOCAL" />
       <updated>1621718514338</updated>
     </task>
-    <option name="localTasksCounter" value="59" />
+    <task id="LOCAL-00059" summary="Some more comments.">
+      <created>1621727006610</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1621727006610</updated>
+    </task>
+    <task id="LOCAL-00060" summary="Some more comments.">
+      <created>1621782543637</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1621782543638</updated>
+    </task>
+    <option name="localTasksCounter" value="61" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -545,8 +539,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Stop Playing when key released" />
-    <MESSAGE value="play music menu" />
     <MESSAGE value="improvement of the display a song menu" />
     <MESSAGE value="player bar" />
     <MESSAGE value="buttons player bar finished" />
@@ -604,6 +596,7 @@
     <MESSAGE value="It was not perfect, sad... Now I think it is!!!" />
     <MESSAGE value="It got bugged when changing the view, now it works perfectly.&#10;Alex: &quot;I love static things&quot;" />
     <MESSAGE value="Some comments and sizes changed." />
-    <option name="LAST_COMMIT_MESSAGE" value="Some comments and sizes changed." />
+    <MESSAGE value="Some more comments." />
+    <option name="LAST_COMMIT_MESSAGE" value="Some more comments." />
   </component>
 </project>
