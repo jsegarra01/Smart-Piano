@@ -2,12 +2,8 @@ package Presentation.Manager;
 
 //Imports needed from the dictionary, events and mainframe
 import Business.Entities.ChangeTime;
-import Business.Entities.Observer;
-import Business.TimerManager;
 import Presentation.Dictionary_login;
-import Presentation.Ui_Views.PianoFrame;
 
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -26,7 +22,7 @@ import static Presentation.Ui_Views.SpotiUI.spotiPanel;
  * The "FreePianoUIManager" class will contain the different methods that are needed to control the view class "FreePianoUI"
  *
  * @author OOPD 20-21 ICE5
- * @version 1.0 21 Apr 2021
+ * @version 1.0 23 May 2021
  *
  */
 public class PianoFrameManager implements ActionListener {

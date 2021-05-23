@@ -9,6 +9,16 @@ import java.util.LinkedList;
 import static Presentation.Dictionary_login.PROFILE_BUTTON;
 import static Presentation.Ui_Views.Tile.*;
 
+/**
+ * Piano
+ *
+ * Abstract class that will be used in order to reuse the piano, so that for the FreePiano and the PianoTiles it can
+ * use the same methods and attributes
+ *
+ * @author OOPD 20-21 ICE5
+ * @version 1.5 23 May 2021
+ *
+ */
 public abstract class Piano extends JPanel {
     public static final String BTN_RECORD = " ";
     public static final String BTN_TILE = "SOUND";

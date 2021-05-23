@@ -9,7 +9,7 @@ import java.awt.event.KeyEvent;
  * The "Tile" class will contain the different methods and attributes of a piano tile in order to set their color, icon and more
  *
  * @author OOPD 20-21 ICE5
- * @version 2.0 24 Apr 2021
+ * @version 2.0 23 May 2021
  */
 public class Tile extends JButton {
     private String name;

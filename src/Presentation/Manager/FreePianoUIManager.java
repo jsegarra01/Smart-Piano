@@ -35,15 +35,18 @@ import static Presentation.Manager.MainFrame.contenedor;
  * The "FreePianoUIManager" class will contain the different methods that are needed to control the view class "FreePianoUI"
  *
  * @author OOPD 20-21 ICE5
- * @version 2.0 9 May 2021
+ * @version 2.0 23 May 2021
  *
  */
 public class FreePianoUIManager implements ActionListener, MouseListener {
     public static int SOUND_SYNTHER = 0 ;
     public ArrayList<RecordingNotes> recordingNotes = new ArrayList<>();
 
-    private MidiHelper finalMidiHelper;
-    private KeyListener KL;
+    /*
+    Defines the player of the music of the FreePiano
+     */
+    private final MidiHelper finalMidiHelper;
+    private final KeyListener KL;
     private boolean recording = false;
     private float recordingTime = 0;
     BusinessFacadeImp myFacade;
@@ -186,8 +189,8 @@ public class FreePianoUIManager implements ActionListener, MouseListener {
     }
 
     /**
-     *
-     * @param string
+     * Method that sets back the tile to its color
+     * @param string Defines the tile to change color
      */
     private void setIconBack(String string){
         int i = 0;

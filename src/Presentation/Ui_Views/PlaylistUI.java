@@ -1,21 +1,15 @@
 package Presentation.Ui_Views;
 
 //import data from the different libraries
-import Business.BusinessFacade;
-import Business.BusinessFacadeImp;
 import Business.Entities.Playlist;
 import Business.Entities.Song;
 import Presentation.Manager.SpotiFrameManager;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
-import javax.swing.table.DefaultTableModel;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 
 import static Presentation.DictionaryPiano.*;
 
@@ -25,13 +19,13 @@ import static Presentation.DictionaryPiano.*;
  * The "PlaylistUI" class will contain the different methods to create the view class card layout "PlaylistUI" and login interface
  *
  * @author OOPD 20-21 ICE5
- * @version 2.0 24 Apr 2021
+ * @version 2.0 23 May 2021
  *
  */
 public class PlaylistUI extends JPanel {
     private static JPanel panel = new JPanel(new BorderLayout());
     private static Playlist playlistGeneral;
-    private static final DecimalFormat df = new DecimalFormat("###.##");
+    private static final DecimalFormat df = new DecimalFormat(".##");
 
 
 
@@ -74,10 +68,9 @@ public class PlaylistUI extends JPanel {
         return layout;
     }
 
-//TODO ALEX EXPLICA QUE ES
     /**
-     *
-     * @param playlist
+     * Method that sets all the song inside the playlist in the view
+     * @param playlist Defines the playlist in which the song are stored
      */
     public static void setSongsPlaylists(Playlist playlist){
 
@@ -96,7 +89,6 @@ public class PlaylistUI extends JPanel {
 
             panelSongs.setBackground(Color.black);
             panelSongs.add(Box.createRigidArea(new Dimension(50, 10)));
-            //panelSongs.setPreferredSize(new Dimension(5,400));
 
             BoxLayout boxLayout = new BoxLayout(panelSongs, BoxLayout.Y_AXIS);
             panelSongs.setLayout(boxLayout);
@@ -138,9 +130,8 @@ public class PlaylistUI extends JPanel {
 
         label = new JLabel(song.getSongName());
         label.setForeground(Color.WHITE);
-        label.setPreferredSize(new Dimension(200, 20));
+        label.setPreferredSize(new Dimension(400, 50));
         label.setMaximumSize(label.getPreferredSize());
-        label.setMinimumSize(new Dimension(180,10));
         panel1.add(label);
 
         label = new JLabel(song.getAuthorName());
@@ -149,15 +140,15 @@ public class PlaylistUI extends JPanel {
         label.setMaximumSize(label.getPreferredSize());
         panel1.add(label);
 
-        label = new JLabel(String.valueOf(df.format(song.getDuration())));
+        label = new JLabel((((int)(song.getDuration()/60))) + ":" + (Math.round(((song.getDuration())) -(int)(song.getDuration()/60))));
         label.setForeground(Color.WHITE);
-        label.setPreferredSize(new Dimension(140,50));
+        label.setPreferredSize(new Dimension(60,50));
         label.setMaximumSize(label.getPreferredSize());
         panel1.add(label);
 
         label = new JLabel(sdf.format(song.getRecordingDate()));
         label.setForeground(Color.WHITE);
-        label.setPreferredSize(new Dimension(260,50));
+        label.setPreferredSize(new Dimension(100,50));
         label.setMaximumSize(label.getPreferredSize());
         panel1.add(label);
 
@@ -190,16 +181,16 @@ public class PlaylistUI extends JPanel {
     private static void updatePanel(Playlist playlist){
         for (Component jc : panel.getComponents()) {
             if (jc instanceof JScrollPane ) {
-                JScrollPane scrollPane = new JScrollPane();
+                JScrollPane scrollPane = (JScrollPane) jc;
                 for (Component jc2 : scrollPane.getComponents()) {
                     if (jc2 instanceof JViewport) {
-                        JViewport viewport = new JViewport();
+                        JViewport viewport = (JViewport) jc2;
                         for (Component jc3 : viewport.getComponents()) {
                             if (jc3 instanceof JPanel) {
-                                JPanel panelSongs = new JPanel();
+                                JPanel panelSongs = (JPanel) jc3;
                                 for(int j = 0; j< panelSongs.getComponentCount();j++){
                                     if (panelSongs.getComponent(j) instanceof JPanel) {
-                                        JPanel song = new JPanel();
+                                        JPanel song = (JPanel) panelSongs.getComponent(j);
                                         int i = 0;
                                         boolean foundSong = false;
                                         while (i < playlist.getSongs().size() && !foundSong) {
@@ -221,7 +212,7 @@ public class PlaylistUI extends JPanel {
                                     foundSong = false;
                                     while (i < panelSongs.getComponentCount() && !foundSong){
                                         if (panelSongs.getComponent(i) instanceof JPanel) {
-                                            JPanel song = new JPanel();
+                                            JPanel song = (JPanel) panelSongs.getComponent(i);
                                             if(song.getName().equals(playlist.getSongs().get(k).getSongFile())){
                                                 foundSong = true;
                                             }else{

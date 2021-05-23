@@ -1,7 +1,6 @@
 package Presentation.Manager;
 
 //Imports needed from the dictionary, events and mainframe
-import Business.BusinessFacade;
 import Business.BusinessFacadeImp;
 import Business.Entities.ChangeTime;
 import Presentation.DictionaryPiano;
@@ -20,12 +19,10 @@ import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.Objects;
 
-import static Presentation.DictionaryPiano.RECORDING_TIMER;
 import static Presentation.Dictionary_login.*;
 import static Presentation.Manager.MainFrame.card;
 import static Presentation.Manager.MainFrame.contenedor;
 import static Presentation.Ui_Views.PianoTilesUISelector.*;
-import static Presentation.Ui_Views.Tile.resizeIcon;
 
 
 /**
@@ -34,7 +31,7 @@ import static Presentation.Ui_Views.Tile.resizeIcon;
  * The "PianoTilesUISelectorManager" class will contain the different methods that are needed to control the view class "PianoTilesUISelector"
  *
  * @author OOPD 20-21 ICE5
- * @version 2.0 8 May 2021
+ * @version 2.0 23 May 2021
  *
  */
 public class PianoTilesUISelectorManager implements ActionListener, MouseListener, ListSelectionListener {
@@ -45,12 +42,16 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
     private static boolean songStarted = false;
     private static int songIndex = 0;
 
-    private BusinessFacadeImp myFacade;
+    private final BusinessFacadeImp myFacade;
 
-    private final ImageIcon playIcon = new ImageIcon("Files/drawable/play-button.png");
-    private final ImageIcon pauseIcon = new ImageIcon("Files/drawable/pause-button.png");
-    private MidiHelper finalMidiHelper;
-    private KeyListener KL;
+    private final ImageIcon playIcon = new ImageIcon("Files/drawable/play-button.png"); // icon play
+    private final ImageIcon pauseIcon = new ImageIcon("Files/drawable/pause-button.png"); // icon pause
+
+    /*
+    Defines where tiles will be played
+     */
+    private final MidiHelper finalMidiHelper;
+    private final KeyListener KL;
 
     MidiHelper midiHelper = null;
 
@@ -59,7 +60,6 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
      */
     public PianoTilesUISelectorManager(BusinessFacadeImp myFacade) {
         //To play the song
-        //timer.setActionCommand(RECORDING_TIMER);
         this.myFacade = myFacade;
         try {
             midiHelper = new MidiHelper();
@@ -85,7 +85,6 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
             public void keyPressed(KeyEvent e) {
                 if(Translator.getPressedFromKey(e.getExtendedKeyCode()) !=null){
                     if(!Translator.getPressedFromKey(e.getExtendedKeyCode()).isPressed()){
-                        //finalMidiHelper.playSomething(Translator.getNumberNoteFromName(Translator.getCodeFromKey(e)), SOUND_SYNTHER);
                         finalMidiHelper.playSomething(Translator.getNumberNoteFromName(Translator.getFromKey(e.getExtendedKeyCode())),SOUND_SYNTHER);
                         Translator.getPressedFromKey(e.getExtendedKeyCode()).setPressed(true);
                     }
@@ -250,7 +249,7 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
      * @return A list with all the song names
      */
     public ArrayList<String> getBusinessSongNames() {
-        return new BusinessFacadeImp().getSongName();
+        return myFacade.getSongName();
     }
 
     /**
@@ -268,17 +267,16 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
             }
             songStarted = true;
 
-            new BusinessFacadeImp().setTileArray(songIndex);                //Sets the tiles to play
+            myFacade.setTileArray(songIndex);                //Sets the tiles to play
                             //Sets the tiles to play
-            //myFacade.readingMidiFiles(songIndex);
+
 
             myFacade.setAllKeys();
-            //setKeys(new BusinessFacadeImp().getTiles());                    //Gets the tiles to play.
+                                                                            //Gets the tiles to play.
                                                                             //Is this necessary or it
                                                                             //can be in presentation?
 
             new ChangeTime(2);
-            System.out.println("sasa");
         }
     }
 
@@ -292,7 +290,7 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
         velocityModifier = 1;
         songIndex = 0;
         new ChangeTime(0);
-        new BusinessFacadeImp().resetTilesKeys();
+        myFacade.resetTilesKeys();
         initTileGame();
         refreshTiles();
         refreshSongList();
@@ -301,7 +299,7 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
     /**
      * Tells the system that some time has passed and the keys must be refreshed
      */
-    public static void addTime() {                                                        //When 1000 milliseconds have passed
+    public static void addTime() {                               //When 1000 milliseconds have passed
         if (play && songStarted) {
             timePassed++;
             refreshTiles();

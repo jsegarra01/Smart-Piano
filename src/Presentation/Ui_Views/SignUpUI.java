@@ -1,18 +1,13 @@
 package Presentation.Ui_Views;
 
 //Imports all the necessary libraries
-import Business.BusinessFacade;
 import Business.BusinessFacadeImp;
-import Presentation.Manager.MainFrame;
 import Presentation.Manager.SignUpUiManager;
 import Presentation.TextPrompt;
 
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionListener;
-import java.security.KeyPairGenerator;
-
 import static Presentation.Dictionary_login.*;
 
 /**
@@ -21,20 +16,20 @@ import static Presentation.Dictionary_login.*;
  * The "SignUpUI" class will contain the different methods to create the view class card layout "SignUpUI" and SignUp interface
  *
  * @author OOPD 20-21 ICE5
- * @version 2.0 24 Apr 2021
+ * @version 2.0 23 May 2021
  *
  */
 public class SignUpUI extends JPanel {
-    private JLabel pianoText = new JLabel(SMART_PIANO_TEXT);
-    private JLabel logInText = new JLabel(SIGN_UP_BUTTON);
+    private final JLabel pianoText = new JLabel(SMART_PIANO_TEXT);
+    private final JLabel logInText = new JLabel(SIGN_UP_BUTTON);
 
-    private static JTextField usernameTextField = new JTextField();
-    private static JTextField mailTextField = new JTextField();
-    private static JPasswordField password = new JPasswordField();
-    private static JPasswordField passwordConfirmation = new JPasswordField();
-    private JButton back = new JButton(BACK_BUTTON);
-    private JButton done = new JButton(DONE_BUTTON);
-    private BusinessFacadeImp myFacade;
+    private static final JTextField usernameTextField = new JTextField();
+    private static final JTextField mailTextField = new JTextField();
+    private static final JPasswordField password = new JPasswordField();
+    private static final JPasswordField passwordConfirmation = new JPasswordField();
+    private final JButton back = new JButton(BACK_BUTTON);
+    private final JButton done = new JButton(DONE_BUTTON);
+    private final BusinessFacadeImp myFacade;
 
     /**
      * Constructor for the SignUpUI, you need to send the mainframe context and will create a card layout
@@ -216,7 +211,6 @@ public class SignUpUI extends JPanel {
      */
     public static String getPasswordSignUp() {
         return password.getText();
-        //return password.getToolTipText();
     }
 
     /**

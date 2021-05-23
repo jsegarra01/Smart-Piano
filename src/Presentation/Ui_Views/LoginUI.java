@@ -1,8 +1,6 @@
 package Presentation.Ui_Views;
 
 //import data from the different libraries
-import Business.BusinessFacade;
-import Business.BusinessFacadeImp;
 import Presentation.Manager.LoginUIManager;
 import Presentation.TextPrompt;
 
@@ -18,7 +16,7 @@ import static Presentation.Dictionary_login.*;
  * The "LoginUI" class will contain the different methods to create the view class card layout "LoginUI" and login interface
  *
  * @author OOPD 20-21 ICE5
- * @version 2.0 24 Apr 2021
+ * @version 2.0 23 May 2021
  *
  */
 public class LoginUI extends JPanel{
@@ -29,13 +27,11 @@ public class LoginUI extends JPanel{
     private static final JPasswordField password = new JPasswordField();
     private final JButton back = new JButton(BACK_BUTTON);
     private final JButton done = new JButton(DONE_BUTTON);
-    private BusinessFacadeImp myFacade;
 
     /**
      * Constructor for the LoginUI, you need to send the mainframe context and will create a card layout
      */
-    public LoginUI(BusinessFacadeImp myFacade) {
-        this.myFacade = myFacade;
+    public LoginUI() {
         initialize();
     }
 

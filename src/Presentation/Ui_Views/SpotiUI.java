@@ -1,9 +1,9 @@
 package Presentation.Ui_Views;
 
 import Business.BusinessFacadeImp;
-import Presentation.Manager.GraphTimer;
 import Business.Entities.Playlist;
 import Presentation.DictionaryPiano;
+import Presentation.Manager.GraphTimer;
 import Presentation.Manager.SpotiFrameManager;
 
 import javax.swing.*;
@@ -16,7 +16,6 @@ import static Presentation.Dictionary_login.PROFILE_BUTTON;
 import static Presentation.Ui_Views.Tile.resizeIcon;
 
 
-//import static Presentation.DictionaryPiano.*;
 
 /**
  * SpotiUI
@@ -24,7 +23,7 @@ import static Presentation.Ui_Views.Tile.resizeIcon;
  * The "SpotiUI" class will allow us to choose the different songs we have available to play
  *
  * @author OOPD 20-21 ICE5
- * @version 2.0 24 Apr 2021
+ * @version 2.0 23 May 2021
  *
  */
 public class SpotiUI extends JPanel {
@@ -43,20 +42,16 @@ public class SpotiUI extends JPanel {
     public static JButton playButton = new JButton();
     private static JButton nextButton = new JButton();
     public static JButton loopButton = new JButton();
-    private static JButton profile = new JButton(PROFILE_BUTTON);
-    private static JPanel songPanel = new JPanel(new GridLayout(2,0));
-    private static JLabel songLabel = new JLabel(SONG_PLAYING);
-    private static JLabel authorLabel = new JLabel(AUTHOR_SONG);
-
-    private GraphTimer timer = new GraphTimer();
-
-    //public static JButton pauseButton = new JButton();
+    private static final JButton profile = new JButton(PROFILE_BUTTON);
+    private static final JPanel songPanel = new JPanel(new GridLayout(2,0));
+    private static final JLabel songLabel = new JLabel(SONG_PLAYING);
+    private static final JLabel authorLabel = new JLabel(AUTHOR_SONG);
 
     public static BusinessFacadeImp myFacade;
 
 
     public static JPanel leftList = new JPanel();
-    private static JPanel playlistsPanel = new JPanel();
+    private static final JPanel playlistsPanel = new JPanel();
     private static JScrollPane scroll = new JScrollPane();
 
     private static final JTextField songNameInputText = new JTextField();
@@ -69,6 +64,7 @@ public class SpotiUI extends JPanel {
         playlistUI = new PlaylistUI();
         statisticsUI = new StatisticsUI();
         songsUI = new SongsUI();
+        new GraphTimer();
 
         initialize();
     }
@@ -134,11 +130,8 @@ public class SpotiUI extends JPanel {
         panelSearch.setOpaque(false);
         panelSearch.add(songNameInputText);
         panelSearch.add(searchButton);
+
         panelButtonsSpoti.add(panelSearch);
-        //panelButtonsSpoti.setAlignmentX(LEFT_ALIGNMENT);
-        //panelButtonsSpoti.add(showStadistics);
-        //panelButtonsSpoti.add(songsList);
-        //panelButtonsSpoti.add(topSongs);
         panelButtonsSpoti.add(setButton(showStadistics, 10));
         panelButtonsSpoti.add(setButton(songsList, 10));
         panelButtonsSpoti.add(setButton(topSongs, 10));
@@ -146,10 +139,10 @@ public class SpotiUI extends JPanel {
         panelButtonsSpoti.add(setButton(createPlaylist, 0));
         panelButtonsSpoti.setBorder(BorderFactory.createEmptyBorder());
         panelButtonsSpoti.setBackground((Color.getHSBColor(10,0,0.2f)));
+
         leftList.add(panelButtonsSpoti);
         leftList.add(separator);
         leftList.add(scroll);
-
         leftList.setBackground(Color.getHSBColor(10,0,0.2f));
         add(leftList, BorderLayout.WEST);
 

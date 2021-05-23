@@ -1,10 +1,8 @@
 package Business;
 
-import Business.Entities.Keys;
-import Business.Entities.Playlist;
-import Business.Entities.RecordingNotes;
-import Business.Entities.Song;
+import Business.Entities.*;
 
+import java.awt.event.KeyEvent;
 import java.awt.image.Kernel;
 import java.util.ArrayList;
 
@@ -19,6 +17,7 @@ import java.util.ArrayList;
  */
 public interface BusinessFacade {
 
+    void singUpStartup();
     /**
      * Checks if the user can log in or not
      * @param username Username string which the user has inputted while logging in
@@ -83,6 +82,17 @@ public interface BusinessFacade {
      */
     ArrayList<String> getSongName();
 
+    void setAllKeys();
+
+    boolean modifyKey(String tileSelected, KeyEvent e, int KeyExisted);
+
+    boolean noteRecordingUpdate(ArrayList<RecordingNotes> recordingNotes, float recordingTime);
+
+    void enterAsAGuest(String name, String psw);
+
+    void logInStartup();
+
+    Playlist createPlaylist();
 
     Song getSong(int index);
 
@@ -100,6 +110,8 @@ public interface BusinessFacade {
 
     ArrayList<Keys> getTiles();
 
+    boolean newPlaylist(String playlist);
+
     void resetTilesKeys();
 
     void initializeWebScrapping();
@@ -109,4 +121,9 @@ public interface BusinessFacade {
      * @param errorFound int. type of error found
      */
     void setError(int errorFound);
+
+    ArrayList<Song> getSongs();
+    Stadistics getStats(int i);
+    void updateSong(Song song);
+    ArrayList<Song> getTopFive();
 }

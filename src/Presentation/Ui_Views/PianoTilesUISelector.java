@@ -1,15 +1,12 @@
 package Presentation.Ui_Views;
 
 //imports needed for the piano tiles
-import Business.BusinessFacade;
-import Business.BusinessFacadeImp;
 import Business.Entities.Keys;
 import Presentation.Manager.MainFrame;
 import javax.swing.*;
 import java.awt.*;
 import Presentation.Manager.PianoTilesUISelectorManager;
 
-import java.security.Key;
 import java.util.ArrayList;
 
 import static Presentation.DictionaryPiano.*;
@@ -24,13 +21,12 @@ import static Presentation.Ui_Views.Tile.*;
  * The "PianoTilesUISelector" class will allow us to choose the different songs we have available to play
  *
  * @author OOPD 20-21 ICE5
- * @version 2.0 7 May 2021
+ * @version 2.0 23 May 2021
  *
  */
 public class PianoTilesUISelector extends Piano {
     private  static MainFrame mainFrame;
     private static ArrayList<Tile> keyboard;
-    private static int i = 0;
     public static ArrayList<Tile> getKeyboard() {
         return keyboard;
     }
@@ -52,7 +48,7 @@ public class PianoTilesUISelector extends Piano {
      */
     public PianoTilesUISelector(final MainFrame mainFrame) {
         super();
-        this.mainFrame = mainFrame;
+        PianoTilesUISelector.mainFrame = mainFrame;
         keyboard = new ArrayList<>();
         initialize();
     }
@@ -140,18 +136,7 @@ public class PianoTilesUISelector extends Piano {
         eastPane.setBackground(Color.getHSBColor(0,0,0.2f));
         panelBorderLayout.add(eastPane, BorderLayout.EAST);
 
-
-        //Creates the background for the PianoTiles game
-
         initTileGame();
-        //Example of how to put things in a jLayeredPane, important to notice the set bounds and opaque thingies
-        /*
-        JPanel panel = new JPanel();
-        panel.setBackground(Color.orange);
-        panel.setOpaque(true);
-        panel.setBounds(5,100,100,100);
-        jLayeredPane.add(panel,Integer.valueOf(1));
-        */
 
         for (int i = 0; i < 14; i++) {                                              //Vertical lines
             JPanel auxiliar = new JPanel();

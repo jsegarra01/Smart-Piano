@@ -1,9 +1,7 @@
 package Presentation.Ui_Views;
 
 //Imports all the libraries needed to create the card layout
-import Business.BusinessFacade;
 import Business.BusinessFacadeImp;
-import Presentation.Manager.MainFrame;
 import Presentation.Manager.PreMenuUIManager;
 
 import javax.swing.*;
@@ -19,15 +17,15 @@ import static Presentation.Dictionary_login.*;
  * The "PreMenuUI" class will contain the different methods to create the view class card layout "PreMenuUI" and preMenu interface
  *
  * @author OOPD 20-21 ICE5
- * @version 2.0 24 Apr 2021
+ * @version 2.0 23 May 2021
  *
  */
 public class PreMenuUI extends JPanel{
-    private JLabel pianoText = new JLabel(SMART_PIANO_TEXT);
-    private JButton logIn = new JButton(LOG_IN_BUTTON);
-    private JButton signUp = new JButton(SIGN_UP_BUTTON);
-    private JButton guest = new JButton(ENTER_AS_GUEST_BUTTON);
-    private BusinessFacadeImp myFacade;
+    private final JLabel pianoText = new JLabel(SMART_PIANO_TEXT);
+    private final JButton logIn = new JButton(LOG_IN_BUTTON);
+    private final JButton signUp = new JButton(SIGN_UP_BUTTON);
+    private final JButton guest = new JButton(ENTER_AS_GUEST_BUTTON);
+    private final BusinessFacadeImp myFacade;
     /**
      * Constructor for the PreMenuUI, you need to send the mainframe context and will create a card layout
      */
@@ -41,7 +39,6 @@ public class PreMenuUI extends JPanel{
      */
     private void initialize() {
         setLayout(new BorderLayout());
-
         JPanel userButtons = new JPanel();
         userButtons.setLayout(new BoxLayout(userButtons, BoxLayout.Y_AXIS));
 

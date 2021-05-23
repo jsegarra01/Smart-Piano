@@ -1,21 +1,11 @@
 package Presentation.Manager;
 
 //Imports needed from the dictionary, events and mainframe
-import Business.BusinessFacade;
 import Business.BusinessFacadeImp;
-import Business.UserManager;
 
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import static Presentation.DictionaryPiano.FREE_PIANO_UI;
 import static Presentation.Dictionary_login.*;
-import static Presentation.Manager.MainFrame.*;
-import static Presentation.Ui_Views.LoginUI.resetUILogin;
-import static Presentation.Ui_Views.LoginUI.setUsernameLogin;
-import static Presentation.Ui_Views.PianoFrame.centralPanel;
-import static Presentation.Ui_Views.SignUpUI.resetUISignUpUI;
 
 /**
  * PreMenuUIManager
@@ -23,7 +13,7 @@ import static Presentation.Ui_Views.SignUpUI.resetUISignUpUI;
  * The "PreMenuUIManager" class will contain the different methods that are needed to control the view class "PreMenuUI"
  *
  * @author OOPD 20-21 ICE5
- * @version 2.0 21 Apr 2021
+ * @version 2.0 23 May 2021
  *
  */
 public class PreMenuUIManager implements ActionListener {
@@ -41,7 +31,6 @@ public class PreMenuUIManager implements ActionListener {
      */
     @Override
     public void actionPerformed(ActionEvent e) {
-        //CardLayout cc = (CardLayout) (centralPanel.getLayout());
         // We distinguish between our buttons.
         switch (e.getActionCommand()) {
             case LOG_IN_BUTTON -> myFacade.logInStartup();//In the case that the LogIn button is pressed

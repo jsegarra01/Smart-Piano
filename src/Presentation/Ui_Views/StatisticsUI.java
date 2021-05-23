@@ -2,17 +2,10 @@ package Presentation.Ui_Views;
 
 //import data from the different libraries
 import Business.Entities.Graph;
-import Presentation.Manager.MainFrame;
-import Presentation.Manager.SpotiFrameManager;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.List;
-import java.util.Random;
-
-import static Presentation.Dictionary_login.*;
 
 /**
  * StatisticsUI
@@ -25,28 +18,17 @@ import static Presentation.Dictionary_login.*;
  */
 public class StatisticsUI extends JPanel {
 
-    private static Graph graph1;
-    private static Graph graph2;
-
     private static LinkedList<Float> numMin = new LinkedList<>();
     private static LinkedList<Float> numSongs = new LinkedList<>();
 
-    private static JPanel panel = new JPanel(new BorderLayout());
-    private static JPanel panelGraphs = new JPanel(new BorderLayout());
+    private static final JPanel panel = new JPanel(new BorderLayout());
 
     /**
      * Constructor for the StatisticsUI, you need to send the mainframe context and will create a card layout
      *
      */
-    public StatisticsUI(/*, LinkedList<Float> numSongs, LinkedList<Float> numMin*/) {
-        super();
-        //this.mainFrame = mainFrame;
+    public StatisticsUI() {
         this.add(panel);
-        //his.add(panelGraphs);
-        //this.numSongs = numSongs;
-        //this.numMin = numMin;
-
-        //initialize();
     }
 
 
@@ -72,11 +54,11 @@ public class StatisticsUI extends JPanel {
      * Creates the graphs with the statistics recolected and displays them
      */
     public static void createAndShowGui() {
-        graph1  = new Graph(numSongs, "Number of times played", true);
+        Graph graph1 = new Graph(numSongs, "Number of times played", true);
         JLabel title1 = new JLabel("# Songs");
         title1.setHorizontalAlignment(JLabel.CENTER);
         graph1.add(title1);
-        graph2 = new Graph(numMin, "Number of Minutes", false);
+        Graph graph2 = new Graph(numMin, "Number of Minutes", false);
         JLabel title2 = new JLabel("# Minutes");
         title2.setHorizontalAlignment(JLabel.CENTER);
         graph2.add(title2);

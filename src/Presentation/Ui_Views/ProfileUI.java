@@ -1,9 +1,7 @@
 package Presentation.Ui_Views;
 
 //Imports all necesssary libraries
-import Business.BusinessFacade;
 import Business.BusinessFacadeImp;
-import Presentation.Manager.MainFrame;
 import Presentation.Manager.ProfileUIManager;
 
 import javax.swing.*;
@@ -19,16 +17,16 @@ import static Presentation.Dictionary_login.*;
  * The "ProfileUI" class will contain the different methods to create the view class card layout "ProfileUI" and Profile interface
  *
  * @author OOPD 20-21 ICE5
- * @version 2.0 24 Apr 2021
+ * @version 2.0 23 May 2021
  *
  */
 public class ProfileUI extends JPanel{
-    private JLabel pianoText = new JLabel("SMART PIANO");
-    private JLabel profileText = new JLabel("PROFILE");
-    private JButton logOut = new JButton(LOGOUT_BUTTON);
-    private JButton deleteAccount = new JButton(DELETE_BUTTON);
-    private JButton back = new JButton(BACK_BUTTON);
-    private BusinessFacadeImp myFacade;
+    private final JLabel pianoText = new JLabel("SMART PIANO");
+    private final JLabel profileText = new JLabel("PROFILE");
+    private final JButton logOut = new JButton(LOGOUT_BUTTON);
+    private final JButton deleteAccount = new JButton(DELETE_BUTTON);
+    private final JButton back = new JButton(BACK_BUTTON);
+    private final BusinessFacadeImp myFacade;
 
     /**
      * Constructor for the ProfileUI, you need to send the mainframe context and will create a card layout
@@ -64,9 +62,11 @@ public class ProfileUI extends JPanel{
 
         logOut.setAlignmentX(0.5f);
         logOut.setBorder(new EmptyBorder(10,123,10,125));
+        logOut.setOpaque(true);
 
         deleteAccount.setAlignmentX(0.5f);
         deleteAccount.setBorder(new EmptyBorder(10,96,10,96));
+        deleteAccount.setOpaque(true);
 
         userButtons.setBackground(Color.getHSBColor(0, 0, 0.1f));
 

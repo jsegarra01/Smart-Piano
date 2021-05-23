@@ -1,16 +1,13 @@
 package Presentation.Manager;
 
 //Imports needed from the dictionary, events and mainframe
-import Business.BusinessFacade;
 import Business.BusinessFacadeImp;
 
-import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import static Presentation.Dictionary_login.*;
 import static Presentation.Manager.MainFrame.*;
-import static Presentation.Ui_Views.LoginUI.setUsernameLogin;
 import static Presentation.Ui_Views.SignUpUI.*;
 
 /**
@@ -19,7 +16,7 @@ import static Presentation.Ui_Views.SignUpUI.*;
  * The "SignUpUIManager" class will contain the different methods that are needed to control the view class "SignUpUI"
  *
  * @author OOPD 20-21 ICE5
- * @version 2.0 24 Apr 2021
+ * @version 2.0 23 May 2021
  *
  */
 public class SignUpUiManager  implements ActionListener {

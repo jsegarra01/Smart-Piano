@@ -130,8 +130,8 @@ public class PlaylistManager {
     }
 
     /**
-     * TODO: quina es la diferencia entre aquesta i la de 3 funcions amunt
-     * @param playlist
+     * Method that deletes a song from a playlist
+     * @param playlist Defines the playlist which the song will be deleted
      * @param songName
      * @return
      */
@@ -154,10 +154,10 @@ public class PlaylistManager {
                 }else{
                     j++;
                 }
-                if(found2){
-                    playlists.get(i).getSongs().remove(j);
-                    return true;
-                }
+            }
+            if(found2){
+                playlists.get(i).getSongs().remove(j);
+                return true;
             }
         }
         return false;

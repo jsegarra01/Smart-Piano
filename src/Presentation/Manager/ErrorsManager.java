@@ -28,25 +28,21 @@ public class ErrorsManager {
      *                    5: song doesn't exist
      */
     public void errorFound(int errorNumber) {
-        switch(errorNumber) {
-            case 0:                                     //Connection issue to the configJson and the database
-                createDialog("There has been a problem connecting to the database.", "Connection error");
-                break;
-            case 1:                                     //A user already exists with that credential
-                createDialog("Values introduced were not accepted.", "SignUp error");
-                break;
-            case 2:                                     //The user doesn't exist
-                createDialog("Incorrect username or password", "LogIn error");
-                break;
-            case 3:                                     //The song can't be accessed when searching online
-                createDialog("This song can't be accessed.", "Access error");
-                break;
-            case 4:                                     //The song can't be downloaded
-                createDialog("The song can't be downloaded.", "Download error");
-                break;
-            case 5:
-                createDialog( "No song with that Name or Author! Took " + endTime/1000 + "s.", "Web error");
-                break;
+        switch (errorNumber) {
+            case 0 ->                                     //Connection issue to the configJson and the database
+                    createDialog("There has been a problem connecting to the database.", "Connection error");
+            case 1 ->                                     //A user already exists with that credential
+                    createDialog("Values introduced were not accepted.", "SignUp error");
+            case 2 ->                                     //The user doesn't exist
+                    createDialog("Incorrect username or password", "LogIn error");
+            case 3 ->                                     //The song can't be accessed when searching online
+                    createDialog("This song can't be accessed.", "Access error");
+            case 4 ->                                     //The song can't be downloaded
+                    createDialog("The song can't be downloaded.", "Download error");
+            case 5 -> createDialog("No song with that Name or Author! Took " + endTime / 1000 + "s.", "Web error");
+
+            case 6 -> createDialog("You must input something more!", "Search Song Error");
+            case 7 -> createDialog("This song already exists in the playlist!", "Song adding Error");
         }
     }
 
@@ -56,6 +52,6 @@ public class ErrorsManager {
      * @param title String. Summarize of the phrase, to see where our error occurred
      */
     private void createDialog(String phrase, String title) {
-        JOptionPane.showMessageDialog(new JFrame(), phrase, title, JOptionPane.ERROR_MESSAGE);
+        JOptionPane.showMessageDialog(null, phrase, title, JOptionPane.ERROR_MESSAGE);
     }
 }

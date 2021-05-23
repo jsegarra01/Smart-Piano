@@ -5,7 +5,6 @@ import Business.BusinessFacadeImp;
 import Business.UserManager;
 import Presentation.Ui_Views.LoginUI;
 
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -23,7 +22,7 @@ import static Presentation.Ui_Views.PianoFrame.centralPanel;
  * The "LoginUIManager" class will contain the different methods that are needed to control the view class "LoginUI"
  *
  * @author OOPD 20-21 ICE5
- * @version 2.0 24 Apr 2021
+ * @version 2.0 23 May 2021
  *
  */
 public class LoginUIManager implements ActionListener {

@@ -1,10 +1,8 @@
 package Presentation.Manager;
 
 //Imports needed from the dictionary, events and mainframe
-import Business.BusinessFacade;
+
 import Business.BusinessFacadeImp;
-//import Presentation.Dictionary_login;
-import Presentation.Ui_Views.LoginUI;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -20,7 +18,7 @@ import static Presentation.Manager.MainFrame.contenedor;
  * The "ProfileUIManager" class will contain the different methods that are needed to control the view class "ProfileUI"
  *
  * @author OOPD 20-21 ICE5
- * @version 2.0 21 Apr 2021
+ * @version 2.0 23 May 2021
  *
  */
 public class ProfileUIManager implements ActionListener {
