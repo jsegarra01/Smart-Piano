@@ -102,8 +102,8 @@ public class PianoTilesUISelector extends Piano {
         profile.setIcon(new ImageIcon("Files/drawable/profile-picture.png"));
         profile.setIcon(resizeIcon((ImageIcon) profile.getIcon(), (int) Math.round(profile.getIcon().getIconWidth()*0.15), (int) Math.round(profile.getIcon().getIconHeight()*0.15)));
 
-        mute.setIcon(new ImageIcon("Files/drawable/muteWhite.png"));
-        mute.setIcon(resizeIcon((ImageIcon) mute.getIcon(), (int) Math.round(mute.getIcon().getIconWidth()*0.10), (int) Math.round(mute.getIcon().getIconHeight()*0.10)));
+        mute.setIcon(new ImageIcon("Files/drawable/mute.png"));
+        mute.setIcon(resizeIcon((ImageIcon) mute.getIcon(), (int) Math.round(mute.getIcon().getIconWidth()*0.08), (int) Math.round(mute.getIcon().getIconHeight()*0.08)));
         mute.setOpaque(false);
         mute.setContentAreaFilled(false);
         mute.setBorderPainted(false);
