@@ -132,7 +132,18 @@ public class MidiHelper {
      * @return True if muted, false if not
      */
     public void muteSong() {
+
         sequencer.setTrackMute(0, !sequencer.getTrackMute(0));
+        sequencer.setTrackMute(1, !sequencer.getTrackMute(1));
+        sequencer.setTrackMute(2, !sequencer.getTrackMute(2));
+        sequencer.setTrackMute(3, !sequencer.getTrackMute(3));
+        sequencer.setTrackMute(4, !sequencer.getTrackMute(4));
+        sequencer.setTrackMute(5, !sequencer.getTrackMute(5));
+        sequencer.setTrackMute(6, !sequencer.getTrackMute(6));
+        sequencer.setTrackMute(7, !sequencer.getTrackMute(7));
+        sequencer.setTrackMute(8, !sequencer.getTrackMute(8));
+        sequencer.setTrackMute(9, !sequencer.getTrackMute(9));
+
         //return sequencer.getTrackMute(0);
     }
 

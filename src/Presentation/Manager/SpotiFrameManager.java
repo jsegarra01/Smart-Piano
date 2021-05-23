@@ -129,6 +129,9 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
                 shuffle = !shuffle;
                 setIconShuffleActive(shuffle);
                 break;
+            case MUTE_BUTTON:
+                muteSong();
+                break;
             case LAST_BUTTON:
                 if(songPlay!=null){
                     if(!loop){
@@ -508,7 +511,7 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
     }
 
     private static void muteSong() {
-        finalMidiHelper.muteSong();
+       finalMidiHelper.muteSong();
     }
 
     /**

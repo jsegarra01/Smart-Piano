@@ -4,6 +4,7 @@ package Presentation.Manager;
 import Business.BusinessFacade;
 import Business.BusinessFacadeImp;
 import Business.Entities.ChangeTime;
+import Business.Entities.Song;
 import Presentation.DictionaryPiano;
 import Presentation.Dictionary_login;
 import Presentation.Ui_Views.PianoTilesUISelector;
@@ -44,6 +45,7 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
     private static boolean play = true;
     private static boolean songStarted = false;
     private static int songIndex = 0;
+    private static Song song;
 
     private BusinessFacadeImp myFacade;
 
@@ -132,10 +134,12 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
                     if(play){
                         playButtonTiles.setIcon(pauseIcon);
                         new ChangeTime(0);
+                        finalMidiHelper.stopSong();
                     }
                     else{
                         playButtonTiles.setIcon(playIcon);
                         new ChangeTime(1);
+                        finalMidiHelper.playSong(song.getSongFile());
                     }
                     play = !play;
                 }
@@ -269,6 +273,9 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
             songStarted = true;
 
             new BusinessFacadeImp().setTileArray(songIndex);                //Sets the tiles to play
+            song = new BusinessFacadeImp().getSong(songIndex);
+            finalMidiHelper.playSong(song.getSongFile());
+
                             //Sets the tiles to play
             //myFacade.readingMidiFiles(songIndex);
 
@@ -278,7 +285,6 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
                                                                             //can be in presentation?
 
             new ChangeTime(2);
-            System.out.println("sasa");
         }
     }
 

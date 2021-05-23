@@ -249,6 +249,7 @@ public class SpotiUI extends JPanel {
         createPlaylist.addActionListener(listener);
         songsList.addActionListener(listener);
         profile.addActionListener(listener);
+        mute.addActionListener(listener);
 
         shuffleButton.addActionListener(listener);
         backButton.addActionListener(listener);
