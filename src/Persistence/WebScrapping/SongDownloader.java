@@ -141,6 +141,9 @@ public class SongDownloader implements SongDownloaderDAO {
                     String recordingDate = miniEles.get(18).text();
                     if(songCsv.getSongByName(piece) == null){
                         String filename = songDownloader.downloadFile(downloadURL, "Files/WebScrappingResults");
+                        if(author2.substring(0,3).contains("by ")){
+                            author2 = author2.substring(3);
+                        }
                         songCsv.saveSongWithDate(new Song(piece, author2, new MidiHelper().getDuration(filename)/1000000, new SimpleDateFormat("yyyy/MM/dd").parse(recordingDate), true, filename, "guest", 0));
                     }
                 }
