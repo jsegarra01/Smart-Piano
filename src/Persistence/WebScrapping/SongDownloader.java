@@ -1,4 +1,5 @@
 package Persistence.WebScrapping;
+import Business.Entities.MidiHelper;
 import Business.Entities.Song;
 import Business.SongManager;
 import Persistence.SongDownloaderDAO;
@@ -6,6 +7,10 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import javax.sound.midi.InvalidMidiDataException;
+import javax.sound.midi.MidiSystem;
+import javax.sound.midi.MidiUnavailableException;
+import javax.sound.midi.Sequencer;
 import java.awt.print.PrinterIOException;
 import java.io.*;
 import java.net.HttpURLConnection;
@@ -40,6 +45,7 @@ import static Presentation.Manager.SpotiFrameManager.URLRoute;
 public class SongDownloader implements SongDownloaderDAO {
     private String nameSong = "";
     private SongManager songManager = new SongManager();
+
     /**
      * Downloads a file from a specified URL ONLY FOR HTTP servers.
      * @param fileURL HTTP URL of the file to be downloaded
@@ -104,11 +110,7 @@ public class SongDownloader implements SongDownloaderDAO {
         }
 
         // Exceptions
-        catch (MalformedURLException mue) {
-            System.out.println("Malformed URL Exception raised");
-        }
-        catch (IOException ie) {
-            System.out.println("IOException raised");
+        catch (IOException mue) {
         }
     }
 
@@ -137,14 +139,13 @@ public class SongDownloader implements SongDownloaderDAO {
                     String downloadURL= miniEles.get(19).getAllElements().get(3).html()
                             .substring(9,miniEles.get(19).getAllElements().get(3).html().length()-15);
                     String recordingDate = miniEles.get(18).text();
-
-                    if(songManager.getSongByName(piece) == null){
+                    if(songCsv.getSongByName(piece) == null){
                         String filename = songDownloader.downloadFile(downloadURL, "Files/WebScrappingResults");
-                        songManager.saveSongWithDate(new Song(piece, author2, 3, new SimpleDateFormat("yyyy/MM/dd").parse(recordingDate), true, filename, "guest", 0));
+                        songCsv.saveSongWithDate(new Song(piece, author2, new MidiHelper().getDuration(filename)/1000000, new SimpleDateFormat("yyyy/MM/dd").parse(recordingDate), true, filename, "guest", 0));
                     }
                 }
             }
-            catch (IOException | ParseException e) {
+            catch (IOException | ParseException | MidiUnavailableException | InvalidMidiDataException e) {
 
             }
             //Extract the divs that have products inside of the previous general Div.

@@ -262,4 +262,10 @@ public class MidiHelper {
     public void setDonePlaying(boolean donePlaying) {
         this.donePlaying = donePlaying;
     }
+
+    public float getDuration(String filename) throws InvalidMidiDataException {
+        restartSong(filename);
+        sequencer.setSequence(sequencePlay);
+        return sequencer.getMicrosecondLength();
+    }
 }
