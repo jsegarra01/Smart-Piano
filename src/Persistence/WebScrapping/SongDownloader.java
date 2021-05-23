@@ -6,10 +6,13 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import java.awt.print.PrinterIOException;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 import static Business.Entities.WebHandler.getHtmlDocument;
 import static Business.Threads.WebScrapping.songDownloader;
@@ -36,6 +39,7 @@ import static Presentation.Manager.SpotiFrameManager.URLRoute;
  */
 public class SongDownloader implements SongDownloaderDAO {
     private String nameSong = "";
+    private SongManager songManager = new SongManager();
     /**
      * Downloads a file from a specified URL ONLY FOR HTTP servers.
      * @param fileURL HTTP URL of the file to be downloaded
@@ -43,9 +47,10 @@ public class SongDownloader implements SongDownloaderDAO {
      * @throws IOException
      */
     @Override
-    public void downloadFile(String fileURL, String saveDir) throws IOException {
+    public String downloadFile(String fileURL, String saveDir) throws IOException {
             URL url = new URL(fileURL);
             HttpURLConnection httpConn = (HttpURLConnection) url.openConnection();
+            String saveFilePath = "";
             int responseCode = httpConn.getResponseCode();
             if (responseCode == HttpURLConnection.HTTP_OK) { //200 is OK
                 String fileName = "";
@@ -65,7 +70,7 @@ public class SongDownloader implements SongDownloaderDAO {
 
                 // opens input stream from the HTTP connection
                 InputStream inputStream = httpConn.getInputStream();
-                String saveFilePath = saveDir + File.separator + fileName;
+                saveFilePath = saveDir + File.separator + fileName;
 
                 // opens an output stream to save into file
                 FileOutputStream outputStream = new FileOutputStream(saveFilePath);
@@ -82,6 +87,7 @@ public class SongDownloader implements SongDownloaderDAO {
             }
 
             httpConn.disconnect();
+            return saveFilePath;
         }
 
     @Override
@@ -130,15 +136,15 @@ public class SongDownloader implements SongDownloaderDAO {
                     String piece = miniEles.get(3).text();
                     String downloadURL= miniEles.get(19).getAllElements().get(3).html()
                             .substring(9,miniEles.get(19).getAllElements().get(3).html().length()-15);
+                    String recordingDate = miniEles.get(18).text();
 
-                    try {
-                        songDownloader.downloadFile(downloadURL, "Files/WebScrappingResults");
-                    } catch (IOException e) {
-                        e.printStackTrace();
+                    if(songManager.getSongByName(piece) == null){
+                        String filename = songDownloader.downloadFile(downloadURL, "Files/WebScrappingResults");
+                        songManager.saveSongWithDate(new Song(piece, author2, 3, new SimpleDateFormat("yyyy/MM/dd").parse(recordingDate), true, filename, "guest", 0));
                     }
                 }
             }
-            catch (IOException e) {
+            catch (IOException | ParseException e) {
 
             }
             //Extract the divs that have products inside of the previous general Div.

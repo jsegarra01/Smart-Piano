@@ -43,7 +43,7 @@ import static Presentation.Ui_Views.Tile.resizeIcon;
 public class SpotiFrameManager extends AbstractAction implements ActionListener, MouseListener {
 
     public static final String URLRoute = "https://www.mutopiaproject.org/cgibin/make-table.cgi?Instrument=Piano";
-    private static final String path = "Songs";
+    private static final String path = "Files/WebScrappingResults";
     private static boolean play=false;
     private static final ImageIcon playIcon = new ImageIcon("Files/drawable/playbuttonWhite.png");
     private static final ImageIcon pauseIcon = new ImageIcon("Files/drawable/pauseWhite.png");
@@ -132,6 +132,8 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
                // this.myWebHandlingTool.doStuff(SpotiUI.getInputedSongName(), "by");
                // SongsUI.initTable(new BusinessFacadeImp().getSongManager().getSongs(), "Delete");
                // cc.show(spotiPanel, SONGS_UI);
+                searchSong(getInputedSongName());
+                cc.show(spotiPanel, SONGS_UI);
                 break;
             case Dictionary_login.PROFILE_BUTTON:           //In the case that the Profile button is pressed
                 card.show(contenedor, PROFILE_UI);
@@ -585,14 +587,22 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
     }
 
     private void searchSong(String songName){
-        ArrayList<Song> songs = new BusinessFacadeImp().getSongManager().getSongs();
-        ArrayList<Song> songsSearched = new ArrayList<>();
-        for (Song song : songs) {
-            if (song.getSongName().toLowerCase().contains(songName.toLowerCase())
-                    || song.getAuthorName().toLowerCase().contains(songName.toLowerCase())) {
-                songsSearched.add(song);
+        if(songName.length()>1){
+            //myWebHandlingTool.doStuff(songName, songName);
+            ArrayList<Song> songs = new BusinessFacadeImp().getSongManager().getSongs();
+            ArrayList<Song> songsSearched = new ArrayList<>();
+            for (Song song : songs) {
+                if (song.getSongName().toLowerCase().contains(songName.toLowerCase())
+                        || song.getAuthorName().toLowerCase().contains(songName.toLowerCase())) {
+                    songsSearched.add(song);
+                }
             }
+            SongsUI.initTable(songsSearched, "Delete");
+        }else{
+            JOptionPane.showMessageDialog(null,
+                    "You must input something more!", "Search Song Error" ,
+                    JOptionPane.ERROR_MESSAGE);
         }
-        SongsUI.initTable(songsSearched, "Delete");
+
     }
 }

@@ -4,6 +4,7 @@ package Business.Entities;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -43,38 +44,38 @@ public class WebHandler {
     }
 
     public void doStuff(String songName, String songAuthor){
-        initTime = System.currentTimeMillis();
-        try {
-            if (getStatusConnectionCode(this.route) == HttpURLConnection.HTTP_OK) {//OK connection!
+        //initTime = System.currentTimeMillis();
+        //try {
+          //  if (getStatusConnectionCode(this.route) == HttpURLConnection.HTTP_OK) {//OK connection!
                 searchSong(this.route, songName, songAuthor, this.filePath);
-            } else {
-                JOptionPane.showMessageDialog(new JFrame(), "The webpage couldn't be loaded!\n The status that the webpage " +
-                        "the page returns is: " + getStatusConnectionCode(this.route));
-            }
-        } catch (IOException e) {
+            //} else {
+              //  JOptionPane.showMessageDialog(new JFrame(), "The webpage couldn't be loaded!\n The status that the webpage " +
+                //        "the page returns is: " + getStatusConnectionCode(this.route));
+            //}
+        //} catch (IOException e) {
 
-        }
+        //}
     }
 
     private void searchSong(String url, String songName, String songAuthor, String filePath){
-        initTime = System.currentTimeMillis();
+        //initTime = System.currentTimeMillis();
 
-        String newSong = readPage(url, songName, songAuthor);
-        if (!newSong.equals("")) {
+        readPage(url, songName, songAuthor);
+        //if (!newSong.equals("")) {
             //Download the song!
-            try {
-                songDownloader.downloadFile(newSong, filePath);
-                manager.saveSong(new Song(songName,author.substring(3),5,true,filePath + "/" + songName, "Guest"));
-                manager.setSongs();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            //try {
+                //songDownloader.downloadFile(newSong, filePath);
+                //manager.saveSong(new Song(songName,author.substring(3),5,true,filePath + "/" + songName, "Guest"));
+                //manager.setSongs();
+            //} catch (IOException e) {
+              //  e.printStackTrace();
+            //}
 
-        }
-        else{
+        //}
+        /*else{
             long endTime = System.currentTimeMillis() - initTime;
             JOptionPane.showMessageDialog(new JFrame(), " No song with that Name or Author! Took " + endTime/1000 + "s.");
-        }
+        }*/
     }
 
     /**
@@ -84,9 +85,10 @@ public class WebHandler {
      * @param songAuthor
      * @return
      */
-    private String readPage(String stringUrl, String songName, String songAuthor) {
+    private void readPage(String stringUrl, String songName, String songAuthor) {
+        //ArrayList<String> songInfo = new ArrayList<>();
         String URL = "";
-        Boolean done = false;
+        boolean done = false;
         int i = 0;
         /*
          * This web returns repeated content if we try to read an index of an non existing page. Sometimes if there are only 2 pages
@@ -116,10 +118,15 @@ public class WebHandler {
                         String piece = miniEles.get(3).text();
                         String downloadURL= miniEles.get(19).getAllElements().get(3).html()
                                 .substring(9,miniEles.get(19).getAllElements().get(3).html().length()-15);
-                        if(author2.contains(songAuthor) && piece.contains(songName)){
-                            author = miniEles.get(4).text();
+                        System.out.println("hola");
+                        if(author2.contains(songAuthor) || piece.contains(songName)){
+                            //author = miniEles.get(4).text();
+                            manager.saveSong(new Song(piece,author2,5,true,filePath + "/" + songName, "Guest"));
+                            manager.setSongs();
                             done = true;
                             URL = downloadURL;
+                            //songInfo.add(author2);
+                            //songInfo.add(piece);
                         }
                         else{
                             URL = "";
@@ -138,7 +145,7 @@ public class WebHandler {
             }
         }while(!done);
 
-        return URL;
+        //return songInfo;
     }
 
     /**
