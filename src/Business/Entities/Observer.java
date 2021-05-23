@@ -1,9 +1,11 @@
 package Business.Entities;
 
-import Presentation.Manager.PianoFrameManager;
 
 /**
- * TODO: QUE FOT AIXO?
+ * Observer
+ *
+ * The abstract class "Observer" will be control every time there has been a change in time and will update its
+ * respective classes
  */
 public abstract class Observer {
     protected ChangeTime subject;

@@ -2,7 +2,6 @@ package Presentation.Manager;
 
 //Imports needed from the dictionary, events and mainframe
 
-import Business.BusinessFacade;
 import Business.BusinessFacadeImp;
 import Business.Entities.RecordingNotes;
 import Presentation.Dictionary_login;

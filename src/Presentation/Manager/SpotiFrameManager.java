@@ -134,7 +134,9 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
                 cc.show(spotiPanel, STATISTICS_UI);
                 break;
             case SHOW_TOP_SONGS:
-                SongsUI.initTable(myFacade.getSongManager().getTopFive(), "topFive");
+                myFacade.updateSong(songPlay);
+                myFacade.setSongUser();
+                SongsUI.initTable(myFacade.getTopFive(), "topFive");
                 cc.show(spotiPanel, SONGS_UI);
                 break;
             case CREATE_PLAYLIST:
@@ -173,6 +175,12 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
                         finalMidiHelper.restartSong(songPlay.getSongFile());
                         finalMidiHelper.playSong(songPlay.getSongFile());
                     }
+                    myFacade.updateSong(songPlay);
+                    myFacade.setSongUser();
+                    SongsUI.initTable(myFacade.getTopFive(), "topFive");
+                    setNumSongs(getNumSongs());
+                    setNumMin(getMinPlayed());
+                    initialize();
                 }
                 break;
             case NEXT_BUTTON:
@@ -629,6 +637,9 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
         setNumSongs(getNumSongs());
         setNumMin(getMinPlayed());
         initialize();
+        new BusinessFacadeImp().updateSong(songPlay);
+        new BusinessFacadeImp().setSongUser();
+        SongsUI.initTable(new BusinessFacadeImp().getTopFive(), "topFive");
     }
 
     /**

@@ -35,6 +35,7 @@ public class LoginUserCsvDAO implements LoginUserDAO{
                     "= '" + myUserString + "'");
             return myRsToUser(myRs);
         }else{
+
             return null;
         }
     }

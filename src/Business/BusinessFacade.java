@@ -123,7 +123,11 @@ public interface BusinessFacade {
     void setError(int errorFound);
 
     ArrayList<Song> getSongs();
+
     Stadistics getStats(int i);
+
     void updateSong(Song song);
+
     ArrayList<Song> getTopFive();
+
 }

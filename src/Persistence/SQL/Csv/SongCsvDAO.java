@@ -81,6 +81,7 @@ public class SongCsvDAO implements SongDAO {
     /**
      * Method that stores the song in the database
      * @param mySaveSong Defines the song to be stored
+     * @return boolean that returns a true if it has been done correctly, false if not
      */
     @Override
     public boolean saveSong(Song mySaveSong) {
@@ -104,6 +105,11 @@ public class SongCsvDAO implements SongDAO {
         }
     }
 
+    /**
+     * Method that stores the song in the database with the date
+     * @param mySaveSong Defines the song to be stored
+     * @return boolean that returns a true if it has been done correctly, false if not
+     */
     public boolean saveSongWithDate(Song mySaveSong) {
         try {
             if(ConnectSQL.getInstance()!=null) {
@@ -199,34 +205,27 @@ public class SongCsvDAO implements SongDAO {
         return songFromCsv();
     }
 
+    /**
+     * Method that updates the times played that a song has been
+     * @param song Defines the song to be updated
+     * @return boolean that returns a true if it has been correct, false if not
+     */
     @Override
     public boolean updateTimesPlayed(Song song) {
-        try {
-            PreparedStatement st = ConnectSQL.getInstance().prepareStatement("update SongT SET numTimesPlayed = numTimesPlayed + 1 where songName like '" +
-                    song.getSongName() + "';");
-            st.executeUpdate();
-            return true;
-        } catch (SQLException throwable) {
-            return false;
+        if(song!=null){
+            try {
+                PreparedStatement st = ConnectSQL.getInstance().prepareStatement("update SongT SET numTimesPlayed = numTimesPlayed + 1 where songName like '" +
+                        song.getSongName() + "';");
+                st.executeUpdate();
+                return true;
+            } catch (SQLException throwable) {
+                return false;
+            }
         }
+        return false;
+
     }
 
-
-/*
-    @Override
-    public ArrayList<Song> getPopularSongs() {
-        try {
-            ResultSet myRs = ConnectSQL.getInstance().createStatement().executeQuery(
-                    "SELECT s.* " +
-                            "FROM SongT as s inner join SongStatisticsGeneralT as ssg on ssg.songId = s.songId " +
-                            "ORDER BY MAX(ssg.timesPlayed) DESC LIMIT 5");
-            ArrayList<Song> songs = myRsToSongs(myRs);
-            myRs.close();
-            return songs;
-        } catch (SQLException throwables) {
-            return null;
-        }
-    }*/
 
     /**
      * Method that saves the stadistics into the databases
@@ -288,6 +287,11 @@ public class SongCsvDAO implements SongDAO {
         }
     }
 
+    /**
+     * Method that gets a song by its name
+     * @param name Defines the name of the song
+     * @return Song to be returned
+     */
     @Override
     public Song getSongByName(String name) {
         try {
