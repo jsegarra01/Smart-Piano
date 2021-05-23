@@ -5,6 +5,7 @@ package Business.Entities;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -46,104 +47,6 @@ public class WebHandler {
         this.pagingInffix = pagingInffix;
     }
 
-    public void doStuff(String songName, String songAuthor){
-        initTime = System.currentTimeMillis();
-        try {
-            if (getStatusConnectionCode(this.route) == HttpURLConnection.HTTP_OK) {//OK connection!
-                searchSong(this.route, songName, songAuthor, this.filePath);
-            } else {
-                JOptionPane.showMessageDialog(new JFrame(), "The webpage couldn't be loaded!\n The status that the webpage " +
-                        "the page returns is: " + getStatusConnectionCode(this.route));
-            }
-        } catch (IOException e) {
-
-        }
-    }
-
-    private void searchSong(String url, String songName, String songAuthor, String filePath){
-        initTime = System.currentTimeMillis();
-
-        String newSong = readPage(url, songName, songAuthor);
-        if (!newSong.equals("")) {
-            //Download the song!
-            try {
-                songDownloader.downloadFile(newSong, filePath);
-                manager.saveSong(new Song(songName,author.substring(3),5,true,filePath + "/" + songName, "Guest"));
-                manager.setSongs();
-            } catch (IOException e) {
-                businessFacadeImp.setError(4);
-            }
-
-        }
-        else{
-            endTime = System.currentTimeMillis() - initTime;
-            businessFacadeImp.setError(5);
-        }
-    }
-
-    /**
-     * Reads the parametrized webpage and returns the filtered and processed document
-     * @param stringUrl
-     * @param songName
-     * @param songAuthor
-     * @return
-     */
-    private String readPage(String stringUrl, String songName, String songAuthor) {
-        String URL = "";
-        Boolean done = false;
-        int i = 0;
-        /*
-         * This web returns repeated content if we try to read an index of an non existing page. Sometimes if there are only 2 pages
-         * and we try to reed the third, it will show again page 2! In this case, if the page doesn't exist, it will show:
-         * "Sorry, no matches were found for your search criteria"
-         * We will read "until" it shows the latter message.
-         */
-        //Extract the Div that has all the products' contents.
-        do{
-            if (i < 50) {
-                if (i == 1) {
-                    URL = stringUrl;
-                }
-                else {
-                    URL = String.format(stringUrl.replace("?", pagingInffix), i);
-                }
-                try {
-                    Document doc = getHtmlDocument(URL);
-                    Elements greatDivs = doc.getElementsByClass("table-bordered result-table");
-
-                    for (Element song : greatDivs) {//Elements has inside all the possible divs
-                        //The selector span:nth-child(x) looks for the parent of span and chooses the child element in the i position.
-                        Elements myEles = song.getAllElements();
-                        Element myEle = myEles.get(0);
-                        Elements miniEles = myEle.getAllElements();
-                        String author2 = miniEles.get(4).text();
-                        String piece = miniEles.get(3).text();
-                        String downloadURL= miniEles.get(19).getAllElements().get(3).html()
-                                .substring(9,miniEles.get(19).getAllElements().get(3).html().length()-15);
-                        if(author2.contains(songAuthor) && piece.contains(songName)){
-                            author = miniEles.get(4).text();
-                            done = true;
-                            URL = downloadURL;
-                        }
-                        else{
-                            URL = "";
-                        }
-                    }
-                }
-                catch (IOException e) {
-                    JOptionPane.showMessageDialog(new JFrame(), "There was an error whilst scrapping the web, try later...");
-                }
-
-                i++;
-            }
-            else {
-                done = true;
-            }
-        }while(!done);
-
-        return URL;
-    }
-
     /**
      * We first have to check the Status Code of the connection, hereby I leave some of the most important ones in case
      * the worst happens when we try a petition:
@@ -156,11 +59,7 @@ public class WebHandler {
      * @return Status Code in an integer type
      */
     private int getStatusConnectionCode(String url) throws IOException{
-        Connection.Response response = Jsoup.connect(url).
-                                            userAgent("Mozilla/5.0").
-                                                timeout(100000).
-                                                    ignoreHttpErrors(true).
-                                                        execute();
+        Connection.Response response = Jsoup.connect(url).userAgent("Mozilla/5.0").timeout(100000).ignoreHttpErrors(true).execute();
         return response.statusCode();
     }
 

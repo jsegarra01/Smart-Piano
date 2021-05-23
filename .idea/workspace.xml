@@ -26,6 +26,7 @@
     </select>
   </component>
   <component name="ChangeListManager">
+    <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="Accessing to the webpage downloads the song. They are put in the table">
     <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="start feature">
       <change afterPath="$PROJECT_DIR$/Files/WebScrappingResults/bwv801.mid" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/Presentation/Manager/ErrorsManager.java" afterDir="false" />
@@ -108,11 +109,10 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="feature/last_fixes_v2" />
+        <entry key="$PROJECT_DIR$" value="develop" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitSEFilterConfiguration">
     <file-type-list>
@@ -157,17 +157,6 @@
     </key>
   </component>
   <component name="RunManager" selected="Application.Main">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="dpoo-2021-smartpiano-ice5" />
@@ -246,6 +235,7 @@
       <option name="presentableId" value="LOCAL-00010" />
       <option name="project" value="LOCAL" />
       <updated>1619685666055</updated>
+    </task>
     </task>
     <task id="LOCAL-00011" summary="Basic UI classes created and added to the cardLayout.">
       <created>1619688112323</created>
@@ -576,6 +566,21 @@
       <option name="project" value="LOCAL" />
       <updated>1621722429729</updated>
     </task>
+    <task id="LOCAL-00059" summary="When accessing to the songs on the internet, it also puts them in the database">
+      <created>1621781530723</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1621781530723</updated>
+    </task>
+    <task id="LOCAL-00060" summary="Accessing to the webpage downloads the song. They are put in the table">
+      <created>1621783999242</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1621783999242</updated>
+    </task>
+    <option name="localTasksCounter" value="61" />
     <task id="LOCAL-00059" summary="SpotiFrameManager through Façade">
       <created>1621774970675</created>
       <option name="number" value="00059" />
@@ -625,6 +630,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="improvement of the display a song menu" />
     <MESSAGE value="player bar" />
     <MESSAGE value="buttons player bar finished" />
     <MESSAGE value="some corrections have been made with sizes and optimization." />
@@ -682,6 +688,9 @@
     <MESSAGE value="It got bugged when changing the view, now it works perfectly.&#10;Alex: &quot;I love static things&quot;" />
     <MESSAGE value="Fixing things, delete erased the file too" />
     <MESSAGE value="WebScrapping fixed, moved song downloader to persistance layer, now saves the song to the database (before didn't), now picks up the author (before didn't)" />
+    <MESSAGE value="When accessing to the songs on the internet, it also puts them in the database" />
+    <MESSAGE value="Accessing to the webpage downloads the song. They are put in the table" />
+    <option name="LAST_COMMIT_MESSAGE" value="Accessing to the webpage downloads the song. They are put in the table" />
     <MESSAGE value="SpotiFrameManager through Façade" />
     <option name="LAST_COMMIT_MESSAGE" value="SpotiFrameManager through Façade" />
   </component>

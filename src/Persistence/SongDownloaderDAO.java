@@ -1,10 +1,13 @@
 package Persistence;
 
+import Persistence.SQL.Csv.SongCsvDAO;
+
 import java.io.IOException;
 
 public interface SongDownloaderDAO {
+   SongCsvDAO songCsv = new SongCsvDAO();
 
-   void downloadFile(String fileURL, String saveDir) throws IOException;
+   String downloadFile(String fileURL, String saveDir) throws IOException;
 
    void downloadWebPage(String webpage);
 

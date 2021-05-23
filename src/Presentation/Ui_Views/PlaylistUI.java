@@ -30,7 +30,7 @@ import static Presentation.DictionaryPiano.*;
 public class PlaylistUI extends JPanel {
     private static JPanel panel = new JPanel(new BorderLayout());
     private static Playlist playlistGeneral;
-    private static DecimalFormat df = new DecimalFormat("###.##");
+    private static final DecimalFormat df = new DecimalFormat("###.##");
 
 
 

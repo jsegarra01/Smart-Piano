@@ -7,6 +7,7 @@ import Persistence.SQL.ConnectSQL;
 import Persistence.SongDAO;
 
 import java.sql.*;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
@@ -90,7 +91,24 @@ public class SongCsvDAO implements SongDAO {
             return false;
         }
     }
-
+    public boolean saveSongWithDate(Song mySaveSong) {
+        try {
+            PreparedStatement st = ConnectSQL.getInstance().prepareStatement(
+                    "insert into SongT (songName, authorsName, duration, recordingDate, publicBoolean, songFile, username, numTimesPlayed) values ('" +
+                            mySaveSong.getSongName() + "', '" +
+                            mySaveSong.getAuthorName() + "', '" +
+                            mySaveSong.getDuration() + "', '" +
+                            new SimpleDateFormat("yyyy-MM-dd").format(mySaveSong.getRecordingDate()) + "', " +
+                            mySaveSong.isPublicBoolean() + ", '" +
+                            mySaveSong.getSongFile() + "', '" +
+                            mySaveSong.getCreator() + "'," +  mySaveSong.getTimesPlayed() +
+                            ")");
+            st.execute();
+            return true;
+        } catch (SQLException throwable) {
+            return false;
+        }
+    }
 
     /**
      * Method that deletes the song depending on the id from the database

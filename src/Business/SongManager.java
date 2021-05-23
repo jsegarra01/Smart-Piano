@@ -5,6 +5,9 @@ import Persistence.SQL.Csv.SongCsvDAO;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Date;
 
 import static Business.Entities.SongToMidi.writeMidi;
 
@@ -20,8 +23,8 @@ public class SongManager {
 
     public void saveRecording(ArrayList<RecordingNotes> recordedNotes, String songName, boolean isPublic, float endtime) {
         writeMidi(songName, new SongRecorded(recordedNotes,songName, isPublic).getRecordingNotes(), endtime);
-        Song song = new Song(songName, UserManager.getUser().getUserName(), endtime, isPublic, "Songs/" + songName + ".mid", UserManager.getUser().getUserName());
-        saveSong(song);
+        Song song = new Song(songName, UserManager.getUser().getUserName(), endtime, new Date(),isPublic, "Songs/" + songName + ".mid", UserManager.getUser().getUserName(), 0);
+        saveSongWithDate(song);
         songs.clear();
         setSongs(UserManager.getUser().getUserName());
     }
@@ -95,5 +98,13 @@ public class SongManager {
 
     public void saveSong (Song song) {
         songManager.saveSong(song);
+    }
+
+    public void saveSongWithDate(Song song){
+        songManager.saveSongWithDate(song);
+    }
+
+    public Song getSongByName(String name){
+        return songManager.getSongByName(name);
     }
 }

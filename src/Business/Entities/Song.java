@@ -33,7 +33,6 @@ public class Song {
         this.creator = creator;
     }
 
-
     public String getSongName() {
         return songName;
     }
