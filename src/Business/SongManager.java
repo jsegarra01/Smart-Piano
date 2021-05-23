@@ -4,10 +4,7 @@ import Business.Entities.*;
 import Persistence.SQL.Csv.SongCsvDAO;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Date;
+import java.util.*;
 
 import static Business.Entities.SongToMidi.writeMidi;
 
@@ -130,7 +127,7 @@ public class SongManager {
 
     /**
      * Calls the function to update the times played of a song
-     * @param song
+     * @param song Defines the song to be updated
      */
     public void updateSongPlayed(Song song){
         songManager.updateTimesPlayed(song);

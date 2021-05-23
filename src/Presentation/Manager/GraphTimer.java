@@ -47,9 +47,6 @@ public class GraphTimer implements ActionListener {
                     }
                 }
                 letsInitializeGraphs(getMinPlayed(), getNumSongs());
-                /*new BusinessFacadeImp().getSongManager().updateSongPlayed(songPlay);
-                new BusinessFacadeImp().setSongUser();
-                new BusinessFacadeImp().getSongManager().getTopFive();*/
                 break;
         }
 
