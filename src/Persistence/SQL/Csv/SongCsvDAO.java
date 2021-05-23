@@ -84,9 +84,10 @@ public class SongCsvDAO implements SongDAO {
      */
     @Override
     public boolean saveSong(Song mySaveSong) {
-        if(ConnectSQL.getInstance()!=null){
-            PreparedStatement st = ConnectSQL.getInstance().prepareStatement(
-                    "insert into SongT (songName, authorsName, duration, recordingDate, publicBoolean, songFile, username) values ('" +
+        try{
+            if(ConnectSQL.getInstance()!=null){
+                PreparedStatement st = ConnectSQL.getInstance().prepareStatement(
+                        "insert into SongT (songName, authorsName, duration, recordingDate, publicBoolean, songFile, username) values ('" +
                             mySaveSong.getSongName() + "', '" +
                             mySaveSong.getAuthorName() + "', '" +
                             mySaveSong.getDuration() + "', " +
@@ -94,14 +95,14 @@ public class SongCsvDAO implements SongDAO {
                             mySaveSong.isPublicBoolean() + ", '" +
                             mySaveSong.getSongFile() + "', '" +
                             mySaveSong.getCreator() + "')");
-            st.execute();
-            return true;
+                st.execute();
+                return true;
+            }
+            return false;
+        } catch (SQLException throwable) {
+            return false;
         }
-        return false;
-    } catch (SQLException throwable) {
-        return false;
     }
-}
 
     public boolean saveSongWithDate(Song mySaveSong) {
         try {
