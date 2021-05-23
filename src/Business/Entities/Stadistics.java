@@ -4,11 +4,13 @@ public class Stadistics {
     private int hour;
     private float numPlayed;
     private float minPlayed;
+   // private boolean countSong;
 
-    public Stadistics(int hour, float numPlayed, float minPlayed) {
+    public Stadistics(int hour, float numPlayed, float minPlayed/*, boolean countSong*/) {
         this.hour = hour;
         this.numPlayed = numPlayed;
         this.minPlayed = minPlayed;
+        //this.countSong = countSong;
     }
 
 

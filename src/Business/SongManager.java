@@ -73,8 +73,8 @@ public class SongManager {
         songManager.updateTimesPlayed(song);
     }
 
-    public void addingStadistics(Stadistics myStats){
-        songManager.saveStadistics(myStats);
+    public void addingStadistics(Stadistics myStatst){
+        songManager.saveStadistics(myStatst);
     }
 
     public Stadistics gettingStadistics(int hour){

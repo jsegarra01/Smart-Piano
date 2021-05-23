@@ -1,29 +1,19 @@
 package Presentation.Ui_Views;
 
-import Business.BusinessFacade;
 import Business.BusinessFacadeImp;
+import Presentation.Manager.GraphTimer;
 import Business.Entities.Playlist;
-import Business.Entities.Song;
-import Business.PlaylistManager;
 import Presentation.DictionaryPiano;
-import Presentation.Manager.MainFrame;
-import Presentation.Manager.PianoFrameManager;
 import Presentation.Manager.SpotiFrameManager;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
 
 import static Presentation.DictionaryPiano.*;
 import static Presentation.Dictionary_login.PROFILE_BUTTON;
-import static Presentation.Ui_Views.StatisticsUI.setNumMin;
-import static Presentation.Ui_Views.StatisticsUI.setNumSongs;
 import static Presentation.Ui_Views.Tile.resizeIcon;
-import static javax.swing.SwingConstants.*;
 
 
 //import static Presentation.DictionaryPiano.*;
@@ -58,9 +48,13 @@ public class SpotiUI extends JPanel {
     private static JLabel songLabel = new JLabel(SONG_PLAYING);
     private static JLabel authorLabel = new JLabel(AUTHOR_SONG);
 
+    private GraphTimer timer = new GraphTimer();
+
     //public static JButton pauseButton = new JButton();
 
     public static BusinessFacadeImp myFacade;
+
+    private Timer auxTimer= new Timer(1000,new SpotiFrameManager(myFacade));
 
     public static JPanel leftList = new JPanel();
     private static JPanel playlistsPanel = new JPanel();
@@ -76,6 +70,7 @@ public class SpotiUI extends JPanel {
         playlistUI = new PlaylistUI();
         statisticsUI = new StatisticsUI();
         songsUI = new SongsUI();
+        //auxTimer.start();
 
         initialize();
     }
@@ -114,6 +109,7 @@ public class SpotiUI extends JPanel {
         showStadistics.setActionCommand(CREATE_STADISTICS);
         topSongs.setActionCommand(SHOW_TOP_SONGS);
         songsList.setActionCommand(SHOW_ALL_SONGS);
+        //auxTimer.setActionCommand(TIME_GRAPH);
 
 
         playlistLabel.setBorder(new EmptyBorder(0,20,0,0));

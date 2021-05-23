@@ -5,6 +5,7 @@ import Business.BusinessFacade;
 import Business.Entities.*;
 import Business.BusinessFacadeImp;
 import Business.Entities.MidiHelper;
+import Business.Entities.Observer;
 import Business.UserManager;
 import Presentation.Dictionary_login;
 import Presentation.Ui_Views.PlaylistUI;
@@ -14,15 +15,18 @@ import Presentation.Ui_Views.SpotiUI;
 import javax.sound.midi.MetaEventListener;
 import javax.sound.midi.MidiUnavailableException;
 import javax.swing.*;
+import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.http.WebSocket;
 import java.util.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
+import static Business.Entities.ChangeTime.actionTimer;
 import static Presentation.DictionaryPiano.*;
 import static Presentation.Dictionary_login.PROFILE_UI;
 import static Presentation.Manager.MainFrame.card;
@@ -47,25 +51,34 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
 
     public static final String URLRoute = "https://www.mutopiaproject.org/cgibin/make-table.cgi?Instrument=Piano";
     private static final String path = "Songs";
-    private static boolean play=false;
+    public static boolean play=false;
     private static final ImageIcon playIcon = new ImageIcon("Files/drawable/playbuttonWhite.png");
     private static final ImageIcon pauseIcon = new ImageIcon("Files/drawable/pauseWhite.png");
-    private static float minPlayed;
-    private static long startMin=0;
-    private static long lastMin=0;
+    public static float minPlayed;
+    public static long startMin=0;
+    public static long lastMin=0;
     private static boolean addSong = false;
     private static Playlist playlist;
     private static ArrayList<Song> topFive = new ArrayList<>();
     private static Song songPlay;
     private static boolean loop = false;
     private static boolean shuffle = false;
-    private static boolean wherePlay = false; // if false, from songs, if true, from playlists
+    private static boolean wherePlay = false;
+
+    public static Integer count_song = 0;
     private static final MetaEventListener listener = meta -> {
         if (meta.getType() == 47) {
             playSongTime();
         }
     };
-
+/*
+    TimerTask task = new TimerTask() {
+        @Override
+        public void run()
+        {
+            letsInitializeGraphs(getMinPlayed(), getNumSongs());
+        }
+    };*/
     private static final Date date = new Date();
 
     private static MidiHelper finalMidiHelper;
@@ -76,6 +89,7 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
             e.printStackTrace();
         }
     }
+    //myTimer.schedule(task, 10, 1000);
 
     WebHandler myWebHandlingTool = new WebHandler(path, URLRoute, "result%s.txt", "?startat=%s&");
 
@@ -84,6 +98,9 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
      */
     public SpotiFrameManager(BusinessFacadeImp myFacade) {
         this.myFacade = myFacade;
+        //myTimer.setActionCommand(TIME_GRAPH);
+        //myTimer.start();
+        System.out.println("hello");
     }
 
     /**
@@ -96,6 +113,20 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
         CardLayout cc = (CardLayout) (spotiPanel.getLayout());
         Object obj = e.getSource();
         switch (e.getActionCommand()) {
+            /*case TIME_GRAPH:
+                if(play){
+                    lastMin = System.currentTimeMillis();
+                    minPlayed = (float)(lastMin - startMin)/60000;
+                    startMin = System.currentTimeMillis();
+                    new BusinessFacadeImp().getSongManager().addingStadistics(new Stadistics(date.getHours(), last_song, 0.01667f));
+                    if(last_song==1) {
+                        last_song=0;
+                    }
+                    System.out.println("time: " + minPlayed);
+                    System.out.println("REEAL time:" + System.currentTimeMillis());
+                }
+                letsInitializeGraphs(getMinPlayed(), getNumSongs());
+            break;*/
             case SHOW_ALL_SONGS:
                 addSong = false;
                 //addSongsAll(new BusinessFacadeImp().getSongManager().getSongs());
@@ -479,12 +510,14 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
     }
 
     private static void playMusic(){
+        count_song = 1;
         playButton.setIcon(pauseIcon);
         playButton.setIcon(resizeIcon((ImageIcon) playButton.getIcon(), (int) Math.round(playButton.getIcon().getIconWidth()*0.09),
                 (int) Math.round(playButton.getIcon().getIconHeight()*0.09)));
         startMin = System.currentTimeMillis();
         finalMidiHelper.playSong(songPlay.getSongFile());
         play = true;
+        //myTimer.restart();
     }
 
     private static void stopMusic(){
@@ -494,7 +527,7 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
         play = false;
         lastMin = System.currentTimeMillis();
         minPlayed = (float)(lastMin - startMin)/60000;
-        new BusinessFacadeImp().getSongManager().addingStadistics(new Stadistics(date.getHours(), (float)1, minPlayed));
+        //new BusinessFacadeImp().getSongManager().addingStadistics(new Stadistics(date.getHours(), (float)1, minPlayed));
         finalMidiHelper.stopSong();
     }
 
@@ -552,6 +585,7 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
     }
 
     private static void playSongTime(){
+        count_song = 1;
         if(!loop){
             if(!shuffle){
                 if(wherePlay){
