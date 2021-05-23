@@ -52,7 +52,7 @@ public class SongToMidi {
     /**
      * Static method in order to be able to write in a song from the information stored in recordingNotes in a MIDI format
      * @param title String. Name of the song
-     * @param recordingNotes ArrayList<RecordingNotes>. Information recorded from the song we want to transform into MIDI
+     * @param recordingNotes ArrayList of RecordingNotes. Information recorded from the song we want to transform into MIDI
      * @param endtime float. Ending time of the song
      */
     public static void writeMidi(String title, ArrayList<RecordingNotes> recordingNotes, float endtime) {

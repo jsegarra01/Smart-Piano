@@ -127,7 +127,6 @@ public class MidiHelper {
 
     /**
      * Mutes the song
-     * @return True if muted, false if not
      */
     public void muteSong() {
 

@@ -59,7 +59,7 @@ public abstract class Piano extends JPanel {
 
     /**
      * Gets the current keyboard
-     * @return ArrayList<Tile> keyboard. Returns the keyboard we currently have
+     * @return ArrayList of Tile keyboard. Returns the keyboard we currently have
      */
     public static ArrayList<Tile> getKeyboard() {
         return keyboard;
@@ -71,7 +71,7 @@ public abstract class Piano extends JPanel {
      * @param heightBlack int The height we want the black tiles to have.
      * @param heightBounds int The maximum height we want for the tiles to have.
      * @param yLabel int The different key names for the y
-     * @param keyboard ArrayList<Tile> Current keyboard we have to create the tiles in based on the different tiles
+     * @param keyboard  Current keyboard we have to create the tiles in based on the different tiles
      * @param whiteLabel int The different key names for the white tiles
      * @param whiteY int The maximum height we want the white tiles to have
      * @return JLayeredPane Returns the Pane in which all the keys have been created.

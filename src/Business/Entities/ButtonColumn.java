@@ -23,14 +23,12 @@ import static Presentation.DictionaryPiano.DELETE_SONG;
 public class ButtonColumn extends AbstractCellEditor
         implements TableCellRenderer, TableCellEditor, ActionListener
 {
-    private JTable table;
-    private Action action;
-    private int mnemonic;
-    private Border originalBorder;
+    private final JTable table;
+    private final Action action;
+    private final Border originalBorder;
     private Border focusBorder;
-
-    private JButton renderButton;
-    private JButton editButton;
+    private final JButton renderButton;
+    private final JButton editButton;
     private Object editorValue;
     private boolean isButtonColumnEditor;
 
@@ -66,44 +64,6 @@ public class ButtonColumn extends AbstractCellEditor
         table.addMouseListener((MouseListener) action);
     }
 
-
-    /**
-     *  Get foreground color of the button when the cell has focus
-     *
-     *  @return the foreground color
-     */
-    public Border getFocusBorder()
-    {
-        return focusBorder;
-    }
-
-    /**
-     *  The foreground color of the button when the cell has focus
-     *
-     *  @param focusBorder the foreground color
-     */
-    public void setFocusBorder(Border focusBorder)
-    {
-        this.focusBorder = focusBorder;
-        editButton.setBorder( focusBorder );
-    }
-
-    public int getMnemonic()
-    {
-        return mnemonic;
-    }
-
-    /**
-     *  The mnemonic to activate the button when the cell has focus
-     *
-     *  @param mnemonic the mnemonic
-     */
-    public void setMnemonic(int mnemonic)
-    {
-        this.mnemonic = mnemonic;
-        renderButton.setMnemonic(mnemonic);
-        editButton.setMnemonic(mnemonic);
-    }
 
     @Override
     public Component getTableCellEditorComponent(
