@@ -7,9 +7,9 @@ import Business.Entities.*;
 import Business.Threads.WebScrapping;
 import Presentation.Manager.ErrorsManager;
 import Presentation.Manager.SpotiFrameManager;
-import Presentation.Ui_Views.FreePianoUI;
-import Presentation.Ui_Views.PlaylistUI;
-import Presentation.Ui_Views.SpotiUI;
+import Presentation.Ui_Views.FreePianoUI;//TODO
+import Presentation.Ui_Views.PlaylistUI;//TODO
+import Presentation.Ui_Views.SpotiUI;//TODO
 
 import javax.swing.*;
 import java.awt.*;
@@ -22,11 +22,11 @@ import static Presentation.DictionaryPiano.PLAYLIST_UI;
 import static Presentation.Dictionary_login.*;
 import static Presentation.Manager.MainFrame.card;
 import static Presentation.Manager.MainFrame.contenedor;
-import static Presentation.Ui_Views.LoginUI.resetUILogin;
-import static Presentation.Ui_Views.LoginUI.setUsernameLogin;
-import static Presentation.Ui_Views.PianoTilesUISelector.setKeys;
-import static Presentation.Ui_Views.SignUpUI.*;
-import static Presentation.Ui_Views.SpotiUI.spotiPanel;
+import static Presentation.Ui_Views.LoginUI.resetUILogin; //TODO
+import static Presentation.Ui_Views.LoginUI.setUsernameLogin; //TODO
+import static Presentation.Ui_Views.PianoTilesUISelector.setKeys; //TODO
+import static Presentation.Ui_Views.SignUpUI.*; //TODO
+import static Presentation.Ui_Views.SpotiUI.spotiPanel; //TODO :)
 
 /**
  * BusinessFacade
@@ -38,13 +38,25 @@ import static Presentation.Ui_Views.SpotiUI.spotiPanel;
  *
  */
 public class BusinessFacadeImp implements Business.BusinessFacade {
-    private static final UserManager loginUserManager = new UserManager();
-    private static final SongManager songManager = new SongManager();
-    private static final PlaylistManager playlistManager = new PlaylistManager();
-    private static final TilesManager tilesManager = new TilesManager();
-    private static final ErrorsManager errorManager = new ErrorsManager();
+    private static UserManager loginUserManager;
+    private static SongManager songManager;
+    private static PlaylistManager playlistManager;
+    private static TilesManager tilesManager;
+    private static ErrorsManager errorManager;
+    private static BusinessFacade businessFacade;
 
 
+    public static BusinessFacade getBusinessFacade(){
+        if(businessFacade==null){
+            businessFacade = new BusinessFacadeImp();
+            loginUserManager = new UserManager();
+            songManager = new SongManager();
+            playlistManager = new PlaylistManager();
+            tilesManager = new TilesManager();
+            errorManager = new ErrorsManager();
+        }
+        return businessFacade;
+    }
     /**
      * Shows the Sign up UI layout from the card layout
      */

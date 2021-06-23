@@ -1,6 +1,7 @@
 package Presentation.Manager;
 
 //Imports needed from the dictionary and events
+import Business.BusinessFacade;
 import Business.BusinessFacadeImp;
 import Presentation.Ui_Views.*;
 
@@ -18,26 +19,26 @@ import static Presentation.Dictionary_login.*;
  *
  */
 public class MainFrame extends JFrame {
-    public static  CardLayout card = new CardLayout();
-    public static  Container contenedor;
-    PreMenuUI preMenuUI;
-    LoginUI loginUI;
-    SignUpUI signUpUI;
-    ProfileUI profileUI;
-    PianoFrame pianoFrame;
-    BusinessFacadeImp myFacade;
+    public static  CardLayout card = new CardLayout(); //TODO Not static and not public Do not initialize, that in the constructor:(
+    public static  Container contenedor; //TODO Not static and not public
+    private PreMenuUI preMenuUI;
+    private LoginUI loginUI;
+    private SignUpUI signUpUI;
+    private ProfileUI profileUI;
+    private PianoFrame pianoFrame;
+    //private BusinessFacade myFacade;
 
 
     /**
      * Parametrized constructor, creates the content pane plus the different card layouts available for the user interface
      */
-    public MainFrame(BusinessFacadeImp myFacade) {
-        this.myFacade = myFacade;
+    public MainFrame(/*BusinessFacade myFacade*/) {
+        //this.myFacade = myFacade;
         contenedor = this.getContentPane();
-        preMenuUI=  new PreMenuUI(myFacade);
-        profileUI = new ProfileUI(myFacade);
-        signUpUI = new SignUpUI(myFacade);
-        pianoFrame = new PianoFrame(this, myFacade);
+        preMenuUI=  new PreMenuUI(/*myFacade*/); //TODO
+        profileUI = new ProfileUI(/*myFacade*/); //TODO
+        signUpUI = new SignUpUI(/*myFacade*/); //TODO
+        pianoFrame = new PianoFrame(this/*, myFacade*/); //TODO
         loginUI = new LoginUI();
 
         card.addLayoutComponent(preMenuUI, PRE_MENU_UI);
@@ -57,7 +58,7 @@ public class MainFrame extends JFrame {
         contenedor.setSize(1500, 800);
         card.show(contenedor, PRE_MENU_UI);
 
-        myFacade.initializeWebScrapping();
+        BusinessFacadeImp.getBusinessFacade().initializeWebScrapping();
     }
-    public BusinessFacadeImp getMyFacade(){return myFacade;}
+    public BusinessFacade getMyFacade(){return BusinessFacadeImp.getBusinessFacade();} //TODO CHECK
 }

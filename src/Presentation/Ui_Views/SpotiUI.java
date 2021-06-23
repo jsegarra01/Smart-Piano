@@ -47,7 +47,7 @@ public class SpotiUI extends JPanel {
     private static final JLabel songLabel = new JLabel(SONG_PLAYING);
     private static final JLabel authorLabel = new JLabel(AUTHOR_SONG);
 
-    public static BusinessFacadeImp myFacade;
+    //public static BusinessFacadeImp myFacade;
 
 
     public static JPanel leftList = new JPanel();
@@ -59,8 +59,8 @@ public class SpotiUI extends JPanel {
     /**
      * Constructor for the SpotiUI, you need to send the mainframe context and will create a card layout
      */
-    public SpotiUI(BusinessFacadeImp myFacade) {
-        SpotiUI.myFacade = myFacade;
+    public SpotiUI(/*BusinessFacadeImp myFacade*/) {
+        //SpotiUI.myFacade = myFacade;
         playlistUI = new PlaylistUI();
         statisticsUI = new StatisticsUI();
         songsUI = new SongsUI();
@@ -189,7 +189,7 @@ public class SpotiUI extends JPanel {
         lowPanel.add(songPanel, BorderLayout.WEST);
         add(lowPanel, BorderLayout.SOUTH);
 
-        registerController(new SpotiFrameManager(myFacade));
+        registerController(new SpotiFrameManager(/*myFacade*/));
     }
 
     /**
@@ -267,7 +267,7 @@ public class SpotiUI extends JPanel {
                 buttonAux.setForeground(Color.white);
                 playlistsPanel.add(buttonAux);
                 buttonAux.setAlignmentX(Component.LEFT_ALIGNMENT);
-                buttonAux.addActionListener(new SpotiFrameManager(myFacade));
+                buttonAux.addActionListener(new SpotiFrameManager(/*myFacade*/));
             }
             scroll = new JScrollPane(playlistsPanel);
             scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);

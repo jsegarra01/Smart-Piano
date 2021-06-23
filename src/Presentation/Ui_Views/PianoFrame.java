@@ -41,13 +41,13 @@ public class PianoFrame extends JPanel {
      * Constructor for the TempFreePianoUI, you need to send the mainframe context and will create a card layout
      * @param mainFrame context necessary to create the card layout
      */
-    public PianoFrame(final MainFrame mainFrame, BusinessFacadeImp myFacade) {
+    public PianoFrame(final MainFrame mainFrame/*, BusinessFacadeImp myFacade*/) {
         super();
         PianoFrame.mainFrame =mainFrame;
 
         pianoTilesUISelector = new PianoTilesUISelector(mainFrame);
-        spotiUI = new SpotiUI(myFacade);
-        freePianoUI = new FreePianoUI(myFacade);
+        spotiUI = new SpotiUI(/*myFacade*/);
+        freePianoUI = new FreePianoUI(/*myFacade*/);
         initialize();
     }
 

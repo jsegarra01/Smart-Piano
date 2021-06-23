@@ -20,12 +20,12 @@ import static Presentation.Ui_Views.SignUpUI.*;
  *
  */
 public class SignUpUiManager  implements ActionListener {
-    BusinessFacadeImp myFacade;
+    //private BusinessFacadeImp myFacade;
     /**
      * Parametrized constructor
      */
-    public SignUpUiManager(BusinessFacadeImp myFacade) {
-        this.myFacade = myFacade;
+    public SignUpUiManager(/*BusinessFacadeImp myFacade*/) {
+        //this.myFacade = myFacade;
     }
 
     /**
@@ -39,7 +39,7 @@ public class SignUpUiManager  implements ActionListener {
                 //In the case that the Back button is pressed
             case BACK_BUTTON -> card.show(contenedor, PRE_MENU_UI);
                 //In the case that the Done button is pressed
-            case DONE_BUTTON -> myFacade.finalSignUp(getUsernameSignUp(), getMailSignUp(), getPasswordSignUp(), getPasswordConfirmSignUp());
+            case DONE_BUTTON -> BusinessFacadeImp.getBusinessFacade().finalSignUp(getUsernameSignUp(), getMailSignUp(), getPasswordSignUp(), getPasswordConfirmSignUp());
         }
     }
 }

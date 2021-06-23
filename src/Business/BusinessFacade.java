@@ -17,6 +17,7 @@ import java.util.ArrayList;
  */
 public interface BusinessFacade {
 
+
     void singUpStartup();
     /**
      * Checks if the user can log in or not
@@ -45,7 +46,7 @@ public interface BusinessFacade {
      * @param passwordConfirm PasswordConfirmation string which the user has inputted while signing up
      * @return Boolean: 1 if it can sign up in, 0 if it cannot sign up
      */
-    public void finalSignUp(String username, String mail, String password, String passwordConfirm);
+    void finalSignUp(String username, String mail, String password, String passwordConfirm);
 
 
 
@@ -54,7 +55,7 @@ public interface BusinessFacade {
      * @return Boolean: If it can delete the account, returns 1, else 0
      */
 
-    public boolean deleteAccount();
+    boolean deleteAccount();
 
     /**
      * Gets the arraylist of recorded notes from the UI
@@ -113,6 +114,8 @@ public interface BusinessFacade {
     boolean newPlaylist(String playlist);
 
     void resetTilesKeys();
+
+    boolean startRecordingNote();
 
     void initializeWebScrapping();
 

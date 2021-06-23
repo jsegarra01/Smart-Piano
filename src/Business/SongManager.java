@@ -2,6 +2,7 @@ package Business;
 
 import Business.Entities.*;
 import Persistence.SQL.Csv.SongCsvDAO;
+import Persistence.SongDAO;
 
 import java.sql.SQLException;
 import java.util.*;
@@ -18,7 +19,7 @@ import static Business.Entities.SongToMidi.writeMidi;
  *
  */
 public class SongManager {
-    private final SongCsvDAO songManager = new SongCsvDAO();
+    private final SongDAO songManager = new SongCsvDAO();
     private static ArrayList<Song> songs;
     private static final ArrayList<String> songNames = new ArrayList<>();
     private static final BusinessFacadeImp businessFacade = new BusinessFacadeImp();

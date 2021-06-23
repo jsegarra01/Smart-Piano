@@ -144,12 +144,12 @@ public class SongDownloader implements SongDownloaderDAO {
                         if(author2.substring(0,3).contains("by ")){
                             author2 = author2.substring(3);
                         }
-                        songCsv.saveSongWithDate(new Song(piece, author2, new MidiHelper().getDuration(filename)/1000000, new SimpleDateFormat("yyyy/MM/dd").parse(recordingDate), true, filename, "guest", 0));
+                        songCsv.saveSongWithDate(new Song(piece, author2, 0 /*new MidiHelper().getDuration(filename)/1000000*/, new SimpleDateFormat("yyyy/MM/dd").parse(recordingDate), true, filename, "guest", 0));
                     }
                 }
             }
-            catch (IOException | ParseException | MidiUnavailableException | InvalidMidiDataException e) {
-
+            catch (IOException | ParseException e) {
+                System.out.println("ERROR");
             }
             //Extract the divs that have products inside of the previous general Div.
             i++;

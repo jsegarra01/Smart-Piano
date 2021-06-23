@@ -22,12 +22,12 @@ import static Presentation.Manager.MainFrame.contenedor;
  *
  */
 public class ProfileUIManager implements ActionListener {
-    BusinessFacadeImp myFacade;
+    //BusinessFacadeImp myFacade;
     /**
      * Parametrized constructor
      */
-    public ProfileUIManager(BusinessFacadeImp myFacade) {
-        this.myFacade = myFacade;
+    public ProfileUIManager(/*BusinessFacadeImp myFacade*/) {
+        //this.myFacade = myFacade;
     }
 
     /**
@@ -40,7 +40,7 @@ public class ProfileUIManager implements ActionListener {
         switch (e.getActionCommand()) {
             case LOGOUT_BUTTON -> card.show(contenedor, PRE_MENU_UI);//In the case that the Logout button is pressed
             case DELETE_BUTTON -> {
-                myFacade.deleteAccount();
+                BusinessFacadeImp.getBusinessFacade().deleteAccount();
                 card.show(contenedor, PRE_MENU_UI);//In the case that the Delete button is pressed
             }
             case BACK_BUTTON -> card.show(contenedor, PIANO_FRAME);//In the case that the Back button is pressed

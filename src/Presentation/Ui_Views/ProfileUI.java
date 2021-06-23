@@ -26,13 +26,13 @@ public class ProfileUI extends JPanel{
     private final JButton logOut = new JButton(LOGOUT_BUTTON);
     private final JButton deleteAccount = new JButton(DELETE_BUTTON);
     private final JButton back = new JButton(BACK_BUTTON);
-    private final BusinessFacadeImp myFacade;
+   // private final BusinessFacadeImp myFacade;
 
     /**
      * Constructor for the ProfileUI, you need to send the mainframe context and will create a card layout
      */
-    public ProfileUI(BusinessFacadeImp myFacade) {
-        this.myFacade = myFacade;
+    public ProfileUI(/*BusinessFacadeImp myFacade*/) {
+        //this.myFacade = myFacade;
         initialize();
     }
 
@@ -82,7 +82,7 @@ public class ProfileUI extends JPanel{
         JPanel backBoxLayoutPanel = new JPanel();
         backBoxLayoutPanel.setLayout(new BoxLayout(backBoxLayoutPanel, BoxLayout.Y_AXIS));
 
-        registerController(new ProfileUIManager(myFacade));
+        registerController(new ProfileUIManager(/*myFacade*/));
 
         userButtons.add(logOut);
         userButtons.add(Box.createRigidArea(new Dimension(10, 20)));

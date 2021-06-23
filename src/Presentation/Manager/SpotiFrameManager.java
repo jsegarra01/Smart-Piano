@@ -42,7 +42,7 @@ import static Presentation.Ui_Views.Tile.resizeIcon;
  */
 public class SpotiFrameManager extends AbstractAction implements ActionListener, MouseListener {
 
-    private final BusinessFacadeImp myFacade;
+    //private final BusinessFacadeImp myFacade;
     public static final String URLRoute = "https://www.mutopiaproject.org/cgibin/make-table.cgi?Instrument=Piano";
 
     /*
@@ -104,8 +104,8 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
     /**
      * Parametrized constructor
      */
-    public SpotiFrameManager(BusinessFacadeImp myFacade) {
-        this.myFacade = myFacade;
+    public SpotiFrameManager(/*BusinessFacadeImp myFacade*/) {
+        //this.myFacade = myFacade;
     }
 
     /**
@@ -120,7 +120,7 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
         switch (e.getActionCommand()) {
             case SHOW_ALL_SONGS:
                 addSong = false;
-                SongsUI.initTable(myFacade.getSongs(), "Delete");
+                SongsUI.initTable(BusinessFacadeImp.getBusinessFacade().getSongs(), "Delete");
                 cc.show(spotiPanel, SONGS_UI);
                 break;
             case CREATE_STADISTICS:
@@ -128,13 +128,13 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
                 cc.show(spotiPanel, STATISTICS_UI);
                 break;
             case SHOW_TOP_SONGS:
-                myFacade.updateSong(songPlay);
-                myFacade.setSongUser();
-                SongsUI.initTable(myFacade.getTopFive(), "topFive");
+                BusinessFacadeImp.getBusinessFacade().updateSong(songPlay);
+                BusinessFacadeImp.getBusinessFacade().setSongUser();
+                SongsUI.initTable(BusinessFacadeImp.getBusinessFacade().getTopFive(), "topFive");
                 cc.show(spotiPanel, SONGS_UI);
                 break;
             case CREATE_PLAYLIST:
-                playlist = myFacade.createPlaylist();
+                playlist = BusinessFacadeImp.getBusinessFacade().createPlaylist();
                 break;
 
             case SEARCH_SONG:
@@ -172,9 +172,9 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
                         finalMidiHelper.restartSong(songPlay.getSongFile());
                         finalMidiHelper.playSong(songPlay.getSongFile());
                     }
-                    myFacade.updateSong(songPlay);
-                    myFacade.setSongUser();
-                    SongsUI.initTable(myFacade.getTopFive(), "topFive");
+                    BusinessFacadeImp.getBusinessFacade().updateSong(songPlay);
+                    BusinessFacadeImp.getBusinessFacade().setSongUser();
+                    SongsUI.initTable(BusinessFacadeImp.getBusinessFacade().getTopFive(), "topFive");
                     setNumSongs(getNumSongs());
                     setNumMin(getMinPlayed());
                     initialize();
@@ -205,7 +205,7 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
                 JButton button;
                 if (obj instanceof JButton) {
                     button = (JButton) obj;
-                    playlist = myFacade.getPlaylist(button.getName());
+                    playlist = BusinessFacadeImp.getBusinessFacade().getPlaylist(button.getName());
                     PlaylistUI.setSongsPlaylists(playlist);
                     cc.show(spotiPanel, PLAYLIST_UI);
                 }
@@ -215,13 +215,13 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
                 addSong = false;
                 if (obj instanceof JButton) {
                     song = (JButton) obj;
-                    boolean errorDeleting = myFacade.deleteSongFromPlaylist(playlist.getPlaylistName(),song.getName());
-                    playlist = myFacade.getPlaylist(playlist.getPlaylistName());
+                    boolean errorDeleting = BusinessFacadeImp.getBusinessFacade().deleteSongFromPlaylist(playlist.getPlaylistName(),song.getName());
+                    playlist = BusinessFacadeImp.getBusinessFacade().getPlaylist(playlist.getPlaylistName());
                     PlaylistUI.setSongsPlaylists(playlist);
                 }
                 break;
             case ADD_SONG_COMM:
-                SongsUI.initTable(myFacade.getSongs(), "Add");
+                SongsUI.initTable(BusinessFacadeImp.getBusinessFacade().getSongs(), "Add");
                 cc.show(spotiPanel, SONGS_UI);
                 addSong = true;
                 break;
@@ -230,11 +230,13 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
                     JTable table = (JTable)e.getSource();
                     int modelRow = Integer.parseInt( e.getActionCommand() );
                     if(addSong){
-                        if (isAlreadyInPlaylist(myFacade.getSong(modelRow).getSongName())) {
-                            myFacade.setError(7);
+                        if (isAlreadyInPlaylist(BusinessFacadeImp.getBusinessFacade().getSong(modelRow).getSongName())) {
+                            BusinessFacadeImp.getBusinessFacade().setError(7);
                         }else{
-                            boolean updatingSong = myFacade.addSongToPlaylist(playlist.getPlaylistName(),myFacade.getSong(modelRow).getSongName());
-                            playlist = myFacade.getPlaylist(playlist.getPlaylistName());
+                            boolean updatingSong = BusinessFacadeImp.getBusinessFacade().
+                                    addSongToPlaylist(playlist.getPlaylistName(),
+                                            BusinessFacadeImp.getBusinessFacade().getSong(modelRow).getSongName());
+                            playlist = BusinessFacadeImp.getBusinessFacade().getPlaylist(playlist.getPlaylistName());
                             PlaylistUI.setSongsPlaylists(playlist);
                             cc.show(spotiPanel, PLAYLIST_UI);
                             addSong = false;
@@ -242,13 +244,13 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
                     }else{
                         int input = JOptionPane.showConfirmDialog(null,
                                 "Are you sure you want to delete " +
-                                        myFacade.getSong(modelRow).getSongName() +"?",
+                                        BusinessFacadeImp.getBusinessFacade().getSong(modelRow).getSongName() +"?",
                                 "Select an option", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
                         if(input == JOptionPane.YES_OPTION){
                             ((DefaultTableModel)table.getModel()).removeRow(modelRow);
-                            myFacade.deleteSong(modelRow);
-                            myFacade.setSongUser();
-                            myFacade.getPlaylistManager().setPlaylists(UserManager.getUser().getUserName());
+                            BusinessFacadeImp.getBusinessFacade().deleteSong(modelRow);
+                            BusinessFacadeImp.getBusinessFacade().setSongUser();
+                            BusinessFacadeImp.getBusinessFacade().getPlaylistManager().setPlaylists(UserManager.getUser().getUserName());
                         }
 
                     }
@@ -273,10 +275,10 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
     public static LinkedList<Float> getNumSongs(){
         LinkedList<Float> numSongs = new LinkedList<>();
         for(int i=0; i<24; i++ ){
-            if(SpotiUI.myFacade.getStats(i) == null){
+            if(BusinessFacadeImp.getBusinessFacade().getStats(i) == null){
                 numSongs.add((float) 0);
             } else {
-                numSongs.add(SpotiUI.myFacade.getStats(i).getNumPlayed());
+                numSongs.add(BusinessFacadeImp.getBusinessFacade().getStats(i).getNumPlayed());
             }
         }
         return numSongs;
@@ -289,10 +291,10 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
     public static LinkedList<Float> getMinPlayed(){
         LinkedList<Float> numMin = new LinkedList<>();
         for(int i=0; i<24; i++ ){
-            if(SpotiUI.myFacade.getStats(i) == null){
+            if(BusinessFacadeImp.getBusinessFacade().getStats(i) == null){
                 numMin.add((float)0);
             } else {
-                numMin.add(SpotiUI.myFacade.getStats(i).getMinPlayed());
+                numMin.add(BusinessFacadeImp.getBusinessFacade().getStats(i).getMinPlayed());
             }
         }
         return numMin;
@@ -319,13 +321,13 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
             wherePlay = true;
             playMusic();
             SpotiUI.setSong(songPlay.getSongName(), songPlay.getAuthorName());
-            myFacade.updateSong(songPlay);
-            myFacade.setSongUser();
-            ArrayList<Song> topFive = myFacade.getTopFive();
+            BusinessFacadeImp.getBusinessFacade().updateSong(songPlay);
+            BusinessFacadeImp.getBusinessFacade().setSongUser();
+            ArrayList<Song> topFive = BusinessFacadeImp.getBusinessFacade().getTopFive();
         }else if(obj instanceof  JTable){
             table = (JTable) obj;
             if(table.getEditorComponent() == null){
-                songPlay = myFacade.getSong(table.getSelectedRow());
+                songPlay = BusinessFacadeImp.getBusinessFacade().getSong(table.getSelectedRow());
                 playMusic();
                 setSong(songPlay.getSongName(), songPlay.getAuthorName());
                 wherePlay = false;
@@ -339,7 +341,7 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
      * @return The song with all its information
      */
     private Song findSong(String file){
-        ArrayList<Song> arraySong = myFacade.getSongs();
+        ArrayList<Song> arraySong = BusinessFacadeImp.getBusinessFacade().getSongs();
         int i=0;
         boolean found = false;
         while(!found && i<arraySong.size()){
@@ -392,7 +394,7 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
      * @return Song to be played
      */
     private Song previousSongSongs(String file){
-        ArrayList<Song> arraySong = myFacade.getSongs();
+        ArrayList<Song> arraySong = BusinessFacadeImp.getBusinessFacade().getSongs();
         int i=0;
         boolean found = false;
         while(!found && i<arraySong.size()){
@@ -637,13 +639,14 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
         }else{
             finalMidiHelper.restartSong(songPlay.getSongFile());
             finalMidiHelper.playSong(songPlay.getSongFile());
-        }
+            System.out.println("hola");
+        }/*
         setNumSongs(getNumSongs());
         setNumMin(getMinPlayed());
         initialize();
         new BusinessFacadeImp().updateSong(songPlay);
         new BusinessFacadeImp().setSongUser();
-        SongsUI.initTable(new BusinessFacadeImp().getTopFive(), "topFive");
+        SongsUI.initTable(new BusinessFacadeImp().getTopFive(), "topFive");*/
     }
 
     /**
@@ -653,7 +656,7 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
      */
     private boolean searchSong(String songName){
         if(songName.length()>1){
-            ArrayList<Song> songs = myFacade.getSongs();
+            ArrayList<Song> songs = BusinessFacadeImp.getBusinessFacade().getSongs();
             ArrayList<Song> songsSearched = new ArrayList<>();
             for (Song song : songs) {
                 if (song.getSongName().toLowerCase().contains(songName.toLowerCase())
@@ -665,7 +668,7 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
             return true;
 
         }else{
-            myFacade.setError(6);
+            BusinessFacadeImp.getBusinessFacade().setError(6);
             return false;
         }
 

@@ -30,7 +30,6 @@ public class ButtonColumn extends AbstractCellEditor
     private final JButton renderButton;
     private final JButton editButton;
     private Object editorValue;
-    private boolean isButtonColumnEditor;
 
     /**
      *  Create the ButtonColumn to be used as a renderer and editor. The

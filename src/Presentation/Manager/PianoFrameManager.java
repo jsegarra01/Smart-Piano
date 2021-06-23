@@ -59,7 +59,7 @@ public class PianoFrameManager implements ActionListener {
                 break;
             case PLAY_A_SONG:
                 try {
-                    new PianoTilesUISelectorManager(mainFrame.getMyFacade()).refreshPianoTilesUI();
+                    new PianoTilesUISelectorManager(/*mainFrame.getMyFacade()*/).refreshPianoTilesUI();
                 } catch (NullPointerException h) {
                     playSong.setBackground(Color.getHSBColor(0,0,80.3f));
                 }

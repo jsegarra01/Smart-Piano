@@ -17,12 +17,12 @@ import static Presentation.Dictionary_login.*;
  *
  */
 public class PreMenuUIManager implements ActionListener {
-    BusinessFacadeImp myFacade;
+    //BusinessFacadeImp myFacade;
     /**
      * Parametrized constructor
      */
-    public PreMenuUIManager(BusinessFacadeImp myFacade) {
-        this.myFacade = myFacade;
+    public PreMenuUIManager(/*BusinessFacadeImp myFacade*/) {
+        //this.myFacade = myFacade;
     }
 
     /**
@@ -33,9 +33,9 @@ public class PreMenuUIManager implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         // We distinguish between our buttons.
         switch (e.getActionCommand()) {
-            case LOG_IN_BUTTON -> myFacade.logInStartup();//In the case that the LogIn button is pressed
-            case SIGN_UP_BUTTON -> myFacade.singUpStartup();//In the case that the SignUp button is pressed
-            case ENTER_AS_GUEST_BUTTON -> myFacade.enterAsAGuest("guest", "password");//In the case that the Guest button is pressed
+            case LOG_IN_BUTTON -> BusinessFacadeImp.getBusinessFacade().logInStartup();//In the case that the LogIn button is pressed
+            case SIGN_UP_BUTTON -> BusinessFacadeImp.getBusinessFacade().singUpStartup();//In the case that the SignUp button is pressed
+            case ENTER_AS_GUEST_BUTTON -> BusinessFacadeImp.getBusinessFacade().enterAsAGuest("guest", "password");//In the case that the Guest button is pressed
         }
     }
 }

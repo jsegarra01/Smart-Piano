@@ -44,7 +44,7 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
     private static int songIndex = 0;
     private static Song song;
 
-    private final BusinessFacadeImp myFacade;
+    //private final BusinessFacadeImp myFacade;
 
     private final ImageIcon playIcon = new ImageIcon("Files/drawable/play-button.png"); // icon play
     private final ImageIcon pauseIcon = new ImageIcon("Files/drawable/pause-button.png"); // icon pause
@@ -60,9 +60,9 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
     /**
      * Parametrized constructor, initializes the recorder and teh different overwrites for when a key is pressed in the keyboard
      */
-    public PianoTilesUISelectorManager(BusinessFacadeImp myFacade) {
+    public PianoTilesUISelectorManager(/*BusinessFacadeImp myFacade*/) {
         //To play the song
-        this.myFacade = myFacade;
+        //this.myFacade = myFacade;
         try {
             midiHelper = new MidiHelper();
         } catch (MidiUnavailableException exception) {
@@ -256,7 +256,7 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
      * @return A list with all the song names
      */
     public ArrayList<String> getBusinessSongNames() {
-        return myFacade.getSongName();
+        return BusinessFacadeImp.getBusinessFacade().getSongName();
     }
 
     /**
@@ -281,7 +281,7 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
                             //Sets the tiles to play
 
 
-            myFacade.setAllKeys();
+            BusinessFacadeImp.getBusinessFacade().setAllKeys();
                                                                             //Gets the tiles to play.
                                                                             //Is this necessary or it
                                                                             //can be in presentation?
@@ -300,7 +300,7 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
         velocityModifier = 1;
         songIndex = 0;
         new ChangeTime(0);
-        myFacade.resetTilesKeys();
+        BusinessFacadeImp.getBusinessFacade().resetTilesKeys();
         initTileGame();
         refreshTiles();
         refreshSongList();

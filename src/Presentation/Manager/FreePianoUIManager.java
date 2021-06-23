@@ -48,10 +48,10 @@ public class FreePianoUIManager implements ActionListener, MouseListener {
     private final KeyListener KL;
     private boolean recording = false;
     private float recordingTime = 0;
-    BusinessFacadeImp myFacade;
+    //BusinessFacadeImp myFacade;
 
-    MidiHelper midiHelper = null;
-    Timer timer  = new Timer(10, this);
+    private MidiHelper midiHelper = null;
+    private Timer timer  = new Timer(10, this);
     private boolean modifying = false;
     private boolean selected = false;
     private String tileSelected;
@@ -59,8 +59,8 @@ public class FreePianoUIManager implements ActionListener, MouseListener {
     /**
      * Parametrized constructor, initializes the recorder and teh different overwrites for when a key is pressed in the keyboard
      */
-    public FreePianoUIManager(BusinessFacadeImp myFacade) {
-        this.myFacade = myFacade;
+    public FreePianoUIManager(/*BusinessFacadeImp myFacade*/) {
+        //this.myFacade = myFacade;
         timer.setActionCommand(RECORDING_TIMER);
         try {
             midiHelper = new MidiHelper();
@@ -88,7 +88,7 @@ public class FreePianoUIManager implements ActionListener, MouseListener {
                     if(selected){
                         // Will only return true if the key was already assigned to which the user s trying to give,
                         // if the user gives a new one, then it will just swap them and return false.
-                        selected = myFacade.modifyKey(tileSelected, e, Translator.setNewKey(tileSelected,e.getExtendedKeyCode()));
+                        selected = BusinessFacadeImp.getBusinessFacade().modifyKey(tileSelected, e, Translator.setNewKey(tileSelected,e.getExtendedKeyCode()));
                     }
                 }else{
                     if(Translator.getPressedFromKey(e.getExtendedKeyCode()) !=null){
@@ -143,10 +143,10 @@ public class FreePianoUIManager implements ActionListener, MouseListener {
             case FreePianoUI.BTN_RECORD:                    //In the case that the Record button is pressed
                 if (recording) {//If we were recording and we want to stop
                     timer.stop();
-                    recording = myFacade.noteRecordingUpdate(recordingNotes, recordingTime);
+                    recording = BusinessFacadeImp.getBusinessFacade().noteRecordingUpdate(recordingNotes, recordingTime);
                 }
                 else {                                      //If we want to start recording
-                    recording = myFacade.startRecordingNote();
+                    recording = BusinessFacadeImp.getBusinessFacade().startRecordingNote();
                     recordingTime = 0;
                     timer.restart();
                 }
@@ -226,7 +226,6 @@ public class FreePianoUIManager implements ActionListener, MouseListener {
         if (obj instanceof Tile) {
             t = (Tile) obj;
         }
-        //System.out.println(Translator.getNumberNoteFromName(e.getComponent().getName()));
         if(modifying){
             if(!selected){
                 FreePianoUI.setTileColor(t);
@@ -253,7 +252,6 @@ public class FreePianoUIManager implements ActionListener, MouseListener {
             for (int i = 0; recordingNotes.size() != i; i++) {
                 if (recordingNotes.get(i).getKey().equals(e.getComponent().getName())  && recordingNotes.get(i).getDuration() == 0) {
                     recordingNotes.get(i).setDuration(recordingTime - recordingNotes.get(i).getTime());
-                    System.out.println(recordingNotes.get(i).getDuration());
                 }
             }
         }

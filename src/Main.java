@@ -1,5 +1,8 @@
+import Business.BusinessFacade;
 import Business.BusinessFacadeImp;
 import Presentation.Manager.MainFrame;
+
+import javax.swing.*;
 
 import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 
@@ -10,11 +13,15 @@ import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 public class Main {
 
     public static void main(String[] args) {
-        BusinessFacadeImp myFacade = new BusinessFacadeImp();
-        MainFrame mainframe = new MainFrame(myFacade);
-        mainframe.setSize(1225, 675);
-        mainframe.setVisible(true);
-        mainframe.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                MainFrame mainframe = new MainFrame(/*myFacade*/);
+                mainframe.setSize(1225, 675);
+                mainframe.setVisible(true);
+                mainframe.setDefaultCloseOperation(EXIT_ON_CLOSE);
+            }
+        });
 
     }
 }

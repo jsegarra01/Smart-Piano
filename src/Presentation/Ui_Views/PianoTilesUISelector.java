@@ -123,7 +123,7 @@ public class PianoTilesUISelector extends Piano {
         menu.add(normal);
         menu.add(hard);
         menu.add(veryHard);
-        registerController(new PianoTilesUISelectorManager(mainFrame.getMyFacade()));
+        registerController(new PianoTilesUISelectorManager(/*mainFrame.getMyFacade()*/));
         return menu;
     }
 
@@ -283,9 +283,9 @@ public class PianoTilesUISelector extends Piano {
         scrollPanel.removeAll();
 
         //We create the available songs for the user to be played in piano tiles
-        ArrayList<String> names = new ArrayList<>(new PianoTilesUISelectorManager(mainFrame.getMyFacade()).getBusinessSongNames());
+        ArrayList<String> names = new ArrayList<>(new PianoTilesUISelectorManager(/*mainFrame.getMyFacade()*/).getBusinessSongNames());
         JList<String> songNames = new JList<>(names.toArray(new String[0]));
-        songNames.addListSelectionListener(new PianoTilesUISelectorManager(mainFrame.getMyFacade()));
+        songNames.addListSelectionListener(new PianoTilesUISelectorManager(/*mainFrame.getMyFacade()*/));
         songNames.setSelectionMode(0);
         songNames.setVisibleRowCount(4);
 

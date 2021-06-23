@@ -24,14 +24,14 @@ import static Presentation.Ui_Views.Tile.*;
  *
  */
 public class FreePianoUI extends Piano {
-    private final BusinessFacadeImp myFacade;
+    //private final BusinessFacadeImp myFacade;
     /**
      * Constructor for the FreePianoUI, you need to send the mainframe context and will create a card layout
      *
      //* @param mainFrame context necessary to create the card layout
      */
-    public FreePianoUI(BusinessFacadeImp myFacade) {
-        this.myFacade = myFacade;
+    public FreePianoUI(/*BusinessFacadeImp myFacade*/) {
+        //this.myFacade = myFacade;
         keyboard = new ArrayList<>();
         initialize();
     }
@@ -90,7 +90,7 @@ public class FreePianoUI extends Piano {
         menu.add(modifyKeys);
         menu.setBackground(Color.getHSBColor(0,0,0.2f));
 
-        registerController(new FreePianoUIManager(myFacade));
+        registerController(new FreePianoUIManager(/*myFacade*/));
         layout.add(menu, BorderLayout.NORTH);
         layout.setBackground(Color.getHSBColor(0,0,0.2f));
         return layout;

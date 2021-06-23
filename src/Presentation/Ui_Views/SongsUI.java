@@ -80,7 +80,7 @@ public class SongsUI extends JPanel {
         sp.setBackground(Color.black);
         sp.setPreferredSize(new Dimension(860, 540));
         sp.setWheelScrollingEnabled(true);
-        SpotiFrameManager myManager = new SpotiFrameManager(SpotiUI.myFacade);
+        SpotiFrameManager myManager = new SpotiFrameManager(/*SpotiUI.myFacade*/);
         registerController(myManager);
         if(!action.equals("topFive")){
             registerController(myManager);

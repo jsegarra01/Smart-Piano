@@ -88,33 +88,42 @@ public class MidiHelper {
     /**
      * Plays the song stored in the file
      * @param filename File where the song is stored
+     * @return
      */
-    public void playSong(String filename){
+    public boolean playSong(String filename){
         try {
             if(!(filename.equals(fileSong))){
-                restartSong(filename);
+                if(!restartSong(filename)){
+                    return false;
+                }
             }
+
              // Open device
             // Create sequence, the File must contain MIDI file data.
             sequencer.setSequence(sequencePlay); // load it into sequencer
             sequencer.start();               // start the playback
+            return true;
 
         } catch (InvalidMidiDataException e) {
             e.printStackTrace();
+            return false;
         }
     }
 
     /**
      * Restarts the song stored in the file
      * @param filename File where the song is stored
+     * @return
      */
-    public void restartSong(String filename){
+    public boolean restartSong(String filename){
+        fileSong = filename;
         try {
             sequencePlay = MidiSystem.getSequence(new File(filename));
+            return true;
         } catch (InvalidMidiDataException | IOException e) {
             e.printStackTrace();
+            return false;
         }
-        fileSong = filename;
     }
 
     /**
@@ -167,9 +176,9 @@ public class MidiHelper {
         this.donePlaying = donePlaying;
     }
 
-    public float getDuration(String filename) throws InvalidMidiDataException {
-        restartSong(filename);
-        sequencer.setSequence(sequencePlay);
+    public float getDuration(String filename) throws InvalidMidiDataException, IOException {
+        //restartSong(filename);
+        sequencer.setSequence(MidiSystem.getSequence(new File(filename)));
         return sequencer.getMicrosecondLength();
     }
 }
