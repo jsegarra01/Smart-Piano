@@ -54,6 +54,7 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
     public static float minPlayed;
     public static long startMin=0;
     public static long lastMin=0;
+    private static boolean top5 = false;
 
     /*
     Defines if we are adding a song or not
@@ -83,7 +84,7 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
     /*
     Event that will control if the end of the track has been reached
      */
-    private static final MetaEventListener listener = meta -> {
+    private final MetaEventListener listener = meta -> {
         if (meta.getType() == 47) {
             playSongTime();
         }
@@ -93,7 +94,7 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
     MidiHelper which will control the music playing in the music player
      */
     private static MidiHelper finalMidiHelper;
-    static {
+     {
         try {
             finalMidiHelper = new MidiHelper(listener);
         } catch (MidiUnavailableException e) {
@@ -120,6 +121,7 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
         switch (e.getActionCommand()) {
             case SHOW_ALL_SONGS:
                 addSong = false;
+                top5 = false;
                 SongsUI.initTable(BusinessFacadeImp.getBusinessFacade().getSongs(), "Delete");
                 cc.show(spotiPanel, SONGS_UI);
                 break;
@@ -128,8 +130,10 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
                 cc.show(spotiPanel, STATISTICS_UI);
                 break;
             case SHOW_TOP_SONGS:
-                BusinessFacadeImp.getBusinessFacade().updateSong(songPlay);
-                BusinessFacadeImp.getBusinessFacade().setSongUser();
+                top5 = true;
+                //BusinessFacadeImp.getBusinessFacade().updateSong(songPlay);
+                //BusinessFacadeImp.getBusinessFacade().setSongUser();
+                //updateTable();
                 SongsUI.initTable(BusinessFacadeImp.getBusinessFacade().getTopFive(), "topFive");
                 cc.show(spotiPanel, SONGS_UI);
                 break;
@@ -140,6 +144,7 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
             case SEARCH_SONG:
                 if(searchSong(getInputedSongName())){
                     cc.show(spotiPanel, SONGS_UI);
+                    top5 = false;
                 }
                 break;
             case Dictionary_login.PROFILE_BUTTON:           //In the case that the Profile button is pressed
@@ -172,9 +177,10 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
                         finalMidiHelper.restartSong(songPlay.getSongFile());
                         finalMidiHelper.playSong(songPlay.getSongFile());
                     }
-                    BusinessFacadeImp.getBusinessFacade().updateSong(songPlay);
+                    /*BusinessFacadeImp.getBusinessFacade().updateSong(songPlay);
                     BusinessFacadeImp.getBusinessFacade().setSongUser();
-                    SongsUI.initTable(BusinessFacadeImp.getBusinessFacade().getTopFive(), "topFive");
+                    SongsUI.initTable(BusinessFacadeImp.getBusinessFacade().getTopFive(), "topFive");*/
+                    updateTable();
                     setNumSongs(getNumSongs());
                     setNumMin(getMinPlayed());
                     initialize();
@@ -224,6 +230,7 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
                 SongsUI.initTable(BusinessFacadeImp.getBusinessFacade().getSongs(), "Add");
                 cc.show(spotiPanel, SONGS_UI);
                 addSong = true;
+                top5 = false;
                 break;
             default:
                 if(obj instanceof JTable){
@@ -321,9 +328,10 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
             wherePlay = true;
             playMusic();
             SpotiUI.setSong(songPlay.getSongName(), songPlay.getAuthorName());
-            BusinessFacadeImp.getBusinessFacade().updateSong(songPlay);
+            /*BusinessFacadeImp.getBusinessFacade().updateSong(songPlay);
             BusinessFacadeImp.getBusinessFacade().setSongUser();
-            ArrayList<Song> topFive = BusinessFacadeImp.getBusinessFacade().getTopFive();
+            ArrayList<Song> topFive = BusinessFacadeImp.getBusinessFacade().getTopFive();*/
+            updateTable();
         }else if(obj instanceof  JTable){
             table = (JTable) obj;
             if(table.getEditorComponent() == null){
@@ -331,6 +339,7 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
                 playMusic();
                 setSong(songPlay.getSongName(), songPlay.getAuthorName());
                 wherePlay = false;
+                updateTable();
             }
         }
     }
@@ -517,6 +526,7 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
         startMin = System.currentTimeMillis();
         finalMidiHelper.playSong(songPlay.getSongFile());
         play = true;
+
     }
 
     /**
@@ -620,7 +630,7 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
     /**
      * Decides which method to call depending on which option the user has selected
      */
-    private static void playSongTime(){
+    private void playSongTime(){
         count_song = 1;
         if(!loop){
             if(!shuffle){
@@ -639,8 +649,12 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
         }else{
             finalMidiHelper.restartSong(songPlay.getSongFile());
             finalMidiHelper.playSong(songPlay.getSongFile());
-            System.out.println("hola");
-        }/*
+        }
+
+        updateTable();
+        /*BusinessFacadeImp.getBusinessFacade().updateSong(songPlay);
+        BusinessFacadeImp.getBusinessFacade().setSongUser();*/
+        /*
         setNumSongs(getNumSongs());
         setNumMin(getMinPlayed());
         initialize();
@@ -672,5 +686,12 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
             return false;
         }
 
+    }
+    private void updateTable(){
+        BusinessFacadeImp.getBusinessFacade().updateSong(songPlay);
+        BusinessFacadeImp.getBusinessFacade().setSongUser();
+        if(top5){
+            SongsUI.initTable(BusinessFacadeImp.getBusinessFacade().getTopFive(), "topFive");
+        }
     }
 }
