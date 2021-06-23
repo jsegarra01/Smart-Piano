@@ -366,7 +366,7 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
      * @return Song to be played
      */
     private static Song nextSongSongs(String file){
-        ArrayList<Song> arraySong = new BusinessFacadeImp().getSongs();
+        ArrayList<Song> arraySong = BusinessFacadeImp.getBusinessFacade().getSongs();
         int i=0;
         boolean found = false;
         while(!found && i<arraySong.size()){
@@ -505,7 +505,7 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
      * Initializes the table of songs
      */
     public static void resetSongs(){
-        SongsUI.initTable(new BusinessFacadeImp().getSongs(), "Delete");
+        SongsUI.initTable(BusinessFacadeImp.getBusinessFacade().getSongs(), "Delete");
     }
 
     /**
@@ -613,7 +613,7 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
      * Gets a random song from all available songs and plays it
      */
     private static void randomFromSongs(){
-        songPlay = new BusinessFacadeImp().getSongs().get(new Random().nextInt(new BusinessFacadeImp().getSongs().size()));
+        songPlay = BusinessFacadeImp.getBusinessFacade().getSongs().get(new Random().nextInt(BusinessFacadeImp.getBusinessFacade().getSongs().size()));
         playMusicSetLabel();
     }
 
