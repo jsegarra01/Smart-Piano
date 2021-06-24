@@ -3,7 +3,7 @@ package Presentation.Manager;
 //Imports needed from the dictionary, events and mainframe
 import Business.Entities.*;
 import Business.BusinessFacadeImp;
-import Business.Entities.MidiHelper;
+import Business.MidiHelper;
 import Business.UserManager;
 import Presentation.Dictionary_login;
 import Presentation.Ui_Views.PlaylistUI;
@@ -28,7 +28,6 @@ import static Presentation.Manager.MainFrame.card;
 import static Presentation.Manager.MainFrame.contenedor;
 import static Presentation.Ui_Views.SpotiUI.*;
 import static Presentation.Ui_Views.StatisticsUI.*;
-import static Presentation.Ui_Views.Tile.resizeIcon;
 
 
 /**

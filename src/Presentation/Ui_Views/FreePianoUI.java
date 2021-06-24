@@ -1,9 +1,8 @@
 package Presentation.Ui_Views;
 
 //Imports needed from the dictionary, events and mainframe
-import Business.BusinessFacadeImp;
 import Business.Entities.Keys;
-import Business.Entities.Translator;
+import Business.Translator;
 import Presentation.Manager.FreePianoUIManager;
 
 import javax.swing.*;

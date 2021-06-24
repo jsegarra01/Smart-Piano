@@ -1,6 +1,6 @@
 package Business.Threads;
 
-import Persistence.Json.ReadConfigJson;
+import Persistence.Files.ReadJson;
 import Persistence.WebScrapping.SongDownloader;
 
 import java.util.Timer;
@@ -20,7 +20,7 @@ public class WebScrapping {
     };
 
     public WebScrapping () {
-        timer.scheduleAtFixedRate(timerTask,50, 60000L * ReadConfigJson.getConfigJson().getScrappingTime());
+        timer.scheduleAtFixedRate(timerTask,50, 60000L * ReadJson.getConfigJson().getScrappingTime());
     }
 
 }

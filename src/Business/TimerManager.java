@@ -1,15 +1,13 @@
 package Business;
 
-import Business.Entities.ChangeTime;
 import Business.Entities.Observer;
-import Presentation.Manager.PianoFrameManager;
 
 import javax.swing.*;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import static Business.Entities.ChangeTime.actionTimer;
+import static Business.ChangeTime.actionTimer;
 import static Presentation.DictionaryPiano.PIANO_TILES_TIMER;
 import static Presentation.Manager.PianoTilesUISelectorManager.addTime;
 

@@ -1,5 +1,4 @@
 package Persistence.WebScrapping;
-import Business.Entities.MidiHelper;
 import Business.Entities.Song;
 import Business.SongManager;
 import Persistence.SongDownloaderDAO;
@@ -7,14 +6,8 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import javax.sound.midi.InvalidMidiDataException;
-import javax.sound.midi.MidiSystem;
-import javax.sound.midi.MidiUnavailableException;
-import javax.sound.midi.Sequencer;
-import java.awt.print.PrinterIOException;
 import java.io.*;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

@@ -1,4 +1,4 @@
-package Persistence.Json;
+package Persistence.Files;
 
 import Business.Entities.ConfigJson;
 import com.google.gson.Gson;
@@ -14,7 +14,7 @@ import java.io.IOException;
  * @author OOPD 20-21 ICE5
  * @version 1.0 22 Apr 2021
  */
-public class ReadConfigJson {
+public class ReadJson {
 
     // ConfigJson Class to be set only once (static) in order not to make multiple connections
     private static ConfigJson configJson;

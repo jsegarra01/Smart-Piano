@@ -1,4 +1,4 @@
-package Business.Entities;
+package Business;
 import Presentation.Manager.SpotiFrameManager;
 
 import javax.sound.midi.*;

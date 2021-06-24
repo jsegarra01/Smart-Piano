@@ -1,7 +1,7 @@
 package Presentation.Manager;
 
 //Imports needed from the dictionary, events and mainframe
-import Business.Entities.ChangeTime;
+import Business.ChangeTime;
 import Presentation.Dictionary_login;
 
 import java.awt.*;

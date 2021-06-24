@@ -7,7 +7,7 @@ import Business.Entities.*;
 import Business.Threads.WebScrapping;
 import Presentation.Manager.ErrorsManager;
 import Presentation.Manager.SpotiFrameManager;
-import Presentation.Ui_Views.FreePianoUI;//TODO
+//TODO
 import Presentation.Ui_Views.PlaylistUI;//TODO
 import Presentation.Ui_Views.SpotiUI;//TODO
 
@@ -201,8 +201,8 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
                     "This key is already assigned!", "Modify keys error" , JOptionPane.ERROR_MESSAGE);
             return true;
         }else{
-            FreePianoUI.modifyKey(Translator.getFromTile(tileSelected), e);
-            Translator.setKeys(KeyExisted, e.getExtendedKeyCode());
+           /* FreePianoUI.modifyKey(Translator.getFromTile(tileSelected), e);
+            Translator.setKeys(KeyExisted, e.getExtendedKeyCode());*/
             return false;
         }
     }

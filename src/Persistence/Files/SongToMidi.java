@@ -1,6 +1,9 @@
-package Business.Entities;
+package Persistence.Files;
 
 //Imports needed from the Gson, files and midis
+import Business.Entities.RecordingNotes;
+import Business.Entities.SongRecorded;
+import Business.Translator;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -105,7 +108,7 @@ public class SongToMidi {
 
             for (RecordingNotes recordingNote: recordingNotes) {
                 mm = new ShortMessage();
-                mm.setMessage(0x90,Translator.getNumberNoteFromName(recordingNote.getKey()),0x60);
+                mm.setMessage(0x90, Translator.getNumberNoteFromName(recordingNote.getKey()),0x60);
                 me = new MidiEvent(mm,(long)(recordingNote.getTime()*184));
                 t.add(me);
 

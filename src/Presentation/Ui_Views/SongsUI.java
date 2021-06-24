@@ -1,6 +1,6 @@
 package Presentation.Ui_Views;
 
-import Business.Entities.ButtonColumn;
+import Business.ButtonColumn;
 import Business.Entities.Song;
 import Presentation.Manager.SpotiFrameManager;
 

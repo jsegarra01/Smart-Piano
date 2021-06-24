@@ -2,14 +2,14 @@ package Presentation.Manager;
 
 //Imports needed from the dictionary, events and mainframe
 import Business.BusinessFacadeImp;
-import Business.Entities.ChangeTime;
+import Business.ChangeTime;
 import Business.Entities.Song;
 import Presentation.DictionaryPiano;
 import Presentation.Dictionary_login;
 import Presentation.Ui_Views.PianoTilesUISelector;
 import Presentation.Ui_Views.Tile;
-import Business.Entities.MidiHelper;
-import Business.Entities.Translator;
+import Business.MidiHelper;
+import Business.Translator;
 
 import javax.sound.midi.MidiUnavailableException;
 import javax.swing.*;

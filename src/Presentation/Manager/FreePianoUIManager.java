@@ -7,8 +7,8 @@ import Business.Entities.RecordingNotes;
 import Presentation.Dictionary_login;
 import Presentation.Ui_Views.FreePianoUI;
 import Presentation.Ui_Views.Tile;
-import Business.Entities.MidiHelper;
-import Business.Entities.Translator;
+import Business.MidiHelper;
+import Business.Translator;
 
 
 import javax.sound.midi.MidiUnavailableException;
@@ -89,6 +89,10 @@ public class FreePianoUIManager implements ActionListener, MouseListener {
                         // Will only return true if the key was already assigned to which the user s trying to give,
                         // if the user gives a new one, then it will just swap them and return false.
                         selected = BusinessFacadeImp.getBusinessFacade().modifyKey(tileSelected, e, Translator.setNewKey(tileSelected,e.getExtendedKeyCode()));
+                        if(!selected){
+                            FreePianoUI.modifyKey(Translator.getFromTile(tileSelected), e);
+                            Translator.setKeys(Translator.setNewKey(tileSelected,e.getExtendedKeyCode()), e.getExtendedKeyCode());
+                        }
                     }
                 }else{
                     if(Translator.getPressedFromKey(e.getExtendedKeyCode()) !=null){

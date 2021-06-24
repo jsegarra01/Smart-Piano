@@ -1,6 +1,8 @@
 package Business.Entities;
 
 
+import Business.ChangeTime;
+
 /**
  * Observer
  *

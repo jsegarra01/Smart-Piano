@@ -7,7 +7,7 @@ import Persistence.SongDAO;
 import java.sql.SQLException;
 import java.util.*;
 
-import static Business.Entities.SongToMidi.writeMidi;
+import static Persistence.Files.SongToMidi.writeMidi;
 
 /**
  * SongManager

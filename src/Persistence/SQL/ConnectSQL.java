@@ -1,6 +1,6 @@
 package Persistence.SQL;
 
-import Persistence.Json.ReadConfigJson;
+import Persistence.Files.ReadJson;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -40,9 +40,9 @@ public class ConnectSQL {
      */
     private static void makeConnection() throws SQLException {
         connection =  DriverManager.getConnection("jdbc:mysql://"+
-                        ReadConfigJson.getConfigJson().getIpAddress() + ":" +
-                        ReadConfigJson.getConfigJson().getPort()+"/"+ ReadConfigJson.getConfigJson().getName(),
-                ReadConfigJson.getConfigJson().getUsername(), ReadConfigJson.getConfigJson().getPassword());
+                        ReadJson.getConfigJson().getIpAddress() + ":" +
+                        ReadJson.getConfigJson().getPort()+"/"+ ReadJson.getConfigJson().getName(),
+                ReadJson.getConfigJson().getUsername(), ReadJson.getConfigJson().getPassword());
     }
 
     /**

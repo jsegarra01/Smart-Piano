@@ -1,5 +1,6 @@
-package Business.Entities;
+package Business;
 
+import Business.Entities.Observer;
 import Business.TimerManager;
 
 import java.util.ArrayList;

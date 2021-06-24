@@ -1,7 +1,7 @@
 package Business;
 
 import Business.Entities.Keys;
-import Business.Entities.ReadMidi;
+import Persistence.Files.ReadMidi;
 
 import java.util.ArrayList;
 

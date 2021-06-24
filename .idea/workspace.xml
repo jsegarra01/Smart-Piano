@@ -19,13 +19,32 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="new business in spoti frame were still there">
-      <change afterPath="$PROJECT_DIR$/Songs/Star-Wars-Theme.mid" afterDir="false" />
+    <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="Top 5 songs fixed, there was slight problem now it should update all the time">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Files/WebScrappingResults/biga.mid" beforeDir="false" afterPath="$PROJECT_DIR$/Files/WebScrappingResults/biga.mid" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Files/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/Files/config.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/SpotiFrameManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/SpotiFrameManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Business/BusinessFacadeImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/BusinessFacadeImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Business/Entities/ButtonColumn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/ButtonColumn.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Business/Entities/ChangeTime.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/ChangeTime.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Business/Entities/Graph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Ui_Views/Graph.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Business/Entities/MidiHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/MidiHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Business/Entities/Observer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/Entities/Observer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Business/Entities/ReadMidi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Persistence/Files/ReadMidi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Business/Entities/SongToMidi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Persistence/Files/SongToMidi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Business/Entities/Translator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/Translator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Business/SongManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/SongManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Business/Threads/WebScrapping.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/Threads/WebScrapping.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Business/TilesManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/TilesManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Business/TimerManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/TimerManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Persistence/Json/ReadConfigJson.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Persistence/Files/ReadJson.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Persistence/SQL/ConnectSQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Persistence/SQL/ConnectSQL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Persistence/WebScrapping/SongDownloader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Persistence/WebScrapping/SongDownloader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presentation/Manager/FreePianoUIManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Manager/FreePianoUIManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presentation/Manager/PianoFrameManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Manager/PianoFrameManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presentation/Manager/PianoTilesUISelectorManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Manager/PianoTilesUISelectorManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Presentation/Manager/SpotiFrameManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Manager/SpotiFrameManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presentation/Ui_Views/FreePianoUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Ui_Views/FreePianoUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presentation/Ui_Views/SongsUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Ui_Views/SongsUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presentation/Ui_Views/StatisticsUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Ui_Views/StatisticsUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +67,6 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitSEFilterConfiguration">
     <file-type-list>
@@ -116,7 +134,7 @@
       </method>
     </configuration>
     <configuration name="ReadMidi" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Business.Entities.ReadMidi" />
+      <option name="MAIN_CLASS_NAME" value="Persistence.Files.ReadMidi" />
       <module name="dpoo-2021-smartpiano-ice5" />
       <extension name="coverage">
         <pattern>
@@ -124,6 +142,19 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -167,14 +198,7 @@
       <workItem from="1621434489032" duration="6506000" />
       <workItem from="1621943195129" duration="2859000" />
       <workItem from="1623143986547" duration="13051000" />
-      <workItem from="1624462522521" duration="2337000" />
-    </task>
-    <task id="LOCAL-00016" summary="Piano works perfectly fine. Checked that everything worked as it should.">
-      <created>1619985274808</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1619985274808</updated>
+      <workItem from="1624462522521" duration="3379000" />
     </task>
     <task id="LOCAL-00017" summary="I am not allowed to do finish feature :'(">
       <created>1619985324845</created>
@@ -512,7 +536,14 @@
       <option name="project" value="LOCAL" />
       <updated>1624463478203</updated>
     </task>
-    <option name="localTasksCounter" value="66" />
+    <task id="LOCAL-00066" summary="Top 5 songs fixed, there was slight problem now it should update all the time">
+      <created>1624465444998</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1624465444998</updated>
+    </task>
+    <option name="localTasksCounter" value="67" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -554,7 +585,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="commit to finish feature in order to help lora" />
     <MESSAGE value="commit to init repo" />
     <MESSAGE value="Translator fixed, now there won't appear any errors if any key is pressed" />
     <MESSAGE value="Set keys done, missing setting up the color and selecting the keys, the jtoggle is implemented" />
@@ -621,7 +651,8 @@
     <MESSAGE value="We are done" />
     <MESSAGE value="Business facade modified as a singleton, passed the implementation not the class, still some things missing" />
     <MESSAGE value="new business in spoti frame were still there" />
-    <option name="LAST_COMMIT_MESSAGE" value="new business in spoti frame were still there" />
+    <MESSAGE value="Top 5 songs fixed, there was slight problem now it should update all the time" />
+    <option name="LAST_COMMIT_MESSAGE" value="Top 5 songs fixed, there was slight problem now it should update all the time" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -632,7 +663,7 @@
           <option name="timeStamp" value="39" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Business/Entities/MidiHelper.java</url>
+          <url>file://$PROJECT_DIR$/src/Business/MidiHelper.java</url>
           <line>103</line>
           <option name="timeStamp" value="40" />
         </line-breakpoint>

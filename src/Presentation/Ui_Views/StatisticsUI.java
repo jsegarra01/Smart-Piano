@@ -1,7 +1,6 @@
 package Presentation.Ui_Views;
 
 //import data from the different libraries
-import Business.Entities.Graph;
 
 import javax.swing.*;
 import java.awt.*;
