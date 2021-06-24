@@ -138,6 +138,10 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
                 break;
             case CREATE_PLAYLIST:
                 playlist = BusinessFacadeImp.getBusinessFacade().createPlaylist();
+                if(playlist !=null){
+                    PlaylistUI.setSongsPlaylists(playlist);
+                    cc.show(spotiPanel, PLAYLIST_UI);
+                }
                 break;
 
             case SEARCH_SONG:

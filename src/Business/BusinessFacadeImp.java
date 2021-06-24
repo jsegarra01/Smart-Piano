@@ -7,9 +7,6 @@ import Business.Entities.*;
 import Business.Threads.WebScrapping;
 import Presentation.Manager.ErrorsManager;
 import Presentation.Manager.SpotiFrameManager;
-//TODO
-import Presentation.Ui_Views.PlaylistUI;//TODO
-import Presentation.Ui_Views.SpotiUI;//TODO
 
 import javax.swing.*;
 import java.awt.*;
@@ -26,7 +23,6 @@ import static Presentation.Ui_Views.LoginUI.resetUILogin; //TODO
 import static Presentation.Ui_Views.LoginUI.setUsernameLogin; //TODO
 import static Presentation.Ui_Views.PianoTilesUISelector.setKeys; //TODO
 import static Presentation.Ui_Views.SignUpUI.*; //TODO
-import static Presentation.Ui_Views.SpotiUI.spotiPanel; //TODO :)
 
 /**
  * BusinessFacade
@@ -190,6 +186,7 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
         return false;
     }
 
+    @Override
     public boolean startRecordingNote(){
         return true;
     }
@@ -200,11 +197,11 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
             JOptionPane.showMessageDialog(contenedor,
                     "This key is already assigned!", "Modify keys error" , JOptionPane.ERROR_MESSAGE);
             return true;
-        }else{
-           /* FreePianoUI.modifyKey(Translator.getFromTile(tileSelected), e);
-            Translator.setKeys(KeyExisted, e.getExtendedKeyCode());*/
-            return false;
         }
+        /* FreePianoUI.modifyKey(Translator.getFromTile(tileSelected), e);
+        Translator.setKeys(KeyExisted, e.getExtendedKeyCode());*/
+        return false;
+
     }
 
     @Override
@@ -218,10 +215,8 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
         if(myStr != null && myStr.length() > 0 && myStr.indexOf('\'') == -1){
             new BusinessFacadeImp().newPlaylist(myStr);
             myPlayList = playlistManager.getFromName(myStr);
-            PlaylistUI.setSongsPlaylists(myPlayList);
-            CardLayout myCard = (CardLayout)spotiPanel.getLayout();
-            myCard.show(spotiPanel, PLAYLIST_UI);
-            SpotiUI.addPlaylists(playlistManager.getPlaylists());
+            //PlaylistUI.setSongsPlaylists(myPlayList);
+            SpotiFrameManager.addPlaylists(playlistManager.getPlaylists());
         } else {
             JOptionPane.showMessageDialog(null,
                     "The input is not correct!", "Create Playlist Error" ,
