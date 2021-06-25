@@ -17,13 +17,10 @@ import static Presentation.Dictionary_login.*;
  *
  */
 public class PreMenuUIManager implements ActionListener {
-    //BusinessFacadeImp myFacade;
     /**
      * Parametrized constructor
      */
-    public PreMenuUIManager(/*BusinessFacadeImp myFacade*/) {
-        //this.myFacade = myFacade;
-    }
+    public PreMenuUIManager() {}
 
     /**
      * Method that will be called every time a button is pressed, overriden from the interface to provide an implementation.

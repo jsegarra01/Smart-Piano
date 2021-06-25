@@ -26,7 +26,7 @@ public class PlaylistUI extends JPanel {
     private static JPanel panel = new JPanel(new BorderLayout());
     private static Playlist playlistGeneral;
     private static final DecimalFormat df = new DecimalFormat(".##");
-
+    private static SpotiFrameManager spotiFrameManager;
 
 
     /**
@@ -34,7 +34,8 @@ public class PlaylistUI extends JPanel {
      *
     // * @param mainFrame context necessary to create the card layout
      */
-    public PlaylistUI() {
+    public PlaylistUI(SpotiFrameManager spotiFrameManager1) {
+        spotiFrameManager = spotiFrameManager1;
         initialize();
     }
 
@@ -156,9 +157,9 @@ public class PlaylistUI extends JPanel {
         button.setName(song.getSongName());
         button.setActionCommand(SONG_PLAYLIST);
         button.setText("Delete");
-        button.addActionListener(new SpotiFrameManager(/*(SpotiUI.myFacade)*/));
+        button.addActionListener(spotiFrameManager);
         panel1.add(button);
-        panel1.addMouseListener(new SpotiFrameManager(/*(SpotiUI.myFacade)*/));
+        panel1.addMouseListener(spotiFrameManager);
         panel1.setName(song.getSongFile());
         return panel1;
     }
@@ -170,7 +171,7 @@ public class PlaylistUI extends JPanel {
     private static JButton addSong(){
         JButton add = new JButton(ADD_SONG);
         add.setActionCommand(ADD_SONG_COMM);
-        add.addActionListener(new SpotiFrameManager(/*SpotiUI.myFacade*/));
+        add.addActionListener(spotiFrameManager);
         add.setText("+");
         return add;
     }

@@ -1,5 +1,7 @@
 package Presentation;
 
+import javax.swing.*;
+
 /**
  * DictionaryPiano
  *
@@ -47,6 +49,10 @@ public class DictionaryPiano {
     public static final String AUTHOR_SONG = "";
     public static final String TIME_GRAPH = "timer";
     public static final String MUTE_BUTTON = "mute";
+
+    public static final String URLROUTE = "https://www.mutopiaproject.org/cgibin/make-table.cgi?Instrument=Piano";
+    public static final String PLAYICON = "Files/drawable/playbuttonWhite.png"; //Icon played
+    public static final String PAUSEICON = "Files/drawable/pauseWhite.png"; //Icon pause
 
     public static final Integer TB_SIZE = 10;
 }

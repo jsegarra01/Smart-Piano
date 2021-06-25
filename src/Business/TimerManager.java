@@ -21,15 +21,16 @@ import static Presentation.DictionaryPiano.PIANO_TILES_TIMER;
  *
  */
 public class TimerManager extends Observer implements ActionListener {
-    private final Timer timer = new Timer(100, this);
-    private PianoTilesUISelectorManager pianoTilesUISelectorManager;
+    private final Timer timer;
+    private final PianoTilesUISelectorManager pianoTilesUISelectorManager;
 
     /**
      * Constructor of the timer manager, sets the action command and some basic configurations
      */
     public TimerManager(ChangeTime changeTime, PianoTilesUISelectorManager pianoTilesUISelectorManager) {
-        this.pianoTilesUISelectorManager = pianoTilesUISelectorManager;
+        timer = new Timer(100, this);
         timer.setActionCommand(PIANO_TILES_TIMER);
+        this.pianoTilesUISelectorManager = pianoTilesUISelectorManager;
         this.subject = changeTime;
         this.subject.attach(this);
     }
@@ -40,15 +41,9 @@ public class TimerManager extends Observer implements ActionListener {
     @Override
     public void update() {
         switch (subject.getActionTimer()) {
-            case 0:
-                timer.stop();
-                break;
-            case 1:
-                timer.start();
-                break;
-            case 2:
-                timer.restart();
-                break;
+            case 0 -> timer.stop();
+            case 1 -> timer.start();
+            case 2 -> timer.restart();
         }
     }
 

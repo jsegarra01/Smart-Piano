@@ -20,14 +20,15 @@ import java.util.ArrayList;
  */
 public class SongsUI extends JPanel {
     private static JTable table;
-    private static String[] columnNames;
     private static final JPanel panel = new JPanel();
+    private static SpotiFrameManager myManager;
 
 
     /**
      * Constructor for the SongsUI
      */
-    public SongsUI(){
+    public SongsUI(SpotiFrameManager spotiFrameManager) {
+        myManager = spotiFrameManager;
         setBackground(Color.black);
         panel.setPreferredSize(new Dimension(860, 550));
         add(panel);
@@ -39,6 +40,8 @@ public class SongsUI extends JPanel {
      * @param action Whether if we want the table for the top 5 songs or the table with all the songs available for the user
      */
     public static void initTable(ArrayList<Song> songs, String action){
+        String[] columnNames = new String[0];
+
         panel.removeAll();
         Object[][] data = new Object[songs.size()][5];
         for(int i = 0; i< songs.size();i++){
@@ -49,7 +52,6 @@ public class SongsUI extends JPanel {
             if(!action.equals("topFive")){
                 data[i][4] = action;
                 columnNames= new String[]{"Name Song", "Author's name", "Duration", "Recording Date", ""};
-                //data[i][4]  = songs.get(i).getTimesPlayed();
             }else {
                 data[i][4]  = songs.get(i).getTimesPlayed();
                 columnNames= new String[]{"Name Song", "Author's name", "Duration", "Recording Date", "Times Played"};
@@ -80,7 +82,6 @@ public class SongsUI extends JPanel {
         sp.setBackground(Color.black);
         sp.setPreferredSize(new Dimension(860, 540));
         sp.setWheelScrollingEnabled(true);
-        SpotiFrameManager myManager = new SpotiFrameManager(/*SpotiUI.myFacade*/);
         registerController(myManager);
         if(!action.equals("topFive")){
             registerController(myManager);

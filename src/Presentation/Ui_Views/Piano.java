@@ -22,9 +22,9 @@ import static Presentation.Ui_Views.Tile.*;
 public abstract class Piano extends JPanel {
     public static final String BTN_RECORD = " ";
     public static final String BTN_TILE = "SOUND";
-    protected static final String JLAB_SYNTH_TYPE = "Classic Piano";
+    public static final String JLAB_SYNTH_TYPE = "Classic Piano";
     public static final String MODIFY = "MODIFY_KEYS";
-    protected static Label soundType;
+    public static Label soundType;
 
     protected final ImageIcon iconRec = new ImageIcon("Files/drawable/recIcon.png");
     protected  JButton recordB = new JButton(BTN_RECORD, iconRec);

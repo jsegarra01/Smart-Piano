@@ -20,13 +20,10 @@ import static Presentation.Ui_Views.SignUpUI.*;
  *
  */
 public class SignUpUiManager  implements ActionListener {
-    //private BusinessFacadeImp myFacade;
     /**
      * Parametrized constructor
      */
-    public SignUpUiManager(/*BusinessFacadeImp myFacade*/) {
-        //this.myFacade = myFacade;
-    }
+    public SignUpUiManager() {}
 
     /**
      * Method that will be called every time a button is pressed, overriden from the interface to provide an implementation.

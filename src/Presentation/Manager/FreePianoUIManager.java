@@ -39,29 +39,38 @@ import static Presentation.Manager.MainFrame.contenedor;
  */
 public class FreePianoUIManager implements ActionListener, MouseListener {
     private static final int SOUND_SYNTHER = 0 ;
-    public ArrayList<RecordingNotes> recordingNotes = new ArrayList<>();
 
     /*
     Defines the player of the music of the FreePiano
      */
     private final MidiHelper finalMidiHelper;
     private final KeyListener KL;
-    private boolean recording = false;
-    private float recordingTime = 0;
-    //BusinessFacadeImp myFacade;
+    private final ArrayList<RecordingNotes> recordingNotes;
+    private final Timer timer;
 
-    private MidiHelper midiHelper = null;
-    private Timer timer  = new Timer(10, this);
-    private boolean modifying = false;
-    private boolean selected = false;
+    private boolean recording;
+    private boolean modifying;
+    private boolean selected;
+
+    private float recordingTime;
     private String tileSelected;
 
     /**
      * Parametrized constructor, initializes the recorder and the different overwrites for when a key is pressed in the keyboard
      */
-    public FreePianoUIManager(/*BusinessFacadeImp myFacade*/) {
-        //this.myFacade = myFacade;
+    public FreePianoUIManager() {
+        
+        //Initialitzations of the variables
+        recordingNotes = new ArrayList<>();
+        recording = false;
+        recordingTime = 0;
+        modifying = false;
+        selected = false;
+
+        timer = new Timer(10, this);
         timer.setActionCommand(RECORDING_TIMER);
+        
+        MidiHelper midiHelper = null;
         try {
             midiHelper = new MidiHelper();
         } catch (MidiUnavailableException exception) {
@@ -74,8 +83,7 @@ public class FreePianoUIManager implements ActionListener, MouseListener {
              * @param e Key that has been pressed
              */
             @Override
-            public void keyTyped(KeyEvent e) {
-                }
+            public void keyTyped(KeyEvent e) {}
 
             /**
              * When a key has been pressed. It can happen two different things: or the key is being modified, or we need

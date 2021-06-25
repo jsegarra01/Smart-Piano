@@ -30,6 +30,7 @@ public class SpotiUI extends JPanel {
     private final StatisticsUI statisticsUI;
     private final PlaylistUI playlistUI;
     private final SongsUI songsUI;
+    private final SpotiFrameManager spotiFrameManager;
 
     public static JPanel spotiPanel = new JPanel(new CardLayout());
     private static final JButton createPlaylist = new JButton(CREATE_PLAYLIST);
@@ -56,16 +57,16 @@ public class SpotiUI extends JPanel {
 
     private static final JTextField songNameInputText = new JTextField();
     public static JButton searchButton = new JButton();
+
     /**
      * Constructor for the SpotiUI, you need to send the mainframe context and will create a card layout
      */
-    public SpotiUI(/*BusinessFacadeImp myFacade*/) {
-        //SpotiUI.myFacade = myFacade;
-        playlistUI = new PlaylistUI();
+    public SpotiUI() {
+        spotiFrameManager = new SpotiFrameManager();
+        playlistUI = new PlaylistUI(spotiFrameManager);
         statisticsUI = new StatisticsUI();
-        songsUI = new SongsUI();
+        songsUI = new SongsUI(spotiFrameManager);
         new GraphTimer();
-
         initialize();
     }
 

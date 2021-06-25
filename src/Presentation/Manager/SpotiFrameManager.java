@@ -40,19 +40,16 @@ import static Presentation.Ui_Views.StatisticsUI.*;
  *
  */
 public class SpotiFrameManager extends AbstractAction implements ActionListener, MouseListener {
-
-    //private final BusinessFacadeImp myFacade;
-    public static final String URLRoute = "https://www.mutopiaproject.org/cgibin/make-table.cgi?Instrument=Piano";
+    private final ImageIcon playIcon; //Icon played
+    private final ImageIcon pauseIcon; //Icon pause
 
     /*
     Defines if there is a song being played
      */
-    public static boolean play=false;
-    private static final ImageIcon playIcon = new ImageIcon("Files/drawable/playbuttonWhite.png"); //Icon played
-    private static final ImageIcon pauseIcon = new ImageIcon("Files/drawable/pauseWhite.png"); //Icon pause
-    public static float minPlayed;
-    public static long startMin=0;
-    public static long lastMin=0;
+    private static boolean play = false;
+    private static float minPlayed;
+    private static long startMin = 0;
+    private static long lastMin = 0;
     private static boolean top5 = false;
 
     /*
@@ -92,20 +89,22 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
     /*
     MidiHelper which will control the music playing in the music player
      */
-    private static MidiHelper finalMidiHelper;
-     {
-        try {
-            finalMidiHelper = new MidiHelper(listener);
-        } catch (MidiUnavailableException e) {
-            e.printStackTrace();
-        }
-    }
+    private final MidiHelper finalMidiHelper;
 
     /**
      * Parametrized constructor
      */
-    public SpotiFrameManager(/*BusinessFacadeImp myFacade*/) {
-        //this.myFacade = myFacade;
+    public SpotiFrameManager() {
+        MidiHelper finalMidiHelper1;
+        try {
+            finalMidiHelper1 = new MidiHelper();
+        } catch (MidiUnavailableException e) {
+            finalMidiHelper1 = null;
+        }
+        finalMidiHelper = finalMidiHelper1;
+
+        playIcon = new ImageIcon(PLAYICON);
+        pauseIcon = new ImageIcon(PAUSEICON);
     }
 
     /**
@@ -523,7 +522,7 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
     /**
      * Plays a song and changes the icon to the pause one
      */
-    private static void playMusic(){
+    private void playMusic(){
         count_song = 1;
         playButton.setIcon(pauseIcon);
         startMin = System.currentTimeMillis();
@@ -535,7 +534,7 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
     /**
      * Stops playing a song, gets the minutes that has been played and sets the icon back to the play one
      */
-    private static void stopMusic(){
+    private void stopMusic(){
         playButton.setIcon(playIcon);
         play = false;
         lastMin = System.currentTimeMillis();
@@ -546,7 +545,7 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
     /**
      * Calls the method to mute a song
      */
-    private static void muteSong() {
+    private void muteSong() {
        finalMidiHelper.muteSong();
     }
 
@@ -577,7 +576,7 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
     /**
      * Gets the next song to play and plays it
      */
-    private static  void nextSongFromSong(){
+    private void nextSongFromSong(){
         songPlay = nextSongSongs(songPlay.getSongFile());
         playMusicSetLabel();
     }
@@ -593,7 +592,7 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
     /**
      * Gets the next song to play from a playlist and plays it
      */
-    private static void nextSongFromPlaylist(){
+    private void nextSongFromPlaylist(){
         songPlay = nextSongPlaylist(songPlay.getSongFile());
         playMusicSetLabel();
     }
@@ -609,7 +608,7 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
     /**
      * Calls the method to play music adn sets the labels for the song
      */
-    private static void playMusicSetLabel(){
+    private void playMusicSetLabel(){
         playMusic();
         SpotiUI.setSong(songPlay.getSongName(), songPlay.getAuthorName());
     }
@@ -617,7 +616,7 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
     /**
      * Gets a random song from a playlist and plays it
      */
-    private static void randomFromPlaylist(){
+    private void randomFromPlaylist(){
         songPlay = playlist.getSongs().get(new Random().nextInt(playlist.getSongs().size()));
         playMusicSetLabel();
     }
@@ -625,7 +624,7 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
     /**
      * Gets a random song from all available songs and plays it
      */
-    private static void randomFromSongs(){
+    private void randomFromSongs(){
         songPlay = BusinessFacadeImp.getBusinessFacade().getSongs().get(new Random().nextInt(BusinessFacadeImp.getBusinessFacade().getSongs().size()));
         playMusicSetLabel();
     }
@@ -696,5 +695,9 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
         if(top5){
             SongsUI.initTable(BusinessFacadeImp.getBusinessFacade().getTopFive(), "topFive");
         }
+    }
+
+    public static boolean getPlay() {
+        return play;
     }
 }

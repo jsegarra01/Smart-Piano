@@ -1,7 +1,6 @@
 package Presentation.Manager;
 
 //Imports needed from the dictionary, events and mainframe
-import Business.BusinessFacade;
 import Business.BusinessFacadeImp;
 import Business.ChangeTime;
 import Business.MidiHelper;
@@ -31,7 +30,7 @@ import static Presentation.Ui_Views.SpotiUI.spotiPanel;
  */
 public class PianoFrameManager implements ActionListener {
     private final MidiHelper midiHelper;
-    private PianoTilesUISelectorManager pianoTilesUISelectorManager;
+    private final PianoTilesUISelectorManager pianoTilesUISelectorManager;
 
     /**
      * Parametrized constructor
