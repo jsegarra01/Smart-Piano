@@ -24,9 +24,9 @@ public class ButtonColumn extends AbstractCellEditor implements TableCellRendere
     private final JTable table;
     private final Action action;
     private final Border originalBorder;
-    private Border focusBorder;
     private final JButton renderButton;
     private final JButton editButton;
+    private Border focusBorder;
     private Object editorValue;
 
     /**
@@ -112,28 +112,23 @@ public class ButtonColumn extends AbstractCellEditor implements TableCellRendere
             //renderButton.setBackground(Color.red);
         }
 
-        if (hasFocus)
-        {
+        if (hasFocus) {
             renderButton.setBorder( focusBorder );
         }
-        else
-        {
+        else {
             renderButton.setBorder( originalBorder );
         }
 
 //		renderButton.setText( (value == null) ? "" : value.toString() );
-        if (value == null)
-        {
+        if (value == null) {
             renderButton.setText( "" );
             renderButton.setIcon( null );
         }
-        else if (value instanceof Icon)
-        {
+        else if (value instanceof Icon) {
             renderButton.setText( "" );
             renderButton.setIcon( (Icon)value );
         }
-        else
-        {
+        else {
             renderButton.setText( value.toString() );
             renderButton.setIcon( null );
         }
@@ -147,8 +142,7 @@ public class ButtonColumn extends AbstractCellEditor implements TableCellRendere
     /*
      *	The button has been pressed. Stop editing and invoke the custom Action
      */
-    public void actionPerformed(ActionEvent e)
-    {
+    public void actionPerformed(ActionEvent e) {
         int row = table.convertRowIndexToModel( table.getEditingRow() );
         fireEditingStopped();
 

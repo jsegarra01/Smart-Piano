@@ -131,7 +131,9 @@ public class SongManager {
      * @param song Defines the song to be updated
      */
     public void updateSongPlayed(Song song){
-        songManager.updateTimesPlayed(song);
+        if (!songManager.updateTimesPlayed(song)) {
+            businessFacade.setError(9);
+        }
     }
 
     /**
@@ -139,7 +141,9 @@ public class SongManager {
      * @param myStats Stadistics we want to save
      */
     public void addingStadistics(Stadistics myStats){
-        songManager.saveStadistics(myStats);
+        if (!songManager.saveStadistics(myStats)) {
+            businessFacade.setError(9);
+        }
     }
 
     /**
@@ -161,11 +165,15 @@ public class SongManager {
     }
 
     public void saveSong (Song song) {
-        songManager.saveSong(song);
+        if (!songManager.saveSong(song)) {
+            businessFacade.setError(4);
+        }
     }
 
     public void saveSongWithDate(Song song){
-        songManager.saveSongWithDate(song);
+        if (!songManager.saveSongWithDate(song)) {
+            businessFacade.setError(4);
+        }
     }
 
     public Song getSongByName(String name){

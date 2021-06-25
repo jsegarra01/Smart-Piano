@@ -78,12 +78,12 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
              */
             @Override
             public void keyPressed(KeyEvent e) {
-                if(Translator.getPressedFromKey(e.getExtendedKeyCode()) !=null){
-                    if(!Translator.getPressedFromKey(e.getExtendedKeyCode()).isPressed()){
+                if (Translator.getPressedFromKey(e.getExtendedKeyCode()) !=null) {
+                    if (Objects.requireNonNull(Translator.getPressedFromKey(e.getExtendedKeyCode())).isPressed()) {
                         finalMidiHelper.playSomething(Translator.getNumberNoteFromName(Translator.getFromKey(e.getExtendedKeyCode())),SOUND_SYNTHER);
-                        Translator.getPressedFromKey(e.getExtendedKeyCode()).setPressed(true);
+                        Objects.requireNonNull(Translator.getPressedFromKey(e.getExtendedKeyCode())).setPressed(true);
                     }
-                    setIconKey(Translator.getFromKey(e.getExtendedKeyCode()));
+                    setIconKey(Objects.requireNonNull(Translator.getFromKey(e.getExtendedKeyCode())));
                 }
             }
             /**
@@ -93,8 +93,8 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
             @Override
             public void keyReleased(KeyEvent e) {
                 if (Translator.getPressedFromKey(e.getExtendedKeyCode()) != null) {
-                    setIconBack(Translator.getFromKey(e.getExtendedKeyCode()));
-                    Translator.getPressedFromKey(e.getExtendedKeyCode()).setPressed(false);
+                    setIconBack(Objects.requireNonNull(Translator.getFromKey(e.getExtendedKeyCode())));
+                    Objects.requireNonNull(Translator.getPressedFromKey(e.getExtendedKeyCode())).setPressed(false);
                     finalMidiHelper.stopPlaying(Translator.getNumberNoteFromName(Translator.getFromKey(e.getExtendedKeyCode())),SOUND_SYNTHER);
                 }
             }

@@ -30,7 +30,6 @@ public class MidiHelper {
         }
     }
 
-    private boolean donePlaying;
     private static String fileSong = "";            //TODO PODEM TREURE EL STATIC NO?
     private static Sequence sequencePlay;
 
@@ -85,13 +84,12 @@ public class MidiHelper {
     /**
      * Plays the song stored in the file
      * @param filename File where the song is stored
-     * @return
      */
-    public boolean playSong(String filename){
+    public void playSong(String filename){
         try {
             if(!(filename.equals(fileSong))){
                 if(!restartSong(filename)){
-                    return false;
+                    return;
                 }
             }
 
@@ -100,18 +98,15 @@ public class MidiHelper {
             sequencer.setSequence(sequencePlay); // load it into sequencer
             sequencer.setLoopStartPoint(0);
             sequencer.start();               // start the playback
-            return true;
 
         } catch (InvalidMidiDataException e) {
-            e.printStackTrace();
-            return false;
+            new BusinessFacadeImp().setError(8);
         }
     }
 
     /**
      * Restarts the song stored in the file
      * @param filename File where the song is stored
-     * @return
      */
     public boolean restartSong(String filename){
         fileSong = filename;
@@ -119,7 +114,7 @@ public class MidiHelper {
             sequencePlay = MidiSystem.getSequence(new File(filename));
             return true;
         } catch (InvalidMidiDataException | IOException e) {
-            e.printStackTrace();
+            new BusinessFacadeImp().setError(8);
             return false;
         }
     }

@@ -26,15 +26,15 @@ import static Presentation.DictionaryPiano.*;
 public class PianoFrame extends JPanel {
     public static MainFrame mainFrame;
 
-    public static JButton freePiano = new JButton(FREE_PIANO);
-    public static JButton playSong = new JButton(PLAY_A_SONG);
-    public static JButton musicPlayer = new JButton(MUSIC_PLAYER);
+    public static final JButton freePiano = new JButton(FREE_PIANO);
+    public static final JButton playSong = new JButton(PLAY_A_SONG);
+    public static final JButton musicPlayer = new JButton(MUSIC_PLAYER);
 
-    public static JPanel centralPanel = new JPanel(new CardLayout());
+    public static final JPanel centralPanel = new JPanel(new CardLayout());
 
-    PianoTilesUISelector pianoTilesUISelector;
-    SpotiUI spotiUI;
-    FreePianoUI freePianoUI;
+    private final PianoTilesUISelector pianoTilesUISelector;
+    private final SpotiUI spotiUI;
+    private final FreePianoUI freePianoUI;
 
 
     /**
@@ -45,9 +45,9 @@ public class PianoFrame extends JPanel {
         super();
         PianoFrame.mainFrame =mainFrame;
 
-        pianoTilesUISelector = new PianoTilesUISelector(mainFrame);
-        spotiUI = new SpotiUI(/*myFacade*/);
-        freePianoUI = new FreePianoUI(/*myFacade*/);
+        pianoTilesUISelector = new PianoTilesUISelector();
+        spotiUI = new SpotiUI();
+        freePianoUI = new FreePianoUI();
         initialize();
     }
 

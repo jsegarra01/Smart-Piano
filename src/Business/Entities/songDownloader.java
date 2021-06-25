@@ -32,7 +32,7 @@ public class songDownloader {
      * Downloads a file from a specified URL ONLY FOR HTTP servers.
      * @param fileURL HTTP URL of the file to be downloaded
      * @param saveDir path of the directory to save the file
-     * @throws IOException
+     * @throws IOException IO exception has happened
      */
     public static void downloadFile(String fileURL, String saveDir) throws IOException {
             URL url = new URL(fileURL);
@@ -40,9 +40,7 @@ public class songDownloader {
             int responseCode = httpConn.getResponseCode();
             if (responseCode == HttpURLConnection.HTTP_OK) { //200 is OK
                 String fileName = "";
-                String disposition = httpConn.getHeaderField("Content-Disposition");/*
-                String contentType = httpConn.getContentType();
-                int contentLength = httpConn.getContentLength();*/
+                String disposition = httpConn.getHeaderField("Content-Disposition");
 
                 if (disposition != null) {
                     // extracts file name from header field
@@ -53,12 +51,7 @@ public class songDownloader {
                 } else {
                     // extracts file name from URL
                     fileName = fileURL.substring(fileURL.lastIndexOf("/") + 1);
-                }/*
-
-                System.out.println("Content-Type = " + contentType);
-                System.out.println("Content-Disposition = " + disposition);
-                System.out.println("Content-Length = " + contentLength);
-                System.out.println("fileName = " + fileName);*/
+                }
 
                 // opens input stream from the HTTP connection
                 InputStream inputStream = httpConn.getInputStream();
@@ -67,7 +60,7 @@ public class songDownloader {
                 // opens an output stream to save into file
                 FileOutputStream outputStream = new FileOutputStream(saveFilePath);
 
-                int bytesRead = -1;
+                int bytesRead;
                 byte[] buffer = new byte[BUFFER_SIZE];
                 while ((bytesRead = inputStream.read(buffer)) != -1) {
                     outputStream.write(buffer, 0, bytesRead);

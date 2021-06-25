@@ -104,7 +104,7 @@ public class FreePianoUIManager implements ActionListener, MouseListener {
                     }
                 }else{
                     if(Translator.getPressedFromKey(e.getExtendedKeyCode()) !=null){
-                        if(!Objects.requireNonNull(Translator.getPressedFromKey(e.getExtendedKeyCode())).isPressed()){
+                        if(Objects.requireNonNull(Translator.getPressedFromKey(e.getExtendedKeyCode())).isPressed()){
                             finalMidiHelper.playSomething(Translator.getNumberNoteFromName(Translator.getFromKey(e.getExtendedKeyCode())),SOUND_SYNTHER);
                             Objects.requireNonNull(Translator.getPressedFromKey(e.getExtendedKeyCode())).setPressed(true);
                             //This gets the initial timer and key pressed for the first time it is clicked
@@ -149,29 +149,26 @@ public class FreePianoUIManager implements ActionListener, MouseListener {
         // We distinguish between our buttons.
 
         switch (e.getActionCommand()) {
-            case RECORDING_TIMER:                           //each time 10 ms have happened, recordingTime will increase
+            case RECORDING_TIMER ->                           //each time 10 ms have happened, recordingTime will increase
                     recordingTime += 0.01;
-                break;
-            case FreePianoUI.BTN_RECORD:                    //In the case that the Record button is pressed
+            case FreePianoUI.BTN_RECORD -> {                    //In the case that the Record button is pressed
                 if (recording) {//If we were recording and we want to stop
                     timer.stop();
-                    recording = BusinessFacadeImp.getBusinessFacade().noteRecordingUpdate(recordingNotes, recordingTime);
-                }
-                else {                                      //If we want to start recording
-                    recording = BusinessFacadeImp.getBusinessFacade().startRecordingNote();
+                    BusinessFacadeImp.getBusinessFacade().noteRecordingUpdate(recordingNotes, recordingTime);
+                } else {                                      //If we want to start recording
                     recordingTime = 0;
                     timer.restart();
                 }
-                break;
-            case Dictionary_login.PROFILE_BUTTON:           //In the case that the Profile button is pressed
-                card.show(contenedor, PROFILE_UI);
-                break;
-            case FreePianoUI.MODIFY:                        //In the case that the Modify button is pressed
+                recording = !recording;
+            }
+            case Dictionary_login.PROFILE_BUTTON ->           //In the case that the Profile button is pressed
+                    card.show(contenedor, PROFILE_UI);
+            case FreePianoUI.MODIFY -> {                        //In the case that the Modify button is pressed
                 AbstractButton abstractButton = (AbstractButton) e.getSource();
                 modifying = abstractButton.getModel().isSelected();
                 FreePianoUI.labelAppear(modifying);
                 selected = false;
-                break;
+            }
         }
     }
 

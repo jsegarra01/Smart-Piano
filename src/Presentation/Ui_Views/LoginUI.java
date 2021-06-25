@@ -168,7 +168,7 @@ public class LoginUI extends JPanel{
      * @return password string
      */
     public static String getPasswordLogin() {
-        return password.getText();
+        return String.valueOf(password.getPassword());
     }
 
     /**

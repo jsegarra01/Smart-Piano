@@ -34,7 +34,7 @@ public class TilesManager {
 
     /**
      * Calls the method to read a midi file and gets a list of keys from it
-     * @param songIndex
+     * @param songIndex Int. Number of the song to be obtainable
      */
     public void setListTiles(int songIndex) {
         try {

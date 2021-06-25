@@ -15,7 +15,7 @@ import java.util.List;
  *
  */
 public class Graph extends JPanel {
-    private int width = 400;
+    private final int width = 400;
     private final int height = 350;
     private final int padding = 30;
     private final int labelPadding = 25;
@@ -182,14 +182,6 @@ public class Graph extends JPanel {
      */
     public int getWidth() {
         return width;
-    }
-
-    /**
-     * Sets the width
-     * @param width The desired width
-     */
-    public void setWidth(int width) {
-        this.width = width;
     }
 
     /**

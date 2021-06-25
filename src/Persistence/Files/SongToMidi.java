@@ -47,6 +47,7 @@ public class SongToMidi {
         gson.toJson(songRecorded, writer); //Writing the content of readCompetition in the file.
 
         try {
+            assert writer != null;
             writer.close(); //Closing the writer.
         } catch (IOException e) {
             e.printStackTrace();
@@ -71,39 +72,39 @@ public class SongToMidi {
             byte[] b = {(byte)0xF0, 0x7E, 0x7F, 0x09, 0x01, (byte)0xF7};
             SysexMessage sm = new SysexMessage();
             sm.setMessage(b, 6);
-            MidiEvent me = new MidiEvent(sm,(long)0);
+            MidiEvent me = new MidiEvent(sm, 0);
             t.add(me);
 
 //****  set tempo (meta event)  ****
             MetaMessage mt = new MetaMessage();
             byte[] bt = {0x02, (byte)0x00, 0x00};
             mt.setMessage(0x51 ,bt, 3);
-            me = new MidiEvent(mt,(long)0);
+            me = new MidiEvent(mt, 0);
             t.add(me);
 
 //****  set track name (meta event)  ****
             mt = new MetaMessage();
-            String TrackName = new String(title);
+            String TrackName = title;
             mt.setMessage(0x03 ,TrackName.getBytes(), TrackName.length());
-            me = new MidiEvent(mt,(long)0);
+            me = new MidiEvent(mt, 0);
             t.add(me);
 
 //****  set omni on  ****
             ShortMessage mm = new ShortMessage();
             mm.setMessage(0xB0, 0x7D,0x00);
-            me = new MidiEvent(mm,(long)0);
+            me = new MidiEvent(mm, 0);
             t.add(me);
 
 //****  set poly on  ****
             mm = new ShortMessage();
             mm.setMessage(0xB0, 0x7F,0x00);
-            me = new MidiEvent(mm,(long)0);
+            me = new MidiEvent(mm, 0);
             t.add(me);
 
 //****  set instrument to Piano  ****
             mm = new ShortMessage();
             mm.setMessage(0xC0, 0x00, 0x00);
-            me = new MidiEvent(mm,(long)0);
+            me = new MidiEvent(mm, 0);
             t.add(me);
 
             for (RecordingNotes recordingNote: recordingNotes) {

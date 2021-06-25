@@ -210,16 +210,14 @@ public class SignUpUI extends JPanel {
      * @return password string
      */
     public static String getPasswordSignUp() {
-        return password.getText();
+        return String.valueOf(password.getPassword());
     }
 
     /**
      * Obtains the passwordConfirm in the text field
      * @return passwordConfirm string
      */
-    public static String getPasswordConfirmSignUp() {
-        return passwordConfirmation.getText();
-    }
+    public static String getPasswordConfirmSignUp() { return String.valueOf(passwordConfirmation.getPassword()); }
 
     /**
      * Resets the information inside the SignUpUI

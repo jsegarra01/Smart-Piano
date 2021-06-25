@@ -39,13 +39,17 @@ public class ErrorsManager {
             case 4 ->                                     //The song can't be downloaded
                     createDialog("The song can't be downloaded.", "Download error");
             case 5 ->                                     //There's no name or Author matching the error
-                    createDialog("Nothing could be found", "Web error");
+                    createDialog("Nothing could be found.", "Web error");
             case 6 ->                                     //There's nothing to search
                     createDialog("You must input something more!", "Search Song Error");
             case 7 ->                                     //The song already exists
                     createDialog("This song already exists in the playlist!", "Song adding Error");
             case 8 ->                                     //Midi exception
                     createDialog("It was not possible to connect to the midi!", "Midi Error");
+            case 9 ->                                     //Update problem
+                    createDialog("There's a problem updating the data.", "Problem Error");
+            case 10 ->                                     //Update problem
+                    createDialog("The webpage can't be accessed", "Webpage Error");
         }
     }
 

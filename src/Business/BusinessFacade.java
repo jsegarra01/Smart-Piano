@@ -44,7 +44,6 @@ public interface BusinessFacade {
      * @param mail Mail string which the user has inputted while signing up
      * @param password Password string which the user has inputted while signing up
      * @param passwordConfirm PasswordConfirmation string which the user has inputted while signing up
-     * @return Boolean: 1 if it can sign up in, 0 if it cannot sign up
      */
     void finalSignUp(String username, String mail, String password, String passwordConfirm);
 
@@ -52,10 +51,9 @@ public interface BusinessFacade {
 
     /**
      * Deletes the account and everything involved with the user introduced
-     * @return Boolean: If it can delete the account, returns 1, else 0
      */
 
-    boolean deleteAccount();
+    void deleteAccount();
 
     /**
      * Gets the arraylist of recorded notes from the UI
@@ -87,7 +85,7 @@ public interface BusinessFacade {
 
     boolean modifyKey(String tileSelected, KeyEvent e, int KeyExisted);
 
-    boolean noteRecordingUpdate(ArrayList<RecordingNotes> recordingNotes, float recordingTime);
+    void noteRecordingUpdate(ArrayList<RecordingNotes> recordingNotes, float recordingTime);
 
     void enterAsAGuest(String name, String psw);
 
@@ -105,7 +103,7 @@ public interface BusinessFacade {
 
     boolean addSongToPlaylist(String playlistName, String songName);
 
-    boolean deleteSong(int i);
+    void deleteSong(int i);
 
     void setTileArray(int songIndex);
 
@@ -114,8 +112,6 @@ public interface BusinessFacade {
     boolean newPlaylist(String playlist);
 
     void resetTilesKeys();
-
-    boolean startRecordingNote();
 
     void initializeWebScrapping();
 

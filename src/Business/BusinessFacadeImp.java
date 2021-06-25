@@ -154,26 +154,26 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
 
     /**
      * Calls the method to delete a user
-     * @return True if deleted, false if not
      */
     @Override
-    public boolean deleteAccount() {
+    public void deleteAccount() {
         for(int i = 0; i< songManager.getSongs().size();i++){
            if(songManager.getSongs().get(i).getCreator().equals(UserManager.getUser().getUserName()) ||
                    songManager.getSongs().get(i).getAuthorName().equals(UserManager.getUser().getUserName())){
-               new File(songManager.getSongs().get(i).getSongFile()).delete();
+               new File(songManager.getSongs().get(i).getSongFile()).delete();  //TODO ALEX AIXO ESTÀ BÉ? PERQ NEW FILE?
            }
         }
         try {
-            return loginUserManager.deleteUser();
+            if (!loginUserManager.deleteUser()) {
+                setError(0);
+            }
         } catch (SQLException e) {
             setError(0);
-            return false;
         }
     }
 
     @Override
-    public boolean noteRecordingUpdate(ArrayList<RecordingNotes> recordingNotes, float recordingTime){
+    public void noteRecordingUpdate(ArrayList<RecordingNotes> recordingNotes, float recordingTime){
             JPanel myPanel = new JPanel();
             JTextField titleField = new JTextField(20);
             myPanel.add(titleField);
@@ -183,12 +183,6 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
             JOptionPane.showMessageDialog(null, myPanel, "Enter a title for the song", JOptionPane.INFORMATION_MESSAGE);
 
             recordedNotesSend(recordingNotes, titleField.getText(), box.isSelected(), recordingTime);
-        return false;
-    }
-
-    @Override
-    public boolean startRecordingNote(){
-        return true;
     }
 
     @Override
@@ -198,8 +192,6 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
                     "This key is already assigned!", "Modify keys error" , JOptionPane.ERROR_MESSAGE);
             return true;
         }
-        /* FreePianoUI.modifyKey(Translator.getFromTile(tileSelected), e);
-        Translator.setKeys(KeyExisted, e.getExtendedKeyCode());*/
         return false;
 
     }
@@ -316,8 +308,10 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
     }
 
     @Override
-    public boolean deleteSong(int i){
-        return songManager.deleteSong(getSong(i));
+    public void deleteSong(int i){
+        if (!songManager.deleteSong(getSong(i))) {
+            setError(3);
+        }
     }
 
     @Override

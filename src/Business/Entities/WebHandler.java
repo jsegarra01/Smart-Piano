@@ -14,10 +14,10 @@ import org.jsoup.nodes.Document;
 public class WebHandler {
 
     //Indicate where the file shall be stored
-    private  String filePath;
-    private  String route;
-    private  String OfferFile;
-    private static BusinessFacadeImp businessFacadeImp = new BusinessFacadeImp();
+    private final String filePath;
+    private final String route;
+    private final String OfferFile;
+    private static final BusinessFacadeImp businessFacadeImp = new BusinessFacadeImp();
     //This suffix will be used to change the pages of the web and go through all of them. To do this, we leave a space
     //for a parameter.
     /*
@@ -29,13 +29,13 @@ public class WebHandler {
     private static long initTime;
     private static final SongManager manager = new SongManager();
     private static final SongDownloader songDownloader = new SongDownloader();
-    private String author = "";
+    private final String author = "";
 
-    public WebHandler(String filePath, String URLroute, String nameFile, String pagingInffix){
+    public WebHandler(String filePath, String URLroute, String nameFile, String pagingInffix1){
         this.route = URLroute;
         this.OfferFile = nameFile;
         this.filePath = filePath;
-        this.pagingInffix = pagingInffix;
+        pagingInffix = pagingInffix1;
     }
 
     /**
@@ -61,7 +61,7 @@ public class WebHandler {
      * @return complete HTML document
      */
     public static Document getHtmlDocument(String url) throws IOException{
-        Document htmlDoc = new Document(url);
+        Document htmlDoc;
         htmlDoc = Jsoup.connect(url).userAgent("Mozilla/5.0").timeout(100000).get();
 
         return htmlDoc;

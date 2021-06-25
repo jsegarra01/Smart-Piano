@@ -23,30 +23,29 @@ import static Presentation.Ui_Views.Tile.*;
  *
  */
 public class PianoTilesUISelector extends Piano {
-    private PianoTilesUISelectorManager pianoTilesUISelectorManager;
+    private final PianoTilesUISelectorManager pianoTilesUISelectorManager;
     private static ArrayList<Tile> keyboard;
     public static ArrayList<Tile> getKeyboard() {
         return keyboard;
     }
-    public static JLayeredPane jLayeredPane = new JLayeredPane();
-    public static JPanel scrollPanel = new JPanel();
-    public static JButton playButtonTiles = new JButton(PLAY_BUTTON);
+    public static final JLayeredPane jLayeredPane = new JLayeredPane();
+    public static final JPanel scrollPanel = new JPanel();
+    public static final JButton playButtonTiles = new JButton(PLAY_BUTTON);
     public static ArrayList<Keys> keys = new ArrayList<>();
 
-    public JButton veryEasy = new JButton(VERY_EASY_MODE);
-    public JButton easy = new JButton(EASY_MODE);
-    public JButton normal = new JButton(NORMAL_MODE);
-    public JButton hard = new JButton(HARD_MODE);
-    public JButton veryHard = new JButton(VERY_HARD_MODE);
+    public final JButton veryEasy = new JButton(VERY_EASY_MODE);
+    public final JButton easy = new JButton(EASY_MODE);
+    public final JButton normal = new JButton(NORMAL_MODE);
+    public final JButton hard = new JButton(HARD_MODE);
+    public final JButton veryHard = new JButton(VERY_HARD_MODE);
     private static final JButton mute = new JButton(MUTE_BUTTON);
 
 
     /**
      * Constructor for the PianoTilesUISelector, you need to send the mainframe context and will create a card layout
      *
-     * @param mainFrame context necessary to create the card layout
      */
-    public PianoTilesUISelector(final MainFrame mainFrame) {
+    public PianoTilesUISelector() {
         super();
         pianoTilesUISelectorManager = new PianoTilesUISelectorManager();
         keyboard = new ArrayList<>();
@@ -235,7 +234,7 @@ public class PianoTilesUISelector extends Piano {
      * Refresh the position and size of th falling keys depending on the song and difficulty selected
      */
     public void refreshTiles() {
-        float tile_position = 0;
+        float tile_position;
 
         while (114 < jLayeredPane.getComponentCount()) {
             jLayeredPane.remove(0);

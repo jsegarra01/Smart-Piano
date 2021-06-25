@@ -27,9 +27,9 @@ public abstract class Piano extends JPanel {
     public static Label soundType;
 
     protected final ImageIcon iconRec = new ImageIcon("Files/drawable/recIcon.png");
-    protected  JButton recordB = new JButton(BTN_RECORD, iconRec);
-    protected  JButton profile = new JButton(PROFILE_BUTTON);
-    protected  JToggleButton modifyKeys = new JToggleButton(MODIFY);
+    protected final JButton recordB = new JButton(BTN_RECORD, iconRec);
+    protected final JButton profile = new JButton(PROFILE_BUTTON);
+    protected final JToggleButton modifyKeys = new JToggleButton(MODIFY);
 
     /**
      * private JTextField hey;

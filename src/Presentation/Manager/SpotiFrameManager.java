@@ -47,9 +47,7 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
     Defines if there is a song being played
      */
     private static boolean play = false;
-    private static float minPlayed;
     private static long startMin = 0;
-    private static long lastMin = 0;
     private static boolean top5 = false;
 
     /*
@@ -61,7 +59,6 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
     Defines the playlist where the song that is being played is
      */
     private static Playlist playlist;
-    private static ArrayList<Song> topFive = new ArrayList<>();
     private static Song songPlay;
     private static boolean loop = false;
 
@@ -537,8 +534,8 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
     private void stopMusic(){
         playButton.setIcon(playIcon);
         play = false;
-        lastMin = System.currentTimeMillis();
-        minPlayed = (float)(lastMin - startMin)/60000;
+        long lastMin = System.currentTimeMillis();
+        float minPlayed = (float) (lastMin - startMin) / 60000;
         finalMidiHelper.stopSong();
     }
 
