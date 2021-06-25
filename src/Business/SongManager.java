@@ -22,7 +22,7 @@ public class SongManager {
     private final SongDAO songManager = new SongCsvDAO();
     private static ArrayList<Song> songs;
     private static final ArrayList<String> songNames = new ArrayList<>();
-    private static final BusinessFacadeImp businessFacade = new BusinessFacadeImp();
+    private static final BusinessFacade businessFacade = new BusinessFacadeImp();
 
     /**
      * Gets all song names

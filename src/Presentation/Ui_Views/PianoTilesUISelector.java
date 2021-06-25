@@ -10,8 +10,6 @@ import Presentation.Manager.PianoTilesUISelectorManager;
 import java.util.ArrayList;
 
 import static Presentation.DictionaryPiano.*;
-import static Presentation.Manager.PianoTilesUISelectorManager.timePassed;
-import static Presentation.Manager.PianoTilesUISelectorManager.velocityModifier;
 import static Presentation.Ui_Views.Tile.*;
 
 
@@ -25,7 +23,7 @@ import static Presentation.Ui_Views.Tile.*;
  *
  */
 public class PianoTilesUISelector extends Piano {
-    private  static MainFrame mainFrame;
+    private PianoTilesUISelectorManager pianoTilesUISelectorManager;
     private static ArrayList<Tile> keyboard;
     public static ArrayList<Tile> getKeyboard() {
         return keyboard;
@@ -50,7 +48,7 @@ public class PianoTilesUISelector extends Piano {
      */
     public PianoTilesUISelector(final MainFrame mainFrame) {
         super();
-        PianoTilesUISelector.mainFrame = mainFrame;
+        pianoTilesUISelectorManager = new PianoTilesUISelectorManager();
         keyboard = new ArrayList<>();
         initialize();
     }
@@ -123,7 +121,7 @@ public class PianoTilesUISelector extends Piano {
         menu.add(normal);
         menu.add(hard);
         menu.add(veryHard);
-        registerController(new PianoTilesUISelectorManager(/*mainFrame.getMyFacade()*/));
+        registerController(pianoTilesUISelectorManager);
         return menu;
     }
 
@@ -236,7 +234,7 @@ public class PianoTilesUISelector extends Piano {
     /**
      * Refresh the position and size of th falling keys depending on the song and difficulty selected
      */
-    public static void refreshTiles() {
+    public void refreshTiles() {
         float tile_position = 0;
 
         while (114 < jLayeredPane.getComponentCount()) {
@@ -246,6 +244,9 @@ public class PianoTilesUISelector extends Piano {
         for (Keys key: keys) {
             float time = key.getStartTime()/18.38f;
             float duration = key.getDuration()/18.38f;
+            int timePassed = pianoTilesUISelectorManager.getTimePassed();
+            float velocityModifier = pianoTilesUISelectorManager.getVelocityModifier();
+
             if ((int) ((timePassed - time + duration) * velocityModifier) >= 0 && ((timePassed - time) * velocityModifier) < 400 && key.getKeyCode() >= 48 && key.getKeyCode() < 72) {
                 tile_position = (key.getKeyCode() % 24) * 32.5f + 12;
                 if (key.getKeyCode()%24 > 4) {
@@ -279,13 +280,13 @@ public class PianoTilesUISelector extends Piano {
     /**
      * Repaints the scroll panel depending on the new songs that should appear after the user scrolls
      */
-    public static void refreshSongList() {
+    public void refreshSongList() {
         scrollPanel.removeAll();
 
         //We create the available songs for the user to be played in piano tiles
-        ArrayList<String> names = new ArrayList<>(new PianoTilesUISelectorManager(/*mainFrame.getMyFacade()*/).getBusinessSongNames());
+        ArrayList<String> names = new ArrayList<>(pianoTilesUISelectorManager.getBusinessSongNames());
         JList<String> songNames = new JList<>(names.toArray(new String[0]));
-        songNames.addListSelectionListener(new PianoTilesUISelectorManager(/*mainFrame.getMyFacade()*/));
+        songNames.addListSelectionListener(pianoTilesUISelectorManager);
         songNames.setSelectionMode(0);
         songNames.setVisibleRowCount(4);
 
@@ -307,6 +308,10 @@ public class PianoTilesUISelector extends Piano {
     public static void setKeys(ArrayList<Keys> newKeys) {
         keys.clear();
         keys = newKeys;
+    }
+
+    public PianoTilesUISelector (PianoTilesUISelectorManager pianoTilesUISelectorManager) {
+        this.pianoTilesUISelectorManager = pianoTilesUISelectorManager;
     }
 
 }

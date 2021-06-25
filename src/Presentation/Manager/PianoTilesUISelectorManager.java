@@ -36,13 +36,13 @@ import static Presentation.Ui_Views.PianoTilesUISelector.*;
  *
  */
 public class PianoTilesUISelectorManager implements ActionListener, MouseListener, ListSelectionListener {
-    public static int SOUND_SYNTHER = 0 ;
-    public static int timePassed = 0;
-    public static float velocityModifier = 1;
-    private static boolean play = true;
-    private static boolean songStarted = false;
-    private static int songIndex = 0;
-    private static Song song;
+    private final int SOUND_SYNTHER = 0;
+    private int timePassed = 0;
+    private boolean play = true;
+    private boolean songStarted = false;
+    private int songIndex = 0;
+    private Song song;
+    private static float velocityModifier = 1;
 
     //private final BusinessFacadeImp myFacade;
 
@@ -52,23 +52,16 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
     /*
     Defines where tiles will be played
      */
-    private final MidiHelper finalMidiHelper;
+    private MidiHelper finalMidiHelper;
     private final KeyListener KL;
+    private PianoTilesUISelector pianoTilesUI;
 
-    MidiHelper midiHelper = null;
-
-    /**
-     * Parametrized constructor, initializes the recorder and teh different overwrites for when a key is pressed in the keyboard
-     */
-    public PianoTilesUISelectorManager(/*BusinessFacadeImp myFacade*/) {
-        //To play the song
-        //this.myFacade = myFacade;
+    public PianoTilesUISelectorManager() {
         try {
-            midiHelper = new MidiHelper();
-        } catch (MidiUnavailableException exception) {
-            exception.printStackTrace();
+            finalMidiHelper = new MidiHelper();
+        } catch (MidiUnavailableException e) {
+            e.printStackTrace();
         }
-        this.finalMidiHelper = midiHelper;
         this.KL = new KeyListener() {
 
             /**
@@ -77,7 +70,7 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
              */
             @Override
             public void keyTyped(KeyEvent e) {
-                }
+            }
 
             /**
              * When a key has been pressed it will output the music.
@@ -106,6 +99,16 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
                 }
             }
         };
+    }
+
+    /**
+     * Parametrized constructor, initializes the recorder and teh different overwrites for when a key is pressed in the keyboard
+     */
+    public PianoTilesUISelectorManager(MidiHelper midiHelper) {
+        //To play the song
+        finalMidiHelper = midiHelper;
+        KL = null;
+        pianoTilesUI = new PianoTilesUISelector(this);
     }
 
     /**
@@ -276,6 +279,7 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
 
             new BusinessFacadeImp().setTileArray(songIndex);                //Sets the tiles to play
             song = new BusinessFacadeImp().getSong(songIndex);
+            finalMidiHelper.restartSong(song.getSongFile());
             finalMidiHelper.playSong(song.getSongFile());
 
                             //Sets the tiles to play
@@ -302,17 +306,21 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
         new ChangeTime(0);
         BusinessFacadeImp.getBusinessFacade().resetTilesKeys();
         initTileGame();
-        refreshTiles();
-        refreshSongList();
+        pianoTilesUI.refreshTiles();
+        pianoTilesUI.refreshSongList();
     }
 
     /**
      * Tells the system that some time has passed and the keys must be refreshed
      */
-    public static void addTime() {                               //When 1000 milliseconds have passed
+    public void addTime() {                               //When 1000 milliseconds have passed
         if (play && songStarted) {
-            timePassed++;
-            refreshTiles();
+           timePassed++;
+           pianoTilesUI.refreshTiles();
         }
     }
+
+    public int getTimePassed() { return timePassed; }
+
+    public float getVelocityModifier() { return velocityModifier; }
 }

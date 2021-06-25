@@ -34,6 +34,7 @@ public class MainFrame extends JFrame {
      */
     public MainFrame(/*BusinessFacade myFacade*/) {
         //this.myFacade = myFacade;
+        card = new CardLayout();
         contenedor = this.getContentPane();
         preMenuUI=  new PreMenuUI(/*myFacade*/); //TODO
         profileUI = new ProfileUI(/*myFacade*/); //TODO
@@ -61,4 +62,6 @@ public class MainFrame extends JFrame {
         BusinessFacadeImp.getBusinessFacade().initializeWebScrapping();
     }
     public BusinessFacade getMyFacade(){return BusinessFacadeImp.getBusinessFacade();} //TODO CHECK
+
+    public void setCard(Container parent, String name) {card.show(parent, name);}
 }

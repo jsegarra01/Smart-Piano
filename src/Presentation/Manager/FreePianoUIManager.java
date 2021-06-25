@@ -38,7 +38,7 @@ import static Presentation.Manager.MainFrame.contenedor;
  *
  */
 public class FreePianoUIManager implements ActionListener, MouseListener {
-    public static int SOUND_SYNTHER = 0 ;
+    private static final int SOUND_SYNTHER = 0 ;
     public ArrayList<RecordingNotes> recordingNotes = new ArrayList<>();
 
     /*
@@ -57,7 +57,7 @@ public class FreePianoUIManager implements ActionListener, MouseListener {
     private String tileSelected;
 
     /**
-     * Parametrized constructor, initializes the recorder and teh different overwrites for when a key is pressed in the keyboard
+     * Parametrized constructor, initializes the recorder and the different overwrites for when a key is pressed in the keyboard
      */
     public FreePianoUIManager(/*BusinessFacadeImp myFacade*/) {
         //this.myFacade = myFacade;

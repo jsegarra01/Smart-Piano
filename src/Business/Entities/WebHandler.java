@@ -3,12 +3,6 @@ package Business.Entities;
 
 
 import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.sql.SQLException;
-import java.util.ArrayList;
-
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 
 import Business.BusinessFacadeImp;
 import Business.SongManager;
@@ -16,9 +10,6 @@ import Persistence.WebScrapping.SongDownloader;
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
-import static Presentation.Manager.ErrorsManager.endTime;
 
 public class WebHandler {
 

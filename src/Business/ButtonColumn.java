@@ -20,9 +20,7 @@ import static Presentation.DictionaryPiano.DELETE_SONG;
  *  the model row number of the button that was clicked.
  *
  */
-public class ButtonColumn extends AbstractCellEditor
-        implements TableCellRenderer, TableCellEditor, ActionListener
-{
+public class ButtonColumn extends AbstractCellEditor implements TableCellRenderer, TableCellEditor, ActionListener {
     private final JTable table;
     private final Action action;
     private final Border originalBorder;
@@ -40,8 +38,7 @@ public class ButtonColumn extends AbstractCellEditor
      *  @param action the Action to be invoked when the button is invoked
      *  @param column the column to which the button renderer/editor is added
      */
-    public ButtonColumn(JTable table, Action action, int column)
-    {
+    public ButtonColumn(JTable table, Action action, int column) {
         this.table = table;
 
         this.action = action;

@@ -13,7 +13,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 import static Business.Entities.WebHandler.getHtmlDocument;
-import static Business.Threads.WebScrapping.songDownloader;
+import static Business.Threads.WebScrapping.getSongDownloader;
 import static Presentation.Manager.SpotiFrameManager.URLRoute;
 
 /**
@@ -133,7 +133,7 @@ public class SongDownloader implements SongDownloaderDAO {
                             .substring(9,miniEles.get(19).getAllElements().get(3).html().length()-15);
                     String recordingDate = miniEles.get(18).text();
                     if(songCsv.getSongByName(piece) == null){
-                        String filename = songDownloader.downloadFile(downloadURL, "Files/WebScrappingResults");
+                        String filename = getSongDownloader().downloadFile(downloadURL, "Files/WebScrappingResults");
                         if(author2.substring(0,3).contains("by ")){
                             author2 = author2.substring(3);
                         }

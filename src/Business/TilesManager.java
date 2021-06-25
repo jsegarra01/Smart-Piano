@@ -16,7 +16,7 @@ import java.util.ArrayList;
  */
 public class TilesManager {
     private ArrayList<Keys> listTiles = new ArrayList<>();
-    private static BusinessFacadeImp businessFacadeImp = new BusinessFacadeImp();
+    private static final BusinessFacade businessFacadeImp = new BusinessFacadeImp();
 
     /**
      * Constructor of the TilesManager

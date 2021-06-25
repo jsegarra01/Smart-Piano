@@ -13,7 +13,6 @@ import javax.swing.*;
  *
  */
 public class ErrorsManager {
-    public static long endTime = 0;
     /**
      * Parametrized constructor for the ErrorsManager class
      */
@@ -39,10 +38,14 @@ public class ErrorsManager {
                     createDialog("This song can't be accessed.", "Access error");
             case 4 ->                                     //The song can't be downloaded
                     createDialog("The song can't be downloaded.", "Download error");
-            case 5 -> createDialog("No song with that Name or Author! Took " + endTime / 1000 + "s.", "Web error");
-
-            case 6 -> createDialog("You must input something more!", "Search Song Error");
-            case 7 -> createDialog("This song already exists in the playlist!", "Song adding Error");
+            case 5 ->                                     //There's no name or Author matching the error
+                    createDialog("Nothing could be found", "Web error");
+            case 6 ->                                     //There's nothing to search
+                    createDialog("You must input something more!", "Search Song Error");
+            case 7 ->                                     //The song already exists
+                    createDialog("This song already exists in the playlist!", "Song adding Error");
+            case 8 ->                                     //Midi exception
+                    createDialog("It was not possible to connect to the midi!", "Midi Error");
         }
     }
 

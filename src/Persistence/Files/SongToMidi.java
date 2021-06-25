@@ -1,6 +1,7 @@
 package Persistence.Files;
 
 //Imports needed from the Gson, files and midis
+import Business.BusinessFacadeImp;
 import Business.Entities.RecordingNotes;
 import Business.Entities.SongRecorded;
 import Business.Translator;
@@ -59,8 +60,7 @@ public class SongToMidi {
      * @param endtime float. Ending time of the song
      */
     public static void writeMidi(String title, ArrayList<RecordingNotes> recordingNotes, float endtime) {
-        try
-        {
+        try {
 //****  Create a new MIDI sequence with 24 ticks per beat  ****
             Sequence s = new Sequence(javax.sound.midi.Sequence.PPQ,24);
 
@@ -132,7 +132,7 @@ public class SongToMidi {
         } //try
         catch(Exception e)
         {
-            System.out.println("Exception caught " + e.toString());
+            new BusinessFacadeImp().setError(4);
         } //catch
     }
 }
