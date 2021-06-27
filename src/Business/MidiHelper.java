@@ -26,7 +26,7 @@ public class MidiHelper {
         try {
             sequencer = MidiSystem.getSequencer();
         } catch (MidiUnavailableException e) {
-            new BusinessFacadeImp().setError(3);
+            BusinessFacadeImp.getBusinessFacade().setError(3);
         }
     }
 
@@ -100,7 +100,7 @@ public class MidiHelper {
             sequencer.start();               // start the playback
 
         } catch (InvalidMidiDataException e) {
-            new BusinessFacadeImp().setError(8);
+            BusinessFacadeImp.getBusinessFacade().setError(8);
         }
     }
 
@@ -114,7 +114,7 @@ public class MidiHelper {
             sequencePlay = MidiSystem.getSequence(new File(filename));
             return true;
         } catch (InvalidMidiDataException | IOException e) {
-            new BusinessFacadeImp().setError(8);
+            BusinessFacadeImp.getBusinessFacade().setError(8);
             return false;
         }
     }

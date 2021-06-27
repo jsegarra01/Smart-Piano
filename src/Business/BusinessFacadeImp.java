@@ -15,11 +15,8 @@ import java.io.File;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import static Presentation.DictionaryPiano.PLAYLIST_UI;
-import static Presentation.Dictionary_login.*;
-import static Presentation.Manager.MainFrame.card;
-import static Presentation.Manager.MainFrame.contenedor;
 import static Presentation.Ui_Views.PianoTilesUISelector.setKeys;
+
 
 /**
  * BusinessFacade
@@ -135,8 +132,7 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
     @Override
     public boolean modifyKey(String tileSelected, KeyEvent e, int KeyExisted){
         if(KeyExisted == -1) {
-            JOptionPane.showMessageDialog(contenedor,
-                    "This key is already assigned!", "Modify keys error" , JOptionPane.ERROR_MESSAGE);
+            setError(11);
             return true;
         }
         return false;
@@ -152,14 +148,12 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
                 "Playlist Creator", JOptionPane.PLAIN_MESSAGE, null, null, "New Playlist");
 
         if(myStr != null && myStr.length() > 0 && myStr.indexOf('\'') == -1){
-            new BusinessFacadeImp().newPlaylist(myStr);
+            newPlaylist(myStr);
             myPlayList = playlistManager.getFromName(myStr);
             //PlaylistUI.setSongsPlaylists(myPlayList);
             SpotiFrameManager.addPlaylists(playlistManager.getPlaylists());
         } else {
-            JOptionPane.showMessageDialog(null,
-                    "The input is not correct!", "Create Playlist Error" ,
-                    JOptionPane.ERROR_MESSAGE);
+            setError(12);
         }
         return myPlayList;
     }

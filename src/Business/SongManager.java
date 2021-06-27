@@ -19,10 +19,14 @@ import static Persistence.Files.SongToMidi.writeMidi;
  *
  */
 public class SongManager {
-    private final SongDAO songManager = new SongCsvDAO();
+    private final SongDAO songManager;
     private static ArrayList<Song> songs;
-    private static final ArrayList<String> songNames = new ArrayList<>();
-    private static final BusinessFacade businessFacade = new BusinessFacadeImp();
+    private static ArrayList<String> songNames;
+
+    public SongManager(){
+        songManager = new SongCsvDAO();
+        songNames = new ArrayList<>();
+    }
 
     /**
      * Gets all song names
@@ -76,7 +80,7 @@ public class SongManager {
                 songNames.add(song.getSongName());
             }
         } catch (SQLException e) {
-            businessFacade.setError(0);
+            BusinessFacadeImp.getBusinessFacade().setError(0);
         }
     }
 
@@ -94,7 +98,7 @@ public class SongManager {
                 songNames.add(song.getSongName());
             }
         } catch (SQLException e) {
-            businessFacade.setError(0);
+            BusinessFacadeImp.getBusinessFacade().setError(0);
         }
     }
 
@@ -132,7 +136,7 @@ public class SongManager {
      */
     public void updateSongPlayed(Song song){
         if (!songManager.updateTimesPlayed(song)) {
-            businessFacade.setError(9);
+            BusinessFacadeImp.getBusinessFacade().setError(9);
         }
     }
 
@@ -142,7 +146,7 @@ public class SongManager {
      */
     public void addingStadistics(Stadistics myStats){
         if (!songManager.saveStadistics(myStats)) {
-            businessFacade.setError(9);
+            BusinessFacadeImp.getBusinessFacade().setError(9);
         }
     }
 
@@ -166,13 +170,13 @@ public class SongManager {
 
     public void saveSong (Song song) {
         if (!songManager.saveSong(song)) {
-            businessFacade.setError(4);
+            BusinessFacadeImp.getBusinessFacade().setError(4);
         }
     }
 
     public void saveSongWithDate(Song song){
         if (!songManager.saveSongWithDate(song)) {
-            businessFacade.setError(4);
+            BusinessFacadeImp.getBusinessFacade().setError(4);
         }
     }
 

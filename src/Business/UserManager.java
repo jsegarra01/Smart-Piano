@@ -20,7 +20,6 @@ import java.util.regex.Pattern;
 public class UserManager {
     private final LoginUserDAO loginUserManager = new LoginUserCsvDAO();
     private static User user;
-    private static final BusinessFacade businessFacadeImp = new BusinessFacadeImp();
 
     public static User getUser() {
         return user;
@@ -41,7 +40,7 @@ public class UserManager {
                     signUser(username, "WeLoveChallenge@lasal.com", password);
                     return true;
                 } catch (SQLException e) {
-                    businessFacadeImp.setError(0);
+                    BusinessFacadeImp.getBusinessFacade().setError(0);
                     return false;
                 }
             }
@@ -51,7 +50,7 @@ public class UserManager {
         }
 
         if (!returned) {
-            businessFacadeImp.setError(2);
+            BusinessFacadeImp.getBusinessFacade().setError(2);
         }
         return returned;
     }

@@ -50,6 +50,10 @@ public class ErrorsManager {
                     createDialog("There's a problem updating the data.", "Problem Error");
             case 10 ->                                     //Update problem
                     createDialog("The webpage can't be accessed", "Webpage Error");
+            case 11 ->
+                    createDialog("This key is already assigned!", "Modify keys error");
+            case 12 ->
+                    createDialog("The input is not correct!", "Create playlist error");
         }
     }
 

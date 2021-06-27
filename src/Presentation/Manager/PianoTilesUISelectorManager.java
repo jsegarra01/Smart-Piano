@@ -277,15 +277,16 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
             }
             songStarted = true;
 
-            new BusinessFacadeImp().setTileArray(songIndex);                //Sets the tiles to play
-            song = new BusinessFacadeImp().getSong(songIndex);
+            BusinessFacadeImp.getBusinessFacade().setTileArray(songIndex);                //Sets the tiles to play
+            song = BusinessFacadeImp.getBusinessFacade().getSong(songIndex);
             finalMidiHelper.restartSong(song.getSongFile());
             finalMidiHelper.playSong(song.getSongFile());
 
                             //Sets the tiles to play
 
 
-            BusinessFacadeImp.getBusinessFacade().setAllKeys();
+
+            setKeys(BusinessFacadeImp.getBusinessFacade().getTiles());
                                                                             //Gets the tiles to play.
                                                                             //Is this necessary or it
                                                                             //can be in presentation?
