@@ -144,10 +144,10 @@ public class SongManager {
      * Saves the desired stadistics
      * @param myStats Stadistics we want to save
      */
-    public void addingStadistics(Stadistics myStats){
-        if (!songManager.saveStadistics(myStats)) {
+    public boolean addingStatistics(Stadistics myStats){
+         return songManager.saveStadistics(myStats);/* {
             BusinessFacadeImp.getBusinessFacade().setError(9);
-        }
+        }*/
     }
 
     /**

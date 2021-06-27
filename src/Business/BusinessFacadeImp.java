@@ -9,13 +9,10 @@ import Presentation.Manager.ErrorsManager;
 import Presentation.Manager.SpotiFrameManager;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.io.File;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
-import static Presentation.Ui_Views.PianoTilesUISelector.setKeys;
 
 
 /**
@@ -53,8 +50,8 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
      */
     @Override
     public void enterAsAGuest(){
-            playlistManager.setPlaylists(UserManager.getUser().getUserName());
-            SpotiFrameManager.addPlaylists(playlistManager.getPlaylists());
+            setPlaylists();
+            SpotiFrameManager.addPlaylists(getPlaylists());
             setSong();
     }
 
@@ -158,10 +155,6 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
         return myPlayList;
     }
 
-    @Override
-    public void setAllKeys(){
-        setKeys(tilesManager.getListTiles());
-    }
 
     /**
      * Saves a song created by the user to a midi file
@@ -303,7 +296,22 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
     @Override
     public ArrayList<Song> getTopFive(){ return songManager.getTopFive(); }
 
+    @Override
+    public void addStats(Stadistics stats) {
+        if(!songManager.addingStatistics(stats)){
+            setError(9);
+        }
+    }
 
+    @Override
+    public void setPlaylists() {
+        playlistManager.setPlaylists(UserManager.getUser().getUserName());
+    }
+
+    @Override
+    public ArrayList<Playlist> getPlaylists() {
+        return playlistManager.getPlaylists();
+    }
 
 
 }

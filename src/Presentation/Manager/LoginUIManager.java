@@ -46,12 +46,12 @@ public class LoginUIManager implements ActionListener {
                 card.show(contenedor, PRE_MENU_UI);
                 break;
             case DONE_BUTTON:                          //In the case that the Done button is pressed
-                if(new BusinessFacadeImp().logIn(LoginUI.getUsernameLogin(), LoginUI.getPasswordLogin())){
+                if(BusinessFacadeImp.getBusinessFacade().logIn(LoginUI.getUsernameLogin(), LoginUI.getPasswordLogin())){
                     card.show(contenedor, PIANO_FRAME);
                     cc.show(centralPanel, FREE_PIANO_UI);
-                    new BusinessFacadeImp().getPlaylistManager().setPlaylists(UserManager.getUser().getUserName());
-                    SpotiFrameManager.addPlaylists(new BusinessFacadeImp().getPlaylistManager().getPlaylists());
-                    new BusinessFacadeImp().setSongUser();
+                    BusinessFacadeImp.getBusinessFacade().setPlaylists();
+                    SpotiFrameManager.addPlaylists(BusinessFacadeImp.getBusinessFacade().getPlaylists());
+                    BusinessFacadeImp.getBusinessFacade().setSongUser();
                 }
                 break;
         }

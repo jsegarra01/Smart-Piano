@@ -54,7 +54,5 @@ public class MainFrame extends JFrame {
 
         BusinessFacadeImp.getBusinessFacade().initializeWebScrapping();
     }
-    public BusinessFacade getMyFacade(){return BusinessFacadeImp.getBusinessFacade();} //TODO CHECK
-
     public void setCard(Container parent, String name) {card.show(parent, name);}
 }

@@ -37,7 +37,7 @@ public class GraphTimer implements ActionListener {
         if (TIME_GRAPH.equals(e.getActionCommand())) {
             if (getPlay()) {
                 Calendar calendar = Calendar.getInstance();
-                new BusinessFacadeImp().getSongManager().addingStadistics(new Stadistics(calendar.get(Calendar.HOUR_OF_DAY), count_song, 0.01667f));
+                BusinessFacadeImp.getBusinessFacade().addStats(new Stadistics(calendar.get(Calendar.HOUR_OF_DAY), count_song, 0.01667f));
                 if (count_song == 1) {
                     count_song = 0;
                 }

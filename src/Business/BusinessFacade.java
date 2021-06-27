@@ -70,8 +70,6 @@ public interface BusinessFacade {
      */
     ArrayList<String> getSongName();
 
-    void setAllKeys();
-
     boolean modifyKey(String tileSelected, KeyEvent e, int KeyExisted);
 
     void noteRecordingUpdate(ArrayList<RecordingNotes> recordingNotes, float recordingTime);
@@ -117,5 +115,11 @@ public interface BusinessFacade {
     void updateSong(Song song);
 
     ArrayList<Song> getTopFive();
+
+    void addStats(Stadistics stats);
+
+    void setPlaylists();
+
+    ArrayList<Playlist> getPlaylists();
 
 }
