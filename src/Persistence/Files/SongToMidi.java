@@ -133,7 +133,7 @@ public class SongToMidi {
         } //try
         catch(Exception e)
         {
-            new BusinessFacadeImp().setError(4);
+            BusinessFacadeImp.getBusinessFacade().setError(4);
         } //catch
     }
 }

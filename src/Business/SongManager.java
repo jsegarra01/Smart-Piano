@@ -103,7 +103,7 @@ public class SongManager {
      * @return The 5 more played songs
      */
     public ArrayList<Song> getTopFive(){
-        ArrayList<Song> aux = songs;
+        ArrayList<Song> aux = new ArrayList<>(songs);
         aux.sort(this::compare);
         ArrayList<Song> topFive = new ArrayList<>();
         for(int i=0; i<5 && i<aux.size(); i++){
@@ -118,7 +118,7 @@ public class SongManager {
      * @param song2 Second song
      * @return 1 if the first song has been played more times than the second, -1 elsewhere
      */
-    public int compare(Song song1, Song song2) {
+    private int compare(Song song1, Song song2) {
         if(song1.getTimesPlayed() <= song2.getTimesPlayed()){
             return 1;
         } else {

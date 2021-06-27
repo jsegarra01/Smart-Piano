@@ -18,7 +18,7 @@ import java.util.ArrayList;
 public interface BusinessFacade {
 
 
-    void singUpStartup();
+    //void singUpStartup();
     /**
      * Checks if the user can log in or not
      * @param username Username string which the user has inputted while logging in
@@ -36,17 +36,6 @@ public interface BusinessFacade {
      * @return Boolean: 1 if it can sign up in, 0 if it cannot sign up
      */
     boolean SignUp(String username, String mail, String password, String passwordConfirm);
-
-
-    /**
-     * Checks if the user can do the sign up or not
-     * @param username Username string which the user has inputted while signing up
-     * @param mail Mail string which the user has inputted while signing up
-     * @param password Password string which the user has inputted while signing up
-     * @param passwordConfirm PasswordConfirmation string which the user has inputted while signing up
-     */
-    void finalSignUp(String username, String mail, String password, String passwordConfirm);
-
 
 
     /**
@@ -87,9 +76,9 @@ public interface BusinessFacade {
 
     void noteRecordingUpdate(ArrayList<RecordingNotes> recordingNotes, float recordingTime);
 
-    void enterAsAGuest(String name, String psw);
+    void enterAsAGuest(/*String name, String psw*/);
 
-    void logInStartup();
+    //void logInStartup();
 
     Playlist createPlaylist();
 

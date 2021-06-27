@@ -235,31 +235,34 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
                 if(obj instanceof JTable){
                     JTable table = (JTable)e.getSource();
                     int modelRow = Integer.parseInt( e.getActionCommand() );
-                    if(addSong){
-                        if (isAlreadyInPlaylist(BusinessFacadeImp.getBusinessFacade().getSong(modelRow).getSongName())) {
-                            BusinessFacadeImp.getBusinessFacade().setError(7);
+                    if(!top5){
+                        if(addSong){
+                            if (isAlreadyInPlaylist(BusinessFacadeImp.getBusinessFacade().getSong(modelRow).getSongName())) {
+                                BusinessFacadeImp.getBusinessFacade().setError(7);
+                            }else{
+                                boolean updatingSong = BusinessFacadeImp.getBusinessFacade().
+                                        addSongToPlaylist(playlist.getPlaylistName(),
+                                                BusinessFacadeImp.getBusinessFacade().getSong(modelRow).getSongName());
+                                playlist = BusinessFacadeImp.getBusinessFacade().getPlaylist(playlist.getPlaylistName());
+                                PlaylistUI.setSongsPlaylists(playlist);
+                                cc.show(spotiPanel, PLAYLIST_UI);
+                                addSong = false;
+                            }
                         }else{
-                            boolean updatingSong = BusinessFacadeImp.getBusinessFacade().
-                                    addSongToPlaylist(playlist.getPlaylistName(),
-                                            BusinessFacadeImp.getBusinessFacade().getSong(modelRow).getSongName());
-                            playlist = BusinessFacadeImp.getBusinessFacade().getPlaylist(playlist.getPlaylistName());
-                            PlaylistUI.setSongsPlaylists(playlist);
-                            cc.show(spotiPanel, PLAYLIST_UI);
-                            addSong = false;
-                        }
-                    }else{
-                        int input = JOptionPane.showConfirmDialog(null,
-                                "Are you sure you want to delete " +
-                                        BusinessFacadeImp.getBusinessFacade().getSong(modelRow).getSongName() +"?",
-                                "Select an option", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
-                        if(input == JOptionPane.YES_OPTION){
-                            ((DefaultTableModel)table.getModel()).removeRow(modelRow);
-                            BusinessFacadeImp.getBusinessFacade().deleteSong(modelRow);
-                            BusinessFacadeImp.getBusinessFacade().setSongUser();
-                            BusinessFacadeImp.getBusinessFacade().getPlaylistManager().setPlaylists(UserManager.getUser().getUserName());
-                        }
+                            int input = JOptionPane.showConfirmDialog(null,
+                                    "Are you sure you want to delete " +
+                                            BusinessFacadeImp.getBusinessFacade().getSong(modelRow).getSongName() +"?",
+                                    "Select an option", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+                            if(input == JOptionPane.YES_OPTION){
+                                ((DefaultTableModel)table.getModel()).removeRow(modelRow);
+                                BusinessFacadeImp.getBusinessFacade().deleteSong(modelRow);
+                                BusinessFacadeImp.getBusinessFacade().setSongUser();
+                                BusinessFacadeImp.getBusinessFacade().getPlaylistManager().setPlaylists(UserManager.getUser().getUserName());
+                            }
 
+                        }
                     }
+
                     break;
                 }
 
@@ -334,7 +337,11 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
         }else if(obj instanceof  JTable){
             table = (JTable) obj;
             if(table.getEditorComponent() == null){
-                songPlay = BusinessFacadeImp.getBusinessFacade().getSong(table.getSelectedRow());
+                if(top5){
+                    songPlay = BusinessFacadeImp.getBusinessFacade().getTopFive().get(table.getSelectedRow());
+                }else{
+                    songPlay = BusinessFacadeImp.getBusinessFacade().getSong(table.getSelectedRow());
+                }
                 playMusic();
                 setSong(songPlay.getSongName(), songPlay.getAuthorName());
                 wherePlay = false;

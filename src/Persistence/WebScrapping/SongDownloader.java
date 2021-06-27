@@ -103,7 +103,7 @@ public class SongDownloader implements SongDownloaderDAO {
 
         // Exceptions
         catch (IOException mue) {
-            new BusinessFacadeImp().setError(10);
+            BusinessFacadeImp.getBusinessFacade().setError(10);
         }
     }
 
@@ -137,14 +137,14 @@ public class SongDownloader implements SongDownloaderDAO {
                         if(author2.substring(0,3).contains("by ")){
                             author2 = author2.substring(3);
                         }
-                        if (!songCsv.saveSongWithDate(new Song(piece, author2, 0 , new SimpleDateFormat("yyyy/MM/dd").parse(recordingDate), true, filename, "guest", 0))) {
-                            new BusinessFacadeImp().setError(4);
+                        if (!songCsv.saveSongWithDate(new Song(piece, author2, 0 , new SimpleDateFormat("yyyy/MM/dd").parse(recordingDate), true, filename, "qp6c43moyrgsej1hxvg3u98le", 0))) {
+                            BusinessFacadeImp.getBusinessFacade().setError(4);
                         }
                     }
                 }
             }
             catch (IOException | ParseException e) {
-                System.out.println("ERROR");
+                BusinessFacadeImp.getBusinessFacade().setError(4);
             }
             //Extract the divs that have products inside of the previous general Div.
             i++;
