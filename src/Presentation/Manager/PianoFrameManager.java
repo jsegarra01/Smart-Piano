@@ -34,8 +34,9 @@ public class PianoFrameManager implements ActionListener {
 
     /**
      * Parametrized constructor
+     * @param pianoTilesUISelectorManager manager of the pianoTiles
      */
-    public PianoFrameManager() {
+    public PianoFrameManager(PianoTilesUISelectorManager pianoTilesUISelectorManager) {
         MidiHelper midiHelper1;
         try {
             midiHelper1 = new MidiHelper();
@@ -45,9 +46,8 @@ public class PianoFrameManager implements ActionListener {
         }
         this.midiHelper = midiHelper1;
 
-
-        pianoTilesUISelectorManager = new PianoTilesUISelectorManager(midiHelper);
-        new ChangeTime(pianoTilesUISelectorManager);
+        this.pianoTilesUISelectorManager = pianoTilesUISelectorManager;
+        new ChangeTime(this.pianoTilesUISelectorManager);
     }
 
     /**

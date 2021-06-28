@@ -165,7 +165,7 @@ public class FreePianoUIManager implements ActionListener, MouseListener {
             case Dictionary_login.PROFILE_BUTTON ->           //In the case that the Profile button is pressed
                     card.show(contenedor, PROFILE_UI);
             case MODIFY -> {                        //In the case that the Modify button is pressed
-                AbstractButton abstractButton = (AbstractButton) e.getSource();
+                AbstractButton abstractButton = (AbstractButton) e.getSource();     //TODO we shouldn't be changing the button here, but on a view
                 modifying = abstractButton.getModel().isSelected();
                 freePianoUI.labelAppear(modifying);
                 selected = false;
@@ -187,14 +187,7 @@ public class FreePianoUIManager implements ActionListener, MouseListener {
      * @param string Defines the string that stores the tile which has been pressed
      */
     private void setIconKey(String string){
-        int i = 0;
-        while(!string.equals(freePianoUI.getKeyboard().get(i).getName()) &&
-                i<freePianoUI.getKeyboard().size()){
-            i++;
-        }
-        if(i!=freePianoUI.getKeyboard().size()){
-            freePianoUI.getKeyboard().get(i).setIcon();
-        }
+        PianoTilesUISelectorManager.IconKey(string, freePianoUI.getKeyboard());
     }
 
     /**
@@ -202,17 +195,7 @@ public class FreePianoUIManager implements ActionListener, MouseListener {
      * @param string Defines the tile to change color
      */
     private void setIconBack(String string){
-        int i = 0;
-        while(!string.equals(freePianoUI.getKeyboard().get(i).getName()) && i<freePianoUI.getKeyboard().size()){
-            i++;
-        }
-        if(i!=freePianoUI.getKeyboard().size()){
-            if(freePianoUI.getKeyboard().get(i).getColor()== Color.WHITE){
-                freePianoUI.getKeyboard().get(i).backToWhite();
-            }else{
-                freePianoUI.getKeyboard().get(i).backToBlack();
-            }
-        }
+        PianoTilesUISelectorManager.setIconBackTiles(string, freePianoUI.getKeyboard());
     }
 
     /**

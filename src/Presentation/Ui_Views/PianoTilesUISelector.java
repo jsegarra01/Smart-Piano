@@ -22,8 +22,6 @@ import static Presentation.Ui_Views.Tile.*;
  *
  */
 public class PianoTilesUISelector extends Piano {
-    private final PianoTilesUISelectorManager pianoTilesUISelectorManager;
-
     public static final JLayeredPane jLayeredPane = new JLayeredPane();
     public static final JPanel scrollPanel = new JPanel();
     public static final JButton playButtonTiles = new JButton(PLAY_BUTTON);
@@ -36,6 +34,7 @@ public class PianoTilesUISelector extends Piano {
     public final JButton veryHard = new JButton(VERY_HARD_MODE);
     private static final JButton mute = new JButton(MUTE_BUTTON);
 
+    private PianoTilesUISelectorManager pianoTilesUISelectorManager;
 
     /**
      * Constructor for the PianoTilesUISelector, you need to send the mainframe context and will create a card layout
@@ -43,8 +42,8 @@ public class PianoTilesUISelector extends Piano {
      */
     public PianoTilesUISelector() {
         super();
-        pianoTilesUISelectorManager = new PianoTilesUISelectorManager();
         setKeyboardPiano(new ArrayList<>());
+        this.pianoTilesUISelectorManager = new PianoTilesUISelectorManager(this);
         initialize();
     }
 
@@ -112,7 +111,7 @@ public class PianoTilesUISelector extends Piano {
         menu.add(getProfilePiano());
         menu.add(mute);
         menu.add(playButtonTiles);
-        refreshSongList();
+        refreshSongList(pianoTilesUISelectorManager.getBusinessSongNames());
         menu.add(scrollPanel);
         menu.add(Box.createRigidArea(new Dimension(25,10)), BorderLayout.CENTER);
         menu.add(veryEasy);
@@ -121,6 +120,7 @@ public class PianoTilesUISelector extends Piano {
         menu.add(hard);
         menu.add(veryHard);
         registerController(pianoTilesUISelectorManager);
+
         return menu;
     }
 
@@ -233,7 +233,7 @@ public class PianoTilesUISelector extends Piano {
     /**
      * Refresh the position and size of th falling keys depending on the song and difficulty selected
      */
-    public void refreshTiles() {
+    public void refreshTiles(int timePassed, float velocityModifier) {
         float tile_position;
 
         while (114 < jLayeredPane.getComponentCount()) {
@@ -243,8 +243,6 @@ public class PianoTilesUISelector extends Piano {
         for (Keys key: keys) {
             float time = key.getStartTime()/18.38f;
             float duration = key.getDuration()/18.38f;
-            int timePassed = pianoTilesUISelectorManager.getTimePassed();
-            float velocityModifier = pianoTilesUISelectorManager.getVelocityModifier();
 
             if ((int) ((timePassed - time + duration) * velocityModifier) >= 0 && ((timePassed - time) * velocityModifier) < 400 && key.getKeyCode() >= 48 && key.getKeyCode() < 72) {
                 tile_position = (key.getKeyCode() % 24) * 32.5f + 12;
@@ -257,8 +255,6 @@ public class PianoTilesUISelector extends Piano {
                         }
                     }
                 }
-
-
 
                 JPanel lala = new JPanel();                 //Every 50 pixels = 1 sec if possible
                 lala.setBackground(Color.orange);           //initial time                                              //final - initial time
@@ -279,11 +275,10 @@ public class PianoTilesUISelector extends Piano {
     /**
      * Repaints the scroll panel depending on the new songs that should appear after the user scrolls
      */
-    public void refreshSongList() {
+    public void refreshSongList(ArrayList<String> names) {
         scrollPanel.removeAll();
 
         //We create the available songs for the user to be played in piano tiles
-        ArrayList<String> names = new ArrayList<>(pianoTilesUISelectorManager.getBusinessSongNames());
         JList<String> songNames = new JList<>(names.toArray(new String[0]));
         songNames.addListSelectionListener(pianoTilesUISelectorManager);
         songNames.setSelectionMode(0);
@@ -309,8 +304,8 @@ public class PianoTilesUISelector extends Piano {
         keys = newKeys;
     }
 
-    public PianoTilesUISelector (PianoTilesUISelectorManager pianoTilesUISelectorManager) {
-        this.pianoTilesUISelectorManager = pianoTilesUISelectorManager;
+    public PianoTilesUISelectorManager getPianoTilesUISelectorManager() {
+        return pianoTilesUISelectorManager;
     }
 
 }

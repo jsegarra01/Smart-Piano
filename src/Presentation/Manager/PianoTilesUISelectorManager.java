@@ -37,7 +37,7 @@ import static Presentation.Ui_Views.PianoTilesUISelector.*;
  *
  */
 public class PianoTilesUISelectorManager implements ActionListener, MouseListener, ListSelectionListener {
-    private final int SOUND_SYNTHER = 0;
+    private final int SOUND_SYNTH = 0;
     private int timePassed = 0;
     private boolean play = true;
     private boolean songStarted = false;
@@ -55,9 +55,11 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
      */
     private MidiHelper finalMidiHelper;
     private final KeyListener KL;
-    private PianoTilesUISelector pianoTilesUI;
+    private final PianoTilesUISelector pianoTilesUI;
 
-    public PianoTilesUISelectorManager() {
+
+    public PianoTilesUISelectorManager(PianoTilesUISelector pianoTilesUISelector) {
+        this.pianoTilesUI = pianoTilesUISelector;
         try {
             finalMidiHelper = new MidiHelper();
         } catch (MidiUnavailableException e) {
@@ -81,7 +83,7 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
             public void keyPressed(KeyEvent e) {
                 if (Translator.getPressedFromKey(e.getExtendedKeyCode()) !=null) {
                     if (Objects.requireNonNull(Translator.getPressedFromKey(e.getExtendedKeyCode())).isPressed()) {
-                        finalMidiHelper.playSomething(Translator.getNumberNoteFromName(Translator.getFromKey(e.getExtendedKeyCode())),SOUND_SYNTHER);
+                        finalMidiHelper.playSomething(Translator.getNumberNoteFromName(Translator.getFromKey(e.getExtendedKeyCode())), SOUND_SYNTH);
                         Objects.requireNonNull(Translator.getPressedFromKey(e.getExtendedKeyCode())).setPressed(true);
                     }
                     setIconKey(Objects.requireNonNull(Translator.getFromKey(e.getExtendedKeyCode())));
@@ -96,20 +98,10 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
                 if (Translator.getPressedFromKey(e.getExtendedKeyCode()) != null) {
                     setIconBack(Objects.requireNonNull(Translator.getFromKey(e.getExtendedKeyCode())));
                     Objects.requireNonNull(Translator.getPressedFromKey(e.getExtendedKeyCode())).setPressed(false);
-                    finalMidiHelper.stopPlaying(Translator.getNumberNoteFromName(Translator.getFromKey(e.getExtendedKeyCode())),SOUND_SYNTHER);
+                    finalMidiHelper.stopPlaying(Translator.getNumberNoteFromName(Translator.getFromKey(e.getExtendedKeyCode())), SOUND_SYNTH);
                 }
             }
         };
-    }
-
-    /**
-     * Parametrized constructor, initializes the recorder and teh different overwrites for when a key is pressed in the keyboard
-     */
-    public PianoTilesUISelectorManager(MidiHelper midiHelper) {
-        //To play the song
-        finalMidiHelper = midiHelper;
-        KL = null;
-        pianoTilesUI = new PianoTilesUISelector(this);
     }
 
     /**
@@ -126,7 +118,7 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
                 if (obj instanceof Tile) {
                     t = (Tile) obj;
                 }
-                finalMidiHelper.playSomething(Translator.getNumberNoteFromName(Objects.requireNonNull(t).getName()),SOUND_SYNTHER);
+                finalMidiHelper.playSomething(Translator.getNumberNoteFromName(Objects.requireNonNull(t).getName()), SOUND_SYNTH);
 
                 break;
             case Dictionary_login.PROFILE_BUTTON:       //In the case that the Profile button is pressed
@@ -182,13 +174,21 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
      * @param string Defines the tile that has been pressed
      */
     private void setIconKey(String string){
+        IconKey(string, pianoTilesUI.getKeyboard());
+    }
+
+    /**
+     * Static method to not duplicate the same code as in FreePianoUIManager
+     * @param string Icon name
+     * @param keyboard Tile of the keyboard pressed
+     */
+    protected static void IconKey(String string, ArrayList<Tile> keyboard) {  //TODO Check if we can put this in an abstract class from which we can extend it
         int i = 0;
-        while(!string.equals(PianoTilesUISelector.getKeyboard().get(i).getName()) &&
-                i<PianoTilesUISelector.getKeyboard().size()){
+        while(!string.equals(keyboard.get(i).getName()) && i< keyboard.size()){
             i++;
         }
-        if(i!=PianoTilesUISelector.getKeyboard().size()){
-            PianoTilesUISelector.getKeyboard().get(i).setIcon();
+        if(i!= keyboard.size()){
+            keyboard.get(i).setIcon();
         }
     }
 
@@ -197,15 +197,24 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
      * @param string The name of the key that must change its the icon
      */
     private void setIconBack(String string){
+        setIconBackTiles(string, pianoTilesUI.getKeyboard());
+    }
+
+    /**
+     * Static method to not duplicate the same code as in FreePianoUIManager
+     * @param string Icon name
+     * @param keyboard Tile of the keyboard pressed
+     */
+    protected static void setIconBackTiles(String string, ArrayList<Tile> keyboard) {   //TODO Check if we can put this in an abstract class from which we can extend it
         int i = 0;
-        while(!string.equals(PianoTilesUISelector.getKeyboard().get(i).getName()) && i<PianoTilesUISelector.getKeyboard().size()){
+        while(!string.equals(keyboard.get(i).getName()) && i< keyboard.size()){
             i++;
         }
-        if(i!=PianoTilesUISelector.getKeyboard().size()){
-            if(PianoTilesUISelector.getKeyboard().get(i).getColor()== Color.WHITE){
-                PianoTilesUISelector.getKeyboard().get(i).backToWhite();
+        if(i!= keyboard.size()){
+            if(keyboard.get(i).getColor()== Color.WHITE){
+                keyboard.get(i).backToWhite();
             }else{
-                PianoTilesUISelector.getKeyboard().get(i).backToBlack();
+                keyboard.get(i).backToBlack();
             }
         }
     }
@@ -225,7 +234,7 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
      */
     @Override
     public void mousePressed(MouseEvent e) {
-        finalMidiHelper.playSomething(Translator.getNumberNoteFromName(e.getComponent().getName()), SOUND_SYNTHER);
+        finalMidiHelper.playSomething(Translator.getNumberNoteFromName(e.getComponent().getName()), SOUND_SYNTH);
 
     }
 
@@ -234,7 +243,7 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
      */
     @Override
     public void mouseReleased(MouseEvent e) {
-        finalMidiHelper.stopPlaying(Translator.getNumberNoteFromName(e.getComponent().getName()),SOUND_SYNTHER);
+        finalMidiHelper.stopPlaying(Translator.getNumberNoteFromName(e.getComponent().getName()), SOUND_SYNTH);
     }
 
     /**
@@ -283,10 +292,7 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
             finalMidiHelper.restartSong(song.getSongFile());
             finalMidiHelper.playSong(song.getSongFile());
 
-                            //Sets the tiles to play
-
-
-
+             //Sets the tiles to play
             setKeys(BusinessFacadeImp.getBusinessFacade().getTiles());
                                                                             //Gets the tiles to play.
                                                                             //Is this necessary or it
@@ -308,8 +314,8 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
         new ChangeTime(0);
         BusinessFacadeImp.getBusinessFacade().resetTilesKeys();
         initTileGame();
-        pianoTilesUI.refreshTiles();
-        pianoTilesUI.refreshSongList();
+        pianoTilesUI.refreshTiles(timePassed, velocityModifier);
+        pianoTilesUI.refreshSongList(getBusinessSongNames());
     }
 
     /**
@@ -318,11 +324,7 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
     public void addTime() {                               //When 1000 milliseconds have passed
         if (play && songStarted) {
            timePassed++;
-           pianoTilesUI.refreshTiles();
+           pianoTilesUI.refreshTiles(timePassed,velocityModifier);
         }
     }
-
-    public int getTimePassed() { return timePassed; }
-
-    public float getVelocityModifier() { return velocityModifier; }
 }

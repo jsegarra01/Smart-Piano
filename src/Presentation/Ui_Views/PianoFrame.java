@@ -41,7 +41,7 @@ public class PianoFrame extends JPanel {
      * Constructor for the TempFreePianoUI, you need to send the mainframe context and will create a card layout
      * @param mainFrame context necessary to create the card layout
      */
-    public PianoFrame(final MainFrame mainFrame/*, BusinessFacadeImp myFacade*/) {
+    public PianoFrame(final MainFrame mainFrame) {
         super();
         PianoFrame.mainFrame =mainFrame;
 
@@ -82,7 +82,7 @@ public class PianoFrame extends JPanel {
         musicPlayer.setBackground(Color.GRAY);
         musicPlayer.setOpaque(true);
 
-        registerController(new PianoFrameManager());
+        registerController(new PianoFrameManager(pianoTilesUISelector.getPianoTilesUISelectorManager()));
 
         buttonPanel.add(Box.createRigidArea(new Dimension(150, 17)));
         buttonPanel.add(freePiano);
