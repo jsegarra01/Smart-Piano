@@ -10,6 +10,7 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
+import static Presentation.DictionaryPiano.JLAB_SYNTH_TYPE;
 import static Presentation.Ui_Views.Tile.*;
 
 

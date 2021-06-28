@@ -22,7 +22,7 @@ import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.Objects;
 
-import static Presentation.DictionaryPiano.RECORDING_TIMER;
+import static Presentation.DictionaryPiano.*;
 import static Presentation.Dictionary_login.*;
 import static Presentation.Manager.MainFrame.card;
 import static Presentation.Manager.MainFrame.contenedor;
@@ -151,7 +151,7 @@ public class FreePianoUIManager implements ActionListener, MouseListener {
         switch (e.getActionCommand()) {
             case RECORDING_TIMER ->                           //each time 10 ms have happened, recordingTime will increase
                     recordingTime += 0.01;
-            case FreePianoUI.BTN_RECORD -> {                    //In the case that the Record button is pressed
+            case BTN_RECORD -> {                    //In the case that the Record button is pressed
                 if (recording) {//If we were recording and we want to stop
                     timer.stop();
                     BusinessFacadeImp.getBusinessFacade().noteRecordingUpdate(recordingNotes, recordingTime);
@@ -163,7 +163,7 @@ public class FreePianoUIManager implements ActionListener, MouseListener {
             }
             case Dictionary_login.PROFILE_BUTTON ->           //In the case that the Profile button is pressed
                     card.show(contenedor, PROFILE_UI);
-            case FreePianoUI.MODIFY -> {                        //In the case that the Modify button is pressed
+            case MODIFY -> {                        //In the case that the Modify button is pressed
                 AbstractButton abstractButton = (AbstractButton) e.getSource();
                 modifying = abstractButton.getModel().isSelected();
                 FreePianoUI.labelAppear(modifying);

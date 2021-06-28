@@ -50,6 +50,11 @@ public class DictionaryPiano {
     public static final String TIME_GRAPH = "timer";
     public static final String MUTE_BUTTON = "mute";
 
+    public static final String BTN_RECORD = " ";
+    public static final String BTN_TILE = "SOUND";
+    public static final String JLAB_SYNTH_TYPE = "Classic Piano";
+    public static final String MODIFY = "MODIFY_KEYS";
+
     public static final String URLROUTE = "https://www.mutopiaproject.org/cgibin/make-table.cgi?Instrument=Piano";
     public static final String PLAYICON = "Files/drawable/playbuttonWhite.png"; //Icon played
     public static final String PAUSEICON = "Files/drawable/pauseWhite.png"; //Icon pause

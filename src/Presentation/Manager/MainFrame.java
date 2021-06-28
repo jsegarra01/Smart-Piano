@@ -1,7 +1,6 @@
 package Presentation.Manager;
 
 //Imports needed from the dictionary and events
-import Business.BusinessFacade;
 import Business.BusinessFacadeImp;
 import Presentation.Ui_Views.*;
 
@@ -30,11 +29,11 @@ public class MainFrame extends JFrame {
         card = new CardLayout();
         contenedor = this.getContentPane();
 
-        PreMenuUI preMenuUI = new PreMenuUI(); //TODO
+        LoginUI loginUI = new LoginUI(); //TODO
         ProfileUI profileUI = new ProfileUI(); //TODO
         SignUpUI signUpUI = new SignUpUI(); //TODO
+        PreMenuUI preMenuUI = new PreMenuUI(loginUI,signUpUI); //TODO
         PianoFrame pianoFrame = new PianoFrame(this); //TODO
-        LoginUI loginUI = new LoginUI(); //TODO
 
         card.addLayoutComponent(preMenuUI, PRE_MENU_UI);
         card.addLayoutComponent(profileUI, PROFILE_UI);

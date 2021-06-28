@@ -6,6 +6,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
+import static Presentation.DictionaryPiano.*;
 import static Presentation.Dictionary_login.PROFILE_BUTTON;
 import static Presentation.Ui_Views.Tile.*;
 
@@ -20,10 +21,6 @@ import static Presentation.Ui_Views.Tile.*;
  *
  */
 public abstract class Piano extends JPanel {
-    public static final String BTN_RECORD = " ";
-    public static final String BTN_TILE = "SOUND";
-    public static final String JLAB_SYNTH_TYPE = "Classic Piano";
-    public static final String MODIFY = "MODIFY_KEYS";
     public static Label soundType;
 
     protected final ImageIcon iconRec = new ImageIcon("Files/drawable/recIcon.png");
@@ -34,7 +31,6 @@ public abstract class Piano extends JPanel {
     /**
      * private JTextField hey;
      */
-
     protected static ArrayList<Tile> keyboard;
     private final static String whiteTileLoc = "Files/drawable/white-key.png";
     private final static String blackTileLoc = "Files/drawable/black-key.png";

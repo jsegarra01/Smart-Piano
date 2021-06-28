@@ -19,12 +19,12 @@ import static Presentation.Dictionary_login.*;
  * @version 2.0 23 May 2021
  *
  */
-public class LoginUI extends JPanel{
+public class LoginUI extends JPanel {
     private final JLabel pianoText = new JLabel(SMART_PIANO_TEXT);
     private final JLabel logInText = new JLabel(LOG_IN_TEXT);
 
-    private static final JTextField usernameTextField = new JTextField();
-    private static final JPasswordField password = new JPasswordField();
+    private final JTextField usernameTextField = new JTextField();
+    private final JPasswordField password = new JPasswordField();
     private final JButton back = new JButton(BACK_BUTTON);
     private final JButton done = new JButton(DONE_BUTTON);
 
@@ -98,7 +98,7 @@ public class LoginUI extends JPanel{
         back.setAlignmentX(0.5f);
         back.setActionCommand(BACK_BUTTON);
 
-        registerController(new LoginUIManager());
+        registerController(new LoginUIManager(this));
 
         done.setAlignmentX(0.5f);
         done.setActionCommand(DONE_BUTTON);
@@ -152,14 +152,14 @@ public class LoginUI extends JPanel{
      * Obtains the username in the text field
      * @return username string
      */
-    public static String getUsernameLogin() {
+    public String getUsernameLogin() {
         return usernameTextField.getText();
     }
 
     /**
      * Sets the username in the text field
      */
-    public static void setUsernameLogin(String usernameLogin) {
+    public void setUsernameLogin(String usernameLogin) {
         usernameTextField.setText(usernameLogin);
     }
 
@@ -167,14 +167,14 @@ public class LoginUI extends JPanel{
      * Obtains the password in the text field
      * @return password string
      */
-    public static String getPasswordLogin() {
+    public String getPasswordLogin() {
         return String.valueOf(password.getPassword());
     }
 
     /**
      * Resets the information inside the the loginUI
      */
-    public static void resetUILogin() {
+    public void resetUILogin() {
         usernameTextField.setText("");
         password.setText("");
     }

@@ -20,6 +20,7 @@ import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.Objects;
 
+import static Presentation.DictionaryPiano.BTN_TILE;
 import static Presentation.Dictionary_login.*;
 import static Presentation.Manager.MainFrame.card;
 import static Presentation.Manager.MainFrame.contenedor;
@@ -119,7 +120,7 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
     public void actionPerformed(ActionEvent e) {
         // We distinguish between our buttons.
         switch (e.getActionCommand()) {
-            case PianoTilesUISelector.BTN_TILE:
+            case BTN_TILE:
                 Tile t = null;
                 Object obj = e.getSource();
                 if (obj instanceof Tile) {

@@ -1,7 +1,6 @@
 package Presentation.Ui_Views;
 
 //Imports all the libraries needed to create the card layout
-import Business.BusinessFacadeImp;
 import Presentation.Manager.PreMenuUIManager;
 
 import javax.swing.*;
@@ -21,16 +20,24 @@ import static Presentation.Dictionary_login.*;
  *
  */
 public class PreMenuUI extends JPanel{
+    private final JTextField usernameTextField = new JTextField();
     private final JLabel pianoText = new JLabel(SMART_PIANO_TEXT);
     private final JButton logIn = new JButton(LOG_IN_BUTTON);
     private final JButton signUp = new JButton(SIGN_UP_BUTTON);
     private final JButton guest = new JButton(ENTER_AS_GUEST_BUTTON);
+
+    private final LoginUI loginUI;
+    private final SignUpUI signUpUI;
+
     //private final BusinessFacadeImp myFacade;
     /**
      * Constructor for the PreMenuUI, you need to send the mainframe context and will create a card layout
+     * @param loginUI profileUI view
+     * @param signUpUI signUpUI view
      */
-    public PreMenuUI(/*BusinessFacadeImp myFacade*/) {
-        //this.myFacade = myFacade;
+    public PreMenuUI(LoginUI loginUI, SignUpUI signUpUI) {
+        this.loginUI = loginUI;
+        this.signUpUI = signUpUI;
         initialize();
     }
 
@@ -107,7 +114,7 @@ public class PreMenuUI extends JPanel{
         guest.setBorder(new EmptyBorder(12,88,12,88));
         guest.setOpaque(true);
 
-        registerController(new PreMenuUIManager(/*this.myFacade*/));
+        registerController(new PreMenuUIManager(this));
 
         userButtons.add(logIn);
         userButtons.add(Box.createRigidArea(new Dimension(10, 25)));
@@ -127,4 +134,15 @@ public class PreMenuUI extends JPanel{
         guest.addActionListener(listener);
     }
 
+    public void setUsernameLogin(String usernameLogin) {
+        usernameTextField.setText(usernameLogin);
+    }
+
+    public void resetLoginUI() {
+        loginUI.resetUILogin();
+    }
+
+    public void resetSignUpUI() {
+        signUpUI.resetUISignUpUI();
+    }
 }

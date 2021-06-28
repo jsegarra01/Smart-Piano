@@ -26,10 +26,13 @@ import static Presentation.Ui_Views.PianoFrame.centralPanel;
  *
  */
 public class LoginUIManager implements ActionListener {
+    private LoginUI loginUI;
     /**
      * Parametrized constructor
+     * @param loginUI The view of the LoginUI
      */
-    public LoginUIManager() {
+    public LoginUIManager(LoginUI loginUI) {
+        this.loginUI = loginUI;
     }
 
     /**
@@ -46,7 +49,7 @@ public class LoginUIManager implements ActionListener {
                 card.show(contenedor, PRE_MENU_UI);
                 break;
             case DONE_BUTTON:                          //In the case that the Done button is pressed
-                if(BusinessFacadeImp.getBusinessFacade().logIn(LoginUI.getUsernameLogin(), LoginUI.getPasswordLogin())){
+                if(BusinessFacadeImp.getBusinessFacade().logIn(loginUI.getUsernameLogin(), loginUI.getPasswordLogin())){
                     card.show(contenedor, PIANO_FRAME);
                     cc.show(centralPanel, FREE_PIANO_UI);
                     BusinessFacadeImp.getBusinessFacade().setPlaylists();

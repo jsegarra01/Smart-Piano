@@ -2,13 +2,13 @@ package Presentation.Manager;
 
 //Imports needed from the dictionary, events and mainframe
 import Business.BusinessFacadeImp;
+import Presentation.Ui_Views.SignUpUI;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import static Presentation.Dictionary_login.*;
 import static Presentation.Manager.MainFrame.*;
-import static Presentation.Ui_Views.LoginUI.setUsernameLogin;
 import static Presentation.Ui_Views.SignUpUI.*;
 
 /**
@@ -21,10 +21,14 @@ import static Presentation.Ui_Views.SignUpUI.*;
  *
  */
 public class SignUpUiManager  implements ActionListener {
+    private final SignUpUI signUpUI;
     /**
      * Parametrized constructor
+     * @param signUpUI signup View
      */
-    public SignUpUiManager() {}
+    public SignUpUiManager(SignUpUI signUpUI) {
+        this.signUpUI = signUpUI;
+    }
 
     /**
      * Method that will be called every time a button is pressed, overriden from the interface to provide an implementation.
@@ -40,9 +44,9 @@ public class SignUpUiManager  implements ActionListener {
                 break;
                 //In the case that the Done button is pressed
             case DONE_BUTTON:
-                if(BusinessFacadeImp.getBusinessFacade().SignUp(getUsernameSignUp(), getMailSignUp(),
-                        getPasswordSignUp(), getPasswordConfirmSignUp())){
-                    setUsernameLogin(getUsernameSignUp());
+                if(BusinessFacadeImp.getBusinessFacade().SignUp(signUpUI.getUsernameSignUp(), signUpUI.getMailSignUp(),
+                        signUpUI.getPasswordSignUp(), signUpUI.getPasswordConfirmSignUp())){
+                    signUpUI.setUsernameLogin(signUpUI.getUsernameSignUp());
                     BusinessFacadeImp.getBusinessFacade().setSongUser();
                     card.show(contenedor, PIANO_FRAME);
                 }
