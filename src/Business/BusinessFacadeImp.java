@@ -9,20 +9,11 @@ import Presentation.Manager.ErrorsManager;
 import Presentation.Manager.SpotiFrameManager;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.io.File;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import static Presentation.DictionaryPiano.PLAYLIST_UI;
-import static Presentation.Dictionary_login.*;
-import static Presentation.Manager.MainFrame.card;
-import static Presentation.Manager.MainFrame.contenedor;
-import static Presentation.Ui_Views.LoginUI.resetUILogin; //TODO
-import static Presentation.Ui_Views.LoginUI.setUsernameLogin; //TODO
-import static Presentation.Ui_Views.PianoTilesUISelector.setKeys; //TODO
-import static Presentation.Ui_Views.SignUpUI.*; //TODO
 
 /**
  * BusinessFacade
@@ -53,38 +44,15 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
         }
         return businessFacade;
     }
-    /**
-     * Shows the Sign up UI layout from the card layout
-     */
-    @Override
-    public void singUpStartup(){
-        resetUISignUpUI();
-        card.show(contenedor, SIGN_UP_UI);
-    }
-
-    /**
-     * Shows the Log in UI layout from the card layout
-     */
-    @Override
-    public void logInStartup(){
-        resetUILogin();
-        card.show(contenedor, LOGIN_UI);
-    }
 
     /**
      * Logs in to the user "guest" and shows the piano UI layout from the card layout
-     * @param name not used
-     * @param psw not used
      */
     @Override
-    public void enterAsAGuest(String name, String psw){
-        if(logIn(name, psw)){
-            setUsernameLogin("guest");
-            playlistManager.setPlaylists(UserManager.getUser().getUserName());
-            SpotiFrameManager.addPlaylists(new BusinessFacadeImp().getPlaylistManager().getPlaylists());
+    public void enterAsAGuest(){
+            setPlaylists();
+            SpotiFrameManager.addPlaylists(getPlaylists());
             setSong();
-            card.show(contenedor, PIANO_FRAME);
-        }
     }
 
     /**
@@ -126,38 +94,10 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
     }
 
     /**
-     * Calls the method to sign up
-     * @param username Username string which the user has inputted while signing up
-     * @param mail Mail string which the user has inputted while signing up
-     * @param password Password string which the user has inputted while signing up
-     * @param passwordConfirm PasswordConfirmation string which the user has inputted while signing up
-     */
-    @Override
-    public void finalSignUp(String username, String mail, String password, String passwordConfirm){
-        try {
-            if (!password.equals(passwordConfirm) || password.equals("")) {
-                setError(1);
-            }
-            else {
-                if (loginUserManager.signUser(username, mail, password)) {
-                    setUsernameLogin(getUsernameSignUp());
-                    setSongUser();
-                    card.show(contenedor, PIANO_FRAME);
-                } else {
-                    setError(1);
-                }
-            }
-        } catch (SQLException e) {
-            setError(0);
-        }
-    }
-
-    /**
      * Calls the method to delete a user
-     * @return True if deleted, false if not
      */
     @Override
-    public boolean deleteAccount() {
+    public void deleteAccount() {
         for(int i = 0; i< songManager.getSongs().size();i++){
            if(songManager.getSongs().get(i).getCreator().equals(UserManager.getUser().getUserName()) ||
                    songManager.getSongs().get(i).getAuthorName().equals(UserManager.getUser().getUserName())){
@@ -165,15 +105,16 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
            }
         }
         try {
-            return loginUserManager.deleteUser();
+            if (!loginUserManager.deleteUser()) {
+                setError(0);
+            }
         } catch (SQLException e) {
             setError(0);
-            return false;
         }
     }
 
     @Override
-    public boolean noteRecordingUpdate(ArrayList<RecordingNotes> recordingNotes, float recordingTime){
+    public void noteRecordingUpdate(ArrayList<RecordingNotes> recordingNotes, float recordingTime){
             JPanel myPanel = new JPanel();
             JTextField titleField = new JTextField(20);
             myPanel.add(titleField);
@@ -183,23 +124,14 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
             JOptionPane.showMessageDialog(null, myPanel, "Enter a title for the song", JOptionPane.INFORMATION_MESSAGE);
 
             recordedNotesSend(recordingNotes, titleField.getText(), box.isSelected(), recordingTime);
-        return false;
-    }
-
-    @Override
-    public boolean startRecordingNote(){
-        return true;
     }
 
     @Override
     public boolean modifyKey(String tileSelected, KeyEvent e, int KeyExisted){
         if(KeyExisted == -1) {
-            JOptionPane.showMessageDialog(contenedor,
-                    "This key is already assigned!", "Modify keys error" , JOptionPane.ERROR_MESSAGE);
+            setError(11);
             return true;
         }
-        /* FreePianoUI.modifyKey(Translator.getFromTile(tileSelected), e);
-        Translator.setKeys(KeyExisted, e.getExtendedKeyCode());*/
         return false;
 
     }
@@ -213,22 +145,16 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
                 "Playlist Creator", JOptionPane.PLAIN_MESSAGE, null, null, "New Playlist");
 
         if(myStr != null && myStr.length() > 0 && myStr.indexOf('\'') == -1){
-            new BusinessFacadeImp().newPlaylist(myStr);
+            newPlaylist(myStr);
             myPlayList = playlistManager.getFromName(myStr);
             //PlaylistUI.setSongsPlaylists(myPlayList);
             SpotiFrameManager.addPlaylists(playlistManager.getPlaylists());
         } else {
-            JOptionPane.showMessageDialog(null,
-                    "The input is not correct!", "Create Playlist Error" ,
-                    JOptionPane.ERROR_MESSAGE);
+            setError(12);
         }
         return myPlayList;
     }
 
-    @Override
-    public void setAllKeys(){
-        setKeys(tilesManager.getListTiles());
-    }
 
     /**
      * Saves a song created by the user to a midi file
@@ -316,8 +242,10 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
     }
 
     @Override
-    public boolean deleteSong(int i){
-        return songManager.deleteSong(getSong(i));
+    public void deleteSong(int i){
+        if (!songManager.deleteSong(getSong(i))) {
+            setError(3);
+        }
     }
 
     @Override
@@ -368,7 +296,22 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
     @Override
     public ArrayList<Song> getTopFive(){ return songManager.getTopFive(); }
 
+    @Override
+    public void addStats(Stadistics stats) {
+        if(!songManager.addingStatistics(stats)){
+            setError(9);
+        }
+    }
 
+    @Override
+    public void setPlaylists() {
+        playlistManager.setPlaylists(UserManager.getUser().getUserName());
+    }
+
+    @Override
+    public ArrayList<Playlist> getPlaylists() {
+        return playlistManager.getPlaylists();
+    }
 
 
 }

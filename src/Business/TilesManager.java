@@ -15,13 +15,13 @@ import java.util.ArrayList;
  *
  */
 public class TilesManager {
-    private ArrayList<Keys> listTiles = new ArrayList<>();
-    private static BusinessFacadeImp businessFacadeImp = new BusinessFacadeImp();
+    private ArrayList<Keys> listTiles;
 
     /**
      * Constructor of the TilesManager
      */
     public TilesManager() {
+        listTiles = new ArrayList<>();
     }
 
     /**
@@ -34,17 +34,17 @@ public class TilesManager {
 
     /**
      * Calls the method to read a midi file and gets a list of keys from it
-     * @param songIndex
+     * @param songIndex Int. Number of the song to be obtainable
      */
     public void setListTiles(int songIndex) {
         try {
 
             //PIANO TILES SELECTOR MANAGER.JAVA LINE 276 WHEN THE VALUE HAS CHANGED IN THE LIST.
-            listTiles = ReadMidi.readMidi(new BusinessFacadeImp().getSong(songIndex).getSongFile());
+            listTiles = ReadMidi.readMidi(BusinessFacadeImp.getBusinessFacade().getSong(songIndex).getSongFile());
             //System.out.println(listTiles.get(1).getDuration());
         } catch (Exception e) {
             listTiles.clear();
-            businessFacadeImp.setError(3);
+            BusinessFacadeImp.getBusinessFacade().setError(3);
         }
     }
 

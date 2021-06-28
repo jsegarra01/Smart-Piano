@@ -1,9 +1,12 @@
 package Presentation.Manager;
 
 //Imports needed from the dictionary, events and mainframe
+import Business.BusinessFacadeImp;
 import Business.ChangeTime;
+import Business.MidiHelper;
 import Presentation.Dictionary_login;
 
+import javax.sound.midi.MidiUnavailableException;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -26,13 +29,25 @@ import static Presentation.Ui_Views.SpotiUI.spotiPanel;
  *
  */
 public class PianoFrameManager implements ActionListener {
-
+    private final MidiHelper midiHelper;
+    private final PianoTilesUISelectorManager pianoTilesUISelectorManager;
 
     /**
      * Parametrized constructor
      */
     public PianoFrameManager() {
-        new ChangeTime();
+        MidiHelper midiHelper1;
+        try {
+            midiHelper1 = new MidiHelper();
+        } catch (MidiUnavailableException e) {
+            new BusinessFacadeImp().setError(8);
+            midiHelper1 = null;
+        }
+        this.midiHelper = midiHelper1;
+
+
+        pianoTilesUISelectorManager = new PianoTilesUISelectorManager(midiHelper);
+        new ChangeTime(pianoTilesUISelectorManager);
     }
 
     /**
@@ -49,6 +64,7 @@ public class PianoFrameManager implements ActionListener {
         playSong.setBackground(Color.GRAY);
         musicPlayer.setBackground(Color.GRAY);
         new ChangeTime(0);
+        midiHelper.stopSong();
 
         switch (e.getActionCommand()) {
             case Dictionary_login.PROFILE_BUTTON:       //In the case that the Profile button is pressed
@@ -59,7 +75,7 @@ public class PianoFrameManager implements ActionListener {
                 break;
             case PLAY_A_SONG:
                 try {
-                    new PianoTilesUISelectorManager(/*mainFrame.getMyFacade()*/).refreshPianoTilesUI();
+                   pianoTilesUISelectorManager.refreshPianoTilesUI();
                 } catch (NullPointerException h) {
                     playSong.setBackground(Color.getHSBColor(0,0,80.3f));
                 }

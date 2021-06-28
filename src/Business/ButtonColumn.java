@@ -20,15 +20,13 @@ import static Presentation.DictionaryPiano.DELETE_SONG;
  *  the model row number of the button that was clicked.
  *
  */
-public class ButtonColumn extends AbstractCellEditor
-        implements TableCellRenderer, TableCellEditor, ActionListener
-{
+public class ButtonColumn extends AbstractCellEditor implements TableCellRenderer, TableCellEditor, ActionListener {
     private final JTable table;
     private final Action action;
     private final Border originalBorder;
-    private Border focusBorder;
     private final JButton renderButton;
     private final JButton editButton;
+    private Border focusBorder;
     private Object editorValue;
 
     /**
@@ -40,8 +38,7 @@ public class ButtonColumn extends AbstractCellEditor
      *  @param action the Action to be invoked when the button is invoked
      *  @param column the column to which the button renderer/editor is added
      */
-    public ButtonColumn(JTable table, Action action, int column)
-    {
+    public ButtonColumn(JTable table, Action action, int column) {
         this.table = table;
 
         this.action = action;
@@ -115,28 +112,23 @@ public class ButtonColumn extends AbstractCellEditor
             //renderButton.setBackground(Color.red);
         }
 
-        if (hasFocus)
-        {
+        if (hasFocus) {
             renderButton.setBorder( focusBorder );
         }
-        else
-        {
+        else {
             renderButton.setBorder( originalBorder );
         }
 
 //		renderButton.setText( (value == null) ? "" : value.toString() );
-        if (value == null)
-        {
+        if (value == null) {
             renderButton.setText( "" );
             renderButton.setIcon( null );
         }
-        else if (value instanceof Icon)
-        {
+        else if (value instanceof Icon) {
             renderButton.setText( "" );
             renderButton.setIcon( (Icon)value );
         }
-        else
-        {
+        else {
             renderButton.setText( value.toString() );
             renderButton.setIcon( null );
         }
@@ -150,8 +142,7 @@ public class ButtonColumn extends AbstractCellEditor
     /*
      *	The button has been pressed. Stop editing and invoke the custom Action
      */
-    public void actionPerformed(ActionEvent e)
-    {
+    public void actionPerformed(ActionEvent e) {
         int row = table.convertRowIndexToModel( table.getEditingRow() );
         fireEditingStopped();
 

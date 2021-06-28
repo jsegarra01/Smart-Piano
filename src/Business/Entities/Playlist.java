@@ -12,7 +12,6 @@ import java.util.ArrayList;
  *
  */
 public class Playlist {
-
     private int playlistId;
     private final String playlistName;
     private final ArrayList<Song> songs;

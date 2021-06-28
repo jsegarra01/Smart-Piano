@@ -6,6 +6,11 @@ import Business.BusinessFacadeImp;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import static Presentation.Dictionary_login.*;
+import static Presentation.Manager.MainFrame.card;
+import static Presentation.Manager.MainFrame.contenedor;
+import static Presentation.Ui_Views.LoginUI.resetUILogin;
+import static Presentation.Ui_Views.LoginUI.setUsernameLogin;
+import static Presentation.Ui_Views.SignUpUI.resetUISignUpUI;
 
 /**
  * PreMenuUIManager
@@ -17,13 +22,10 @@ import static Presentation.Dictionary_login.*;
  *
  */
 public class PreMenuUIManager implements ActionListener {
-    //BusinessFacadeImp myFacade;
     /**
      * Parametrized constructor
      */
-    public PreMenuUIManager(/*BusinessFacadeImp myFacade*/) {
-        //this.myFacade = myFacade;
-    }
+    public PreMenuUIManager() {}
 
     /**
      * Method that will be called every time a button is pressed, overriden from the interface to provide an implementation.
@@ -33,9 +35,23 @@ public class PreMenuUIManager implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         // We distinguish between our buttons.
         switch (e.getActionCommand()) {
-            case LOG_IN_BUTTON -> BusinessFacadeImp.getBusinessFacade().logInStartup();//In the case that the LogIn button is pressed
-            case SIGN_UP_BUTTON -> BusinessFacadeImp.getBusinessFacade().singUpStartup();//In the case that the SignUp button is pressed
-            case ENTER_AS_GUEST_BUTTON -> BusinessFacadeImp.getBusinessFacade().enterAsAGuest("guest", "password");//In the case that the Guest button is pressed
+            case LOG_IN_BUTTON:
+                resetUILogin();
+                card.show(contenedor, LOGIN_UI);
+                //BusinessFacadeImp.getBusinessFacade().logInStartup();//In the case that the LogIn button is pressed
+                break;
+            case SIGN_UP_BUTTON:
+                resetUISignUpUI();
+                card.show(contenedor, SIGN_UP_UI);
+                //BusinessFacadeImp.getBusinessFacade().singUpStartup();//In the case that the SignUp button is pressed
+                break;
+            case ENTER_AS_GUEST_BUTTON:
+                if(BusinessFacadeImp.getBusinessFacade().logIn("guest", "password")) {
+                    setUsernameLogin("guest");
+                    BusinessFacadeImp.getBusinessFacade().enterAsAGuest();
+                    card.show(contenedor, PIANO_FRAME);
+                }
+                break;
         }
     }
 }

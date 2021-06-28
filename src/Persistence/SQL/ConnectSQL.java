@@ -14,8 +14,8 @@ public class ConnectSQL {
 
 
     /**
-     *
-     * @return
+     * Gets the connection to the database
+     * @return Connection. Obtains the handler of the connection to the database
      */
     public static Connection getInstance() throws SQLException{
         if(connection == null){
@@ -50,7 +50,7 @@ public class ConnectSQL {
      * @throws SQLException Throw that makes an exception if there has been any error with the connection to the
      *                      database. It will be handled with the try catch from where it is called.
      */
-    public void closeConnection () throws SQLException {
+    public static void closeConnection () throws SQLException {
         connection.close();
     }
 }

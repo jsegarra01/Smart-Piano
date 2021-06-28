@@ -12,10 +12,9 @@ import java.awt.event.KeyEvent;
  * @version 2.0 23 May 2021
  */
 public class Tile extends JButton {
-    private String name;
+    private final String name;
     protected static final float SIZE_MULT_WIDTH = (float) 1.16;
-    protected static float SIZE_MULT_HEIGHT = (float) 1.5;
-    private String myImagePath;
+    protected static final float SIZE_MULT_HEIGHT = (float) 1.5;
     private Color color;
     private ImageIcon myImage;
 
@@ -90,7 +89,7 @@ public class Tile extends JButton {
 
     /**
      * Gets the color of the tile
-     * @return
+     * @return Color. Type of color obtainable
      */
     public Color getColor() {
         return color;

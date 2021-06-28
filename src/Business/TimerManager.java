@@ -1,15 +1,15 @@
 package Business;
 
 import Business.Entities.Observer;
+import Presentation.Manager.PianoTilesUISelectorManager;
 
+import javax.sound.midi.MidiUnavailableException;
 import javax.swing.*;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import static Business.ChangeTime.actionTimer;
 import static Presentation.DictionaryPiano.PIANO_TILES_TIMER;
-import static Presentation.Manager.PianoTilesUISelectorManager.addTime;
 
 /**
  * TimerManager
@@ -21,13 +21,16 @@ import static Presentation.Manager.PianoTilesUISelectorManager.addTime;
  *
  */
 public class TimerManager extends Observer implements ActionListener {
-    protected Timer timer = new Timer(100, this);
+    private final Timer timer;
+    private final PianoTilesUISelectorManager pianoTilesUISelectorManager;
 
     /**
      * Constructor of the timer manager, sets the action command and some basic configurations
      */
-    public TimerManager(ChangeTime changeTime) {
+    public TimerManager(ChangeTime changeTime, PianoTilesUISelectorManager pianoTilesUISelectorManager) {
+        timer = new Timer(100, this);
         timer.setActionCommand(PIANO_TILES_TIMER);
+        this.pianoTilesUISelectorManager = pianoTilesUISelectorManager;
         this.subject = changeTime;
         this.subject.attach(this);
     }
@@ -37,16 +40,10 @@ public class TimerManager extends Observer implements ActionListener {
      */
     @Override
     public void update() {
-        switch (actionTimer) {
-            case 0:
-                timer.stop();
-                break;
-            case 1:
-                timer.start();
-                break;
-            case 2:
-                timer.restart();
-                break;
+        switch (subject.getActionTimer()) {
+            case 0 -> timer.stop();
+            case 1 -> timer.start();
+            case 2 -> timer.restart();
         }
     }
 
@@ -57,7 +54,7 @@ public class TimerManager extends Observer implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (PIANO_TILES_TIMER.equals(e.getActionCommand())) {
-            addTime();
+            pianoTilesUISelectorManager.addTime();
         }
     }
 }

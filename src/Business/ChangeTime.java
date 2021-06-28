@@ -2,6 +2,7 @@ package Business;
 
 import Business.Entities.Observer;
 import Business.TimerManager;
+import Presentation.Manager.PianoTilesUISelectorManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,17 +18,18 @@ public class ChangeTime {
     Defines a list of observers
      */
     private static final List<Observer> observers = new ArrayList<>();
-    public static int actionTimer = 0;
+    private static int actionTimer = 0;
 
     /**
-     * Constructor of ChangeTimer creating a new instance of the TimerManager
+     * Constructor of ChangeTimer
      */
-    public ChangeTime(){
-        new TimerManager(this);
+    public ChangeTime(PianoTilesUISelectorManager pianoTilesUISelectorManager) {
+        new TimerManager(this, pianoTilesUISelectorManager);
     }
 
     /**
-     * Constructor of ChangeTimer that changes depending on the state passed in the parameter
+     * Constructor of ChangeTimer that changes depending on the state passed in the parameter. It can create a new instance of the TimerManager
+     * or it can define the action of the timer
      * @param state Defines the action timer
      */
     public ChangeTime(int state) {
@@ -50,5 +52,9 @@ public class ChangeTime {
         for (Observer observer : observers) {
             observer.update();
         }
+    }
+
+    public int getActionTimer() {
+        return actionTimer;
     }
 }

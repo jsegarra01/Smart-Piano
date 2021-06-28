@@ -6,21 +6,25 @@ import Persistence.WebScrapping.SongDownloader;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import static Presentation.Manager.SpotiFrameManager.URLRoute;
+import static Presentation.DictionaryPiano.URLROUTE;
 
 public class WebScrapping {
-    public static SongDownloader songDownloader = new SongDownloader();
-    Timer timer = new Timer("MyTimer");
-    TimerTask timerTask = new TimerTask() {
-        @Override
-        public void run() {
-            songDownloader.downloadWebPage(URLRoute);
-            songDownloader.downloadAllSongsScrapping(URLRoute);
-        }
-    };
+    private static final SongDownloader songDownloader = new SongDownloader();
 
     public WebScrapping () {
+        Timer timer = new Timer("MyTimer");
+        TimerTask timerTask = new TimerTask() {
+            @Override
+            public void run() {
+                songDownloader.downloadWebPage(URLROUTE);
+                songDownloader.downloadAllSongsScrapping(URLROUTE);
+            }
+        };
         timer.scheduleAtFixedRate(timerTask,50, 60000L * ReadJson.getConfigJson().getScrappingTime());
+    }
+
+    public static SongDownloader getSongDownloader () {
+        return songDownloader;
     }
 
 }

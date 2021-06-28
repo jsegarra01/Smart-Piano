@@ -13,14 +13,11 @@ import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 public class Main {
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                MainFrame mainframe = new MainFrame(/*myFacade*/);
-                mainframe.setSize(1225, 675);
-                mainframe.setVisible(true);
-                mainframe.setDefaultCloseOperation(EXIT_ON_CLOSE);
-            }
+        SwingUtilities.invokeLater(() -> {
+            MainFrame mainframe = new MainFrame(/*myFacade*/);
+            mainframe.setSize(1225, 675);
+            mainframe.setVisible(true);
+            mainframe.setDefaultCloseOperation(EXIT_ON_CLOSE);
         });
 
     }

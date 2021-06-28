@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 
 import static Presentation.Dictionary_login.*;
 import static Presentation.Manager.MainFrame.*;
+import static Presentation.Ui_Views.LoginUI.setUsernameLogin;
 import static Presentation.Ui_Views.SignUpUI.*;
 
 /**
@@ -20,13 +21,10 @@ import static Presentation.Ui_Views.SignUpUI.*;
  *
  */
 public class SignUpUiManager  implements ActionListener {
-    //private BusinessFacadeImp myFacade;
     /**
      * Parametrized constructor
      */
-    public SignUpUiManager(/*BusinessFacadeImp myFacade*/) {
-        //this.myFacade = myFacade;
-    }
+    public SignUpUiManager() {}
 
     /**
      * Method that will be called every time a button is pressed, overriden from the interface to provide an implementation.
@@ -37,9 +35,18 @@ public class SignUpUiManager  implements ActionListener {
         // We distinguish between our buttons.
         switch (e.getActionCommand()) {
                 //In the case that the Back button is pressed
-            case BACK_BUTTON -> card.show(contenedor, PRE_MENU_UI);
+            case BACK_BUTTON:
+                card.show(contenedor, PRE_MENU_UI);
+                break;
                 //In the case that the Done button is pressed
-            case DONE_BUTTON -> BusinessFacadeImp.getBusinessFacade().finalSignUp(getUsernameSignUp(), getMailSignUp(), getPasswordSignUp(), getPasswordConfirmSignUp());
+            case DONE_BUTTON:
+                if(BusinessFacadeImp.getBusinessFacade().SignUp(getUsernameSignUp(), getMailSignUp(),
+                        getPasswordSignUp(), getPasswordConfirmSignUp())){
+                    setUsernameLogin(getUsernameSignUp());
+                    BusinessFacadeImp.getBusinessFacade().setSongUser();
+                    card.show(contenedor, PIANO_FRAME);
+                }
+                break;
         }
     }
 }

@@ -19,10 +19,14 @@ import static Persistence.Files.SongToMidi.writeMidi;
  *
  */
 public class SongManager {
-    private final SongDAO songManager = new SongCsvDAO();
+    private final SongDAO songManager;
     private static ArrayList<Song> songs;
-    private static final ArrayList<String> songNames = new ArrayList<>();
-    private static final BusinessFacadeImp businessFacade = new BusinessFacadeImp();
+    private static ArrayList<String> songNames;
+
+    public SongManager(){
+        songManager = new SongCsvDAO();
+        songNames = new ArrayList<>();
+    }
 
     /**
      * Gets all song names
@@ -76,7 +80,7 @@ public class SongManager {
                 songNames.add(song.getSongName());
             }
         } catch (SQLException e) {
-            businessFacade.setError(0);
+            BusinessFacadeImp.getBusinessFacade().setError(0);
         }
     }
 
@@ -94,7 +98,7 @@ public class SongManager {
                 songNames.add(song.getSongName());
             }
         } catch (SQLException e) {
-            businessFacade.setError(0);
+            BusinessFacadeImp.getBusinessFacade().setError(0);
         }
     }
 
@@ -103,7 +107,7 @@ public class SongManager {
      * @return The 5 more played songs
      */
     public ArrayList<Song> getTopFive(){
-        ArrayList<Song> aux = songs;
+        ArrayList<Song> aux = new ArrayList<>(songs);
         aux.sort(this::compare);
         ArrayList<Song> topFive = new ArrayList<>();
         for(int i=0; i<5 && i<aux.size(); i++){
@@ -118,7 +122,7 @@ public class SongManager {
      * @param song2 Second song
      * @return 1 if the first song has been played more times than the second, -1 elsewhere
      */
-    public int compare(Song song1, Song song2) {
+    private int compare(Song song1, Song song2) {
         if(song1.getTimesPlayed() <= song2.getTimesPlayed()){
             return 1;
         } else {
@@ -131,15 +135,19 @@ public class SongManager {
      * @param song Defines the song to be updated
      */
     public void updateSongPlayed(Song song){
-        songManager.updateTimesPlayed(song);
+        if (!songManager.updateTimesPlayed(song)) {
+            BusinessFacadeImp.getBusinessFacade().setError(9);
+        }
     }
 
     /**
      * Saves the desired stadistics
      * @param myStats Stadistics we want to save
      */
-    public void addingStadistics(Stadistics myStats){
-        songManager.saveStadistics(myStats);
+    public boolean addingStatistics(Stadistics myStats){
+         return songManager.saveStadistics(myStats);/* {
+            BusinessFacadeImp.getBusinessFacade().setError(9);
+        }*/
     }
 
     /**
@@ -161,11 +169,15 @@ public class SongManager {
     }
 
     public void saveSong (Song song) {
-        songManager.saveSong(song);
+        if (!songManager.saveSong(song)) {
+            BusinessFacadeImp.getBusinessFacade().setError(4);
+        }
     }
 
     public void saveSongWithDate(Song song){
-        songManager.saveSongWithDate(song);
+        if (!songManager.saveSongWithDate(song)) {
+            BusinessFacadeImp.getBusinessFacade().setError(4);
+        }
     }
 
     public Song getSongByName(String name){

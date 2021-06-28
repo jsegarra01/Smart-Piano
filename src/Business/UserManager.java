@@ -2,6 +2,7 @@ package Business;
 
 //Imports needed to connect the persistence layer and the business layer
 import Business.Entities.User;
+import Persistence.LoginUserDAO;
 import Persistence.SQL.Csv.LoginUserCsvDAO;
 
 import java.sql.SQLException;
@@ -17,9 +18,9 @@ import java.util.regex.Pattern;
  *
  */
 public class UserManager {
-    private final LoginUserCsvDAO loginUserManager = new LoginUserCsvDAO();
+    private final LoginUserDAO loginUserManager = new LoginUserCsvDAO();
     private static User user;
-    private static BusinessFacadeImp businessFacadeImp = new BusinessFacadeImp();
+
     public static User getUser() {
         return user;
     }
@@ -39,7 +40,7 @@ public class UserManager {
                     signUser(username, "WeLoveChallenge@lasal.com", password);
                     return true;
                 } catch (SQLException e) {
-                    businessFacadeImp.setError(0);
+                    BusinessFacadeImp.getBusinessFacade().setError(0);
                     return false;
                 }
             }
@@ -49,7 +50,7 @@ public class UserManager {
         }
 
         if (!returned) {
-            businessFacadeImp.setError(2);
+            BusinessFacadeImp.getBusinessFacade().setError(2);
         }
         return returned;
     }

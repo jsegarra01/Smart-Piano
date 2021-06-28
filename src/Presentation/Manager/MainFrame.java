@@ -19,27 +19,22 @@ import static Presentation.Dictionary_login.*;
  *
  */
 public class MainFrame extends JFrame {
-    public static  CardLayout card = new CardLayout(); //TODO Not static and not public Do not initialize, that in the constructor:(
-    public static  Container contenedor; //TODO Not static and not public
-    private PreMenuUI preMenuUI;
-    private LoginUI loginUI;
-    private SignUpUI signUpUI;
-    private ProfileUI profileUI;
-    private PianoFrame pianoFrame;
-    //private BusinessFacade myFacade;
+    public static CardLayout card; //TODO Not static and not public Do not initialize, that in the constructor:(
+    public static Container contenedor; //TODO Not static and not public
 
 
     /**
      * Parametrized constructor, creates the content pane plus the different card layouts available for the user interface
      */
-    public MainFrame(/*BusinessFacade myFacade*/) {
-        //this.myFacade = myFacade;
+    public MainFrame() {
+        card = new CardLayout();
         contenedor = this.getContentPane();
-        preMenuUI=  new PreMenuUI(/*myFacade*/); //TODO
-        profileUI = new ProfileUI(/*myFacade*/); //TODO
-        signUpUI = new SignUpUI(/*myFacade*/); //TODO
-        pianoFrame = new PianoFrame(this/*, myFacade*/); //TODO
-        loginUI = new LoginUI();
+
+        PreMenuUI preMenuUI = new PreMenuUI(); //TODO
+        ProfileUI profileUI = new ProfileUI(); //TODO
+        SignUpUI signUpUI = new SignUpUI(); //TODO
+        PianoFrame pianoFrame = new PianoFrame(this); //TODO
+        LoginUI loginUI = new LoginUI(); //TODO
 
         card.addLayoutComponent(preMenuUI, PRE_MENU_UI);
         card.addLayoutComponent(profileUI, PROFILE_UI);
@@ -53,12 +48,11 @@ public class MainFrame extends JFrame {
         contenedor.add(pianoFrame);
         contenedor.add(loginUI);
 
-
         contenedor.setLayout(card);
         contenedor.setSize(1500, 800);
         card.show(contenedor, PRE_MENU_UI);
 
         BusinessFacadeImp.getBusinessFacade().initializeWebScrapping();
     }
-    public BusinessFacade getMyFacade(){return BusinessFacadeImp.getBusinessFacade();} //TODO CHECK
+    public void setCard(Container parent, String name) {card.show(parent, name);}
 }

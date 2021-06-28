@@ -30,16 +30,17 @@ public class SpotiUI extends JPanel {
     private final StatisticsUI statisticsUI;
     private final PlaylistUI playlistUI;
     private final SongsUI songsUI;
+    private final SpotiFrameManager spotiFrameManager;
 
-    public static JPanel spotiPanel = new JPanel(new CardLayout());
+    public static final JPanel spotiPanel = new JPanel(new CardLayout());
     private static final JButton createPlaylist = new JButton(CREATE_PLAYLIST);
     private static final JButton showStadistics = new JButton(CREATE_STADISTICS);
     private static final JButton topSongs = new JButton(SHOW_TOP_SONGS);
     public static final JButton songsList = new JButton(SHOW_ALL_SONGS);
-    public static JLabel playlistLabel = new JLabel(PLAYLIST_LABEL);
+    public static final JLabel playlistLabel = new JLabel(PLAYLIST_LABEL);
     public static JButton shuffleButton = new JButton();
     private static JButton backButton = new JButton();
-    public static JButton playButton = new JButton();
+    public static final JButton playButton = new JButton();
     private static JButton nextButton = new JButton();
     public static JButton loopButton = new JButton();
     private static final JButton profile = new JButton(PROFILE_BUTTON);
@@ -50,22 +51,22 @@ public class SpotiUI extends JPanel {
     //public static BusinessFacadeImp myFacade;
 
 
-    public static JPanel leftList = new JPanel();
+    public static final JPanel leftList = new JPanel();
     private static final JPanel playlistsPanel = new JPanel();
     private static JScrollPane scroll = new JScrollPane();
 
     private static final JTextField songNameInputText = new JTextField();
-    public static JButton searchButton = new JButton();
+    public static final JButton searchButton = new JButton();
+
     /**
      * Constructor for the SpotiUI, you need to send the mainframe context and will create a card layout
      */
-    public SpotiUI(/*BusinessFacadeImp myFacade*/) {
-        //SpotiUI.myFacade = myFacade;
-        playlistUI = new PlaylistUI();
+    public SpotiUI() {
+        spotiFrameManager = new SpotiFrameManager();
+        playlistUI = new PlaylistUI(spotiFrameManager);
         statisticsUI = new StatisticsUI();
-        songsUI = new SongsUI();
+        songsUI = new SongsUI(spotiFrameManager);
         new GraphTimer();
-
         initialize();
     }
 

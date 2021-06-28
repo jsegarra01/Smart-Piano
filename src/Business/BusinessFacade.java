@@ -18,7 +18,7 @@ import java.util.ArrayList;
 public interface BusinessFacade {
 
 
-    void singUpStartup();
+    //void singUpStartup();
     /**
      * Checks if the user can log in or not
      * @param username Username string which the user has inputted while logging in
@@ -39,23 +39,10 @@ public interface BusinessFacade {
 
 
     /**
-     * Checks if the user can do the sign up or not
-     * @param username Username string which the user has inputted while signing up
-     * @param mail Mail string which the user has inputted while signing up
-     * @param password Password string which the user has inputted while signing up
-     * @param passwordConfirm PasswordConfirmation string which the user has inputted while signing up
-     * @return Boolean: 1 if it can sign up in, 0 if it cannot sign up
-     */
-    void finalSignUp(String username, String mail, String password, String passwordConfirm);
-
-
-
-    /**
      * Deletes the account and everything involved with the user introduced
-     * @return Boolean: If it can delete the account, returns 1, else 0
      */
 
-    boolean deleteAccount();
+    void deleteAccount();
 
     /**
      * Gets the arraylist of recorded notes from the UI
@@ -83,15 +70,13 @@ public interface BusinessFacade {
      */
     ArrayList<String> getSongName();
 
-    void setAllKeys();
-
     boolean modifyKey(String tileSelected, KeyEvent e, int KeyExisted);
 
-    boolean noteRecordingUpdate(ArrayList<RecordingNotes> recordingNotes, float recordingTime);
+    void noteRecordingUpdate(ArrayList<RecordingNotes> recordingNotes, float recordingTime);
 
-    void enterAsAGuest(String name, String psw);
+    void enterAsAGuest(/*String name, String psw*/);
 
-    void logInStartup();
+    //void logInStartup();
 
     Playlist createPlaylist();
 
@@ -105,7 +90,7 @@ public interface BusinessFacade {
 
     boolean addSongToPlaylist(String playlistName, String songName);
 
-    boolean deleteSong(int i);
+    void deleteSong(int i);
 
     void setTileArray(int songIndex);
 
@@ -114,8 +99,6 @@ public interface BusinessFacade {
     boolean newPlaylist(String playlist);
 
     void resetTilesKeys();
-
-    boolean startRecordingNote();
 
     void initializeWebScrapping();
 
@@ -132,5 +115,11 @@ public interface BusinessFacade {
     void updateSong(Song song);
 
     ArrayList<Song> getTopFive();
+
+    void addStats(Stadistics stats);
+
+    void setPlaylists();
+
+    ArrayList<Playlist> getPlaylists();
 
 }

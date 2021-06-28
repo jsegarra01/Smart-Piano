@@ -22,16 +22,15 @@ public class MidiHelper {
     private int whatInstrumentIsPlayed;
     private static Sequencer sequencer;
 
-    static {
+    static {        //TODO ALEX QUE CONY ESTÀS FENT AQUI
         try {
             sequencer = MidiSystem.getSequencer();
         } catch (MidiUnavailableException e) {
-            e.printStackTrace();
+            BusinessFacadeImp.getBusinessFacade().setError(3);
         }
     }
 
-    private boolean donePlaying;
-    private static String fileSong = "";
+    private static String fileSong = "";            //TODO PODEM TREURE EL STATIC NO?
     private static Sequence sequencePlay;
 
     /**
@@ -42,7 +41,6 @@ public class MidiHelper {
         Synthesizer synth = MidiSystem.getSynthesizer();
         long startTime = System.nanoTime();
         synth.open();
-        long estimatedTime = System.nanoTime() - startTime;
         midiChannels = synth.getChannels();
         instruments = synth.getDefaultSoundbank().getInstruments();
         sequencer.open();
@@ -55,9 +53,7 @@ public class MidiHelper {
      */
     public MidiHelper(MetaEventListener listener) throws MidiUnavailableException {
         Synthesizer synth = MidiSystem.getSynthesizer();
-        long startTime = System.nanoTime();
         synth.open();
-        long estimatedTime = System.nanoTime() - startTime;
         midiChannels = synth.getChannels();
         instruments = synth.getDefaultSoundbank().getInstruments();
         sequencer.addMetaEventListener(listener);
@@ -88,32 +84,29 @@ public class MidiHelper {
     /**
      * Plays the song stored in the file
      * @param filename File where the song is stored
-     * @return
      */
-    public boolean playSong(String filename){
+    public void playSong(String filename){
         try {
             if(!(filename.equals(fileSong))){
                 if(!restartSong(filename)){
-                    return false;
+                    return;
                 }
             }
 
              // Open device
             // Create sequence, the File must contain MIDI file data.
             sequencer.setSequence(sequencePlay); // load it into sequencer
+            sequencer.setLoopStartPoint(0);
             sequencer.start();               // start the playback
-            return true;
 
         } catch (InvalidMidiDataException e) {
-            e.printStackTrace();
-            return false;
+            BusinessFacadeImp.getBusinessFacade().setError(8);
         }
     }
 
     /**
      * Restarts the song stored in the file
      * @param filename File where the song is stored
-     * @return
      */
     public boolean restartSong(String filename){
         fileSong = filename;
@@ -121,24 +114,15 @@ public class MidiHelper {
             sequencePlay = MidiSystem.getSequence(new File(filename));
             return true;
         } catch (InvalidMidiDataException | IOException e) {
-            e.printStackTrace();
+            BusinessFacadeImp.getBusinessFacade().setError(8);
             return false;
         }
-    }
-
-    /**
-     * Gets which instrument is being played
-     * @return The instrument being played
-     */
-    public String getInstrument(){
-        return this.instruments[whatInstrumentIsPlayed].getName();
     }
 
     /**
      * Mutes the song
      */
     public void muteSong() {
-
         sequencer.setTrackMute(0, !sequencer.getTrackMute(0));
         sequencer.setTrackMute(1, !sequencer.getTrackMute(1));
         sequencer.setTrackMute(2, !sequencer.getTrackMute(2));
@@ -149,8 +133,6 @@ public class MidiHelper {
         sequencer.setTrackMute(7, !sequencer.getTrackMute(7));
         sequencer.setTrackMute(8, !sequencer.getTrackMute(8));
         sequencer.setTrackMute(9, !sequencer.getTrackMute(9));
-
-        //return sequencer.getTrackMute(0);
     }
 
     /**
@@ -160,24 +142,7 @@ public class MidiHelper {
         sequencer.stop();
     }
 
-    /**
-     * Gets if a song has finished playing
-     * @return True if finished, false if not
-     */
-    public boolean isDonePlaying() {
-        return donePlaying;
-    }
-
-    /**
-     * Sets if a song has finsished
-     * @param donePlaying True if finished, false if not
-     */
-    public void setDonePlaying(boolean donePlaying) {
-        this.donePlaying = donePlaying;
-    }
-
     public float getDuration(String filename) throws InvalidMidiDataException, IOException {
-        //restartSong(filename);
         sequencer.setSequence(MidiSystem.getSequence(new File(filename)));
         return sequencer.getMicrosecondLength();
     }

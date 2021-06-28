@@ -2,8 +2,10 @@ package Business;
 
 import Business.Entities.Playlist;
 import Business.Entities.Song;
+import Persistence.PlaylistDAO;
 import Persistence.SQL.Csv.PlaylistCsvDAO;
 import Persistence.SQL.Csv.SongCsvDAO;
+import Persistence.SongDAO;
 
 import java.util.ArrayList;
 
@@ -18,8 +20,8 @@ import java.util.ArrayList;
  */
 public class PlaylistManager {
     private ArrayList<Playlist> playlists;
-    private final PlaylistCsvDAO playlistCsvDAO = new PlaylistCsvDAO();
-    private final SongCsvDAO songCsvDAO = new SongCsvDAO();
+    private final PlaylistDAO playlistCsvDAO = new PlaylistCsvDAO();
+    private final SongDAO songCsvDAO = new SongCsvDAO();
 
     /**
      * Gets all the playlists

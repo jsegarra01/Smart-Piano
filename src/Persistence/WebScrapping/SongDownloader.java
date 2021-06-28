@@ -1,4 +1,5 @@
 package Persistence.WebScrapping;
+import Business.BusinessFacadeImp;
 import Business.Entities.Song;
 import Business.SongManager;
 import Persistence.SongDownloaderDAO;
@@ -13,8 +14,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 import static Business.Entities.WebHandler.getHtmlDocument;
-import static Business.Threads.WebScrapping.songDownloader;
-import static Presentation.Manager.SpotiFrameManager.URLRoute;
+import static Business.Threads.WebScrapping.getSongDownloader;
+import static Presentation.DictionaryPiano.URLROUTE;
 
 /**
  * The following Helper directly downloads any file from the internet only needing the URL. Creates a connection, downloads
@@ -36,14 +37,12 @@ import static Presentation.Manager.SpotiFrameManager.URLRoute;
  * For the purpose of specificity and reusability, we will create a general class:
  */
 public class SongDownloader implements SongDownloaderDAO {
-    private String nameSong = "";
-    private SongManager songManager = new SongManager();
 
     /**
      * Downloads a file from a specified URL ONLY FOR HTTP servers.
      * @param fileURL HTTP URL of the file to be downloaded
      * @param saveDir path of the directory to save the file
-     * @throws IOException
+     * @throws IOException IO Exception has happened
      */
     @Override
     public String downloadFile(String fileURL, String saveDir) throws IOException {
@@ -74,7 +73,7 @@ public class SongDownloader implements SongDownloaderDAO {
                 // opens an output stream to save into file
                 FileOutputStream outputStream = new FileOutputStream(saveFilePath);
 
-                int bytesRead = -1;
+                int bytesRead;
                 int BUFFER_SIZE = 100000;
                 byte[] buffer = new byte[BUFFER_SIZE];
                 while ((bytesRead = inputStream.read(buffer)) != -1) {
@@ -104,19 +103,20 @@ public class SongDownloader implements SongDownloaderDAO {
 
         // Exceptions
         catch (IOException mue) {
+            BusinessFacadeImp.getBusinessFacade().setError(10);
         }
     }
 
     @Override
     public void downloadAllSongsScrapping(String webpage) {
-        String URL = "";
+        String URL;
         int i = 0;
         while (i < 50) {
             if (i == 1) {
-                URL = URLRoute;
+                URL = URLROUTE;
             }
             else {
-                URL = String.format(URLRoute.replace("?", "?startat=%s&"), i);
+                URL = String.format(URLROUTE.replace("?", "?startat=%s&"), i);
             }
             try {
                 Document doc = getHtmlDocument(URL);
@@ -133,16 +133,18 @@ public class SongDownloader implements SongDownloaderDAO {
                             .substring(9,miniEles.get(19).getAllElements().get(3).html().length()-15);
                     String recordingDate = miniEles.get(18).text();
                     if(songCsv.getSongByName(piece) == null){
-                        String filename = songDownloader.downloadFile(downloadURL, "Files/WebScrappingResults");
+                        String filename = getSongDownloader().downloadFile(downloadURL, "Files/WebScrappingResults");
                         if(author2.substring(0,3).contains("by ")){
                             author2 = author2.substring(3);
                         }
-                        songCsv.saveSongWithDate(new Song(piece, author2, 0 /*new MidiHelper().getDuration(filename)/1000000*/, new SimpleDateFormat("yyyy/MM/dd").parse(recordingDate), true, filename, "guest", 0));
+                        if (!songCsv.saveSongWithDate(new Song(piece, author2, 0 , new SimpleDateFormat("yyyy/MM/dd").parse(recordingDate), true, filename, "qp6c43moyrgsej1hxvg3u98le", 0))) {
+                            BusinessFacadeImp.getBusinessFacade().setError(4);
+                        }
                     }
                 }
             }
             catch (IOException | ParseException e) {
-                System.out.println("ERROR");
+                BusinessFacadeImp.getBusinessFacade().setError(4);
             }
             //Extract the divs that have products inside of the previous general Div.
             i++;

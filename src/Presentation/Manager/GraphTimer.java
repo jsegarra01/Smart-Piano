@@ -9,6 +9,7 @@ import javax.swing.*;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Calendar;
 import java.util.Date;
 
 import static Presentation.DictionaryPiano.TIME_GRAPH;
@@ -16,18 +17,13 @@ import static Presentation.Manager.SpotiFrameManager.*;
 import static Presentation.Ui_Views.StatisticsUI.letsInitializeGraphs;
 
 public class GraphTimer implements ActionListener {
-    /*
-    Defines the timer that will control the update of the graph
-     */
-    private final Timer myTimer = new Timer(1000, this);
-
-    private static final Date date = new Date();
-    private final float sec = 0.01667f;
 
     /**
      * Constructor of the class GraphTimer
      */
     public GraphTimer() {
+        //Defines the timer that will control the update of the graph
+        Timer myTimer = new Timer(1000, this);
         myTimer.setActionCommand(TIME_GRAPH);
         myTimer.start();
     }
@@ -38,17 +34,15 @@ public class GraphTimer implements ActionListener {
      */
     @Override
     public void actionPerformed(ActionEvent e) {
-        switch (e.getActionCommand()) {
-            case TIME_GRAPH:
-                if (play) {
-                    new BusinessFacadeImp().getSongManager().addingStadistics(new Stadistics(date.getHours(), count_song, sec));
-                    if (count_song == 1) {
-                        count_song = 0;
-                    }
+        if (TIME_GRAPH.equals(e.getActionCommand())) {
+            if (getPlay()) {
+                Calendar calendar = Calendar.getInstance();
+                BusinessFacadeImp.getBusinessFacade().addStats(new Stadistics(calendar.get(Calendar.HOUR_OF_DAY), count_song, 0.01667f));
+                if (count_song == 1) {
+                    count_song = 0;
                 }
-                letsInitializeGraphs(getMinPlayed(), getNumSongs());
-                break;
+            }
+            letsInitializeGraphs(getMinPlayed(), getNumSongs());
         }
-
     }
 }

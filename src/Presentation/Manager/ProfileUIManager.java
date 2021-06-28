@@ -22,13 +22,11 @@ import static Presentation.Manager.MainFrame.contenedor;
  *
  */
 public class ProfileUIManager implements ActionListener {
-    //BusinessFacadeImp myFacade;
+
     /**
      * Parametrized constructor
      */
-    public ProfileUIManager(/*BusinessFacadeImp myFacade*/) {
-        //this.myFacade = myFacade;
-    }
+    public ProfileUIManager() {}
 
     /**
      * Method that will be called every time a button is pressed, overriden from the interface to provide an implementation.
