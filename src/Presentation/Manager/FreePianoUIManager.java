@@ -39,10 +39,10 @@ import static Presentation.Manager.MainFrame.contenedor;
  */
 public class FreePianoUIManager implements ActionListener, MouseListener {
     private static final int SOUND_SYNTHER = 0 ;
-
     /*
     Defines the player of the music of the FreePiano
      */
+    private final FreePianoUI freePianoUI;
     private final MidiHelper finalMidiHelper;
     private final KeyListener KL;
     private final ArrayList<RecordingNotes> recordingNotes;
@@ -57,10 +57,11 @@ public class FreePianoUIManager implements ActionListener, MouseListener {
 
     /**
      * Parametrized constructor, initializes the recorder and the different overwrites for when a key is pressed in the keyboard
+     * @param freePianoUI The view which is being controlled.
      */
-    public FreePianoUIManager() {
-        
+    public FreePianoUIManager(FreePianoUI freePianoUI) {
         //Initialitzations of the variables
+        this.freePianoUI = freePianoUI;
         recordingNotes = new ArrayList<>();
         recording = false;
         recordingTime = 0;
@@ -98,7 +99,7 @@ public class FreePianoUIManager implements ActionListener, MouseListener {
                         // if the user gives a new one, then it will just swap them and return false.
                         selected = BusinessFacadeImp.getBusinessFacade().modifyKey(tileSelected, e, Translator.setNewKey(tileSelected,e.getExtendedKeyCode()));
                         if(!selected){
-                            FreePianoUI.modifyKey(Translator.getFromTile(tileSelected), e);
+                            freePianoUI.modifyKey(Translator.getFromTile(tileSelected), e);
                             Translator.setKeys(Translator.setNewKey(tileSelected,e.getExtendedKeyCode()), e.getExtendedKeyCode());
                         }
                     }
@@ -166,7 +167,7 @@ public class FreePianoUIManager implements ActionListener, MouseListener {
             case MODIFY -> {                        //In the case that the Modify button is pressed
                 AbstractButton abstractButton = (AbstractButton) e.getSource();
                 modifying = abstractButton.getModel().isSelected();
-                FreePianoUI.labelAppear(modifying);
+                freePianoUI.labelAppear(modifying);
                 selected = false;
             }
         }
@@ -187,12 +188,12 @@ public class FreePianoUIManager implements ActionListener, MouseListener {
      */
     private void setIconKey(String string){
         int i = 0;
-        while(!string.equals(FreePianoUI.getKeyboard().get(i).getName()) &&
-                i<FreePianoUI.getKeyboard().size()){
+        while(!string.equals(freePianoUI.getKeyboard().get(i).getName()) &&
+                i<freePianoUI.getKeyboard().size()){
             i++;
         }
-        if(i!=FreePianoUI.getKeyboard().size()){
-            FreePianoUI.getKeyboard().get(i).setIcon();
+        if(i!=freePianoUI.getKeyboard().size()){
+            freePianoUI.getKeyboard().get(i).setIcon();
         }
     }
 
@@ -202,14 +203,14 @@ public class FreePianoUIManager implements ActionListener, MouseListener {
      */
     private void setIconBack(String string){
         int i = 0;
-        while(!string.equals(FreePianoUI.getKeyboard().get(i).getName()) && i<FreePianoUI.getKeyboard().size()){
+        while(!string.equals(freePianoUI.getKeyboard().get(i).getName()) && i<freePianoUI.getKeyboard().size()){
             i++;
         }
-        if(i!=FreePianoUI.getKeyboard().size()){
-            if(FreePianoUI.getKeyboard().get(i).getColor()== Color.WHITE){
-                FreePianoUI.getKeyboard().get(i).backToWhite();
+        if(i!=freePianoUI.getKeyboard().size()){
+            if(freePianoUI.getKeyboard().get(i).getColor()== Color.WHITE){
+                freePianoUI.getKeyboard().get(i).backToWhite();
             }else{
-                FreePianoUI.getKeyboard().get(i).backToBlack();
+                freePianoUI.getKeyboard().get(i).backToBlack();
             }
         }
     }
@@ -237,7 +238,7 @@ public class FreePianoUIManager implements ActionListener, MouseListener {
         }
         if(modifying){
             if(!selected){
-                FreePianoUI.setTileColor(t);
+                freePianoUI.setTileColor(t);
                 tileSelected = Objects.requireNonNull(t).getName();
                 selected = true;
             }

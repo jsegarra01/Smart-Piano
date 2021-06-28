@@ -21,43 +21,50 @@ import static Presentation.Ui_Views.Tile.*;
  *
  */
 public abstract class Piano extends JPanel {
-    public static Label soundType;
-
-    protected final ImageIcon iconRec = new ImageIcon("Files/drawable/recIcon.png");
-    protected final JButton recordB = new JButton(BTN_RECORD, iconRec);
-    protected final JButton profile = new JButton(PROFILE_BUTTON);
-    protected final JToggleButton modifyKeys = new JToggleButton(MODIFY);
-
-    /**
-     * private JTextField hey;
-     */
-    protected static ArrayList<Tile> keyboard;
-    private final static String whiteTileLoc = "Files/drawable/white-key.png";
-    private final static String blackTileLoc = "Files/drawable/black-key.png";
+    private static final String whiteTileLoc = "Files/drawable/white-key.png";
+    private static final String blackTileLoc = "Files/drawable/black-key.png";
     protected static final int numWhiteKeys = 14;
     protected static final int numBlackKeys = 10;
-    protected static final String[] whiteNotes =
+
+    public static final ImageIcon iconPressed = new ImageIcon("Files/drawable/selected.png");
+    public static final ImageIcon iconResetWhite = new ImageIcon(whiteTileLoc);
+    public static final ImageIcon iconResetBlack  = new ImageIcon(blackTileLoc);
+    public static final ImageIcon iconPressedDown = new ImageIcon("Files/drawable/white-key-down.png");
+
+    private final ImageIcon iconRec = new ImageIcon("Files/drawable/recIcon.png");
+    private final JButton recordB = new JButton(BTN_RECORD, iconRec);
+    private final JButton profile = new JButton(PROFILE_BUTTON);
+    private final JToggleButton modifyKeys = new JToggleButton(MODIFY);
+    private ArrayList<Tile> keyboard;
+
+    private final String[] whiteNotes =
             {"2c", "2d", "2e", "2f", "2g", "2a", "2b", "3c", "3d", "3e", "3f", "3g", "3a", "3b"};
-    protected static final String[] blackNotes =
+    private final String[] blackNotes =
             {"2c#", "2d#", "2f#", "2g#", "2a#", "3c#", "3d#", "3f#", "3g#", "3a#"};
-    protected static final String[] whiteLabels ={
+    private final String[] whiteLabels ={
             "Do", "Re", "Mi","Fa", "Sol", "La", "Si","Do", "Re", "Mi","Fa", "Sol", "La", "Si"
     };
-    protected static final String[] blackLabels = {
+    private final String[] blackLabels = {
             "Do#", "Re#", "Fa#", "Sol#", "La#", "Do#", "Re#", "Fa#", "Sol#", "La#"
     };
-    protected static JLayeredPane layeredPane;
-    protected final static ImageIcon iconPressed = new ImageIcon("Files/drawable/selected.png");
-    protected final static ImageIcon iconResetWhite = new ImageIcon(whiteTileLoc);
-    protected final static ImageIcon iconResetBlack  = new ImageIcon(blackTileLoc);
-    protected final static ImageIcon iconPressedDown = new ImageIcon("Files/drawable/white-key-down.png");
 
+    private JLayeredPane layeredPane;
+
+
+
+    public void setLayeredPane (JLayeredPane layeredPane1) {
+        layeredPane = layeredPane1;
+    }
+
+    public JLayeredPane getLayeredPane() {
+        return layeredPane;
+    }
 
     /**
      * Gets the current keyboard
      * @return ArrayList of Tile keyboard. Returns the keyboard we currently have
      */
-    public static ArrayList<Tile> getKeyboard() {
+    public ArrayList<Tile> getKeyboard() {
         return keyboard;
     }
 
@@ -144,4 +151,30 @@ public abstract class Piano extends JPanel {
         }
         return keyBoard;
     }
+
+    public ImageIcon getIconRec() {
+        return iconRec;
+    }
+
+    public JButton getRecordB() {
+        return recordB;
+    }
+
+    public JButton getProfilePiano() {
+        return profile;
+    }
+
+    public JToggleButton getModifyKeys(){
+        return modifyKeys;
+    }
+
+    public void setKeyboardPiano(ArrayList<Tile> newKeyboard) {
+        keyboard = newKeyboard;
+    }
+
+    public void setUpSoundType() {
+        Label soundType = new Label(JLAB_SYNTH_TYPE);
+        soundType.setBackground(Color.WHITE);
+    }
 }
+
