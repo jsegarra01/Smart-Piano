@@ -6,19 +6,31 @@ package Business.Entities;
  * The "Stadistics" class will contain the different methods needed to set and access the stadistics
  *
  * @author OOPD 20-21 ICE5
- * @version 1.0 21 Apr 2021
+ * @version 2.0 28 June 2021
  *
  */
 public class Stadistics {
+
+    /*
+    Defines the hour of that statistics
+     */
     private int hour;
+
+    /*
+    Defines the number of songs played in that hour
+     */
     private float numPlayed;
+
+    /*
+    Defines the minutes played in that hour
+     */
     private float minPlayed;
 
     /**
      * Constructor of the class stadistics
-     * @param hour Hour where the stadistics are from
-     * @param numPlayed Number of times a song has been played
-     * @param minPlayed Minutes a song has been played
+     * @param hour Defines the hour that the statistics belong to
+     * @param numPlayed Defines the amount of times a song has been played
+     * @param minPlayed Defines the number of minutes a song has been played
      */
     public Stadistics(int hour, float numPlayed, float minPlayed) {
         this.hour = hour;
@@ -27,20 +39,13 @@ public class Stadistics {
     }
 
     /**
-     * Gets the hour
-     * @return The hour
+     * Method that gets the hour of the statistic
+     * @return Int that stores the hour
      */
     public int getHour() {
         return hour;
     }
 
-    /**
-     * Sets the hour
-     * @param myHour The desired hour
-     */
-    public void setHour(int myHour) {
-        this.hour = myHour;
-    }
 
     /**
      * Gets the number of times a song has been played

@@ -8,11 +8,11 @@ import Business.Threads.WebScrapping;
 import Presentation.Manager.ErrorsManager;
 import Presentation.Manager.SpotiFrameManager;
 
-import javax.swing.*;
-import java.awt.event.KeyEvent;
-import java.io.File;
 import java.sql.SQLException;
 import java.util.ArrayList;
+
+import static Presentation.Ui_Views.SignUpUI.getMailSignUp;
+import static Presentation.Ui_Views.SignUpUI.getUsernameSignUp;
 
 
 /**
@@ -31,7 +31,6 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
     private static TilesManager tilesManager;
     private static ErrorsManager errorManager;
     private static BusinessFacade businessFacade;
-
 
     public static BusinessFacade getBusinessFacade(){
         if(businessFacade==null){
@@ -75,19 +74,37 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
      */
     @Override
     public boolean SignUp(String username, String mail, String password, String passwordConfirm) {
-        if (!password.equals(passwordConfirm)) {
+        if(username==null){
+            setError(13);
+            return false;
+        }else if(mail == null){
+            setError(14);
             return false;
         }
-        try {
-            if (loginUserManager.signUser(username,mail,password)) {
-                return true;
-            }
-            else {
-                setError(1);
+        if(password.length()>=8){
+            if(password.matches("(?=.*[0-9]).*") && password.matches("(?=.*[a-z]).*") && password.matches("(?=.*[A-Z]).*")){
+                if (!password.equals(passwordConfirm)) {
+                    setError(17);
+                    return false;
+                }
+                try {
+                    if (loginUserManager.signUser(username,mail,password)) {
+                        return true;
+                    }
+                    else {
+                        setError(1);
+                        return false;
+                    }
+                } catch (SQLException e) {
+                    setError(0);
+                    return false;
+                }
+            }else{
+                setError(16);
                 return false;
             }
-        } catch (SQLException e) {
-            setError(0);
+        }else{
+            setError(15);
             return false;
         }
     }
@@ -100,7 +117,7 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
         for(int i = 0; i< songManager.getSongs().size();i++){
            if(songManager.getSongs().get(i).getCreator().equals(UserManager.getUser().getUserName()) ||
                    songManager.getSongs().get(i).getAuthorName().equals(UserManager.getUser().getUserName())){
-               new File(songManager.getSongs().get(i).getSongFile()).delete();
+               songManager.deleteSongFile(i);
            }
         }
         try {
@@ -111,7 +128,7 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
             setError(0);
         }
     }
-
+/*
     @Override
     public void noteRecordingUpdate(ArrayList<RecordingNotes> recordingNotes, float recordingTime){
             JPanel myPanel = new JPanel();
@@ -123,10 +140,10 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
             JOptionPane.showMessageDialog(null, myPanel, "Enter a title for the song", JOptionPane.INFORMATION_MESSAGE);
 
             recordedNotesSend(recordingNotes, titleField.getText(), box.isSelected(), recordingTime);
-    }
+    }*/
 
     @Override
-    public boolean modifyKey(String tileSelected, KeyEvent e, int KeyExisted){
+    public boolean modifyKey(int KeyExisted){
         if(KeyExisted == -1) {
             setError(11);
             return true;
@@ -136,12 +153,8 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
     }
 
     @Override
-    public Playlist createPlaylist(){
+    public Playlist createPlaylist(String myStr){
         Playlist myPlayList = null;
-
-        String myStr = (String)JOptionPane.showInputDialog(
-                null, "Which name is your playlist going to have?",
-                "Playlist Creator", JOptionPane.PLAIN_MESSAGE, null, null, "New Playlist");
 
         if(myStr != null && myStr.length() > 0 && myStr.indexOf('\'') == -1){
             newPlaylist(myStr);
@@ -162,17 +175,11 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
      */
     @Override
     public void recordedNotesSend(ArrayList<RecordingNotes> recordedNotes, String songName, boolean isPublic, float endtime) {
-        songManager.saveRecording(recordedNotes,songName,isPublic,endtime);
+        if(!songManager.saveRecording(recordedNotes,songName,isPublic,endtime)){
+            setError(0);
+        }
     }
 
-    /**
-     * Gets the playlist manager
-     * @return The playlist manager
-     */
-    @Override
-    public PlaylistManager getPlaylistManager() {
-        return playlistManager;
-    }
 
     /**
      * Gets a playlist based on its name
@@ -211,7 +218,9 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
      */
     @Override
     public void setSongUser() {
-        songManager.setSongs(UserManager.getUser().getUserName());
+        if(!songManager.setSongs(UserManager.getUser().getUserName())){
+            setError(0);
+        }
     }
 
     /**
@@ -219,7 +228,9 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
      */
     @Override
     public void setSong(){
-        songManager.setSongs();
+        if(!songManager.setSongs()){
+            setError(0);
+        }
     }
 
     @Override
@@ -230,11 +241,6 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
     @Override
     public Song getSong(int index) {
         return songManager.getSong(index);
-    }
-
-    @Override
-    public SongManager getSongManager() {
-        return songManager;
     }
 
     @Override
@@ -286,7 +292,9 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
 
     @Override
     public void updateSong(Song song){
-        songManager.updateSongPlayed(song);
+        if(!songManager.updateSongPlayed(song)){
+            setError(9);
+        }
     }
 
     @Override

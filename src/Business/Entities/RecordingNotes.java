@@ -6,18 +6,30 @@ package Business.Entities;
  * The "RecordingNotes" class will contain the different methods needed to set and access the attributes of the recorded notes
  *
  * @author OOPD 20-21 ICE5
- * @version 1.0 21 Apr 2021
+ * @version 2.0 28 June 2021
  *
  */
 public class RecordingNotes {
+
+    /*
+    Defines the key of the recording note
+     */
     private final String key;
+
+    /*
+    Defines the time it has started to be pressed
+     */
     private final float time;
+
+    /*
+    Defines the duration to be pressed
+     */
     private float duration = 0;
 
     /**
      * Constructor of the class RecordingNotes
-     * @param key Key of the recorded note
-     * @param startTime Time when it has been pressed
+     * @param key Defines the key of the recorded note
+     * @param startTime Defines the time when it has been pressed
      */
     public RecordingNotes (String key, float startTime) {
         this.key = key;
@@ -25,32 +37,32 @@ public class RecordingNotes {
     }
 
     /**
-     * Sets the duration of a key (the time it has been pressed)
-     * @param endTime Duration of the key
+     * Method that sets the duration of a key (the time it has been pressed)
+     * @param endTime Defines the duration of the key
      */
     public void setDuration (float endTime) {
         this.duration = endTime;
     }
 
     /**
-     * Gets the time a key has been pressed
-     * @return The time a key has been pressed
+     * Method that gets the time a key has been pressed
+     * @return Float that stores the time the key has been pressed
      */
     public float getDuration() {
         return duration;
     }
 
     /**
-     * Gets the moment a key has been pressed
-     * @return When it has been pressed
+     * Method that gets the moment a key has been pressed
+     * @return Float that stores when the key has been pressed
      */
     public float getTime() {
         return time;
     }
 
     /**
-     * Gets the key
-     * @return The key
+     * Method that gets the key
+     * @return String that stores the key
      */
     public String getKey() {
         return key;

@@ -9,7 +9,7 @@ import java.util.Date;
  * The "SongRecorded" class will contain the different methods needed to set and access the attributes of a recorded song
  *
  * @author OOPD 20-21 ICE5
- * @version 1.0 21 Apr 2021
+ * @version 2.0 28 June 2021
  *
  */
 public class SongRecorded {

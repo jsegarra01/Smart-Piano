@@ -52,12 +52,6 @@ public interface BusinessFacade {
 
 
     /**
-     * Gets the PlayListManager
-     * @return PlaylistManager returns the manager for the playlist in order to implement its methods
-     */
-    PlaylistManager getPlaylistManager();
-
-    /**
      * Obtains and saves the songs of the user logged
      */
     void setSongUser();
@@ -70,23 +64,21 @@ public interface BusinessFacade {
      */
     ArrayList<String> getSongName();
 
-    boolean modifyKey(String tileSelected, KeyEvent e, int KeyExisted);
+    boolean modifyKey(int KeyExisted);
 
-    void noteRecordingUpdate(ArrayList<RecordingNotes> recordingNotes, float recordingTime);
+    //void noteRecordingUpdate(ArrayList<RecordingNotes> recordingNotes, float recordingTime);
 
     void enterAsAGuest(/*String name, String psw*/);
 
     //void logInStartup();
 
-    Playlist createPlaylist();
+    Playlist createPlaylist(String myStr);
 
     Song getSong(int index);
 
     Playlist getPlaylist(String name);
 
     boolean deleteSongFromPlaylist(String playlistName, String songName);
-
-    SongManager getSongManager();
 
     boolean addSongToPlaylist(String playlistName, String songName);
 

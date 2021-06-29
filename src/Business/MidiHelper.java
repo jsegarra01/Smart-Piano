@@ -1,6 +1,4 @@
 package Business;
-import Presentation.Manager.SpotiFrameManager;
-
 import javax.sound.midi.*;
 import javax.sound.midi.MidiSystem;
 import javax.sound.midi.MidiUnavailableException;
@@ -39,7 +37,6 @@ public class MidiHelper {
      */
     public MidiHelper() throws MidiUnavailableException {
         Synthesizer synth = MidiSystem.getSynthesizer();
-        long startTime = System.nanoTime();
         synth.open();
         midiChannels = synth.getChannels();
         instruments = synth.getDefaultSoundbank().getInstruments();

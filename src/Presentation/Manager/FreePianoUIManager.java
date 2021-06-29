@@ -96,7 +96,7 @@ public class FreePianoUIManager implements ActionListener, MouseListener {
                     if(selected){
                         // Will only return true if the key was already assigned to which the user s trying to give,
                         // if the user gives a new one, then it will just swap them and return false.
-                        selected = BusinessFacadeImp.getBusinessFacade().modifyKey(tileSelected, e, Translator.setNewKey(tileSelected,e.getExtendedKeyCode()));
+                        selected = BusinessFacadeImp.getBusinessFacade().modifyKey(Translator.setNewKey(tileSelected,e.getExtendedKeyCode()));
                         if(!selected){
                             freePianoUI.modifyKey(Translator.getFromTile(tileSelected), e);
                             Translator.setKeys(Translator.setNewKey(tileSelected,e.getExtendedKeyCode()), e.getExtendedKeyCode());
@@ -104,7 +104,7 @@ public class FreePianoUIManager implements ActionListener, MouseListener {
                     }
                 }else{
                     if(Translator.getPressedFromKey(e.getExtendedKeyCode()) !=null){
-                        if(Objects.requireNonNull(Translator.getPressedFromKey(e.getExtendedKeyCode())).isPressed()){
+                        if(!Objects.requireNonNull(Translator.getPressedFromKey(e.getExtendedKeyCode())).isPressed()){
                             finalMidiHelper.playSomething(Translator.getNumberNoteFromName(Translator.getFromKey(e.getExtendedKeyCode())),SOUND_SYNTHER);
                             Objects.requireNonNull(Translator.getPressedFromKey(e.getExtendedKeyCode())).setPressed(true);
                             //This gets the initial timer and key pressed for the first time it is clicked
@@ -154,7 +154,8 @@ public class FreePianoUIManager implements ActionListener, MouseListener {
             case BTN_RECORD -> {                    //In the case that the Record button is pressed
                 if (recording) {//If we were recording and we want to stop
                     timer.stop();
-                    BusinessFacadeImp.getBusinessFacade().noteRecordingUpdate(recordingNotes, recordingTime);
+                    noteRecordingUpdate();
+                    //BusinessFacadeImp.getBusinessFacade().noteRecordingUpdate(recordingNotes, recordingTime);
                 } else {                                      //If we want to start recording
                     recordingTime = 0;
                     timer.restart();
@@ -264,6 +265,25 @@ public class FreePianoUIManager implements ActionListener, MouseListener {
      */
     @Override
     public void mouseExited(MouseEvent e) {
+
+    }
+
+    private void noteRecordingUpdate(){
+        JPanel myPanel = new JPanel();
+        JTextField titleField = new JTextField(20);
+        myPanel.add(titleField);
+        JCheckBox box = new JCheckBox("is public?");
+        myPanel.add(box);
+
+        int option = JOptionPane.showInternalConfirmDialog(null, myPanel, "Enter a title for the song", JOptionPane.OK_CANCEL_OPTION);
+        if(option == JOptionPane.OK_OPTION){
+            if(titleField.getText().isEmpty()){
+                BusinessFacadeImp.getBusinessFacade().setError(18);
+                noteRecordingUpdate();
+            }else{
+                BusinessFacadeImp.getBusinessFacade().recordedNotesSend(recordingNotes, titleField.getText(), box.isSelected(), recordingTime);
+            }
+        }
 
     }
 }

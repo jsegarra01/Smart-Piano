@@ -93,7 +93,7 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
     public SpotiFrameManager() {
         MidiHelper finalMidiHelper1;
         try {
-            finalMidiHelper1 = new MidiHelper();
+            finalMidiHelper1 = new MidiHelper(listener);
         } catch (MidiUnavailableException e) {
             finalMidiHelper1 = null;
         }
@@ -150,6 +150,9 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
                 cc.show(spotiFrame.getSpotiPanel(), SONGS_UI);
                 break;
             case CREATE_PLAYLIST:
+                String myStr = (String)JOptionPane.showInputDialog(
+                        null, "What name is your playlist going to have?",
+                        "Playlist Creator", JOptionPane.PLAIN_MESSAGE, null, null, "New Playlist");
                 playlist = BusinessFacadeImp.getBusinessFacade().createPlaylist();
                 if(playlist != null){
                     spotiFrame.getPlaylistUI().setSongsPlaylists(playlist);
@@ -273,7 +276,7 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
                                 ((DefaultTableModel)table.getModel()).removeRow(modelRow);
                                 BusinessFacadeImp.getBusinessFacade().deleteSong(modelRow);
                                 BusinessFacadeImp.getBusinessFacade().setSongUser();
-                                BusinessFacadeImp.getBusinessFacade().getPlaylistManager().setPlaylists(UserManager.getUser().getUserName());
+                                BusinessFacadeImp.getBusinessFacade().setPlaylists();
                             }
                         }
                     }
