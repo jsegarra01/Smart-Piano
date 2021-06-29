@@ -153,7 +153,7 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
                 String myStr = (String)JOptionPane.showInputDialog(
                         null, "What name is your playlist going to have?",
                         "Playlist Creator", JOptionPane.PLAIN_MESSAGE, null, null, "New Playlist");
-                playlist = BusinessFacadeImp.getBusinessFacade().createPlaylist();
+                playlist = BusinessFacadeImp.getBusinessFacade().createPlaylist(myStr);
                 if(playlist != null){
                     spotiFrame.getPlaylistUI().setSongsPlaylists(playlist);
                     addPlaylists(BusinessFacadeImp.getBusinessFacade().getPlaylists());

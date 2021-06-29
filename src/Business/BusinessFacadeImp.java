@@ -11,8 +11,8 @@ import Presentation.Manager.SpotiFrameManager;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import static Presentation.Ui_Views.SignUpUI.getMailSignUp;
-import static Presentation.Ui_Views.SignUpUI.getUsernameSignUp;
+//import static Presentation.Ui_Views.SignUpUI.getMailSignUp;
+//import static Presentation.Ui_Views.SignUpUI.getUsernameSignUp;
 
 
 /**
