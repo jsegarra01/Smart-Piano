@@ -10,19 +10,20 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Calendar;
-import java.util.Date;
 
 import static Presentation.DictionaryPiano.TIME_GRAPH;
 import static Presentation.Manager.SpotiFrameManager.*;
-import static Presentation.Ui_Views.StatisticsUI.letsInitializeGraphs;
 
 public class GraphTimer implements ActionListener {
+    private final SpotiFrameManager spotiFrameManager;
 
     /**
      * Constructor of the class GraphTimer
+     * @param spotiFrameManager controller spotiFrame
      */
-    public GraphTimer() {
+    public GraphTimer(SpotiFrameManager spotiFrameManager) {
         //Defines the timer that will control the update of the graph
+        this.spotiFrameManager = spotiFrameManager;
         Timer myTimer = new Timer(1000, this);
         myTimer.setActionCommand(TIME_GRAPH);
         myTimer.start();
@@ -35,14 +36,14 @@ public class GraphTimer implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (TIME_GRAPH.equals(e.getActionCommand())) {
-            if (getPlay()) {
+            if (spotiFrameManager.getPlay()) {
                 Calendar calendar = Calendar.getInstance();
                 BusinessFacadeImp.getBusinessFacade().addStats(new Stadistics(calendar.get(Calendar.HOUR_OF_DAY), count_song, 0.01667f));
                 if (count_song == 1) {
                     count_song = 0;
                 }
             }
-            letsInitializeGraphs(getMinPlayed(), getNumSongs());
+            spotiFrameManager.getStatisticsFrame().letsInitializeGraphs(spotiFrameManager.getMinPlayed(), spotiFrameManager.getNumSongs());
         }
     }
 }

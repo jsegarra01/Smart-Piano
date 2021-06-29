@@ -16,11 +16,10 @@ import java.util.LinkedList;
  *
  */
 public class StatisticsUI extends JPanel {
+    private LinkedList<Float> numMin = new LinkedList<>();
+    private LinkedList<Float> numSongs = new LinkedList<>();
 
-    private static LinkedList<Float> numMin = new LinkedList<>();
-    private static LinkedList<Float> numSongs = new LinkedList<>();
-
-    private static final JPanel panel = new JPanel(new BorderLayout());
+    private final JPanel panel = new JPanel(new BorderLayout());
 
     /**
      * Constructor for the StatisticsUI, you need to send the mainframe context and will create a card layout
@@ -34,7 +33,7 @@ public class StatisticsUI extends JPanel {
     /**
      * The initialize function that creates the card layout for the StatisticsUI
      */
-    public static void initialize() {
+    public void initialize() {
         panel.removeAll();
         JPanel layout = new JPanel(new BorderLayout());
         layout.setBackground(Color.black);
@@ -52,7 +51,7 @@ public class StatisticsUI extends JPanel {
     /**
      * Creates the graphs with the statistics recolected and displays them
      */
-    public static void createAndShowGui() {
+    public void createAndShowGui() {
         Graph graph1 = new Graph(numSongs, "Number of times played", true);
         JLabel title1 = new JLabel("# Songs");
         title1.setHorizontalAlignment(JLabel.CENTER);
@@ -88,16 +87,16 @@ public class StatisticsUI extends JPanel {
      * Sets the number of minutes played by hour
      * @param min List of floats where each number in the list is the amount of minutes played in that hour
      */
-    public static void setNumMin(LinkedList<Float> min){
-        numMin=min;
+    public void setNumMin(LinkedList<Float> min){
+        numMin = min;
     }
 
     /**
      * Sets the number of songs played by hour
      * @param songs List of floats where each number in the list is the amount of songs played in that hour
      */
-    public static void setNumSongs(LinkedList<Float> songs){
-        numSongs=songs;
+    public void setNumSongs(LinkedList<Float> songs){
+        numSongs = songs;
     }
 
     /**
@@ -105,7 +104,7 @@ public class StatisticsUI extends JPanel {
      * @param numMin Minutes played per hour
      * @param numSongs Songs played per hour
      */
-    public static void letsInitializeGraphs(LinkedList<Float> numMin, LinkedList<Float> numSongs){
+    public void letsInitializeGraphs(LinkedList<Float> numMin, LinkedList<Float> numSongs){
         setNumMin(numMin);
         setNumSongs(numSongs);
         initialize();

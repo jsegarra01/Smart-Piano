@@ -50,7 +50,6 @@ public class LoginUIManager implements ActionListener {
                     card.show(contenedor, PIANO_FRAME);
                     cc.show(loginUI.getCentralPanel(), FREE_PIANO_UI);
                     BusinessFacadeImp.getBusinessFacade().setPlaylists();
-                    SpotiFrameManager.addPlaylists(BusinessFacadeImp.getBusinessFacade().getPlaylists());
                     BusinessFacadeImp.getBusinessFacade().setSongUser();
                 }
                 break;

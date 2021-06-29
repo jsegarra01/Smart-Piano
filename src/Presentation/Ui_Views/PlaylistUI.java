@@ -25,14 +25,17 @@ import static Presentation.DictionaryPiano.*;
 public class PlaylistUI extends JPanel {
     private final JPanel panel = new JPanel(new BorderLayout());
     private Playlist playlistGeneral;
+    private final SpotiFrameManager spotiFrameManager;
 
 
     /**
      * Constructor for the PlaylistUI, you need to send the mainframe context and will create a card layout
      *
     // * @param mainFrame context necessary to create the card layout
+     * @param spotiFrameManager manager of the spotiframe
      */
-    public PlaylistUI() {
+    public PlaylistUI(SpotiFrameManager spotiFrameManager) {
+        this.spotiFrameManager = spotiFrameManager;
         initialize();
     }
 

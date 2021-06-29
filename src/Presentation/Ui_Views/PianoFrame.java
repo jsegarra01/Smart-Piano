@@ -3,6 +3,7 @@ package Presentation.Ui_Views;
 //Imports all necessary libraries
 import Presentation.Manager.PianoFrameManager;
 import Presentation.Manager.PianoTilesUISelectorManager;
+import Presentation.Manager.SpotiFrameManager;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -25,12 +26,13 @@ import static Presentation.DictionaryPiano.*;
 public class PianoFrame extends JPanel {
     private final MainFrame mainFrame;
 
+    private final JPanel spotiPanel = new JPanel(new CardLayout());
     private final JButton freePiano = new JButton(FREE_PIANO);
     private final JButton playSong = new JButton(PLAY_A_SONG);
     private final JButton musicPlayer = new JButton(MUSIC_PLAYER);
 
     private final PianoTilesUISelector pianoTilesUISelector;
-    private final SpotiUI spotiUI;
+    private final SpotiFrame spotiFrame;
     private final FreePianoUI freePianoUI;
 
 
@@ -42,7 +44,7 @@ public class PianoFrame extends JPanel {
         super();
         this.mainFrame = mainFrame;
         pianoTilesUISelector = new PianoTilesUISelector();
-        spotiUI = new SpotiUI();
+        spotiFrame = new SpotiFrame(this);
         freePianoUI = new FreePianoUI();
         initialize();
     }
@@ -93,7 +95,7 @@ public class PianoFrame extends JPanel {
 
         mainFrame.getCentralPanel().add(freePianoUI, FREE_PIANO_UI);
         mainFrame.getCentralPanel().add(pianoTilesUISelector, PIANO_TILES_UI_SELECTOR);
-        mainFrame.getCentralPanel().add(spotiUI, SPOTI_UI);
+        mainFrame.getCentralPanel().add(spotiFrame, SPOTI_UI);
         this.add(mainFrame.getCentralPanel(), BorderLayout.CENTER);
 
         this.revalidate();
@@ -124,11 +126,17 @@ public class PianoFrame extends JPanel {
         musicPlayer.setBackground(color);
     }
 
-    public PianoTilesUISelectorManager getPianoTilesUIManager () {
-        return pianoTilesUISelector.getPianoTilesUISelectorManager();
-    }
+    public PianoTilesUISelectorManager getPianoTilesUIManager () { return pianoTilesUISelector.getPianoTilesUISelectorManager(); }
 
     public JPanel getCentralPanel() {
         return mainFrame.getCentralPanel();
+    }
+
+    public JPanel getSpotiPanel() {
+        return spotiPanel;
+    }
+
+    public SpotiFrameManager getSpotiFrameManager() {
+        return spotiFrame.spotiFrameManager();
     }
 }
