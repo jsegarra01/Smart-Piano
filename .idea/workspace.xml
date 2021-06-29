@@ -67,6 +67,7 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitSEFilterConfiguration">
     <file-type-list>
@@ -167,6 +168,7 @@
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.ReadMidi" />
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.ReadMidi" />
         <item itemvalue="Application.ReadMidi" />
         <item itemvalue="Application.Main" />
       </list>
