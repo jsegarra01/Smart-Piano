@@ -6,8 +6,6 @@ import Business.BusinessFacadeImp;
 import Business.MidiHelper;
 import Business.UserManager;
 import Presentation.Dictionary_login;
-import Presentation.Ui_Views.PlaylistUI;
-import Presentation.Ui_Views.SongsUI;
 import Presentation.Ui_Views.SpotiFrame;
 import Presentation.Ui_Views.StatisticsUI;
 
@@ -27,8 +25,6 @@ import static Presentation.DictionaryPiano.*;
 import static Presentation.Dictionary_login.PROFILE_UI;
 import static Presentation.Ui_Views.MainFrame.card;
 import static Presentation.Ui_Views.MainFrame.contenedor;
-import static Presentation.Ui_Views.SpotiFrame.*;
-import static Presentation.Ui_Views.StatisticsUI.*;
 
 
 /**
@@ -73,7 +69,7 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
      */
     private boolean wherePlay = false;
 
-    public static int count_song = 0;
+    private int count_song = 0;
 
     /*
     Event that will control if the end of the track has been reached
@@ -161,7 +157,6 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
                     cc.show(spotiFrame.getSpotiPanel(), PLAYLIST_UI);
                 }
                 break;
-
             case SEARCH_SONG:
                 if(searchSong(spotiFrame.getInputedSongName())){
                     cc.show(spotiFrame.getSpotiPanel(), SONGS_UI);
@@ -227,7 +222,6 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
                     }
                 }
                 break;
-
             case PLAYLIST_INFO:
                 JButton button;
                 if (obj instanceof JButton) {
@@ -241,7 +235,7 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
                 JButton song;
                 addSong = false;
                 if (obj instanceof JButton) {
-                    song = (JButton) obj;
+                    song = (JButton) obj;   //TODO Error deleting? is this ok?
                     boolean errorDeleting = BusinessFacadeImp.getBusinessFacade().deleteSongFromPlaylist(playlist.getPlaylistName(),song.getName());
                     playlist = BusinessFacadeImp.getBusinessFacade().getPlaylist(playlist.getPlaylistName());
                     spotiFrame.getPlaylistUI().setSongsPlaylists(playlist);
@@ -261,7 +255,7 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
                         if(addSong){
                             if (isAlreadyInPlaylist(BusinessFacadeImp.getBusinessFacade().getSong(modelRow).getSongName())) {
                                 BusinessFacadeImp.getBusinessFacade().setError(7);
-                            }else{
+                            }else{      //TODO updating song ha de fer alguna cosa?
                                 boolean updatingSong = BusinessFacadeImp.getBusinessFacade().
                                         addSongToPlaylist(playlist.getPlaylistName(),
                                                 BusinessFacadeImp.getBusinessFacade().getSong(modelRow).getSongName());
@@ -281,13 +275,10 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
                                 BusinessFacadeImp.getBusinessFacade().setSongUser();
                                 BusinessFacadeImp.getBusinessFacade().getPlaylistManager().setPlaylists(UserManager.getUser().getUserName());
                             }
-
                         }
                     }
-
                     break;
                 }
-
         }
     }
 
@@ -562,7 +553,7 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
     private void stopMusic() {
         spotiFrame.setPlayButton(playIcon);
         play = false;
-        long lastMin = System.currentTimeMillis();
+        long lastMin = System.currentTimeMillis();  //TODO min played fa alguna cosa?
         float minPlayed = (float) (lastMin - startMin) / 60000;
         finalMidiHelper.stopSong();
     }
@@ -729,4 +720,8 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
     public StatisticsUI getStatisticsFrame() {
         return spotiFrame.getStatisticsUI();
     }
+
+    public int getCount_song() { return count_song;}
+
+    public void setCount_song(int i) { count_song = i;}
 }

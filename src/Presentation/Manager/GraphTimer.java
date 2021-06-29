@@ -2,8 +2,6 @@ package Presentation.Manager;
 
 import Business.BusinessFacadeImp;
 import Business.Entities.Stadistics;
-import Presentation.Manager.SpotiFrameManager;
-import Presentation.Ui_Views.SongsUI;
 
 import javax.swing.*;
 
@@ -12,7 +10,6 @@ import java.awt.event.ActionListener;
 import java.util.Calendar;
 
 import static Presentation.DictionaryPiano.TIME_GRAPH;
-import static Presentation.Manager.SpotiFrameManager.*;
 
 public class GraphTimer implements ActionListener {
     private final SpotiFrameManager spotiFrameManager;
@@ -38,9 +35,9 @@ public class GraphTimer implements ActionListener {
         if (TIME_GRAPH.equals(e.getActionCommand())) {
             if (spotiFrameManager.getPlay()) {
                 Calendar calendar = Calendar.getInstance();
-                BusinessFacadeImp.getBusinessFacade().addStats(new Stadistics(calendar.get(Calendar.HOUR_OF_DAY), count_song, 0.01667f));
-                if (count_song == 1) {
-                    count_song = 0;
+                BusinessFacadeImp.getBusinessFacade().addStats(new Stadistics(calendar.get(Calendar.HOUR_OF_DAY), spotiFrameManager.getCount_song(), 0.01667f));
+                if (spotiFrameManager.getCount_song() == 1) {
+                    spotiFrameManager.setCount_song(0);
                 }
             }
             spotiFrameManager.getStatisticsFrame().letsInitializeGraphs(spotiFrameManager.getMinPlayed(), spotiFrameManager.getNumSongs());
