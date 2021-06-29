@@ -22,8 +22,8 @@ import java.util.Objects;
 
 import static Presentation.DictionaryPiano.BTN_TILE;
 import static Presentation.Dictionary_login.*;
-import static Presentation.Manager.MainFrame.card;
-import static Presentation.Manager.MainFrame.contenedor;
+import static Presentation.Ui_Views.MainFrame.card;
+import static Presentation.Ui_Views.MainFrame.contenedor;
 import static Presentation.Ui_Views.PianoTilesUISelector.*;
 
 
@@ -127,12 +127,12 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
             case DictionaryPiano.PLAY_BUTTON:
                 if (songStarted) {
                     if(play){
-                        playButtonTiles.setIcon(pauseIcon);
+                        pianoTilesUI.getPlayButtonTiles().setIcon(pauseIcon);
                         new ChangeTime(0);
                         finalMidiHelper.stopSong();
                     }
                     else{
-                        playButtonTiles.setIcon(playIcon);
+                        pianoTilesUI.getPlayButtonTiles().setIcon(playIcon);
                         new ChangeTime(1);
                         finalMidiHelper.playSong(song.getSongFile());
                     }
@@ -293,7 +293,7 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
             finalMidiHelper.playSong(song.getSongFile());
 
              //Sets the tiles to play
-            setKeys(BusinessFacadeImp.getBusinessFacade().getTiles());
+            pianoTilesUI.setKeys(BusinessFacadeImp.getBusinessFacade().getTiles());
                                                                             //Gets the tiles to play.
                                                                             //Is this necessary or it
                                                                             //can be in presentation?
@@ -313,7 +313,7 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
         songIndex = 0;
         new ChangeTime(0);
         BusinessFacadeImp.getBusinessFacade().resetTilesKeys();
-        initTileGame();
+        pianoTilesUI.initTileGame();
         pianoTilesUI.refreshTiles(timePassed, velocityModifier);
         pianoTilesUI.refreshSongList(getBusinessSongNames());
     }

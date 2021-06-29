@@ -9,6 +9,7 @@ import Presentation.Dictionary_login;
 import Presentation.Ui_Views.PlaylistUI;
 import Presentation.Ui_Views.SongsUI;
 import Presentation.Ui_Views.SpotiUI;
+import Presentation.Ui_Views.StatisticsUI;
 
 import javax.sound.midi.MetaEventListener;
 import javax.sound.midi.MidiUnavailableException;
@@ -24,8 +25,8 @@ import java.util.ArrayList;
 
 import static Presentation.DictionaryPiano.*;
 import static Presentation.Dictionary_login.PROFILE_UI;
-import static Presentation.Manager.MainFrame.card;
-import static Presentation.Manager.MainFrame.contenedor;
+import static Presentation.Ui_Views.MainFrame.card;
+import static Presentation.Ui_Views.MainFrame.contenedor;
 import static Presentation.Ui_Views.SpotiUI.*;
 import static Presentation.Ui_Views.StatisticsUI.*;
 
@@ -88,10 +89,21 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
      */
     private final MidiHelper finalMidiHelper;
 
+    /*
+    Views that depend on this manager
+    */
+    private final PlaylistUI playlistUI;
+    private final StatisticsUI statisticsUI;
+
     /**
      * Parametrized constructor
+     * @param playlistUI view of the playlistUI
+     * @param statisticsUI view of the statisticsUI
      */
-    public SpotiFrameManager() {
+    public SpotiFrameManager(PlaylistUI playlistUI, StatisticsUI statisticsUI) {
+        this.playlistUI = playlistUI;
+        this.statisticsUI = statisticsUI;
+
         MidiHelper finalMidiHelper1;
         try {
             finalMidiHelper1 = new MidiHelper();
@@ -135,7 +147,7 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
             case CREATE_PLAYLIST:
                 playlist = BusinessFacadeImp.getBusinessFacade().createPlaylist();
                 if(playlist !=null){
-                    PlaylistUI.setSongsPlaylists(playlist);
+                    playlistUI.setSongsPlaylists(playlist);
                     cc.show(spotiPanel, PLAYLIST_UI);
                 }
                 break;
@@ -211,7 +223,7 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
                 if (obj instanceof JButton) {
                     button = (JButton) obj;
                     playlist = BusinessFacadeImp.getBusinessFacade().getPlaylist(button.getName());
-                    PlaylistUI.setSongsPlaylists(playlist);
+                    playlistUI.setSongsPlaylists(playlist);
                     cc.show(spotiPanel, PLAYLIST_UI);
                 }
                 break;
@@ -222,7 +234,7 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
                     song = (JButton) obj;
                     boolean errorDeleting = BusinessFacadeImp.getBusinessFacade().deleteSongFromPlaylist(playlist.getPlaylistName(),song.getName());
                     playlist = BusinessFacadeImp.getBusinessFacade().getPlaylist(playlist.getPlaylistName());
-                    PlaylistUI.setSongsPlaylists(playlist);
+                    playlistUI.setSongsPlaylists(playlist);
                 }
                 break;
             case ADD_SONG_COMM:
@@ -244,7 +256,7 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
                                         addSongToPlaylist(playlist.getPlaylistName(),
                                                 BusinessFacadeImp.getBusinessFacade().getSong(modelRow).getSongName());
                                 playlist = BusinessFacadeImp.getBusinessFacade().getPlaylist(playlist.getPlaylistName());
-                                PlaylistUI.setSongsPlaylists(playlist);
+                                playlistUI.setSongsPlaylists(playlist);
                                 cc.show(spotiPanel, PLAYLIST_UI);
                                 addSong = false;
                             }

@@ -22,19 +22,19 @@ import static Presentation.Ui_Views.Tile.*;
  *
  */
 public class PianoTilesUISelector extends Piano {
-    public static final JLayeredPane jLayeredPane = new JLayeredPane();
-    public static final JPanel scrollPanel = new JPanel();
-    public static final JButton playButtonTiles = new JButton(PLAY_BUTTON);
-    public static ArrayList<Keys> keys = new ArrayList<>();
+    private final JLayeredPane jLayeredPane = new JLayeredPane();
+    private final JPanel scrollPanel = new JPanel();
+    private final JButton playButtonTiles = new JButton(PLAY_BUTTON);
+    private ArrayList<Keys> keys = new ArrayList<>();
 
-    public final JButton veryEasy = new JButton(VERY_EASY_MODE);
-    public final JButton easy = new JButton(EASY_MODE);
-    public final JButton normal = new JButton(NORMAL_MODE);
-    public final JButton hard = new JButton(HARD_MODE);
-    public final JButton veryHard = new JButton(VERY_HARD_MODE);
-    private static final JButton mute = new JButton(MUTE_BUTTON);
+    private final JButton veryEasy = new JButton(VERY_EASY_MODE);
+    private final JButton easy = new JButton(EASY_MODE);
+    private final JButton normal = new JButton(NORMAL_MODE);
+    private final JButton hard = new JButton(HARD_MODE);
+    private final JButton veryHard = new JButton(VERY_HARD_MODE);
+    private final JButton mute = new JButton(MUTE_BUTTON);
 
-    private PianoTilesUISelectorManager pianoTilesUISelectorManager;
+    private final PianoTilesUISelectorManager pianoTilesUISelectorManager;
 
     /**
      * Constructor for the PianoTilesUISelector, you need to send the mainframe context and will create a card layout
@@ -143,7 +143,15 @@ public class PianoTilesUISelector extends Piano {
         panelBorderLayout.add(eastPane, BorderLayout.EAST);
 
         initTileGame();
+        initTilesBackground();
 
+        jLayeredPane.revalidate();
+        jLayeredPane.repaint();
+        panelBorderLayout.add(jLayeredPane, BorderLayout.CENTER);
+        return panelBorderLayout;
+    }
+
+    private void initTilesBackground() {
         for (int i = 0; i < 14; i++) {                                              //Vertical lines
             JPanel auxiliar = new JPanel();
             auxiliar.setBounds(i*65 + 65,0,1,300);
@@ -159,11 +167,6 @@ public class PianoTilesUISelector extends Piano {
             auxiliar.setOpaque(true);
             jLayeredPane.add(auxiliar,Integer.valueOf(1));
         }
-
-        jLayeredPane.revalidate();
-        jLayeredPane.repaint();
-        panelBorderLayout.add(jLayeredPane, BorderLayout.CENTER);
-        return panelBorderLayout;
     }
 
     /**
@@ -205,7 +208,7 @@ public class PianoTilesUISelector extends Piano {
      * Init of the piano tiles functionality creating all the vertical and horizontal tiles that will
      * indicate where will the keys fall from
      */
-    public static void initTileGame () {
+    public void initTileGame () {
         jLayeredPane.removeAll();
         //Sets the middle columns, the ones
         jLayeredPane.setLayout(null);                                               //We care about for the pianoTiles
@@ -213,21 +216,7 @@ public class PianoTilesUISelector extends Piano {
         jLayeredPane.setBackground(Color.black);
         jLayeredPane.setOpaque(true);
 
-        for (int i = 0; i < 14; i++) {                                              //Vertical lines
-            JPanel auxiliar = new JPanel();
-            auxiliar.setBounds(i*65 + 65,0,1,300);
-            auxiliar.setBackground(Color.WHITE);
-            auxiliar.setOpaque(true);
-            jLayeredPane.add(auxiliar,Integer.valueOf(1));
-        }
-
-        for (int i = 0; i < 100; i++) {                                              //Horitzontal lines
-            JPanel auxiliar = new JPanel();
-            auxiliar.setBounds(i*10,280,5,1);
-            auxiliar.setBackground(Color.WHITE);
-            auxiliar.setOpaque(true);
-            jLayeredPane.add(auxiliar,Integer.valueOf(1));
-        }
+        initTilesBackground();
     }
 
     /**
@@ -299,13 +288,17 @@ public class PianoTilesUISelector extends Piano {
      * Sets the keys that will fall for the piano tiles functionality
      * @param newKeys Array of keys we get from the songs we want to play
      */
-    public static void setKeys(ArrayList<Keys> newKeys) {
+    public void setKeys(ArrayList<Keys> newKeys) {
         keys.clear();
         keys = newKeys;
     }
 
     public PianoTilesUISelectorManager getPianoTilesUISelectorManager() {
         return pianoTilesUISelectorManager;
+    }
+
+    public JButton getPlayButtonTiles() {
+        return playButtonTiles;
     }
 
 }

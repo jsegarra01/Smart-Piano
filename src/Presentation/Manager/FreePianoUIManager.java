@@ -13,7 +13,6 @@ import Business.Translator;
 
 import javax.sound.midi.MidiUnavailableException;
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -24,8 +23,8 @@ import java.util.Objects;
 
 import static Presentation.DictionaryPiano.*;
 import static Presentation.Dictionary_login.*;
-import static Presentation.Manager.MainFrame.card;
-import static Presentation.Manager.MainFrame.contenedor;
+import static Presentation.Ui_Views.MainFrame.card;
+import static Presentation.Ui_Views.MainFrame.contenedor;
 
 
 /**

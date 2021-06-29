@@ -1,6 +1,5 @@
 package Presentation.Ui_Views;
 
-import Business.BusinessFacadeImp;
 import Business.Entities.Playlist;
 import Presentation.DictionaryPiano;
 import Presentation.Manager.GraphTimer;
@@ -30,7 +29,7 @@ public class SpotiUI extends JPanel {
     private final StatisticsUI statisticsUI;
     private final PlaylistUI playlistUI;
     private final SongsUI songsUI;
-    private final SpotiFrameManager spotiFrameManager;
+    private static SpotiFrameManager spotiFrameManager;
 
     public static final JPanel spotiPanel = new JPanel(new CardLayout());
     private static final JButton createPlaylist = new JButton(CREATE_PLAYLIST);
@@ -62,9 +61,9 @@ public class SpotiUI extends JPanel {
      * Constructor for the SpotiUI, you need to send the mainframe context and will create a card layout
      */
     public SpotiUI() {
-        spotiFrameManager = new SpotiFrameManager();
-        playlistUI = new PlaylistUI(spotiFrameManager);
+        playlistUI = new PlaylistUI();
         statisticsUI = new StatisticsUI();
+        spotiFrameManager = new SpotiFrameManager(playlistUI, statisticsUI);
         songsUI = new SongsUI(spotiFrameManager);
         new GraphTimer();
         initialize();
@@ -190,7 +189,7 @@ public class SpotiUI extends JPanel {
         lowPanel.add(songPanel, BorderLayout.WEST);
         add(lowPanel, BorderLayout.SOUTH);
 
-        registerController(new SpotiFrameManager(/*myFacade*/));
+        registerController(new SpotiFrameManager(playlistUI, statisticsUI));
     }
 
     /**
@@ -268,7 +267,7 @@ public class SpotiUI extends JPanel {
                 buttonAux.setForeground(Color.white);
                 playlistsPanel.add(buttonAux);
                 buttonAux.setAlignmentX(Component.LEFT_ALIGNMENT);
-                buttonAux.addActionListener(new SpotiFrameManager(/*myFacade*/));
+                buttonAux.addActionListener(spotiFrameManager);
             }
             scroll = new JScrollPane(playlistsPanel);
             scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);

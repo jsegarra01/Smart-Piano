@@ -8,8 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import static Presentation.Dictionary_login.*;
-import static Presentation.Manager.MainFrame.*;
-import static Presentation.Ui_Views.SignUpUI.*;
+import static Presentation.Ui_Views.MainFrame.*;
 
 /**
  * SignUpUIManager

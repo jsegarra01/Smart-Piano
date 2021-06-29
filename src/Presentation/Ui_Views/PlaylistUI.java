@@ -23,10 +23,8 @@ import static Presentation.DictionaryPiano.*;
  *
  */
 public class PlaylistUI extends JPanel {
-    private static final JPanel panel = new JPanel(new BorderLayout());
-    private static Playlist playlistGeneral;
-    private static final DecimalFormat df = new DecimalFormat(".##");
-    private static SpotiFrameManager spotiFrameManager;
+    private final JPanel panel = new JPanel(new BorderLayout());
+    private Playlist playlistGeneral;
 
 
     /**
@@ -34,8 +32,7 @@ public class PlaylistUI extends JPanel {
      *
     // * @param mainFrame context necessary to create the card layout
      */
-    public PlaylistUI(SpotiFrameManager spotiFrameManager1) {
-        spotiFrameManager = spotiFrameManager1;
+    public PlaylistUI() {
         initialize();
     }
 
@@ -52,7 +49,7 @@ public class PlaylistUI extends JPanel {
      * @param namePlaylist The name of the playlist we want to create the panel for
      * @return The panel of the playlist created
      */
-    private static JPanel initGeneral(String namePlaylist){
+    private JPanel initGeneral(String namePlaylist){
         JPanel layout = new JPanel(new BorderLayout());
         layout.setBackground(Color.black);
         JLabel playlistName = new JLabel(PLAYLIST_NAME);
@@ -73,7 +70,7 @@ public class PlaylistUI extends JPanel {
      * Method that sets all the song inside the playlist in the view
      * @param playlist Defines the playlist in which the song are stored
      */
-    public static void setSongsPlaylists(Playlist playlist){
+    public void setSongsPlaylists(Playlist playlist){
 
         if(playlist.equals(playlistGeneral)) {
             updatePanel(playlist);
@@ -116,7 +113,7 @@ public class PlaylistUI extends JPanel {
      * @param song Defines the song to appear in the JPanel
      * @return JPanel that stores the information about the song
      */
-    private static JPanel setPlaylist(Song song){
+    private JPanel setPlaylist(Song song){
 
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
         JPanel panel1 = new JPanel();
@@ -168,7 +165,7 @@ public class PlaylistUI extends JPanel {
      * Creates a button to add a song to a playlist
      * @return The add button
      */
-    private static JButton addSong(){
+    private JButton addSong(){
         JButton add = new JButton(ADD_SONG);
         add.setActionCommand(ADD_SONG_COMM);
         add.addActionListener(spotiFrameManager);
@@ -179,7 +176,7 @@ public class PlaylistUI extends JPanel {
      * Method that updates the panel, checking the things that already existed
      * @param playlist Defines the playlist to be checked
      */
-    private static void updatePanel(Playlist playlist){
+    private void updatePanel(Playlist playlist){
         for (Component jc : panel.getComponents()) {
             if (jc instanceof JScrollPane scrollPane) {
                 for (Component jc2 : scrollPane.getComponents()) {

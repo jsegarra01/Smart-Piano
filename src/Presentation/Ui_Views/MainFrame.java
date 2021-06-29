@@ -1,4 +1,4 @@
-package Presentation.Manager;
+package Presentation.Ui_Views;
 
 //Imports needed from the dictionary and events
 import Business.BusinessFacadeImp;
@@ -21,6 +21,7 @@ public class MainFrame extends JFrame {
     public static CardLayout card; //TODO Not static and not public Do not initialize, that in the constructor:(
     public static Container contenedor; //TODO Not static and not public
 
+    private final JPanel centralPanel;
 
     /**
      * Parametrized constructor, creates the content pane plus the different card layouts available for the user interface
@@ -28,8 +29,9 @@ public class MainFrame extends JFrame {
     public MainFrame() {
         card = new CardLayout();
         contenedor = this.getContentPane();
+        centralPanel = new JPanel(new CardLayout());
 
-        LoginUI loginUI = new LoginUI(); //TODO
+        LoginUI loginUI = new LoginUI(this); //TODO
         ProfileUI profileUI = new ProfileUI(); //TODO
         SignUpUI signUpUI = new SignUpUI(); //TODO
         PreMenuUI preMenuUI = new PreMenuUI(loginUI,signUpUI); //TODO
@@ -54,4 +56,8 @@ public class MainFrame extends JFrame {
         BusinessFacadeImp.getBusinessFacade().initializeWebScrapping();
     }
     public void setCard(Container parent, String name) {card.show(parent, name);}
+
+    public JPanel getCentralPanel() {
+        return centralPanel;
+    }
 }

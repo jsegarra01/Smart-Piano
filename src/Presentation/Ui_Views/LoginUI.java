@@ -28,10 +28,14 @@ public class LoginUI extends JPanel {
     private final JButton back = new JButton(BACK_BUTTON);
     private final JButton done = new JButton(DONE_BUTTON);
 
+    private final MainFrame mainFrame;
+
     /**
      * Constructor for the LoginUI, you need to send the mainframe context and will create a card layout
+     * @param mainFrame view of the mainframe
      */
-    public LoginUI() {
+    public LoginUI(MainFrame mainFrame) {
+        this.mainFrame = mainFrame;
         initialize();
     }
 
@@ -177,5 +181,9 @@ public class LoginUI extends JPanel {
     public void resetUILogin() {
         usernameTextField.setText("");
         password.setText("");
+    }
+
+    public JPanel getCentralPanel() {
+        return mainFrame.getCentralPanel();
     }
 }

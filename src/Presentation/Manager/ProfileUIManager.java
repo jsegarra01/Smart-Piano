@@ -8,8 +8,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import static Presentation.Dictionary_login.*;
-import static Presentation.Manager.MainFrame.card;
-import static Presentation.Manager.MainFrame.contenedor;
+import static Presentation.Ui_Views.MainFrame.card;
+import static Presentation.Ui_Views.MainFrame.contenedor;
 
 
 /**

@@ -1,9 +1,8 @@
 package Presentation.Ui_Views;
 
 //Imports all necessary libraries
-import Business.BusinessFacadeImp;
-import Presentation.Manager.MainFrame;
 import Presentation.Manager.PianoFrameManager;
+import Presentation.Manager.PianoTilesUISelectorManager;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -24,13 +23,11 @@ import static Presentation.DictionaryPiano.*;
  *
  */
 public class PianoFrame extends JPanel {
-    public static MainFrame mainFrame;
+    private final MainFrame mainFrame;
 
-    public static final JButton freePiano = new JButton(FREE_PIANO);
-    public static final JButton playSong = new JButton(PLAY_A_SONG);
-    public static final JButton musicPlayer = new JButton(MUSIC_PLAYER);
-
-    public static final JPanel centralPanel = new JPanel(new CardLayout());
+    private final JButton freePiano = new JButton(FREE_PIANO);
+    private final JButton playSong = new JButton(PLAY_A_SONG);
+    private final JButton musicPlayer = new JButton(MUSIC_PLAYER);
 
     private final PianoTilesUISelector pianoTilesUISelector;
     private final SpotiUI spotiUI;
@@ -43,8 +40,7 @@ public class PianoFrame extends JPanel {
      */
     public PianoFrame(final MainFrame mainFrame) {
         super();
-        PianoFrame.mainFrame =mainFrame;
-
+        this.mainFrame = mainFrame;
         pianoTilesUISelector = new PianoTilesUISelector();
         spotiUI = new SpotiUI();
         freePianoUI = new FreePianoUI();
@@ -82,7 +78,7 @@ public class PianoFrame extends JPanel {
         musicPlayer.setBackground(Color.GRAY);
         musicPlayer.setOpaque(true);
 
-        registerController(new PianoFrameManager(pianoTilesUISelector.getPianoTilesUISelectorManager()));
+        registerController(new PianoFrameManager(this));
 
         buttonPanel.add(Box.createRigidArea(new Dimension(150, 17)));
         buttonPanel.add(freePiano);
@@ -95,10 +91,10 @@ public class PianoFrame extends JPanel {
 
         this.add(buttonPanel, BorderLayout.WEST);
 
-        centralPanel.add(freePianoUI, FREE_PIANO_UI);
-        centralPanel.add(pianoTilesUISelector, PIANO_TILES_UI_SELECTOR);
-        centralPanel.add(spotiUI, SPOTI_UI);
-        this.add(centralPanel, BorderLayout.CENTER);
+        mainFrame.getCentralPanel().add(freePianoUI, FREE_PIANO_UI);
+        mainFrame.getCentralPanel().add(pianoTilesUISelector, PIANO_TILES_UI_SELECTOR);
+        mainFrame.getCentralPanel().add(spotiUI, SPOTI_UI);
+        this.add(mainFrame.getCentralPanel(), BorderLayout.CENTER);
 
         this.revalidate();
         this.repaint();
@@ -114,5 +110,25 @@ public class PianoFrame extends JPanel {
         freePiano.addActionListener(listener);
         playSong.addActionListener(listener);
         musicPlayer.addActionListener(listener);
+    }
+
+    public void setBackgroundFreePiano(Color color){
+        freePiano.setBackground(color);
+    }
+
+    public void setBackgroundPlaySong(Color color){
+        playSong.setBackground(color);
+    }
+
+    public void setBackgroundMusicPlayer(Color color){
+        musicPlayer.setBackground(color);
+    }
+
+    public PianoTilesUISelectorManager getPianoTilesUIManager () {
+        return pianoTilesUISelector.getPianoTilesUISelectorManager();
+    }
+
+    public JPanel getCentralPanel() {
+        return mainFrame.getCentralPanel();
     }
 }

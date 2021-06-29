@@ -1,6 +1,4 @@
-import Business.BusinessFacade;
-import Business.BusinessFacadeImp;
-import Presentation.Manager.MainFrame;
+import Presentation.Ui_Views.MainFrame;
 
 import javax.swing.*;
 
