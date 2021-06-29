@@ -45,7 +45,6 @@ public class PianoFrameManager implements ActionListener {
         }
         this.midiHelper = midiHelper1;
 
-
         pianoTilesUISelectorManager = new PianoTilesUISelectorManager(midiHelper);
         new ChangeTime(pianoTilesUISelectorManager);
     }

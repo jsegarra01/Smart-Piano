@@ -3,7 +3,6 @@ package Business;
 import Business.Entities.Observer;
 import Presentation.Manager.PianoTilesUISelectorManager;
 
-import javax.sound.midi.MidiUnavailableException;
 import javax.swing.*;
 
 import java.awt.event.ActionEvent;

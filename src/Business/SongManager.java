@@ -183,4 +183,9 @@ public class SongManager {
     public Song getSongByName(String name){
         return songManager.getSongByName(name);
     }
+
+    public void deleteSongFile(int i){
+        songManager.deleteSongFile(songs.get(i).getSongFile());
+
+    }
 }

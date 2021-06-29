@@ -8,9 +8,6 @@ import Business.Threads.WebScrapping;
 import Presentation.Manager.ErrorsManager;
 import Presentation.Manager.SpotiFrameManager;
 
-import javax.swing.*;
-import java.awt.event.KeyEvent;
-import java.io.File;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -31,7 +28,6 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
     private static TilesManager tilesManager;
     private static ErrorsManager errorManager;
     private static BusinessFacade businessFacade;
-
 
     public static BusinessFacade getBusinessFacade(){
         if(businessFacade==null){
@@ -101,7 +97,7 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
         for(int i = 0; i< songManager.getSongs().size();i++){
            if(songManager.getSongs().get(i).getCreator().equals(UserManager.getUser().getUserName()) ||
                    songManager.getSongs().get(i).getAuthorName().equals(UserManager.getUser().getUserName())){
-               new File(songManager.getSongs().get(i).getSongFile()).delete();
+               songManager.deleteSongFile(i);
            }
         }
         try {
@@ -112,7 +108,7 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
             setError(0);
         }
     }
-
+/*
     @Override
     public void noteRecordingUpdate(ArrayList<RecordingNotes> recordingNotes, float recordingTime){
             JPanel myPanel = new JPanel();
@@ -124,10 +120,10 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
             JOptionPane.showMessageDialog(null, myPanel, "Enter a title for the song", JOptionPane.INFORMATION_MESSAGE);
 
             recordedNotesSend(recordingNotes, titleField.getText(), box.isSelected(), recordingTime);
-    }
+    }*/
 
     @Override
-    public boolean modifyKey(String tileSelected, KeyEvent e, int KeyExisted){
+    public boolean modifyKey(int KeyExisted){
         if(KeyExisted == -1) {
             setError(11);
             return true;
@@ -137,12 +133,8 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
     }
 
     @Override
-    public Playlist createPlaylist(){
+    public Playlist createPlaylist(String myStr){
         Playlist myPlayList = null;
-
-        String myStr = (String)JOptionPane.showInputDialog(
-                null, "Which name is your playlist going to have?",
-                "Playlist Creator", JOptionPane.PLAIN_MESSAGE, null, null, "New Playlist");
 
         if(myStr != null && myStr.length() > 0 && myStr.indexOf('\'') == -1){
             newPlaylist(myStr);

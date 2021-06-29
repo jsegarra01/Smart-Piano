@@ -89,4 +89,6 @@ public interface SongDAO {
      * @return Song to be returned
      */
     Song getSongByName(String name);
+
+    void deleteSongFile(String path);
 }

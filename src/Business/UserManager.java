@@ -32,7 +32,11 @@ public class UserManager {
      * @return Boolean. If it is a 1, the user exists. If it is a 0, it doesn't.
      */
     public boolean checkUser(String username, String password) {
-        user = loginUserManager.getByUsername(username);
+        if(username.contains("@")){
+            user = loginUserManager.getByMail(username);
+        }else{
+            user = loginUserManager.getByUsername(username);
+        }
         boolean returned = false;
         if (user == null) {
             if (username.equals("guest")) {

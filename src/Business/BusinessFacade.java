@@ -70,15 +70,15 @@ public interface BusinessFacade {
      */
     ArrayList<String> getSongName();
 
-    boolean modifyKey(String tileSelected, KeyEvent e, int KeyExisted);
+    boolean modifyKey(int KeyExisted);
 
-    void noteRecordingUpdate(ArrayList<RecordingNotes> recordingNotes, float recordingTime);
+    //void noteRecordingUpdate(ArrayList<RecordingNotes> recordingNotes, float recordingTime);
 
     void enterAsAGuest(/*String name, String psw*/);
 
     //void logInStartup();
 
-    Playlist createPlaylist();
+    Playlist createPlaylist(String myStr);
 
     Song getSong(int index);
 

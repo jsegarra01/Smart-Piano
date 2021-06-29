@@ -6,12 +6,24 @@ package Business.Entities;
  * The "Stadistics" class will contain the different methods needed to set and access the stadistics
  *
  * @author OOPD 20-21 ICE5
- * @version 1.0 21 Apr 2021
+ * @version 2.0 28 June 2021
  *
  */
 public class Stadistics {
+
+    /*
+    Defines the hour of that statistics
+     */
     private int hour;
+
+    /*
+    Defines the number of songs played in that hour
+     */
     private float numPlayed;
+
+    /*
+    Defines the minutes played in that hour
+     */
     private float minPlayed;
 
     /**

@@ -8,21 +8,37 @@ import java.util.ArrayList;
  * The "Playlist" class will contain the different methods needed to set and access the playlists
  *
  * @author OOPD 20-21 ICE5
- * @version 1.0 21 Apr 2021
+ * @version 2.0 28 June 2021
  *
  */
 public class Playlist {
+
+    /*
+    Defines the id of the playlist
+     */
     private int playlistId;
+
+    /*
+    Defines the name of the playlist
+     */
     private final String playlistName;
+
+    /*
+    Defines all the songs belonging to the playlist
+     */
     private final ArrayList<Song> songs;
+
+    /*
+    Defines the user creator of the playlist
+     */
     private final String user;
 
     /**
      * Constructor of the Playlist
-     * @param playlistId Id of the playlist
-     * @param playlistName Name of the playlist
-     * @param songs List of songs of the playlist
-     * @param user Creator of the playlist
+     * @param playlistId Defines the id of the playlist
+     * @param playlistName Defines the name of the playlist
+     * @param songs Defines the list of songs belonging to the playlist
+     * @param user Defines the creator of the playlist
      */
     public Playlist(int playlistId, String playlistName, ArrayList<Song> songs, String user) {
         this.playlistId = playlistId;
@@ -33,8 +49,8 @@ public class Playlist {
 
     /**
      * Constructor of the playlist
-     * @param playlistName Name of the playlist
-     * @param user Creator of the playlist
+     * @param playlistName Defines the name of the playlist
+     * @param user Defines the creator of the playlist
      */
     public Playlist(String playlistName, String user) {
         this.playlistName = playlistName;
@@ -43,24 +59,24 @@ public class Playlist {
     }
 
     /**
-     * Gets the id of the playlist
-     * @return The id of the playlist
+     * Method that gets the id of the playlist
+     * @return Int that stores the id of the playlist
      */
     public int getPlaylistId() {
         return playlistId;
     }
 
     /**
-     * Gets the name of the playlist
-     * @return The name of the playlist
+     * Method that gets the name of the playlist
+     * @return String that stores the name of the playlist
      */
     public String getPlaylistName() {
         return playlistName;
     }
 
     /**
-     * Gets the songs of a playlist
-     * @return The songs of a playlist
+     * Method that gets the songs of a playlist
+     * @return Arraylist of class Song storing the songs of a playlist
      */
     public ArrayList<Song> getSongs() {
         return songs;

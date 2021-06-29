@@ -79,7 +79,7 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
             @Override
             public void keyPressed(KeyEvent e) {
                 if (Translator.getPressedFromKey(e.getExtendedKeyCode()) !=null) {
-                    if (Objects.requireNonNull(Translator.getPressedFromKey(e.getExtendedKeyCode())).isPressed()) {
+                    if (!Objects.requireNonNull(Translator.getPressedFromKey(e.getExtendedKeyCode())).isPressed()) {
                         finalMidiHelper.playSomething(Translator.getNumberNoteFromName(Translator.getFromKey(e.getExtendedKeyCode())),SOUND_SYNTHER);
                         Objects.requireNonNull(Translator.getPressedFromKey(e.getExtendedKeyCode())).setPressed(true);
                     }

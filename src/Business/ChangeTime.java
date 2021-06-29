@@ -1,7 +1,6 @@
 package Business;
 
 import Business.Entities.Observer;
-import Business.TimerManager;
 import Presentation.Manager.PianoTilesUISelectorManager;
 
 import java.util.ArrayList;

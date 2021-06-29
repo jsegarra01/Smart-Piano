@@ -6,6 +6,7 @@ import Business.Entities.Stadistics;
 import Persistence.SQL.ConnectSQL;
 import Persistence.SongDAO;
 
+import java.io.File;
 import java.sql.*;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -314,5 +315,10 @@ public class SongCsvDAO implements SongDAO {
         } catch (SQLException throwables) {
             return null;
         }
+    }
+
+    @Override
+    public void deleteSongFile(String path) {
+        new File(path).delete();
     }
 }
