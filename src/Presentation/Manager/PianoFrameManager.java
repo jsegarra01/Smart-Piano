@@ -5,6 +5,7 @@ import Business.BusinessFacadeImp;
 import Business.ChangeTime;
 import Business.MidiHelper;
 import Presentation.Dictionary_login;
+import Presentation.Ui_Views.PianoFrame;
 
 import javax.sound.midi.MidiUnavailableException;
 import java.awt.*;
@@ -13,10 +14,8 @@ import java.awt.event.ActionListener;
 
 import static Presentation.DictionaryPiano.*;
 import static Presentation.Dictionary_login.*;
-import static Presentation.Manager.MainFrame.card;
-import static Presentation.Manager.MainFrame.contenedor;
-import static Presentation.Ui_Views.PianoFrame.*;
-import static Presentation.Ui_Views.SpotiUI.spotiPanel;
+import static Presentation.Ui_Views.MainFrame.card;
+import static Presentation.Ui_Views.MainFrame.contenedor;
 
 
 /**
@@ -31,11 +30,13 @@ import static Presentation.Ui_Views.SpotiUI.spotiPanel;
 public class PianoFrameManager implements ActionListener {
     private final MidiHelper midiHelper;
     private final PianoTilesUISelectorManager pianoTilesUISelectorManager;
+    private final PianoFrame pianoFrame;
 
     /**
      * Parametrized constructor
+     * @param pianoFrame view of the pianoFrame
      */
-    public PianoFrameManager() {
+    public PianoFrameManager(PianoFrame pianoFrame) {
         MidiHelper midiHelper1;
         try {
             midiHelper1 = new MidiHelper();
@@ -44,10 +45,9 @@ public class PianoFrameManager implements ActionListener {
             midiHelper1 = null;
         }
         this.midiHelper = midiHelper1;
-
-
-        pianoTilesUISelectorManager = new PianoTilesUISelectorManager(midiHelper);
-        new ChangeTime(pianoTilesUISelectorManager);
+        this.pianoFrame = pianoFrame;
+        this.pianoTilesUISelectorManager = pianoFrame.getPianoTilesUIManager();
+        new ChangeTime(this.pianoTilesUISelectorManager);
     }
 
     /**
@@ -57,12 +57,13 @@ public class PianoFrameManager implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         // We distinguish between our buttons.
-        CardLayout cc = (CardLayout) (centralPanel.getLayout());
-        CardLayout cc2 = (CardLayout) (spotiPanel.getLayout());
+        CardLayout cc = (CardLayout) (pianoFrame.getCentralPanel().getLayout());
+        CardLayout cc2 = (CardLayout) (pianoFrame.getSpotiPanel().getLayout());
 
-        freePiano.setBackground(Color.GRAY);
-        playSong.setBackground(Color.GRAY);
-        musicPlayer.setBackground(Color.GRAY);
+        pianoFrame.setBackgroundFreePiano(Color.GRAY);
+        pianoFrame.setBackgroundPlaySong(Color.GRAY);
+        pianoFrame.setBackgroundMusicPlayer(Color.GRAY);
+
         new ChangeTime(0);
         midiHelper.stopSong();
 
@@ -70,23 +71,24 @@ public class PianoFrameManager implements ActionListener {
             case Dictionary_login.PROFILE_BUTTON:       //In the case that the Profile button is pressed
                 card.show(contenedor, PROFILE_UI);
             case FREE_PIANO:
-                cc.show(centralPanel, FREE_PIANO_UI);
-                freePiano.setBackground(Color.getHSBColor(0,0,80.3f));
+                cc.show(pianoFrame.getCentralPanel(), FREE_PIANO_UI);
+                pianoFrame.setBackgroundFreePiano(Color.getHSBColor(0,0,80.3f));
                 break;
             case PLAY_A_SONG:
                 try {
                    pianoTilesUISelectorManager.refreshPianoTilesUI();
                 } catch (NullPointerException h) {
-                    playSong.setBackground(Color.getHSBColor(0,0,80.3f));
+                    pianoFrame.setBackgroundPlaySong(Color.getHSBColor(0,0,80.3f));
                 }
-                cc.show(centralPanel, PIANO_TILES_UI_SELECTOR);
-                playSong.setBackground(Color.getHSBColor(0,0,80.3f));
+                cc.show(pianoFrame.getCentralPanel(), PIANO_TILES_UI_SELECTOR);
+                pianoFrame.setBackgroundPlaySong(Color.getHSBColor(0,0,80.3f));
                 break;
             case MUSIC_PLAYER:
-                SpotiFrameManager.resetSongs();
-                cc.show(centralPanel, SPOTI_UI);
-                cc2.show(spotiPanel, SONGS_UI);
-                musicPlayer.setBackground(Color.getHSBColor(0,0,80.3f));
+                pianoFrame.getSpotiFrameManager().addPlaylists(BusinessFacadeImp.getBusinessFacade().getPlaylists());
+                pianoFrame.getSpotiFrameManager().resetSongs();
+                cc.show(pianoFrame.getCentralPanel(), SPOTI_UI);
+                cc2.show(pianoFrame.getSpotiPanel(), SONGS_UI);
+                pianoFrame.setBackgroundMusicPlayer(Color.getHSBColor(0,0,80.3f));
                 break;
         }
     }

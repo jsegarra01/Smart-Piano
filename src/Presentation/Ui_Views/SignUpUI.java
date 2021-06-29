@@ -1,7 +1,6 @@
 package Presentation.Ui_Views;
 
 //Imports all the necessary libraries
-import Business.BusinessFacadeImp;
 import Presentation.Manager.SignUpUiManager;
 import Presentation.TextPrompt;
 
@@ -23,10 +22,10 @@ public class SignUpUI extends JPanel {
     private final JLabel pianoText = new JLabel(SMART_PIANO_TEXT);
     private final JLabel logInText = new JLabel(SIGN_UP_BUTTON);
 
-    private static final JTextField usernameTextField = new JTextField();
-    private static final JTextField mailTextField = new JTextField();
-    private static final JPasswordField password = new JPasswordField();
-    private static final JPasswordField passwordConfirmation = new JPasswordField();
+    private final JTextField usernameTextField = new JTextField();
+    private final JTextField mailTextField = new JTextField();
+    private final JPasswordField password = new JPasswordField();
+    private final JPasswordField passwordConfirmation = new JPasswordField();
     private final JButton back = new JButton(BACK_BUTTON);
     private final JButton done = new JButton(DONE_BUTTON);
     //private final BusinessFacadeImp myFacade;
@@ -140,7 +139,7 @@ public class SignUpUI extends JPanel {
         done.setAlignmentX(0.5f);
         done.setActionCommand(DONE_BUTTON);
 
-        registerController(new SignUpUiManager(/*this.myFacade*/));
+        registerController(new SignUpUiManager(this));
 
         buttons.add(back);
         buttons.add(Box.createRigidArea(new Dimension(400, 15)));
@@ -193,7 +192,7 @@ public class SignUpUI extends JPanel {
      * Obtains the username in the text field
      * @return username string
      */
-    public static String getUsernameSignUp() {
+    public String getUsernameSignUp() {
         return usernameTextField.getText();
     }
 
@@ -201,7 +200,7 @@ public class SignUpUI extends JPanel {
      * Obtains the mail in the text field
      * @return mail string
      */
-    public static String getMailSignUp() {
+    public String getMailSignUp() {
         return mailTextField.getText();
     }
 
@@ -209,7 +208,7 @@ public class SignUpUI extends JPanel {
      * Obtains the password in the text field
      * @return password string
      */
-    public static String getPasswordSignUp() {
+    public String getPasswordSignUp() {
         return String.valueOf(password.getPassword());
     }
 
@@ -217,15 +216,19 @@ public class SignUpUI extends JPanel {
      * Obtains the passwordConfirm in the text field
      * @return passwordConfirm string
      */
-    public static String getPasswordConfirmSignUp() { return String.valueOf(passwordConfirmation.getPassword()); }
+    public String getPasswordConfirmSignUp() { return String.valueOf(passwordConfirmation.getPassword()); }
 
     /**
      * Resets the information inside the SignUpUI
      */
-    public static void resetUISignUpUI() {
+    public void resetUISignUpUI() {
         usernameTextField.setText("");
         mailTextField.setText("");
         password.setText("");
         passwordConfirmation.setText("");
+    }
+
+    public void setUsernameLogin(String usernameLogin) {
+        usernameTextField.setText(usernameLogin);
     }
 }

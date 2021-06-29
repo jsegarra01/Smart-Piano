@@ -1,6 +1,5 @@
 package Presentation.Ui_Views;
 
-import Business.BusinessFacadeImp;
 import Business.Entities.Playlist;
 import Presentation.DictionaryPiano;
 import Presentation.Manager.GraphTimer;
@@ -26,47 +25,47 @@ import static Presentation.Ui_Views.Tile.resizeIcon;
  * @version 2.0 23 May 2021
  *
  */
-public class SpotiUI extends JPanel {
+public class SpotiFrame extends JPanel {
     private final StatisticsUI statisticsUI;
     private final PlaylistUI playlistUI;
     private final SongsUI songsUI;
     private final SpotiFrameManager spotiFrameManager;
+    private final JPanel spotiPanel;
 
-    public static final JPanel spotiPanel = new JPanel(new CardLayout());
-    private static final JButton createPlaylist = new JButton(CREATE_PLAYLIST);
-    private static final JButton showStadistics = new JButton(CREATE_STADISTICS);
-    private static final JButton topSongs = new JButton(SHOW_TOP_SONGS);
-    public static final JButton songsList = new JButton(SHOW_ALL_SONGS);
-    public static final JLabel playlistLabel = new JLabel(PLAYLIST_LABEL);
-    public static JButton shuffleButton = new JButton();
-    private static JButton backButton = new JButton();
-    public static final JButton playButton = new JButton();
-    private static JButton nextButton = new JButton();
-    public static JButton loopButton = new JButton();
-    private static final JButton profile = new JButton(PROFILE_BUTTON);
-    private static final JPanel songPanel = new JPanel(new GridLayout(2,0));
-    private static final JLabel songLabel = new JLabel(SONG_PLAYING);
-    private static final JLabel authorLabel = new JLabel(AUTHOR_SONG);
+    private final JButton createPlaylist = new JButton(CREATE_PLAYLIST);
+    private final JButton showStadistics = new JButton(CREATE_STADISTICS);
+    private final JButton topSongs = new JButton(SHOW_TOP_SONGS);
+    private final JButton songsList = new JButton(SHOW_ALL_SONGS);
+    private final JLabel playlistLabel = new JLabel(PLAYLIST_LABEL);
 
-    //public static BusinessFacadeImp myFacade;
+    private JButton shuffleButton = new JButton();
+    private JButton backButton = new JButton();
+    private final JButton playButton = new JButton();
+    private JButton nextButton = new JButton();
+    private JButton loopButton = new JButton();
+    private final JButton profile = new JButton(PROFILE_BUTTON);
 
+    private final JPanel songPanel = new JPanel(new GridLayout(2,0));
+    private final JLabel songLabel = new JLabel(SONG_PLAYING);
+    private final JLabel authorLabel = new JLabel(AUTHOR_SONG);
 
-    public static final JPanel leftList = new JPanel();
-    private static final JPanel playlistsPanel = new JPanel();
-    private static JScrollPane scroll = new JScrollPane();
+    private final JPanel leftList = new JPanel();
+    private final JPanel playlistsPanel = new JPanel();
+    private JScrollPane scroll = new JScrollPane();
 
-    private static final JTextField songNameInputText = new JTextField();
-    public static final JButton searchButton = new JButton();
+    private final JTextField songNameInputText = new JTextField();
+    private final JButton searchButton = new JButton();
 
     /**
      * Constructor for the SpotiUI, you need to send the mainframe context and will create a card layout
      */
-    public SpotiUI() {
-        spotiFrameManager = new SpotiFrameManager();
-        playlistUI = new PlaylistUI(spotiFrameManager);
+    public SpotiFrame(PianoFrame pianoFrame) {
+        spotiPanel = pianoFrame.getSpotiPanel();
         statisticsUI = new StatisticsUI();
-        songsUI = new SongsUI(spotiFrameManager);
-        new GraphTimer();
+        songsUI = new SongsUI(pianoFrame);
+        spotiFrameManager = new SpotiFrameManager(this);
+        playlistUI = new PlaylistUI(spotiFrameManager);
+        new GraphTimer(spotiFrameManager);
         initialize();
     }
 
@@ -190,7 +189,7 @@ public class SpotiUI extends JPanel {
         lowPanel.add(songPanel, BorderLayout.WEST);
         add(lowPanel, BorderLayout.SOUTH);
 
-        registerController(new SpotiFrameManager(/*myFacade*/));
+        registerController(spotiFrameManager);
     }
 
     /**
@@ -242,7 +241,7 @@ public class SpotiUI extends JPanel {
      * Gets the inputted song name
      * @return The song name
      */
-    public static String getInputedSongName() {
+    public String getInputedSongName() {
         return songNameInputText.getText();
     }
 
@@ -251,7 +250,7 @@ public class SpotiUI extends JPanel {
      * Adds the playlist to a scroll pane where you will be able to select which playlist do you want to play or modify
      * @param playlists The list of playlists to be added to the scroll
      */
-    public static void addPlaylists(ArrayList<Playlist> playlists){
+    public void addPlaylists(ArrayList<Playlist> playlists){
         playlistsPanel.removeAll();
         leftList.remove(scroll);
         BoxLayout boxLayout = new BoxLayout(playlistsPanel, BoxLayout.Y_AXIS);
@@ -268,7 +267,7 @@ public class SpotiUI extends JPanel {
                 buttonAux.setForeground(Color.white);
                 playlistsPanel.add(buttonAux);
                 buttonAux.setAlignmentX(Component.LEFT_ALIGNMENT);
-                buttonAux.addActionListener(new SpotiFrameManager(/*myFacade*/));
+                buttonAux.addActionListener(spotiFrameManager);
             }
             scroll = new JScrollPane(playlistsPanel);
             scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
@@ -280,8 +279,6 @@ public class SpotiUI extends JPanel {
             scroll.getHorizontalScrollBar().setPreferredSize(new Dimension(0,0));
 
             leftList.add(scroll);
-
-            //   leftList.add(scroll);
         }
     }
 
@@ -302,10 +299,38 @@ public class SpotiUI extends JPanel {
         button.setForeground(Color.white);
         button.setHorizontalAlignment(SwingConstants.LEFT);
         return button;
-
     }
-    public static void setSong(String song, String author){
+
+    public void setSong(String song, String author){
         songLabel.setText(song);
         authorLabel.setText(author);
     }
+
+    public JPanel getSpotiPanel () {
+        return spotiPanel;
+    }
+
+    public SongsUI getSongsUI(){
+        return songsUI;
+    }
+
+    public PlaylistUI getPlaylistUI(){
+        return playlistUI;
+    }
+
+    public StatisticsUI getStatisticsUI(){
+        return statisticsUI;
+    }
+
+    public void setShuffleButtonIcon (ImageIcon icon) {
+        shuffleButton.setIcon(icon);
+    }
+
+    public void setPlayButton (ImageIcon icon) {
+        playButton.setIcon(icon);
+    }
+
+    public void setLoopButton(ImageIcon icon) { loopButton.setIcon(icon); }
+
+    public SpotiFrameManager spotiFrameManager() { return spotiFrameManager; }
 }

@@ -30,8 +30,7 @@ public class FreePianoUI extends Piano {
      //* @param mainFrame context necessary to create the card layout
      */
     public FreePianoUI(/*BusinessFacadeImp myFacade*/) {
-        //this.myFacade = myFacade;
-        keyboard = new ArrayList<>();
+        setKeyboardPiano(new ArrayList<>());
         initialize();
     }
 
@@ -53,8 +52,9 @@ public class FreePianoUI extends Piano {
 
 
         panel.add(Box.createRigidArea(new Dimension(10, 210)), BorderLayout.CENTER);
-        layeredPane = makeKeys();
+        JLayeredPane layeredPane = makeKeys();
         layeredPane.requestFocus();
+        setLayeredPane(layeredPane);
         panel.add(layeredPane, BorderLayout.SOUTH);
         panel.requestFocus();
 
@@ -74,22 +74,21 @@ public class FreePianoUI extends Piano {
 
         menu.add(Box.createRigidArea(new Dimension(50,10)));
 
-        soundType = new Label(JLAB_SYNTH_TYPE);
-        soundType.setBackground(Color.WHITE);
+        setUpSoundType();
 
-        profile.setBackground(Color.black);
-        profile.setIcon(new ImageIcon("Files/drawable/profile-picture.png"));
-        profile.setIcon(resizeIcon((ImageIcon) profile.getIcon(), (int) Math.round(profile.getIcon().getIconWidth()*0.15), (int) Math.round(profile.getIcon().getIconHeight()*0.15)));
-        recordB.setPreferredSize(new Dimension((int) Math.round(iconRec.getIconWidth()*1.15),
-                (int) Math.round(iconRec.getIconHeight()*1.2)));
+        getProfilePiano().setBackground(Color.black);
+        getProfilePiano().setIcon(new ImageIcon("Files/drawable/profile-picture.png"));
+        getProfilePiano().setIcon(resizeIcon((ImageIcon) getProfilePiano().getIcon(), (int) Math.round(getProfilePiano().getIcon().getIconWidth()*0.15), (int) Math.round(getProfilePiano().getIcon().getIconHeight()*0.15)));
+        getRecordB().setPreferredSize(new Dimension((int) Math.round(getIconRec().getIconWidth()*1.15),
+                (int) Math.round(getIconRec().getIconHeight()*1.2)));
 
-        menu.add(profile);
+        menu.add(getProfilePiano());
         menu.add(Box.createRigidArea(new Dimension(350,10)));
-        menu.add(recordB);
-        menu.add(modifyKeys);
+        menu.add(getRecordB());
+        menu.add(getModifyKeys());
         menu.setBackground(Color.getHSBColor(0,0,0.2f));
 
-        registerController(new FreePianoUIManager(/*myFacade*/));
+        registerController(new FreePianoUIManager(this));
         layout.add(menu, BorderLayout.NORTH);
         layout.setBackground(Color.getHSBColor(0,0,0.2f));
         return layout;
@@ -100,12 +99,12 @@ public class FreePianoUI extends Piano {
      * @param listener Gets which controller will listen to the different buttons
      */
     private void registerController(FreePianoUIManager listener) {
-        profile.addActionListener(listener);
-        recordB.addActionListener(listener);
-        modifyKeys.addActionListener(listener);
+        getProfilePiano().addActionListener(listener);
+        getRecordB().addActionListener(listener);
+        getModifyKeys().addActionListener(listener);
 
         this.addKeyListener(listener.getKeyListener());
-        for (Tile tile : keyboard) {
+        for (Tile tile : getKeyboard()) {
             tile.addMouseListener(listener);
             tile.addKeyListener(listener.getKeyListener());
         }
@@ -125,7 +124,7 @@ public class FreePianoUI extends Piano {
         keyBoard.add(Box.createRigidArea(new Dimension(55, 0)));
 
         JLabel label;
-        keyBoard = makeTiles(keyBoard, heightBlack, 330, 60, keyboard, 50, 275);
+        keyBoard = makeTiles(keyBoard, heightBlack, 330, 60, getKeyboard(), 50, 275);
 
         for (int i = 0; i < numWhiteKeys; i++) {
             label = new JLabel(Translator.getInstance().get(i).getNameKey());
@@ -188,9 +187,9 @@ public class FreePianoUI extends Piano {
      * Makes the label for each key (which key in the keyboard is that tile) in the Piano to appear
      * @param modify Boolean. Checks if we need to modify the keys or not
      */
-    public static void labelAppear(boolean modify){
+    public void labelAppear(boolean modify){
         for(int i =0;i<24;i++){
-            layeredPane.getComponent(i).setVisible(modify);
+            getLayeredPane().getComponent(i).setVisible(modify);
         }
         ImageIcon icon;
         if(modify){
@@ -200,12 +199,12 @@ public class FreePianoUI extends Piano {
 
         }
         for(int i = 0; i<14;i++){
-            keyboard.get(i).setSelectedIcon(iconResetWhite);
-            keyboard.get(i).setPressedIcon(resizeIcon(icon, Math.round(icon.getIconWidth()*SIZE_MULT_WIDTH), Math.round(icon.getIconHeight()*SIZE_MULT_HEIGHT)));
+            getKeyboard().get(i).setSelectedIcon(iconResetWhite);
+            getKeyboard().get(i).setPressedIcon(resizeIcon(icon, Math.round(icon.getIconWidth()*SIZE_MULT_WIDTH), Math.round(icon.getIconHeight()*SIZE_MULT_HEIGHT)));
         }
-        for(int i = 14; i<keyboard.size();i++){
-            keyboard.get(i).setSelectedIcon(iconResetBlack);
-            keyboard.get(i).setPressedIcon(resizeIcon(icon, Math.round(icon.getIconWidth()*SIZE_MULT_WIDTH), Math.round(icon.getIconHeight()*SIZE_MULT_HEIGHT)));
+        for(int i = 14; i<getKeyboard().size();i++){
+            getKeyboard().get(i).setSelectedIcon(iconResetBlack);
+            getKeyboard().get(i).setPressedIcon(resizeIcon(icon, Math.round(icon.getIconWidth()*SIZE_MULT_WIDTH), Math.round(icon.getIconHeight()*SIZE_MULT_HEIGHT)));
         }
     }
 
@@ -213,11 +212,11 @@ public class FreePianoUI extends Piano {
      * Sets a color for the Tile
      * @param tile Sets the color for the tile to appear
      */
-    public static void setTileColor(Tile tile){
+    public void setTileColor(Tile tile){
         boolean found = false;
         int i  = 0;
-        while(i< keyboard.size() && !found){
-            if(tile.equals(keyboard.get(i))){
+        while(i< getKeyboard().size() && !found){
+            if(tile.equals(getKeyboard().get(i))){
                 found = true;
             }else{
                 i++;
@@ -233,28 +232,24 @@ public class FreePianoUI extends Piano {
      * @param key new key that we want to modify to the old tile
      * @param keyEvent keyEvent listener we want to be modified and selected for the new key
      */
-    public static void modifyKey(Keys key, KeyEvent keyEvent){
+    public void modifyKey(Keys key, KeyEvent keyEvent){
         int i = 0;
         boolean found=false;
+        JLayeredPane layeredPane = getLayeredPane();
+
         while(i<24 && !found){
             if(layeredPane.getComponent(i).getName().equals(key.getNameKey())){
                 found=true;
             }else{
                 i++;
             }
-
         }
         if (found){
             if(layeredPane.getComponent(i) instanceof JLabel){
                 layeredPane.getComponent(i).setName(KeyEvent.getKeyText(keyEvent.getKeyCode()));
                 ((JLabel)layeredPane.getComponent(i)).setText(KeyEvent.getKeyText(keyEvent.getKeyCode()));
             }
-
         }
-
-
-
     }
-
 }
 

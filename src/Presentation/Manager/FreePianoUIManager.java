@@ -13,7 +13,6 @@ import Business.Translator;
 
 import javax.sound.midi.MidiUnavailableException;
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -22,10 +21,10 @@ import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.Objects;
 
-import static Presentation.DictionaryPiano.RECORDING_TIMER;
+import static Presentation.DictionaryPiano.*;
 import static Presentation.Dictionary_login.*;
-import static Presentation.Manager.MainFrame.card;
-import static Presentation.Manager.MainFrame.contenedor;
+import static Presentation.Ui_Views.MainFrame.card;
+import static Presentation.Ui_Views.MainFrame.contenedor;
 
 
 /**
@@ -39,10 +38,10 @@ import static Presentation.Manager.MainFrame.contenedor;
  */
 public class FreePianoUIManager implements ActionListener, MouseListener {
     private static final int SOUND_SYNTHER = 0 ;
-
     /*
     Defines the player of the music of the FreePiano
      */
+    private final FreePianoUI freePianoUI;
     private final MidiHelper finalMidiHelper;
     private final KeyListener KL;
     private final ArrayList<RecordingNotes> recordingNotes;
@@ -57,10 +56,11 @@ public class FreePianoUIManager implements ActionListener, MouseListener {
 
     /**
      * Parametrized constructor, initializes the recorder and the different overwrites for when a key is pressed in the keyboard
+     * @param freePianoUI The view which is being controlled.
      */
-    public FreePianoUIManager() {
-        
+    public FreePianoUIManager(FreePianoUI freePianoUI) {
         //Initialitzations of the variables
+        this.freePianoUI = freePianoUI;
         recordingNotes = new ArrayList<>();
         recording = false;
         recordingTime = 0;
@@ -98,7 +98,7 @@ public class FreePianoUIManager implements ActionListener, MouseListener {
                         // if the user gives a new one, then it will just swap them and return false.
                         selected = BusinessFacadeImp.getBusinessFacade().modifyKey(tileSelected, e, Translator.setNewKey(tileSelected,e.getExtendedKeyCode()));
                         if(!selected){
-                            FreePianoUI.modifyKey(Translator.getFromTile(tileSelected), e);
+                            freePianoUI.modifyKey(Translator.getFromTile(tileSelected), e);
                             Translator.setKeys(Translator.setNewKey(tileSelected,e.getExtendedKeyCode()), e.getExtendedKeyCode());
                         }
                     }
@@ -151,7 +151,7 @@ public class FreePianoUIManager implements ActionListener, MouseListener {
         switch (e.getActionCommand()) {
             case RECORDING_TIMER ->                           //each time 10 ms have happened, recordingTime will increase
                     recordingTime += 0.01;
-            case FreePianoUI.BTN_RECORD -> {                    //In the case that the Record button is pressed
+            case BTN_RECORD -> {                    //In the case that the Record button is pressed
                 if (recording) {//If we were recording and we want to stop
                     timer.stop();
                     BusinessFacadeImp.getBusinessFacade().noteRecordingUpdate(recordingNotes, recordingTime);
@@ -163,10 +163,10 @@ public class FreePianoUIManager implements ActionListener, MouseListener {
             }
             case Dictionary_login.PROFILE_BUTTON ->           //In the case that the Profile button is pressed
                     card.show(contenedor, PROFILE_UI);
-            case FreePianoUI.MODIFY -> {                        //In the case that the Modify button is pressed
-                AbstractButton abstractButton = (AbstractButton) e.getSource();
+            case MODIFY -> {                        //In the case that the Modify button is pressed
+                AbstractButton abstractButton = (AbstractButton) e.getSource();     //TODO we shouldn't be changing the button here, but on a view
                 modifying = abstractButton.getModel().isSelected();
-                FreePianoUI.labelAppear(modifying);
+                freePianoUI.labelAppear(modifying);
                 selected = false;
             }
         }
@@ -186,14 +186,7 @@ public class FreePianoUIManager implements ActionListener, MouseListener {
      * @param string Defines the string that stores the tile which has been pressed
      */
     private void setIconKey(String string){
-        int i = 0;
-        while(!string.equals(FreePianoUI.getKeyboard().get(i).getName()) &&
-                i<FreePianoUI.getKeyboard().size()){
-            i++;
-        }
-        if(i!=FreePianoUI.getKeyboard().size()){
-            FreePianoUI.getKeyboard().get(i).setIcon();
-        }
+        PianoTilesUISelectorManager.IconKey(string, freePianoUI.getKeyboard());
     }
 
     /**
@@ -201,17 +194,7 @@ public class FreePianoUIManager implements ActionListener, MouseListener {
      * @param string Defines the tile to change color
      */
     private void setIconBack(String string){
-        int i = 0;
-        while(!string.equals(FreePianoUI.getKeyboard().get(i).getName()) && i<FreePianoUI.getKeyboard().size()){
-            i++;
-        }
-        if(i!=FreePianoUI.getKeyboard().size()){
-            if(FreePianoUI.getKeyboard().get(i).getColor()== Color.WHITE){
-                FreePianoUI.getKeyboard().get(i).backToWhite();
-            }else{
-                FreePianoUI.getKeyboard().get(i).backToBlack();
-            }
-        }
+        PianoTilesUISelectorManager.setIconBackTiles(string, freePianoUI.getKeyboard());
     }
 
     /**
@@ -237,7 +220,7 @@ public class FreePianoUIManager implements ActionListener, MouseListener {
         }
         if(modifying){
             if(!selected){
-                FreePianoUI.setTileColor(t);
+                freePianoUI.setTileColor(t);
                 tileSelected = Objects.requireNonNull(t).getName();
                 selected = true;
             }

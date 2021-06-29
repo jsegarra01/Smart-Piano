@@ -17,15 +17,11 @@ import java.util.List;
 public class Graph extends JPanel {
     private final int width = 400;
     private final int height = 350;
-    private final int padding = 30;
-    private final int labelPadding = 25;
     private final Color lineColor1 = Color.BLUE;
     private final Color lineColor2 = Color.RED;
     private final Color pointColor = Color.DARK_GRAY;
     private final Color gridColor = Color.GRAY;
-    private static final Stroke GRAPH_STROKE = new BasicStroke(2f); // used to draw shape’s outline
-    private final int pointWidth = 4;
-    private final int numberYDivisions = 10;
+    private final Stroke GRAPH_STROKE = new BasicStroke(2f); // used to draw shape’s outline
     private final List<Float> yPoints;
     private final String yAxis;
     private final boolean graph1;
@@ -62,6 +58,8 @@ public class Graph extends JPanel {
         Graphics2D g2 = (Graphics2D) g;
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
+        int padding = 30;
+        int labelPadding = 25;
         double xScale = ((double) getWidth() - (2 * padding) - labelPadding) / (yPoints.size() - 1);
         double yScale = ((double) getHeight() - 2 * padding - labelPadding) / (getMaxY() - getMinY());
 
@@ -78,6 +76,8 @@ public class Graph extends JPanel {
         g2.setColor(Color.BLACK);
 
         // create hatch marks and grid lines for y axis.
+        int pointWidth = 4;
+        int numberYDivisions = 10;
         for (int i = 0; i < numberYDivisions + 1; i++) {
             int x0 = padding + labelPadding;
             int x1 = pointWidth + padding + labelPadding;

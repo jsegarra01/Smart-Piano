@@ -19,7 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="Business facade should be perfectly implemented now" />
+    <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="Small changes" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -126,10 +126,10 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main" />
         <item itemvalue="Application.ReadMidi" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.ReadMidi" />
+        <item itemvalue="Application.Main" />
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
@@ -166,48 +166,8 @@
       <workItem from="1624462522521" duration="4738000" />
       <workItem from="1624638352578" duration="3673000" />
       <workItem from="1624462522521" duration="5885000" />
-    </task>
-    <task id="LOCAL-00023" summary="publish feature yikes">
-      <created>1620117762390</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1620117762390</updated>
-    </task>
-    <task id="LOCAL-00024" summary="Stop Playing when key released">
-      <created>1620126250332</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1620126250333</updated>
-    </task>
-    <task id="LOCAL-00025" summary="play music menu">
-      <created>1620145789461</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1620145789461</updated>
-    </task>
-    <task id="LOCAL-00026" summary="improvement of the display a song menu">
-      <created>1620150719884</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1620150719884</updated>
-    </task>
-    <task id="LOCAL-00027" summary="player bar">
-      <created>1620152593760</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1620152593760</updated>
-    </task>
-    <task id="LOCAL-00028" summary="buttons player bar finished">
-      <created>1620156585009</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1620156585009</updated>
+      <workItem from="1624960236189" duration="19024000" />
+      <workItem from="1624983363044" duration="148000" />
     </task>
     <task id="LOCAL-00029" summary="some corrections have been made with sizes and optimization.">
       <created>1620157965594</created>
@@ -510,7 +470,49 @@
       <option name="project" value="LOCAL" />
       <updated>1624804219151</updated>
     </task>
-    <option name="localTasksCounter" value="73" />
+    <task id="LOCAL-00073" summary="PrePiano fixed, no public/static things">
+      <created>1624888710382</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1624888710382</updated>
+    </task>
+    <task id="LOCAL-00074" summary="Piano + FreePianoUI views correct">
+      <created>1624891845191</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1624891845191</updated>
+    </task>
+    <task id="LOCAL-00075" summary="PianoTilesUISelector and PianoTilesUISelectorManager changed, now they work with a little bit more of sense. Still need to check for their publics and statics but now everything should be easier">
+      <created>1624895941955</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1624895941955</updated>
+    </task>
+    <task id="LOCAL-00076" summary="Things prepared to modify everything about the SpotiUI. We need to separate the manager in various controllers">
+      <created>1624968887574</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1624968887574</updated>
+    </task>
+    <task id="LOCAL-00077" summary="SpotiFrameManager fixed yey">
+      <created>1624981935415</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1624981935415</updated>
+    </task>
+    <task id="LOCAL-00078" summary="Small changes">
+      <created>1624983420323</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1624983420327</updated>
+    </task>
+    <option name="localTasksCounter" value="79" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -552,12 +554,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="commit to finish feature" />
-    <MESSAGE value="commit to make feature public" />
-    <MESSAGE value="adding playlist in SpotiUI" />
-    <MESSAGE value="now the playlists are called in a different class (SpotiFrameManager) because of some error" />
-    <MESSAGE value="commit to merge" />
-    <MESSAGE value="Final commit for finish feature" />
     <MESSAGE value="Final commit for finish feature v3" />
     <MESSAGE value="Comments for the FreePianoUIManager, implementation of the recording for the mouse (now mouse records too) and eliminated some System.outs" />
     <MESSAGE value="Comments for the FreePianoUI, PianoUI and SongToMidi" />
@@ -621,7 +617,13 @@
     <MESSAGE value="Business facade is getting better and better, changes made to sergi have been erased, sergi always does it perfectly :)" />
     <MESSAGE value="it got bugged, so lets commit before changes are not saved:)" />
     <MESSAGE value="Business facade should be perfectly implemented now" />
-    <option name="LAST_COMMIT_MESSAGE" value="Business facade should be perfectly implemented now" />
+    <MESSAGE value="PrePiano fixed, no public/static things" />
+    <MESSAGE value="Piano + FreePianoUI views correct" />
+    <MESSAGE value="PianoTilesUISelector and PianoTilesUISelectorManager changed, now they work with a little bit more of sense. Still need to check for their publics and statics but now everything should be easier" />
+    <MESSAGE value="Things prepared to modify everything about the SpotiUI. We need to separate the manager in various controllers" />
+    <MESSAGE value="SpotiFrameManager fixed yey" />
+    <MESSAGE value="Small changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Small changes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -640,36 +642,6 @@
           <url>file://$PROJECT_DIR$/src/Persistence/WebScrapping/SongDownloader.java</url>
           <line>146</line>
           <option name="timeStamp" value="66" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Persistence/WebScrapping/SongDownloader.java</url>
-          <line>140</line>
-          <option name="timeStamp" value="67" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Persistence/SQL/Csv/SongCsvDAO.java</url>
-          <line>126</line>
-          <option name="timeStamp" value="68" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Persistence/SQL/Csv/SongCsvDAO.java</url>
-          <line>125</line>
-          <option name="timeStamp" value="69" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Persistence/SQL/Csv/SongCsvDAO.java</url>
-          <line>128</line>
-          <option name="timeStamp" value="70" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Persistence/SQL/Csv/SongCsvDAO.java</url>
-          <line>130</line>
-          <option name="timeStamp" value="71" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Presentation/Manager/PianoTilesUISelectorManager.java</url>
-          <line>134</line>
-          <option name="timeStamp" value="73" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

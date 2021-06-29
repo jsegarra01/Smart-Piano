@@ -51,7 +51,6 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
     @Override
     public void enterAsAGuest(){
             setPlaylists();
-            SpotiFrameManager.addPlaylists(getPlaylists());
             setSong();
     }
 
@@ -147,8 +146,6 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
         if(myStr != null && myStr.length() > 0 && myStr.indexOf('\'') == -1){
             newPlaylist(myStr);
             myPlayList = playlistManager.getFromName(myStr);
-            //PlaylistUI.setSongsPlaylists(myPlayList);
-            SpotiFrameManager.addPlaylists(playlistManager.getPlaylists());
         } else {
             setError(12);
         }
@@ -222,7 +219,6 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
      */
     @Override
     public void setSong(){
-
         songManager.setSongs();
     }
 

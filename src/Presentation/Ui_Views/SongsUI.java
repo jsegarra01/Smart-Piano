@@ -19,17 +19,18 @@ import java.util.ArrayList;
  *
  */
 public class SongsUI extends JPanel {
-    private static JTable table;
-    private static final JPanel panel = new JPanel();
-    private static SpotiFrameManager myManager;
+    private JTable table;
+    private final JPanel spotiPanel;
+    private final JPanel panel = new JPanel();
 
 
     /**
      * Constructor for the SongsUI
+     * @param pianoFrame view of the piano frame
      */
-    public SongsUI(SpotiFrameManager spotiFrameManager) {
-        myManager = spotiFrameManager;
+    public SongsUI(PianoFrame pianoFrame) {
         setBackground(Color.black);
+        this.spotiPanel = pianoFrame.getSpotiPanel();
         panel.setPreferredSize(new Dimension(860, 550));
         add(panel);
     }
@@ -39,7 +40,7 @@ public class SongsUI extends JPanel {
      * @param songs List of songs to be added to the table
      * @param action Whether if we want the table for the top 5 songs or the table with all the songs available for the user
      */
-    public static void initTable(ArrayList<Song> songs, String action){
+    public void initTable(ArrayList<Song> songs, String action){
         String[] columnNames = new String[0];
 
         panel.removeAll();
@@ -82,9 +83,11 @@ public class SongsUI extends JPanel {
         sp.setBackground(Color.black);
         sp.setPreferredSize(new Dimension(860, 540));
         sp.setWheelScrollingEnabled(true);
-        registerController(myManager);
+        //registerController(new SongsUIManager(this));
+        registerController(new SpotiFrameManager());
         if(!action.equals("topFive")){
-            registerController(myManager);
+            //registerController(new SongsUIManager(this));
+            registerController(new SpotiFrameManager());
         }
         panel.add(sp);
         panel.revalidate();
@@ -95,7 +98,11 @@ public class SongsUI extends JPanel {
      * Method that calls the class button column, which determines which is the button in the column
      * @param listener Defines the listener that the button will activate
      */
-    private static void registerController(Action listener) {
+    private void registerController(Action listener) {
           new ButtonColumn(table, listener, 4);
+    }
+
+    public JPanel getSpotiPanel () {
+        return spotiPanel;
     }
 }
