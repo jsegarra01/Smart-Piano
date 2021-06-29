@@ -28,9 +28,9 @@ public class Stadistics {
 
     /**
      * Constructor of the class stadistics
-     * @param hour Hour where the stadistics are from
-     * @param numPlayed Number of times a song has been played
-     * @param minPlayed Minutes a song has been played
+     * @param hour Defines the hour that the statistics belong to
+     * @param numPlayed Defines the amount of times a song has been played
+     * @param minPlayed Defines the number of minutes a song has been played
      */
     public Stadistics(int hour, float numPlayed, float minPlayed) {
         this.hour = hour;
@@ -39,20 +39,13 @@ public class Stadistics {
     }
 
     /**
-     * Gets the hour
-     * @return The hour
+     * Method that gets the hour of the statistic
+     * @return Int that stores the hour
      */
     public int getHour() {
         return hour;
     }
 
-    /**
-     * Sets the hour
-     * @param myHour The desired hour
-     */
-    public void setHour(int myHour) {
-        this.hour = myHour;
-    }
 
     /**
      * Gets the number of times a song has been played

@@ -63,7 +63,7 @@ public class PianoFrameManager implements ActionListener {
         playSong.setBackground(Color.GRAY);
         musicPlayer.setBackground(Color.GRAY);
         new ChangeTime(0);
-        midiHelper.stopSong();
+        //midiHelper.stopSong();
 
         switch (e.getActionCommand()) {
             case Dictionary_login.PROFILE_BUTTON:       //In the case that the Profile button is pressed

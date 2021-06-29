@@ -43,12 +43,15 @@ public class SongManager {
      * @param isPublic True if public, false if private
      * @param endtime Duration of the song
      */
-    public void saveRecording(ArrayList<RecordingNotes> recordedNotes, String songName, boolean isPublic, float endtime) {
+    public boolean saveRecording(ArrayList<RecordingNotes> recordedNotes, String songName, boolean isPublic, float endtime) {
         writeMidi(songName, new SongRecorded(recordedNotes,songName, isPublic).getRecordingNotes(), endtime);
         Song song = new Song(songName, UserManager.getUser().getUserName(), endtime, new Date(),isPublic, "Songs/" + songName + ".mid", UserManager.getUser().getUserName(), 0);
-        saveSongWithDate(song);
+        if(!saveSongWithDate(song) || !setSongs(UserManager.getUser().getUserName()) ){
+            return false;
+        }
         songs.clear();
-        setSongs(UserManager.getUser().getUserName());
+        return true;
+
     }
 
     /**
@@ -71,16 +74,19 @@ public class SongManager {
     /**
      * Loads all songs and song names from the database
      */
-    public void setSongs() {
+    public boolean setSongs() {
         //songs = songManager.getAllSongs(getUser());
         try {
             songNames.clear();
             songs = songManager.getAllSongs();
-            for (Song song : songs) {
+            ArrayList<Song> aux = new ArrayList<>(songs);
+            aux.sort(this::compare);
+            for (Song song : aux) {
                 songNames.add(song.getSongName());
             }
+            return true;
         } catch (SQLException e) {
-            BusinessFacadeImp.getBusinessFacade().setError(0);
+            return false;
         }
     }
 
@@ -89,16 +95,18 @@ public class SongManager {
      * Loads all songs and song names from a user
      * @param username The user name we want the songs from
      */
-    public void setSongs(String username) {
-        //songs = songManager.getAllSongs(getUser());
+    public boolean setSongs(String username) {
         try {
             songNames.clear();
             songs = songManager.getAllSongs(username);
-            for (Song song : songs) {
+            ArrayList<Song> aux = new ArrayList<>(songs);
+            aux.sort(this::compare);
+            for (Song song : aux) {
                 songNames.add(song.getSongName());
             }
+            return true;
         } catch (SQLException e) {
-            BusinessFacadeImp.getBusinessFacade().setError(0);
+            return false;
         }
     }
 
@@ -123,7 +131,7 @@ public class SongManager {
      * @return 1 if the first song has been played more times than the second, -1 elsewhere
      */
     private int compare(Song song1, Song song2) {
-        if(song1.getTimesPlayed() <= song2.getTimesPlayed()){
+        if(song1.getTimesPlayed() < song2.getTimesPlayed()){
             return 1;
         } else {
             return -1;
@@ -134,10 +142,8 @@ public class SongManager {
      * Calls the function to update the times played of a song
      * @param song Defines the song to be updated
      */
-    public void updateSongPlayed(Song song){
-        if (!songManager.updateTimesPlayed(song)) {
-            BusinessFacadeImp.getBusinessFacade().setError(9);
-        }
+    public boolean updateSongPlayed(Song song){
+        return songManager.updateTimesPlayed(song);
     }
 
     /**
@@ -145,9 +151,7 @@ public class SongManager {
      * @param myStats Stadistics we want to save
      */
     public boolean addingStatistics(Stadistics myStats){
-         return songManager.saveStadistics(myStats);/* {
-            BusinessFacadeImp.getBusinessFacade().setError(9);
-        }*/
+         return songManager.saveStadistics(myStats);
     }
 
     /**
@@ -168,22 +172,18 @@ public class SongManager {
         return songManager.deleteSong(song);
     }
 
-    public void saveSong (Song song) {
-        if (!songManager.saveSong(song)) {
-            BusinessFacadeImp.getBusinessFacade().setError(4);
-        }
+    /**
+     *
+     * @param song
+     */
+    public boolean saveSongWithDate(Song song){
+        return songManager.saveSongWithDate(song);
     }
 
-    public void saveSongWithDate(Song song){
-        if (!songManager.saveSongWithDate(song)) {
-            BusinessFacadeImp.getBusinessFacade().setError(4);
-        }
-    }
-
-    public Song getSongByName(String name){
-        return songManager.getSongByName(name);
-    }
-
+    /**
+     *
+     * @param i
+     */
     public void deleteSongFile(int i){
         songManager.deleteSongFile(songs.get(i).getSongFile());
 

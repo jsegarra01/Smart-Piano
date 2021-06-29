@@ -11,6 +11,9 @@ import Presentation.Manager.SpotiFrameManager;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import static Presentation.Ui_Views.SignUpUI.getMailSignUp;
+import static Presentation.Ui_Views.SignUpUI.getUsernameSignUp;
+
 
 /**
  * BusinessFacade
@@ -72,21 +75,40 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
      */
     @Override
     public boolean SignUp(String username, String mail, String password, String passwordConfirm) {
-        if (!password.equals(passwordConfirm)) {
+        if(username==null){
+            setError(13);
+            return false;
+        }else if(mail == null){
+            setError(14);
             return false;
         }
-        try {
-            if (loginUserManager.signUser(username,mail,password)) {
-                return true;
-            }
-            else {
-                setError(1);
+        if(password.length()>=8){
+            if(password.matches("(?=.*[0-9]).*") && password.matches("(?=.*[a-z]).*") && password.matches("(?=.*[A-Z]).*")){
+                if (!password.equals(passwordConfirm)) {
+                    setError(17);
+                    return false;
+                }
+                try {
+                    if (loginUserManager.signUser(username,mail,password)) {
+                        return true;
+                    }
+                    else {
+                        setError(1);
+                        return false;
+                    }
+                } catch (SQLException e) {
+                    setError(0);
+                    return false;
+                }
+            }else{
+                setError(16);
                 return false;
             }
-        } catch (SQLException e) {
-            setError(0);
+        }else{
+            setError(15);
             return false;
         }
+
     }
 
     /**
@@ -157,17 +179,11 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
      */
     @Override
     public void recordedNotesSend(ArrayList<RecordingNotes> recordedNotes, String songName, boolean isPublic, float endtime) {
-        songManager.saveRecording(recordedNotes,songName,isPublic,endtime);
+        if(!songManager.saveRecording(recordedNotes,songName,isPublic,endtime)){
+            setError(0);
+        }
     }
 
-    /**
-     * Gets the playlist manager
-     * @return The playlist manager
-     */
-    @Override
-    public PlaylistManager getPlaylistManager() {
-        return playlistManager;
-    }
 
     /**
      * Gets a playlist based on its name
@@ -206,7 +222,9 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
      */
     @Override
     public void setSongUser() {
-        songManager.setSongs(UserManager.getUser().getUserName());
+        if(!songManager.setSongs(UserManager.getUser().getUserName())){
+            setError(0);
+        }
     }
 
     /**
@@ -214,8 +232,9 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
      */
     @Override
     public void setSong(){
-
-        songManager.setSongs();
+        if(!songManager.setSongs()){
+            setError(0);
+        }
     }
 
     @Override
@@ -226,11 +245,6 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
     @Override
     public Song getSong(int index) {
         return songManager.getSong(index);
-    }
-
-    @Override
-    public SongManager getSongManager() {
-        return songManager;
     }
 
     @Override
@@ -282,7 +296,9 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
 
     @Override
     public void updateSong(Song song){
-        songManager.updateSongPlayed(song);
+        if(!songManager.updateSongPlayed(song)){
+            setError(9);
+        }
     }
 
     @Override

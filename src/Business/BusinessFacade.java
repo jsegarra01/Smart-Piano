@@ -52,12 +52,6 @@ public interface BusinessFacade {
 
 
     /**
-     * Gets the PlayListManager
-     * @return PlaylistManager returns the manager for the playlist in order to implement its methods
-     */
-    PlaylistManager getPlaylistManager();
-
-    /**
      * Obtains and saves the songs of the user logged
      */
     void setSongUser();
@@ -85,8 +79,6 @@ public interface BusinessFacade {
     Playlist getPlaylist(String name);
 
     boolean deleteSongFromPlaylist(String playlistName, String songName);
-
-    SongManager getSongManager();
 
     boolean addSongToPlaylist(String playlistName, String songName);
 

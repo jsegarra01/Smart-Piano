@@ -54,6 +54,19 @@ public class ErrorsManager {
                     createDialog("This key is already assigned!", "Modify keys error");
             case 12 ->
                     createDialog("The input is not correct!", "Create playlist error");
+            case 13 ->
+                    createDialog("The username cannot be empty!", "Sign Up error");
+            case 14 ->
+                    createDialog("The email cannot be empty!", "Sign Up error");
+            case 15 ->
+                    createDialog("The password must be at least 8 characters long!", "Sing Up error");
+            case 16 ->
+                    createDialog("The password must contain an upper case, lower case and numbers!",
+                            "Sign Up error");
+            case 17 ->
+                    createDialog("Both passwords don't match!", "Sign Up error");
+            case 18 ->
+                    createDialog("The input cannot be empty!", "Song recording error");
         }
     }
 

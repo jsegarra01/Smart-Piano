@@ -94,7 +94,7 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
     public SpotiFrameManager() {
         MidiHelper finalMidiHelper1;
         try {
-            finalMidiHelper1 = new MidiHelper();
+            finalMidiHelper1 = new MidiHelper(listener);
         } catch (MidiUnavailableException e) {
             finalMidiHelper1 = null;
         }
@@ -260,7 +260,7 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
                                 ((DefaultTableModel)table.getModel()).removeRow(modelRow);
                                 BusinessFacadeImp.getBusinessFacade().deleteSong(modelRow);
                                 BusinessFacadeImp.getBusinessFacade().setSongUser();
-                                BusinessFacadeImp.getBusinessFacade().getPlaylistManager().setPlaylists(UserManager.getUser().getUserName());
+                                BusinessFacadeImp.getBusinessFacade().setPlaylists();
                             }
 
                         }

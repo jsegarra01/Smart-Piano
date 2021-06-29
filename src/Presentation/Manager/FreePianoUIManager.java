@@ -292,8 +292,15 @@ public class FreePianoUIManager implements ActionListener, MouseListener {
         JCheckBox box = new JCheckBox("is public?");
         myPanel.add(box);
 
-        JOptionPane.showMessageDialog(null, myPanel, "Enter a title for the song", JOptionPane.INFORMATION_MESSAGE);
+        int option = JOptionPane.showInternalConfirmDialog(null, myPanel, "Enter a title for the song", JOptionPane.OK_CANCEL_OPTION);
+        if(option == JOptionPane.OK_OPTION){
+            if(titleField.getText().isEmpty()){
+                BusinessFacadeImp.getBusinessFacade().setError(18);
+                noteRecordingUpdate();
+            }else{
+                BusinessFacadeImp.getBusinessFacade().recordedNotesSend(recordingNotes, titleField.getText(), box.isSelected(), recordingTime);
+            }
+        }
 
-        BusinessFacadeImp.getBusinessFacade().recordedNotesSend(recordingNotes, titleField.getText(), box.isSelected(), recordingTime);
     }
 }
