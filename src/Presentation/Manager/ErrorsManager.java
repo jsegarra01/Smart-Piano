@@ -67,6 +67,8 @@ public class ErrorsManager {
                     createDialog("Both passwords don't match!", "Sign Up error");
             case 18 ->
                     createDialog("The input cannot be empty!", "Song recording error");
+            case 19 ->
+                    createDialog("There was an error adding the song to the playlist!", "Song adding error");
         }
     }
 

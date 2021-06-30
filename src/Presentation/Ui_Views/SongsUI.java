@@ -21,17 +21,19 @@ public class SongsUI extends JPanel {
     private JTable table;
     private final JPanel spotiPanel;
     private final JPanel panel = new JPanel();
+    private SpotiFrameManager spotiFrameManager;
 
 
     /**
      * Constructor for the SongsUI
      * @param pianoFrame view of the piano frame
      */
-    public SongsUI(PianoFrame pianoFrame) {
+    public SongsUI(PianoFrame pianoFrame, SpotiFrameManager spotiFrameManager) {
         setBackground(Color.black);
         this.spotiPanel = pianoFrame.getSpotiPanel();
         panel.setPreferredSize(new Dimension(860, 550));
         add(panel);
+        this.spotiFrameManager = spotiFrameManager;
     }
 
     /**
@@ -83,11 +85,11 @@ public class SongsUI extends JPanel {
         sp.setPreferredSize(new Dimension(860, 540));
         sp.setWheelScrollingEnabled(true);
         //registerController(new SongsUIManager(this));
-        registerController(new SpotiFrameManager());
-        if(!action.equals("topFive")){
+        registerController(spotiFrameManager);
+        //if(!action.equals("topFive")){
             //registerController(new SongsUIManager(this));
-            registerController(new SpotiFrameManager());
-        }
+          //  registerController(new SpotiFrameManager());
+        //}
         panel.add(sp);
         panel.revalidate();
         panel.repaint();

@@ -89,6 +89,7 @@ public class PianoFrameManager implements ActionListener {
                 cc.show(pianoFrame.getCentralPanel(), SPOTI_UI);
                 cc2.show(pianoFrame.getSpotiPanel(), SONGS_UI);
                 pianoFrame.setBackgroundMusicPlayer(Color.getHSBColor(0,0,80.3f));
+                pianoFrame.getSpotiFrameManager().reset();
                 break;
         }
     }

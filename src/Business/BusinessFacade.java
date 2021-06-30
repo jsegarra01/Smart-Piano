@@ -80,7 +80,7 @@ public interface BusinessFacade {
 
     boolean deleteSongFromPlaylist(String playlistName, String songName);
 
-    boolean addSongToPlaylist(String playlistName, String songName);
+    void addSongToPlaylist(String playlistName, String songName);
 
     void deleteSong(int i);
 

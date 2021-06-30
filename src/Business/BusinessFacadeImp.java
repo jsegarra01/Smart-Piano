@@ -209,8 +209,10 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
      * @return True if added, false if not
      */
     @Override
-    public boolean addSongToPlaylist(String playlistName, String songName){
-        return playlistManager.addSongToPlaylist(playlistName, songName);
+    public void addSongToPlaylist(String playlistName, String songName){
+         if(!playlistManager.addSongToPlaylist(playlistName, songName)){
+             setError(19);
+         }
     }
 
     /**

@@ -39,8 +39,8 @@ import static Presentation.Ui_Views.MainFrame.contenedor;
 public class SpotiFrameManager extends AbstractAction implements ActionListener, MouseListener {
     private final ImageIcon playIcon; //Icon played
     private final ImageIcon pauseIcon; //Icon pause
-    private static Playlist playlist;
-    private static Song songPlay;
+    private Playlist playlist;
+    private Song songPlay;
 
     /*
     Defines if there is a song being played
@@ -52,7 +52,7 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
     /*
     Defines if we are adding a song or not
      */
-    private static boolean addSong = false;
+    private boolean addSong = false;
 
     /*
     Defines the playlist where the song that is being played is
@@ -88,7 +88,7 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
     /*
     Views that depend on this manager
     */
-    private static SpotiFrame spotiFrame;
+    private SpotiFrame spotiFrame;
 
     public SpotiFrameManager() {
         MidiHelper finalMidiHelper1;
@@ -258,9 +258,8 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
                         if(addSong){
                             if (isAlreadyInPlaylist(BusinessFacadeImp.getBusinessFacade().getSong(modelRow).getSongName())) {
                                 BusinessFacadeImp.getBusinessFacade().setError(7);
-                            }else{      //TODO updating song ha de fer alguna cosa?
-                                boolean updatingSong = BusinessFacadeImp.getBusinessFacade().
-                                        addSongToPlaylist(playlist.getPlaylistName(),
+                            }else{
+                                BusinessFacadeImp.getBusinessFacade().addSongToPlaylist(playlist.getPlaylistName(),
                                                 BusinessFacadeImp.getBusinessFacade().getSong(modelRow).getSongName());
                                 playlist = BusinessFacadeImp.getBusinessFacade().getPlaylist(playlist.getPlaylistName());
                                 spotiFrame.getPlaylistUI().setSongsPlaylists(playlist);
@@ -468,6 +467,7 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
             if (i >= playlist.getSongs().size()) {
                 i = 0;
             }
+            System.out.println("hola");
             return playlist.getSongs().get(i);
         }
         return null;
@@ -727,4 +727,9 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
     public int getCount_song() { return count_song;}
 
     public void setCount_song(int i) { count_song = i;}
+
+    public void reset(){
+        addSong = false;
+        top5 = false;
+    }
 }
