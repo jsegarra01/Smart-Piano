@@ -152,15 +152,18 @@ public class FreePianoUIManager implements ActionListener, MouseListener {
             case RECORDING_TIMER ->                           //each time 10 ms have happened, recordingTime will increase
                     recordingTime += 0.01;
             case BTN_RECORD -> {                    //In the case that the Record button is pressed
-                if (recording) {//If we were recording and we want to stop
-                    timer.stop();
-                    noteRecordingUpdate();
-                    //BusinessFacadeImp.getBusinessFacade().noteRecordingUpdate(recordingNotes, recordingTime);
-                } else {                                      //If we want to start recording
-                    recordingTime = 0;
-                    timer.restart();
+                if(BusinessFacadeImp.getBusinessFacade().isUserNotGuest()){
+                    if (recording) {//If we were recording and we want to stop
+                        timer.stop();
+                        noteRecordingUpdate();
+                        //BusinessFacadeImp.getBusinessFacade().noteRecordingUpdate(recordingNotes, recordingTime);
+                    } else {                                      //If we want to start recording
+                        recordingTime = 0;
+                        timer.restart();
+                    }
+                    recording = !recording;
                 }
-                recording = !recording;
+
             }
             case Dictionary_login.PROFILE_BUTTON ->           //In the case that the Profile button is pressed
                     card.show(contenedor, PROFILE_UI);

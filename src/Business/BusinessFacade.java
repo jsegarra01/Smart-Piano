@@ -202,4 +202,12 @@ public interface BusinessFacade {
      */
     ArrayList<Playlist> getPlaylists();
 
+    /**
+     * Checks if the user is a guest, if it is, it throws an error
+     * @return Boolean that stores a true if it is not a guest, false if it is
+     */
+    boolean isUserNotGuest();
+
+    boolean checkCanDelete(int i);
+
 }

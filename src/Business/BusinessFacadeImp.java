@@ -413,5 +413,27 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
         return playlistManager.getPlaylists();
     }
 
+    /**
+     * Checks if the user is a guest, if it is, it throws an error
+     * @return Boolean that stores a true if it is not a guest, false if it is
+     */
+    @Override
+    public boolean isUserNotGuest() {
+        if(UserManager.getUser().getUserName().matches("guest")){
+            setError(21);
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public boolean checkCanDelete(int i) {
+        if(UserManager.getUser().getUserName().matches(songManager.getSong(i).getCreator())){
+            return true;
+        }
+        setError(22);
+        return false;
+    }
+
 
 }

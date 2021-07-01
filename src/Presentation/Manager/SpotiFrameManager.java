@@ -251,16 +251,19 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
                                 addSong = false;
                             }
                         }else{
-                            int input = JOptionPane.showConfirmDialog(null,
-                                    "Are you sure you want to delete " +
-                                            BusinessFacadeImp.getBusinessFacade().getSong(modelRow).getSongName() +"?",
-                                    "Select an option", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
-                            if(input == JOptionPane.YES_OPTION){
-                                ((DefaultTableModel)table.getModel()).removeRow(modelRow);
-                                BusinessFacadeImp.getBusinessFacade().deleteSong(modelRow);
-                                BusinessFacadeImp.getBusinessFacade().setSongUser();
-                                BusinessFacadeImp.getBusinessFacade().setPlaylists();
+                            if(BusinessFacadeImp.getBusinessFacade().checkCanDelete(modelRow)){
+                                int input = JOptionPane.showConfirmDialog(null,
+                                        "Are you sure you want to delete " +
+                                                BusinessFacadeImp.getBusinessFacade().getSong(modelRow).getSongName() +"?",
+                                        "Select an option", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+                                if(input == JOptionPane.YES_OPTION){
+                                    ((DefaultTableModel)table.getModel()).removeRow(modelRow);
+                                    BusinessFacadeImp.getBusinessFacade().deleteSong(modelRow);
+                                    BusinessFacadeImp.getBusinessFacade().setSongUser();
+                                    BusinessFacadeImp.getBusinessFacade().setPlaylists();
+                                }
                             }
+
                         }
                     }
                     break;

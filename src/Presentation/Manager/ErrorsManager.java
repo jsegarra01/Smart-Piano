@@ -71,6 +71,10 @@ public class ErrorsManager {
                     createDialog("There was an error adding the song to the playlist!", "Song adding error");
             case 20 ->
                     createDialog("There was an error while adding the playlist", "Create playlist error");
+            case 21 ->
+                    createDialog("You cannot record a song as a guest!", "Record song error");
+            case 22 ->
+                    createDialog("You are not the creator of this song", "Delete song error");
         }
     }
 
