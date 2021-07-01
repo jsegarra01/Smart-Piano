@@ -36,10 +36,6 @@
       <change afterPath="$PROJECT_DIR$/Files/WebScrappingResults/duetto.mid" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Files/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/Files/config.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/MidiHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/MidiHelper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Persistence/WebScrapping/SongDownloader.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Persistence/WebScrapping/SongDownloader.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Business/MidiHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/MidiHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Persistence/WebScrapping/SongDownloader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Persistence/WebScrapping/SongDownloader.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -147,11 +143,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.ReadMidi" />
+        <item itemvalue="Application.Main" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.ReadMidi" />
         <item itemvalue="Application.ReadMidi" />
-        <item itemvalue="Application.ReadMidi" />
-        <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -655,29 +651,9 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Presentation/Manager/PianoTilesUISelectorManager.java</url>
-          <line>134</line>
-          <option name="timeStamp" value="73" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Persistence/SQL/Csv/SongCsvDAO.java</url>
           <line>147</line>
           <option name="timeStamp" value="39" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Persistence/Files/SongToMidi.java</url>
-          <line>135</line>
-          <option name="timeStamp" value="59" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Presentation/Manager/SpotiFrameManager.java</url>
-          <line>355</line>
-          <option name="timeStamp" value="82" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Presentation/Manager/SpotiFrameManager.java</url>
-          <line>357</line>
-          <option name="timeStamp" value="83" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
