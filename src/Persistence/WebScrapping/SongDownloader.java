@@ -1,21 +1,24 @@
 package Persistence.WebScrapping;
 import Business.BusinessFacadeImp;
 import Business.Entities.Song;
+import Business.MidiHelper;
 import Business.SongManager;
 import Persistence.SongDownloaderDAO;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import javax.sound.midi.MidiUnavailableException;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
-import static Business.Entities.WebHandler.getHtmlDocument;
-import static Business.Threads.WebScrapping.getSongDownloader;
+import static Business.Entities.WebHandler.*;
+import static Business.Threads.WebScrapping.*;
 import static Presentation.DictionaryPiano.URLROUTE;
+
 
 /**
  * The following Helper directly downloads any file from the internet only needing the URL. Creates a connection, downloads
@@ -109,6 +112,12 @@ public class SongDownloader implements SongDownloaderDAO {
 
     @Override
     public void downloadAllSongsScrapping(String webpage) {
+        MidiHelper midiHelper = null;
+        try {
+            midiHelper = new MidiHelper();
+        } catch (MidiUnavailableException e) {
+            e.printStackTrace();
+        }
         String URL;
         int i = 0;
         while (i < 50) {
@@ -137,7 +146,7 @@ public class SongDownloader implements SongDownloaderDAO {
                         if(author2.substring(0,3).contains("by ")){
                             author2 = author2.substring(3);
                         }
-                        if (!songCsv.saveSongWithDate(new Song(piece, author2, 0 , new SimpleDateFormat("yyyy/MM/dd").parse(recordingDate), true, filename, "qp6c43moyrgsej1hxvg3u98le", 0))) {
+                        if (!songCsv.saveSongWithDate(new Song(piece, author2, midiHelper.getDuration(filename)/1000000 , new SimpleDateFormat("yyyy/MM/dd").parse(recordingDate), true, filename, "qp6c43moyrgsej1hxvg3u98le", 0))) {
                             BusinessFacadeImp.getBusinessFacade().setError(4);
                         }
                     }

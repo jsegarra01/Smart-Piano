@@ -139,8 +139,12 @@ public class MidiHelper {
         sequencer.stop();
     }
 
-    public float getDuration(String filename) throws InvalidMidiDataException, IOException {
-        sequencer.setSequence(MidiSystem.getSequence(new File(filename)));
+    public float getDuration(String filename){
+        try {
+            sequencer.setSequence(MidiSystem.getSequence(new File(filename)));
+        } catch (InvalidMidiDataException | IOException e) {
+            e.printStackTrace();
+        }
         return sequencer.getMicrosecondLength();
     }
 }
