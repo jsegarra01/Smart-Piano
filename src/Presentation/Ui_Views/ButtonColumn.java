@@ -8,7 +8,9 @@ import javax.swing.table.*;
 import static Presentation.DictionaryPiano.DELETE_SONG;
 
 /**
- *  The ButtonColumn class provides a renderer and an editor that looks like a
+ *  ButtonColumn
+ *
+ *  The "ButtonColumn" class provides a renderer and an editor that looks like a
  *  JButton. The renderer and editor will then be used for a specified column
  *  in the table. The TableModel will contain the String to be displayed on
  *  the button.
@@ -18,6 +20,9 @@ import static Presentation.DictionaryPiano.DELETE_SONG;
  *  button. When the button is invoked the provided Action is invoked. The
  *  source of the Action will be the table. The action command will contain
  *  the model row number of the button that was clicked.
+ *
+ * @author OOPD 20-21 ICE5
+ * @version 2.0 28 June 2021
  *
  */
 public class ButtonColumn extends AbstractCellEditor implements TableCellRenderer, TableCellEditor, ActionListener {
@@ -61,6 +66,18 @@ public class ButtonColumn extends AbstractCellEditor implements TableCellRendere
     }
 
 
+    /**
+     * Sets an initial value for the editor. This will cause the editor to stopEditing and lose any partially edited
+     * value if the editor is editing when this method is called.
+     * @param table the JTable that is asking the editor to edit; can be null
+     * @param value the value of the cell to be edited; it is up to the specific editor to interpret and draw the value.
+     *             For example, if value is the string "true", it could be rendered as a string or it could be rendered
+     *              as a check box that is checked. null is a valid value
+     * @param isSelected  true if the cell is to be rendered with highlighting
+     * @param row the row of the cell being edited
+     * @param column the column of the cell being edited
+     * @return the component for editing
+     */
     @Override
     public Component getTableCellEditorComponent(
             JTable table, Object value, boolean isSelected, int row, int column)
@@ -85,15 +102,32 @@ public class ButtonColumn extends AbstractCellEditor implements TableCellRendere
         return editButton;
     }
 
+    /**
+     * Method that gets the editor value
+     * @return the value contained in the editor.
+     */
     @Override
     public Object getCellEditorValue()
     {
         return editorValue;
     }
 
-    //
-//  Implement TableCellRenderer interface
-//
+
+    /**
+     * During a printing operation, this method will be called with isSelected and hasFocus values of false to prevent
+     * selection and focus from appearing in the printed output. To do other customization based on whether or not the
+     * table is being printed, check the return value from JComponent.isPaintingForPrint().
+     * @param table the JTable that is asking the renderer to draw; can be null
+     * @param value the value of the cell to be rendered. It is up to the specific renderer to interpret and draw the
+     *              value. For example, if value is the string "true", it could be rendered as a string or it could be
+     *              rendered as a check box that is checked. null is a valid value
+     * @param isSelected true if the cell is to be rendered with the selection highlighted; otherwise false
+     * @param hasFocus if true, render cell appropriately. For example, put a special border on the cell, if the cell
+     *                 can be edited, render in the color used to indicate editing
+     * @param row the row index of the cell being drawn. When drawing the header, the value of row is -1
+     * @param column the column index of the cell being drawn
+     * @return the component used for drawing the cell.
+     */
     public Component getTableCellRendererComponent(
             JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column)
     {
@@ -136,11 +170,9 @@ public class ButtonColumn extends AbstractCellEditor implements TableCellRendere
         return renderButton;
     }
 
-    //
-//  Implement ActionListener interface
-//
-    /*
-     *	The button has been pressed. Stop editing and invoke the custom Action
+    /**
+     * Method invoked when an action occurs
+     * @param e Defines the event to be processed
      */
     public void actionPerformed(ActionEvent e) {
         int row = table.convertRowIndexToModel( table.getEditingRow() );

@@ -33,7 +33,7 @@ import static Presentation.Ui_Views.MainFrame.contenedor;
  * The "FreePianoUIManager" class will contain the different methods that are needed to control the view class "FreePianoUI"
  *
  * @author OOPD 20-21 ICE5
- * @version 2.0 23 May 2021
+ * @version 2.0 28 June 2021
  *
  */
 public class FreePianoUIManager implements ActionListener, MouseListener {
@@ -152,15 +152,18 @@ public class FreePianoUIManager implements ActionListener, MouseListener {
             case RECORDING_TIMER ->                           //each time 10 ms have happened, recordingTime will increase
                     recordingTime += 0.01;
             case BTN_RECORD -> {                    //In the case that the Record button is pressed
-                if (recording) {//If we were recording and we want to stop
-                    timer.stop();
-                    noteRecordingUpdate();
-                    //BusinessFacadeImp.getBusinessFacade().noteRecordingUpdate(recordingNotes, recordingTime);
-                } else {                                      //If we want to start recording
-                    recordingTime = 0;
-                    timer.restart();
+                if(BusinessFacadeImp.getBusinessFacade().isUserNotGuest()){
+                    if (recording) {//If we were recording and we want to stop
+                        timer.stop();
+                        noteRecordingUpdate();
+                        //BusinessFacadeImp.getBusinessFacade().noteRecordingUpdate(recordingNotes, recordingTime);
+                    } else {                                      //If we want to start recording
+                        recordingTime = 0;
+                        timer.restart();
+                    }
+                    recording = !recording;
                 }
-                recording = !recording;
+
             }
             case Dictionary_login.PROFILE_BUTTON ->           //In the case that the Profile button is pressed
                     card.show(contenedor, PROFILE_UI);
@@ -268,6 +271,9 @@ public class FreePianoUIManager implements ActionListener, MouseListener {
 
     }
 
+    /**
+     * Method that shows a dialog when finishing recording in order to fill the information about how to save the song
+     */
     private void noteRecordingUpdate(){
         JPanel myPanel = new JPanel();
         JTextField titleField = new JTextField(20);

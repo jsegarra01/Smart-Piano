@@ -19,7 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="Lots of changes, let's go">
+    <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="The user will not be able to delete a song unless he's the creator. NOT the author, but the creator. Plus in order to record a song, the user will have to login, not as a guest">
       <change afterPath="$PROJECT_DIR$/Files/WebScrappingResults/bach-english-suite-1-bourree-1.mid" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Files/WebScrappingResults/bach-english-suite-1-bourree-2.mid" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Files/WebScrappingResults/bwv791.mid" afterDir="false" />
@@ -36,6 +36,7 @@
       <change afterPath="$PROJECT_DIR$/Files/WebScrappingResults/duetto.mid" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Files/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/Files/config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Business/MidiHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/MidiHelper.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -141,13 +142,26 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.ReadMidi" />
-        <item itemvalue="Application.Main" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.ReadMidi" />
         <item itemvalue="Application.ReadMidi" />
+        <item itemvalue="Application.ReadMidi" />
+        <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -185,13 +199,6 @@
       <workItem from="1624462522521" duration="5885000" />
       <workItem from="1624960236189" duration="19024000" />
       <workItem from="1624983363044" duration="148000" />
-    </task>
-    <task id="LOCAL-00029" summary="some corrections have been made with sizes and optimization.">
-      <created>1620157965594</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1620157965594</updated>
     </task>
     <task id="LOCAL-00030" summary="commit to finish feature in order to help lora">
       <created>1620161352607</created>
@@ -508,28 +515,35 @@
       <option name="project" value="LOCAL" />
       <updated>1625048329109</updated>
     </task>
-    <task id="LOCAL-00076" summary="Things prepared to modify everything about the SpotiUI. We need to separate the manager in various controllers">
-      <created>1624968887574</created>
+    <task id="LOCAL-00076" summary="Some changes done">
+      <created>1625133411601</created>
       <option name="number" value="00076" />
       <option name="presentableId" value="LOCAL-00076" />
       <option name="project" value="LOCAL" />
-      <updated>1624968887574</updated>
+      <updated>1625133411601</updated>
     </task>
-    <task id="LOCAL-00077" summary="SpotiFrameManager fixed yey">
-      <created>1624981935415</created>
+    <task id="LOCAL-00077" summary="M'estic morint no vull fer mes comentaris">
+      <created>1625157479589</created>
       <option name="number" value="00077" />
       <option name="presentableId" value="LOCAL-00077" />
       <option name="project" value="LOCAL" />
-      <updated>1624981935415</updated>
+      <updated>1625157479589</updated>
     </task>
-    <task id="LOCAL-00078" summary="Small changes">
-      <created>1624983420323</created>
+    <task id="LOCAL-00078" summary="Em vull morir de fer tants comentaris">
+      <created>1625160205543</created>
       <option name="number" value="00078" />
       <option name="presentableId" value="LOCAL-00078" />
       <option name="project" value="LOCAL" />
-      <updated>1624983420327</updated>
+      <updated>1625160205543</updated>
     </task>
-    <option name="localTasksCounter" value="76" />
+    <task id="LOCAL-00079" summary="The user will not be able to delete a song unless he's the creator. NOT the author, but the creator. Plus in order to record a song, the user will have to login, not as a guest">
+      <created>1625161100787</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1625161100787</updated>
+    </task>
+    <option name="localTasksCounter" value="80" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -571,10 +585,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Final commit for finish feature" />
-    <MESSAGE value="Final commit for finish feature v3" />
-    <MESSAGE value="Comments for the FreePianoUIManager, implementation of the recording for the mouse (now mouse records too) and eliminated some System.outs" />
-    <MESSAGE value="Comments for the FreePianoUI, PianoUI and SongToMidi" />
     <MESSAGE value="Small changes added" />
     <MESSAGE value="Commentaries for the PianoTilesUISelector and the PianoTilesUISelectorManager" />
     <MESSAGE value="resizing positions (this still needs some fixing in the x-axis)" />
@@ -645,17 +655,13 @@
     <MESSAGE value="Small changes" />
     <MESSAGE value="i have no idea what i am pushing" />
     <MESSAGE value="Lots of changes, let's go" />
-    <option name="LAST_COMMIT_MESSAGE" value="Lots of changes, let's go" />
+    <MESSAGE value="Some changes done" />
+    <MESSAGE value="M'estic morint no vull fer mes comentaris" />
+    <MESSAGE value="Em vull morir de fer tants comentaris" />
+    <MESSAGE value="The user will not be able to delete a song unless he's the creator. NOT the author, but the creator. Plus in order to record a song, the user will have to login, not as a guest" />
+    <option name="LAST_COMMIT_MESSAGE" value="The user will not be able to delete a song unless he's the creator. NOT the author, but the creator. Plus in order to record a song, the user will have to login, not as a guest" />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Persistence/SQL/Csv/SongCsvDAO.java</url>
-          <line>147</line>
-          <option name="timeStamp" value="39" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/dpoo_2021_smartpiano_ice5$Main.ic" NAME="Main Coverage Results" MODIFIED="1625150211960" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

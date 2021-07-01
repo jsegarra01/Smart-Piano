@@ -317,6 +317,10 @@ public class SongCsvDAO implements SongDAO {
         }
     }
 
+    /**
+     * Method that deletes the file of a song
+     * @param path Defines the path in which the file can be found
+     */
     @Override
     public void deleteSongFile(String path) {
         new File(path).delete();

@@ -11,7 +11,7 @@ import java.util.ArrayList;
  * The "TilesManager" class will contain the different methods needed to connect the midi with the tiles from the UI
  *
  * @author OOPD 20-21 ICE5
- * @version 1.0 21 Apr 2021
+ * @version 2.0 28 Apr 2021
  *
  */
 public class TilesManager {
@@ -40,8 +40,7 @@ public class TilesManager {
         try {
 
             //PIANO TILES SELECTOR MANAGER.JAVA LINE 276 WHEN THE VALUE HAS CHANGED IN THE LIST.
-            listTiles = ReadMidi.readMidi(BusinessFacadeImp.getBusinessFacade().getSong(songIndex).getSongFile());
-            //System.out.println(listTiles.get(1).getDuration());
+            listTiles = ReadMidi.readMidi(BusinessFacadeImp.getBusinessFacade().getSongOrdered(songIndex).getSongFile());
         } catch (Exception e) {
             listTiles.clear();
             BusinessFacadeImp.getBusinessFacade().setError(3);

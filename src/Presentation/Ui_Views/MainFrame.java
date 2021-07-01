@@ -57,6 +57,10 @@ public class MainFrame extends JFrame {
     }
     public void setCard(Container parent, String name) {card.show(parent, name);}
 
+    /**
+     * Method that gets the central panel
+     * @return JPanel storing the central panel
+     */
     public JPanel getCentralPanel() {
         return centralPanel;
     }

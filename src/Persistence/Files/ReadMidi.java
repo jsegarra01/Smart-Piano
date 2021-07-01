@@ -63,7 +63,6 @@ public class ReadMidi {
                 }
             }
 
-            System.out.println();
         }
         return keys;
     }

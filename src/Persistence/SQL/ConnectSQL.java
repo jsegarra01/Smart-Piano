@@ -7,6 +7,10 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 /**
+ * Class "ConnectSQL" is in charge of establishing a connection with the database
+ *
+ * @author OOPD 20-21 ICE5
+ * @version 1.0 28 June 2021
  *
  */
 public class ConnectSQL {
@@ -26,13 +30,6 @@ public class ConnectSQL {
     }
 
     /**
-     *
-     */
-    private ConnectSQL() throws SQLException{
-        makeConnection();
-    }
-
-    /**
      * Method that is in charge of creating the connection with the database which configuration is in the config.json
      * file
      * @throws SQLException Throw that makes an exception if there has been any error while making the connection.
@@ -45,12 +42,4 @@ public class ConnectSQL {
                 ReadJson.getConfigJson().getUsername(), ReadJson.getConfigJson().getPassword());
     }
 
-    /**
-     * Method that closes the connection made with the database
-     * @throws SQLException Throw that makes an exception if there has been any error with the connection to the
-     *                      database. It will be handled with the try catch from where it is called.
-     */
-    public static void closeConnection () throws SQLException {
-        connection.close();
-    }
 }

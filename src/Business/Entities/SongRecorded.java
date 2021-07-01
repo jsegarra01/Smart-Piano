@@ -13,15 +13,27 @@ import java.util.Date;
  *
  */
 public class SongRecorded {
-    private ArrayList<RecordingNotes> recordingNotes;
+
+    /*
+    Defines all the recorded notes
+     */
+    private final ArrayList<RecordingNotes> recordingNotes;
+
+    /*
+    Defines the name of the song
+     */
     private String SongName;
+
+    /*
+    Defines if the song is private or not
+     */
     private boolean isPrivate;
 
     /**
      * Constructor of the SongRecorded class
-     * @param recordingNotes List of notes that have been played
-     * @param SongName Name of the recorded song
-     * @param isPrivate True if Public, false if not
+     * @param recordingNotes Defines a list of notes that have been played
+     * @param SongName Defines the name of the recorded song
+     * @param isPrivate Defines as true if Public, false if not
      */
     public SongRecorded (ArrayList<RecordingNotes> recordingNotes, String SongName, boolean isPrivate) {
         this.isPrivate = isPrivate;
@@ -30,48 +42,40 @@ public class SongRecorded {
     }
 
     /**
-     * Gets the list of recorded notes
-     * @return List of the recorded notes
+     * Method that gets the list of recorded notes
+     * @return Array list of class RecordingNotes that stores the recorded notes
      */
     public ArrayList<RecordingNotes> getRecordingNotes() {
         return recordingNotes;
     }
 
     /**
-     * Sets the list of recorded notes
-     * @param recordingNotes List of the recorded notes
-     */
-    public void setRecordingNotes(ArrayList<RecordingNotes> recordingNotes) {
-        this.recordingNotes = recordingNotes;
-    }
-
-    /**
-     * Gets the name of the song
-     * @return The name of the song
+     * Method that gets the name of the song
+     * @return String that stores the name of the song
      */
     public String getSongName() {
         return SongName;
     }
 
     /**
-     * Sets the name of the song
-     * @param songName The desired name
+     * Method that sets the name of the song
+     * @param songName Defines the desired name for the song
      */
     public void setSongName(String songName) {
         SongName = songName;
     }
 
     /**
-     * Gets if a song is public or not
-     * @return True if public, false if not
+     * Method that gets if a song is public or not
+     * @return Boolean that stores a true if public, false if not
      */
     public boolean isPrivate() {
         return isPrivate;
     }
 
     /**
-     * Sets if a song is public or not
-     * @param aPrivate True if public, false if not
+     * Method that sets if a song is public or not
+     * @param aPrivate Defines as true if public, false if not
      */
     public void setPrivate(boolean aPrivate) {
         isPrivate = aPrivate;
