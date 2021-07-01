@@ -4,12 +4,10 @@ package Presentation.Manager;
 import Business.BusinessFacadeImp;
 import Presentation.Ui_Views.SignUpUI;
 
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import static Presentation.Dictionary_login.*;
-import static Presentation.Ui_Views.MainFrame.*;
 
 /**
  * SignUpUIManager
@@ -40,7 +38,7 @@ public class SignUpUiManager  implements ActionListener {
         switch (e.getActionCommand()) {
                 //In the case that the Back button is pressed
             case BACK_BUTTON:
-                card.show(contenedor, PRE_MENU_UI);
+                signUpUI.setMainCard(PRE_MENU_UI);
                 break;
                 //In the case that the Done button is pressed
             case DONE_BUTTON:
@@ -48,7 +46,7 @@ public class SignUpUiManager  implements ActionListener {
                         signUpUI.getPasswordSignUp(), signUpUI.getPasswordConfirmSignUp())){
                     signUpUI.setUsernameLogin(signUpUI.getUsernameSignUp());
                     BusinessFacadeImp.getBusinessFacade().setSongUser();
-                    card.show(contenedor, PIANO_FRAME);
+                    signUpUI.setMainCard(PIANO_FRAME);
                 }
                 break;
         }

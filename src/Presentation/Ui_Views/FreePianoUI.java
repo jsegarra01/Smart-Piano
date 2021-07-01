@@ -23,13 +23,13 @@ import static Presentation.Ui_Views.Tile.*;
  *
  */
 public class FreePianoUI extends Piano {
-    //private final BusinessFacadeImp myFacade;
+    private final PianoFrame pianoFrame;
     /**
      * Constructor for the FreePianoUI, you need to send the mainframe context and will create a card layout
-     *
-     //* @param mainFrame context necessary to create the card layout
+     * @param pianoFrame context necessary to create the card layout
      */
-    public FreePianoUI(/*BusinessFacadeImp myFacade*/) {
+    public FreePianoUI(/*BusinessFacadeImp myFacade*/PianoFrame pianoFrame) {
+        this.pianoFrame = pianoFrame;
         setKeyboardPiano(new ArrayList<>());
         initialize();
     }
@@ -251,5 +251,6 @@ public class FreePianoUI extends Piano {
             }
         }
     }
+    public void setMainCard(String name) {pianoFrame.setMainCard(name);}
 }
 

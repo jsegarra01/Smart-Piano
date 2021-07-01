@@ -6,13 +6,10 @@ import Business.Entities.Song;
 import Business.Entities.*;
 import Business.Threads.WebScrapping;
 import Presentation.Manager.ErrorsManager;
-import Presentation.Manager.SpotiFrameManager;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-//import static Presentation.Ui_Views.SignUpUI.getMailSignUp;
-//import static Presentation.Ui_Views.SignUpUI.getUsernameSignUp;
 
 
 /**

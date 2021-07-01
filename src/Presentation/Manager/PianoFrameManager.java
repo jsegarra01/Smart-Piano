@@ -14,8 +14,6 @@ import java.awt.event.ActionListener;
 
 import static Presentation.DictionaryPiano.*;
 import static Presentation.Dictionary_login.*;
-import static Presentation.Ui_Views.MainFrame.card;
-import static Presentation.Ui_Views.MainFrame.contenedor;
 
 
 /**
@@ -69,7 +67,7 @@ public class PianoFrameManager implements ActionListener {
 
         switch (e.getActionCommand()) {
             case Dictionary_login.PROFILE_BUTTON:       //In the case that the Profile button is pressed
-                card.show(contenedor, PROFILE_UI);
+                pianoFrame.setMainCard(PROFILE_UI);
             case FREE_PIANO:
                 cc.show(pianoFrame.getCentralPanel(), FREE_PIANO_UI);
                 pianoFrame.setBackgroundFreePiano(Color.getHSBColor(0,0,80.3f));

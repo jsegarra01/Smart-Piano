@@ -28,16 +28,19 @@ public class PreMenuUI extends JPanel{
 
     private final LoginUI loginUI;
     private final SignUpUI signUpUI;
+    private final MainFrame mainFrame;
 
     //private final BusinessFacadeImp myFacade;
     /**
      * Constructor for the PreMenuUI, you need to send the mainframe context and will create a card layout
      * @param loginUI profileUI view
      * @param signUpUI signUpUI view
+     * @param mainFrame mainFrame view
      */
-    public PreMenuUI(LoginUI loginUI, SignUpUI signUpUI) {
+    public PreMenuUI(LoginUI loginUI, SignUpUI signUpUI, MainFrame mainFrame) {
         this.loginUI = loginUI;
         this.signUpUI = signUpUI;
+        this.mainFrame = mainFrame;
         initialize();
     }
 
@@ -145,4 +148,6 @@ public class PreMenuUI extends JPanel{
     public void resetSignUpUI() {
         signUpUI.resetUISignUpUI();
     }
+
+    public void setMainCard(String name) {mainFrame.setCard(name);}
 }

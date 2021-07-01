@@ -7,8 +7,6 @@ import Presentation.Ui_Views.PreMenuUI;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import static Presentation.Dictionary_login.*;
-import static Presentation.Ui_Views.MainFrame.card;
-import static Presentation.Ui_Views.MainFrame.contenedor;
 
 /**
  * PreMenuUIManager
@@ -39,19 +37,19 @@ public class PreMenuUIManager implements ActionListener {
         switch (e.getActionCommand()) {
             case LOG_IN_BUTTON:
                 preMenuUI.resetLoginUI();
-                card.show(contenedor, LOGIN_UI);
+                preMenuUI.setMainCard(LOGIN_UI);
                 //BusinessFacadeImp.getBusinessFacade().logInStartup();//In the case that the LogIn button is pressed
                 break;
             case SIGN_UP_BUTTON:
                 preMenuUI.resetSignUpUI();
-                card.show(contenedor, SIGN_UP_UI);
+                preMenuUI.setMainCard(SIGN_UP_UI);
                 //BusinessFacadeImp.getBusinessFacade().singUpStartup();//In the case that the SignUp button is pressed
                 break;
             case ENTER_AS_GUEST_BUTTON:
                 if (BusinessFacadeImp.getBusinessFacade().logIn("guest", "password")) {
                     preMenuUI.setUsernameLogin("guest");
                     BusinessFacadeImp.getBusinessFacade().enterAsAGuest();
-                    card.show(contenedor, PIANO_FRAME);
+                    preMenuUI.setMainCard(PIANO_FRAME);
                 }
                 break;
         }

@@ -23,8 +23,6 @@ import java.util.Objects;
 
 import static Presentation.DictionaryPiano.*;
 import static Presentation.Dictionary_login.*;
-import static Presentation.Ui_Views.MainFrame.card;
-import static Presentation.Ui_Views.MainFrame.contenedor;
 
 
 /**
@@ -163,7 +161,7 @@ public class FreePianoUIManager implements ActionListener, MouseListener {
                 recording = !recording;
             }
             case Dictionary_login.PROFILE_BUTTON ->           //In the case that the Profile button is pressed
-                    card.show(contenedor, PROFILE_UI);
+                    freePianoUI.setMainCard(PROFILE_UI);
             case MODIFY -> {                        //In the case that the Modify button is pressed
                 AbstractButton abstractButton = (AbstractButton) e.getSource();     //TODO we shouldn't be changing the button here, but on a view
                 modifying = abstractButton.getModel().isSelected();

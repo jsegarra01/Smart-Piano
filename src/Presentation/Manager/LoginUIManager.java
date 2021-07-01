@@ -10,8 +10,6 @@ import java.awt.event.ActionListener;
 
 import static Presentation.DictionaryPiano.FREE_PIANO_UI;
 import static Presentation.Dictionary_login.*;
-import static Presentation.Ui_Views.MainFrame.card;
-import static Presentation.Ui_Views.MainFrame.contenedor;
 
 
 /**
@@ -43,11 +41,11 @@ public class LoginUIManager implements ActionListener {
         // We distinguish between our buttons.
         switch (e.getActionCommand()) {
             case BACK_BUTTON:                          //In the case that the Back button is pressed
-                card.show(contenedor, PRE_MENU_UI);
+                loginUI.setMainCard(PRE_MENU_UI);
                 break;
             case DONE_BUTTON:                          //In the case that the Done button is pressed
                 if(BusinessFacadeImp.getBusinessFacade().logIn(loginUI.getUsernameLogin(), loginUI.getPasswordLogin())){
-                    card.show(contenedor, PIANO_FRAME);
+                    loginUI.setMainCard(PIANO_FRAME);
                     cc.show(loginUI.getCentralPanel(), FREE_PIANO_UI);
                     BusinessFacadeImp.getBusinessFacade().setPlaylists();
                     BusinessFacadeImp.getBusinessFacade().setSongUser();

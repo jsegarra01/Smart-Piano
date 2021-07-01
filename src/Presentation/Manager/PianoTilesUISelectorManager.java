@@ -22,9 +22,6 @@ import java.util.Objects;
 
 import static Presentation.DictionaryPiano.BTN_TILE;
 import static Presentation.Dictionary_login.*;
-import static Presentation.Ui_Views.MainFrame.card;
-import static Presentation.Ui_Views.MainFrame.contenedor;
-import static Presentation.Ui_Views.PianoTilesUISelector.*;
 
 
 /**
@@ -44,8 +41,6 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
     private int songIndex = 0;
     private Song song;
     private static float velocityModifier = 1;
-
-    //private final BusinessFacadeImp myFacade;
 
     private final ImageIcon playIcon = new ImageIcon("Files/drawable/play-button.png"); // icon play
     private final ImageIcon pauseIcon = new ImageIcon("Files/drawable/pause-button.png"); // icon pause
@@ -122,7 +117,7 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
 
                 break;
             case Dictionary_login.PROFILE_BUTTON:       //In the case that the Profile button is pressed
-                card.show(contenedor, PROFILE_UI);
+                pianoTilesUI.setMainCard(PROFILE_UI);
                 break;
             case DictionaryPiano.PLAY_BUTTON:
                 if (songStarted) {
