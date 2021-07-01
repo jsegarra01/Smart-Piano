@@ -82,36 +82,34 @@ public class Graph extends JPanel {
             int x0 = padding + labelPadding;
             int x1 = pointWidth + padding + labelPadding;
             int y0 = getHeight() - ((i * (getHeight() - padding * 2 - labelPadding)) / numberYDivisions + padding + labelPadding);
-            int y1 = y0;
             if (yPoints.size() > 0) {
                 g2.setColor(gridColor);
-                g2.drawLine(padding + labelPadding + 1 + pointWidth, y0, getWidth() - padding, y1);
+                g2.drawLine(padding + labelPadding + 1 + pointWidth, y0, getWidth() - padding, y0);
                 g2.setColor(Color.BLACK);
                 String yLabel = ((int) ((getMinY() + (getMaxY() - getMinY()) * ((i * 1.0) / numberYDivisions)) * 100)) / 100.0 + "";
                 FontMetrics metrics = g2.getFontMetrics();
                 int labelWidth = metrics.stringWidth(yLabel);
                 g2.drawString(yLabel, x0 - labelWidth - 5, y0 + (metrics.getHeight() / 2) - 3);
             }
-            g2.drawLine(x0, y0, x1, y1);
+            g2.drawLine(x0, y0, x1, y0);
         }
 
         // and for x axis
         for (int i = 0; i < yPoints.size(); i++) {
             if (yPoints.size() > 1) {
                 int x0 = i * (getWidth() - padding * 2 - labelPadding) / (yPoints.size() - 1) + padding + labelPadding;
-                int x1 = x0;
                 int y0 = getHeight() - padding - labelPadding;
                 int y1 = y0 - pointWidth;
                 if ((i % ((int) ((yPoints.size() / 20.0)) + 1)) == 0) {
                     g2.setColor(gridColor);
-                    g2.drawLine(x0, getHeight() - padding - labelPadding - 1 - pointWidth, x1, padding);
+                    g2.drawLine(x0, getHeight() - padding - labelPadding - 1 - pointWidth, x0, padding);
                     g2.setColor(Color.BLACK);
                     String xLabel = i + "";
                     FontMetrics metrics = g2.getFontMetrics();
                     int labelWidth = metrics.stringWidth(xLabel);
                     g2.drawString(xLabel, x0 - labelWidth / 2, y0 + metrics.getHeight() + 3);
                 }
-                g2.drawLine(x0, y0, x1, y1);
+                g2.drawLine(x0, y0, x0, y1);
             }
         }
 
@@ -139,9 +137,7 @@ public class Graph extends JPanel {
         for (Point graphPoint : graphPoints) {
             int x = graphPoint.x - pointWidth / 2;
             int y = graphPoint.y - pointWidth / 2;
-            int ovalW = pointWidth;
-            int ovalH = pointWidth;
-            g2.fillOval(x, y, ovalW, ovalH);
+            g2.fillOval(x, y, pointWidth, pointWidth);
         }
         g.setColor(Color.black);
 

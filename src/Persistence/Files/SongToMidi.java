@@ -84,8 +84,7 @@ public class SongToMidi {
 
 //****  set track name (meta event)  ****
             mt = new MetaMessage();
-            String TrackName = title;
-            mt.setMessage(0x03 ,TrackName.getBytes(), TrackName.length());
+            mt.setMessage(0x03 , title.getBytes(), title.length());
             me = new MidiEvent(mt, 0);
             t.add(me);
 

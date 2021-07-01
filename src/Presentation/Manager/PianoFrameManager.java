@@ -26,7 +26,6 @@ import static Presentation.Dictionary_login.*;
  *
  */
 public class PianoFrameManager implements ActionListener {
-    private final MidiHelper midiHelper;
     private final PianoTilesUISelectorManager pianoTilesUISelectorManager;
     private final PianoFrame pianoFrame;
 
@@ -35,14 +34,6 @@ public class PianoFrameManager implements ActionListener {
      * @param pianoFrame view of the pianoFrame
      */
     public PianoFrameManager(PianoFrame pianoFrame) {
-        MidiHelper midiHelper1;
-        try {
-            midiHelper1 = new MidiHelper();
-        } catch (MidiUnavailableException e) {
-            new BusinessFacadeImp().setError(8);
-            midiHelper1 = null;
-        }
-        this.midiHelper = midiHelper1;
         this.pianoFrame = pianoFrame;
         this.pianoTilesUISelectorManager = pianoFrame.getPianoTilesUIManager();
         new ChangeTime(this.pianoTilesUISelectorManager);

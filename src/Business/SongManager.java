@@ -46,7 +46,7 @@ public class SongManager {
     public boolean saveRecording(ArrayList<RecordingNotes> recordedNotes, String songName, boolean isPublic, float endtime) {
         writeMidi(songName, new SongRecorded(recordedNotes,songName, isPublic).getRecordingNotes(), endtime);
         Song song = new Song(songName, UserManager.getUser().getUserName(), endtime, new Date(),isPublic, "Songs/" + songName + ".mid", UserManager.getUser().getUserName(), 0);
-        if(!saveSongWithDate(song) || !setSongs(UserManager.getUser().getUserName()) ){
+        if(!saveSongWithDate(song) || setSongs(UserManager.getUser().getUserName())){
             return false;
         }
         songs.clear();
@@ -104,9 +104,9 @@ public class SongManager {
             for (Song song : aux) {
                 songNames.add(song.getSongName());
             }
-            return true;
-        } catch (SQLException e) {
             return false;
+        } catch (SQLException e) {
+            return true;
         }
     }
 

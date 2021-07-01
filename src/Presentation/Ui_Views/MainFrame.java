@@ -18,8 +18,8 @@ import static Presentation.Dictionary_login.*;
  *
  */
 public class MainFrame extends JFrame {
-    private final CardLayout card; //TODO Not static and not public Do not initialize, that in the constructor:(
-    private Container contenedor; //TODO Not static and not public
+    private final CardLayout card;
+    private final Container contenedor;
 
     private final JPanel centralPanel;
 

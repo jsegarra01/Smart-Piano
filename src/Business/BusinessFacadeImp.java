@@ -217,7 +217,7 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
      */
     @Override
     public void setSongUser() {
-        if(!songManager.setSongs(UserManager.getUser().getUserName())){
+        if(songManager.setSongs(UserManager.getUser().getUserName())){
             setError(0);
         }
     }

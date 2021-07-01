@@ -14,7 +14,7 @@ public class Stadistics {
     /*
     Defines the hour of that statistics
      */
-    private int hour;
+    private final int hour;
 
     /*
     Defines the number of songs played in that hour

@@ -21,7 +21,7 @@ public class SongsUI extends JPanel {
     private JTable table;
     private final JPanel spotiPanel;
     private final JPanel panel = new JPanel();
-    private SpotiFrameManager spotiFrameManager;
+    private final SpotiFrameManager spotiFrameManager;
 
 
     /**
