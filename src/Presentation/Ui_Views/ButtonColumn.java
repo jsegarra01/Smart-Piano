@@ -62,9 +62,7 @@ public class ButtonColumn extends AbstractCellEditor implements TableCellRendere
 
 
     @Override
-    public Component getTableCellEditorComponent(
-            JTable table, Object value, boolean isSelected, int row, int column)
-    {
+    public Component getTableCellEditorComponent( JTable table, Object value, boolean isSelected, int row, int column) {
         if (value == null)
         {
             editButton.setText( "" );

@@ -19,18 +19,15 @@ import java.util.ArrayList;
  */
 public class SongsUI extends JPanel {
     private JTable table;
-    private final JPanel spotiPanel;
     private final JPanel panel = new JPanel();
     private final SpotiFrameManager spotiFrameManager;
 
 
     /**
      * Constructor for the SongsUI
-     * @param pianoFrame view of the piano frame
      */
-    public SongsUI(PianoFrame pianoFrame, SpotiFrameManager spotiFrameManager) {
+    public SongsUI( SpotiFrameManager spotiFrameManager) {
         setBackground(Color.black);
-        this.spotiPanel = pianoFrame.getSpotiPanel();
         panel.setPreferredSize(new Dimension(860, 550));
         add(panel);
         this.spotiFrameManager = spotiFrameManager;
@@ -47,7 +44,7 @@ public class SongsUI extends JPanel {
         panel.removeAll();
         Object[][] data = new Object[songs.size()][5];
         for(int i = 0; i< songs.size();i++){
-            data[i][0] = songs.get(i).getSongName();
+            data[i][0] = " "+ songs.get(i).getSongName();
             data[i][1] = songs.get(i).getAuthorName();
             data[i][2] = ((((int)(songs.get(i).getDuration()/60))) + ":" + (Math.round(((songs.get(i).getDuration())) -(int)(songs.get(i).getDuration()/60))));
             data[i][3] = songs.get(i).getRecordingDate();
@@ -101,9 +98,5 @@ public class SongsUI extends JPanel {
      */
     private void registerController(Action listener) {
           new ButtonColumn(table, listener, 4);
-    }
-
-    public JPanel getSpotiPanel () {
-        return spotiPanel;
     }
 }

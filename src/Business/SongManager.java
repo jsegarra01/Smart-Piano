@@ -50,8 +50,8 @@ public class SongManager {
             return false;
         }
         songs.clear();
+        setSongs(UserManager.getUser().getUserName());
         return true;
-
     }
 
     /**
@@ -169,6 +169,7 @@ public class SongManager {
      * @return True if deleted, false if not
      */
     public boolean deleteSong(Song song){
+        songManager.deleteSongFile(song.getSongFile());
         return songManager.deleteSong(song);
     }
 
@@ -186,6 +187,5 @@ public class SongManager {
      */
     public void deleteSongFile(int i){
         songManager.deleteSongFile(songs.get(i).getSongFile());
-
     }
 }

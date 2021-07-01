@@ -1,7 +1,6 @@
 package Presentation.Ui_Views;
 
 //Imports all necesssary libraries
-import Business.BusinessFacadeImp;
 import Presentation.Manager.ProfileUIManager;
 
 import javax.swing.*;

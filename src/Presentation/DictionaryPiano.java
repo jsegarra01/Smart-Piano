@@ -1,7 +1,5 @@
 package Presentation;
 
-import javax.swing.*;
-
 /**
  * DictionaryPiano
  *

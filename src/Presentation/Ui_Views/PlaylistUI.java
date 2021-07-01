@@ -8,7 +8,6 @@ import Presentation.Manager.SpotiFrameManager;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
-import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 
 import static Presentation.DictionaryPiano.*;

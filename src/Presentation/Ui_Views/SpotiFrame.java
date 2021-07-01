@@ -65,7 +65,7 @@ public class SpotiFrame extends JPanel {
         spotiPanel = pianoFrame.getSpotiPanel();
         statisticsUI = new StatisticsUI();
         spotiFrameManager = new SpotiFrameManager(this);
-        songsUI = new SongsUI(pianoFrame, spotiFrameManager);
+        songsUI = new SongsUI(spotiFrameManager);
         playlistUI = new PlaylistUI(spotiFrameManager);
         new GraphTimer(spotiFrameManager);
         initialize();

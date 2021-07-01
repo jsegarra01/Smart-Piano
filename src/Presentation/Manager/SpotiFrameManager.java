@@ -4,7 +4,6 @@ package Presentation.Manager;
 import Business.Entities.*;
 import Business.BusinessFacadeImp;
 import Business.MidiHelper;
-import Business.UserManager;
 import Presentation.Dictionary_login;
 import Presentation.Ui_Views.SpotiFrame;
 import Presentation.Ui_Views.StatisticsUI;
@@ -19,7 +18,6 @@ import java.awt.event.ActionListener;
 import java.util.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.util.ArrayList;
 
 import static Presentation.DictionaryPiano.*;
 import static Presentation.Dictionary_login.PROFILE_UI;
@@ -553,8 +551,7 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
     private void stopMusic() {
         spotiFrame.setPlayButton(playIcon);
         play = false;
-        long lastMin = System.currentTimeMillis();  //TODO min played fa alguna cosa?
-        float minPlayed = (float) (lastMin - startMin) / 60000;
+        long lastMin = System.currentTimeMillis();
         finalMidiHelper.stopSong();
     }
 

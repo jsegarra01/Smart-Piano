@@ -137,6 +137,7 @@ public class Graph extends JPanel {
         for (Point graphPoint : graphPoints) {
             int x = graphPoint.x - pointWidth / 2;
             int y = graphPoint.y - pointWidth / 2;
+            //noinspection SuspiciousNameCombination
             g2.fillOval(x, y, pointWidth, pointWidth);
         }
         g.setColor(Color.black);

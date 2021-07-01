@@ -3,11 +3,9 @@ package Presentation.Manager;
 //Imports needed from the dictionary, events and mainframe
 import Business.BusinessFacadeImp;
 import Business.ChangeTime;
-import Business.MidiHelper;
 import Presentation.Dictionary_login;
 import Presentation.Ui_Views.PianoFrame;
 
-import javax.sound.midi.MidiUnavailableException;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
