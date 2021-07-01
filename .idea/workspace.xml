@@ -22,6 +22,7 @@
     <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="Small fixes done: musicplayer gets new song correctly,when deleting a song we also delete the .mid">
       <change afterPath="$PROJECT_DIR$/Songs/dsa.mid" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Songs/wtf.mid" afterDir="false" />
+    </list>
     <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="The user will not be able to delete a song unless he's the creator. NOT the author, but the creator. Plus in order to record a song, the user will have to login, not as a guest">
       <change afterPath="$PROJECT_DIR$/Files/WebScrappingResults/bach-english-suite-1-bourree-1.mid" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Files/WebScrappingResults/bach-english-suite-1-bourree-2.mid" afterDir="false" />
@@ -164,17 +165,6 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -541,6 +531,7 @@
     </task>
     <task id="LOCAL-00076" summary="Publish feature">
       <created>1625133675987</created>
+    </task>
     <task id="LOCAL-00076" summary="Some changes done">
       <created>1625133411601</created>
       <option name="number" value="00076" />
@@ -551,6 +542,7 @@
     </task>
     <task id="LOCAL-00077" summary="M'estic morint no vull fer mes comentaris">
       <created>1625157479589</created>
+    </task>
     <task id="LOCAL-00077" summary="Small analyze error checks">
       <created>1625149367408</created>
       <option name="number" value="00077" />
@@ -561,6 +553,7 @@
     </task>
     <task id="LOCAL-00078" summary="Em vull morir de fer tants comentaris">
       <created>1625160205543</created>
+    </task>
     <task id="LOCAL-00078" summary="Small fixes done: musicplayer gets new song correctly,when deleting a song we also delete the .mid">
       <created>1625153952540</created>
       <option name="number" value="00078" />
@@ -715,6 +708,7 @@
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/dpoo_2021_smartpiano_ice5$Main.ic" NAME="Main Coverage Results" MODIFIED="1625150211960" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
