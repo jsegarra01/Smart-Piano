@@ -19,16 +19,15 @@ import static Presentation.Ui_Views.MainFrame.contenedor;
 
 
 /**
- * FreePianoUIManager
+ * PianoFrameManager
  *
- * The "FreePianoUIManager" class will contain the different methods that are needed to control the view class "FreePianoUI"
+ * The "PianoFrameManager" class will control what will be seen in the mainFrame
  *
  * @author OOPD 20-21 ICE5
- * @version 1.0 23 May 2021
+ * @version 1.0 28 June 2021
  *
  */
 public class PianoFrameManager implements ActionListener {
-    private final MidiHelper midiHelper;
     private final PianoTilesUISelectorManager pianoTilesUISelectorManager;
     private final PianoFrame pianoFrame;
 
@@ -37,14 +36,6 @@ public class PianoFrameManager implements ActionListener {
      * @param pianoFrame view of the pianoFrame
      */
     public PianoFrameManager(PianoFrame pianoFrame) {
-        MidiHelper midiHelper1;
-        try {
-            midiHelper1 = new MidiHelper();
-        } catch (MidiUnavailableException e) {
-            new BusinessFacadeImp().setError(8);
-            midiHelper1 = null;
-        }
-        this.midiHelper = midiHelper1;
         this.pianoFrame = pianoFrame;
         this.pianoTilesUISelectorManager = pianoFrame.getPianoTilesUIManager();
         new ChangeTime(this.pianoTilesUISelectorManager);
@@ -65,7 +56,6 @@ public class PianoFrameManager implements ActionListener {
         pianoFrame.setBackgroundMusicPlayer(Color.GRAY);
 
         new ChangeTime(0);
-        //midiHelper.stopSong();
 
         switch (e.getActionCommand()) {
             case Dictionary_login.PROFILE_BUTTON:       //In the case that the Profile button is pressed

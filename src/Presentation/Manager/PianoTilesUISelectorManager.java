@@ -57,7 +57,10 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
     private final KeyListener KL;
     private final PianoTilesUISelector pianoTilesUI;
 
-
+    /**
+     * Constructor of the "PianoTilesUISelectorManager" class, that will initialize its attribute
+     * @param pianoTilesUISelector Defines the view to control
+     */
     public PianoTilesUISelectorManager(PianoTilesUISelector pianoTilesUISelector) {
         this.pianoTilesUI = pianoTilesUISelector;
         try {

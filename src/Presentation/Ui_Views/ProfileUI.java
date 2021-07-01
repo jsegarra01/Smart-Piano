@@ -1,7 +1,6 @@
 package Presentation.Ui_Views;
 
-//Imports all necesssary libraries
-import Business.BusinessFacadeImp;
+//Imports all necessary libraries
 import Presentation.Manager.ProfileUIManager;
 
 import javax.swing.*;
@@ -26,13 +25,12 @@ public class ProfileUI extends JPanel{
     private final JButton logOut = new JButton(LOGOUT_BUTTON);
     private final JButton deleteAccount = new JButton(DELETE_BUTTON);
     private final JButton back = new JButton(BACK_BUTTON);
-   // private final BusinessFacadeImp myFacade;
 
     /**
      * Constructor for the ProfileUI, you need to send the mainframe context and will create a card layout
      */
-    public ProfileUI(/*BusinessFacadeImp myFacade*/) {
-        //this.myFacade = myFacade;
+    public ProfileUI() {
+
         initialize();
     }
 

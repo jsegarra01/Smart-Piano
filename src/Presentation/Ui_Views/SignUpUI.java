@@ -228,6 +228,10 @@ public class SignUpUI extends JPanel {
         passwordConfirmation.setText("");
     }
 
+    /**
+     * Method that sets the username set in the sign up
+     * @param usernameLogin Defines the username to be signed up
+     */
     public void setUsernameLogin(String usernameLogin) {
         usernameTextField.setText(usernameLogin);
     }
