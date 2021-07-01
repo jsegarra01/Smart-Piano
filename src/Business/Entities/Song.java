@@ -17,7 +17,7 @@ public class Song {
     /*
     Defines the name of the song
      */
-    private String songName;
+    private final String songName;
 
     /*
     Defines the author of the song
@@ -101,14 +101,6 @@ public class Song {
      */
     public String getSongName() {
         return songName;
-    }
-
-    /**
-     * Method that sets the name of the song
-     * @param songName Defines the the name of the song
-     */
-    public void setSongName(String songName) {
-        this.songName = songName;
     }
 
     /**

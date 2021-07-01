@@ -11,6 +11,7 @@ import java.util.ArrayList;
  * @version 2.0 28 June 2021
  *
  */
+@SuppressWarnings("FieldCanBeLocal")    //They are necessary to be in the class, as they are going to be saved in the midi
 public class SongRecorded {
 
     /*
@@ -21,12 +22,12 @@ public class SongRecorded {
     /*
     Defines the name of the song
      */
-    private String SongName;
+    private final String SongName;
 
     /*
     Defines if the song is private or not
      */
-    private boolean isPrivate;
+    private final boolean isPrivate;
 
     /**
      * Constructor of the SongRecorded class
@@ -48,35 +49,4 @@ public class SongRecorded {
         return recordingNotes;
     }
 
-    /**
-     * Method that gets the name of the song
-     * @return String that stores the name of the song
-     */
-    public String getSongName() {
-        return SongName;
-    }
-
-    /**
-     * Method that sets the name of the song
-     * @param songName Defines the desired name for the song
-     */
-    public void setSongName(String songName) {
-        SongName = songName;
-    }
-
-    /**
-     * Method that gets if a song is public or not
-     * @return Boolean that stores a true if public, false if not
-     */
-    public boolean isPrivate() {
-        return isPrivate;
-    }
-
-    /**
-     * Method that sets if a song is public or not
-     * @param aPrivate Defines as true if public, false if not
-     */
-    public void setPrivate(boolean aPrivate) {
-        isPrivate = aPrivate;
-    }
 }

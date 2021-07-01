@@ -14,7 +14,7 @@ public class Tile extends JButton {
     private final String name;
     protected static final float SIZE_MULT_WIDTH = (float) 1.16;
     protected static final float SIZE_MULT_HEIGHT = (float) 1.5;
-    private Color color;
+    private final Color color;
     private ImageIcon myImage;
 
     /**
@@ -94,11 +94,4 @@ public class Tile extends JButton {
         return color;
     }
 
-    /**
-     * Sets the color of the tile
-     * @param color The new color
-     */
-    public void setColor(Color color) {
-        this.color = color;
-    }
 }

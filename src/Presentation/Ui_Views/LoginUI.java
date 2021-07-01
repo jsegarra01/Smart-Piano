@@ -161,13 +161,6 @@ public class LoginUI extends JPanel {
     }
 
     /**
-     * Sets the username in the text field
-     */
-    public void setUsernameLogin(String usernameLogin) {
-        usernameTextField.setText(usernameLogin);
-    }
-
-    /**
      * Obtains the password in the text field
      * @return password string
      */

@@ -41,30 +41,6 @@ public class PlaylistCsvDAO implements PlaylistDAO {
     }
 
     /**
-     * Method that deletes a playlist
-     * @param playlist Defines the playlist to be deleted
-     */
-    @Override
-    public boolean deletePlaylist(Playlist playlist) {
-        try {
-            if(ConnectSQL.getInstance()!=null){
-                PreparedStatement st = ConnectSQL.getInstance().prepareStatement("delete from SongPlaylistsT where playlistId = '" +
-                        playlist.getPlaylistId() + "'");
-                st.execute();
-                PreparedStatement st2 = ConnectSQL.getInstance().prepareStatement("delete from PlaylistT where playlistId = '" +
-                        playlist.getPlaylistId() + "'");
-                st2.execute();
-
-                return true;
-            }
-
-        } catch (SQLException e) {
-            return false;
-        }
-        return false;
-    }
-
-    /**
      * Method that gets a song from a playlist defined by an id
      * @param id Defines the id of the playlist which the song is got
      * @return ArrayList of songs from the playlist with the id defined in the parameter
@@ -107,7 +83,7 @@ public class PlaylistCsvDAO implements PlaylistDAO {
                         "where p.username like '" + username + "'");
                 ArrayList<Playlist> playlists = new ArrayList<>();
                 while(myRs.next()){
-                    playlists.add(new Playlist(myRs.getInt("playlistId"),
+                    playlists.add(new Playlist(
                             myRs.getString("playlistName"),
                             getSongsForPlaylist(myRs.getInt("playlistId")),
                             myRs.getString("username")));

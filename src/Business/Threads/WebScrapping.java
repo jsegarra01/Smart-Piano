@@ -8,7 +8,7 @@ import java.util.TimerTask;
 
 import static Presentation.DictionaryPiano.URLROUTE;
 
-@SuppressWarnings("InstantiationOfUtilityClass")
+
 public class WebScrapping {
 
     /*

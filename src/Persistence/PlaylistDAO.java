@@ -24,12 +24,6 @@ public interface PlaylistDAO {
     boolean savePlaylist(String playlist, String username);
 
     /**
-     * Method that deletes a playlist
-     * @param playlist Defines the playlist to be deleted
-     */
-    boolean deletePlaylist(Playlist playlist);
-
-    /**
      * Method that gets the array of playlists from a user
      * @param username Defines the username of the playlist
      * @return ArrayList of playlists whose author is the user defined in the parameter

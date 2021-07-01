@@ -18,12 +18,6 @@ import java.util.ArrayList;
 public interface SongDAO {
 
     /**
-     * Method that stores the song in the database
-     * @param mySaveSong Defines the song to be stored
-     */
-    boolean saveSong(Song mySaveSong);
-
-    /**
      * Method that stores the song in the database with the date
      * @param mySaveSong Defines the song to be stored
      * @return boolean that returns a true if it has been done correctly, false if not
@@ -36,13 +30,6 @@ public interface SongDAO {
      */
     boolean deleteSong(Song mySong);
 
-    /**
-     * Method that gets the song by its id
-     *
-     * @param id Defines the id of the song
-     * @return Class that stores the song that has been got from the database
-     */
-    Song getSongByID(int id);
 
     /**
      * Method that gets all the songs belonging to the user

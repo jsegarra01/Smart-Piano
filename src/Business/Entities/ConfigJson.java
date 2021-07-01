@@ -72,14 +72,6 @@ public class ConfigJson {
     }
 
     /**
-     * Method that sets the name of the database to be used
-     * @param name Defines the name of the database
-     */
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    /**
      * Method that gets the username that is accessing the database
      * @return String that stores the username that is accessing the database
      */
@@ -88,27 +80,11 @@ public class ConfigJson {
     }
 
     /**
-     * Method that sets the username accessing the database
-     * @param username Defines the username that accesses the database
-     */
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    /**
      * Method that gets the password of the user accessing the database
      * @return String that stores the password of the user that is accessing the database
      */
     public String getPassword() {
         return password;
-    }
-
-    /**
-     * Method that sets the password  of the user
-     * @param password Defines the password of the username
-     */
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     /**

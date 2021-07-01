@@ -533,7 +533,6 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
     private void playMusic(){
         count_song = 1;
         spotiFrame.setPlayButton(pauseIcon);
-        long startMin = System.currentTimeMillis();
         finalMidiHelper.playSong(songPlay.getSongFile());
         play = true;
     }
@@ -544,7 +543,6 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
     private void stopMusic() {
         spotiFrame.setPlayButton(playIcon);
         play = false;
-        long lastMin = System.currentTimeMillis();
         finalMidiHelper.stopSong();
     }
 

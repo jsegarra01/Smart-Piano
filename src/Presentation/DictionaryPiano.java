@@ -50,7 +50,6 @@ public class DictionaryPiano {
 
     public static final String BTN_RECORD = " ";
     public static final String BTN_TILE = "SOUND";
-    public static final String JLAB_SYNTH_TYPE = "Classic Piano";
     public static final String MODIFY = "MODIFY_KEYS";
 
     public static final String URLROUTE = "https://www.mutopiaproject.org/cgibin/make-table.cgi?Instrument=Piano";

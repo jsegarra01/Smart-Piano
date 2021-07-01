@@ -31,7 +31,6 @@ public class ButtonColumn extends AbstractCellEditor implements TableCellRendere
     private final Border originalBorder;
     private final JButton renderButton;
     private final JButton editButton;
-    private Border focusBorder;
     private Object editorValue;
 
     /**
@@ -50,14 +49,12 @@ public class ButtonColumn extends AbstractCellEditor implements TableCellRendere
 
         renderButton = new JButton();
         renderButton.setForeground(Color.red);
-        //renderButton.addActionListener(action);
         editButton = new JButton();
         editButton.setForeground(Color.red);
         editButton.setFocusPainted( false );
         editButton.addActionListener( this );
         editButton.setActionCommand(DELETE_SONG);
         originalBorder = editButton.getBorder();
-        //setFocusBorder( new LineBorder(Color.BLUE) );
 
         TableColumnModel columnModel = table.getColumnModel();
         columnModel.getColumn(column).setCellRenderer( this );
@@ -80,24 +77,32 @@ public class ButtonColumn extends AbstractCellEditor implements TableCellRendere
      */
     @Override
     public Component getTableCellEditorComponent( JTable table, Object value, boolean isSelected, int row, int column) {
-        if (value == null)
-        {
-            editButton.setText( "" );
-            editButton.setIcon( null );
-        }
-        else if (value instanceof Icon)
-        {
-            editButton.setText( "" );
-            editButton.setIcon( (Icon)value );
-        }
-        else
-        {
-            editButton.setText( value.toString() );
-            editButton.setIcon( null );
-        }
+        getTableCellEditor(value, editButton);
 
         this.editorValue = value;
         return editButton;
+    }
+
+    /**
+     * Method which sets the value of the tables
+     * @param  value the value of the cell to be edited; it is up to the specific editor to interpret and draw the value.
+     *              For example, if value is the string "true", it could be rendered as a string or it could be rendered
+     *              as a check box that is checked. null is a valid value
+     * @param editButton the component for editing
+     */
+    private void getTableCellEditor(Object value, JButton editButton) {
+        if (value == null) {
+            editButton.setText( "" );
+            editButton.setIcon( null );
+        }
+        else if (value instanceof Icon) {
+            editButton.setText( "" );
+            editButton.setIcon( (Icon)value );
+        }
+        else {
+            editButton.setText( value.toString() );
+            editButton.setIcon( null );
+        }
     }
 
     /**
@@ -105,8 +110,7 @@ public class ButtonColumn extends AbstractCellEditor implements TableCellRendere
      * @return the value contained in the editor.
      */
     @Override
-    public Object getCellEditorValue()
-    {
+    public Object getCellEditorValue() {
         return editorValue;
     }
 
@@ -145,25 +149,14 @@ public class ButtonColumn extends AbstractCellEditor implements TableCellRendere
         }
 
         if (hasFocus) {
-            renderButton.setBorder( focusBorder );
+            renderButton.setBorder( new LineBorder(Color.BLUE) );
         }
         else {
             renderButton.setBorder( originalBorder );
         }
 
 //		renderButton.setText( (value == null) ? "" : value.toString() );
-        if (value == null) {
-            renderButton.setText( "" );
-            renderButton.setIcon( null );
-        }
-        else if (value instanceof Icon) {
-            renderButton.setText( "" );
-            renderButton.setIcon( (Icon)value );
-        }
-        else {
-            renderButton.setText( value.toString() );
-            renderButton.setIcon( null );
-        }
+        getTableCellEditor(value, renderButton);
 
         return renderButton;
     }

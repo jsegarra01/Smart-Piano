@@ -14,11 +14,6 @@ import java.util.ArrayList;
 public class Playlist {
 
     /*
-    Defines the id of the playlist
-     */
-    private int playlistId;
-
-    /*
     Defines the name of the playlist
      */
     private final String playlistName;
@@ -35,13 +30,14 @@ public class Playlist {
 
     /**
      * Constructor of the Playlist
-     * @param playlistId Defines the id of the playlist
      * @param playlistName Defines the name of the playlist
      * @param songs Defines the list of songs belonging to the playlist
      * @param user Defines the creator of the playlist
      */
-    public Playlist(int playlistId, String playlistName, ArrayList<Song> songs, String user) {
-        this.playlistId = playlistId;
+    public Playlist(String playlistName, ArrayList<Song> songs, String user) {
+        /*
+    Defines the id of the playlist
+     */
         this.playlistName = playlistName;
         this.songs = songs;
         this.user = user;
@@ -56,14 +52,6 @@ public class Playlist {
         this.playlistName = playlistName;
         this.user = user;
         songs = new ArrayList<>();
-    }
-
-    /**
-     * Method that gets the id of the playlist
-     * @return Int that stores the id of the playlist
-     */
-    public int getPlaylistId() {
-        return playlistId;
     }
 
     /**

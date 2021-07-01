@@ -102,28 +102,6 @@ public class TextPrompt extends JLabel implements FocusListener, DocumentListene
     }
 
     /**
-     *  Convenience method to change the style of the current Font. The style
-     *  values are found in the Font class. Common values might be:
-     *  Font.BOLD, Font.ITALIC and Font.BOLD + Font.ITALIC.
-     *
-     *  @param style value representing the the new style of the Font.
-     */
-    public void changeStyle(int style)
-    {
-        setFont( getFont().deriveFont( style ) );
-    }
-
-    /**
-     *  Get the Show property
-     *
-     *  @return the Show property.
-     */
-    public Show getShow()
-    {
-        return show;
-    }
-
-    /**
      *  Set the prompt Show property to control when the promt is shown.
      *  Valid values are:
      *
@@ -138,28 +116,6 @@ public class TextPrompt extends JLabel implements FocusListener, DocumentListene
     public void setShow(Show show)
     {
         this.show = show;
-    }
-
-    /**
-     *  Get the showPromptOnce property
-     *
-     *  @return the showPromptOnce property.
-     */
-    public boolean getShowPromptOnce()
-    {
-        return showPromptOnce;
-    }
-
-    /**
-     *  Show the prompt once. Once the component has gained/lost focus
-     *  once, the prompt will not be shown again.
-     *
-     *  @param showPromptOnce  when true the prompt will only be shown once,
-     *                         otherwise it will be shown repeatedly.
-     */
-    public void setShowPromptOnce(boolean showPromptOnce)
-    {
-        this.showPromptOnce = showPromptOnce;
     }
 
     /**

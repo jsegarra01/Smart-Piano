@@ -45,18 +45,9 @@ public class ReadMidi {
                 MidiMessage message = event.getMessage();
                 if (message instanceof ShortMessage sm) {
                     if (sm.getCommand() == NOTE_ON && sm.getChannel() == 0 && sm.getData2() > 0) {
-                        int key = sm.getData1();
-                        int octave = (key / 12)-1;
-                        int note = key % 12;
-                        String noteName = NOTE_NAMES[note];
-                        int velocity = sm.getData2();
                         playedOn = event.getTick();
                     } else if (sm.getCommand() == NOTE_ON && sm.getData2() == 0 && sm.getChannel() == 0) {
                         int key = sm.getData1();
-                        int octave = (key / 12)-1;
-                        int note = key % 12;
-                        String noteName = NOTE_NAMES[note];
-                        int velocity = sm.getData2();
                         playedOff = event.getTick();
                         keys.add(new Keys(key, (playedOff - playedOn), playedOn));
                     }

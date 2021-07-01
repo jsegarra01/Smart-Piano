@@ -1,6 +1,5 @@
 package Persistence.SQL.Csv;
 
-import Business.BusinessFacadeImp;
 import Business.Entities.Song;
 import Business.Entities.Stadistics;
 //import Business.Entities.TopSongs;
@@ -81,33 +80,6 @@ public class SongCsvDAO implements SongDAO {
     }
 
     /**
-     * Method that stores the song in the database
-     * @param mySaveSong Defines the song to be stored
-     * @return boolean that returns a true if it has been done correctly, false if not
-     */
-    @Override
-    public boolean saveSong(Song mySaveSong) {
-        try{
-            if(ConnectSQL.getInstance()!=null){
-                PreparedStatement st = ConnectSQL.getInstance().prepareStatement(
-                        "insert into SongT (songName, authorsName, duration, recordingDate, publicBoolean, songFile, username) values ('" +
-                            mySaveSong.getSongName() + "', '" +
-                            mySaveSong.getAuthorName() + "', '" +
-                            mySaveSong.getDuration() + "', " +
-                            "current_date, " +
-                            mySaveSong.isPublicBoolean() + ", '" +
-                            mySaveSong.getSongFile() + "', '" +
-                            mySaveSong.getCreator() + "')");
-                st.execute();
-                return true;
-            }
-            return false;
-        } catch (SQLException throwable) {
-            return false;
-        }
-    }
-
-    /**
      * Method that stores the song in the database with the date
      * @param mySaveSong Defines the song to be stored
      * @return boolean that returns a true if it has been done correctly, false if not
@@ -153,38 +125,6 @@ public class SongCsvDAO implements SongDAO {
         }
     }
 
-    /**
-     * Method that gets the song by its id
-     *
-     * @param id Defines the id of the song
-     * @return Class that stores the song that has been got from the database
-     */
-    @Override
-    public Song getSongByID(int id) {
-        try {
-            if(ConnectSQL.getInstance()!=null){
-
-                ResultSet myRs = ConnectSQL.getInstance().createStatement().executeQuery("select * from SongT as s where s.songId LIKE " + id);
-                if (myRs.next()) {
-                    Song song = new Song(
-                            myRs.getString("songName"),
-                            myRs.getString("authorsName"),
-                            myRs.getFloat("duration"),
-                            myRs.getDate("recordingDate"),
-                            myRs.getBoolean("publicBoolean"),
-                            myRs.getString("songFile"),
-                            myRs.getString("username"),
-                            myRs.getInt("numTimesPlayed"));
-                    myRs.close();
-                    return song;
-                }
-            }
-        } catch (SQLException throwables) {
-            return null;
-        }
-        return null;
-
-    }
 
     /**
      * Method that gets all the songs belonging to the user
