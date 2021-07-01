@@ -55,15 +55,17 @@ public class SpotiFrame extends JPanel {
 
     private final JTextField songNameInputText = new JTextField();
     private final JButton searchButton = new JButton();
+    private final PianoFrame pianoFrame;
 
     /**
      * Constructor for the SpotiUI, you need to send the mainframe context and will create a card layout
      */
     public SpotiFrame(PianoFrame pianoFrame) {
+        this.pianoFrame = pianoFrame;
         spotiPanel = pianoFrame.getSpotiPanel();
         statisticsUI = new StatisticsUI();
         spotiFrameManager = new SpotiFrameManager(this);
-        songsUI = new SongsUI(pianoFrame, spotiFrameManager);
+        songsUI = new SongsUI(spotiFrameManager);
         playlistUI = new PlaylistUI(spotiFrameManager);
         new GraphTimer(spotiFrameManager);
         initialize();
@@ -333,4 +335,6 @@ public class SpotiFrame extends JPanel {
     public void setLoopButton(ImageIcon icon) { loopButton.setIcon(icon); }
 
     public SpotiFrameManager spotiFrameManager() { return spotiFrameManager; }
+
+    public void setMainCard(String name) {pianoFrame.setMainCard(name);}
 }

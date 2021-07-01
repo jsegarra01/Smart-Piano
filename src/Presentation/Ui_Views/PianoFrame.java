@@ -43,9 +43,9 @@ public class PianoFrame extends JPanel {
     public PianoFrame(final MainFrame mainFrame) {
         super();
         this.mainFrame = mainFrame;
-        pianoTilesUISelector = new PianoTilesUISelector();
+        pianoTilesUISelector = new PianoTilesUISelector(this);
         spotiFrame = new SpotiFrame(this);
-        freePianoUI = new FreePianoUI();
+        freePianoUI = new FreePianoUI(this);
         initialize();
     }
 
@@ -139,4 +139,6 @@ public class PianoFrame extends JPanel {
     public SpotiFrameManager getSpotiFrameManager() {
         return spotiFrame.spotiFrameManager();
     }
+
+    public void setMainCard(String name) {mainFrame.setCard(name);}
 }

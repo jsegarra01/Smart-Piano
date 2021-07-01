@@ -3,13 +3,12 @@ package Presentation.Manager;
 //Imports needed from the dictionary, events and mainframe
 
 import Business.BusinessFacadeImp;
+import Presentation.Ui_Views.ProfileUI;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import static Presentation.Dictionary_login.*;
-import static Presentation.Ui_Views.MainFrame.card;
-import static Presentation.Ui_Views.MainFrame.contenedor;
 
 
 /**
@@ -22,11 +21,13 @@ import static Presentation.Ui_Views.MainFrame.contenedor;
  *
  */
 public class ProfileUIManager implements ActionListener {
+    private final ProfileUI profileUI;
 
     /**
      * Parametrized constructor
+     * @param profileUI View of the profileUI
      */
-    public ProfileUIManager() {}
+    public ProfileUIManager(ProfileUI profileUI) {this.profileUI = profileUI;}
 
     /**
      * Method that will be called every time a button is pressed, overriden from the interface to provide an implementation.
@@ -36,12 +37,12 @@ public class ProfileUIManager implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         // We distinguish between our buttons.
         switch (e.getActionCommand()) {
-            case LOGOUT_BUTTON -> card.show(contenedor, PRE_MENU_UI);//In the case that the Logout button is pressed
+            case LOGOUT_BUTTON -> profileUI.setMainCard(PRE_MENU_UI);//In the case that the Logout button is pressed
             case DELETE_BUTTON -> {
                 BusinessFacadeImp.getBusinessFacade().deleteAccount();
-                card.show(contenedor, PRE_MENU_UI);//In the case that the Delete button is pressed
+                profileUI.setMainCard(PRE_MENU_UI);//In the case that the Delete button is pressed
             }
-            case BACK_BUTTON -> card.show(contenedor, PIANO_FRAME);//In the case that the Back button is pressed
+            case BACK_BUTTON -> profileUI.setMainCard(PIANO_FRAME);//In the case that the Back button is pressed
         }
     }
 }

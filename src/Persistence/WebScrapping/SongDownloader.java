@@ -2,7 +2,6 @@ package Persistence.WebScrapping;
 import Business.BusinessFacadeImp;
 import Business.Entities.Song;
 import Business.MidiHelper;
-import Business.SongManager;
 import Persistence.SongDownloaderDAO;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -92,7 +91,7 @@ public class SongDownloader implements SongDownloaderDAO {
         }
 
     @Override
-    public void downloadWebPage(String webpage) {
+    public boolean downloadWebPage(String webpage) {
         try {
             // Create URL object
             URL url = new URL(webpage);
@@ -102,11 +101,12 @@ public class SongDownloader implements SongDownloaderDAO {
             while ((line = readr.readLine()) != null) {writer.write(line);}
             readr.close();
             writer.close();
+            return true;
         }
-
         // Exceptions
         catch (IOException mue) {
             BusinessFacadeImp.getBusinessFacade().setError(10);
+            return false;
         }
     }
 
@@ -118,6 +118,7 @@ public class SongDownloader implements SongDownloaderDAO {
         } catch (MidiUnavailableException e) {
             e.printStackTrace();
         }
+        boolean errorFound = false;
         String URL;
         int i = 0;
         while (i < 50) {
@@ -146,14 +147,18 @@ public class SongDownloader implements SongDownloaderDAO {
                         if(author2.substring(0,3).contains("by ")){
                             author2 = author2.substring(3);
                         }
-                        if (!songCsv.saveSongWithDate(new Song(piece, author2, midiHelper.getDuration(filename)/1000000 , new SimpleDateFormat("yyyy/MM/dd").parse(recordingDate), true, filename, "qp6c43moyrgsej1hxvg3u98le", 0))) {
+                        if (!errorFound && !songCsv.saveSongWithDate(new Song(piece, author2, midiHelper.getDuration(filename)/1000000 , new SimpleDateFormat("yyyy/MM/dd").parse(recordingDate), true, filename, "qp6c43moyrgsej1hxvg3u98le", 0))) {
                             BusinessFacadeImp.getBusinessFacade().setError(4);
+                            errorFound = true;
                         }
                     }
                 }
             }
             catch (IOException | ParseException e) {
-                BusinessFacadeImp.getBusinessFacade().setError(4);
+                if (!errorFound) {
+                    BusinessFacadeImp.getBusinessFacade().setError(4);
+                    errorFound = true;
+                }
             }
             //Extract the divs that have products inside of the previous general Div.
             i++;

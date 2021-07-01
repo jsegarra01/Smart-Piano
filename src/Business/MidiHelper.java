@@ -1,7 +1,5 @@
 package Business;
 import javax.sound.midi.*;
-import javax.sound.midi.MidiSystem;
-import javax.sound.midi.MidiUnavailableException;
 import java.io.File;
 import java.io.IOException;
 
@@ -20,22 +18,19 @@ public class MidiHelper {
     private int whatInstrumentIsPlayed;
     private static Sequencer sequencer;
 
-    static {        //TODO ALEX QUE CONY ESTÀS FENT AQUI
-        try {
-            sequencer = MidiSystem.getSequencer();
-        } catch (MidiUnavailableException e) {
-            BusinessFacadeImp.getBusinessFacade().setError(3);
-        }
-    }
-
-    private static String fileSong = "";            //TODO PODEM TREURE EL STATIC NO?
-    private static Sequence sequencePlay;
+    private String fileSong = "";
+    private Sequence sequencePlay;
 
     /**
      * Constructor of the MidiHelper class
      * @throws MidiUnavailableException exception that will be thrown in case there has been an exception in the midi
      */
     public MidiHelper() throws MidiUnavailableException {
+        try {
+            sequencer = MidiSystem.getSequencer();
+        } catch (MidiUnavailableException e) {
+            BusinessFacadeImp.getBusinessFacade().setError(3);
+        }
         Synthesizer synth = MidiSystem.getSynthesizer();
         synth.open();
         midiChannels = synth.getChannels();

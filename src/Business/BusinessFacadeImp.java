@@ -1,18 +1,12 @@
 package Business;
 
-import Business.Entities.Playlist;
-import Business.Entities.RecordingNotes;
-import Business.Entities.Song;
 import Business.Entities.*;
 import Business.Threads.WebScrapping;
 import Presentation.Manager.ErrorsManager;
-import Presentation.Manager.SpotiFrameManager;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-//import static Presentation.Ui_Views.SignUpUI.getMailSignUp;
-//import static Presentation.Ui_Views.SignUpUI.getUsernameSignUp;
 
 
 /**
@@ -128,19 +122,6 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
             setError(0);
         }
     }
-/*
-    @Override
-    public void noteRecordingUpdate(ArrayList<RecordingNotes> recordingNotes, float recordingTime){
-            JPanel myPanel = new JPanel();
-            JTextField titleField = new JTextField(20);
-            myPanel.add(titleField);
-            JCheckBox box = new JCheckBox("is public?");
-            myPanel.add(box);
-
-            JOptionPane.showMessageDialog(null, myPanel, "Enter a title for the song", JOptionPane.INFORMATION_MESSAGE);
-
-            recordedNotesSend(recordingNotes, titleField.getText(), box.isSelected(), recordingTime);
-    }*/
 
     @Override
     public boolean modifyKey(int KeyExisted){
@@ -198,15 +179,14 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
      * @return True if deleted, false if not
      */
     @Override
-    public boolean deleteSongFromPlaylist(String playlistName, String songName){
-        return playlistManager.eliminateSongFromPlaylist(playlistName, songName);
+    public void deleteSongFromPlaylist(String playlistName, String songName){
+        playlistManager.eliminateSongFromPlaylist(playlistName, songName);
     }
 
     /**
      * Adds a song to a playlist
      * @param playlistName Name of the playlist we want to add the song to
      * @param songName Name of the song we want to add
-     * @return True if added, false if not
      */
     @Override
     public void addSongToPlaylist(String playlistName, String songName){
@@ -220,7 +200,7 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
      */
     @Override
     public void setSongUser() {
-        if(!songManager.setSongs(UserManager.getUser().getUserName())){
+        if(songManager.setSongs(UserManager.getUser().getUserName())){
             setError(0);
         }
     }

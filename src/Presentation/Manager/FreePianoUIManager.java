@@ -14,17 +14,11 @@ import Business.Translator;
 import javax.sound.midi.MidiUnavailableException;
 import javax.swing.*;
 import java.awt.event.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.Objects;
 
 import static Presentation.DictionaryPiano.*;
 import static Presentation.Dictionary_login.*;
-import static Presentation.Ui_Views.MainFrame.card;
-import static Presentation.Ui_Views.MainFrame.contenedor;
 
 
 /**
@@ -104,7 +98,7 @@ public class FreePianoUIManager implements ActionListener, MouseListener {
                     }
                 }else{
                     if(Translator.getPressedFromKey(e.getExtendedKeyCode()) !=null){
-                        if(!Objects.requireNonNull(Translator.getPressedFromKey(e.getExtendedKeyCode())).isPressed()){
+                        if(Objects.requireNonNull(Translator.getPressedFromKey(e.getExtendedKeyCode())).isPressed()){
                             finalMidiHelper.playSomething(Translator.getNumberNoteFromName(Translator.getFromKey(e.getExtendedKeyCode())),SOUND_SYNTHER);
                             Objects.requireNonNull(Translator.getPressedFromKey(e.getExtendedKeyCode())).setPressed(true);
                             //This gets the initial timer and key pressed for the first time it is clicked
@@ -163,9 +157,9 @@ public class FreePianoUIManager implements ActionListener, MouseListener {
                 recording = !recording;
             }
             case Dictionary_login.PROFILE_BUTTON ->           //In the case that the Profile button is pressed
-                    card.show(contenedor, PROFILE_UI);
+                    freePianoUI.setMainCard(PROFILE_UI);
             case MODIFY -> {                        //In the case that the Modify button is pressed
-                AbstractButton abstractButton = (AbstractButton) e.getSource();     //TODO we shouldn't be changing the button here, but on a view
+                AbstractButton abstractButton = (AbstractButton) e.getSource();
                 modifying = abstractButton.getModel().isSelected();
                 freePianoUI.labelAppear(modifying);
                 selected = false;

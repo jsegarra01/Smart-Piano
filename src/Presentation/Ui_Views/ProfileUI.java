@@ -1,7 +1,6 @@
 package Presentation.Ui_Views;
 
 //Imports all necesssary libraries
-import Business.BusinessFacadeImp;
 import Presentation.Manager.ProfileUIManager;
 
 import javax.swing.*;
@@ -26,13 +25,14 @@ public class ProfileUI extends JPanel{
     private final JButton logOut = new JButton(LOGOUT_BUTTON);
     private final JButton deleteAccount = new JButton(DELETE_BUTTON);
     private final JButton back = new JButton(BACK_BUTTON);
-   // private final BusinessFacadeImp myFacade;
+    private final MainFrame mainFrame;
 
     /**
      * Constructor for the ProfileUI, you need to send the mainframe context and will create a card layout
+     * @param mainFrame View of the mainframe
      */
-    public ProfileUI(/*BusinessFacadeImp myFacade*/) {
-        //this.myFacade = myFacade;
+    public ProfileUI(MainFrame mainFrame) {
+        this.mainFrame = mainFrame;
         initialize();
     }
 
@@ -82,7 +82,7 @@ public class ProfileUI extends JPanel{
         JPanel backBoxLayoutPanel = new JPanel();
         backBoxLayoutPanel.setLayout(new BoxLayout(backBoxLayoutPanel, BoxLayout.Y_AXIS));
 
-        registerController(new ProfileUIManager(/*myFacade*/));
+        registerController(new ProfileUIManager(this));
 
         userButtons.add(logOut);
         userButtons.add(Box.createRigidArea(new Dimension(10, 20)));
@@ -134,5 +134,7 @@ public class ProfileUI extends JPanel{
         deleteAccount.addActionListener(listener);
         back.addActionListener(listener);
     }
+
+    public void setMainCard(String name) {mainFrame.setCard(name);}
 
 }

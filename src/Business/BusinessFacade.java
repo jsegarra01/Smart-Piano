@@ -2,8 +2,6 @@ package Business;
 
 import Business.Entities.*;
 
-import java.awt.event.KeyEvent;
-import java.awt.image.Kernel;
 import java.util.ArrayList;
 
 /**
@@ -78,7 +76,7 @@ public interface BusinessFacade {
 
     Playlist getPlaylist(String name);
 
-    boolean deleteSongFromPlaylist(String playlistName, String songName);
+    void deleteSongFromPlaylist(String playlistName, String songName);
 
     void addSongToPlaylist(String playlistName, String songName);
 

@@ -28,13 +28,14 @@ public class SignUpUI extends JPanel {
     private final JPasswordField passwordConfirmation = new JPasswordField();
     private final JButton back = new JButton(BACK_BUTTON);
     private final JButton done = new JButton(DONE_BUTTON);
-    //private final BusinessFacadeImp myFacade;
+    private final MainFrame mainFrame;
 
     /**
      * Constructor for the SignUpUI, you need to send the mainframe context and will create a card layout
+     * @param mainFrame View of the mainFrame
      */
-    public SignUpUI(/*BusinessFacadeImp myFacade*/) {
-        //this.myFacade = myFacade;
+    public SignUpUI(MainFrame mainFrame) {
+        this.mainFrame = mainFrame;
         initialize();
     }
 
@@ -231,4 +232,7 @@ public class SignUpUI extends JPanel {
     public void setUsernameLogin(String usernameLogin) {
         usernameTextField.setText(usernameLogin);
     }
+
+    public void setMainCard(String name) {mainFrame.setCard(name);}
+
 }

@@ -22,9 +22,6 @@ import java.util.Objects;
 
 import static Presentation.DictionaryPiano.BTN_TILE;
 import static Presentation.Dictionary_login.*;
-import static Presentation.Ui_Views.MainFrame.card;
-import static Presentation.Ui_Views.MainFrame.contenedor;
-import static Presentation.Ui_Views.PianoTilesUISelector.*;
 
 
 /**
@@ -44,8 +41,6 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
     private int songIndex = 0;
     private Song song;
     private static float velocityModifier = 1;
-
-    //private final BusinessFacadeImp myFacade;
 
     private final ImageIcon playIcon = new ImageIcon("Files/drawable/play-button.png"); // icon play
     private final ImageIcon pauseIcon = new ImageIcon("Files/drawable/pause-button.png"); // icon pause
@@ -82,7 +77,7 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
             @Override
             public void keyPressed(KeyEvent e) {
                 if (Translator.getPressedFromKey(e.getExtendedKeyCode()) !=null) {
-                    if (!Objects.requireNonNull(Translator.getPressedFromKey(e.getExtendedKeyCode())).isPressed()) {
+                    if (Objects.requireNonNull(Translator.getPressedFromKey(e.getExtendedKeyCode())).isPressed()) {
                         finalMidiHelper.playSomething(Translator.getNumberNoteFromName(Translator.getFromKey(e.getExtendedKeyCode())), SOUND_SYNTH);
                         Objects.requireNonNull(Translator.getPressedFromKey(e.getExtendedKeyCode())).setPressed(true);
                     }
@@ -122,7 +117,7 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
 
                 break;
             case Dictionary_login.PROFILE_BUTTON:       //In the case that the Profile button is pressed
-                card.show(contenedor, PROFILE_UI);
+                pianoTilesUI.setMainCard(PROFILE_UI);
                 break;
             case DictionaryPiano.PLAY_BUTTON:
                 if (songStarted) {
@@ -182,7 +177,7 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
      * @param string Icon name
      * @param keyboard Tile of the keyboard pressed
      */
-    protected static void IconKey(String string, ArrayList<Tile> keyboard) {  //TODO Check if we can put this in an abstract class from which we can extend it
+    protected static void IconKey(String string, ArrayList<Tile> keyboard) {
         int i = 0;
         while(!string.equals(keyboard.get(i).getName()) && i< keyboard.size()){
             i++;
@@ -205,7 +200,7 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
      * @param string Icon name
      * @param keyboard Tile of the keyboard pressed
      */
-    protected static void setIconBackTiles(String string, ArrayList<Tile> keyboard) {   //TODO Check if we can put this in an abstract class from which we can extend it
+    protected static void setIconBackTiles(String string, ArrayList<Tile> keyboard) {
         int i = 0;
         while(!string.equals(keyboard.get(i).getName()) && i< keyboard.size()){
             i++;
@@ -260,9 +255,7 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
      * @param e Event of the mouse
      */
     @Override
-    public void mouseExited(MouseEvent e) {
-
-    }
+    public void mouseExited(MouseEvent e) {}
 
     /**
      * Gets the names of the songs

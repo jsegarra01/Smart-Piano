@@ -35,13 +35,15 @@ public class PianoTilesUISelector extends Piano {
     private final JButton mute = new JButton(MUTE_BUTTON);
 
     private final PianoTilesUISelectorManager pianoTilesUISelectorManager;
+    private final PianoFrame pianoFrame;
 
     /**
      * Constructor for the PianoTilesUISelector, you need to send the mainframe context and will create a card layout
-     *
+     * @param pianoFrame View of the Pianoframe
      */
-    public PianoTilesUISelector() {
+    public PianoTilesUISelector(PianoFrame pianoFrame) {
         super();
+        this.pianoFrame = pianoFrame;
         setKeyboardPiano(new ArrayList<>());
         this.pianoTilesUISelectorManager = new PianoTilesUISelectorManager(this);
         initialize();
@@ -301,4 +303,5 @@ public class PianoTilesUISelector extends Piano {
         return playButtonTiles;
     }
 
+    public void setMainCard(String name) {pianoFrame.setMainCard(name);}
 }

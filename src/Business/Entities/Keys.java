@@ -96,7 +96,7 @@ public class Keys {
      * @return Boolean that stores a true if pressed, false if not
      */
     public boolean isPressed() {
-        return pressed;
+        return !pressed;
     }
 
     /**

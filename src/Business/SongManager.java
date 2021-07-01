@@ -46,12 +46,12 @@ public class SongManager {
     public boolean saveRecording(ArrayList<RecordingNotes> recordedNotes, String songName, boolean isPublic, float endtime) {
         writeMidi(songName, new SongRecorded(recordedNotes,songName, isPublic).getRecordingNotes(), endtime);
         Song song = new Song(songName, UserManager.getUser().getUserName(), endtime, new Date(),isPublic, "Songs/" + songName + ".mid", UserManager.getUser().getUserName(), 0);
-        if(!saveSongWithDate(song) || !setSongs(UserManager.getUser().getUserName()) ){
+        if(!saveSongWithDate(song) || setSongs(UserManager.getUser().getUserName())){
             return false;
         }
         songs.clear();
+        setSongs(UserManager.getUser().getUserName());
         return true;
-
     }
 
     /**
@@ -104,9 +104,9 @@ public class SongManager {
             for (Song song : aux) {
                 songNames.add(song.getSongName());
             }
-            return true;
-        } catch (SQLException e) {
             return false;
+        } catch (SQLException e) {
+            return true;
         }
     }
 
@@ -116,7 +116,7 @@ public class SongManager {
      */
     public ArrayList<Song> getTopFive(){
         ArrayList<Song> aux = new ArrayList<>(songs);
-        aux.sort(this::compare);            //TODO AIXÒ EM PETA
+        aux.sort(this::compare);
         ArrayList<Song> topFive = new ArrayList<>();
         for(int i=0; i<5 && i<aux.size(); i++){
             topFive.add(aux.get(i));
@@ -169,6 +169,7 @@ public class SongManager {
      * @return True if deleted, false if not
      */
     public boolean deleteSong(Song song){
+        songManager.deleteSongFile(song.getSongFile());
         return songManager.deleteSong(song);
     }
 
@@ -186,6 +187,5 @@ public class SongManager {
      */
     public void deleteSongFile(int i){
         songManager.deleteSongFile(songs.get(i).getSongFile());
-
     }
 }

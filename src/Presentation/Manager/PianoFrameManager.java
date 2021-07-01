@@ -3,19 +3,15 @@ package Presentation.Manager;
 //Imports needed from the dictionary, events and mainframe
 import Business.BusinessFacadeImp;
 import Business.ChangeTime;
-import Business.MidiHelper;
 import Presentation.Dictionary_login;
 import Presentation.Ui_Views.PianoFrame;
 
-import javax.sound.midi.MidiUnavailableException;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import static Presentation.DictionaryPiano.*;
 import static Presentation.Dictionary_login.*;
-import static Presentation.Ui_Views.MainFrame.card;
-import static Presentation.Ui_Views.MainFrame.contenedor;
 
 
 /**
@@ -28,7 +24,6 @@ import static Presentation.Ui_Views.MainFrame.contenedor;
  *
  */
 public class PianoFrameManager implements ActionListener {
-    private final MidiHelper midiHelper;
     private final PianoTilesUISelectorManager pianoTilesUISelectorManager;
     private final PianoFrame pianoFrame;
 
@@ -37,14 +32,6 @@ public class PianoFrameManager implements ActionListener {
      * @param pianoFrame view of the pianoFrame
      */
     public PianoFrameManager(PianoFrame pianoFrame) {
-        MidiHelper midiHelper1;
-        try {
-            midiHelper1 = new MidiHelper();
-        } catch (MidiUnavailableException e) {
-            new BusinessFacadeImp().setError(8);
-            midiHelper1 = null;
-        }
-        this.midiHelper = midiHelper1;
         this.pianoFrame = pianoFrame;
         this.pianoTilesUISelectorManager = pianoFrame.getPianoTilesUIManager();
         new ChangeTime(this.pianoTilesUISelectorManager);
@@ -69,7 +56,7 @@ public class PianoFrameManager implements ActionListener {
 
         switch (e.getActionCommand()) {
             case Dictionary_login.PROFILE_BUTTON:       //In the case that the Profile button is pressed
-                card.show(contenedor, PROFILE_UI);
+                pianoFrame.setMainCard(PROFILE_UI);
             case FREE_PIANO:
                 cc.show(pianoFrame.getCentralPanel(), FREE_PIANO_UI);
                 pianoFrame.setBackgroundFreePiano(Color.getHSBColor(0,0,80.3f));

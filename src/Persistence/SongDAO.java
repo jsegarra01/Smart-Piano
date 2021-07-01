@@ -2,7 +2,6 @@ package Persistence;
 import Business.Entities.Song;
 import Business.Entities.Stadistics;
 //import Business.Entities.TopSongs;
-import Business.Entities.User;
 
 import java.sql.SQLException;
 import java.util.ArrayList;

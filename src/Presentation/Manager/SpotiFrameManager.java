@@ -4,7 +4,6 @@ package Presentation.Manager;
 import Business.Entities.*;
 import Business.BusinessFacadeImp;
 import Business.MidiHelper;
-import Business.UserManager;
 import Presentation.Dictionary_login;
 import Presentation.Ui_Views.SpotiFrame;
 import Presentation.Ui_Views.StatisticsUI;
@@ -19,12 +18,9 @@ import java.awt.event.ActionListener;
 import java.util.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.util.ArrayList;
 
 import static Presentation.DictionaryPiano.*;
 import static Presentation.Dictionary_login.PROFILE_UI;
-import static Presentation.Ui_Views.MainFrame.card;
-import static Presentation.Ui_Views.MainFrame.contenedor;
 
 
 /**
@@ -72,15 +68,6 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
     private int count_song = 0;
 
     /*
-    Event that will control if the end of the track has been reached
-     */
-    private final MetaEventListener listener = meta -> {
-        if (meta.getType() == 47) {
-            playSongTime();
-        }
-    };
-
-    /*
     MidiHelper which will control the music playing in the music player
      */
     private final MidiHelper finalMidiHelper;
@@ -93,6 +80,14 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
     public SpotiFrameManager() {
         MidiHelper finalMidiHelper1;
         try {
+            /*
+    Event that will control if the end of the track has been reached
+     */
+            MetaEventListener listener = meta -> {
+                if (meta.getType() == 47) {
+                    playSongTime();
+                }
+            };
             finalMidiHelper1 = new MidiHelper(listener);
         } catch (MidiUnavailableException e) {
             finalMidiHelper1 = null;
@@ -167,7 +162,7 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
                 }
                 break;
             case Dictionary_login.PROFILE_BUTTON:           //In the case that the Profile button is pressed
-                card.show(contenedor, PROFILE_UI);
+                spotiFrame.setMainCard(PROFILE_UI);
                 break;
             case SHUFFLE_BUTTON:
                 shuffle = !shuffle;
@@ -238,8 +233,8 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
                 JButton song;
                 addSong = false;
                 if (obj instanceof JButton) {
-                    song = (JButton) obj;   //TODO Error deleting? is this ok?
-                    boolean errorDeleting = BusinessFacadeImp.getBusinessFacade().deleteSongFromPlaylist(playlist.getPlaylistName(),song.getName());
+                    song = (JButton) obj;
+                    BusinessFacadeImp.getBusinessFacade().deleteSongFromPlaylist(playlist.getPlaylistName(),song.getName());
                     playlist = BusinessFacadeImp.getBusinessFacade().getPlaylist(playlist.getPlaylistName());
                     spotiFrame.getPlaylistUI().setSongsPlaylists(playlist);
                 }
@@ -556,8 +551,7 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
     private void stopMusic() {
         spotiFrame.setPlayButton(playIcon);
         play = false;
-        long lastMin = System.currentTimeMillis();  //TODO min played fa alguna cosa?
-        float minPlayed = (float) (lastMin - startMin) / 60000;
+        long lastMin = System.currentTimeMillis();
         finalMidiHelper.stopSong();
     }
 

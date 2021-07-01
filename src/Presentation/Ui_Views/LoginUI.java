@@ -186,4 +186,6 @@ public class LoginUI extends JPanel {
     public JPanel getCentralPanel() {
         return mainFrame.getCentralPanel();
     }
+
+    public void setMainCard(String name) {mainFrame.setCard(name);}
 }

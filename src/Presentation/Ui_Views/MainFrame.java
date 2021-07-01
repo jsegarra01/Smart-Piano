@@ -18,8 +18,8 @@ import static Presentation.Dictionary_login.*;
  *
  */
 public class MainFrame extends JFrame {
-    public static CardLayout card; //TODO Not static and not public Do not initialize, that in the constructor:(
-    public static Container contenedor; //TODO Not static and not public
+    private final CardLayout card;
+    private final Container contenedor;
 
     private final JPanel centralPanel;
 
@@ -31,11 +31,11 @@ public class MainFrame extends JFrame {
         contenedor = this.getContentPane();
         centralPanel = new JPanel(new CardLayout());
 
-        LoginUI loginUI = new LoginUI(this); //TODO
-        ProfileUI profileUI = new ProfileUI(); //TODO
-        SignUpUI signUpUI = new SignUpUI(); //TODO
-        PreMenuUI preMenuUI = new PreMenuUI(loginUI,signUpUI); //TODO
-        PianoFrame pianoFrame = new PianoFrame(this); //TODO
+        LoginUI loginUI = new LoginUI(this);
+        ProfileUI profileUI = new ProfileUI(this);
+        SignUpUI signUpUI = new SignUpUI(this);
+        PreMenuUI preMenuUI = new PreMenuUI(loginUI,signUpUI, this);
+        PianoFrame pianoFrame = new PianoFrame(this);
 
         card.addLayoutComponent(preMenuUI, PRE_MENU_UI);
         card.addLayoutComponent(profileUI, PROFILE_UI);
@@ -55,7 +55,8 @@ public class MainFrame extends JFrame {
 
         BusinessFacadeImp.getBusinessFacade().initializeWebScrapping();
     }
-    public void setCard(Container parent, String name) {card.show(parent, name);}
+
+    public void setCard(String name) {card.show(contenedor, name);}
 
     public JPanel getCentralPanel() {
         return centralPanel;

@@ -4,10 +4,6 @@ package Business.Entities;
 
 import java.io.IOException;
 
-import Business.BusinessFacadeImp;
-import Business.SongManager;
-import Persistence.WebScrapping.SongDownloader;
-import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
