@@ -159,7 +159,7 @@ public class FreePianoUIManager implements ActionListener, MouseListener {
             case Dictionary_login.PROFILE_BUTTON ->           //In the case that the Profile button is pressed
                     freePianoUI.setMainCard(PROFILE_UI);
             case MODIFY -> {                        //In the case that the Modify button is pressed
-                AbstractButton abstractButton = (AbstractButton) e.getSource();     //TODO we shouldn't be changing the button here, but on a view
+                AbstractButton abstractButton = (AbstractButton) e.getSource();
                 modifying = abstractButton.getModel().isSelected();
                 freePianoUI.labelAppear(modifying);
                 selected = false;

@@ -177,7 +177,7 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
      * @param string Icon name
      * @param keyboard Tile of the keyboard pressed
      */
-    protected static void IconKey(String string, ArrayList<Tile> keyboard) {  //TODO Check if we can put this in an abstract class from which we can extend it
+    protected static void IconKey(String string, ArrayList<Tile> keyboard) {
         int i = 0;
         while(!string.equals(keyboard.get(i).getName()) && i< keyboard.size()){
             i++;
@@ -200,7 +200,7 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
      * @param string Icon name
      * @param keyboard Tile of the keyboard pressed
      */
-    protected static void setIconBackTiles(String string, ArrayList<Tile> keyboard) {   //TODO Check if we can put this in an abstract class from which we can extend it
+    protected static void setIconBackTiles(String string, ArrayList<Tile> keyboard) {
         int i = 0;
         while(!string.equals(keyboard.get(i).getName()) && i< keyboard.size()){
             i++;
@@ -255,9 +255,7 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
      * @param e Event of the mouse
      */
     @Override
-    public void mouseExited(MouseEvent e) {
-
-    }
+    public void mouseExited(MouseEvent e) {}
 
     /**
      * Gets the names of the songs

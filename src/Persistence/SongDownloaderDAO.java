@@ -9,7 +9,7 @@ public interface SongDownloaderDAO {
 
    String downloadFile(String fileURL, String saveDir) throws IOException;
 
-   void downloadWebPage(String webpage);
+   boolean downloadWebPage(String webpage);
 
    void downloadAllSongsScrapping(String webpage);
 }

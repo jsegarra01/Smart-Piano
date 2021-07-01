@@ -16,8 +16,9 @@ public class WebScrapping {
         TimerTask timerTask = new TimerTask() {
             @Override
             public void run() {
-                songDownloader.downloadWebPage(URLROUTE);
-                songDownloader.downloadAllSongsScrapping(URLROUTE);
+                if (songDownloader.downloadWebPage(URLROUTE)) {
+                    songDownloader.downloadAllSongsScrapping(URLROUTE);
+                }
             }
         };
         timer.scheduleAtFixedRate(timerTask,50, 60000L * ReadJson.getConfigJson().getScrappingTime());

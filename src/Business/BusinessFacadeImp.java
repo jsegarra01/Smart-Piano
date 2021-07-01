@@ -179,8 +179,8 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
      * @return True if deleted, false if not
      */
     @Override
-    public boolean deleteSongFromPlaylist(String playlistName, String songName){
-        return playlistManager.eliminateSongFromPlaylist(playlistName, songName);
+    public void deleteSongFromPlaylist(String playlistName, String songName){
+        playlistManager.eliminateSongFromPlaylist(playlistName, songName);
     }
 
     /**

@@ -116,7 +116,7 @@ public class SongManager {
      */
     public ArrayList<Song> getTopFive(){
         ArrayList<Song> aux = new ArrayList<>(songs);
-        aux.sort(this::compare);            //TODO AIXÒ EM PETA
+        aux.sort(this::compare);
         ArrayList<Song> topFive = new ArrayList<>();
         for(int i=0; i<5 && i<aux.size(); i++){
             topFive.add(aux.get(i));

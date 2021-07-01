@@ -233,8 +233,8 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
                 JButton song;
                 addSong = false;
                 if (obj instanceof JButton) {
-                    song = (JButton) obj;   //TODO Error deleting? is this ok?
-                    boolean errorDeleting = BusinessFacadeImp.getBusinessFacade().deleteSongFromPlaylist(playlist.getPlaylistName(),song.getName());
+                    song = (JButton) obj;
+                    BusinessFacadeImp.getBusinessFacade().deleteSongFromPlaylist(playlist.getPlaylistName(),song.getName());
                     playlist = BusinessFacadeImp.getBusinessFacade().getPlaylist(playlist.getPlaylistName());
                     spotiFrame.getPlaylistUI().setSongsPlaylists(playlist);
                 }

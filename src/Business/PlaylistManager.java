@@ -43,14 +43,12 @@ public class PlaylistManager {
      * Deletes a song from a playlist
      * @param playlistName The playlist to delete from
      * @param songName The song to delete
-     * @return True if delete, false if not
      */
-    public boolean eliminateSongFromPlaylist(String playlistName, String songName){
+    public void eliminateSongFromPlaylist(String playlistName, String songName){
         boolean check = deleteFromPlaylist(playlistName, songName);
         if(check){
-            return playlistCsvDAO.deleteSongFromPlaylist(playlistName, songName);
+            playlistCsvDAO.deleteSongFromPlaylist(playlistName, songName);
         }
-        return false;
     }
 
     /**

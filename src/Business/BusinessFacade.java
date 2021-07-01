@@ -76,7 +76,7 @@ public interface BusinessFacade {
 
     Playlist getPlaylist(String name);
 
-    boolean deleteSongFromPlaylist(String playlistName, String songName);
+    void deleteSongFromPlaylist(String playlistName, String songName);
 
     void addSongToPlaylist(String playlistName, String songName);
 

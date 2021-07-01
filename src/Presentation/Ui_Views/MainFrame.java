@@ -35,7 +35,7 @@ public class MainFrame extends JFrame {
         ProfileUI profileUI = new ProfileUI(this);
         SignUpUI signUpUI = new SignUpUI(this);
         PreMenuUI preMenuUI = new PreMenuUI(loginUI,signUpUI, this);
-        PianoFrame pianoFrame = new PianoFrame(this); //TODO
+        PianoFrame pianoFrame = new PianoFrame(this);
 
         card.addLayoutComponent(preMenuUI, PRE_MENU_UI);
         card.addLayoutComponent(profileUI, PROFILE_UI);
