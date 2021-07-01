@@ -75,6 +75,8 @@ public class ErrorsManager {
                     createDialog("You cannot record a song as a guest!", "Record song error");
             case 22 ->
                     createDialog("You are not the creator of this song", "Delete song error");
+            case 23 ->
+                    createDialog("There was a problem deleting the song", "Delete song error");
         }
     }
 

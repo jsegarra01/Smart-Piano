@@ -18,6 +18,7 @@ import java.util.ArrayList;
  * @version 1.0 28 June 2021
  *
  */
+@SuppressWarnings("InstantiationOfUtilityClass")
 public class BusinessFacadeImp implements Business.BusinessFacade {
 
     /*

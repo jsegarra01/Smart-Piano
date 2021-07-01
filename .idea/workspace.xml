@@ -19,51 +19,25 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="Small fixes done: musicplayer gets new song correctly,when deleting a song we also delete the .mid">
-      <change afterPath="$PROJECT_DIR$/Songs/dsa.mid" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Songs/wtf.mid" afterDir="false" />
-    </list>
-    <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="The user will not be able to delete a song unless he's the creator. NOT the author, but the creator. Plus in order to record a song, the user will have to login, not as a guest">
-      <change afterPath="$PROJECT_DIR$/Files/WebScrappingResults/bach-english-suite-1-bourree-1.mid" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Files/WebScrappingResults/bach-english-suite-1-bourree-2.mid" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Files/WebScrappingResults/bwv791.mid" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Files/WebScrappingResults/bwv792.mid" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Files/WebScrappingResults/bwv793.mid" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Files/WebScrappingResults/bwv794.mid" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Files/WebScrappingResults/bwv795.mid" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Files/WebScrappingResults/bwv796.mid" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Files/WebScrappingResults/bwv797.mid" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Files/WebScrappingResults/bwv798.mid" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Files/WebScrappingResults/bwv799.mid" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Files/WebScrappingResults/bwv800.mid" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Files/WebScrappingResults/bwv801.mid" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Files/WebScrappingResults/duetto.mid" afterDir="false" />
+    <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="This was both end features">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/BusinessFacade.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/BusinessFacade.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/BusinessFacadeImp.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/BusinessFacadeImp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/MidiHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/MidiHelper.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/PlaylistManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/PlaylistManager.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/SongManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/SongManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/Threads/WebScrapping$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/Threads/WebScrapping$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/Threads/WebScrapping.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/Threads/WebScrapping.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Persistence/SongDownloaderDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Persistence/SongDownloaderDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Persistence/WebScrapping/SongDownloader.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Persistence/WebScrapping/SongDownloader.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/PianoTilesUISelectorManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/PianoTilesUISelectorManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Persistence/PlaylistDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Persistence/PlaylistDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Persistence/SQL/Csv/PlaylistCsvDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Persistence/SQL/Csv/PlaylistCsvDAO.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/SpotiFrameManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/SpotiFrameManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Business/BusinessFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/BusinessFacade.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Business/BusinessFacadeImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/BusinessFacadeImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Files/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/Files/config.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Business/MidiHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/MidiHelper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Business/PlaylistManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/PlaylistManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Business/SongManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/SongManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Business/Threads/WebScrapping.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/Threads/WebScrapping.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Persistence/SongDownloaderDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Persistence/SongDownloaderDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Persistence/Files/SongToMidi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Persistence/Files/SongToMidi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Persistence/PlaylistDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Persistence/PlaylistDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Persistence/SQL/Csv/PlaylistCsvDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Persistence/SQL/Csv/PlaylistCsvDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Persistence/SQL/Csv/SongCsvDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Persistence/SQL/Csv/SongCsvDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Persistence/SongDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Persistence/SongDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Persistence/WebScrapping/SongDownloader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Persistence/WebScrapping/SongDownloader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presentation/Manager/FreePianoUIManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Manager/FreePianoUIManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presentation/Manager/PianoTilesUISelectorManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Manager/PianoTilesUISelectorManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presentation/Manager/ErrorsManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Manager/ErrorsManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Presentation/Manager/SpotiFrameManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Manager/SpotiFrameManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presentation/Ui_Views/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Ui_Views/MainFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presentation/Ui_Views/PianoFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Ui_Views/PianoFrame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -213,13 +187,7 @@
       <workItem from="1624462522521" duration="5885000" />
       <workItem from="1624960236189" duration="19024000" />
       <workItem from="1624983363044" duration="148000" />
-    </task>
-    <task id="LOCAL-00030" summary="commit to finish feature in order to help lora">
-      <created>1620161352607</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1620161352607</updated>
+      <workItem from="1625171756335" duration="2908000" />
     </task>
     <task id="LOCAL-00031" summary="commit to init repo">
       <created>1620203724632</created>
@@ -529,37 +497,25 @@
       <option name="project" value="LOCAL" />
       <updated>1625048329109</updated>
     </task>
-    <task id="LOCAL-00076" summary="Publish feature">
-      <created>1625133675987</created>
-    </task>
     <task id="LOCAL-00076" summary="Some changes done">
       <created>1625133411601</created>
       <option name="number" value="00076" />
       <option name="presentableId" value="LOCAL-00076" />
       <option name="project" value="LOCAL" />
-      <updated>1625133411601</updated>
       <updated>1625133675987</updated>
-    </task>
-    <task id="LOCAL-00077" summary="M'estic morint no vull fer mes comentaris">
-      <created>1625157479589</created>
     </task>
     <task id="LOCAL-00077" summary="Small analyze error checks">
       <created>1625149367408</created>
       <option name="number" value="00077" />
       <option name="presentableId" value="LOCAL-00077" />
       <option name="project" value="LOCAL" />
-      <updated>1625157479589</updated>
       <updated>1625149367408</updated>
-    </task>
-    <task id="LOCAL-00078" summary="Em vull morir de fer tants comentaris">
-      <created>1625160205543</created>
     </task>
     <task id="LOCAL-00078" summary="Small fixes done: musicplayer gets new song correctly,when deleting a song we also delete the .mid">
       <created>1625153952540</created>
       <option name="number" value="00078" />
       <option name="presentableId" value="LOCAL-00078" />
       <option name="project" value="LOCAL" />
-      <updated>1625153952540</updated>
       <updated>1625160205543</updated>
     </task>
     <task id="LOCAL-00079" summary="The user will not be able to delete a song unless he's the creator. NOT the author, but the creator. Plus in order to record a song, the user will have to login, not as a guest">
@@ -569,8 +525,14 @@
       <option name="project" value="LOCAL" />
       <updated>1625161100787</updated>
     </task>
-    <option name="localTasksCounter" value="79" />
-    <option name="localTasksCounter" value="80" />
+    <task id="LOCAL-00080" summary="This was both end features">
+      <created>1625169991547</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1625169991551</updated>
+    </task>
+    <option name="localTasksCounter" value="81" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -612,7 +574,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Comments for the FreePianoUI, PianoUI and SongToMidi" />
     <MESSAGE value="Small changes added" />
     <MESSAGE value="Commentaries for the PianoTilesUISelector and the PianoTilesUISelectorManager" />
     <MESSAGE value="resizing positions (this still needs some fixing in the x-axis)" />
@@ -686,28 +647,12 @@
     <MESSAGE value="Publish feature" />
     <MESSAGE value="Small analyze error checks" />
     <MESSAGE value="Small fixes done: musicplayer gets new song correctly,when deleting a song we also delete the .mid" />
-    <option name="LAST_COMMIT_MESSAGE" value="Small fixes done: musicplayer gets new song correctly,when deleting a song we also delete the .mid" />
     <MESSAGE value="Some changes done" />
     <MESSAGE value="M'estic morint no vull fer mes comentaris" />
     <MESSAGE value="Em vull morir de fer tants comentaris" />
     <MESSAGE value="The user will not be able to delete a song unless he's the creator. NOT the author, but the creator. Plus in order to record a song, the user will have to login, not as a guest" />
-    <option name="LAST_COMMIT_MESSAGE" value="The user will not be able to delete a song unless he's the creator. NOT the author, but the creator. Plus in order to record a song, the user will have to login, not as a guest" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Persistence/SQL/Csv/SongCsvDAO.java</url>
-          <line>147</line>
-          <option name="timeStamp" value="39" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Persistence/Files/SongToMidi.java</url>
-          <line>132</line>
-          <option name="timeStamp" value="59" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="This was both end features" />
+    <option name="LAST_COMMIT_MESSAGE" value="This was both end features" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/dpoo_2021_smartpiano_ice5$Main.ic" NAME="Main Coverage Results" MODIFIED="1625150211960" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

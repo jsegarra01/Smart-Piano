@@ -7,6 +7,7 @@ import Persistence.SQL.Csv.PlaylistCsvDAO;
 import Persistence.SQL.Csv.SongCsvDAO;
 import Persistence.SongDAO;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -47,7 +48,12 @@ public class PlaylistManager {
     public void eliminateSongFromPlaylist(String playlistName, String songName){
         boolean check = deleteFromPlaylist(playlistName, songName);
         if(check){
-            playlistCsvDAO.deleteSongFromPlaylist(playlistName, songName);
+            try {
+                playlistCsvDAO.deleteSongFromPlaylist(playlistName, songName);
+            }
+            catch (SQLException e) {
+                BusinessFacadeImp.getBusinessFacade().setError(23);
+            }
         }
     }
 

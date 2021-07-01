@@ -92,6 +92,7 @@ public interface SongDAO {
     /**
      * Method that deletes the file of a song
      * @param path Defines the path in which the file can be found
+     * @return True if the file is deleted, false if not
      */
-    void deleteSongFile(String path);
+    boolean deleteSongFile(String path);
 }

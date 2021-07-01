@@ -127,21 +127,14 @@ public class PlaylistCsvDAO implements PlaylistDAO {
      * Method that deletes a song from a playlist from the database
      * @param playlistName Defines the name of the playlist
      * @param songName Defines the name of the song to be deleted
-     * @return True if there has been no error, false if there has been
      */
     @Override
-    public boolean deleteSongFromPlaylist(String playlistName, String songName){
-        try {
-            if(ConnectSQL.getInstance()!=null){
-                PreparedStatement st = ConnectSQL.getInstance().prepareStatement("delete SongPlaylistsT from SongPlaylistsT inner join PlaylistT PT on SongPlaylistsT.playlistId = PT.playlistId inner join SongT ST on SongPlaylistsT.songId = ST.songId " +
-                        "where songName like '" + songName+"' and  PT.playlistName like '" + playlistName +"';");
-                st.execute();
-                return true;
-            }
-        } catch (SQLException throwables) {
-            return false;
+    public void deleteSongFromPlaylist(String playlistName, String songName) throws SQLException{
+        if(ConnectSQL.getInstance()!=null){
+            PreparedStatement st = ConnectSQL.getInstance().prepareStatement("delete SongPlaylistsT from SongPlaylistsT inner join PlaylistT PT on SongPlaylistsT.playlistId = PT.playlistId inner join SongT ST on SongPlaylistsT.songId = ST.songId " +
+                    "where songName like '" + songName+"' and  PT.playlistName like '" + playlistName +"';");
+            st.execute();
         }
-        return false;
     }
 
     /**

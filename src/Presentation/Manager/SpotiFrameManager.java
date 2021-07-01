@@ -42,7 +42,6 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
     Defines if there is a song being played
      */
     private boolean play = false;
-    private long startMin = 0;
     private boolean top5 = false;
 
     /*
@@ -75,7 +74,7 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
     /*
     Views that depend on this manager
     */
-    private SpotiFrame spotiFrame;
+    private final SpotiFrame spotiFrame;
 
     /**
      * Parametrized constructor
@@ -123,9 +122,6 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
                 break;
             case SHOW_TOP_SONGS:
                 top5 = true;
-                //BusinessFacadeImp.getBusinessFacade().updateSong(songPlay);
-                //BusinessFacadeImp.getBusinessFacade().setSongUser();
-                //updateTable();
                 spotiFrame.getSongsUI().initTable(BusinessFacadeImp.getBusinessFacade().getTopFive(), "topFive");
                 cc.show(spotiFrame.getSpotiPanel(), SONGS_UI);
                 break;
@@ -177,9 +173,6 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
                         finalMidiHelper.restartSong(songPlay.getSongFile());
                         finalMidiHelper.playSong(songPlay.getSongFile());
                     }
-                    /*BusinessFacadeImp.getBusinessFacade().updateSong(songPlay);
-                    BusinessFacadeImp.getBusinessFacade().setSongUser();
-                    SongsUI.initTable(BusinessFacadeImp.getBusinessFacade().getTopFive(), "topFive");*/
                     updateTable();
                     getStatisticsFrame().setNumSongs(getNumSongs());
                     getStatisticsFrame().setNumMin(getMinPlayed());
@@ -331,9 +324,6 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
             wherePlay = true;
             playMusic();
             spotiFrame.setSong(songPlay.getSongName(), songPlay.getAuthorName());
-            /*BusinessFacadeImp.getBusinessFacade().updateSong(songPlay);
-            BusinessFacadeImp.getBusinessFacade().setSongUser();
-            ArrayList<Song> topFive = BusinessFacadeImp.getBusinessFacade().getTopFive();*/
             updateTable();
         }else if(obj instanceof  JTable){
             table = (JTable) obj;
@@ -543,7 +533,7 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
     private void playMusic(){
         count_song = 1;
         spotiFrame.setPlayButton(pauseIcon);
-        startMin = System.currentTimeMillis();
+        long startMin = System.currentTimeMillis();
         finalMidiHelper.playSong(songPlay.getSongFile());
         play = true;
     }

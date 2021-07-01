@@ -8,6 +8,7 @@ import java.util.TimerTask;
 
 import static Presentation.DictionaryPiano.URLROUTE;
 
+@SuppressWarnings("InstantiationOfUtilityClass")
 public class WebScrapping {
 
     /*
@@ -30,7 +31,7 @@ public class WebScrapping {
                 }
             }
         };
-        timer.scheduleAtFixedRate(timerTask,50, 60000L * ReadJson.getConfigJson().getScrappingTime());
+        timer.scheduleAtFixedRate(timerTask, 50, 60000L * ReadJson.getConfigJson().getScrappingTime());
     }
 
     /**

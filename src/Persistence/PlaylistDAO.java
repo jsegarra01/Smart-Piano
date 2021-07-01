@@ -1,6 +1,8 @@
 package Persistence;
 
 import Business.Entities.Playlist;
+
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -38,9 +40,9 @@ public interface PlaylistDAO {
      * Method that deletes a song from a playlist from the database
      * @param playlistName Defines the name of the playlist
      * @param songName Defines the name of the song to be deleted
-     * @return True if there has been no error, false if there has been
+     * @throws SQLException Defines the exception thrown by the method
      */
-    boolean deleteSongFromPlaylist(String playlistName, String songName);
+    void deleteSongFromPlaylist(String playlistName, String songName) throws SQLException;
 
     /**
      * Method that adds a song into a playlist

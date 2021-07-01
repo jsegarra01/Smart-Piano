@@ -1,5 +1,6 @@
 package Persistence.SQL.Csv;
 
+import Business.BusinessFacadeImp;
 import Business.Entities.Song;
 import Business.Entities.Stadistics;
 //import Business.Entities.TopSongs;
@@ -322,7 +323,7 @@ public class SongCsvDAO implements SongDAO {
      * @param path Defines the path in which the file can be found
      */
     @Override
-    public void deleteSongFile(String path) {
-        new File(path).delete();
+    public boolean deleteSongFile(String path) {
+        return new File(path).delete();
     }
 }

@@ -125,15 +125,17 @@ public class SongDownloader implements SongDownloaderDAO {
      */
     @Override
     public void downloadAllSongsScrapping(String webpage) {
-        MidiHelper midiHelper = null;
+        MidiHelper midiHelper;
         try {
             midiHelper = new MidiHelper();
         } catch (MidiUnavailableException e) {
-            e.printStackTrace();
+            midiHelper = null;
         }
+
         boolean errorFound = false;
         String URL;
         int i = 0;
+
         while (i < 50) {
             if (i == 1) {
                 URL = URLROUTE;
@@ -160,9 +162,12 @@ public class SongDownloader implements SongDownloaderDAO {
                         if(author2.substring(0,3).contains("by ")){
                             author2 = author2.substring(3);
                         }
-                        if (!errorFound && !songCsv.saveSongWithDate(new Song(piece, author2, midiHelper.getDuration(filename)/1000000 , new SimpleDateFormat("yyyy/MM/dd").parse(recordingDate), true, filename, "qp6c43moyrgsej1hxvg3u98le", 0))) {
-                            BusinessFacadeImp.getBusinessFacade().setError(4);
-                            errorFound = true;
+                        if (!errorFound) {
+                            assert midiHelper != null;
+                            if (!songCsv.saveSongWithDate(new Song(piece, author2, midiHelper.getDuration(filename)/1000000 , new SimpleDateFormat("yyyy/MM/dd").parse(recordingDate), true, filename, "qp6c43moyrgsej1hxvg3u98le", 0))) {
+                                BusinessFacadeImp.getBusinessFacade().setError(4);
+                                errorFound = true;
+                            }
                         }
                     }
                 }

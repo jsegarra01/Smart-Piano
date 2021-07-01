@@ -21,7 +21,7 @@ import static Persistence.Files.SongToMidi.writeMidi;
 public class SongManager {
     private final SongDAO songManager;
     private ArrayList<Song> songs;
-    private ArrayList<String> songNames;
+    private final ArrayList<String> songNames;
 
     public SongManager(){
         songManager = new SongCsvDAO();
@@ -176,8 +176,10 @@ public class SongManager {
      * @return True if deleted, false if not
      */
     public boolean deleteSong(Song song){
-        songManager.deleteSongFile(song.getSongFile());
-        return songManager.deleteSong(song);
+        if (songManager.deleteSongFile(song.getSongFile())) {
+            return songManager.deleteSong(song);
+        }
+        return false;
     }
 
     /**
@@ -193,6 +195,8 @@ public class SongManager {
      * @param i Defines the position of the song to be deleted
      */
     public void deleteSongFile(int i){
-        songManager.deleteSongFile(songs.get(i).getSongFile());
+        if (!songManager.deleteSongFile(songs.get(i).getSongFile())) {
+            BusinessFacadeImp.getBusinessFacade().setError(3);
+        }
     }
 }

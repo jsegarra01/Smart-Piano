@@ -3,13 +3,8 @@ package Persistence.Files;
 //Imports needed from the Gson, files and midis
 import Business.BusinessFacadeImp;
 import Business.Entities.RecordingNotes;
-import Business.Entities.SongRecorded;
 import Business.Translator;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.io.*;
 import java.util.*;
 import javax.sound.midi.*;
