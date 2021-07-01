@@ -19,9 +19,15 @@ public class MidiHelper {
     private final Instrument[] instruments;
     private int whatInstrumentIsPlayed;
     private static Sequencer sequencer;
-
-    private static String fileSong = "";
-    private static Sequence sequencePlay;
+    static{
+    try {
+        sequencer = MidiSystem.getSequencer();
+    } catch (MidiUnavailableException e) {
+        BusinessFacadeImp.getBusinessFacade().setError(3);
+    }
+    }
+    private String fileSong = "";
+    private Sequence sequencePlay;
 
     /**
      * Constructor of the MidiHelper class
@@ -32,11 +38,6 @@ public class MidiHelper {
         synth.open();
         midiChannels = synth.getChannels();
         instruments = synth.getDefaultSoundbank().getInstruments();
-        try {
-            sequencer = MidiSystem.getSequencer();
-        } catch (MidiUnavailableException e) {
-            BusinessFacadeImp.getBusinessFacade().setError(3);
-        }
         sequencer.open();
     }
 
@@ -50,11 +51,7 @@ public class MidiHelper {
         synth.open();
         midiChannels = synth.getChannels();
         instruments = synth.getDefaultSoundbank().getInstruments();
-        try {
-            sequencer = MidiSystem.getSequencer();
-        } catch (MidiUnavailableException e) {
-            BusinessFacadeImp.getBusinessFacade().setError(3);
-        }
+
         sequencer.addMetaEventListener(listener);
         sequencer.open();
     }

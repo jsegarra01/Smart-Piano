@@ -19,7 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="Em vull morir de fer tants comentaris">
+    <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="The user will not be able to delete a song unless he's the creator. NOT the author, but the creator. Plus in order to record a song, the user will have to login, not as a guest">
       <change afterPath="$PROJECT_DIR$/Files/WebScrappingResults/bach-english-suite-1-bourree-1.mid" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Files/WebScrappingResults/bach-english-suite-1-bourree-2.mid" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Files/WebScrappingResults/bwv791.mid" afterDir="false" />
@@ -36,23 +36,7 @@
       <change afterPath="$PROJECT_DIR$/Files/WebScrappingResults/duetto.mid" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Files/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/Files/config.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Songs/hola hola.mid" beforeDir="false" afterPath="$PROJECT_DIR$/Songs/hola hola.mid" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/BusinessFacade.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/BusinessFacade.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/BusinessFacadeImp.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/BusinessFacadeImp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/ErrorsManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/ErrorsManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/FreePianoUIManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/FreePianoUIManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/PianoFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/PianoFrame.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/PianoTilesUISelector.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/PianoTilesUISelector.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/PreMenuUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/PreMenuUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/ProfileUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/ProfileUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/SignUpUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/SignUpUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/SongsUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/SongsUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/SpotiFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Ui_Views/SpotiFrame.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Business/BusinessFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/BusinessFacade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Business/BusinessFacadeImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/BusinessFacadeImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presentation/Manager/ErrorsManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Manager/ErrorsManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presentation/Manager/FreePianoUIManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Manager/FreePianoUIManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presentation/Manager/SpotiFrameManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentation/Manager/SpotiFrameManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Business/MidiHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/MidiHelper.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -215,13 +199,6 @@
       <workItem from="1624462522521" duration="5885000" />
       <workItem from="1624960236189" duration="19024000" />
       <workItem from="1624983363044" duration="148000" />
-    </task>
-    <task id="LOCAL-00029" summary="some corrections have been made with sizes and optimization.">
-      <created>1620157965594</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1620157965594</updated>
     </task>
     <task id="LOCAL-00030" summary="commit to finish feature in order to help lora">
       <created>1620161352607</created>
@@ -559,7 +536,14 @@
       <option name="project" value="LOCAL" />
       <updated>1625160205543</updated>
     </task>
-    <option name="localTasksCounter" value="79" />
+    <task id="LOCAL-00079" summary="The user will not be able to delete a song unless he's the creator. NOT the author, but the creator. Plus in order to record a song, the user will have to login, not as a guest">
+      <created>1625161100787</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1625161100787</updated>
+    </task>
+    <option name="localTasksCounter" value="80" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -601,7 +585,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Comments for the FreePianoUI, PianoUI and SongToMidi" />
     <MESSAGE value="Small changes added" />
     <MESSAGE value="Commentaries for the PianoTilesUISelector and the PianoTilesUISelectorManager" />
     <MESSAGE value="resizing positions (this still needs some fixing in the x-axis)" />
@@ -675,7 +658,8 @@
     <MESSAGE value="Some changes done" />
     <MESSAGE value="M'estic morint no vull fer mes comentaris" />
     <MESSAGE value="Em vull morir de fer tants comentaris" />
-    <option name="LAST_COMMIT_MESSAGE" value="Em vull morir de fer tants comentaris" />
+    <MESSAGE value="The user will not be able to delete a song unless he's the creator. NOT the author, but the creator. Plus in order to record a song, the user will have to login, not as a guest" />
+    <option name="LAST_COMMIT_MESSAGE" value="The user will not be able to delete a song unless he's the creator. NOT the author, but the creator. Plus in order to record a song, the user will have to login, not as a guest" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/dpoo_2021_smartpiano_ice5$Main.ic" NAME="Main Coverage Results" MODIFIED="1625150211960" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
