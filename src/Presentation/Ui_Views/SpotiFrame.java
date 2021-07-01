@@ -82,19 +82,14 @@ public class SpotiFrame extends JPanel {
         spotiPanel.add(songsUI, SONGS_UI);
         add(spotiPanel, BorderLayout.CENTER);
 
-        //left buttons
-        //JPanel leftList = new JPanel();
         leftList.setLayout(new BoxLayout(leftList, BoxLayout.Y_AXIS));
 
-        //leftList.add(Box.createRigidArea(new Dimension(210, 50)));
 
 
         songNameInputText.setAlignmentX(0.5f);
         songNameInputText.setPreferredSize(new Dimension(200,30));
         songNameInputText.setMaximumSize(songNameInputText.getPreferredSize());
-        //songNameInputText.setMinimumSize(new Dimension(70, 30));
         songNameInputText.setBackground(Color.WHITE);
-//This two guys should be inside their own damn JPanel with BorderLayout.WEST/CENTER, not going to bother for now, functionality comes first!
         searchButton.setIcon(new ImageIcon("Files/drawable/searchIcon.png"));
         searchButton.setIcon(resizeIcon((ImageIcon) searchButton.getIcon(), Math.round(searchButton.getIcon().getIconWidth()),
                 Math.round(searchButton.getIcon().getIconHeight())));
@@ -105,7 +100,6 @@ public class SpotiFrame extends JPanel {
         showStadistics.setActionCommand(CREATE_STADISTICS);
         topSongs.setActionCommand(SHOW_TOP_SONGS);
         songsList.setActionCommand(SHOW_ALL_SONGS);
-        //auxTimer.setActionCommand(TIME_GRAPH);
 
 
         playlistLabel.setBorder(new EmptyBorder(0,20,0,0));
@@ -116,7 +110,6 @@ public class SpotiFrame extends JPanel {
         createPlaylist.setActionCommand(CREATE_PLAYLIST);
         JSeparator separator = new JSeparator();
 
-        //JScrollPane scroll = new JScrollPane();
         leftList.add(Box.createRigidArea(new Dimension(210, 10)));
         leftList.setPreferredSize(new Dimension(210, 200));
         leftList.setMaximumSize(getPreferredSize());
@@ -169,7 +162,6 @@ public class SpotiFrame extends JPanel {
         JPanel musicPlayer = new JPanel(new GridBagLayout());
         JPanel lowPanel = new JPanel(new BorderLayout());
 
-        //lowPanel.setPreferredSize(new Dimension(10,90));
         songPanel.setBackground(Color.getHSBColor(10,0,0.3f));
         songPanel.setPreferredSize(new Dimension(200,10));
         songPanel.setMaximumSize(songPanel.getPreferredSize());
@@ -303,37 +295,74 @@ public class SpotiFrame extends JPanel {
         return button;
     }
 
+    /**
+     * Method that sets the song that passed in the parameter in the corresponding labels
+     * @param song Defines the name of the song to be put in the label
+     * @param author Defines the name of the author to be put in the label
+     */
     public void setSong(String song, String author){
         songLabel.setText(song);
         authorLabel.setText(author);
     }
 
+    /**
+     * Method that gets the panel
+     * @return JPanel that stores the panel in which the music player will appear
+     */
     public JPanel getSpotiPanel () {
         return spotiPanel;
     }
 
+    /**
+     * Method that gets the ui of the songs
+     * @return SongsUI that stores the table in which all the songs are shown
+     */
     public SongsUI getSongsUI(){
         return songsUI;
     }
 
+    /**
+     * Method that gets the ui of the different playlists
+     * @return PlaylistUI that stores the list of songs in that playlist
+     */
     public PlaylistUI getPlaylistUI(){
         return playlistUI;
     }
 
+    /**
+     * Method that gets the ui of the statistics
+     * @return StatisticsUI that store the different graphs to be shown
+     */
     public StatisticsUI getStatisticsUI(){
         return statisticsUI;
     }
 
+    /**
+     * Method that sets the icon of the shuffle button
+     * @param icon Defines the image icon to be set
+     */
     public void setShuffleButtonIcon (ImageIcon icon) {
         shuffleButton.setIcon(icon);
     }
 
+    /**
+     * Method that sets the icon of the play button
+     * @param icon Defines the image icon to be set
+     */
     public void setPlayButton (ImageIcon icon) {
         playButton.setIcon(icon);
     }
 
+    /**
+     * Method that sets the icon of the loop button
+     * @param icon Defines the image icon to be set
+     */
     public void setLoopButton(ImageIcon icon) { loopButton.setIcon(icon); }
 
+    /**
+     * Method that gets the controller of the music player
+     * @return SpotiFrameManager that controls the music player
+     */
     public SpotiFrameManager spotiFrameManager() { return spotiFrameManager; }
 
     public void setMainCard(String name) {pianoFrame.setMainCard(name);}

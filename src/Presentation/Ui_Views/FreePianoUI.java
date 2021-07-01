@@ -74,8 +74,6 @@ public class FreePianoUI extends Piano {
 
         menu.add(Box.createRigidArea(new Dimension(50,10)));
 
-        setUpSoundType();
-
         getProfilePiano().setBackground(Color.black);
         getProfilePiano().setIcon(new ImageIcon("Files/drawable/profile-picture.png"));
         getProfilePiano().setIcon(resizeIcon((ImageIcon) getProfilePiano().getIcon(), (int) Math.round(getProfilePiano().getIcon().getIconWidth()*0.15), (int) Math.round(getProfilePiano().getIcon().getIconHeight()*0.15)));

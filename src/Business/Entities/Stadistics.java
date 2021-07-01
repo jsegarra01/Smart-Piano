@@ -19,12 +19,12 @@ public class Stadistics {
     /*
     Defines the number of songs played in that hour
      */
-    private float numPlayed;
+    private final float numPlayed;
 
     /*
     Defines the minutes played in that hour
      */
-    private float minPlayed;
+    private final float minPlayed;
 
     /**
      * Constructor of the class stadistics
@@ -48,35 +48,19 @@ public class Stadistics {
 
 
     /**
-     * Gets the number of times a song has been played
-     * @return The number of times a song has been played
+     * Method that gets the number of times a song has been played
+     * @return Float that stores the number of times a song has been played
      */
     public float getNumPlayed() {
         return numPlayed;
     }
 
     /**
-     * Sets the number of times a song has been played
-     * @param numPlayed The number of times a song has been played
-     */
-    public void setNumPlayed(float numPlayed) {
-        this.numPlayed = numPlayed;
-    }
-
-    /**
-     * Gets the minutes a song has been played
-     * @return The minutes a song has been played
+     * Method that gets the minutes a song has been played
+     * @return Float that stores the minutes a song has been played
      */
     public float getMinPlayed() {
         return minPlayed;
-    }
-
-    /**
-     * Sets the minutes a song has been played
-     * @param minPlayed The minutes a song has been played
-     */
-    public void setMinPlayed(float minPlayed) {
-        this.minPlayed = minPlayed;
     }
 
 }

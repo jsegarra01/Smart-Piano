@@ -29,14 +29,14 @@ import static Presentation.Dictionary_login.PROFILE_UI;
  * The "SpotiFrameManager" class will contain the different methods that are needed to control the view class "SpotiUI"
  *
  * @author OOPD 20-21 ICE5
- * @version 1.0 23 May 2021
+ * @version 2.0 28 June 2021
  *
  */
 public class SpotiFrameManager extends AbstractAction implements ActionListener, MouseListener {
     private final ImageIcon playIcon; //Icon played
     private final ImageIcon pauseIcon; //Icon pause
-    private Playlist playlist;
-    private Song songPlay;
+    private static Playlist playlist;
+    private static Song songPlay;
 
     /*
     Defines if there is a song being played
@@ -70,15 +70,20 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
     /*
     MidiHelper which will control the music playing in the music player
      */
-    private final MidiHelper finalMidiHelper;
+    private static MidiHelper finalMidiHelper;
 
     /*
     Views that depend on this manager
     */
     private SpotiFrame spotiFrame;
 
-    public SpotiFrameManager() {
-        MidiHelper finalMidiHelper1;
+    /**
+     * Parametrized constructor
+     * @param spotiFrame1 View of the SpotiUI
+     */
+    public SpotiFrameManager(SpotiFrame spotiFrame1) {
+        spotiFrame = spotiFrame1;
+
         try {
             /*
     Event that will control if the end of the track has been reached
@@ -88,30 +93,10 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
                     playSongTime();
                 }
             };
-            finalMidiHelper1 = new MidiHelper(listener);
+            finalMidiHelper = new MidiHelper(listener);
         } catch (MidiUnavailableException e) {
-            finalMidiHelper1 = null;
+            finalMidiHelper = null;
         }
-        finalMidiHelper = finalMidiHelper1;
-
-        playIcon = new ImageIcon(PLAYICON);
-        pauseIcon = new ImageIcon(PAUSEICON);
-    }
-    /**
-     * Parametrized constructor
-     * @param spotiFrame1 View of the SpotiUI
-     */
-    public SpotiFrameManager(SpotiFrame spotiFrame1) {
-        spotiFrame = spotiFrame1;
-
-        MidiHelper finalMidiHelper1;
-        try {
-            finalMidiHelper1 = new MidiHelper();
-        } catch (MidiUnavailableException e) {
-            finalMidiHelper1 = null;
-        }
-        finalMidiHelper = finalMidiHelper1;
-
         playIcon = new ImageIcon(PLAYICON);
         pauseIcon = new ImageIcon(PAUSEICON);
     }
@@ -188,6 +173,7 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
                             }
                         }
                     }else{
+                        spotiFrame.setPlayButton(pauseIcon);
                         finalMidiHelper.restartSong(songPlay.getSongFile());
                         finalMidiHelper.playSong(songPlay.getSongFile());
                     }
@@ -262,15 +248,17 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
                                 addSong = false;
                             }
                         }else{
-                            int input = JOptionPane.showConfirmDialog(null,
-                                    "Are you sure you want to delete " +
-                                            BusinessFacadeImp.getBusinessFacade().getSong(modelRow).getSongName() +"?",
-                                    "Select an option", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
-                            if(input == JOptionPane.YES_OPTION){
-                                ((DefaultTableModel)table.getModel()).removeRow(modelRow);
-                                BusinessFacadeImp.getBusinessFacade().deleteSong(modelRow);
-                                BusinessFacadeImp.getBusinessFacade().setSongUser();
-                                BusinessFacadeImp.getBusinessFacade().setPlaylists();
+                            if(BusinessFacadeImp.getBusinessFacade().checkCanDelete(modelRow)){
+                                int input = JOptionPane.showConfirmDialog(null,
+                                        "Are you sure you want to delete " +
+                                                BusinessFacadeImp.getBusinessFacade().getSong(modelRow).getSongName() +"?",
+                                        "Select an option", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+                                if(input == JOptionPane.YES_OPTION){
+                                    ((DefaultTableModel)table.getModel()).removeRow(modelRow);
+                                    BusinessFacadeImp.getBusinessFacade().deleteSong(modelRow);
+                                    BusinessFacadeImp.getBusinessFacade().setSongUser();
+                                    BusinessFacadeImp.getBusinessFacade().setPlaylists();
+                                }
                             }
                         }
                     }
@@ -319,7 +307,10 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
         return numMin;
     }
 
-
+    /**
+     * Method invoked when the mouse button has been clicked (pressed and released) on a component.
+     * @param e the event to be processed
+     */
     @Override
     public void mouseClicked(MouseEvent e) {
 
@@ -494,16 +485,28 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
         return null;
     }
 
+    /**
+     * Method invoked when a mouse button has been released on a component.
+     * @param e the event to be processed
+     */
     @Override
     public void mouseReleased(MouseEvent e) {
 
     }
 
+    /**
+     * Method invoked when a mouse enters a component.
+     * @param e the event to be processed
+     */
     @Override
     public void mouseEntered(MouseEvent e) {
 
     }
 
+    /**
+     * Method invoked when a mouse exits a component.
+     * @param e the event to be processed
+     */
     @Override
     public void mouseExited(MouseEvent e) {
 
@@ -662,20 +665,12 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
                 }
             }
         }else{
+            spotiFrame.setPlayButton(pauseIcon);
             finalMidiHelper.restartSong(songPlay.getSongFile());
             finalMidiHelper.playSong(songPlay.getSongFile());
         }
 
         updateTable();
-        /*BusinessFacadeImp.getBusinessFacade().updateSong(songPlay);
-        BusinessFacadeImp.getBusinessFacade().setSongUser();*/
-        /*
-        setNumSongs(getNumSongs());
-        setNumMin(getMinPlayed());
-        initialize();
-        new BusinessFacadeImp().updateSong(songPlay);
-        new BusinessFacadeImp().setSongUser();
-        SongsUI.initTable(new BusinessFacadeImp().getTopFive(), "topFive");*/
     }
 
     /**
@@ -702,6 +697,11 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
         }
 
     }
+
+    /**
+     * Method that updates the different songs, regarding their time played and its position and shows the table in case
+     * it has to be shown
+     */
     private void updateTable(){
         BusinessFacadeImp.getBusinessFacade().updateSong(songPlay);
         BusinessFacadeImp.getBusinessFacade().setSongUser();
@@ -710,18 +710,38 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
         }
     }
 
+    /**
+     * Method that gets the attribute play
+     * @return boolean that stores a true if a song is being played, a false if not
+     */
     public boolean getPlay() {
         return play;
     }
 
+    /**
+     * Method that gets the statistics frame
+     * @return Statistics that are being shown
+     */
     public StatisticsUI getStatisticsFrame() {
         return spotiFrame.getStatisticsUI();
     }
 
+    /**
+     * Method that gets the attribute count_song
+     * @return int storing count_song
+     */
     public int getCount_song() { return count_song;}
 
+    /**
+     * Methid that sets the attribute count_song
+     * @param i Defines the value that count_song will have
+     */
     public void setCount_song(int i) { count_song = i;}
 
+    /**
+     * Method that resets the attributes addSong and top5. Used in order to show the proper tables when
+     * exiting the program and entering again
+     */
     public void reset(){
         addSong = false;
         top5 = false;

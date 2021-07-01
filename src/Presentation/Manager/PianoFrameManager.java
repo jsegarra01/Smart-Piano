@@ -15,12 +15,12 @@ import static Presentation.Dictionary_login.*;
 
 
 /**
- * FreePianoUIManager
+ * PianoFrameManager
  *
- * The "FreePianoUIManager" class will contain the different methods that are needed to control the view class "FreePianoUI"
+ * The "PianoFrameManager" class will control what will be seen in the mainFrame
  *
  * @author OOPD 20-21 ICE5
- * @version 1.0 23 May 2021
+ * @version 1.0 28 June 2021
  *
  */
 public class PianoFrameManager implements ActionListener {
@@ -52,7 +52,6 @@ public class PianoFrameManager implements ActionListener {
         pianoFrame.setBackgroundMusicPlayer(Color.GRAY);
 
         new ChangeTime(0);
-        //midiHelper.stopSong();
 
         switch (e.getActionCommand()) {
             case Dictionary_login.PROFILE_BUTTON:       //In the case that the Profile button is pressed

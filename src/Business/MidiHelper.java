@@ -9,7 +9,7 @@ import java.io.IOException;
  * The "MidiHelper" class will contain the different methods needed to set, access and manage the midi files
  *
  * @author OOPD 20-21 ICE5
- * @version 1.0 21 Apr 2021
+ * @version 2.0 28 June 2021
  *
  */
 public class MidiHelper {
@@ -17,7 +17,13 @@ public class MidiHelper {
     private final Instrument[] instruments;
     private int whatInstrumentIsPlayed;
     private static Sequencer sequencer;
-
+    static{
+    try {
+        sequencer = MidiSystem.getSequencer();
+    } catch (MidiUnavailableException e) {
+        BusinessFacadeImp.getBusinessFacade().setError(3);
+    }
+    }
     private String fileSong = "";
     private Sequence sequencePlay;
 
@@ -26,11 +32,6 @@ public class MidiHelper {
      * @throws MidiUnavailableException exception that will be thrown in case there has been an exception in the midi
      */
     public MidiHelper() throws MidiUnavailableException {
-        try {
-            sequencer = MidiSystem.getSequencer();
-        } catch (MidiUnavailableException e) {
-            BusinessFacadeImp.getBusinessFacade().setError(3);
-        }
         Synthesizer synth = MidiSystem.getSynthesizer();
         synth.open();
         midiChannels = synth.getChannels();
@@ -48,6 +49,7 @@ public class MidiHelper {
         synth.open();
         midiChannels = synth.getChannels();
         instruments = synth.getDefaultSoundbank().getInstruments();
+
         sequencer.addMetaEventListener(listener);
         sequencer.open();
     }
@@ -134,6 +136,11 @@ public class MidiHelper {
         sequencer.stop();
     }
 
+    /**
+     * Method that gets the duration of the song
+     * @param filename Defines the name of the file that the song is stored in
+     * @return Float that stores the duration of the song
+     */
     public float getDuration(String filename){
         try {
             sequencer.setSequence(MidiSystem.getSequence(new File(filename)));

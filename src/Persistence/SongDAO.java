@@ -89,5 +89,9 @@ public interface SongDAO {
      */
     Song getSongByName(String name);
 
+    /**
+     * Method that deletes the file of a song
+     * @param path Defines the path in which the file can be found
+     */
     void deleteSongFile(String path);
 }

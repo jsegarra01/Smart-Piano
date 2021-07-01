@@ -26,31 +26,6 @@ import javax.sound.midi.*;
 
 public class SongToMidi {
 
-    /**
-     * Static method in order to be able to write in a song from the information stored in SongRecorded in a JSON format
-     * @param songRecorded SongRecorded. Information recorded from the song we want to transform into JSON
-     * @param songName String. Name of the song
-     */
-    public static void writeJSONsong (SongRecorded songRecorded, String songName) {
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        Writer writer = null;
-
-        try {
-            writer = Files.newBufferedWriter(Paths.get("song/" + songName + ".json"));
-            //Defining to which file we will write.
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        gson.toJson(songRecorded, writer); //Writing the content of readCompetition in the file.
-
-        try {
-            assert writer != null;
-            writer.close(); //Closing the writer.
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
     /**
      * Static method in order to be able to write in a song from the information stored in recordingNotes in a MIDI format

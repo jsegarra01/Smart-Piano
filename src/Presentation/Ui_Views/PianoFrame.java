@@ -114,28 +114,56 @@ public class PianoFrame extends JPanel {
         musicPlayer.addActionListener(listener);
     }
 
+    /**
+     * Method that sets the color of the background of the free piano
+     * @param color Defines the color to be set
+     */
     public void setBackgroundFreePiano(Color color){
         freePiano.setBackground(color);
     }
 
+    /**
+     * Method that sets the color of the background of the play a song
+     * @param color Defines the color to be set
+     */
     public void setBackgroundPlaySong(Color color){
         playSong.setBackground(color);
     }
 
+    /**
+     * Method that sets the color of the background of the music player
+     * @param color Defines the color to be set
+     */
     public void setBackgroundMusicPlayer(Color color){
         musicPlayer.setBackground(color);
     }
 
+    /**
+     * Method that gets the controller of the piano tiles (play a song)
+     * @return PianoTilesUISelectorManager that stores the controller of the play a song
+     */
     public PianoTilesUISelectorManager getPianoTilesUIManager () { return pianoTilesUISelector.getPianoTilesUISelectorManager(); }
 
+    /**
+     * Method that gets the central panel of the main frame
+     * @return JPanel storing the central panel
+     */
     public JPanel getCentralPanel() {
         return mainFrame.getCentralPanel();
     }
 
+    /**
+     * Method that gets the panel from the music player
+     * @return JPanel that stores the view of the music player
+     */
     public JPanel getSpotiPanel() {
         return spotiPanel;
     }
 
+    /**
+     * Method that gets the controller of the music player
+     * @return SpotiFrameManager class that stores the controller of the music player
+     */
     public SpotiFrameManager getSpotiFrameManager() {
         return spotiFrame.spotiFrameManager();
     }

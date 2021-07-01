@@ -152,29 +152,45 @@ public abstract class Piano extends JPanel {
         return keyBoard;
     }
 
+    /**
+     * Method that gets the icon of recording
+     * @return Image icon storing the icon of the recording
+     */
     public ImageIcon getIconRec() {
         return iconRec;
     }
 
+    /**
+     * Method that gets the button to record a song
+     * @return JButton corresponding to the recording
+     */
     public JButton getRecordB() {
         return recordB;
     }
 
+    /**
+     * Method that gets the button of the profile
+     * @return JButton corresponding to the profile
+     */
     public JButton getProfilePiano() {
         return profile;
     }
 
+    /**
+     * Method that gets the toggle button of the modify keys
+     * @return JToggleButton corresponding to the modify keys
+     */
     public JToggleButton getModifyKeys(){
         return modifyKeys;
     }
 
+    /**
+     * Method that sets the keyboard from the piano
+     * @param newKeyboard Defines the keyboard to be set
+     */
     public void setKeyboardPiano(ArrayList<Tile> newKeyboard) {
         keyboard = newKeyboard;
     }
 
-    public void setUpSoundType() {
-        Label soundType = new Label(JLAB_SYNTH_TYPE);
-        soundType.setBackground(Color.WHITE);
-    }
 }
 

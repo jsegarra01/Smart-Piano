@@ -1,6 +1,6 @@
 package Presentation.Ui_Views;
 
-//Imports all necesssary libraries
+//Imports all necessary libraries
 import Presentation.Manager.ProfileUIManager;
 
 import javax.swing.*;

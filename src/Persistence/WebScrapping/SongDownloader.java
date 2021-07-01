@@ -14,8 +14,8 @@ import java.net.URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
-import static Business.Entities.WebHandler.*;
-import static Business.Threads.WebScrapping.*;
+import static Business.Threads.WebScrapping.getSongDownloader;
+import static Persistence.WebHandler.getHtmlDocument;
 import static Presentation.DictionaryPiano.URLROUTE;
 
 
@@ -37,6 +37,10 @@ import static Presentation.DictionaryPiano.URLROUTE;
  * 5) Read the input stream and copy its bytes to the output stream until it is empty
  * 6) Close the input stream, the output stream and the connection.
  * For the purpose of specificity and reusability, we will create a general class:
+ *
+ * @author OOPD 20-21 ICE5
+ * @version 1.0 28 June 2021
+ *
  */
 public class SongDownloader implements SongDownloaderDAO {
 
@@ -44,6 +48,7 @@ public class SongDownloader implements SongDownloaderDAO {
      * Downloads a file from a specified URL ONLY FOR HTTP servers.
      * @param fileURL HTTP URL of the file to be downloaded
      * @param saveDir path of the directory to save the file
+     * @return String that stores the path of the file
      * @throws IOException IO Exception has happened
      */
     @Override
@@ -90,6 +95,10 @@ public class SongDownloader implements SongDownloaderDAO {
             return saveFilePath;
         }
 
+    /**
+     * Method that downloads the webpage set in the parameter
+     * @param webpage Defines the url of the webpage to download the songs
+     */
     @Override
     public boolean downloadWebPage(String webpage) {
         try {
@@ -110,6 +119,10 @@ public class SongDownloader implements SongDownloaderDAO {
         }
     }
 
+    /**
+     * Method that downloads all the songs from the determined webpage set in the parameter
+     * @param webpage Defines the url of the webpage to download the songs
+     */
     @Override
     public void downloadAllSongsScrapping(String webpage) {
         MidiHelper midiHelper = null;

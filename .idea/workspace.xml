@@ -22,6 +22,21 @@
     <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="Small fixes done: musicplayer gets new song correctly,when deleting a song we also delete the .mid">
       <change afterPath="$PROJECT_DIR$/Songs/dsa.mid" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Songs/wtf.mid" afterDir="false" />
+    <list default="true" id="d96c5acb-f5f1-492a-a507-647ecdf26eef" name="Default Changelist" comment="The user will not be able to delete a song unless he's the creator. NOT the author, but the creator. Plus in order to record a song, the user will have to login, not as a guest">
+      <change afterPath="$PROJECT_DIR$/Files/WebScrappingResults/bach-english-suite-1-bourree-1.mid" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Files/WebScrappingResults/bach-english-suite-1-bourree-2.mid" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Files/WebScrappingResults/bwv791.mid" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Files/WebScrappingResults/bwv792.mid" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Files/WebScrappingResults/bwv793.mid" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Files/WebScrappingResults/bwv794.mid" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Files/WebScrappingResults/bwv795.mid" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Files/WebScrappingResults/bwv796.mid" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Files/WebScrappingResults/bwv797.mid" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Files/WebScrappingResults/bwv798.mid" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Files/WebScrappingResults/bwv799.mid" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Files/WebScrappingResults/bwv800.mid" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Files/WebScrappingResults/bwv801.mid" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Files/WebScrappingResults/duetto.mid" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/BusinessFacade.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/BusinessFacade.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/BusinessFacadeImp.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Business/BusinessFacadeImp.class" afterDir="false" />
@@ -36,6 +51,7 @@
       <change beforePath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/SpotiFrameManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dpoo-2021-smartpiano-ice5/Presentation/Manager/SpotiFrameManager.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Business/BusinessFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/BusinessFacade.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Business/BusinessFacadeImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/BusinessFacadeImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Files/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/Files/config.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Business/MidiHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/MidiHelper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Business/PlaylistManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/PlaylistManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Business/SongManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/SongManager.java" afterDir="false" />
@@ -207,13 +223,6 @@
       <workItem from="1624462522521" duration="5885000" />
       <workItem from="1624960236189" duration="19024000" />
       <workItem from="1624983363044" duration="148000" />
-    </task>
-    <task id="LOCAL-00029" summary="some corrections have been made with sizes and optimization.">
-      <created>1620157965594</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1620157965594</updated>
     </task>
     <task id="LOCAL-00030" summary="commit to finish feature in order to help lora">
       <created>1620161352607</created>
@@ -532,26 +541,43 @@
     </task>
     <task id="LOCAL-00076" summary="Publish feature">
       <created>1625133675987</created>
+    <task id="LOCAL-00076" summary="Some changes done">
+      <created>1625133411601</created>
       <option name="number" value="00076" />
       <option name="presentableId" value="LOCAL-00076" />
       <option name="project" value="LOCAL" />
+      <updated>1625133411601</updated>
       <updated>1625133675987</updated>
     </task>
+    <task id="LOCAL-00077" summary="M'estic morint no vull fer mes comentaris">
+      <created>1625157479589</created>
     <task id="LOCAL-00077" summary="Small analyze error checks">
       <created>1625149367408</created>
       <option name="number" value="00077" />
       <option name="presentableId" value="LOCAL-00077" />
       <option name="project" value="LOCAL" />
+      <updated>1625157479589</updated>
       <updated>1625149367408</updated>
     </task>
+    <task id="LOCAL-00078" summary="Em vull morir de fer tants comentaris">
+      <created>1625160205543</created>
     <task id="LOCAL-00078" summary="Small fixes done: musicplayer gets new song correctly,when deleting a song we also delete the .mid">
       <created>1625153952540</created>
       <option name="number" value="00078" />
       <option name="presentableId" value="LOCAL-00078" />
       <option name="project" value="LOCAL" />
       <updated>1625153952540</updated>
+      <updated>1625160205543</updated>
+    </task>
+    <task id="LOCAL-00079" summary="The user will not be able to delete a song unless he's the creator. NOT the author, but the creator. Plus in order to record a song, the user will have to login, not as a guest">
+      <created>1625161100787</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1625161100787</updated>
     </task>
     <option name="localTasksCounter" value="79" />
+    <option name="localTasksCounter" value="80" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -668,6 +694,11 @@
     <MESSAGE value="Small analyze error checks" />
     <MESSAGE value="Small fixes done: musicplayer gets new song correctly,when deleting a song we also delete the .mid" />
     <option name="LAST_COMMIT_MESSAGE" value="Small fixes done: musicplayer gets new song correctly,when deleting a song we also delete the .mid" />
+    <MESSAGE value="Some changes done" />
+    <MESSAGE value="M'estic morint no vull fer mes comentaris" />
+    <MESSAGE value="Em vull morir de fer tants comentaris" />
+    <MESSAGE value="The user will not be able to delete a song unless he's the creator. NOT the author, but the creator. Plus in order to record a song, the user will have to login, not as a guest" />
+    <option name="LAST_COMMIT_MESSAGE" value="The user will not be able to delete a song unless he's the creator. NOT the author, but the creator. Plus in order to record a song, the user will have to login, not as a guest" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -684,5 +715,7 @@
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/dpoo_2021_smartpiano_ice5$Main.ic" NAME="Main Coverage Results" MODIFIED="1625150211960" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

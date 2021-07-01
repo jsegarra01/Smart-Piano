@@ -7,6 +7,7 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
 
 /**
  * SongsUI
@@ -46,7 +47,9 @@ public class SongsUI extends JPanel {
         for(int i = 0; i< songs.size();i++){
             data[i][0] = " "+ songs.get(i).getSongName();
             data[i][1] = songs.get(i).getAuthorName();
-            data[i][2] = ((((int)(songs.get(i).getDuration()/60))) + ":" + (Math.round(((songs.get(i).getDuration())) -(int)(songs.get(i).getDuration()/60))));
+            int minutes = (int)TimeUnit.SECONDS.toMinutes((long)(songs.get(i).getDuration()));
+            data[i][2] = ( minutes
+                    + ":" + ((int)(songs.get(i).getDuration())-minutes*60));
             data[i][3] = songs.get(i).getRecordingDate();
             if(!action.equals("topFive")){
                 data[i][4] = action;
@@ -81,12 +84,7 @@ public class SongsUI extends JPanel {
         sp.setBackground(Color.black);
         sp.setPreferredSize(new Dimension(860, 540));
         sp.setWheelScrollingEnabled(true);
-        //registerController(new SongsUIManager(this));
         registerController(spotiFrameManager);
-        //if(!action.equals("topFive")){
-            //registerController(new SongsUIManager(this));
-          //  registerController(new SpotiFrameManager());
-        //}
         panel.add(sp);
         panel.revalidate();
         panel.repaint();
@@ -99,4 +97,5 @@ public class SongsUI extends JPanel {
     private void registerController(Action listener) {
           new ButtonColumn(table, listener, 4);
     }
+
 }

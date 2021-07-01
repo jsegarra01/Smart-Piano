@@ -86,8 +86,6 @@ public class PianoTilesUISelector extends Piano {
         JPanel menu = new JPanel();
         menu.setBackground(Color.getHSBColor(0,0,80.3f));
 
-        setUpSoundType();
-
         getProfilePiano().setBackground(Color.black);
         getProfilePiano().setIcon(new ImageIcon("Files/drawable/profile-picture.png"));
         getProfilePiano().setIcon(resizeIcon((ImageIcon) getProfilePiano().getIcon(),
@@ -153,6 +151,9 @@ public class PianoTilesUISelector extends Piano {
         return panelBorderLayout;
     }
 
+    /**
+     * Method that sets the tiles in the background from the piano tiles
+     */
     private void initTilesBackground() {
         for (int i = 0; i < 14; i++) {                                              //Vertical lines
             JPanel auxiliar = new JPanel();
@@ -295,10 +296,18 @@ public class PianoTilesUISelector extends Piano {
         keys = newKeys;
     }
 
+    /**
+     * Method that gets the controller of the piano tiles (play a song)
+     * @return PianoTilesUISelectorManager that stores the controller of the play a song
+     */
     public PianoTilesUISelectorManager getPianoTilesUISelectorManager() {
         return pianoTilesUISelectorManager;
     }
 
+    /**
+     * Method that gets the play button
+     * @return JButton corresponding to the button of the play or pause
+     */
     public JButton getPlayButtonTiles() {
         return playButtonTiles;
     }

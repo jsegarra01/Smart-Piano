@@ -10,6 +10,10 @@ import java.util.List;
  * ChangeTime
  *
  * The "ChangeTime" class will control and observe the different tiles that fall
+ *
+ * @author OOPD 20-21 ICE5
+ * @version 1.0 28 June 2021
+ *
  */
 public class ChangeTime {
 
@@ -17,6 +21,10 @@ public class ChangeTime {
     Defines a list of observers
      */
     private static final List<Observer> observers = new ArrayList<>();
+
+    /*
+    Defines the action timer
+     */
     private static int actionTimer = 0;
 
     /**
@@ -45,7 +53,7 @@ public class ChangeTime {
     }
 
     /**
-     * Method that update all the observers
+     * Method that updates all the observers
      */
     public void notifyAllObservers(){
         for (Observer observer : observers) {
@@ -53,6 +61,10 @@ public class ChangeTime {
         }
     }
 
+    /**
+     * Method that gets the action timer
+     * @return Int that stores the action timer
+     */
     public int getActionTimer() {
         return actionTimer;
     }

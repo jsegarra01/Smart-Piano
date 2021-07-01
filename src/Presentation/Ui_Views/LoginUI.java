@@ -183,6 +183,10 @@ public class LoginUI extends JPanel {
         password.setText("");
     }
 
+    /**
+     * Method that gets the central panel
+     * @return JPanel that stores the central panel
+     */
     public JPanel getCentralPanel() {
         return mainFrame.getCentralPanel();
     }

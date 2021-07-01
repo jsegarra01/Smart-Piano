@@ -30,7 +30,6 @@ public class PreMenuUI extends JPanel{
     private final SignUpUI signUpUI;
     private final MainFrame mainFrame;
 
-    //private final BusinessFacadeImp myFacade;
     /**
      * Constructor for the PreMenuUI, you need to send the mainframe context and will create a card layout
      * @param loginUI profileUI view
@@ -137,14 +136,24 @@ public class PreMenuUI extends JPanel{
         guest.addActionListener(listener);
     }
 
+    /**
+     * Method that sets the username set in the login
+     * @param usernameLogin Defines the username to be logged in
+     */
     public void setUsernameLogin(String usernameLogin) {
         usernameTextField.setText(usernameLogin);
     }
 
+    /**
+     * Method that resets the ui of the login
+     */
     public void resetLoginUI() {
         loginUI.resetUILogin();
     }
 
+    /**
+     * Method that resets the ui of the sign up
+     */
     public void resetSignUpUI() {
         signUpUI.resetUISignUpUI();
     }
