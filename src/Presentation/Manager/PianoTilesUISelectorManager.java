@@ -288,7 +288,7 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
             songStarted = true;
 
             BusinessFacadeImp.getBusinessFacade().setTileArray(songIndex);                //Sets the tiles to play
-            song = BusinessFacadeImp.getBusinessFacade().getSong(songIndex);
+            song = BusinessFacadeImp.getBusinessFacade().getSongOrdered(songIndex);
             finalMidiHelper.restartSong(song.getSongFile());
             finalMidiHelper.playSong(song.getSongFile());
 

@@ -33,7 +33,7 @@ import static Presentation.Ui_Views.MainFrame.contenedor;
  * The "FreePianoUIManager" class will contain the different methods that are needed to control the view class "FreePianoUI"
  *
  * @author OOPD 20-21 ICE5
- * @version 2.0 23 May 2021
+ * @version 2.0 28 June 2021
  *
  */
 public class FreePianoUIManager implements ActionListener, MouseListener {
@@ -268,6 +268,9 @@ public class FreePianoUIManager implements ActionListener, MouseListener {
 
     }
 
+    /**
+     * Method that shows a dialog when finishing recording in order to fill the information about how to save the song
+     */
     private void noteRecordingUpdate(){
         JPanel myPanel = new JPanel();
         JTextField titleField = new JTextField(20);

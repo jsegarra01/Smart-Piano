@@ -9,7 +9,7 @@ import javax.swing.*;
  * has been an error in the system.
  *
  * @author OOPD 20-21 ICE5
- * @version 1.0 23 May 2021
+ * @version 2.0 28 June 2021
  *
  */
 public class ErrorsManager {
@@ -69,6 +69,8 @@ public class ErrorsManager {
                     createDialog("The input cannot be empty!", "Song recording error");
             case 19 ->
                     createDialog("There was an error adding the song to the playlist!", "Song adding error");
+            case 20 ->
+                    createDialog("There was an error while adding the playlist", "Create playlist error");
         }
     }
 

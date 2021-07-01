@@ -6,13 +6,10 @@ import Business.Entities.Song;
 import Business.Entities.*;
 import Business.Threads.WebScrapping;
 import Presentation.Manager.ErrorsManager;
-import Presentation.Manager.SpotiFrameManager;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-//import static Presentation.Ui_Views.SignUpUI.getMailSignUp;
-//import static Presentation.Ui_Views.SignUpUI.getUsernameSignUp;
 
 
 /**
@@ -21,17 +18,44 @@ import java.util.ArrayList;
  * The "BusinessFacade" class will contain the implementation of the BusinessFacade interface to connect the views with the logic and the database
  *
  * @author OOPD 20-21 ICE5
- * @version 1.0 23 May 2021
+ * @version 1.0 28 June 2021
  *
  */
 public class BusinessFacadeImp implements Business.BusinessFacade {
+
+    /*
+    Defines the user manager, that controls everything user related
+     */
     private static UserManager loginUserManager;
+    /*
+    Defines the song manager, that controls everything song related
+     */
     private static SongManager songManager;
+    /*
+    Defines the playlist manager, that controls everything playlist related
+     */
     private static PlaylistManager playlistManager;
+
+    /*
+    Defines the tiles manager, that controls everything tiles related
+     */
     private static TilesManager tilesManager;
+
+    /*
+    Defines the error manager, that controls everything error related
+     */
     private static ErrorsManager errorManager;
+
+    /*
+    Defines the BusinessFacade, that will be the one responsible to be called when any functionality wants to be implemented
+     */
     private static BusinessFacade businessFacade;
 
+    /**
+     * Singleton of the business facade, that checks if it is null and initializes all of the attributes and returns
+     * the business facade
+     * @return BusinessFacade interface that will be used in order to control the different managers
+     */
     public static BusinessFacade getBusinessFacade(){
         if(businessFacade==null){
             businessFacade = new BusinessFacadeImp();
@@ -45,7 +69,7 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
     }
 
     /**
-     * Logs in to the user "guest" and shows the piano UI layout from the card layout
+     * Method that logs in to the user "guest" and shows the piano UI layout from the card layout
      */
     @Override
     public void enterAsAGuest(){
@@ -54,10 +78,10 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
     }
 
     /**
-     * Calls the method to log in
-     * @param username Username string which the user has inputted while logging in
-     * @param password Password string which the user has inputted while logging in
-     * @return True if logged in, false if not
+     * Method that checks if the user can log in or not
+     * @param username Defines the username string which the user has inputted while logging in
+     * @param password Defines the password string which the user has inputted while logging in
+     * @return Boolean: 1 if it can log in, 0 if it cannot log in
      */
     @Override
     public boolean logIn(String username, String password) {
@@ -65,12 +89,12 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
     }
 
     /**
-     * Calls the method to sign up
-     * @param username Username string which the user has inputted while signing up
-     * @param mail Mail string which the user has inputted while signing up
-     * @param password Password string which the user has inputted while signing up
-     * @param passwordConfirm PasswordConfirmation string which the user has inputted while signing up
-     * @return True if correctly signed up, false if not
+     * Method that checks if the user can do the sign up or not
+     * @param username Defines the username string which the user has inputted while signing up
+     * @param mail Defines the mail string which the user has inputted while signing up
+     * @param password Defines the password string which the user has inputted while signing up
+     * @param passwordConfirm Defines the PasswordConfirmation string which the user has inputted while signing up
+     * @return Boolean: 1 if it can sign up in, 0 if it cannot sign up
      */
     @Override
     public boolean SignUp(String username, String mail, String password, String passwordConfirm) {
@@ -110,7 +134,7 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
     }
 
     /**
-     * Calls the method to delete a user
+     * Method that deletes the account and everything involved with the user introduced
      */
     @Override
     public void deleteAccount() {
@@ -128,20 +152,12 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
             setError(0);
         }
     }
-/*
-    @Override
-    public void noteRecordingUpdate(ArrayList<RecordingNotes> recordingNotes, float recordingTime){
-            JPanel myPanel = new JPanel();
-            JTextField titleField = new JTextField(20);
-            myPanel.add(titleField);
-            JCheckBox box = new JCheckBox("is public?");
-            myPanel.add(box);
 
-            JOptionPane.showMessageDialog(null, myPanel, "Enter a title for the song", JOptionPane.INFORMATION_MESSAGE);
-
-            recordedNotesSend(recordingNotes, titleField.getText(), box.isSelected(), recordingTime);
-    }*/
-
+    /**
+     * Method that sets the error in case the parameter determines that the key already existed
+     * @param KeyExisted Defines as a -1 if the key existed or not
+     * @return Boolean that stores as true if the key existed, a false if not
+     */
     @Override
     public boolean modifyKey(int KeyExisted){
         if(KeyExisted == -1) {
@@ -152,13 +168,21 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
 
     }
 
+    /**
+     * Method that creates a playlists with the name set in the parameter
+     * @param myStr Defines the name which the playlist will be called
+     * @return Playlist created with the name set in the parameter. Will return a null if there has been any error
+     */
     @Override
     public Playlist createPlaylist(String myStr){
         Playlist myPlayList = null;
 
         if(myStr != null && myStr.length() > 0 && myStr.indexOf('\'') == -1){
-            newPlaylist(myStr);
-            myPlayList = playlistManager.getFromName(myStr);
+            if(!newPlaylist(myStr)){
+                setError(20);
+            }else{
+                myPlayList = playlistManager.getFromName(myStr);
+            }
         } else {
             setError(12);
         }
@@ -182,9 +206,9 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
 
 
     /**
-     * Gets a playlist based on its name
-     * @param name name of the playlist we want to get
-     * @return The desired playlist
+     * Method that gets the whole playlist with that name
+     * @param name Defines the name of the playlist to be found
+     * @return Class Playlist that stores the complete information about the playlist found
      */
     @Override
     public Playlist getPlaylist(String name){
@@ -192,10 +216,10 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
     }
 
     /**
-     * Deletes a song from a playlist
+     * Method that deletes a song from a playlist
      * @param playlistName Name of the playlist we want to delete the song from
      * @param songName Song we want to delete
-     * @return True if deleted, false if not
+     * @return Boolean that stores a true if deleted, false if not
      */
     @Override
     public boolean deleteSongFromPlaylist(String playlistName, String songName){
@@ -203,10 +227,9 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
     }
 
     /**
-     * Adds a song to a playlist
-     * @param playlistName Name of the playlist we want to add the song to
-     * @param songName Name of the song we want to add
-     * @return True if added, false if not
+     * Method that adds a song to a playlist
+     * @param playlistName Defines the name of the playlist we want to add the song to
+     * @param songName Defines the name of the song we want to add
      */
     @Override
     public void addSongToPlaylist(String playlistName, String songName){
@@ -216,7 +239,7 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
     }
 
     /**
-     * Sets the songs from the song manager depending on the user
+     * Method that obtains and saves the songs of the user logged
      */
     @Override
     public void setSongUser() {
@@ -226,7 +249,7 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
     }
 
     /**
-     * Sets the songs from the song manager
+     * Method that obtains and saves the songs of the user logged as a guest
      */
     @Override
     public void setSong(){
@@ -235,16 +258,38 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
         }
     }
 
+    /**
+     * Method that gets the all the name of songs stored
+     * @return Arraylist of String that stores all the names of the songs
+     */
     @Override
     public ArrayList<String> getSongName() {
         return songManager.getSongNames();
     }
 
+    /**
+     * Method that gets the song corresponding to that index
+     * @param index Defines the position which the song can be found in the list of songs
+     * @return Song that stores the song with that index in the list of songs
+     */
     @Override
     public Song getSong(int index) {
         return songManager.getSong(index);
     }
 
+    /**
+     * Method that gets the song corresponding to that index
+     * @param index Defines the position which the song can be found in the list of songs
+     * @return Song that stores the song with that index in the list of songs
+     */
+    public Song getSongOrdered(int index){
+        return songManager.getSongOrdered(index);
+    }
+
+    /**
+     * Method that deletes a song given its position
+     * @param i Defines the position in the array of songs of the song to be deleted
+     */
     @Override
     public void deleteSong(int i){
         if (!songManager.deleteSong(getSong(i))) {
@@ -252,46 +297,80 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
         }
     }
 
+    /**
+     * Method that creates a new playlists with the name from the parameter
+     * @param playlist Defines the name the playlist will have
+     * @return Boolean that returns a true if everything was correct, false if not
+     */
     @Override
     public boolean newPlaylist(String playlist){
         return playlistManager.newPlaylist(playlist, UserManager.getUser().getUserName());
     }
 
+    /**
+     * Method that sets the list of tiles
+     * @param songIndex Defines the position in the array of songs of the song to be set
+     */
     @Override
     public void setTileArray(int songIndex) {
         tilesManager.setListTiles(songIndex);
     }
 
+    /**
+     * Method that gets the tiles from the keyboard of the piano
+     * @return Arraylist of the class Keys that stores the whole keys
+     */
     @Override
     public ArrayList<Keys> getTiles() {
         return tilesManager.getListTiles();
     }
 
+    /**
+     * Method that resets the tiles keys
+     */
     @Override
     public void resetTilesKeys(){
         tilesManager.resetKeys();
     }
+
 
     @Override
     public void initializeWebScrapping(){
         new WebScrapping();
     }
 
+    /**
+     * Method that if an exception throws an error, sends the message directly to the errorManager
+     * @param errorFound Defines the type of error found
+     */
     @Override
     public void setError(int errorFound) {
         errorManager.errorFound(errorFound);
     }
 
+    /**
+     * Method that gets all the songs
+     * @return Array list of type song that stores all the songs
+     */
     @Override
     public ArrayList<Song> getSongs(){
         return songManager.getSongs();
     }
 
+    /**
+     * Method that gets the statistics corresponding to the particular hour determined in the parameter
+     * @param i Defines the hour to get the statistics
+     * @return Statistics class that stores stats about the particular hour
+     */
     @Override
     public Stadistics getStats(int i){
         return songManager.gettingStadistics(i);
     }
 
+    /**
+     * Method that updates the times a song has been played by adding a 1 in the attribute
+     * @param song Defines the song to be updated
+     */
     @Override
     public void updateSong(Song song){
         if(!songManager.updateSongPlayed(song)){
@@ -299,9 +378,17 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
         }
     }
 
+    /**
+     * Method that gets the 5 songs that have been played the most (the most popular)
+     * @return Arraylist of the class song that stores the 5 songs most played
+     */
     @Override
     public ArrayList<Song> getTopFive(){ return songManager.getTopFive(); }
 
+    /**
+     * Method that adds or updates the information about the corresponding statistics
+     * @param stats Defines the statistics to be added or updated
+     */
     @Override
     public void addStats(Stadistics stats) {
         if(!songManager.addingStatistics(stats)){
@@ -309,11 +396,18 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
         }
     }
 
+    /**
+     * Method that sets the playlists
+     */
     @Override
     public void setPlaylists() {
         playlistManager.setPlaylists(UserManager.getUser().getUserName());
     }
 
+    /**
+     * Method that gets all the playlists from the particular user
+     * @return Arraylist of class Playlists that store the concrete playlists from the user
+     */
     @Override
     public ArrayList<Playlist> getPlaylists() {
         return playlistManager.getPlaylists();

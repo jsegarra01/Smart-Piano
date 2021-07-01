@@ -15,13 +15,13 @@ import static Persistence.Files.SongToMidi.writeMidi;
  * The "SongManager" class will contain the different methods that are needed to control the songs
  *
  * @author OOPD 20-21 ICE5
- * @version 1.0 21 Apr 2021
+ * @version 2.0 28 June 2021
  *
  */
 public class SongManager {
     private final SongDAO songManager;
-    private static ArrayList<Song> songs;
-    private static ArrayList<String> songNames;
+    private ArrayList<Song> songs;
+    private ArrayList<String> songNames;
 
     public SongManager(){
         songManager = new SongCsvDAO();
@@ -72,15 +72,35 @@ public class SongManager {
     }
 
     /**
+     * Method that gets a song from a given index from the list of ordered songs
+     * @param index Position in the list of the song we want to get
+     * @return The song we are looking for
+     */
+    public Song getSongOrdered(int index){
+        int i = 0;
+        boolean found = false;
+        while(i< songs.size() && !found ){
+            if(songNames.get(index).matches(songs.get(i).getSongName())){
+                found = true;
+            }else{
+                i++;
+            }
+        }
+        if(found){
+            return songs.get(i);
+        }
+        return null;
+    }
+
+    /**
      * Loads all songs and song names from the database
      */
     public boolean setSongs() {
-        //songs = songManager.getAllSongs(getUser());
         try {
             songNames.clear();
             songs = songManager.getAllSongs();
             ArrayList<Song> aux = new ArrayList<>(songs);
-            aux.sort(this::compare);
+            aux.sort((song1, song2) -> Integer.compare(song2.getTimesPlayed(), song1.getTimesPlayed()));
             for (Song song : aux) {
                 songNames.add(song.getSongName());
             }
@@ -100,7 +120,7 @@ public class SongManager {
             songNames.clear();
             songs = songManager.getAllSongs(username);
             ArrayList<Song> aux = new ArrayList<>(songs);
-            aux.sort(this::compare);
+            aux.sort((song1, song2) -> Integer.compare(song2.getTimesPlayed(), song1.getTimesPlayed()));
             for (Song song : aux) {
                 songNames.add(song.getSongName());
             }
@@ -116,26 +136,12 @@ public class SongManager {
      */
     public ArrayList<Song> getTopFive(){
         ArrayList<Song> aux = new ArrayList<>(songs);
-        aux.sort(this::compare);            //TODO AIXÒ EM PETA
+        aux.sort((song1, song2) -> Integer.compare(song2.getTimesPlayed(), song1.getTimesPlayed()));
         ArrayList<Song> topFive = new ArrayList<>();
         for(int i=0; i<5 && i<aux.size(); i++){
             topFive.add(aux.get(i));
         }
         return topFive;
-    }
-
-    /**
-     * Compares two songs on the times they have been played
-     * @param song1 First song
-     * @param song2 Second song
-     * @return 1 if the first song has been played more times than the second, -1 elsewhere
-     */
-    private int compare(Song song1, Song song2) {
-        if(song1.getTimesPlayed() < song2.getTimesPlayed()){
-            return 1;
-        } else {
-            return -1;
-        }
     }
 
     /**
@@ -173,16 +179,16 @@ public class SongManager {
     }
 
     /**
-     *
-     * @param song
+     * Method that saves the song with the specific date
+     * @param song Defines the song to be saved
      */
     public boolean saveSongWithDate(Song song){
         return songManager.saveSongWithDate(song);
     }
 
     /**
-     *
-     * @param i
+     * Method that deletes a the file of a song
+     * @param i Defines the position of the song to be deleted
      */
     public void deleteSongFile(int i){
         songManager.deleteSongFile(songs.get(i).getSongFile());

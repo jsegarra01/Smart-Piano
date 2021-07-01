@@ -4,7 +4,6 @@ package Presentation.Manager;
 import Business.Entities.*;
 import Business.BusinessFacadeImp;
 import Business.MidiHelper;
-import Business.UserManager;
 import Presentation.Dictionary_login;
 import Presentation.Ui_Views.SpotiFrame;
 import Presentation.Ui_Views.StatisticsUI;
@@ -39,8 +38,8 @@ import static Presentation.Ui_Views.MainFrame.contenedor;
 public class SpotiFrameManager extends AbstractAction implements ActionListener, MouseListener {
     private final ImageIcon playIcon; //Icon played
     private final ImageIcon pauseIcon; //Icon pause
-    private Playlist playlist;
-    private Song songPlay;
+    private static Playlist playlist;
+    private static Song songPlay;
 
     /*
     Defines if there is a song being played
@@ -72,36 +71,15 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
     private int count_song = 0;
 
     /*
-    Event that will control if the end of the track has been reached
-     */
-    private final MetaEventListener listener = meta -> {
-        if (meta.getType() == 47) {
-            playSongTime();
-        }
-    };
-
-    /*
     MidiHelper which will control the music playing in the music player
      */
-    private final MidiHelper finalMidiHelper;
+    private static MidiHelper finalMidiHelper;
 
     /*
     Views that depend on this manager
     */
     private SpotiFrame spotiFrame;
 
-    public SpotiFrameManager() {
-        MidiHelper finalMidiHelper1;
-        try {
-            finalMidiHelper1 = new MidiHelper(listener);
-        } catch (MidiUnavailableException e) {
-            finalMidiHelper1 = null;
-        }
-        finalMidiHelper = finalMidiHelper1;
-
-        playIcon = new ImageIcon(PLAYICON);
-        pauseIcon = new ImageIcon(PAUSEICON);
-    }
     /**
      * Parametrized constructor
      * @param spotiFrame1 View of the SpotiUI
@@ -109,14 +87,19 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
     public SpotiFrameManager(SpotiFrame spotiFrame1) {
         spotiFrame = spotiFrame1;
 
-        MidiHelper finalMidiHelper1;
         try {
-            finalMidiHelper1 = new MidiHelper();
+            /*
+    Event that will control if the end of the track has been reached
+     */
+            MetaEventListener listener = meta -> {
+                if (meta.getType() == 47) {
+                    playSongTime();
+                }
+            };
+            finalMidiHelper = new MidiHelper(listener);
         } catch (MidiUnavailableException e) {
-            finalMidiHelper1 = null;
+            finalMidiHelper = null;
         }
-        finalMidiHelper = finalMidiHelper1;
-
         playIcon = new ImageIcon(PLAYICON);
         pauseIcon = new ImageIcon(PAUSEICON);
     }
@@ -193,6 +176,7 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
                             }
                         }
                     }else{
+                        spotiFrame.setPlayButton(pauseIcon);
                         finalMidiHelper.restartSong(songPlay.getSongFile());
                         finalMidiHelper.playSong(songPlay.getSongFile());
                     }
@@ -668,20 +652,12 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
                 }
             }
         }else{
+            spotiFrame.setPlayButton(pauseIcon);
             finalMidiHelper.restartSong(songPlay.getSongFile());
             finalMidiHelper.playSong(songPlay.getSongFile());
         }
 
         updateTable();
-        /*BusinessFacadeImp.getBusinessFacade().updateSong(songPlay);
-        BusinessFacadeImp.getBusinessFacade().setSongUser();*/
-        /*
-        setNumSongs(getNumSongs());
-        setNumMin(getMinPlayed());
-        initialize();
-        new BusinessFacadeImp().updateSong(songPlay);
-        new BusinessFacadeImp().setSongUser();
-        SongsUI.initTable(new BusinessFacadeImp().getTopFive(), "topFive");*/
     }
 
     /**

@@ -16,7 +16,7 @@ import static Presentation.DictionaryPiano.PIANO_TILES_TIMER;
  * The "TimerManager" class will contain the different methods that are needed to create and modify the Timers
  *
  * @author OOPD 20-21 ICE5
- * @version 2.0 9 May 2021
+ * @version 2.0 28 June 2021
  *
  */
 public class TimerManager extends Observer implements ActionListener {

@@ -11,6 +11,15 @@ import java.util.Calendar;
 
 import static Presentation.DictionaryPiano.TIME_GRAPH;
 
+/**
+ * GraphTimer
+ *
+ * The "GraphTimer" class will contain the different methods that are needed to control the view class "Graph"
+ *
+ * @author OOPD 20-21 ICE5
+ * @version 2.0 28 June 2021
+ *
+ */
 public class GraphTimer implements ActionListener {
     private final SpotiFrameManager spotiFrameManager;
 
