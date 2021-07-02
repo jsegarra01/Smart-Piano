@@ -293,6 +293,17 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
             setError(3);
         }
     }
+    /**
+     * Method that deletes a song given its position
+     * @param i Defines the position in the array of songs of the song to be deleted
+     */
+    @Override
+    public void deleteSongSearched(int i){
+        if (!songManager.deleteSong(getSongSearched(i))) {
+            setError(3);
+        }
+    }
+
 
     /**
      * Method that creates a new playlists with the name from the parameter
@@ -423,6 +434,11 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
         return true;
     }
 
+    /**
+     * Check if it is possible to delete the user
+     * @param i integer of the song array to pass
+     * @return true if it possible to delete, false if not
+     */
     @Override
     public boolean checkCanDelete(int i) {
         if(UserManager.getUser().getUserName().matches(songManager.getSong(i).getCreator())){
@@ -430,6 +446,25 @@ public class BusinessFacadeImp implements Business.BusinessFacade {
         }
         setError(22);
         return false;
+    }
+
+    /**
+     * Method that gets a song from the given index from the array of songs searched
+     * @param i Defines the position of the array
+     * @return Song that is to be played
+     */
+    @Override
+    public Song getSongSearched(int i) {
+        return songManager.getSongSearched(i);
+    }
+
+    /**
+     * Method that sets the songs searched
+     * @param songs Defines the songs to set
+     */
+    @Override
+    public void setSongsSearched(ArrayList<Song> songs) {
+        songManager.setSongsSearched(songs);
     }
 
 

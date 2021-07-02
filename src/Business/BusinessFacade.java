@@ -125,6 +125,12 @@ public interface BusinessFacade {
     void deleteSong(int i);
 
     /**
+     * Method that deletes a song given its position
+     * @param i Defines the position in the array of songs of the song to be deleted
+     */
+    void deleteSongSearched(int i);
+
+    /**
      * Method that sets the list of tiles
      * @param songIndex Defines the position in the array of songs of the song to be set
      */
@@ -213,5 +219,18 @@ public interface BusinessFacade {
      * @return true if it possible to delete, false if not
      */
     boolean checkCanDelete(int i);
+
+    /**
+     * Method that gets a song from the given index from the array of songs searched
+     * @param i Defines the position of the array
+     * @return Song that is to be played
+     */
+    Song getSongSearched(int i);
+
+    /**
+     * Method that sets the songs searched
+     * @param songs Defines the songs to set
+     */
+    void setSongsSearched(ArrayList<Song> songs);
 
 }

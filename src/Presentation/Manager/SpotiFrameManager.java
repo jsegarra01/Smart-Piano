@@ -42,6 +42,9 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
     Defines if there is a song being played
      */
     private boolean play = false;
+
+    private boolean search = false;
+
     private boolean top5 = false;
 
     /*
@@ -113,6 +116,7 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
             case SHOW_ALL_SONGS:
                 addSong = false;
                 top5 = false;
+                search = false;
                 spotiFrame.getSongsUI().initTable(BusinessFacadeImp.getBusinessFacade().getSongs(), "Delete");
                 cc.show(spotiFrame.getSpotiPanel(), SONGS_UI);
                 break;
@@ -122,6 +126,7 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
                 break;
             case SHOW_TOP_SONGS:
                 top5 = true;
+                search = false;
                 spotiFrame.getSongsUI().initTable(BusinessFacadeImp.getBusinessFacade().getTopFive(), "topFive");
                 cc.show(spotiFrame.getSpotiPanel(), SONGS_UI);
                 break;
@@ -137,6 +142,7 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
                 }
                 break;
             case SEARCH_SONG:
+                search = true;
                 if(searchSong(spotiFrame.getInputedSongName())){
                     cc.show(spotiFrame.getSpotiPanel(), SONGS_UI);
                     top5 = false;
@@ -242,13 +248,23 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
                             }
                         }else{
                             if(BusinessFacadeImp.getBusinessFacade().checkCanDelete(modelRow)){
+                                Song songDelete;
+                                if(search){
+                                    songDelete = BusinessFacadeImp.getBusinessFacade().getSongSearched(modelRow);
+                                }else{
+                                    songDelete = BusinessFacadeImp.getBusinessFacade().getSong(modelRow);
+                                }
                                 int input = JOptionPane.showConfirmDialog(null,
                                         "Are you sure you want to delete " +
-                                                BusinessFacadeImp.getBusinessFacade().getSong(modelRow).getSongName() +"?",
+                                                songDelete.getSongName() +"?",
                                         "Select an option", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
                                 if(input == JOptionPane.YES_OPTION){
                                     ((DefaultTableModel)table.getModel()).removeRow(modelRow);
-                                    BusinessFacadeImp.getBusinessFacade().deleteSong(modelRow);
+                                    if(search){
+                                        BusinessFacadeImp.getBusinessFacade().deleteSongSearched(modelRow);
+                                    }else{
+                                        BusinessFacadeImp.getBusinessFacade().deleteSong(modelRow);
+                                    }
                                     BusinessFacadeImp.getBusinessFacade().setSongUser();
                                     BusinessFacadeImp.getBusinessFacade().setPlaylists();
                                 }
@@ -331,7 +347,11 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
                 if(top5){
                     songPlay = BusinessFacadeImp.getBusinessFacade().getTopFive().get(table.getSelectedRow());
                 }else{
-                    songPlay = BusinessFacadeImp.getBusinessFacade().getSong(table.getSelectedRow());
+                    if(search){
+                        songPlay = BusinessFacadeImp.getBusinessFacade().getSongSearched(table.getSelectedRow());
+                    }else{
+                        songPlay = BusinessFacadeImp.getBusinessFacade().getSong(table.getSelectedRow());
+                    }
                 }
                 playMusic();
                 spotiFrame.setSong(songPlay.getSongName(), songPlay.getAuthorName());
@@ -676,7 +696,13 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
                     songsSearched.add(song);
                 }
             }
-            spotiFrame.getSongsUI().initTable(songsSearched, "Delete");
+            if(!songsSearched.isEmpty()){
+                spotiFrame.getSongsUI().initTable(songsSearched, "Delete");
+                BusinessFacadeImp.getBusinessFacade().setSongsSearched(songsSearched);
+            }else{
+                BusinessFacadeImp.getBusinessFacade().setError(24);
+            }
+
             return true;
 
         }else{
@@ -733,5 +759,6 @@ public class SpotiFrameManager extends AbstractAction implements ActionListener,
     public void reset(){
         addSong = false;
         top5 = false;
+        search = false;
     }
 }

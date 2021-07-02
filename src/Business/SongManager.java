@@ -22,10 +22,12 @@ public class SongManager {
     private final SongDAO songManager;
     private ArrayList<Song> songs;
     private final ArrayList<String> songNames;
+    private ArrayList<Song> songsSearched;
 
     public SongManager(){
         songManager = new SongCsvDAO();
         songNames = new ArrayList<>();
+        songsSearched = new ArrayList<>();
     }
 
     /**
@@ -198,5 +200,17 @@ public class SongManager {
         if (!songManager.deleteSongFile(songs.get(i).getSongFile())) {
             BusinessFacadeImp.getBusinessFacade().setError(3);
         }
+    }
+
+    public ArrayList<Song> getSongsSearched() {
+        return songsSearched;
+    }
+
+    public void setSongsSearched(ArrayList<Song> songsSearched) {
+        this.songsSearched = songsSearched;
+    }
+
+    public Song getSongSearched(int i){
+        return songsSearched.get(i);
     }
 }

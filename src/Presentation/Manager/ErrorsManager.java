@@ -77,6 +77,8 @@ public class ErrorsManager {
                     createDialog("You are not the creator of this song", "Delete song error");
             case 23 ->
                     createDialog("There was a problem deleting the song", "Delete song error");
+            case 24 ->
+                    createDialog("There is no song with this name", "Search Song");
         }
     }
 
