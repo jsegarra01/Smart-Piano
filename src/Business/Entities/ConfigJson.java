@@ -9,6 +9,7 @@ package Business.Entities;
  * @version 2.0 28 June 2021
  *
  */
+@SuppressWarnings("unused") //We are aware they are unused, but they are necessary to read from the configJson file (that's their utility)
 public class ConfigJson {
 
     /*

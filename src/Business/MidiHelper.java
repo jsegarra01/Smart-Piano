@@ -12,6 +12,7 @@ import java.io.IOException;
  * @version 2.0 28 June 2021
  *
  */
+@SuppressWarnings("unused") //We know they are "unused", but without them getting the instruments, the midi wouldn't sound so they are actually used
 public class MidiHelper {
     private final MidiChannel[] midiChannels;
     private final Instrument[] instruments;

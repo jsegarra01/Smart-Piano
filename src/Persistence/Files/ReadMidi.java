@@ -23,7 +23,6 @@ import javax.sound.midi.Track;
  */
 public class ReadMidi {
     private static final int NOTE_ON = 0x90;
-    private static final String[] NOTE_NAMES = {"C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"};
 
     /**
      * Reads a midi file and stores the keys pressed, together with how much time they have been pressed and when, and returns the list of keys

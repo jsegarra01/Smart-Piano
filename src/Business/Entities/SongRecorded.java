@@ -11,7 +11,8 @@ import java.util.ArrayList;
  * @version 2.0 28 June 2021
  *
  */
-@SuppressWarnings("FieldCanBeLocal")    //They are necessary to be in the class, as they are going to be saved in the midi
+@SuppressWarnings({"FieldCanBeLocal", "unused"})
+//They are necessary to be in the class, as they are going to be saved in the midi
 public class SongRecorded {
 
     /*
