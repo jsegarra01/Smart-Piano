@@ -41,6 +41,7 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
     private int songIndex = 0;
     private Song song;
     private static float velocityModifier = 1;
+    private float velocityTemporal = 1;
 
     private final ImageIcon playIcon = new ImageIcon("Files/drawable/play-button.png"); // icon play
     private final ImageIcon pauseIcon = new ImageIcon("Files/drawable/pause-button.png"); // icon pause
@@ -138,22 +139,22 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
                 }
                 break;
             case DictionaryPiano.VERY_EASY_MODE:
-                if (!songStarted) { velocityModifier = 0.5f;}
+                velocityTemporal = 0.5f;
                 break;
             case DictionaryPiano.MUTE_BUTTON:
                 finalMidiHelper.muteSong();
                 break;
             case DictionaryPiano.EASY_MODE:
-                if (!songStarted) { velocityModifier = 0.75f;}
+                velocityTemporal = 0.75f;
                 break;
             case DictionaryPiano.NORMAL_MODE:
-                if (!songStarted) { velocityModifier = 1;}
+                velocityTemporal = 1;
                 break;
             case DictionaryPiano.HARD_MODE:
-                if (!songStarted) { velocityModifier = 1.5f;}
+                velocityTemporal = 1.5f;
                 break;
             case DictionaryPiano.VERY_HARD_MODE:
-                if (!songStarted) { velocityModifier = 2.0f;}
+                velocityTemporal = 2.0f;
                 break;
         }
     }
@@ -274,7 +275,7 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
      */
     @Override
     public void valueChanged(ListSelectionEvent e) {
-        if (!e.getValueIsAdjusting() && !songStarted) {
+        if (!e.getValueIsAdjusting()) {
             if (e.getFirstIndex() <= e.getLastIndex() && songIndex == e.getLastIndex()) {
                 songIndex = e.getFirstIndex();
             }
@@ -282,6 +283,13 @@ public class PianoTilesUISelectorManager implements ActionListener, MouseListene
                 songIndex = e.getLastIndex();
             }
             songStarted = true;
+            timePassed = 0;
+            play = true;
+            new ChangeTime(0);
+            BusinessFacadeImp.getBusinessFacade().resetTilesKeys();
+            pianoTilesUI.initTileGame();
+            velocityModifier = velocityTemporal;
+            pianoTilesUI.refreshTiles(timePassed, velocityModifier);
 
             BusinessFacadeImp.getBusinessFacade().setTileArray(songIndex);                //Sets the tiles to play
             song = BusinessFacadeImp.getBusinessFacade().getSongOrdered(songIndex);
