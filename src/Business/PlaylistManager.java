@@ -20,7 +20,7 @@ import java.util.ArrayList;
  *
  */
 public class PlaylistManager {
-    private ArrayList<Playlist> playlists;
+    private ArrayList<Playlist> playlists = new ArrayList<>();
     private final PlaylistDAO playlistCsvDAO = new PlaylistCsvDAO();
     private final SongDAO songCsvDAO = new SongCsvDAO();
 
