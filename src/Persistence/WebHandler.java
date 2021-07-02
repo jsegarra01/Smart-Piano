@@ -20,6 +20,7 @@ public class WebHandler {
      * Method that returns a Document type with a complete HTML inside of it (that we will have to parse and get
      * info from. For this, JSoup does the trick.
      * @param url Defines the internet path to be used
+     * @throws IOException Exception controlled where it is called due to getting the connection
      * @return Document that stores the complete HTML
      */
     public static Document getHtmlDocument(String url) throws IOException{
